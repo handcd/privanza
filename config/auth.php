@@ -36,6 +36,21 @@ return [
     */
 
     'guards' => [
+        'validador' => [
+            'driver' => 'session',
+            'provider' => 'validadors',
+        ],
+
+        'vendedor' => [
+            'driver' => 'session',
+            'provider' => 'vendedors',
+        ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
@@ -65,6 +80,21 @@ return [
     */
 
     'providers' => [
+        'validadors' => [
+            'driver' => 'eloquent',
+            'model' => App\Validador::class,
+        ],
+
+        'vendedors' => [
+            'driver' => 'eloquent',
+            'model' => App\Vendedor::class,
+        ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
+        ],
+
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
@@ -92,6 +122,24 @@ return [
     */
 
     'passwords' => [
+        'validadors' => [
+            'provider' => 'validadors',
+            'table' => 'validador_password_resets',
+            'expire' => 60,
+        ],
+
+        'vendedors' => [
+            'provider' => 'vendedors',
+            'table' => 'vendedor_password_resets',
+            'expire' => 60,
+        ],
+
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'admin_password_resets',
+            'expire' => 60,
+        ],
+
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',

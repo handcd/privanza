@@ -39,7 +39,70 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
+        $this->mapValidadorRoutes();
+
+        $this->mapVendedorRoutes();
+
+        $this->mapAdminRoutes();
+
         //
+    }
+
+    /**
+     * Define the "admin" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapAdminRoutes()
+    {
+        Route::group([
+            'middleware' => ['web', 'admin', 'auth:admin'],
+            'prefix' => 'admin',
+            'as' => 'admin.',
+            'namespace' => $this->namespace,
+        ], function ($router) {
+            require base_path('routes/admin.php');
+        });
+    }
+
+    /**
+     * Define the "vendedor" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapVendedorRoutes()
+    {
+        Route::group([
+            'middleware' => ['web', 'vendedor', 'auth:vendedor'],
+            'prefix' => 'vendedor',
+            'as' => 'vendedor.',
+            'namespace' => $this->namespace,
+        ], function ($router) {
+            require base_path('routes/vendedor.php');
+        });
+    }
+
+    /**
+     * Define the "validador" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapValidadorRoutes()
+    {
+        Route::group([
+            'middleware' => ['web', 'validador', 'auth:validador'],
+            'prefix' => 'validador',
+            'as' => 'validador.',
+            'namespace' => $this->namespace,
+        ], function ($router) {
+            require base_path('routes/validador.php');
+        });
     }
 
     /**
