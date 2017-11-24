@@ -35,7 +35,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/admin') }}">
-                    {{ config('app.name', 'Laravel Multi Auth Guard') }}: Admin
+                    {{ config('app.name', 'Laravel Multi Auth Guard') }}: Administrador
                 </a>
             </div>
 

@@ -18,7 +18,7 @@ class RedirectIfVendedor
 	public function handle($request, Closure $next, $guard = 'vendedor')
 	{
 	    if (Auth::guard($guard)->check()) {
-	        return redirect('vendedor/home');
+	        return redirect('vendedor/dashboard');
 	    }
 
 	    return $next($request);

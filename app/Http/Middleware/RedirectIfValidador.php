@@ -18,7 +18,7 @@ class RedirectIfValidador
 	public function handle($request, Closure $next, $guard = 'validador')
 	{
 	    if (Auth::guard($guard)->check()) {
-	        return redirect('validador/home');
+	        return redirect('validador/dashboard');
 	    }
 
 	    return $next($request);

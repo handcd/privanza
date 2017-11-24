@@ -34,8 +34,8 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/validador') }}">
-                    {{ config('app.name', 'Laravel Multi Auth Guard') }}: Validador
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel Multi Auth Guard') }} - Validador
                 </a>
             </div>
 
