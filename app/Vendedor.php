@@ -29,6 +29,16 @@ class Vendedor extends Authenticatable
     ];
 
     /**
+     * Get the orders by the current Vendedor
+     * @param void
+     * @return Orders
+     */
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    /**
      * Send the password reset notification.
      *
      * @param  string  $token
