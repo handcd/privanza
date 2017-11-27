@@ -34,8 +34,8 @@ Route::group(['prefix' => 'vendedor'], function () {
   Route::post('/login', 'VendedorAuth\LoginController@login');
   Route::post('/logout', 'VendedorAuth\LoginController@logout')->name('logout');
 
-  Route::get('/register', 'VendedorAuth\RegisterController@showRegistrationForm')->name('register');
-  Route::post('/register', 'VendedorAuth\RegisterController@register');
+  //Route::get('/register', 'VendedorAuth\RegisterController@showRegistrationForm')->name('register');
+  //Route::post('/register', 'VendedorAuth\RegisterController@register');
 
   Route::post('/password/email', 'VendedorAuth\ForgotPasswordController@sendResetLinkEmail')->name('password.request');
   Route::post('/password/reset', 'VendedorAuth\ResetPasswordController@reset')->name('password.email');
@@ -48,8 +48,8 @@ Route::group(['prefix' => 'validador'], function () {
   Route::post('/login', 'ValidadorAuth\LoginController@login');
   Route::post('/logout', 'ValidadorAuth\LoginController@logout')->name('logout');
 
-  Route::get('/register', 'ValidadorAuth\RegisterController@showRegistrationForm')->name('register');
-  Route::post('/register', 'ValidadorAuth\RegisterController@register');
+  //Route::get('/register', 'ValidadorAuth\RegisterController@showRegistrationForm')->name('register');
+  //Route::post('/register', 'ValidadorAuth\RegisterController@register');
 
   Route::post('/password/email', 'ValidadorAuth\ForgotPasswordController@sendResetLinkEmail')->name('password.request');
   Route::post('/password/reset', 'ValidadorAuth\ResetPasswordController@reset')->name('password.email');
