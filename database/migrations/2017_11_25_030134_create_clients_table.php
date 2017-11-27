@@ -1,9 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVendedorsTable extends Migration
+class CreateClientsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +13,12 @@ class CreateVendedorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('vendedors', function (Blueprint $table) {
+        Schema::create('clients', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('address');
-            $table->string('phone');
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('lastname');
+            $table->string('phone')->nullable();
+            $table->string('email');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateVendedorsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('vendedors');
+        Schema::dropIfExists('clients');
     }
 }
