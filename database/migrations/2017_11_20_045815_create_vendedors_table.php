@@ -19,6 +19,7 @@ class CreateVendedorsTable extends Migration
             $table->string('address');
             $table->string('phone');
             $table->string('password');
+            $table->boolean('enabled')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });
