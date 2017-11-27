@@ -30,7 +30,7 @@
                 <i class="material-icons">check</i>
             </div>
             <div class="card-content">
-                <p class="category">Órdenes en producción</p>
+                <p class="category">Órdenes aprobadas</p>
                 <h3 class="title">7</h3>
             </div>
         </div>
@@ -41,7 +41,7 @@
                 <i class="fa fa-thumbs-o-up"></i>
             </div>
             <div class="card-content">
-                <p class="category">Órdenes por aprobar</p>
+                <p class="category">Órdenes en producción</p>
                 <h3 class="title">6</h3>
             </div>           
         </div>

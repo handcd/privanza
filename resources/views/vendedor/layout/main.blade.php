@@ -6,7 +6,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
     <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Dashboard | Vendedor</title>
+    <title>Privanza | Vendedor</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <!-- Bootstrap core CSS     -->
@@ -19,6 +19,25 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--   Core JS Files   -->
+    <script src="{{ asset('js/jquery-3.2.1.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/material.min.js') }}" type="text/javascript"></script>
+    <!--  Charts Plugin -->
+    <script src="{{ asset('js/chartist.min.js') }}"></script>
+    <!--  Dynamic Elements plugin -->
+    <script src="{{ asset('js/arrive.min.js') }}"></script>
+    <!--  PerfectScrollbar Library -->
+    <script src="{{ asset('js/perfect-scrollbar.jquery.min.js') }}"></script>
+    <!--  Notifications Plugin    -->
+    <script src="{{ asset('js/bootstrap-notify.js') }}"></script>
+    <!--  Google Maps Plugin    -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <!-- Material Dashboard javascript methods -->
+    <script src="{{ asset('js/material-dashboard.js?v=1.2.0') }}"></script>
+    <!-- Material Dashboard DEMO methods, don't include it in your project! -->
+    <script src="{{ asset('js/demo.js') }}"></script>
 </head>
 
 <body>
@@ -42,8 +61,8 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li {{ Request::path() == 'vendedor/profile' ? ' class=active' : '' }}>
-                        <a href="{{ url('vendedor/profile') }}">
+                    <li {{ Request::path() == 'vendedor/perfil' ? ' class=active' : '' }}>
+                        <a href="{{ url('vendedor/perfil') }}">
                             <i class="material-icons">person</i>
                             <p>Mi Perfil</p>
                         </a>
@@ -56,7 +75,7 @@
                     </li>
                     <li {{ Request::path() == 'vendedor/clientes' ? ' class=active' : '' }}>
                         <a href="{{ url('vendedor/clientes') }}">
-                            <i class="material-icons">content_paste</i>
+                            <i class="material-icons">people</i>
                             <p>Clientes</p>
                         </a>
                     </li>
@@ -80,11 +99,11 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="material-icons">person</i>
-                                    <p class="hidden-lg hidden-md">Nombre del tipo</p>
+                                    <p class="hidden-lg hidden-md">{{ Auth::user()->name }}</p>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="{{ url('/vendedor/profile') }}">Mi perfil</a>
+                                        <a href="{{ url('/vendedor/perfil') }}">Mi perfil</a>
                                     </li>
                                     <li>
                                         <a href="{{ url('/vendedor/logout') }}"
@@ -131,24 +150,6 @@
         </div>
     </div>
 </body>
-<!--   Core JS Files   -->
-<script src="{{ asset('js/jquery-3.2.1.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/material.min.js') }}" type="text/javascript"></script>
-<!--  Charts Plugin -->
-<script src="{{ asset('js/chartist.min.js') }}"></script>
-<!--  Dynamic Elements plugin -->
-<script src="{{ asset('js/arrive.min.js') }}"></script>
-<!--  PerfectScrollbar Library -->
-<script src="{{ asset('js/perfect-scrollbar.jquery.min.js') }}"></script>
-<!--  Notifications Plugin    -->
-<script src="{{ asset('js/bootstrap-notify.js') }}"></script>
-<!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-<!-- Material Dashboard javascript methods -->
-<script src="{{ asset('js/material-dashboard.js?v=1.2.0') }}"></script>
-<!-- Material Dashboard DEMO methods, don't include it in your project! -->
-<script src="{{ asset('js/demo.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         // Javascript method's body can be found in assets/js/demos.js
