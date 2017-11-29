@@ -61,12 +61,6 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li {{ Request::path() == 'vendedor/perfil' ? ' class=active' : '' }}>
-                        <a href="{{ url('vendedor/perfil') }}">
-                            <i class="material-icons">person</i>
-                            <p>Mi Perfil</p>
-                        </a>
-                    </li>
                     <li {{ Request::path() == 'vendedor/ordenes' ? ' class=active' : '' }}>
                         <a href="{{ url('vendedor/ordenes') }}">
                             <i class="material-icons">content_paste</i>
@@ -77,6 +71,18 @@
                         <a href="{{ url('vendedor/clientes') }}">
                             <i class="material-icons">people</i>
                             <p>Clientes</p>
+                        </a>
+                    </li>
+                     <li {{ Request::path() == 'vendedor/citas' ? ' class=active' : '' }}>
+                        <a href="{{ url('vendedor/citas') }}">
+                            <i class="material-icons">date_range</i>
+                            <p>Citas</p>
+                        </a>
+                    </li>
+                    <li {{ Request::path() == 'vendedor/perfil' ? ' class=active' : '' }}>
+                        <a href="{{ url('vendedor/perfil') }}">
+                            <i class="material-icons">person</i>
+                            <p>Mi Perfil</p>
                         </a>
                     </li>
                 </ul>
