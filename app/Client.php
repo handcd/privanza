@@ -15,4 +15,13 @@ class Client extends Model
     {
         return $this->hasMany(Order::class);
     }
+
+
+    /**
+     * Get the events associated with the current Client
+     */
+    public function events()
+    {
+    	return $this->hasMany(Event::class);
+    }
 }

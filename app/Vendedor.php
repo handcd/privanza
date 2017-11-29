@@ -39,6 +39,14 @@ class Vendedor extends Authenticatable
     }
 
     /**
+     * Get the events associated with the current Vendedor
+     */
+    public function events()
+    {
+        return $this->hasMany(Event::class);
+    }
+
+    /**
      * Send the password reset notification.
      *
      * @param  string  $token
