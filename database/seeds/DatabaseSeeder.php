@@ -32,6 +32,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test Validador',
             'email' => 'validador@privanza.com',
             'password' => bcrypt('validador123'),
+            'job_position' => 'Gerente de Ventas',
+            'phone' => '55-3432-2312',
         ]);
 
         factory(App\Client::class, 25)->create();
