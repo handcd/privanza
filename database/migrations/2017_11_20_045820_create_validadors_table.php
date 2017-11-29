@@ -25,7 +25,7 @@ class CreateValidadorsTable extends Migration
             $table->string('concept');
             $table->string('bank');
             $table->string('job_position');
-            $table->bollean('enabled');
+            $table->boolean('enabled');
             $table->rememberToken();
             $table->timestamps();
         });
