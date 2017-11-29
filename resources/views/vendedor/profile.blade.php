@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-md-12">
         @if (session()->has('msg'))
-            <div class="alert alert-success">
+            <div class="alert alert-success fade in">
                 <div class="container-fluid">
                     <div class="alert-icon">
                         <i class="material-icons">check</i>

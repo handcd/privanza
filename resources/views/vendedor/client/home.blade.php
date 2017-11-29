@@ -31,7 +31,7 @@
                             <td>{{ $cliente->id }}</td>
                             <td>{{ $cliente->name }}</td>
                             <td>{{ $cliente->lastname }}</td>
-                            <td><a href="mailto:$cliente->email">{{ $cliente->email }}</a></td>
+                            <td><a href="mailto:{{$cliente->email}}">{{ $cliente->email }}</a></td>
                             <td class="td-actions text-right">
                                 <a href="{{ url('/vendedor/clientes/'.$cliente->id) }}" type="button" rel="tooltip" title="Ver Cliente" class="btn btn-success btn-simple btn-xs">
                                     <i class="material-icons">remove_red_eye</i>
