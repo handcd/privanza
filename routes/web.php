@@ -15,6 +15,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/vendedor', function() {
+  return redirect('/vendedor/login');
+});
+
+Route::get('/admin', function(){
+  return redirect('/admin/login');
+});
+
+Route::get('/validador', function () {
+  return redirect('/validador/login');
+});
+
 Route::group(['prefix' => 'admin'], function () {
   Route::get('/login', 'AdminAuth\LoginController@showLoginForm')->name('login');
   Route::post('/login', 'AdminAuth\LoginController@login');
@@ -29,19 +41,6 @@ Route::group(['prefix' => 'admin'], function () {
   Route::get('/password/reset/{token}', 'AdminAuth\ResetPasswordController@showResetForm');
 });
 
-Route::group(['prefix' => 'vendedor'], function () {
-  Route::get('/login', 'VendedorAuth\LoginController@showLoginForm')->name('login');
-  Route::post('/login', 'VendedorAuth\LoginController@login');
-  Route::post('/logout', 'VendedorAuth\LoginController@logout')->name('logout');
-
-  //Route::get('/register', 'VendedorAuth\RegisterController@showRegistrationForm')->name('register');
-  //Route::post('/register', 'VendedorAuth\RegisterController@register');
-
-  Route::post('/password/email', 'VendedorAuth\ForgotPasswordController@sendResetLinkEmail')->name('password.request');
-  Route::post('/password/reset', 'VendedorAuth\ResetPasswordController@reset')->name('password.email');
-  Route::get('/password/reset', 'VendedorAuth\ForgotPasswordController@showLinkRequestForm')->name('password.reset');
-  Route::get('/password/reset/{token}', 'VendedorAuth\ResetPasswordController@showResetForm');
-});
 
 Route::group(['prefix' => 'validador'], function () {
   Route::get('/login', 'ValidadorAuth\LoginController@showLoginForm')->name('login');
@@ -55,4 +54,18 @@ Route::group(['prefix' => 'validador'], function () {
   Route::post('/password/reset', 'ValidadorAuth\ResetPasswordController@reset')->name('password.email');
   Route::get('/password/reset', 'ValidadorAuth\ForgotPasswordController@showLinkRequestForm')->name('password.reset');
   Route::get('/password/reset/{token}', 'ValidadorAuth\ResetPasswordController@showResetForm');
+});
+
+Route::group(['prefix' => 'vendedor'], function () {
+  Route::get('/login', 'VendedorAuth\LoginController@showLoginForm')->name('login');
+  Route::post('/login', 'VendedorAuth\LoginController@login');
+  Route::post('/logout', 'VendedorAuth\LoginController@logout')->name('logout');
+
+  //Route::get('/register', 'VendedorAuth\RegisterController@showRegistrationForm')->name('register');
+  //Route::post('/register', 'VendedorAuth\RegisterController@register');
+
+  Route::post('/password/email', 'VendedorAuth\ForgotPasswordController@sendResetLinkEmail')->name('password.request');
+  Route::post('/password/reset', 'VendedorAuth\ResetPasswordController@reset')->name('password.email');
+  Route::get('/password/reset', 'VendedorAuth\ForgotPasswordController@showLinkRequestForm')->name('password.reset');
+  Route::get('/password/reset/{token}', 'VendedorAuth\ResetPasswordController@showResetForm');
 });

@@ -47,6 +47,13 @@ class Vendedor extends Authenticatable
     }
 
     /**
+     * Get the clients associated with the current Vendedor
+     */
+    public function clients()
+    {
+        return $this->hasMany(Client::class);
+    }
+    /**
      * Send the password reset notification.
      *
      * @param  string  $token

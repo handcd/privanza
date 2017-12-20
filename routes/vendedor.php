@@ -7,11 +7,19 @@ Route::get('/dashboard', function () {
     $users[] = Auth::guard('vendedor')->user();*/
 
     //dd($users);
+    $dt = Carbon\Carbon::now();
 
-    return view('vendedor.dashboard');
+    $clientes = App\Client::all()->where('vendedor_id', Auth::id());
+    $birthdays = $clientes
+    				->where('birthday','>=', $dt->startOfMonth())
+    				->where('birthday','<=', $dt->endOfMonth());
+
+    $ordenes = App\Order::all()->where('vendedor_id', Auth::id());
+    $recoger = $ordenes->where('recoger','1');
+    return view('vendedor.dashboard', compact('ordenes','birthdays','recoger','clientes'));
 })->name('dashboard');
 
-// Clientes functionality
+// Clientes
 Route::get('/clientes','Vendedor\ClientController@index');
 Route::get('/clientes/agregar', 'Vendedor\ClientController@create');
 Route::post('/clientes','Vendedor\ClientController@store');
@@ -26,6 +34,14 @@ Route::post('/ordenes','Vendedor\OrderController@store');
 Route::get('/ordenes/{order}','Vendedor\OrderController@show');
 Route::get('/ordenes/{order}/editar','Vendedor\OrderController@edit');
 Route::put('/ordenes/{order}','Vendedor\OrderController@update');
+
+// Events
+Route::get('/citas','Vendedor\EventController@index');
+Route::get('/citas/agregar','Vendedor\EventController@create');
+Route::post('/citas','Vendedor\EventController@store');
+Route::get('/citas/{cita}','Vendedor\EventController@show');
+Route::get('/citas/{cita}/editar','Vendedor\EventController@edit');
+Route::put('/citas/{cita}','Vendedor\EventController@update');
 
 // Profile
 Route::get('/perfil','Vendedor\ProfileController@index');

@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-12" style="float: right;">
-        <button class="btn btn-success btn-large"><i class="material-icons">add</i>Añadir nueva orden</button>
+    <div class="col-md-12">
+        <a href="{{ url('/vendedor/ordenes/agregar') }}" class="btn btn-success btn-large"><i class="material-icons">add</i>Añadir nueva orden</a>
     </div>
 </div>
 <div class="row">
@@ -23,7 +23,7 @@
                         <th>Acciones</th>
                     </thead>
                     <tbody>
-                        @foreach ($noAprobadas as $orden)
+                        @forelse ($noAprobadas as $orden)
                         <tr>
                             <td>{{ $orden->id }}</td>
                             <td><a href="{{ url('/vendedor/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</td>
@@ -38,7 +38,11 @@
                                 </a>
                             </td>
                         </tr>
-                        @endforeach
+                        @empty
+                        <tr>
+                            <td colspan="5" class="text-center">No tienes órdenes sin aprobar (¡Hurra!)</td>
+                        </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
@@ -60,7 +64,7 @@
                         <th>Acciones</th>
                     </thead>
                     <tbody>
-                        @foreach ($aprobadas as $orden)
+                        @forelse ($aprobadas as $orden)
                         <tr>
                             <td>{{ $orden->id }}</td>
                             <td><a href="{{ url('/vendedor/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</td>
@@ -72,19 +76,21 @@
                                 </a>
                             </td>
                         </tr>
-                        @endforeach
+                        @empty
+                        <tr>
+                            <td colspan="5" class="text-center">No tienes órdenes aprobadas este mes :(</td>
+                        </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6 col-md-offset-3">
         <div class="card">
-            <div class="card-header" data-background-color="blue">
-                <h4 class="title">Todas las órdenes</h4>
-                <p class="category">Pedidos aprobados y por aprobar</p>
+            <div class="card-header" data-background-color="purple">
+                <h4 class="title">Pedidos por Recoger</h4>
+                <p class="category">Pedidos listos para ser recogidos para su entrega</p>
             </div>
             <div class="card-content table-responsive">
                 <table class="table table-hover">
@@ -96,7 +102,47 @@
                         <th>Acciones</th>
                     </thead>
                     <tbody>
-                        @foreach ($ordenes as $orden)
+                        @forelse ($listosEntrega as $orden)
+                        <tr>
+                            <td>{{ $orden->id }}</td>
+                            <td><a href="{{ url('/vendedor/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</td>
+                            <td class="text-primary">$2,380</td>
+                            <td>{{ $orden->created_at }}</td>
+                            <td class="td-actions text-right">
+                                <a href="{{ url('/vendedor/ordenes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden" class="btn btn-success btn-simple btn-xs">
+                                    <i class="material-icons">remove_red_eye</i>
+                                </a>
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="5" class="text-center">No tienes órdenes listas para recoger :(</td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header" data-background-color="blue">
+                <h4 class="title">Todas los pedidos</h4>
+                <p class="category">Lista con todos los pedidos que has ingresado al sistema</p>
+            </div>
+            <div class="card-content table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Precio</th>
+                        <th>Fecha</th>
+                        <th>Acciones</th>
+                    </thead>
+                    <tbody>
+                        @forelse ($ordenes as $orden)
                         <tr>
                             <td>{{ $orden->id }}</td>
                             <td><a href="{{ url('/vendedor/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</td>
@@ -113,11 +159,20 @@
                                 @endif
                             </td>
                         </tr>
-                        @endforeach
+                        @empty
+                        <tr>
+                            <td colspan="5" class="text-center">No tienes órdenes registradas en el sistema :(</td>
+                        </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
         </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <a href="#" class="btn btn-success">Exportar a Excel</a>
     </div>
 </div>
 @endsection

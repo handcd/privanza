@@ -32,12 +32,9 @@
     <script src="{{ asset('js/perfect-scrollbar.jquery.min.js') }}"></script>
     <!--  Notifications Plugin    -->
     <script src="{{ asset('js/bootstrap-notify.js') }}"></script>
-    <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
     <!-- Material Dashboard javascript methods -->
     <script src="{{ asset('js/material-dashboard.js?v=1.2.0') }}"></script>
-    <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-    <script src="{{ asset('js/demo.js') }}"></script>
+    
 </head>
 
 <body>
@@ -89,7 +86,7 @@
             </div>
         </div>
         <div class="main-panel">
-            <nav class="navbar navbar-transparent navbar-absolute">
+            {{-- <nav class="navbar navbar-transparent navbar-absolute">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse">
@@ -126,6 +123,51 @@
                         </ul>
                     </div>
                 </div>
+            </nav> --}}
+            <nav class="navbar navbar-transparent navbar-absolute">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="{{ url('/vendedor/') }}">Vendedor</a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
+                                   <i class="material-icons">person</i>
+                                   <p class="hidden-lg hidden-md">{{ Auth::user()->name }}</p>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="{{ url('/vendedor/logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Cerrar Sesión
+                                        </a>
+                                        <form id="logout-form" action="{{ url('/vendedor/logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <form class="navbar-form navbar-right" role="search" style="display: none;">
+                            <div class="form-group  is-empty">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <span class="material-input"></span>
+                            </div>
+                            <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                <i class="material-icons">search</i><div class="ripple-container"></div>
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </nav>
             <div class="content">
                 <div class="container-fluid">
@@ -146,10 +188,4 @@
         </div>
     </div>
 </body>
-<script type="text/javascript">
-    $(document).ready(function() {
-        // Javascript method's body can be found in assets/js/demos.js
-        demo.initDashboardPageCharts();
-    });
-</script>
 </html>

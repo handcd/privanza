@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Vendedor;
 
 use App\Vendedor;
 use App\Order;
+use App\Fit;
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -20,8 +21,9 @@ class OrderController extends Controller
         $ordenes = Vendedor::find(Auth::id())->orders;
         $aprobadas = $ordenes->where('approved','1');
         $noAprobadas = $ordenes->where('approved','0');
+        $listosEntrega = $ordenes->where('recoger','1');
 
-        return view('vendedor.order.home',compact('ordenes','aprobadas','noAprobadas'));
+        return view('vendedor.order.home',compact('ordenes','aprobadas','noAprobadas','listosEntrega'));
     }
 
     /**
@@ -31,7 +33,8 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('vendedor.order.create');
+        $clientes = Vendedor::find(Auth::id())->clients;
+        return view('vendedor.order.create',compact('clientes'));
     }
 
     /**
@@ -54,6 +57,9 @@ class OrderController extends Controller
     public function show($id)
     {
         $orden = Order::find($id);
+        if (!$orden || $orden->vendedor_id != Auth::id()) {
+            return redirect('/vendedor/ordenes');
+        }
         return view('vendedor.order.show',compact('orden'));
     }
 
@@ -66,6 +72,10 @@ class OrderController extends Controller
     public function edit($id)
     {
         $orden = Order::find($id);
+
+        if ($orden->id != Auth::id() || $orden->approved) {
+            return redirect('/vendedor/ordenes');
+        }
         return view('vendedor.order.edit',compact('orden'));
     }
 

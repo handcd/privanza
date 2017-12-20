@@ -38,8 +38,21 @@ class DatabaseSeeder extends Seeder
             'email' => 'validador@privanza.com',
             'password' => bcrypt('validador123'),
             'job_position' => 'Gerente de Ventas',
-            'phone' => '55-3432-2312',
             'birthday'=> Carbon::create('2000','01','01'),
+        ]);
+
+        // Fits
+        DB::table('fits')->insert([
+            'name' => 'Tallas Extra',
+            'description' => 'Medidas para personas con busto amplio.'
+        ]);
+        DB::table('fits')->insert([
+            'name' => 'Normal',
+            'description' => 'Medidas de talla normal.'
+        ]);
+        DB::table('fits')->insert([
+            'name' => 'Privanza',
+            'description' => 'Fit más entallado.'
         ]);
 
         //factory(App\Client::class, 25)->create();

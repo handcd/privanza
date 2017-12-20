@@ -38,17 +38,15 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label class="text-primary">Email</label>
                         <p><a href="mailto:{{ $vendedor->email }}">{{ $vendedor->email }}</a></p>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label class="text-primary">Teléfono de contacto</label>
                         <p><a href="tel:{{ $vendedor->phone }}">{{ $vendedor->phone }}</a></p>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label class="text-primary">Fecha de Cumpleaños</label>
                         <p>{{ $vendedor->birthday }}</p>
                     </div>
