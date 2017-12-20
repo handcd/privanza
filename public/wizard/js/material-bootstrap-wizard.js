@@ -58,7 +58,7 @@ $(document).ready(function(){
         	var $valid = $('.wizard-card form').valid();
         	if(!$valid) {
         		$validator.focusInvalid();
-        		//return false;
+        		return false;
         	}
         },
 

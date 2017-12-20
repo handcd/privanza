@@ -239,19 +239,19 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 							<div class="row">
 								<div class="col-md-4">
 									<h4 class="text-center">Etiquetas</h4>
-									<div class="checkbox">
-										<label>
-											<input type="checkbox" name="etiquetaTela">
-										</label>
-										Etiquetas de Tela
-									</div>
-									<div class="checkbox">
-										<label>
-											<input type="checkbox" name="etiquetaMarca">
-										</label>
-										Etiquetas de Marca
-									</div>
 									<div class="col-md-10 col-md-offset-1">
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" name="etiquetaTela">
+											</label>
+											Etiquetas de Tela
+										</div>
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" name="etiquetaMarca">
+											</label>
+											Etiquetas de Marca
+										</div>
 										<div class="form-group label-floating">
 											<label class="control-label">Marca: <small>(opcional: dejar en blanco para Privanza)</small></label>
 											<input type="text" class="form-control" name="marcaEtiqueta">
@@ -300,71 +300,152 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 								</div>
 							</div>
 						</div>
+
 						{{-- Saco Externo --}}
+						<style>
+							label > input{ /* HIDE RADIO */
+							  visibility: hidden; /* Makes input not-clickable */
+							  position: absolute; /* Remove input from document flow */
+							}
+							label > input + img{ /* IMAGE STYLES */
+							  cursor:pointer;
+							  border:4px solid #333;
+							  border-radius: 5px;
+							}
+							label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+							  border:5px solid #55bed5;
+							  border-radius: 5px;
+							}
+						</style>
 						<div class="tab-pane" id="sacoExt">
 							<h4 class="info-text">Datos de la parte Externa del Saco</h4>
+							<div class="row">
+								<div class="col-md-10 col-md-offset-1">
+									<p class="col-md-12">Selecciona el número de botones:</p>
+									<div class="col-md-3 col-xs-6">
+										<label>
+										  <input type="radio" name="botonesFrente" value="1" required="" />
+										  <img src="{{ asset('img/suit_options/1botones.png') }}">
+										  <p class="text-center">1 Botón</p>
+										</label>
+									</div>
+									<div class="col-md-3 col-xs-6">
+										<label>
+										  <input type="radio" name="botonesFrente" value="2" />
+										  <img src="{{ asset('img/suit_options/2botones.png') }}">
+										  <p class="text-center">2 Botones</p>
+										</label>
+									</div>
+									<div class="col-md-3 col-xs-6">
+										<label>
+										  <input type="radio" name="botonesFrente" value="3" />
+										  <img src="{{ asset('img/suit_options/3botones.png') }}">
+										  <p class="text-center">3 Botones</p>
+										</label>
+									</div>
+									<div class="col-md-3 col-xs-6">
+										<label>
+										  <input type="radio" name="botonesFrente" value="6" />
+										  <img src="{{ asset('img/suit_options/6botones.png') }}">
+										  <p class="text-center">6 botones</p>
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-10 col-md-offset-1">
+									<p class="col-md-12">Selecciona el número de aberturas detrás:</p>
+									<div class="col-md-4 col-xs-6">
+										<label>
+										  <input type="radio" name="aberturasDetras" value="0" required="" />
+										  <img src="{{ asset('img/suit_options/0aberturas.png') }}">
+										  <p class="text-center">Sin aberturas</p>
+										</label>
+									</div>
+									<div class="col-md-4 col-xs-6">
+										<label>
+										  <input type="radio" name="aberturasDetras" value="1" />
+										  <img src="{{ asset('img/suit_options/1aberturas.png') }}">
+										  <p class="text-center">1 abertura</p>
+										</label>
+									</div>
+									<div class="col-md-4 col-xs-6">
+										<label>
+										  <input type="radio" name="aberturasDetras" value="2" />
+										  <img src="{{ asset('img/suit_options/2aberturas.png') }}">
+										  <p class="text-center">2 aberturas</p>
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-10 col-md-offset-1">
+									<p class="col-md-12">Selecciona el tipo de solapa:</p>
+									<div class="col-md-3 col-xs-6">
+										<label>
+										  <input type="radio" name="tipoSolapa" value="1" required="" />
+										  <img src="{{ asset('img/suit_options/solapa1.png') }}">
+										  <p class="text-center">Solapa en Pico <b>Normal</b></p>
+										</label>
+									</div>
+									<div class="col-md-3 col-xs-6">
+										<label>
+										  <input type="radio" name="tipoSolapa" value="2" />
+										  <img src="{{ asset('img/suit_options/solapa2.png') }}">
+										  <p class="text-center">Solapa en Pico <b>Ancha</b></p>
+										</label>
+									</div>
+									<div class="col-md-3 col-xs-6">
+										<label>
+										  <input type="radio" name="tipoSolapa" value="3" />
+										  <img src="{{ asset('img/suit_options/solapa3.png') }}">
+										  <p class="text-center">Solapa en Escuadra <b>Normal</b></p>
+										</label>
+									</div>
+									<div class="col-md-3 col-xs-6">
+										<label>
+										  <input type="radio" name="tipoSolapa" value="6" />
+										  <img src="{{ asset('img/suit_options/solapa4.png') }}">
+										  <p class="text-center">Solapa en Escuadra <b>Ancha</b></p>
+										</label>
+									</div>
+								</div>
+							</div>
 							<div class="col-md-10 col-md-offset-1">
 								<div class="row">
-									<div class="col-sm-4">
-										<div class="form-group label-floating">
-											<label class="control-label">Botones de Frente:</label>
-											<input type="number" min="0" max="5" step="1" name="botonesFrente" class="form-control" required="true">
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="form-group label-floating">
-											<label class="control-label">Aberturas Detrás:</label>
-											<input type="number" min="0" max="4" step="1" name="aberturasDetras" class="form-control" required="true">
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="form-group label-floating">
-											<label class="control-label">Botones en Mangas:</label>
-											<input type="number" min="1" max="6" step="1" name="botonesMagnas" class="form-control" required="true">
-										</div>
-									</div>
-								</div>
-								<div class="row">
+									<h4 class="col-md-12 text-center">Ojal en Solapa</h4>
 									<div class="col-sm-6">
-										<div class="form-group label-floating">
-											<label class="control-label">Tipo de Solapa:</label>
-											<select name="tipoSolapa" required="true" class="form-control">
-												<option disabled="" selected=""></option>
-												<option value="0">Pico</option>
-												<option value="1">Escuadra</option>
-											</select>
-										</div>
-									</div>
-									<div class="col-sm-6">
-										<div class="form-group label-floating">
-											<label class="control-label">Tamaño de Solapa:</label>
-											<select name="tamSolapa" required="true" class="form-control">
-												<option disabled="" selected=""></option>
-												<option value="0">Normal</option>
-												<option value="1">Ancha</option>
-											</select>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-sm-3">
 										<div class="form-group label-floating">
 											<label class="control-label">Tipo de Ojal en Solapa</label>
 											<select name="tipoOjalSolapa" class="form-control" required="true">
 												<option disabled="" selected=""></option>
-												<option value="0">Al tono</option>
-												<option value="1">En contraste</option>
-												<option value="2">Activo</option>
+												<option value="0">Sin Ojal en Solapa</option>
+												<option value="1">Al tono</option>
+												<option value="2">En contraste</option>
+												<option value="3">Activo</option>
 											</select>
 										</div>
 									</div>
-									<div class="col-sm-3">
+									<div class="col-sm-6">
 										<div class="form-group label-floating">
-											<label for="" class="control-label">Color para Ojal de Solapa:</label>
+											<label for="" class="control-label">Color para Ojal de Solapa: <small>(opcional)</small></label>
 											<input type="text" name="colorOjalSolapa" class="form-control">
 										</div>
 									</div>
-									<div class="col-sm-3">
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<h4 class="text-center">Mangas</h4>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-4">
+										<div class="form-group label-floating">
+											<label class="control-label">Botones en Mangas:</label>
+											<input type="number" min="1" max="4" step="1" name="botonesMagnas" class="form-control" required="true">
+										</div>
+									</div>
+									<div class="col-sm-4">
 										<div class="form-group label-floating">
 											<label class="control-label">Tipo de Ojal en Manga</label>
 											<select name="tipoOjalManga" required="true" class="form-control">
@@ -375,42 +456,103 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 											</select>
 										</div>
 									</div>
-									<div class="col-sm-3">
+									<div class="col-sm-4">
 										<div class="form-group label-floating">
-											<label for="" class="control-label">Color para Ojal de Manga:</label>
+											<label for="" class="control-label">Color para Ojal de Manga: <small>(opcional)</small></label>
 											<input type="text" name="colorOjalManga" class="form-control">
 										</div>
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-sm-6">
-										<div class="form-group label-floating">
-											<label class="control-label">Posición del Ojal en Manga:</label>
-											<input type="text" name="posOjalManga" class="form-control">
+									<div class="col-md-10 col-md-offset-1">
+										<p class="col-md-12">Selecciona la posición de los ojales:</p>
+										<div class="col-xs-6">
+											<label>
+											  <input type="radio" name="posicionOjalesManga" value="0" required="" />
+											  <img src="{{ asset('img/suit_options/botones_cascada.png') }}">
+											  <p class="text-center">Botones en Cascada</p>
+											</label>
 										</div>
-									</div>
-									<div class="col-sm-6">
-										<div class="form-group label-floating">
-											<label for="" class="control-label">Número de Ojales Activos en Manga:</label>
-											<input type="number" name="ojalesActivosManga" min="0" max="6" step="1" class="form-control">
+										<div class="col-xs-6">
+											<label>
+											  <input type="radio" name="posicionOjalesManga" value="1" />
+											  <img src="{{ asset('img/suit_options/botones_linea.png') }}">
+											  <p class="text-center">Botones en Línea</p>
+											</label>
 										</div>
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-sm-6">
-										<div class="checkbox">
-											<label>
-												<input type="checkbox" name="bolsExtCarteras">
-											</label>
-											Bolsas Externas <strong>con</strong> Carteras
+									<div class="col-sm-6 col-sm-offset-3">
+										<div class="form-group label-floating">
+											<label for="" class="control-label">Número de Ojales Activos en Manga:</label>
+											<input type="number" name="ojalesActivosManga" min="0" max="4" step="1" class="form-control">
 										</div>
 									</div>
-									<div class="col-sm-6">
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<h4 class="text-center">Bolsas Externas</h4>
+									</div>
+									<div class="col-sm-4">
 										<div class="checkbox">
 											<label>
-												<input type="checkbox" name="pickStitchExtSaco">
+												<input type="checkbox" name="bolsExtParche">
 											</label>
-											Pick Stitch
+											Bolsas Externas <strong>con</strong> Parche
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" name="bolsExtCartera">
+											</label>
+											Bolsas Externas <strong>con</strong> Cartera
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" name="bolsExtVivo">
+											</label>
+											Bolsas Externas <strong>con</strong> Vivo
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" name="bolsExtCarteraDiag">
+											</label>
+											Bolsas Externas <strong>con</strong> Cartera Diagonal
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" name="bolsExtVivoDiag">
+											</label>
+											Bolsas Externas <strong>con</strong> Vivo Diagonal
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" name="bolsExtCarteraCont">
+											</label>
+											Bolsas Externas <strong>con</strong> Cartera Continental
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<h4 class="text-center">Otros</h4>
+									</div>
+									<div class="col-md-4 col-md-offset-4">
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" name="pickstitch">
+											</label>
+											Pick Stitch para Saco
 										</div>
 									</div>
 								</div>
@@ -418,11 +560,191 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 						</div>
 
 						<div class="tab-pane" id="sacoInt">
-							int
+							<h4 class="info-text">Datos de la parte Interna del Saco</h4>
+							<div class="row">
+								<div class="col-sm-6 col-sm-offset-3">
+									<div class="form-group label-floating">
+										<label class="control-label">Tipo de Vista</label>
+										<select name="tipoOjalSolapa" class="form-control" required="true">
+											<option disabled="" selected=""></option>
+											<option value="0">Normal</option>
+											<option value="1">Chapeta Francesa</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<h4 class="text-center">Accesorios</h4>
+								</div>
+								<div class="col-md-10 col-md-offset-1">
+									<div class="col-xs-6">
+										<div class="checkbox">
+											<label>
+												<input name="pinponInterno" type="checkbox">
+											</label>
+											Pin Pon
+										</div>
+										<div class="form-group label-floating">
+											<label class="control-label">Color Pin Pon <small>(opcional)</small></label>
+											<input type="text" class="form-control" name="pinponInternoColor">
+										</div>
+										<div class="form-group label-floating">
+											<label class="control-label">Código Pin Pon <small>(opcional)</small></label>
+											<input type="text" class="form-control" name="pinponInternoCodigo">
+										</div>
+									</div>
+									<div class="col-xs-6">
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" name="biesInterno">
+											</label>
+											Bies
+										</div>
+										<div class="form-group label-floating">
+											<label class="control-label">Color Bies <small>(opcional)</small></label>
+											<input type="text" class="form-control" name="biesInternoColor">
+										</div>
+										<div class="form-group label-floating">
+											<label class="control-label">Código Bies <small>(opcional)</small></label>
+											<input type="text" class="form-control" name="biesInternoCodigo">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<h4 class="text-center">Bolsas Internas</h4>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3">
+									<div class="checkbox">
+										<label>
+											<input type="checkbox" name="bolsaPechoDer">
+										</label>
+										Bolsa de Pecho Derecho
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="checkbox">
+										<label>
+											<input type="checkbox" name="bolsaPechoIzq">
+										</label>
+										Bolsa de Pecho Izquierdo
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="checkbox">
+										<label>
+											<input type="checkbox" name="cigarrera">
+										</label>
+										Cigarrera Izquierda
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="checkbox">
+										<label>
+											<input type="checkbox" name="plumera">
+										</label>
+										Plumera Izquierda
+									</div>
+								</div>
+								<div class="col-md-6 col-md-offset-3">
+									<div class="form-group label-floating">
+										<label class="control-label">Color del Forro para Bolsas Internas <small>(opcional)</small></label>
+										<input type="text" class="form-control" name="forroBolsasInt">
+									</div>
+								</div>
+							</div>
 						</div>
-
+						
 						<div class="tab-pane" id="pantalon">
-							pantaón
+							<h4 class="info-text">Datos del Pantalón</h4>
+							<div class="row">
+								<div class="col-md-4">
+									<h4 class="text-center">Bolsas Delanteras</h4>
+									<div class="form-group label-floating">
+										<label class="control-label">Número de Bolsas Delanteras</label>
+										<select name="bolsasDelanteras" class="form-control" required="true">
+											<option disabled="" selected=""></option>
+											<option value="0">Sin Bolsas</option>
+											<option value="2">Dos Bolsas</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<h4 class="text-center">Bolsas Traseras</h4>
+									<div class="form-group label-floating">
+										<label class="control-label">Número de Bolsas Traseras</label>
+										<select name="bolsasTraseras" class="form-control" required="true">
+											<option disabled="" selected=""></option>
+											<option value="0">Sin bolsas traseras</option>
+											<option value="1">Una bolsa trasera</option>
+											<option value="2">Dos bolsas traseras</option>
+										</select>
+									</div>
+									<div class="form-group label-floating">
+										<label class="control-label">Tipo de Vivo de Bolsas Traseras</label>
+										<select name="bolsasTraserasVivo" class="form-control" required="true">
+											<option disabled="" selected=""></option>
+											<option value="0">Vivo Sencillo</option>
+											<option value="1">Vivo Doble</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<h4 class="text-center">Cerrado de Bolsas Traseras</h4>
+									<div class="form-group label-floating">
+										<label class="control-label">Tipo de Cerrado de Bolsas</label>
+										<select name="bolsasTraserasCerrado" class="form-control" required="true">
+											<option disabled="" selected=""></option>
+											<option value="0">Ojal y Botón</option>
+											<option value="1">Traba y Botón</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<h4 class="text-center">Interior</h4>
+								</div>
+								<div class="col-md-4">
+									<div class="checkbox">
+										<label>
+											<input type="checkbox" name="ribete">
+										</label>
+										Ribete en ojalera y encuarte
+									</div>
+									<div class="form-group label-floating">
+										<label class="control-label">Color de Ribete <small>(opcional)</small></label>
+										<input type="text" class="form-control" name="colorRibete">
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="checkbox">
+										<label>
+											<input type="checkbox" name="forroPiernas">
+										</label>
+										Medio forro en piernas
+									</div>
+									<div class="form-group label-floating">
+										<label class="control-label">Color de Medio Forro <small>(opcional)</small></label>
+										<input type="text" class="form-control" name="colorMedioForro">
+									</div>
+								</div>
+								<div class="col-md-4">
+									<h4 class="text-center">Dobladillo Personalizado</h4>
+									<div class="form-group label-floating">
+										<label class="control-label">Tipo de Dobladillo</label>
+										<select name="tipoDobladillo" class="form-control">
+											<option disabled="" selected=""></option>
+											<option value="0">Normal</option>
+											<option value="1">Valenciana Española</option>
+										</select>
+									</div>
+								</div>
+							</div>
 						</div>
                     </div>
                 	<div class="wizard-footer">
