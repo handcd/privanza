@@ -153,8 +153,69 @@ $(document).ready(function(){
 
     $('.set-full-height').css('height', 'auto');
 
+    $('.choice').on("click",function(){
+        if ($(this).attr('id') === 'telaCliente') {
+            $('#telaIscoDatos').fadeOut();
+            $('#telaClienteDatos').fadeIn();
+        } else if($(this).attr('id') === 'telaIsco') {
+            $('#telaClienteDatos').fadeOut();
+            $('#telaIscoDatos').fadeIn();
+        } else if($(this).attr('id') === 'forroCliente') {
+            $('#forroIscoDatos').fadeOut();
+            $('#forroClienteDatos').fadeIn();
+        } else if($(this).attr('id') === 'forroIsco') {
+            $('#forroClienteDatos').fadeOut();
+            $('#forroIscoDatos').fadeIn();
+        }
+    });
+
+    $('.wizard-card').bootstrapWizard('disable',1);
+    $('.wizard-card').bootstrapWizard('disable',2);
+    $('.wizard-card').bootstrapWizard('disable',3);
+    $('.wizard-card').bootstrapWizard('disable',4);
+
 });
 
+var checkCoat = false;
+var checkVest = false;
+var checkPants = false;
+
+// LOL
+function showTab(id) {
+    if (id === 1) {
+        if (checkCoat) {
+            checkCoat = false;
+            $('.wizard-card').bootstrapWizard('disable',1);
+            $('.wizard-card').bootstrapWizard('disable',2);
+        } else {
+            checkCoat = true;
+            $('.wizard-card').bootstrapWizard('enable',1);
+            $('.wizard-card').bootstrapWizard('enable',2);
+        }
+    } else if( id === 2) {
+        if (checkVest) {
+            checkVest = false;
+            $('.wizard-card').bootstrapWizard('disable',3);
+        } else {
+            checkVest = true;
+            $('.wizard-card').bootstrapWizard('enable',3);
+        }
+    } else {
+        if (checkPants) {
+            checkPants = false;
+            $('.wizard-card').bootstrapWizard('disable',4);
+        } else {
+            checkPants = true;
+            $('.wizard-card').bootstrapWizard('enable',4);
+        }
+    }
+
+    refreshAnimation($('.wizard-card'), 0);
+
+    $('.moving-tab').css({
+        'transition': 'transform 0s'
+    });
+}
 
 
  //Function to show image before upload
@@ -184,10 +245,10 @@ $(window).resize(function(){
 });
 
 function refreshAnimation($wizard, index){
-    $total = $wizard.find('.nav li').length;
+    $total = $wizard.find(".nav li:not('.disabled')").length;
     $li_width = 100/$total;
 
-    total_steps = $wizard.find('.nav li').length;
+    total_steps = $wizard.find(".nav li:not('.disabled')").length;
     move_distance = $wizard.width() / total_steps;
     index_temp = index;
     vertical_level = 0;
@@ -200,7 +261,7 @@ function refreshAnimation($wizard, index){
         $li_width = 50;
     }
 
-    $wizard.find('.nav li').css('width',$li_width + '%');
+    $wizard.find(".nav li:not('.disabled')").css('width',$li_width + '%');
 
     step_width = move_distance;
     move_distance = move_distance * index_temp;
