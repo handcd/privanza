@@ -26,7 +26,7 @@
                         <th>Acciones</th>
                     </thead>
                     <tbody class="searchable">
-                        @foreach ($clientes as $cliente)
+                        @forelse ($clientes as $cliente)
                         <tr>
                             <td>{{ $cliente->id }}</td>
                             <td>{{ $cliente->name }}</td>
@@ -41,7 +41,11 @@
                                 </a>
                             </td>
                         </tr>
-                        @endforeach
+                        @empty
+                        <tr>
+                            <td class="text-center" colspan="5">No tienes clientes registrados :(</td>
+                        </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

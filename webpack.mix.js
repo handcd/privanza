@@ -13,3 +13,6 @@ let mix = require('laravel-mix');
 
 // Admin styles
 mix.sass('resources/assets/sass/material-dashboard.scss','public/css/');
+
+// Wizard Styles
+mix.sass('resources/assets/sass_wizard/material-bootstrap-wizard.scss','public/wizard/css/');

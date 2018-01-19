@@ -47,7 +47,9 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 							<li><a href="#inicio" data-toggle="tab">Datos Iniciales</a></li>
                             <li><a href="#sacoExt" data-toggle="tab">Saco Externo</a></li>
                             <li><a href="#sacoInt" data-toggle="tab">Saco Interno</a></li>
+                            <li><a href="#chaleco" data-toggle="tab">Chaleco</a></li>
                             <li><a href="#pantalon" data-toggle="tab">Pantalón</a></li>
+                            <li><a href="#finalizar" data-toggle="tab">Finalizar</a></li>
                         </ul>
 					</div>
 
@@ -93,7 +95,35 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 									</div>
 								</div>
 							</div>
-
+							<div class="row">
+								<div class="col-md-12">
+									<h5 class="text-center">Selecciona las piezas a trabajar:</h5>
+								</div>
+								<div class="col-md-4 text-center">
+									<div class="checkbox">
+										<label>
+											<input type="checkbox" name="saco" id="checkSaco">
+										</label>
+										Saco
+									</div>
+								</div>
+								<div class="col-md-4 text-center">
+									<div class="checkbox">
+										<label>
+											<input type="checkbox" name="chaleco" id="checkChaleco">
+										</label>
+										Chaleco
+									</div>
+								</div>
+								<div class="col-md-4 text-center">
+									<div class="checkbox">
+										<label>
+											<input type="checkbox" name="pantalon" id="checkPantalon">
+										</label>
+										Pantalón
+									</div>
+								</div>
+							</div>
 							<div class="row">
 								<div class="col-md-6">
 									<h4 class="text-center">¿Qué tipo de tela se usará?</h4>
@@ -354,32 +384,6 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 							</div>
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
-									<p class="col-md-12">Selecciona el número de aberturas detrás:</p>
-									<div class="col-md-4 col-xs-6">
-										<label>
-										  <input type="radio" name="aberturasDetras" value="0" required="" />
-										  <img src="{{ asset('img/suit_options/0aberturas.png') }}">
-										  <p class="text-center">Sin aberturas</p>
-										</label>
-									</div>
-									<div class="col-md-4 col-xs-6">
-										<label>
-										  <input type="radio" name="aberturasDetras" value="1" />
-										  <img src="{{ asset('img/suit_options/1aberturas.png') }}">
-										  <p class="text-center">1 abertura</p>
-										</label>
-									</div>
-									<div class="col-md-4 col-xs-6">
-										<label>
-										  <input type="radio" name="aberturasDetras" value="2" />
-										  <img src="{{ asset('img/suit_options/2aberturas.png') }}">
-										  <p class="text-center">2 aberturas</p>
-										</label>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-10 col-md-offset-1">
 									<p class="col-md-12">Selecciona el tipo de solapa:</p>
 									<div class="col-md-3 col-xs-6">
 										<label>
@@ -407,6 +411,32 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 										  <input type="radio" name="tipoSolapa" value="6" />
 										  <img src="{{ asset('img/suit_options/solapa4.png') }}">
 										  <p class="text-center">Solapa en Escuadra <b>Ancha</b></p>
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-10 col-md-offset-1">
+									<p class="col-md-12">Selecciona el número de aberturas detrás:</p>
+									<div class="col-md-4 col-xs-6">
+										<label>
+										  <input type="radio" name="aberturasDetras" value="0" required="" />
+										  <img src="{{ asset('img/suit_options/0aberturas.png') }}">
+										  <p class="text-center">Sin aberturas</p>
+										</label>
+									</div>
+									<div class="col-md-4 col-xs-6">
+										<label>
+										  <input type="radio" name="aberturasDetras" value="1" />
+										  <img src="{{ asset('img/suit_options/1aberturas.png') }}">
+										  <p class="text-center">1 abertura</p>
+										</label>
+									</div>
+									<div class="col-md-4 col-xs-6">
+										<label>
+										  <input type="radio" name="aberturasDetras" value="2" />
+										  <img src="{{ asset('img/suit_options/2aberturas.png') }}">
+										  <p class="text-center">2 aberturas</p>
 										</label>
 									</div>
 								</div>
@@ -658,7 +688,13 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 								</div>
 							</div>
 						</div>
-						
+
+						{{-- Tab Chaleco--}}
+						<div class="tab-pane" id="chaleco">
+                    		dspigjfdiogj chalecooo
+                    	</div>
+
+                    	{{-- Tab Pantalon --}}
 						<div class="tab-pane" id="pantalon">
 							<h4 class="info-text">Datos del Pantalón</h4>
 							<div class="row">
@@ -746,6 +782,18 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 								</div>
 							</div>
 						</div>
+
+						{{-- Tab Finalizar--}}
+						<div class="tab-pane" id="finalizar">
+                    		<h4 class="info-text">Fin de Orden</h4>
+                    		<div class="row">
+                    			<div class="col-md-8 col-md-offset-2">
+                    				<p>Al hacer click en <em>Finalizar</em> aceptas haber ingresado los datos correctamente. Recuerda que el pedido una vez aprobado <strong>NO</strong> podrá ser editado por parte del vendedor. Si consideras que existe algún error, o quisieras dejar algún comentario puedes escribir al correo: <a href="mailto:soporte@privanza.com">soporte@privanza.com</a></p>
+                    				<p>Se te informará vía alertas de correo electrónico del status de tus órdenes por lo que te recomendamos estar al pendiente del mismo. Si no encuentras las alertas, porfavor revisa tu carpeta de Spam y si el problema persiste, ponte en contacto al correo antes mencionado.</p>
+                    				<p>Recuerda que todos los datos que ingresaste al sistema están protegidos por nuestra <a href="#">Política de Uso de Datos</a> y son confidenciales.</p>
+                    			</div>
+                    		</div>
+                    	</div>
                     </div>
                 	<div class="wizard-footer">
                     	<div class="pull-right">
@@ -762,23 +810,4 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
         </div> <!-- wizard container -->
     </div>
 </div> <!-- row -->
-<script type="text/javascript">
-    $(document).ready(function(){
-    	$('.choice').on("click",function(){
-    		if ($(this).attr('id') === 'telaCliente') {
-    			$('#telaIscoDatos').fadeOut();
-    			$('#telaClienteDatos').fadeIn();
-    		} else if($(this).attr('id') === 'telaIsco') {
-    			$('#telaClienteDatos').fadeOut();
-    			$('#telaIscoDatos').fadeIn();
-    		} else if($(this).attr('id') === 'forroCliente') {
-    			$('#forroIscoDatos').fadeOut();
-    			$('#forroClienteDatos').fadeIn();
-    		} else if($(this).attr('id') === 'forroIsco') {
-    			$('#forroClienteDatos').fadeOut();
-    			$('#forroIscoDatos').fadeIn();
-    		}
-    	});
-    });
-</script>
 @endsection

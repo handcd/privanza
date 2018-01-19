@@ -18,7 +18,7 @@
                 <p class="category">Formulario para registrar un cliente nuevo en el sistema</p>
             </div>
             <div class="card-content">
-                <form action="{{ url('/vendedor/clientes') }}/@yield('editId')" method="post">
+                <form action="{{ url('/vendedor/clientes') }}/@yield('editId')" method="post" onsubmit="return confirm('¿La información que deseas registrar es correcta?');">
                     {{ csrf_field() }}
                     @section('editMethod')
                         @show
@@ -92,7 +92,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group label-floating">
-                                <label for="addressLegal" class="control-label">Dirección de Facturación</label>
+                                <label for="addressLegal" class="control-label">Dirección Fiscal</label>
                                 <input type="text" name="addressLegal" class="form-control" value="@yield('editAddressLegal')">
                             </div>
                         </div>
@@ -374,7 +374,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-success pull-right">Subir</button>
+                    <button type="submit" class="btn btn-success pull-right">Confirmar</button>
                     <a href="{{ url('/vendedor/clientes') }}" class="btn btn-default">Cancelar</a>
                     <div class="clearfix"></div>
                 </form>

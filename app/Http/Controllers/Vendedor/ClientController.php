@@ -125,6 +125,9 @@ class ClientController extends Controller
     {
         $cliente = Client::find($id);
         $fits = Fit::all();
+        if (!$cliente || $cliente->vendedor_id != Auth::id()) {
+            return redirect('/vendedor/clientes');
+        }
         return view('vendedor.client.edit',compact('cliente','fits'));
     }
 

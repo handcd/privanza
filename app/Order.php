@@ -22,6 +22,36 @@ class Order extends Model
 	}
 
 	/**
+	* Get the Coat related to this order
+	* @param null
+	* @return Coat::class
+	*/
+	public function coat()
+	{
+		return $this->hasOne(Coat::class);
+	}
+
+	/**
+	* Get the Vest related to this order
+	* @param null
+	* @return Vest::class
+	*/
+	public function vest()
+	{
+		return $this->hasOne(Vest::class);
+	}
+
+	/**
+	* Get the Pants related to this order
+	* @param null
+	* @return Pants::class
+	*/
+	public function pants()
+	{
+		return $this->hasOne(Pants::class);
+	}
+
+	/**
      * Fits de Saco, Pantalón y Chaleco
      */
     public function sacoFit()

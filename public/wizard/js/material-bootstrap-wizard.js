@@ -18,6 +18,7 @@
 var searchVisible = 0;
 var transparent = true;
 var mobile_device = false;
+var debug = true;
 
 $(document).ready(function(){
 
@@ -55,6 +56,10 @@ $(document).ready(function(){
         'previousSelector': '.btn-previous',
 
         onNext: function(tab, navigation, index) {
+            if (debug) {
+                return true;
+            }
+            
         	var $valid = $('.wizard-card form').valid();
         	if(!$valid) {
         		$validator.focusInvalid();
@@ -77,6 +82,9 @@ $(document).ready(function(){
        },
 
         onTabClick : function(tab, navigation, index){
+            if (debug) {
+                return true;
+            }
             var $valid = $('.wizard-card form').valid();
 
             if(!$valid){
@@ -169,53 +177,43 @@ $(document).ready(function(){
         }
     });
 
+    // Disable initial options
     $('.wizard-card').bootstrapWizard('disable',1);
     $('.wizard-card').bootstrapWizard('disable',2);
     $('.wizard-card').bootstrapWizard('disable',3);
     $('.wizard-card').bootstrapWizard('disable',4);
 
-});
-
-var checkCoat = false;
-var checkVest = false;
-var checkPants = false;
-
-// LOL
-function showTab(id) {
-    if (id === 1) {
-        if (checkCoat) {
-            checkCoat = false;
-            $('.wizard-card').bootstrapWizard('disable',1);
-            $('.wizard-card').bootstrapWizard('disable',2);
-        } else {
-            checkCoat = true;
+    // Handle checkboxes for order types
+    $('#checkSaco').click( function () {
+        if (this.checked) {
             $('.wizard-card').bootstrapWizard('enable',1);
             $('.wizard-card').bootstrapWizard('enable',2);
-        }
-    } else if( id === 2) {
-        if (checkVest) {
-            checkVest = false;
-            $('.wizard-card').bootstrapWizard('disable',3);
         } else {
-            checkVest = true;
-            $('.wizard-card').bootstrapWizard('enable',3);
+            $('.wizard-card').bootstrapWizard('disable',1);
+            $('.wizard-card').bootstrapWizard('disable',2);
         }
-    } else {
-        if (checkPants) {
-            checkPants = false;
-            $('.wizard-card').bootstrapWizard('disable',4);
-        } else {
-            checkPants = true;
-            $('.wizard-card').bootstrapWizard('enable',4);
-        }
-    }
-
-    refreshAnimation($('.wizard-card'), 0);
-
-    $('.moving-tab').css({
-        'transition': 'transform 0s'
+        refreshAnimation($('.wizard-card'), 0);
     });
-}
+
+    $('#checkChaleco').click( function () {
+        if (this.checked) {
+            $('.wizard-card').bootstrapWizard('enable',3);
+        } else {
+            $('.wizard-card').bootstrapWizard('disable',3);
+        }
+        refreshAnimation($('.wizard-card'), 0);
+    });
+
+    $('#checkPantalon').click( function () {
+        if (this.checked) {
+            $('.wizard-card').bootstrapWizard('enable',4);
+        } else {
+            $('.wizard-card').bootstrapWizard('disable',4);
+        }
+        refreshAnimation($('.wizard-card'), 0);
+    });
+
+});
 
 
  //Function to show image before upload
@@ -245,10 +243,10 @@ $(window).resize(function(){
 });
 
 function refreshAnimation($wizard, index){
-    $total = $wizard.find(".nav li:not('.disabled')").length;
+    $total = $wizard.find(".nav li").length;
     $li_width = 100/$total;
 
-    total_steps = $wizard.find(".nav li:not('.disabled')").length;
+    total_steps = $wizard.find(".nav li").length;
     move_distance = $wizard.width() / total_steps;
     index_temp = index;
     vertical_level = 0;
@@ -261,7 +259,7 @@ function refreshAnimation($wizard, index){
         $li_width = 50;
     }
 
-    $wizard.find(".nav li:not('.disabled')").css('width',$li_width + '%');
+    $wizard.find(".nav li").css('width',$li_width + '%');
 
     step_width = move_distance;
     move_distance = move_distance * index_temp;

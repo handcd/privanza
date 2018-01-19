@@ -34,6 +34,7 @@ Route::post('/ordenes','Vendedor\OrderController@store');
 Route::get('/ordenes/{order}','Vendedor\OrderController@show');
 Route::get('/ordenes/{order}/editar','Vendedor\OrderController@edit');
 Route::put('/ordenes/{order}','Vendedor\OrderController@update');
+Route::get('/ordenes/{order}/pdf','Vendedor\OrderController@orderpdf');
 
 // Events
 Route::get('/citas','Vendedor\EventController@index');
@@ -46,3 +47,11 @@ Route::put('/citas/{cita}','Vendedor\EventController@update');
 // Profile
 Route::get('/perfil','Vendedor\ProfileController@index');
 Route::get('/perfil/solicitarCambio', 'Vendedor\ProfileController@askDataChange');
+
+Route::get('/pruebamail', function() {
+    return view('mails.action',[
+        'asunto' => 'Pedido #23 Aprobado.',
+        'urlAccion' => '/vendedor/ordenes/1',
+        'cuerpo' => 'El pedido ahora se encuentra aprobado, en 24 horas deberá ingresar a producción y posteriormente podrás recogerlo en las instalaciones de Privanza. Si deseas más información puedes consultarla haciendo click en el siguiente botón:'
+    ]);
+});

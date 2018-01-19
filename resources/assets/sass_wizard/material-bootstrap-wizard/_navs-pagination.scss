@@ -6,6 +6,10 @@
         margin-left: 0;
     }
 
+    > li.disabled > a {
+        color: rgba(85,85,85,0.4) !important;
+    }
+
     > li > a {
         border: 0 !important;
         border-radius: 0 ;
@@ -25,6 +29,7 @@
     > li > a:focus{
         background-color: inherit;
     }
+
 
     > li i{
         display: block;

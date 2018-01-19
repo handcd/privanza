@@ -51,7 +51,9 @@ var bootstrapWizardCreate = function(element, options) {
 	};
 
 	this.next = function(e) {
-
+		if (element.hasClass('disabled')) {
+			return false;
+		}
 		// If we clicked the last then dont activate this
 		if(element.hasClass('last')) {
 			return false;
@@ -122,12 +124,34 @@ var bootstrapWizardCreate = function(element, options) {
 	this.getIndex = function(e) {
 		return $navigation.find(baseItemSelector).index(e);
 	};
+	/*
 	this.nextIndex = function() {
 		return $navigation.find(baseItemSelector).index($activeTab) + 1;
 	};
 	this.previousIndex = function() {
 		return $navigation.find(baseItemSelector).index($activeTab) - 1;
+	};*/
+
+	this.nextIndex = function() {
+		var nextIndexCandidate=this.currentIndex();
+		var nextTabCandidate=null;
+		do {
+			nextIndexCandidate++;
+			nextTabCandidate = $navigation.find(baseItemSelector + ($settings.withVisible ? ':visible' : '') + ":eq(" + nextIndexCandidate + ")");
+		} while ((nextTabCandidate)&&(nextTabCandidate.hasClass("disabled")));
+		return nextIndexCandidate;
 	};
+	this.previousIndex = function() {
+		var prevIndexCandidate=this.currentIndex();
+		var prevTabCandidate=null;
+		do {
+			prevIndexCandidate--;
+			prevTabCandidate = $navigation.find(baseItemSelector + ($settings.withVisible ? ':visible' : '') + ":eq(" + prevIndexCandidate + ")");
+		} while ((prevTabCandidate)&&(prevTabCandidate.hasClass("disabled")));
+		return prevIndexCandidate;
+	};
+
+
 	this.navigationLength = function() {
 		return $navigation.find(baseItemSelector).length - 1;
 	};

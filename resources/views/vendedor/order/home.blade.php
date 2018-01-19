@@ -27,7 +27,7 @@
                         <tr>
                             <td>{{ $orden->id }}</td>
                             <td><a href="{{ url('/vendedor/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</td>
-                            <td class="text-primary">$2,380</td>
+                            <td class="text-primary">${{ $orden->precio }}</td>
                             <td>{{ $orden->created_at }}</td>
                             <td class="td-actions text-right">
                                 <a href="{{ url('/vendedor/ordenes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden" class="btn btn-success btn-simple btn-xs">
@@ -68,7 +68,7 @@
                         <tr>
                             <td>{{ $orden->id }}</td>
                             <td><a href="{{ url('/vendedor/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</td>
-                            <td class="text-primary">$2,380</td>
+                            <td class="text-primary">${{ $orden->precio }}</td>
                             <td>{{ $orden->created_at }}</td>
                             <td class="td-actions text-right">
                                 <a href="{{ url('/vendedor/ordenes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden" class="btn btn-success btn-simple btn-xs">
@@ -86,9 +86,9 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-6">
         <div class="card">
-            <div class="card-header" data-background-color="purple">
+            <div class="card-header" data-background-color="red">
                 <h4 class="title">Pedidos por Recoger</h4>
                 <p class="category">Pedidos listos para ser recogidos para su entrega</p>
             </div>
@@ -106,7 +106,45 @@
                         <tr>
                             <td>{{ $orden->id }}</td>
                             <td><a href="{{ url('/vendedor/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</td>
-                            <td class="text-primary">$2,380</td>
+                            <td class="text-primary">${{ $orden->precio }}</td>
+                            <td>{{ $orden->created_at }}</td>
+                            <td class="td-actions text-right">
+                                <a href="{{ url('/vendedor/ordenes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden" class="btn btn-success btn-simple btn-xs">
+                                    <i class="material-icons">remove_red_eye</i>
+                                </a>
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="5" class="text-center">No tienes órdenes listas para recoger :(</td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header" data-background-color="purple">
+                <h4 class="title">Pedidos Entregados</h4>
+                <p class="category">Pedidos finalizados del proceso de compra, producción, entrega, facturación y cobro.</p>
+            </div>
+            <div class="card-content table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Precio</th>
+                        <th>Fecha</th>
+                        <th>Acciones</th>
+                    </thead>
+                    <tbody>
+                        @forelse ($finalizados as $orden)
+                        <tr>
+                            <td>{{ $orden->id }}</td>
+                            <td><a href="{{ url('/vendedor/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</td>
+                            <td class="text-primary">${{ $orden->precio }}</td>
                             <td>{{ $orden->created_at }}</td>
                             <td class="td-actions text-right">
                                 <a href="{{ url('/vendedor/ordenes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden" class="btn btn-success btn-simple btn-xs">

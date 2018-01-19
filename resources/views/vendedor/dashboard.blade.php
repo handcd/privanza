@@ -120,7 +120,7 @@
                 <div class="ct-chart" id="ventasEspecie"></div>
             </div>
             <div class="card-content">
-                <h4 class="title">Ventas en especie</h4>
+                <h4 class="title">Prendas Vendidas</h4>
                 <p class="category">Número de trajes vendidos en el año en curso.</p>
             </div>
             <div class="card-footer">
@@ -136,7 +136,7 @@
                 <div class="ct-chart" id="ventasGanancias"></div>
             </div>
             <div class="card-content">
-                <h4 class="title">Ventas en Ganancias</h4>
+                <h4 class="title">Monto Vendido</h4>
                 <p class="category">Cantidad de Dinero vendido por mes el último año.</p>
             </div>
             <div class="card-footer">

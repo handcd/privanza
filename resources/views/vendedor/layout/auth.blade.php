@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ url('img/privanzaN.png') }}" />
+    <link rel="icon" type="image/png" href="{{ url('img/privanzaN.png') }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
