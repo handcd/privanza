@@ -351,39 +351,6 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 							<h4 class="info-text">Datos de la parte Externa del Saco</h4>
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
-									<p class="col-md-12">Selecciona el número de botones:</p>
-									<div class="col-md-3 col-xs-6">
-										<label>
-										  <input type="radio" name="botonesFrente" value="1" required="" />
-										  <img src="{{ asset('img/suit_options/1botones.png') }}">
-										  <p class="text-center">1 Botón</p>
-										</label>
-									</div>
-									<div class="col-md-3 col-xs-6">
-										<label>
-										  <input type="radio" name="botonesFrente" value="2" />
-										  <img src="{{ asset('img/suit_options/2botones.png') }}">
-										  <p class="text-center">2 Botones</p>
-										</label>
-									</div>
-									<div class="col-md-3 col-xs-6">
-										<label>
-										  <input type="radio" name="botonesFrente" value="3" />
-										  <img src="{{ asset('img/suit_options/3botones.png') }}">
-										  <p class="text-center">3 Botones</p>
-										</label>
-									</div>
-									<div class="col-md-3 col-xs-6">
-										<label>
-										  <input type="radio" name="botonesFrente" value="6" />
-										  <img src="{{ asset('img/suit_options/6botones.png') }}">
-										  <p class="text-center">6 botones</p>
-										</label>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-10 col-md-offset-1">
 									<p class="col-md-12">Selecciona el tipo de solapa:</p>
 									<div class="col-md-3 col-xs-6">
 										<label>
@@ -415,6 +382,40 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 									</div>
 								</div>
 							</div>
+							<div class="row">
+								<div class="col-md-10 col-md-offset-1">
+									<p class="col-md-12">Selecciona el número de botones:</p>
+									<div class="col-md-3 col-xs-6">
+										<label>
+										  <input type="radio" name="botonesFrente" value="1" required="" />
+										  <img src="{{ asset('img/suit_options/1botones.png') }}">
+										  <p class="text-center">1 Botón</p>
+										</label>
+									</div>
+									<div class="col-md-3 col-xs-6">
+										<label>
+										  <input type="radio" name="botonesFrente" value="2" />
+										  <img src="{{ asset('img/suit_options/2botones.png') }}">
+										  <p class="text-center">2 Botones</p>
+										</label>
+									</div>
+									<div class="col-md-3 col-xs-6">
+										<label>
+										  <input type="radio" name="botonesFrente" value="3" />
+										  <img src="{{ asset('img/suit_options/3botones.png') }}">
+										  <p class="text-center">3 Botones</p>
+										</label>
+									</div>
+									<div class="col-md-3 col-xs-6">
+										<label>
+										  <input type="radio" name="botonesFrente" value="6" />
+										  <img src="{{ asset('img/suit_options/6botones.png') }}">
+										  <p class="text-center">6 botones</p>
+										</label>
+									</div>
+								</div>
+							</div>
+							
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
 									<p class="col-md-12">Selecciona el número de aberturas detrás:</p>
@@ -524,53 +525,65 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 									<div class="col-md-12">
 										<h4 class="text-center">Bolsas Externas</h4>
 									</div>
-									<div class="col-sm-4">
-										<div class="checkbox">
-											<label>
-												<input type="checkbox" name="bolsExtParche">
-											</label>
-											Bolsas Externas <strong>con</strong> Parche
-										</div>
+								</div>
+								<div class="row">
+									<div class="col-md-3 col-xs-6">
+										<label>
+										  <input type="checkbox" name="bolsas[]" value="Parche"/>
+										  <img src="{{ asset('img/suit_options/solapa1.png') }}">
+										  <p class="text-center">Parche</p>
+										</label>
 									</div>
-									<div class="col-sm-4">
-										<div class="checkbox">
-											<label>
-												<input type="checkbox" name="bolsExtCartera">
-											</label>
-											Bolsas Externas <strong>con</strong> Cartera
-										</div>
+									<div class="col-md-3 col-xs-6">
+										<label>
+										  <input type="checkbox" name="bolsas[]" value="Cartera"/>
+										  <img src="{{ asset('img/suit_options/solapa1.png') }}">
+										  <p class="text-center">Cartera</p>
+										</label>
 									</div>
-									<div class="col-sm-4">
-										<div class="checkbox">
-											<label>
-												<input type="checkbox" name="bolsExtVivo">
-											</label>
-											Bolsas Externas <strong>con</strong> Vivo
-										</div>
+									<div class="col-md-3 col-xs-6">
+										<label>
+										  <input type="checkbox" name="bolsas[]" value="CarteraDiag"/>
+										  <img src="{{ asset('img/suit_options/solapa1.png') }}">
+										  <p class="text-center">Cartera en Diagonal</p>
+										</label>
 									</div>
-									<div class="col-sm-4">
-										<div class="checkbox">
-											<label>
-												<input type="checkbox" name="bolsExtCarteraDiag">
-											</label>
-											Bolsas Externas <strong>con</strong> Cartera Diagonal
-										</div>
+									<div class="col-md-3 col-xs-6">
+										<label>
+										  <input type="checkbox" name="bolsas[]" value="Vivo"/>
+										  <img src="{{ asset('img/suit_options/solapa1.png') }}">
+										  <p class="text-center">Vivo (sin cartera)</p>
+										</label>
 									</div>
-									<div class="col-sm-4">
-										<div class="checkbox">
-											<label>
-												<input type="checkbox" name="bolsExtVivoDiag">
-											</label>
-											Bolsas Externas <strong>con</strong> Vivo Diagonal
-										</div>
+								</div>
+								<div class="row">
+									<div class="col-md-3 col-xs-6">
+										<label>
+										  <input type="checkbox" name="bolsas[]" value="VivoDiag"/>
+										  <img src="{{ asset('img/suit_options/solapa1.png') }}">
+										  <p class="text-center">Vivo Diagonal</p>
+										</label>
 									</div>
-									<div class="col-sm-4">
-										<div class="checkbox">
-											<label>
-												<input type="checkbox" name="bolsExtCarteraCont">
-											</label>
-											Bolsas Externas <strong>con</strong> Cartera Continental
-										</div>
+									<div class="col-md-3 col-xs-6">
+										<label>
+										  <input type="checkbox" name="bolsas[]" value="CarteraContinental"/>
+										  <img src="{{ asset('img/suit_options/solapa1.png') }}">
+										  <p class="text-center">Cartera Continental</p>
+										</label>
+									</div>
+									<div class="col-md-3 col-xs-6">
+										<label>
+										  <input type="checkbox" name="bolsas[]" value="CarteraContinentalDiagonal"/>
+										  <img src="{{ asset('img/suit_options/solapa1.png') }}">
+										  <p class="text-center">Cartera Continental Diagonal</p>
+										</label>
+									</div>
+									<div class="col-md-3 col-xs-6">
+										<label>
+										  <input type="checkbox" name="bolsas[]" value="SinBolsas"/>
+										  <img src="{{ asset('img/suit_options/solapa1.png') }}">
+										  <p class="text-center">Sin Bolsas</p>
+										</label>
 									</div>
 								</div>
 								<div class="row">
@@ -698,7 +711,53 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 						<div class="tab-pane" id="pantalon">
 							<h4 class="info-text">Datos del Pantalón</h4>
 							<div class="row">
+								<div class="col-md-8 col-md-offset-2">
+									<div class="col-md-6">
+										<label>
+										  <input type="radio" name="tipoPase" value="0" />
+										  <img src="{{ asset('img/suit_options/pantalon/P.Con.Pase.png') }}">
+										  <p class="text-center">Con Pase</p>
+										</label>
+									</div>
+									<div class="col-md-6">
+										<label>
+										  <input type="radio" name="tipoPase" value="1" />
+										  <img src="{{ asset('img/suit_options/pantalon/P.Sin.Pase.png') }}">
+										  <p class="text-center">Sin Pase</p>
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<h4 class="text-center">Número de Pliegues</h4>
+								</div>
+							</div>
+							<div class="row">
 								<div class="col-md-4">
+									<label>
+									  <input type="radio" name="numPliegues" value="0" />
+									  <img src="{{ asset('img/suit_options/pantalon/Pliegues_0.png') }}">
+									  <p class="text-center">Sin Pliegues</p>
+									</label>
+								</div>
+								<div class="col-md-4">
+									<label>
+									  <input type="radio" name="numPliegues" value="1" />
+									  <img src="{{ asset('img/suit_options/pantalon/Pliegues_1.png') }}">
+									  <p class="text-center">1 Pliegue</p>
+									</label>
+								</div>
+								<div class="col-md-4">
+									<label>
+									  <input type="radio" name="numPliegues" value="2" />
+									  <img src="{{ asset('img/suit_options/pantalon/Pliegues_2.png') }}">
+									  <p class="text-center">2 Pliegue</p>
+									</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
 									<h4 class="text-center">Bolsas Delanteras</h4>
 									<div class="form-group label-floating">
 										<label class="control-label">Número de Bolsas Delanteras</label>
@@ -709,7 +768,7 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 										</select>
 									</div>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-6">
 									<h4 class="text-center">Bolsas Traseras</h4>
 									<div class="form-group label-floating">
 										<label class="control-label">Número de Bolsas Traseras</label>
@@ -720,25 +779,41 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 											<option value="2">Dos bolsas traseras</option>
 										</select>
 									</div>
-									<div class="form-group label-floating">
-										<label class="control-label">Tipo de Vivo de Bolsas Traseras</label>
-										<select name="bolsasTraserasVivo" class="form-control" required="true">
-											<option disabled="" selected=""></option>
-											<option value="0">Vivo Sencillo</option>
-											<option value="1">Vivo Doble</option>
-										</select>
-									</div>
 								</div>
-								<div class="col-md-4">
-									<h4 class="text-center">Cerrado de Bolsas Traseras</h4>
-									<div class="form-group label-floating">
-										<label class="control-label">Tipo de Cerrado de Bolsas</label>
-										<select name="bolsasTraserasCerrado" class="form-control" required="true">
-											<option disabled="" selected=""></option>
-											<option value="0">Ojal y Botón</option>
-											<option value="1">Traba y Botón</option>
-										</select>
-									</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<h4 class="text-center">Tipo de Bolsas Traseras</h4>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3 col-xs-6">
+									<label>
+									  <input type="radio" name="vivoDoble"/>
+									  <img src="{{ asset('img/suit_options/pantalon/VivoDoble.png') }}">
+									  <p class="text-center">Vivo Doble</p>
+									</label>
+								</div>
+								<div class="col-md-3 col-xs-6">
+									<label>
+									  <input type="radio" name="vivoDobleOjal"/>
+									  <img src="{{ asset('img/suit_options/pantalon/Vivo_Doble_Ojal.png') }}">
+									  <p class="text-center">Vivo Doble con Ojal</p>
+									</label>
+								</div>
+								<div class="col-md-3 col-xs-6">
+									<label>
+									  <input type="radio" name="vivoSencillo"/>
+									  <img src="{{ asset('img/suit_options/pantalon/VivoSencillo.png') }}">
+									  <p class="text-center">Vivo Sencillo</p>
+									</label>
+								</div>
+								<div class="col-md-3 col-xs-6">
+									<label>
+									  <input type="radio" name="vivoSencilloOjal"/>
+									  <img src="{{ asset('img/suit_options/pantalon/VivoSencillo_Ojal.png') }}">
+									  <p class="text-center">Vivo Sencillo con Ojal</p>
+									</label>
 								</div>
 							</div>
 							<div class="row">
@@ -746,24 +821,22 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 									<h4 class="text-center">Interior</h4>
 								</div>
 								<div class="col-md-4">
-									<div class="checkbox">
-										<label>
-											<input type="checkbox" name="ribete">
-										</label>
-										Ribete en ojalera y encuarte
-									</div>
+									<label>
+									  <input type="checkbox" name="medioForroPiernas" />
+									  <img src="{{ asset('img/suit_options/pantalon/pantalon_ribete.png') }}">
+									  <p class="text-center">Ribete en Ojalera y Encuarte</p>
+									</label>
 									<div class="form-group label-floating">
 										<label class="control-label">Color de Ribete <small>(opcional)</small></label>
 										<input type="text" class="form-control" name="colorRibete">
 									</div>
 								</div>
 								<div class="col-md-4">
-									<div class="checkbox">
-										<label>
-											<input type="checkbox" name="forroPiernas">
-										</label>
-										Medio forro en piernas
-									</div>
+									<label>
+									  <input type="checkbox" name="medioForroPiernas" />
+									  <img src="{{ asset('img/suit_options/pantalon/Pantalon_medioforro.png') }}">
+									  <p class="text-center">Medio Forro en Piernas</p>
+									</label>
 									<div class="form-group label-floating">
 										<label class="control-label">Color de Medio Forro <small>(opcional)</small></label>
 										<input type="text" class="form-control" name="colorMedioForro">
