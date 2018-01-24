@@ -641,14 +641,23 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 						<div class="tab-pane" id="sacoInt">
 							<h4 class="info-text">Datos de la parte Interna del Saco</h4>
 							<div class="row">
-								<div class="col-sm-6 col-sm-offset-3">
-									<div class="form-group label-floating">
-										<label class="control-label">Tipo de Vista</label>
-										<select name="tipoOjalSolapa" class="form-control" required="true">
-											<option disabled="" selected=""></option>
-											<option value="0">Normal</option>
-											<option value="1">Chapeta Francesa</option>
-										</select>
+								<div class="col-md-10 col-md-offset-1">
+									<p class="col-md-12 text-center">Tipo de Vista:</p>
+									<div class="col-md-8 col-md-offset-2">
+										<div class="col-md-6 col-xs-6">
+											<label>
+											  <input type="radio" name="tipoVista" value="0" required="" />
+											  <img src="{{ asset('img/suit_options/saco/Chapeta-francesa.png') }}">
+											  <p class="text-center">Normal</p>
+											</label>
+										</div>
+										<div class="col-md-6 col-xs-6">
+											<label>
+											  <input type="radio" name="tipoVista" value="1" />
+											  <img src="{{ asset('img/suit_options/saco/Chapeta-francesa.png') }}">
+											  <p class="text-center">Chapeta Francesa</p>
+											</label>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -697,37 +706,33 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-3">
-									<div class="checkbox">
-										<label>
-											<input type="checkbox" name="bolsaPechoDer">
-										</label>
-										Bolsa de Pecho Derecho
-									</div>
+								<div class="col-md-3 col-xs-6">
+									<label>
+									  <input type="checkbox" name="bolsasInt[]" value="pechoderecho"/>
+									  <img src="{{ asset('img/suit_options/saco/bolsas-internas.media.png') }}">
+									  <p class="text-center">Pecho Derecho</p>
+									</label>
 								</div>
-								<div class="col-md-3">
-									<div class="checkbox">
-										<label>
-											<input type="checkbox" name="bolsaPechoIzq">
-										</label>
-										Bolsa de Pecho Izquierdo
-									</div>
+								<div class="col-md-3 col-xs-6">
+									<label>
+									  <input type="checkbox" name="bolsasInt[]" value="pechoizquierdo"/>
+									  <img src="{{ asset('img/suit_options/saco/bolsas-internas.media.png') }}">
+									  <p class="text-center">Pecho Izquierdo</p>
+									</label>
 								</div>
-								<div class="col-md-3">
-									<div class="checkbox">
-										<label>
-											<input type="checkbox" name="cigarrera">
-										</label>
-										Cigarrera Izquierda
-									</div>
+								<div class="col-md-3 col-xs-6">
+									<label>
+									  <input type="checkbox" name="bolsasInt[]" value="cigarrera"/>
+									  <img src="{{ asset('img/suit_options/saco/BolsaInterna-Cigarrera.png') }}">
+									  <p class="text-center">Cigarrera</p>
+									</label>
 								</div>
-								<div class="col-md-3">
-									<div class="checkbox">
-										<label>
-											<input type="checkbox" name="plumera">
-										</label>
-										Plumera Izquierda
-									</div>
+								<div class="col-md-3 col-xs-6">
+									<label>
+									  <input type="checkbox" name="bolsasInt[]" value="plumera"/>
+									  <img src="{{ asset('img/suit_options/saco/bolsas.internas.plumera.png') }}">
+									  <p class="text-center">Plumera</p>
+									</label>
 								</div>
 								<div class="col-md-6 col-md-offset-3">
 									<div class="form-group label-floating">
