@@ -345,6 +345,7 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 							label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 							  border:5px solid #55bed5;
 							  border-radius: 5px;
+							  filter: opacity(80%) drop-shadow(8px 8px 10px gray);
 							}
 						</style>
 						<div class="tab-pane" id="sacoExt">
@@ -355,30 +356,53 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 									<div class="col-md-3 col-xs-6">
 										<label>
 										  <input type="radio" name="tipoSolapa" value="1" required="" />
-										  <img src="{{ asset('img/suit_options/solapa1.png') }}">
+										  <img src="{{ asset('img/suit_options/saco/Cuello_picodelgado.png') }}">
 										  <p class="text-center">Solapa en Pico <b>Normal</b></p>
 										</label>
 									</div>
 									<div class="col-md-3 col-xs-6">
 										<label>
 										  <input type="radio" name="tipoSolapa" value="2" />
-										  <img src="{{ asset('img/suit_options/solapa2.png') }}">
+										  <img src="{{ asset('img/suit_options/saco/Cuello_PicoAncho.png') }}">
 										  <p class="text-center">Solapa en Pico <b>Ancha</b></p>
 										</label>
 									</div>
 									<div class="col-md-3 col-xs-6">
 										<label>
 										  <input type="radio" name="tipoSolapa" value="3" />
-										  <img src="{{ asset('img/suit_options/solapa3.png') }}">
+										  <img src="{{ asset('img/suit_options/saco/Cuello_Delgado.png') }}">
 										  <p class="text-center">Solapa en Escuadra <b>Normal</b></p>
 										</label>
 									</div>
 									<div class="col-md-3 col-xs-6">
 										<label>
 										  <input type="radio" name="tipoSolapa" value="6" />
-										  <img src="{{ asset('img/suit_options/solapa4.png') }}">
+										  <img src="{{ asset('img/suit_options/saco/Cuello_Ancho.png') }}">
 										  <p class="text-center">Solapa en Escuadra <b>Ancha</b></p>
 										</label>
+									</div>
+								</div>
+								<div class="col-md-10 col-md-offset-1">
+									<div class="row">
+										<h4 class="col-md-12 text-center">Ojal en Solapa</h4>
+										<div class="col-sm-6">
+											<div class="form-group label-floating">
+												<label class="control-label">Tipo de Ojal en Solapa</label>
+												<select name="tipoOjalSolapa" class="form-control" required="true">
+													<option disabled="" selected=""></option>
+													<option value="0">Sin Ojal en Solapa</option>
+													<option value="1">Al tono</option>
+													<option value="2">En contraste</option>
+													<option value="3">Activo</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="form-group label-floating">
+												<label for="" class="control-label">Color para Ojal de Solapa: <small>(opcional)</small></label>
+												<input type="text" name="colorOjalSolapa" class="form-control">
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -388,28 +412,28 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 									<div class="col-md-3 col-xs-6">
 										<label>
 										  <input type="radio" name="botonesFrente" value="1" required="" />
-										  <img src="{{ asset('img/suit_options/1botones.png') }}">
+										  <img src="{{ asset('img/suit_options/saco/Saco_1boton.png') }}">
 										  <p class="text-center">1 Botón</p>
 										</label>
 									</div>
 									<div class="col-md-3 col-xs-6">
 										<label>
 										  <input type="radio" name="botonesFrente" value="2" />
-										  <img src="{{ asset('img/suit_options/2botones.png') }}">
+										  <img src="{{ asset('img/suit_options/saco/Saco_2botones.png') }}">
 										  <p class="text-center">2 Botones</p>
 										</label>
 									</div>
 									<div class="col-md-3 col-xs-6">
 										<label>
 										  <input type="radio" name="botonesFrente" value="3" />
-										  <img src="{{ asset('img/suit_options/3botones.png') }}">
+										  <img src="{{ asset('img/suit_options/saco/Saco_3botones.png') }}">
 										  <p class="text-center">3 Botones</p>
 										</label>
 									</div>
 									<div class="col-md-3 col-xs-6">
 										<label>
 										  <input type="radio" name="botonesFrente" value="6" />
-										  <img src="{{ asset('img/suit_options/6botones.png') }}">
+										  <img src="{{ asset('img/suit_options/saco/Saco_6botones.png') }}">
 										  <p class="text-center">6 botones</p>
 										</label>
 									</div>
@@ -422,48 +446,27 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 									<div class="col-md-4 col-xs-6">
 										<label>
 										  <input type="radio" name="aberturasDetras" value="0" required="" />
-										  <img src="{{ asset('img/suit_options/0aberturas.png') }}">
+										  <img src="{{ asset('img/suit_options/saco/Espalda_SinAberturas.png') }}">
 										  <p class="text-center">Sin aberturas</p>
 										</label>
 									</div>
 									<div class="col-md-4 col-xs-6">
 										<label>
 										  <input type="radio" name="aberturasDetras" value="1" />
-										  <img src="{{ asset('img/suit_options/1aberturas.png') }}">
+										  <img src="{{ asset('img/suit_options/saco/Espalda_UnaAbertura.png') }}">
 										  <p class="text-center">1 abertura</p>
 										</label>
 									</div>
 									<div class="col-md-4 col-xs-6">
 										<label>
 										  <input type="radio" name="aberturasDetras" value="2" />
-										  <img src="{{ asset('img/suit_options/2aberturas.png') }}">
+										  <img src="{{ asset('img/suit_options/saco/Espalda_DosAberturas.png') }}">
 										  <p class="text-center">2 aberturas</p>
 										</label>
 									</div>
 								</div>
 							</div>
 							<div class="col-md-10 col-md-offset-1">
-								<div class="row">
-									<h4 class="col-md-12 text-center">Ojal en Solapa</h4>
-									<div class="col-sm-6">
-										<div class="form-group label-floating">
-											<label class="control-label">Tipo de Ojal en Solapa</label>
-											<select name="tipoOjalSolapa" class="form-control" required="true">
-												<option disabled="" selected=""></option>
-												<option value="0">Sin Ojal en Solapa</option>
-												<option value="1">Al tono</option>
-												<option value="2">En contraste</option>
-												<option value="3">Activo</option>
-											</select>
-										</div>
-									</div>
-									<div class="col-sm-6">
-										<div class="form-group label-floating">
-											<label for="" class="control-label">Color para Ojal de Solapa: <small>(opcional)</small></label>
-											<input type="text" name="colorOjalSolapa" class="form-control">
-										</div>
-									</div>
-								</div>
 								<div class="row">
 									<div class="col-md-12">
 										<h4 class="text-center">Mangas</h4>
@@ -483,7 +486,6 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 												<option disabled="" selected=""></option>
 												<option value="0">Al tono</option>
 												<option value="1">En contraste</option>
-												<option value="2">Activo</option>
 											</select>
 										</div>
 									</div>
@@ -500,24 +502,27 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 										<div class="col-xs-6">
 											<label>
 											  <input type="radio" name="posicionOjalesManga" value="0" required="" />
-											  <img src="{{ asset('img/suit_options/botones_cascada.png') }}">
+											  <img src="{{ asset('img/suit_options/saco/Manga_Cascada.png') }}">
 											  <p class="text-center">Botones en Cascada</p>
 											</label>
 										</div>
 										<div class="col-xs-6">
 											<label>
 											  <input type="radio" name="posicionOjalesManga" value="1" />
-											  <img src="{{ asset('img/suit_options/botones_linea.png') }}">
+											  <img src="{{ asset('img/suit_options/saco/Manga_Normal.png') }}">
 											  <p class="text-center">Botones en Línea</p>
 											</label>
 										</div>
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-sm-6 col-sm-offset-3">
-										<div class="form-group label-floating">
-											<label for="" class="control-label">Número de Ojales Activos en Manga:</label>
-											<input type="number" name="ojalesActivosManga" min="0" max="4" step="1" class="form-control">
+									<div class="col-sm-4 col-sm-offset-4">
+										<p class="text-center">Ojales Activos en Manga</p>
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" name="ojalesActivosManga">
+												Selecciona para que los ojales sean activos
+											</label>
 										</div>
 									</div>
 								</div>
@@ -530,28 +535,28 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 									<div class="col-md-3 col-xs-6">
 										<label>
 										  <input type="checkbox" name="bolsas[]" value="Parche"/>
-										  <img src="{{ asset('img/suit_options/solapa1.png') }}">
+										  <img src="{{ asset('img/suit_options/saco/Parches.png') }}">
 										  <p class="text-center">Parche</p>
 										</label>
 									</div>
 									<div class="col-md-3 col-xs-6">
 										<label>
 										  <input type="checkbox" name="bolsas[]" value="Cartera"/>
-										  <img src="{{ asset('img/suit_options/solapa1.png') }}">
+										  <img src="{{ asset('img/suit_options/saco/Cartera.png') }}">
 										  <p class="text-center">Cartera</p>
 										</label>
 									</div>
 									<div class="col-md-3 col-xs-6">
 										<label>
 										  <input type="checkbox" name="bolsas[]" value="CarteraDiag"/>
-										  <img src="{{ asset('img/suit_options/solapa1.png') }}">
+										  <img src="{{ asset('img/suit_options/saco/CarteraDiagonal.png') }}">
 										  <p class="text-center">Cartera en Diagonal</p>
 										</label>
 									</div>
 									<div class="col-md-3 col-xs-6">
 										<label>
 										  <input type="checkbox" name="bolsas[]" value="Vivo"/>
-										  <img src="{{ asset('img/suit_options/solapa1.png') }}">
+										  <img src="{{ asset('img/suit_options/saco/Vivos.png') }}">
 										  <p class="text-center">Vivo (sin cartera)</p>
 										</label>
 									</div>
@@ -560,28 +565,28 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 									<div class="col-md-3 col-xs-6">
 										<label>
 										  <input type="checkbox" name="bolsas[]" value="VivoDiag"/>
-										  <img src="{{ asset('img/suit_options/solapa1.png') }}">
+										  <img src="{{ asset('img/suit_options/saco/VivosDiagonal.png') }}">
 										  <p class="text-center">Vivo Diagonal</p>
 										</label>
 									</div>
 									<div class="col-md-3 col-xs-6">
 										<label>
 										  <input type="checkbox" name="bolsas[]" value="CarteraContinental"/>
-										  <img src="{{ asset('img/suit_options/solapa1.png') }}">
+										  <img src="{{ asset('img/suit_options/saco/CarteraContinental.png') }}">
 										  <p class="text-center">Cartera Continental</p>
 										</label>
 									</div>
 									<div class="col-md-3 col-xs-6">
 										<label>
 										  <input type="checkbox" name="bolsas[]" value="CarteraContinentalDiagonal"/>
-										  <img src="{{ asset('img/suit_options/solapa1.png') }}">
+										  <img src="{{ asset('img/suit_options/saco/CarteraContinentalDiagonal.png') }}">
 										  <p class="text-center">Cartera Continental Diagonal</p>
 										</label>
 									</div>
 									<div class="col-md-3 col-xs-6">
 										<label>
 										  <input type="checkbox" name="bolsas[]" value="SinBolsas"/>
-										  <img src="{{ asset('img/suit_options/solapa1.png') }}">
+										  <img src="{{ asset('img/suit_options/saco/SinBolsas.png') }}">
 										  <p class="text-center">Sin Bolsas</p>
 										</label>
 									</div>
@@ -590,12 +595,43 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 									<div class="col-md-12">
 										<h4 class="text-center">Otros</h4>
 									</div>
-									<div class="col-md-4 col-md-offset-4">
+									<div class="col-md-6">
+										<p class="text-center">Pick Stitch</p>
+										<div class="col-md-6">
+											<label>
+											  <input type="checkbox" name="pickstitch" />
+											  <img src="{{ asset('img/suit_options/saco/pick-stitch.png') }}">
+											  <p class="text-center">Pick Stitch para Saco</p>
+											</label>
+										</div>
+										<div class="col-md-6">
+											¿Dónde se aplicará el Pick Stitch?
+											<div class="checkbox">
+												<label>
+													<input type="checkbox" name="pickstitchfilos">
+													Filos
+												</label>
+											</div>
+											<div class="checkbox">
+												<label>
+													<input type="checkbox" name="pickstitchaletilla">
+													Aletilla
+												</label>
+											</div>
+											<div class="checkbox">
+												<label>
+													<input type="checkbox" name="pickstitchcartera">
+													Cartera
+												</label>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
 										<div class="checkbox">
 											<label>
-												<input type="checkbox" name="pickstitch">
+												<input type="checkbox" name="sinaletilla">
+												Sin Aletilla
 											</label>
-											Pick Stitch para Saco
 										</div>
 									</div>
 								</div>
@@ -789,28 +825,28 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 							<div class="row">
 								<div class="col-md-3 col-xs-6">
 									<label>
-									  <input type="radio" name="vivoDoble"/>
+									  <input type="radio" name="tipoVivo" value="0" />
 									  <img src="{{ asset('img/suit_options/pantalon/VivoDoble.png') }}">
 									  <p class="text-center">Vivo Doble</p>
 									</label>
 								</div>
 								<div class="col-md-3 col-xs-6">
 									<label>
-									  <input type="radio" name="vivoDobleOjal"/>
+									  <input type="radio" name="tipoVivo" value="1" />
 									  <img src="{{ asset('img/suit_options/pantalon/Vivo_Doble_Ojal.png') }}">
 									  <p class="text-center">Vivo Doble con Ojal</p>
 									</label>
 								</div>
 								<div class="col-md-3 col-xs-6">
 									<label>
-									  <input type="radio" name="vivoSencillo"/>
+									  <input type="radio" name="tipoVivo" value="2" />
 									  <img src="{{ asset('img/suit_options/pantalon/VivoSencillo.png') }}">
 									  <p class="text-center">Vivo Sencillo</p>
 									</label>
 								</div>
 								<div class="col-md-3 col-xs-6">
 									<label>
-									  <input type="radio" name="vivoSencilloOjal"/>
+									  <input type="radio" name="tipoVivo" value="3" />
 									  <img src="{{ asset('img/suit_options/pantalon/VivoSencillo_Ojal.png') }}">
 									  <p class="text-center">Vivo Sencillo con Ojal</p>
 									</label>
@@ -820,37 +856,49 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 								<div class="col-md-12">
 									<h4 class="text-center">Interior</h4>
 								</div>
-								<div class="col-md-4">
-									<label>
-									  <input type="checkbox" name="medioForroPiernas" />
-									  <img src="{{ asset('img/suit_options/pantalon/pantalon_ribete.png') }}">
-									  <p class="text-center">Ribete en Ojalera y Encuarte</p>
-									</label>
-									<div class="form-group label-floating">
-										<label class="control-label">Color de Ribete <small>(opcional)</small></label>
-										<input type="text" class="form-control" name="colorRibete">
+								<div class="col-md-8 col-md-offset-2">
+									<div class="col-md-6">
+										<label>
+										  <input type="checkbox" name="ribete" />
+										  <img src="{{ asset('img/suit_options/pantalon/pantalon_ribete.png') }}">
+										  <p class="text-center">Ribete en Ojalera y Encuarte</p>
+										</label>
+										<div class="form-group label-floating">
+											<label class="control-label">Color de Ribete <small>(opcional)</small></label>
+											<input type="text" class="form-control" name="colorRibete">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<label>
+										  <input type="checkbox" name="medioForroPiernas" />
+										  <img src="{{ asset('img/suit_options/pantalon/Pantalon_medioforro.png') }}">
+										  <p class="text-center">Medio Forro en Piernas</p>
+										</label>
+										<div class="form-group label-floating">
+											<label class="control-label">Color de Medio Forro <small>(opcional)</small></label>
+											<input type="text" class="form-control" name="colorMedioForro">
+										</div>
 									</div>
 								</div>
-								<div class="col-md-4">
-									<label>
-									  <input type="checkbox" name="medioForroPiernas" />
-									  <img src="{{ asset('img/suit_options/pantalon/Pantalon_medioforro.png') }}">
-									  <p class="text-center">Medio Forro en Piernas</p>
-									</label>
-									<div class="form-group label-floating">
-										<label class="control-label">Color de Medio Forro <small>(opcional)</small></label>
-										<input type="text" class="form-control" name="colorMedioForro">
-									</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<h4 class="text-center">Dobladillo</h4>
 								</div>
-								<div class="col-md-4">
-									<h4 class="text-center">Dobladillo Personalizado</h4>
-									<div class="form-group label-floating">
-										<label class="control-label">Tipo de Dobladillo</label>
-										<select name="tipoDobladillo" class="form-control">
-											<option disabled="" selected=""></option>
-											<option value="0">Normal</option>
-											<option value="1">Valenciana Española</option>
-										</select>
+								<div class="col-md-8 col-md-offset-2">
+									<div class="col-md-6">
+										<label>
+										  <input type="radio" name="dobladillo" value="1" />
+										  <img src="{{ asset('img/suit_options/pantalon/Pantalon_dobladillo.png') }}">
+										  <p class="text-center">Dobladillo Normal</p>
+										</label>
+									</div>
+									<div class="col-md-6">
+										<label>
+										  <input type="radio" name="dobladillo" value="2" />
+										  <img src="{{ asset('img/suit_options/pantalon/Pantalon_dobladillo.png') }}">
+										  <p class="text-center">Valenciana Española</p>
+										</label>
 									</div>
 								</div>
 							</div>
