@@ -64,6 +64,18 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            @media (max-width: 599px) {
+                .title {
+                    font-size: 60px;
+                }
+
+                .links > a {
+                    font-size: 15px;
+                    padding: 0 50px;
+                }
+            }
+
         </style>
     </head>
     <body>
