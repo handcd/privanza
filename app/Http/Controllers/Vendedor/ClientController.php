@@ -18,7 +18,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clientes = Client::all();
+        $clientes = Auth::user()->clients;
         return view('vendedor.client.home',compact('clientes'));
     }
 
