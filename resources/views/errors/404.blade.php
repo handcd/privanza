@@ -81,6 +81,7 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">
+                    Error 404<br><br>
                     ¡Oh no! Eso que buscas no existe o lo hemos perdido.
                 </div>
 

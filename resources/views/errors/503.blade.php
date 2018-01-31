@@ -84,6 +84,7 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">
+                    Error 503<br><br>
                     Estamos experimentando dificultades técnicas
                 </div>
                 <p>Hemos enviado a los mejores y más valientes en busca del error, todo deberá solucionarse a la brevedad. Vuelve a intentarlo dentro de 10 minutos.</p>
