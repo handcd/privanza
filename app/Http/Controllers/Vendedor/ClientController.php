@@ -142,7 +142,7 @@ class ClientController extends Controller
     {
         $cliente = Client::find($id);
 
-        if ($cliente->vendedor_id != Auth::id()) {
+        if (!$cliente || $cliente->vendedor_id != Auth::id()) {
             return redirect('vendedor/clientes/'.$id.'/editar');
         }
 
