@@ -31,9 +31,11 @@
                                 <a href="{{ url('/vendedor/citas/'.$evento->id) }}" type="button" rel="tooltip" title="Ver Cita" class="btn btn-success btn-simple btn-xs">
                                     <i class="material-icons">remove_red_eye</i>
                                 </a>
-                                 <a href="{{ url('/vendedor/citas/'.$evento->id.'/editar') }}" type="button" rel="tooltip" title="Editar Cita" class="btn btn-primary btn-simple btn-xs">
-                                    <i class="material-icons">edit</i>
-                                </a>
+                                @if (!Carbon\Carbon::parse($evento->fechahora)->isPast())
+                                     <a href="{{ url('/vendedor/citas/'.$evento->id.'/editar') }}" type="button" rel="tooltip" title="Editar Cita" class="btn btn-primary btn-simple btn-xs">
+                                        <i class="material-icons">edit</i>
+                                    </a>
+                                @endif
                             </td>
                         </tr>
                         @empty
@@ -70,9 +72,11 @@
                                 <a href="{{ url('/vendedor/citas/'.$evento->id) }}" type="button" rel="tooltip" title="Ver Cita" class="btn btn-success btn-simple btn-xs">
                                     <i class="material-icons">remove_red_eye</i>
                                 </a>
-                                 <a href="{{ url('/vendedor/citas/'.$evento->id.'/editar') }}" type="button" rel="tooltip" title="Editar Cita" class="btn btn-primary btn-simple btn-xs">
-                                    <i class="material-icons">edit</i>
-                                </a>
+                                @if (!Carbon\Carbon::parse($evento->fechahora)->isPast())
+                                     <a href="{{ url('/vendedor/citas/'.$evento->id.'/editar') }}" type="button" rel="tooltip" title="Editar Cita" class="btn btn-primary btn-simple btn-xs">
+                                        <i class="material-icons">edit</i>
+                                    </a>
+                                @endif
                             </td>
                         </tr>
                         @empty
@@ -111,9 +115,11 @@
                                 <a href="{{ url('/vendedor/citas/'.$evento->id) }}" type="button" rel="tooltip" title="Ver Cita" class="btn btn-success btn-simple btn-xs">
                                     <i class="material-icons">remove_red_eye</i>
                                 </a>
-                                 <a href="{{ url('/vendedor/citas/'.$evento->id.'/editar') }}" type="button" rel="tooltip" title="Editar Cita" class="btn btn-primary btn-simple btn-xs">
-                                    <i class="material-icons">edit</i>
-                                </a>
+                                @if (!Carbon\Carbon::parse($evento->fechahora)->isPast())
+                                     <a href="{{ url('/vendedor/citas/'.$evento->id.'/editar') }}" type="button" rel="tooltip" title="Editar Cita" class="btn btn-primary btn-simple btn-xs">
+                                        <i class="material-icons">edit</i>
+                                    </a>
+                                @endif
                             </td>
                         </tr>
                         @empty
