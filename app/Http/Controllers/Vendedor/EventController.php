@@ -98,7 +98,7 @@ class EventController extends Controller
     public function edit($id)
     {
         $evento = Event::find($id);
-        if (!$evento || $evento->vendedor_id != Auth::id()) {
+        if (!$evento || $evento->vendedor_id != Auth::id() || Carbon::parse($evento->fechahora)->isPast() ) {
             return redirect('/vendedor/citas');
         }
         $clientes = Vendedor::find(Auth::id())->clients;
