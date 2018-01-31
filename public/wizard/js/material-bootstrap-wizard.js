@@ -18,6 +18,12 @@
 var searchVisible = 0;
 var transparent = true;
 var mobile_device = false;
+/*
+ Debug variable
+
+ Allows for tabs to be accesed without validation. Also avoids the sequential order on the wizard.
+ You're a wizard, privanza.
+*/
 var debug = true;
 
 $(document).ready(function(){
@@ -178,10 +184,12 @@ $(document).ready(function(){
     });
 
     // Disable initial options
-    $('.wizard-card').bootstrapWizard('disable',1);
-    $('.wizard-card').bootstrapWizard('disable',2);
-    $('.wizard-card').bootstrapWizard('disable',3);
-    $('.wizard-card').bootstrapWizard('disable',4);
+    if (!debug) {
+        $('.wizard-card').bootstrapWizard('disable',1);
+        $('.wizard-card').bootstrapWizard('disable',2);
+        $('.wizard-card').bootstrapWizard('disable',3);
+        $('.wizard-card').bootstrapWizard('disable',4);
+    }
 
     // Handle checkboxes for order types
     $('#checkSaco').click( function () {
