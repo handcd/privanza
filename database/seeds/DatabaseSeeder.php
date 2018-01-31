@@ -20,25 +20,13 @@ class DatabaseSeeder extends Seeder
         ]);
         
         // Vendedor 
-        DB::table('vendedors')->insert([
-            'name' => 'Test Vendedor',
-            'lastname' => 'de Testing',
-            'email' => 'vendedor@privanza.com',
-            'password' => bcrypt('vendedor123'),
-            'phone' => '55-1943-4641',
-            'birthday' => Carbon::create('2000','01','01'),
-            'address_home' => 'Paseo de Los Tamarindos no.384 Col. Campestre Palo Alto',
-            'type' => 1
+        factory(App\Vendedor::class)->create([
+            'email' => 'vendedor@privanza.com'
         ]);
 
         // Validador
-        DB::table('validadors')->insert([
-            'name' => 'Test Validador',
-            'lastname' => 'de Testing',
-            'email' => 'validador@privanza.com',
-            'password' => bcrypt('validador123'),
-            'job_position' => 'Gerente de Ventas',
-            'birthday'=> Carbon::create('2000','01','01'),
+        factory(App\Validador::class)->create([
+            'email' => 'validador@privanza.com'
         ]);
 
         // Fits
@@ -56,7 +44,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         factory(App\Vendedor::class, 40)->create();
-        factory(App\Client::class, 300)->create();
+        factory(App\Client::class, App\Vendedor::all()->count()*15)->create();
         factory(App\Event::class, 600)->create();
+        factory(App\Validador::class, 10)->create();
     }
 }

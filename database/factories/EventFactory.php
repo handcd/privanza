@@ -7,6 +7,6 @@ $factory->define(App\Event::class, function (Faker $faker) {
     return [
         'vendedor_id' => $vendedor,
         'client_id' => App\Vendedor::find($vendedor)->clients->random()->id,
-        'fechahora' => $faker->dateTimeBetween($startDate = '-3 months', $endDate = 'now', $timezone = null),
+        'fechahora' => $faker->dateTimeBetween($startDate = '-3 months', $endDate = '+1 month'),
     ];
 });

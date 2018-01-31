@@ -7,7 +7,7 @@ $factory->define(App\Vendedor::class, function (Faker $faker) {
 
     return [
         'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('testing'),
+        'password' => $password ?: $password = bcrypt('vendedor123'),
         'enabled' => 1,
         'name' => $faker->name,
         'lastname' => $faker->lastname,
