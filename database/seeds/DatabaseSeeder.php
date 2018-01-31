@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@privanza.com',
             'password' => bcrypt('admin123'),
         ]);
-
+        
         // Vendedor 
         DB::table('vendedors')->insert([
             'name' => 'Test Vendedor',
@@ -55,6 +55,8 @@ class DatabaseSeeder extends Seeder
             'description' => 'Fit más entallado.'
         ]);
 
-        //factory(App\Client::class, 25)->create();
+        factory(App\Vendedor::class, 40)->create();
+        factory(App\Client::class, 300)->create();
+        factory(App\Event::class, 600)->create();
     }
 }

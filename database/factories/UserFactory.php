@@ -24,13 +24,3 @@ $factory->define(App\User::class, function (Faker $faker) {
     ];
 });
 
-
-$factory->define(App\Client::class, function (Faker $faker) {
-
-    return [
-        'name' => $faker->firstName,
-        'lastname' => $faker->lastName,
-        'email' => $faker->unique()->safeEmail,
-        'phone' => $faker->phoneNumber,
-    ];
-});
