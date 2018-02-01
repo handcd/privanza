@@ -28,7 +28,7 @@
                     <tbody class="searchable">
                         @forelse ($clientes as $cliente)
                         <tr>
-                            <td>{{ $cliente->id }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $cliente->name }}</td>
                             <td>{{ $cliente->lastname }}</td>
                             <td><a href="mailto:{{$cliente->email}}">{{ $cliente->email }}</a></td>
