@@ -171,6 +171,9 @@
                 <p class="category">Lista con todos los pedidos que has ingresado al sistema</p>
             </div>
             <div class="card-content table-responsive">
+                <div class="col-md-6">
+                    <input id="filter" class="form-control" type="text" placeholder="Buscar Pedido...">
+                </div>
                 <table class="table table-hover">
                     <thead>
                         <th>ID</th>
@@ -179,7 +182,7 @@
                         <th>Fecha</th>
                         <th>Acciones</th>
                     </thead>
-                    <tbody>
+                    <tbody class="searchable">
                         @forelse ($ordenes as $orden)
                         <tr>
                             <td>{{ $orden->id }}</td>
@@ -213,4 +216,17 @@
         <a href="#" class="btn btn-success">Exportar a Excel</a>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        (function ($) {
+            $('#filter').keyup(function () {
+                var rex = new RegExp($(this).val(), 'i');
+                $('.searchable tr').hide();
+                $('.searchable tr').filter(function () {
+                    return rex.test($(this).text());
+                }).show();
+            })
+        })(jQuery);
+    });
+</script>
 @endsection

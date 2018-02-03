@@ -98,6 +98,9 @@
                 <p class="category">Lista con todas las citas que se han registrado en el sistema</p>
             </div>
             <div class="card-content table-responsive">
+                <div class="col-md-6">
+                    <input id="filter" class="form-control" type="text" placeholder="Buscar Cita...">
+                </div>
                 <table class="table table-hover">
                     <thead>
                         <th>#</th>
@@ -105,8 +108,8 @@
                         <th>Fecha/Hora</th>
                         <th>Acciones</th>
                     </thead>
-                    <tbody>
-                        @forelse ($eventos as $evento)
+                    <tbody class="searchable">
+                        @forelse ($eventos->sortByDesc('fechahora') as $evento)
                         <tr>
                             <td>{{ $evento->id }}</td>
                             <td><a href="{{ url('/vendedor/clientes/'.$evento->client->id) }}">{{ $evento->client->name }}</td>
@@ -133,4 +136,17 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        (function ($) {
+            $('#filter').keyup(function () {
+                var rex = new RegExp($(this).val(), 'i');
+                $('.searchable tr').hide();
+                $('.searchable tr').filter(function () {
+                    return rex.test($(this).text());
+                }).show();
+            })
+        })(jQuery);
+    });
+</script>
 @endsection
