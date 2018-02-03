@@ -22,11 +22,12 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $ordenes = Vendedor::find(Auth::id())->orders;
-        $aprobadas = $ordenes->where('approved','1');
-        $noAprobadas = $ordenes->where('approved','0');
-        $listosEntrega = $ordenes->where('recoger','1');
-        $finalizados = $ordenes->where('cobrados','1');
+        $allOrders = Vendedor::find(Auth::id())->orders;
+        $ordenes = Vendedor::find(Auth::id())->orders()->paginate(15);
+        $aprobadas = $allOrders->where('approved','1');
+        $noAprobadas = $allOrders->where('approved','0');
+        $listosEntrega = $allOrders->where('recoger','1');
+        $finalizados = $allOrders->where('cobrados','1');
 
         return view('vendedor.order.home',compact('ordenes','aprobadas','noAprobadas','listosEntrega','finalizados'));
     }

@@ -207,6 +207,9 @@
                         @endforelse
                     </tbody>
                 </table>
+                <div class="row text-center">
+                    {{ $ordenes->links() }}
+                </div>
             </div>
         </div>
     </div>
