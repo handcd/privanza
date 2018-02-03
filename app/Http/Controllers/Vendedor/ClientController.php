@@ -18,7 +18,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clientes = Auth::user()->clients;
+        $clientes = Auth::user()->clients()->paginate(15);
         return view('vendedor.client.home',compact('clientes'));
     }
 

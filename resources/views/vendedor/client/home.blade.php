@@ -28,7 +28,7 @@
                     <tbody class="searchable">
                         @forelse ($clientes as $cliente)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $cliente->id }}</td>
                             <td>{{ $cliente->name }}</td>
                             <td>{{ $cliente->lastname }}</td>
                             <td><a href="mailto:{{$cliente->email}}">{{ $cliente->email }}</a></td>
@@ -48,6 +48,9 @@
                         @endforelse
                     </tbody>
                 </table>
+                <div class="row text-center">
+                    {{ $clientes->links() }}
+                </div>
             </div>
         </div>
     </div>
