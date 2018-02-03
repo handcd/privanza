@@ -44,6 +44,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="row text-center">
+                    {{ $clientes->links() }}
+                </div>
             </div>
         </div>
     </div>

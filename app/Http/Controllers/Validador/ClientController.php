@@ -15,7 +15,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clientes = Client::all();
+        $clientes = Client::paginate(50);
         return view('validador.client.home',compact('clientes'));
     }
 
