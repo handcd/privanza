@@ -20,7 +20,7 @@ class EventController extends Controller
     public function index()
     {
         // Citas Principales
-        $eventos = Vendedor::find(Auth::id())->events;
+        $eventos = Auth::user()->events;
 
         // Citas del día
         $eventosHoy = $eventos->filter(function ($evento) {
@@ -31,6 +31,9 @@ class EventController extends Controller
         $eventosSemana = $eventos->filter(function ($evento) {
             return ($evento->fechahora >= Carbon::today() && $evento->fechahora <= Carbon::today()->addWeek());
         });
+
+        // Citas Principales con Paginación
+        $eventos = Auth::user()->events()->paginate(15);
 
         return view('vendedor.event.home',compact('eventos','eventosHoy','eventosSemana'));
     }
@@ -62,7 +65,7 @@ class EventController extends Controller
 
         $cliente = Client::find($request->cliente);
         if (!$cliente) {
-            $request->session()->flash('errors', 'Ocurrió un error al encontrar el cliente que seleccionaste, intenta de nuevo.');
+            $request->session()->flash('danger', 'Ocurrió un error al encontrar el cliente que seleccionaste, intenta de nuevo.');
             return redirect()->back()->withInput();
         }
 
@@ -71,6 +74,7 @@ class EventController extends Controller
         $evento->fechahora = Carbon::parse($request->fechahora)->toDateTimeString();
         $evento->save();
 
+        $request->session()->flash('success', 'Se ha añadido correctamente el evento.');
         return redirect('/vendedor/citas');
     }
 
@@ -114,6 +118,26 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return $request;
+        $evento = Event::find($id);
+
+        $this->validate($request, [
+            'cliente' => 'required',
+            'fechahora' => 'required|date'
+        ]);
+
+        $cliente = Client::find($request->cliente);
+
+        if (!$cliente || !$evento || Carbon::parse($evento->fechahora)->isPast() || $evento->vendedor_id != Auth::id()) {
+            $request->session()->flash('warning', 'Hemos encontrado problemas con la información proporcionada para la edición del evento.');
+            return redirect()->back()->withInput();
+        }
+
+        $evento->vendedor_id = Auth::id();
+        $evento->client_id = $cliente->id;
+        $evento->fechahora = Carbon::parse($request->fechahora)->toDateTimeString();
+        $evento->save();
+
+        $request->session()->flash('success', 'Se ha editado correctamente el evento.');
+        return redirect('/vendedor/citas');
     }
 }
