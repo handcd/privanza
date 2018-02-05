@@ -195,7 +195,20 @@
 @foreach (['danger', 'warning', 'success', 'info'] as $key)
     @if(Session::has($key))
         $.notify({
-            icon: 'notifications',
+            icon: @switch($key)
+                @case('danger')
+                    'error'
+                    @break
+                @case('warning')
+                    'warning'
+                    @break
+                @case('success')
+                    'done'
+                    @break
+                @default
+                    'notifications'
+            @endswitch
+            ,
             message: '{{ Session::get($key) }}'
         },{
             type: '{{ $key }}'
