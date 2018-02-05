@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Auth;
 use App\Http\Controllers\Controller;
+use Session;
 
 class EventController extends Controller
 {
@@ -88,6 +89,7 @@ class EventController extends Controller
     {
         $evento = Event::find($id);
         if (!$evento || $evento->vendedor_id != Auth::id()) {
+            Session::flash('danger','La cita que deseas consultar no puede ser mostrada porque no existe o no tienes autorización para verla.');
             return redirect('/vendedor/citas');
         }
         return view('vendedor.event.show',compact('evento'));
@@ -103,6 +105,7 @@ class EventController extends Controller
     {
         $evento = Event::find($id);
         if (!$evento || $evento->vendedor_id != Auth::id() || Carbon::parse($evento->fechahora)->isPast() ) {
+            Session::flash('danger','No es posible editar la cita que buscas debido a que no existe, no tienes autorización para editarla o su fecha ya pasó.');
             return redirect('/vendedor/citas');
         }
         $clientes = Vendedor::find(Auth::id())->clients;
