@@ -191,6 +191,25 @@
 <script>
 /*
     Beautiful notifications.
+    {{--
+    Use:
+
+    Flash the session with the key being one of: 'danger','warning','success' or 'info',
+    and the following function will display a beautiful notification on the top right corner.
+    It'll automatically select the more adequate icon and color based on the given key.
+
+    Example:
+
+    Session::flash('danger','You're about to die!');
+    -> Displays a Red notification with a danger icon
+
+    Session::flash('warning','You may be about to die!');
+    -> Displays a Yellow notification with a warning icon
+
+    And so on.
+
+    TODO: Fix that this function only works one message at a time.
+    --}}
 */
 @foreach (['danger', 'warning', 'success', 'info'] as $key)
     @if(Session::has($key))
