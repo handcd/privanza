@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Auth;
+use Session;
 
 class ClientController extends Controller
 {
@@ -41,7 +42,6 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //return $request;
         $cliente = new Client;
         $this->validate($request, [
             'nombre' => 'required',
@@ -97,6 +97,7 @@ class ClientController extends Controller
         $cliente->contacto = $request->contactoReferencia;
         $cliente->save();
 
+        $request->session()->flash('success', 'Se ha añadido correctamente un cliente nuevo.');
         return redirect('/vendedor/clientes');
     }
 
@@ -110,6 +111,7 @@ class ClientController extends Controller
     {
         $client = Client::find($id);
         if ($client->vendedor_id != Auth::id()) {
+            Session::flash('danger', 'El cliente que buscas no puede ser mostrado porque no tienes acceso a él.');
             return redirect('/vendedor/clientes');
         }
         return view('vendedor.client.show',compact('client'));
@@ -126,6 +128,7 @@ class ClientController extends Controller
         $cliente = Client::find($id);
         $fits = Fit::all();
         if (!$cliente || $cliente->vendedor_id != Auth::id()) {
+            Session::flash('danger', 'El cliente que buscas no existe o no tienes permiso para editarlo.');
             return redirect('/vendedor/clientes');
         }
         return view('vendedor.client.edit',compact('cliente','fits'));
@@ -200,6 +203,7 @@ class ClientController extends Controller
         $cliente->contacto = $request->contactoReferencia;
         $cliente->save();
 
+        $request->session()->flash('success', 'El cliente ha sido editado correctamente.');
         return redirect('/vendedor/clientes');
     }
 }
