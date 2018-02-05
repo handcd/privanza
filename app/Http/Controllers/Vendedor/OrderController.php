@@ -12,6 +12,7 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use PDF;
+use Session;
 
 class OrderController extends Controller
 {
@@ -129,6 +130,7 @@ class OrderController extends Controller
     {
         $orden = Order::find($id);
         if (!$orden || $orden->vendedor_id != Auth::id()) {
+            Session::flash('danger','La orden que deseas ver no puede ser mostrada porque no tienes autorización para verla o no existe.');
             return redirect('/vendedor/ordenes');
         }
 
@@ -146,6 +148,7 @@ class OrderController extends Controller
         $orden = Order::find($id);
 
         if (!$orden || $orden->vendedor_id != Auth::id() || $orden->approved) {
+            Session::flash('danger','La orden que deseas editar no puede ser mostrada porque no tienes autorización para verla o no existe.');
             return redirect('/vendedor/ordenes');
         }
         return view('vendedor.order.edit',compact('orden'));
