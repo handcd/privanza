@@ -6,6 +6,7 @@ use App\Validador;
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Session;
 
 class ProfileController extends Controller
 {
@@ -22,9 +23,8 @@ class ProfileController extends Controller
 
     public function askDataChange()
     {
-        // TODO: notify admin with data change...
-        $msg = "¡Listo! Hemos enviado una notificación al administrador. En breve se pondrán en contacto contigo para actualizar tus datos.";
 
-        return redirect()->back()->with('msg', $msg);
+        Session::flash('success','Hemos enviado una notificación al administrador. En breve se pondrán en contacto contigo para actualizar tu información :)');
+        return redirect()->back();
     }
 }
