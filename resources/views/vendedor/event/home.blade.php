@@ -132,6 +132,9 @@
                         @endforelse
                     </tbody>
                 </table>
+                <div class="row text-center">
+                    {{ $eventos->links() }}
+                </div>
             </div>
         </div>
     </div>
