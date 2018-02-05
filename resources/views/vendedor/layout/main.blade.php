@@ -188,4 +188,19 @@
         </div>
     </div>
 </body>
+<script>
+/*
+    Beautiful notifications.
+*/
+@foreach (['danger', 'warning', 'success', 'info'] as $key)
+    @if(Session::has($key))
+        $.notify({
+            icon: 'notifications',
+            message: '{{ Session::get($key) }}'
+        },{
+            type: '{{ $key }}'
+        });
+    @endif
+@endforeach
+</script>
 </html>
