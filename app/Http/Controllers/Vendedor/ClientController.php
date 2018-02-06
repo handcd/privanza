@@ -110,8 +110,8 @@ class ClientController extends Controller
     public function show($id)
     {
         $client = Client::find($id);
-        if ($client->vendedor_id != Auth::id()) {
-            Session::flash('danger', 'El cliente que buscas no puede ser mostrado porque no tienes acceso a él.');
+        if (!$client || $client->vendedor_id != Auth::id()) {
+            Session::flash('danger', 'El cliente que buscas no puede ser mostrado porque no tienes acceso a él o no existe.');
             return redirect('/vendedor/clientes');
         }
         return view('vendedor.client.show',compact('client'));

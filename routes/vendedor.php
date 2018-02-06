@@ -10,9 +10,9 @@ Route::get('/dashboard', function () {
     $dt = Carbon\Carbon::now();
 
     $clientes = App\Client::all()->where('vendedor_id', Auth::id());
-    $birthdays = $clientes
-    				->where('birthday','>=', $dt->startOfMonth())
-    				->where('birthday','<=', $dt->endOfMonth());
+    $birthdays = $clientes->filter(function($cliente,$key){
+        return Carbon\Carbon::parse($cliente->birthday)->isBirthday(Carbon\Carbon::now());
+    });
 
     $ordenes = App\Order::all()->where('vendedor_id', Auth::id());
     $recoger = $ordenes->where('recoger','1');

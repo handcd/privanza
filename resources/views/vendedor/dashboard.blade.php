@@ -148,67 +148,162 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-6">
-        <div class="card">
+    <div class="col-md-12">
+        <div class="card card-nav-tabs">
             <div class="card-header" data-background-color="purple">
-                <h4 class="title">Cumpleaños de Clientes</h4>
-                <p class="category">Clientes que cumplen años en {{ Carbon\Carbon::now()->format('F') }}</p>
+                <div class="nav-tabs-navigation">
+                    <div class="nav-tabs-wrapper">
+                        <span class="nav-tabs-title">Cumpleaños de Clientes:</span>
+                        <ul class="nav nav-tabs" data-tabs="tabs">
+                            <li class="active">
+                                <a href="#today" data-toggle="tab">
+                                    <i class="material-icons">today</i> Hoy
+                                    <div class="ripple-container"></div>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="#week" data-toggle="tab">
+                                    <i class="material-icons">view_week</i> Esta Semana
+                                    <div class="ripple-container"></div>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="#month" data-toggle="tab">
+                                    <i class="material-icons">date_range</i> Este Mes
+                                    <div class="ripple-container"></div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="card-content table-responsive">
-                <table class="table table-hover">
-                    <thead>
-                        <th>ID</th>
-                        <th>Cliente</th>
-                        <th>Fecha</th>
-                    </thead>
-                    <tbody>
-                        @forelse ($birthdays as $cliente)
-                        <tr>
-                            <td>{{ $cliente->id }}</td>
-                            <td><a href="{{ url('/vendedor/clientes/'.$cliente->id) }}">{{ $cliente->name }}</td>
-                            <td>{{ Carbon\Carbon::parse($cliente->birthday)->toDateString() }}</td>
-                        </tr>
-                        @empty
-                        <tr>
-                            <td colspan="3" class="text-center">Ningún cliente cumple años este mes :(</td>
-                        </tr>
-                        @endforelse
-                    </tbody>
-                </table>
+            <div class="card-content">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="today">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Fecha de Nacimiento</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($birthdays->where('birthday', Carbon\Carbon::today()) as $cliente)
+                                <tr>
+                                    <td>{{ $cliente->id }}</td>
+                                    <td>{{ $cliente->name.' '.$cliente->lastname }}</td>
+                                    <td>{{ $cliente->birthday }}</td>
+                                    <td class="td-actions text-right">
+                                        <a href="{{ url('/vendedor/clientes/'.$cliente->id) }}" type="button" rel="tooltip" title="Ver Cliente" class="btn btn-primary btn-simple btn-xs">
+                                            <i class="material-icons">remove_red_eye</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td colspan="4" class="text-center">Ningún cliente cumple años hoy :(</td>
+                                </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane" id="week">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Fecha de Nacimiento</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($birthdays as $cliente)
+                                <tr>
+                                    <td>{{ $cliente->id }}</td>
+                                    <td>{{ $cliente->name.' '.$cliente->lastname }}</td>
+                                    <td>{{ $cliente->birthday }}</td>
+                                    <td class="td-actions text-right">
+                                        <a href="{{ url('/vendedor/clientes/'.$cliente->id) }}" type="button" rel="tooltip" title="Ver Cliente" class="btn btn-primary btn-simple btn-xs">
+                                            <i class="material-icons">remove_red_eye</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td colspan="4" class="text-center">Ningún cliente cumple años esta semana :(</td>
+                                </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane" id="month">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Fecha de Nacimiento</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($birthdays as $cliente)
+                                <tr>
+                                    <td>{{ $cliente->id }}</td>
+                                    <td>{{ $cliente->name.' '.$cliente->lastname }}</td>
+                                    <td>{{ $cliente->birthday }}</td>
+                                    <td class="td-actions text-right">
+                                        <a href="{{ url('/vendedor/clientes/'.$cliente->id) }}" type="button" rel="tooltip" title="Ver Cliente" class="btn btn-primary btn-simple btn-xs">
+                                            <i class="material-icons">remove_red_eye</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td colspan="4" class="text-center">Ningún cliente cumple años este mes :(</td>
+                                </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div class="col-md-6">
         <div class="card">
             <div class="card-header" data-background-color="green">
-                <h4 class="title">Órdenes listas para recoger</h4>
-                <p class="category">Pedidos listos para recogerse en ISCO</p>
+                <h4 class="title">Cumpleaños de Clientes</h4>
+                <p class="category">Clientes que hoy cumplen años</p>
             </div>
             <div class="card-content table-responsive">
-                <table class="table table-hover">
+                <table class="table">
                     <thead>
-                        <th>ID</th>
-                        <th>Cliente</th>
-                        <th>Precio</th>
-                        <th>Fecha</th>
-                        <th>Acciones</th>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Fecha de Nacimiento</th>
+                            <th>Acciones</th>
+                        </tr>
                     </thead>
                     <tbody>
-                        @forelse ($recoger as $orden)
+                        @forelse ($birthdays as $cliente)
                         <tr>
-                            <td>{{ $orden->id }}</td>
-                            <td><a href="{{ url('/vendedor/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</td>
-                            <td class="text-primary">$2,380</td>
-                            <td>{{ $orden->created_at }}</td>
+                            <td>{{ $cliente->id }}</td>
+                            <td>{{ $cliente->name.' '.$cliente->lastname }}</td>
+                            <td>{{ $cliente->birthday }}</td>
                             <td class="td-actions text-right">
-                                <a href="{{ url('/vendedor/ordenes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden" class="btn btn-success btn-simple btn-xs">
+                                <a href="{{ url('/vendedor/clientes/'.$cliente->id) }}" type="button" rel="tooltip" title="Ver Cliente" class="btn btn-primary btn-simple btn-xs">
                                     <i class="material-icons">remove_red_eye</i>
                                 </a>
                             </td>
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="5" class="text-center">No tienes órdenes para recoger este mes :(</td>
+                            <td colspan="4" class="text-center">Ningún cliente cumple años hoy :(</td>
                         </tr>
                         @endforelse
                     </tbody>

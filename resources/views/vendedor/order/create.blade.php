@@ -274,13 +274,13 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 											<label>
 												<input type="checkbox" name="etiquetaTela">
 											</label>
-											Etiquetas de Tela
+											Se Reciben Etiquetas de Tela
 										</div>
 										<div class="checkbox">
 											<label>
 												<input type="checkbox" name="etiquetaMarca">
 											</label>
-											Etiquetas de Marca
+											Se Reciben Etiquetas de Marca
 										</div>
 										<div class="form-group label-floating">
 											<label class="control-label">Marca: <small>(opcional: dejar en blanco para Privanza)</small></label>
@@ -324,8 +324,8 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 		                                </select>
 		                            </div>
 		                            <div class="form-group label-floating">
-		                            	<label class="control-label">Personalización Gancho: <small>(opcional)</small></label>
-		                            	<input type="text" name="perGancho" class="form-control">
+		                            	<label class="control-label">Personalización Portatrajes: <small>(opcional)</small></label>
+		                            	<input type="text" name="perPortatrajes" class="form-control">
 		                            </div>
 								</div>
 							</div>
@@ -341,11 +341,34 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 							  cursor:pointer;
 							  border:4px solid #333;
 							  border-radius: 5px;
+							  max-width: 250px;
+							  max-height: 250px;
 							}
 							label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 							  border:5px solid #55bed5;
 							  border-radius: 5px;
 							  filter: opacity(80%) drop-shadow(8px 8px 10px gray);
+							}
+
+							.row > .col-xs-3:last-child {
+								padding-right: 6px !important;
+							}
+							.row > .col-xs-3:first-child {
+								padding-left: 6px !important;
+							}
+
+							@media (max-width: 599px) {
+								.row > .col-xs-3:last-child {
+									padding-right: 15px !important;
+								}
+								.row > .col-xs-3:first-child {
+									padding-left: 15px !important;
+								}
+
+								label > input + img{ /* IMAGE STYLES */
+									max-width: 100px;
+									max-height: 100px;
+								}
 							}
 						</style>
 						<div class="tab-pane" id="sacoExt">
@@ -398,9 +421,144 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 											</div>
 										</div>
 										<div class="col-sm-6">
+											<div class="row">
+												<div class="col-md-12">
+													<p>Selecciona el color del ojal en solapa:</p>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-1 col-xs-3">
+													<label>
+													  <input type="radio" name="colorOjalSolapa" value="542" />
+													  <img src="{{ asset('img/suit_options/colores/542.png') }}">
+													</label>
+												</div>
+												<div class="col-md-1 col-xs-3">
+													<label>
+													  <input type="radio" name="colorOjalSolapa" value="665" />
+													  <img src="{{ asset('img/suit_options/colores/665.png') }}">
+													</label>
+												</div>
+												<div class="col-md-1 col-xs-3">
+													<label>
+													  <input type="radio" name="colorOjalSolapa" value="1274" />
+													  <img src="{{ asset('img/suit_options/colores/1274.png') }}">
+													</label>
+												</div>
+												<div class="col-md-1 col-xs-3">
+													<label>
+													  <input type="radio" name="colorOjalSolapa" value="339" />
+													  <img src="{{ asset('img/suit_options/colores/339.png') }}">
+													</label>
+												</div>
+												<div class="col-md-1 col-xs-3">
+													<label>
+													  <input type="radio" name="colorOjalSolapa" value="310" />
+													  <img src="{{ asset('img/suit_options/colores/310.png') }}">
+													</label>
+												</div>
+												<div class="col-md-1 col-xs-3">
+													<label>
+													  <input type="radio" name="colorOjalSolapa" value="232" />
+													  <img src="{{ asset('img/suit_options/colores/232.png') }}">
+													</label>
+												</div>
+												<div class="col-md-1 col-xs-3">
+													<label>
+													  <input type="radio" name="colorOjalSolapa" value="904" />
+													  <img src="{{ asset('img/suit_options/colores/904.png') }}">
+													</label>
+												</div>
+												<div class="col-md-1 col-xs-3">
+													<label>
+													  <input type="radio" name="colorOjalSolapa" value="535" />
+													  <img src="{{ asset('img/suit_options/colores/535.png') }}">
+													</label>
+												</div>
+												<div class="col-md-1 col-xs-3">
+													<label>
+													  <input type="radio" name="colorOjalSolapa" value="112" />
+													  <img src="{{ asset('img/suit_options/colores/112.png') }}">
+													</label>
+												</div>
+												<div class="col-md-1 col-xs-3">
+													<label>
+													  <input type="radio" name="colorOjalSolapa" value="106" />
+													  <img src="{{ asset('img/suit_options/colores/106.png') }}">
+													</label>
+												</div>
+												<div class="col-md-1 col-xs-3">
+													<label>
+													  <input type="radio" name="colorOjalSolapa" value="46" />
+													  <img src="{{ asset('img/suit_options/colores/46.png') }}">
+													</label>
+												</div>
+												<div class="col-md-1 col-xs-3">
+													<label>
+													  <input type="radio" name="colorOjalSolapa" value="247" />
+													  <img src="{{ asset('img/suit_options/colores/247.png') }}">
+													</label>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-1 col-xs-3">
+													<label>
+													  <input type="radio" name="colorOjalSolapa" value="442" />
+													  <img src="{{ asset('img/suit_options/colores/442.png') }}">
+													</label>
+												</div>
+												<div class="col-md-1 col-xs-3">
+													<label>
+													  <input type="radio" name="colorOjalSolapa" value="724" />
+													  <img src="{{ asset('img/suit_options/colores/724.png') }}">
+													</label>
+												</div>
+												<div class="col-md-1 col-xs-3">
+													<label>
+													  <input type="radio" name="colorOjalSolapa" value="209" />
+													  <img src="{{ asset('img/suit_options/colores/209.png') }}">
+													</label>
+												</div>
+												<div class="col-md-1 col-xs-3">
+													<label>
+													  <input type="radio" name="colorOjalSolapa" value="496" />
+													  <img src="{{ asset('img/suit_options/colores/496.png') }}">
+													</label>
+												</div>
+												<div class="col-md-1 col-xs-3">
+													<label>
+													  <input type="radio" name="colorOjalSolapa" value="702" />
+													  <img src="{{ asset('img/suit_options/colores/702.png') }}">
+													</label>
+												</div>
+												<div class="col-md-1 col-xs-3">
+													<label>
+													  <input type="radio" name="colorOjalSolapa" value="701" />
+													  <img src="{{ asset('img/suit_options/colores/701.png') }}">
+													</label>
+												</div>
+												<div class="col-md-1 col-xs-3">
+													<label>
+													  <input type="radio" name="colorOjalSolapa" value="308" />
+													  <img src="{{ asset('img/suit_options/colores/308.png') }}">
+													</label>
+												</div>
+												<div class="col-md-1 col-xs-3">
+													<label>
+													  <input type="radio" name="colorOjalSolapa" value="038" />
+													  <img src="{{ asset('img/suit_options/colores/038.png') }}">
+													</label>
+												</div>
+												<div class="col-md-1 col-xs-3">
+													<label>
+													  <input type="radio" name="colorOjalSolapa" value="800" />
+													  <img src="{{ asset('img/suit_options/colores/800.png') }}">
+													</label>
+												</div>
+											</div>
 											<div class="form-group label-floating">
-												<label for="" class="control-label">Color para Ojal de Solapa: <small>(opcional)</small></label>
-												<input type="text" name="colorOjalSolapa" class="form-control">
+												<label for="" class="control-label">Otro Color:</label>
+												<input type="text" name="otroColorOjalSolapa" class="form-control">
 											</div>
 										</div>
 									</div>
@@ -473,13 +631,13 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-sm-4">
+									<div class="col-sm-6">
 										<div class="form-group label-floating">
 											<label class="control-label">Botones en Mangas:</label>
 											<input type="number" min="1" max="4" step="1" name="botonesMagnas" class="form-control" required="true">
 										</div>
 									</div>
-									<div class="col-sm-4">
+									<div class="col-sm-6">
 										<div class="form-group label-floating">
 											<label class="control-label">Tipo de Ojal en Manga</label>
 											<select name="tipoOjalManga" required="true" class="form-control">
@@ -489,10 +647,147 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 											</select>
 										</div>
 									</div>
-									<div class="col-sm-4">
+								</div>
+								<div class="row">
+									<div class="col-md-6 col-md-offset-3">
+										<div class="row">
+											<div class="col-md-12">
+												<p>Color de Ojal en Mangas:</p>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalManga" value="542" />
+												  <img src="{{ asset('img/suit_options/colores/542.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalManga" value="665" />
+												  <img src="{{ asset('img/suit_options/colores/665.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalManga" value="1274" />
+												  <img src="{{ asset('img/suit_options/colores/1274.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalManga" value="339" />
+												  <img src="{{ asset('img/suit_options/colores/339.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalManga" value="310" />
+												  <img src="{{ asset('img/suit_options/colores/310.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalManga" value="232" />
+												  <img src="{{ asset('img/suit_options/colores/232.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalManga" value="904" />
+												  <img src="{{ asset('img/suit_options/colores/904.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalManga" value="535" />
+												  <img src="{{ asset('img/suit_options/colores/535.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalManga" value="112" />
+												  <img src="{{ asset('img/suit_options/colores/112.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalManga" value="106" />
+												  <img src="{{ asset('img/suit_options/colores/106.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalManga" value="46" />
+												  <img src="{{ asset('img/suit_options/colores/46.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalManga" value="247" />
+												  <img src="{{ asset('img/suit_options/colores/247.png') }}">
+												</label>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalManga" value="442" />
+												  <img src="{{ asset('img/suit_options/colores/442.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalManga" value="724" />
+												  <img src="{{ asset('img/suit_options/colores/724.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalManga" value="209" />
+												  <img src="{{ asset('img/suit_options/colores/209.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalManga" value="496" />
+												  <img src="{{ asset('img/suit_options/colores/496.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalManga" value="702" />
+												  <img src="{{ asset('img/suit_options/colores/702.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalManga" value="701" />
+												  <img src="{{ asset('img/suit_options/colores/701.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalManga" value="308" />
+												  <img src="{{ asset('img/suit_options/colores/308.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalManga" value="038" />
+												  <img src="{{ asset('img/suit_options/colores/038.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalManga" value="800" />
+												  <img src="{{ asset('img/suit_options/colores/800.png') }}">
+												</label>
+											</div>
+										</div>
 										<div class="form-group label-floating">
-											<label for="" class="control-label">Color para Ojal de Manga: <small>(opcional)</small></label>
-											<input type="text" name="colorOjalManga" class="form-control">
+											<label for="" class="control-label">Otro Color:</label>
+											<input type="text" name="otroColorOjalManga" class="form-control">
 										</div>
 									</div>
 								</div>
@@ -596,7 +891,6 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 										<h4 class="text-center">Otros</h4>
 									</div>
 									<div class="col-md-6">
-										<p class="text-center">Pick Stitch</p>
 										<div class="col-md-6">
 											<label>
 											  <input type="checkbox" name="pickstitch" />
@@ -627,6 +921,7 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 										</div>
 									</div>
 									<div class="col-md-6">
+										Opciones de Aletilla
 										<div class="checkbox">
 											<label>
 												<input type="checkbox" name="sinaletilla">
@@ -641,57 +936,325 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 						<div class="tab-pane" id="sacoInt">
 							<h4 class="info-text">Datos de la parte Interna del Saco</h4>
 							<div class="row">
-								<div class="col-md-10 col-md-offset-1">
-									<p class="col-md-12 text-center">Tipo de Vista:</p>
-									<div class="col-md-8 col-md-offset-2">
-										<div class="col-md-6 col-xs-6">
-											<label>
-											  <input type="radio" name="tipoVista" value="0" required="" />
-											  <img src="{{ asset('img/suit_options/saco/Chapeta-francesa.png') }}">
-											  <p class="text-center">Normal</p>
-											</label>
-										</div>
-										<div class="col-md-6 col-xs-6">
-											<label>
-											  <input type="radio" name="tipoVista" value="1" />
-											  <img src="{{ asset('img/suit_options/saco/Chapeta-francesa.png') }}">
-											  <p class="text-center">Chapeta Francesa</p>
-											</label>
-										</div>
+								<p class="text-center">Tipo de Vista:</p>
+							</div>
+							<div class="row">
+								<div class="col-md-10 col-md-offset-1 text-center">
+									<div class="col-md-6 col-xs-6">
+										<label>
+										  <input type="radio" name="tipoVista" value="0" required="" />
+										  <img src="{{ asset('img/suit_options/saco/interior.normal.png') }}">
+										  <p class="text-center">Normal</p>
+										</label>
+									</div>
+									<div class="col-md-6 col-xs-6">
+										<label>
+										  <input type="radio" name="tipoVista" value="1" />
+										  <img src="{{ asset('img/suit_options/saco/Chapeta-francesa.png') }}">
+										  <p class="text-center">Chapeta Francesa</p>
+										</label>
 									</div>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-12">
-									<h4 class="text-center">Accesorios</h4>
-								</div>
+								<h4 class="text-center">Accesorios</h4>
+							</div>
+							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
-									<div class="col-xs-6">
-										<div class="checkbox">
-											<label>
-												<input name="pinponInterno" type="checkbox">
+									<div class="col-md-6">
+										<div class="row text-center">
+											<label>	
+											  <input type="checkbox" name="pinponinterno" />
+											  <img src="{{ asset('img/suit_options/saco/pin-point.png') }}">
+											  <p class="text-center">Pin Point</p>
 											</label>
-											Pin Pon
+										</div>
+										<div class="row">
+											<p class="text-center">Color de Pin Point</p>
+										</div>
+										<div class="row">
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="542" />
+												  <img src="{{ asset('img/suit_options/colores/542.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="665" />
+												  <img src="{{ asset('img/suit_options/colores/665.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="1274" />
+												  <img src="{{ asset('img/suit_options/colores/1274.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="339" />
+												  <img src="{{ asset('img/suit_options/colores/339.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="310" />
+												  <img src="{{ asset('img/suit_options/colores/310.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="232" />
+												  <img src="{{ asset('img/suit_options/colores/232.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="904" />
+												  <img src="{{ asset('img/suit_options/colores/904.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="535" />
+												  <img src="{{ asset('img/suit_options/colores/535.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="112" />
+												  <img src="{{ asset('img/suit_options/colores/112.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="106" />
+												  <img src="{{ asset('img/suit_options/colores/106.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="46" />
+												  <img src="{{ asset('img/suit_options/colores/46.png') }}">
+												</label>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="247" />
+												  <img src="{{ asset('img/suit_options/colores/247.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="442" />
+												  <img src="{{ asset('img/suit_options/colores/442.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="724" />
+												  <img src="{{ asset('img/suit_options/colores/724.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="209" />
+												  <img src="{{ asset('img/suit_options/colores/209.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="496" />
+												  <img src="{{ asset('img/suit_options/colores/496.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="702" />
+												  <img src="{{ asset('img/suit_options/colores/702.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="701" />
+												  <img src="{{ asset('img/suit_options/colores/701.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="308" />
+												  <img src="{{ asset('img/suit_options/colores/308.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="038" />
+												  <img src="{{ asset('img/suit_options/colores/038.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="800" />
+												  <img src="{{ asset('img/suit_options/colores/800.png') }}">
+												</label>
+											</div>
 										</div>
 										<div class="form-group label-floating">
-											<label class="control-label">Color Pin Pon <small>(opcional)</small></label>
-											<input type="text" class="form-control" name="pinponInternoColor">
+											<label for="" class="control-label">Otro Color:</label>
+											<input type="text" name="otroColorOjalSolapa" class="form-control">
 										</div>
 										<div class="form-group label-floating">
-											<label class="control-label">Código Pin Pon <small>(opcional)</small></label>
+											<label class="control-label">Código Pin Point<small>(opcional)</small></label>
 											<input type="text" class="form-control" name="pinponInternoCodigo">
 										</div>
 									</div>
-									<div class="col-xs-6">
-										<div class="checkbox">
+									<div class="col-md-6">
+										<div class="row text-center">
 											<label>
-												<input type="checkbox" name="biesInterno">
+											  <input type="checkbox" name="pinponinterno" />
+											  <img src="{{ asset('img/suit_options/saco/Bies.png') }}">
+											  <p class="text-center">Bies</p>
 											</label>
-											Bies
+										</div>
+										<div class="row">
+											<p class="text-center">Color de Bies</p>
+										</div>
+										<div class="row">
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="542" />
+												  <img src="{{ asset('img/suit_options/colores/542.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="665" />
+												  <img src="{{ asset('img/suit_options/colores/665.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="1274" />
+												  <img src="{{ asset('img/suit_options/colores/1274.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="339" />
+												  <img src="{{ asset('img/suit_options/colores/339.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="310" />
+												  <img src="{{ asset('img/suit_options/colores/310.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="232" />
+												  <img src="{{ asset('img/suit_options/colores/232.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="904" />
+												  <img src="{{ asset('img/suit_options/colores/904.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="535" />
+												  <img src="{{ asset('img/suit_options/colores/535.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="112" />
+												  <img src="{{ asset('img/suit_options/colores/112.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="106" />
+												  <img src="{{ asset('img/suit_options/colores/106.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="46" />
+												  <img src="{{ asset('img/suit_options/colores/46.png') }}">
+												</label>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="247" />
+												  <img src="{{ asset('img/suit_options/colores/247.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="442" />
+												  <img src="{{ asset('img/suit_options/colores/442.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="724" />
+												  <img src="{{ asset('img/suit_options/colores/724.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="209" />
+												  <img src="{{ asset('img/suit_options/colores/209.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="496" />
+												  <img src="{{ asset('img/suit_options/colores/496.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="702" />
+												  <img src="{{ asset('img/suit_options/colores/702.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="701" />
+												  <img src="{{ asset('img/suit_options/colores/701.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="308" />
+												  <img src="{{ asset('img/suit_options/colores/308.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="038" />
+												  <img src="{{ asset('img/suit_options/colores/038.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="800" />
+												  <img src="{{ asset('img/suit_options/colores/800.png') }}">
+												</label>
+											</div>
 										</div>
 										<div class="form-group label-floating">
-											<label class="control-label">Color Bies <small>(opcional)</small></label>
-											<input type="text" class="form-control" name="biesInternoColor">
+											<label for="" class="control-label">Otro Color:</label>
+											<input type="text" name="otroColorOjalSolapa" class="form-control">
 										</div>
 										<div class="form-group label-floating">
 											<label class="control-label">Código Bies <small>(opcional)</small></label>
@@ -709,7 +1272,7 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 								<div class="col-md-3 col-xs-6">
 									<label>
 									  <input type="checkbox" name="bolsasInt[]" value="pechoderecho"/>
-									  <img src="{{ asset('img/suit_options/saco/bolsas-internas.media.png') }}">
+									  <img src="{{ asset('img/suit_options/saco/bolsas-internas.media.derecha.png') }}">
 									  <p class="text-center">Pecho Derecho</p>
 									</label>
 								</div>
@@ -734,10 +1297,12 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 									  <p class="text-center">Plumera</p>
 									</label>
 								</div>
+							</div>
+							<div class="row">
 								<div class="col-md-6 col-md-offset-3">
 									<div class="form-group label-floating">
-										<label class="control-label">Color del Forro para Bolsas Internas <small>(opcional)</small></label>
-										<input type="text" class="form-control" name="forroBolsasInt">
+										<label class="control-label">Código de Color de Forro <small>(opcional)</small></label>
+										<input type="text" class="form-control" name="bolsasInternasColor">
 									</div>
 								</div>
 							</div>
@@ -745,14 +1310,88 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 
 						{{-- Tab Chaleco--}}
 						<div class="tab-pane" id="chaleco">
-                    		dspigjfdiogj chalecooo
+                    		<h3 class="info-text">Datos del Chaleco</h3>
+                    		<h5 class="info-text">Datos del Chaleco</h5>
+                    		<div class="row">
+                    			<div class="col-md-8 col-md-offset-2 text-center">
+                    				<div class="row">
+										<div class="col-xs-6">
+											<label>
+											  <input type="radio" name="cuelloChaleco" value="0" />
+											  <img src="{{ asset('img/suit_options/chaleco/Chaleco_V.png') }}">
+											  <p class="text-center">En 'V'</p>
+											</label>
+										</div>
+										<div class="col-xs-6">
+											<label>
+											  <input type="radio" name="cuelloChaleco" value="1" />
+											  <img src="{{ asset('img/suit_options/chaleco/Chaleco_Solapa.png') }}">
+											  <p class="text-center">Con Solapa</p>
+											</label>
+										</div>
+									</div>
+								</div>
+                    		</div>
+                    		<h4 class="info-text">Bolsas Delanteras</h4>
+                    		<div class="row">
+                    			<div class="col-md-8 col-md-offset-2 text-center">
+                    				<div class="row">
+										<div class="col-xs-6">
+											<label>
+											  <input type="radio" name="bolsasChaleco" value="0" />
+											  <img src="{{ asset('img/suit_options/chaleco/Chaleco_Vivos.png') }}">
+											  <p class="text-center">Vivos</p>
+											</label>
+										</div>
+										<div class="col-xs-6">
+											<label>
+											  <input type="radio" name="bolsasChaleco" value="1" />
+											  <img src="{{ asset('img/suit_options/chaleco/Chaleco_Aletilla.png') }}">
+											  <p class="text-center">Aletillas</p>
+											</label>
+										</div>
+									</div>
+								</div>
+                    		</div>
+                    		<h4 class="info-text">Forro o Tela</h4>
+                    		<div class="row">
+                    			<div class="col-md-8 col-md-offset-2 text-center">
+                    				<div class="row">
+                    					<div class="col-xs-6">
+                    						<label>
+                    							<input type="radio" name="forrotela" value="0">
+                    							<img src="{{ asset('img/suit_options/chaleco/Chaleco_espalda_forro.png') }}" alt="">
+                    							<p class="text-center">Forro</p>
+                    						</label>
+                    					</div>
+                    					<div class="col-xs-6">
+                    						<label>
+                    							<input type="radio" name="forrotela" value="1">
+                    							<img src="{{ asset('img/suit_options/chaleco/Chaleco_Espalda.png') }}" alt="">
+                    							<p class="text-center">Tela</p>
+                    						</label>
+                    					</div>
+                    				</div>
+                    			</div>
+                    		</div>
+                    		<h4 class="info-text">Opciones Extra</h4>
+                    		<div class="row">
+                    			<div class="col-md-8 col-md-offset-2 text-center">
+            						<label>
+									  <input type="checkbox" name="ajustadorChaleco"/>
+									  <img src="{{ asset('img/suit_options/chaleco/Chaleco_espalda_ajustador.png') }}">
+									  <p class="text-center">Ajustador Espalda</p>
+									</label>
+                    			</div>
+                    		</div>
                     	</div>
 
                     	{{-- Tab Pantalon --}}
 						<div class="tab-pane" id="pantalon">
 							<h4 class="info-text">Datos del Pantalón</h4>
 							<div class="row">
-								<div class="col-md-8 col-md-offset-2">
+								<p class="text-center">Tipo de Pase:</p>
+								<div class="col-md-8 col-md-offset-2 text-center">
 									<div class="col-md-6">
 										<label>
 										  <input type="radio" name="tipoPase" value="0" />
@@ -774,7 +1413,7 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 									<h4 class="text-center">Número de Pliegues</h4>
 								</div>
 							</div>
-							<div class="row">
+							<div class="row text-center">
 								<div class="col-md-4">
 									<label>
 									  <input type="radio" name="numPliegues" value="0" />
@@ -861,27 +1500,166 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 								<div class="col-md-12">
 									<h4 class="text-center">Interior</h4>
 								</div>
+							</div>
+							<div class="row">
 								<div class="col-md-8 col-md-offset-2">
 									<div class="col-md-6">
-										<label>
-										  <input type="checkbox" name="ribete" />
-										  <img src="{{ asset('img/suit_options/pantalon/pantalon_ribete.png') }}">
-										  <p class="text-center">Ribete en Ojalera y Encuarte</p>
-										</label>
+										<div class="row text-center">
+											<label>
+											  <input type="checkbox" name="ribete" />
+											  <img src="{{ asset('img/suit_options/pantalon/pantalon_ribete.png') }}">
+											  <p class="text-center">Ribete en Ojalera y Encuarte</p>
+											</label>
+										</div>
+										<div class="row">
+											<p class="text-center">Color de Ojalera y Encuarte</p>
+										</div>
+										<div class="row">
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="542" />
+												  <img src="{{ asset('img/suit_options/colores/542.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="665" />
+												  <img src="{{ asset('img/suit_options/colores/665.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="1274" />
+												  <img src="{{ asset('img/suit_options/colores/1274.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="339" />
+												  <img src="{{ asset('img/suit_options/colores/339.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="310" />
+												  <img src="{{ asset('img/suit_options/colores/310.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="232" />
+												  <img src="{{ asset('img/suit_options/colores/232.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="904" />
+												  <img src="{{ asset('img/suit_options/colores/904.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="535" />
+												  <img src="{{ asset('img/suit_options/colores/535.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="112" />
+												  <img src="{{ asset('img/suit_options/colores/112.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="106" />
+												  <img src="{{ asset('img/suit_options/colores/106.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="46" />
+												  <img src="{{ asset('img/suit_options/colores/46.png') }}">
+												</label>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="247" />
+												  <img src="{{ asset('img/suit_options/colores/247.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="442" />
+												  <img src="{{ asset('img/suit_options/colores/442.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="724" />
+												  <img src="{{ asset('img/suit_options/colores/724.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="209" />
+												  <img src="{{ asset('img/suit_options/colores/209.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="496" />
+												  <img src="{{ asset('img/suit_options/colores/496.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="702" />
+												  <img src="{{ asset('img/suit_options/colores/702.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="701" />
+												  <img src="{{ asset('img/suit_options/colores/701.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="308" />
+												  <img src="{{ asset('img/suit_options/colores/308.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="038" />
+												  <img src="{{ asset('img/suit_options/colores/038.png') }}">
+												</label>
+											</div>
+											<div class="col-md-1 col-xs-3">
+												<label>
+												  <input type="radio" name="colorOjalSolapa" value="800" />
+												  <img src="{{ asset('img/suit_options/colores/800.png') }}">
+												</label>
+											</div>
+										</div>
 										<div class="form-group label-floating">
-											<label class="control-label">Color de Ribete <small>(opcional)</small></label>
-											<input type="text" class="form-control" name="colorRibete">
+											<label for="" class="control-label">Otro Color:</label>
+											<input type="text" name="otroColorOjalSolapa" class="form-control">
 										</div>
 									</div>
 									<div class="col-md-6">
-										<label>
-										  <input type="checkbox" name="medioForroPiernas" />
-										  <img src="{{ asset('img/suit_options/pantalon/Pantalon_medioforro.png') }}">
-										  <p class="text-center">Medio Forro en Piernas</p>
-										</label>
+										<div class="row text-center">
+											<label>
+											  <input type="checkbox" name="medioForroPiernas" />
+											  <img src="{{ asset('img/suit_options/pantalon/Pantalon_medioforro.png') }}">
+											  <p class="text-center">Medio Forro en Piernas</p>
+											</label>
+										</div>
 										<div class="form-group label-floating">
-											<label class="control-label">Color de Medio Forro <small>(opcional)</small></label>
-											<input type="text" class="form-control" name="colorMedioForro">
+											<label for="" class="control-label">Código Color Medio Forro<small>(opcional)</small></label>
+											<input type="text" name="colorMedioForroPiernas" class="form-control">
 										</div>
 									</div>
 								</div>
@@ -890,15 +1668,15 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 								<div class="col-md-12">
 									<h4 class="text-center">Dobladillo</h4>
 								</div>
-								<div class="col-md-8 col-md-offset-2">
-									<div class="col-md-6">
+								<div class="col-md-8 col-md-offset-2 text-center">
+									<div class="col-xs-6">
 										<label>
 										  <input type="radio" name="dobladillo" value="1" />
-										  <img src="{{ asset('img/suit_options/pantalon/Pantalon_dobladillo.png') }}">
+										  <img src="{{ asset('img/suit_options/pantalon/pantalon.normal.png') }}">
 										  <p class="text-center">Dobladillo Normal</p>
 										</label>
 									</div>
-									<div class="col-md-6">
+									<div class="col-xs-6">
 										<label>
 										  <input type="radio" name="dobladillo" value="2" />
 										  <img src="{{ asset('img/suit_options/pantalon/Pantalon_dobladillo.png') }}">

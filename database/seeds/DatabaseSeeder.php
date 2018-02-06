@@ -44,6 +44,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         factory(App\Vendedor::class, 40)->create();
+        factory(App\Client::class, 30)->create([
+            'vendedor_id' => 1,
+        ]);
         factory(App\Client::class, App\Vendedor::all()->count()*15)->create();
         factory(App\Event::class, 600)->create();
         factory(App\Validador::class, 10)->create();
