@@ -344,6 +344,12 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 							  max-width: 250px;
 							  max-height: 250px;
 							}
+							label > input + img + p{
+								font-size: 1.2em;
+							    font-weight: 200;
+							    padding-top: 8px;
+							    color: #313034;
+							}
 							label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 							  border:5px solid #55bed5;
 							  border-radius: 5px;
@@ -605,21 +611,21 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 										<label>
 										  <input type="radio" name="aberturasDetras" value="0" required="" />
 										  <img src="{{ asset('img/suit_options/saco/Espalda_SinAberturas.png') }}">
-										  <p class="text-center">Sin aberturas</p>
+										  <p class="text-center">Sin Aberturas</p>
 										</label>
 									</div>
 									<div class="col-md-4 col-xs-6">
 										<label>
 										  <input type="radio" name="aberturasDetras" value="1" />
 										  <img src="{{ asset('img/suit_options/saco/Espalda_UnaAbertura.png') }}">
-										  <p class="text-center">1 abertura</p>
+										  <p class="text-center">1 Abertura</p>
 										</label>
 									</div>
 									<div class="col-md-4 col-xs-6">
 										<label>
 										  <input type="radio" name="aberturasDetras" value="2" />
 										  <img src="{{ asset('img/suit_options/saco/Espalda_DosAberturas.png') }}">
-										  <p class="text-center">2 aberturas</p>
+										  <p class="text-center">2 Aberturas</p>
 										</label>
 									</div>
 								</div>
