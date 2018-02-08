@@ -1510,13 +1510,6 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 							<div class="row">
 								<div class="col-md-8 col-md-offset-2">
 									<div class="col-md-6">
-										<div class="row text-center">
-											<label>
-											  <input type="checkbox" name="ribete" />
-											  <img src="{{ asset('img/suit_options/pantalon/pantalon_ribete.png') }}">
-											  <p class="text-center">Ribete en Ojalera y Encuarte</p>
-											</label>
-										</div>
 										<div class="row">
 											<p class="text-center">Color de Ojalera y Encuarte</p>
 										</div>
@@ -1656,13 +1649,6 @@ Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
 										</div>
 									</div>
 									<div class="col-md-6">
-										<div class="row text-center">
-											<label>
-											  <input type="checkbox" name="medioForroPiernas" />
-											  <img src="{{ asset('img/suit_options/pantalon/Pantalon_medioforro.png') }}">
-											  <p class="text-center">Medio Forro en Piernas</p>
-											</label>
-										</div>
 										<div class="form-group label-floating">
 											<label for="" class="control-label">Código Color Medio Forro<small>(opcional)</small></label>
 											<input type="text" name="colorMedioForroPiernas" class="form-control">
