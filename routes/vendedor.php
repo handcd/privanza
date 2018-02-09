@@ -12,7 +12,7 @@ Route::get('/clientes/{client}/editar','ClientController@edit');
 Route::put('/clientes/{client}','ClientController@update');
 
 // Orders
-Route::get('/ordenes','OrderController@index');
+Route::get('/ordenes','OrderController@indexVendedor');
 Route::get('/ordenes/agregar', 'OrderController@create');
 Route::post('/ordenes','OrderController@store');
 Route::get('/ordenes/{order}','OrderController@show');

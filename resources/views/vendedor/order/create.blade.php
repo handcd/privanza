@@ -10,7 +10,7 @@
 <script src="{{ asset('wizard/js/jquery.validate.min.js') }}"></script>
 <style>
 /*
-Estilos para ajustar discrepancias entre Material Dashboard y el Wizard
+Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
 */
 	.wizard-container {
 		padding: 0px !important;
