@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Vendedor;
+namespace App\Http\Controllers;
 
 use App\Vendedor;
 use App\Order;
@@ -21,7 +21,7 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function indexVendedor()
     {
         $allOrders = Vendedor::find(Auth::id())->orders;
         $ordenes = Vendedor::find(Auth::id())->orders()->paginate(15);

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Vendedor;
+namespace App\Http\Controllers;
 
 use App\Vendedor;
 use App\Event;

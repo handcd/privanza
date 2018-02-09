@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Vendedor;
+namespace App\Http\Controllers;
 
 use App\Client;
 use App\Fit;
@@ -17,7 +17,7 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function indexVendedor()
     {
         $clientes = Auth::user()->clients()->paginate(15);
         return view('vendedor.client.home',compact('clientes'));
@@ -28,7 +28,7 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createVendedor()
     {
         $fits = Fit::all();
         return view('vendedor.client.create',compact('fits'));

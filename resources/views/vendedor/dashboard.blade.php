@@ -180,7 +180,7 @@
             <div class="card-content">
                 <div class="tab-content">
                     <div class="tab-pane active" id="today">
-                        <table class="table">
+                        <table class="table table-responsive">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -190,7 +190,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($birthdays->where('birthday', Carbon\Carbon::today()) as $cliente)
+                                @forelse ($birthdaysToday as $cliente)
                                 <tr>
                                     <td>{{ $cliente->id }}</td>
                                     <td>{{ $cliente->name.' '.$cliente->lastname }}</td>
@@ -210,7 +210,7 @@
                         </table>
                     </div>
                     <div class="tab-pane" id="week">
-                        <table class="table">
+                        <table class="table table-responsive">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -220,7 +220,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($birthdays as $cliente)
+                                @forelse ($birthdaysWeek as $cliente)
                                 <tr>
                                     <td>{{ $cliente->id }}</td>
                                     <td>{{ $cliente->name.' '.$cliente->lastname }}</td>
@@ -240,7 +240,7 @@
                         </table>
                     </div>
                     <div class="tab-pane" id="month">
-                        <table class="table">
+                        <table class="table table-responsive">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -250,7 +250,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($birthdays as $cliente)
+                                @forelse ($birthdaysMonth as $cliente)
                                 <tr>
                                     <td>{{ $cliente->id }}</td>
                                     <td>{{ $cliente->name.' '.$cliente->lastname }}</td>
@@ -290,7 +290,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($birthdays as $cliente)
+                        @forelse ($birthdaysMonth as $cliente)
                         <tr>
                             <td>{{ $cliente->id }}</td>
                             <td>{{ $cliente->name.' '.$cliente->lastname }}</td>
