@@ -848,7 +848,7 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
 									<div class="col-md-6">
 										<div class="row text-center">
 											<label>	
-											  <input type="checkbox" name="pinponinterno" />
+											  <input type="checkbox" name="pinPointInterno" />
 											  <img src="{{ asset('img/suit_options/saco/pin-point.png') }}">
 											  <p class="text-center">Pin Point</p>
 											</label>
@@ -916,13 +916,13 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
 										</div>
 										<div class="form-group label-floating">
 											<label class="control-label">Código Pin Point<small>(opcional)</small></label>
-											<input type="text" class="form-control" name="pinponInternoCodigo">
+											<input type="text" class="form-control" name="pinPointInternoCodigo">
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="row text-center">
 											<label>
-											  <input type="checkbox" name="pinponinterno" />
+											  <input type="checkbox" name="biesInterno" />
 											  <img src="{{ asset('img/suit_options/saco/Bies.png') }}">
 											  <p class="text-center">Bies</p>
 											</label>
@@ -1000,7 +1000,64 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
 							</div>
 							<div class="row">
 								<div class="col-md-4 col-md-offset-4">
-									seleccionador...
+									<div class="color-picker">
+										<div class="row text-center">
+											<div class="col-md-10 col-md-offset-1">
+												<div class="col-xs-3">
+													<label>
+													  <input type="radio" name="colorPuntada" value="Negro" />
+													  <img src="{{ asset('img/suit_options/colores/negro.png') }}">
+													</label>
+												</div>
+												<div class="col-xs-3">
+													<label>
+													  <input type="radio" name="colorPuntada" value="Gris Oxford" />
+													  <img src="{{ asset('img/suit_options/colores/gris_oxford.png') }}">
+													</label>
+												</div>
+												<div class="col-xs-3">
+													<label>
+													  <input type="radio" name="colorPuntada" value="Gris Claro" />
+													  <img src="{{ asset('img/suit_options/colores/gris_claro.png') }}">
+													</label>
+												</div>
+												<div class="col-xs-3">
+													<label>
+													  <input type="radio" name="colorPuntada" value="Blanco" />
+													  <img src="{{ asset('img/suit_options/colores/blanco.png') }}">
+													</label>
+												</div>
+												<div class="col-xs-3">
+													<label>
+													  <input type="radio" name="colorPuntada" value="Azul Marino" />
+													  <img src="{{ asset('img/suit_options/colores/azul_marino.png') }}">
+													</label>
+												</div>
+												<div class="col-xs-3">
+													<label>
+													  <input type="radio" name="colorPuntada" value="Azul Cielo" />
+													  <img src="{{ asset('img/suit_options/colores/azul_cielo.png') }}">
+													</label>
+												</div>
+												<div class="col-xs-3">
+													<label>
+													  <input type="radio" name="colorPuntada" value="Rojo" />
+													  <img src="{{ asset('img/suit_options/colores/rojo.png') }}">
+													</label>
+												</div>
+												<div class="col-xs-3">
+													<label>
+													  <input type="radio" name="colorPuntada" value="Vino" />
+													  <img src="{{ asset('img/suit_options/colores/vino.png') }}">
+													</label>
+												</div>
+											</div>
+										</div>
+										<div class="form-group label-floating">
+											<label for="" class="control-label">Código de Otro Color:</label>
+											<input type="text" name="otroColorPuntada" class="form-control">
+										</div>
+									</div>
 								</div>
 							</div>
 							<div class="row">
@@ -1097,7 +1154,7 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
 						{{-- Tab Chaleco--}}
 						<div class="tab-pane" id="chaleco">
                     		<h3 class="info-text">Datos del Chaleco</h3>
-                    		<h5 class="info-text">Datos del Chaleco</h5>
+                    		<h5 class="info-text">Tipo de Cuello</h5>
                     		<div class="row">
                     			<div class="col-md-8 col-md-offset-2 text-center">
                     				<div class="row">
@@ -1145,14 +1202,14 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
                     				<div class="row">
                     					<div class="col-xs-6">
                     						<label>
-                    							<input type="radio" name="forrotela" value="0">
+                    							<input type="radio" name="forroTela" value="0">
                     							<img src="{{ asset('img/suit_options/chaleco/Chaleco_espalda_forro.png') }}" alt="">
                     							<p class="text-center">Forro</p>
                     						</label>
                     					</div>
                     					<div class="col-xs-6">
                     						<label>
-                    							<input type="radio" name="forrotela" value="1">
+                    							<input type="radio" name="forroTela" value="1">
                     							<img src="{{ asset('img/suit_options/chaleco/Chaleco_Espalda.png') }}" alt="">
                     							<p class="text-center">Tela</p>
                     						</label>
@@ -1252,7 +1309,7 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
 									</div>
 									<div class="col-xs-6">
 										<label>
-										  <input type="radio" name="tipoVivo" value="3" />
+										  <input type="radio" name="tipoVivo" value="2" />
 										  <img src="{{ asset('img/suit_options/pantalon/VivoSencillo_Ojal.png') }}">
 										  <p class="text-center">Vivo Sencillo con Ojal</p>
 										</label>
