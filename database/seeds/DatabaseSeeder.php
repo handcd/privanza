@@ -50,5 +50,49 @@ class DatabaseSeeder extends Seeder
         factory(App\Client::class, App\Vendedor::all()->count()*15)->create();
         factory(App\Event::class, 600)->create();
         factory(App\Validador::class, 10)->create();
+
+        // Generate 10 orders for the main Vendedor
+        for ($i=1; $i <= 10; $i++) { 
+            $orden = factory(App\Order::class)->create([
+                'vendedor_id' => 1,
+            ]);
+            if ($orden->vest) {
+                factory(App\Vest::class)->create([
+                    'order_id' => $i,
+                ]);
+            }
+            if ($orden->coat) {
+                factory(App\Coat::class)->create([
+                    'order_id' => $i,
+                ]);
+            }
+            if ($orden->pants) {
+                factory(App\Pants::class)->create([
+                    'order_id' => $i,
+                ]);
+            }
+
+        }
+
+        // Generate 100 random orders
+        for ($i=11; $i <= 110; $i++) { 
+            $orden = factory(App\Order::class)->create();
+            if ($orden->vest) {
+                factory(App\Vest::class)->create([
+                    'order_id' => $i,
+                ]);
+            }
+            if ($orden->coat) {
+                factory(App\Coat::class)->create([
+                    'order_id' => $i,
+                ]);
+            }
+            if ($orden->pants) {
+                factory(App\Pants::class)->create([
+                    'order_id' => $i,
+                ]);
+            }
+
+        }
     }
 }
