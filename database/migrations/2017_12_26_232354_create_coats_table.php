@@ -27,27 +27,27 @@ class CreateCoatsTable extends Migration
             $table->string('color_ojal_manga');
             $table->integer('posicion_ojal_manga'); // 0 Cascada, 1 en línea
             $table->boolean('ojales_activos_manga'); 
-            $table->boolean('bolsaParche');
-            $table->boolean('bolsaCartera');
-            $table->boolean('bolsaCarteraDiag');
-            $table->boolean('bolsaVivo');
-            $table->boolean('bolsaVivoDiag');
-            $table->boolean('bolsaCarteraContinental');
-            $table->boolean('bolsaCarteraContinentalDiag');
-            $table->boolean('sinBolsas');
-            $table->boolean('pickStitch');
-            $table->boolean('pickStitchFilos');
-            $table->boolean('pickStitchAletillla');
-            $table->boolean('pickStitchCartera');
-            $table->boolean('sinAletilla');
+            $table->boolean('bolsa_parche');
+            $table->boolean('bolsa_cartera');
+            $table->boolean('bolsa_cartera_diagonal');
+            $table->boolean('bolsa_vivo');
+            $table->boolean('bolsa_vivo_diagonal');
+            $table->boolean('bolsa_cartera_continental');
+            $table->boolean('bolsa_cartera_continental_diagonal');
+            $table->boolean('sin_bolsas');
+            $table->boolean('pickstitch');
+            $table->boolean('pickstitch_filos');
+            $table->boolean('pickstitch_aletillla');
+            $table->boolean('pickstitch_cartera');
+            $table->boolean('sin_aletilla');
 
             // Saco - Interno
             $table->integer('tipo_vista'); // 0 normal / 1 chapeta francesa
-            $table->boolean('balsamRayas');
-            $table->string('forroInternoMangas');
+            $table->boolean('balsam_rayas');
+            $table->string('forro_interno_mangas');
             $table->boolean('intern_pin_point');
-            $table->string('intern_pin_point_color');
-            $table->string('intern_pin_point_code');
+            $table->string('pin_point_interno_color');
+            $table->string('pin_point_interno_codigo');
             $table->boolean('bies');
             $table->string('color_bies');
             $table->string('codigo_bies');
