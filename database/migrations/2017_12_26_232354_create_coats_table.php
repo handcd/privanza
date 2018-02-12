@@ -17,32 +17,51 @@ class CreateCoatsTable extends Migration
             $table->increments('id');
             $table->integer('order_id');
             // Saco - Externo
+            $table->integer('tipo_solapa'); // 0pico/1escuadra
+            $table->integer('tipo_ojal_solapa'); // 0al tono/1en contraste/2activo
+            $table->string('color_ojal_solapa');
             $table->integer('botones_frente'); // 1,2,3,6
             $table->integer('aberturas_detras'); // 0,1,2
-            $table->integer('tipo_solapa'); // 0pico/1escuadra
-            $table->integer('tam_solapa'); // 0normal/1ancha
             $table->integer('botones_mangas'); // 0-4
-            $table->integer('tipo_ojal_solapa'); // 0al tono/1en contraste/2activo
-            $table->string('color_ojal_solapa')->nullable();
             $table->integer('tipo_ojal_manga'); // al tono/en contraste/activos
-            $table->string('color_ojal_manga')->nullable();
-            $table->string('posicion_ojal_manga')->nullable();
-            $table->integer('ojales_activos_manga'); // 1-4
-            $table->boolean('saco_bolsas_ext_carteras'); // 0con carteras/1sin carteras
-            $table->boolean('pick_stitch');
+            $table->string('color_ojal_manga');
+            $table->integer('posicion_ojal_manga'); // 0 Cascada, 1 en línea
+            $table->boolean('ojales_activos_manga'); 
+            $table->boolean('bolsaParche');
+            $table->boolean('bolsaCartera');
+            $table->boolean('bolsaCarteraDiag');
+            $table->boolean('bolsaVivo');
+            $table->boolean('bolsaVivoDiag');
+            $table->boolean('bolsaCarteraContinental');
+            $table->boolean('bolsaCarteraContinentalDiag');
+            $table->boolean('sinBolsas');
+            $table->boolean('pickStitch');
+            $table->boolean('pickStitchFilos');
+            $table->boolean('pickStitchAletillla');
+            $table->boolean('pickStitchCartera');
+            $table->boolean('sinAletilla');
+
             // Saco - Interno
-            $table->integer('tipo_vista'); // normal/chapeta francesa
-            $table->boolean('pin_point');
-            $table->string('color_pin_point')->nullable();
-            $table->string('codigo_pin_point')->nullable();
+            $table->integer('tipo_vista'); // 0 normal / 1 chapeta francesa
+            $table->boolean('balsamRayas');
+            $table->string('forroInternoMangas');
+            $table->boolean('intern_pin_point');
+            $table->string('intern_pin_point_color');
+            $table->string('intern_pin_point_code');
             $table->boolean('bies');
-            $table->string('color_bies')->nullable();
-            $table->string('codigo_bies')->nullable();
-            $table->boolean('bolsa_p_der');
-            $table->boolean('bolsa_p_izq');
-            $table->boolean('bolsa_cig');
-            $table->boolean('bolsa_plum');
-            $table->string('bolsa_int_color')->nullable();         
+            $table->string('color_bies');
+            $table->string('codigo_bies');
+            $table->string('puntada_color');
+            $table->boolean('bolsa_interna_pecho_derecho');
+            $table->boolean('bolsa_interna_pecho_izquierdo');
+            $table->boolean('bolsa_interna_cigarrera');
+            $table->boolean('bolsa_interna_plumera');
+            $table->string('bolsa_int_color')->nullable();
+            $table->boolean('vivos_bolsas_internas_cuerpo');
+            $table->string('otro_vivos_bolsas_internas');
+            $table->boolean('puntada_filos');
+            $table->boolean('puntada_aletillas');
+            $table->boolean('puntada_carteras');
             $table->timestamps();
         });
     }
