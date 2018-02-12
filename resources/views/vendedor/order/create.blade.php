@@ -125,7 +125,7 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-6">
+								<div class="col-md-6 col-md-offset-3">
 									<h4 class="text-center">¿Qué tipo de tela se usará?</h4>
                                     <div class="col-xs-6">
                                         <div class="choice" id="telaCliente" data-toggle="wizard-radio" rel="tooltip" title="Selecciona esta opción si la tela la proporcionará el cliente.">
@@ -186,7 +186,9 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
 	                                    </div>
                                     </div>
 								</div>
-								<div class="col-md-6">
+							</div>
+							<div class="row">
+								<div class="col-md-6 col-md-offset-3">
 									<h4 class="text-center">¿Qué tipo de forro se usará?</h4>
                                     <div class="col-xs-6">
                                         <div class="choice" id="forroCliente" data-toggle="wizard-radio" rel="tooltip" title="Selecciona esta opción si el forro lo proporcionará el cliente.">
