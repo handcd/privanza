@@ -16,8 +16,7 @@ class CreateVestsTable extends Migration
         Schema::create('vests', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('tipo_cuello'); // 1 En V/2 Con Solapa
-            $table->integer('bolsas'); // 0,1,2
-            $table->integer('tipo_bolsas')->nullable(); // 1 Vivo/2 Aletilla
+            $table->integer('tipo_bolsas')->nullable(); // 0 Vivo/1 Aletilla
             $table->integer('tipo_espalda'); // 1 Forro/ 2 Tela
             $table->boolean('ajustador_espalda');
             $table->timestamps();
