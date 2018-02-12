@@ -69,7 +69,7 @@
                 margin-bottom: 30px;
             }
 
-            @media (max-width: 599px) {
+            @media (max-width: 799px) {
                 .title {
                     font-size: 30px;
                 }
@@ -85,10 +85,12 @@
             <div class="content">
                 <div class="title m-b-md">
                     Error 500<br><br>
-                    Estamos experimentando dificultades técnicas
+                    Ocurrió un error, lo sentimos :(
                 </div>
                 <p>Hemos enviado a los mejores y más valientes en busca del error, todo deberá solucionarse a la brevedad. Vuelve a intentarlo dentro de 10 minutos.</p>
                 <p>Si el error persiste, puedes escribirnos a <a href="mailto:contacto@privanza.com">contacto@privanza.com</a></p>
+                <br>
+                <p><a href="{{ URL::previous() }}">Volver a la página anterior...</a></p>
             </div>
         </div>
     </body>

@@ -66,13 +66,9 @@
                 margin-bottom: 30px;
             }
 
-            @media (max-width: 599px) {
+            @media (max-width: 799px) {
                 .title {
                     font-size: 30px;
-                }
-
-                .links > a {
-                    font-size: 15px;
                 }
             }
         </style>
@@ -86,7 +82,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ url('/') }}">Ir a la página inicial.</a>
+                    <a href="{{ URL::previous() }}">Volver a la página anterior</a>
                 </div>
             </div>
         </div>

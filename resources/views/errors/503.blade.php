@@ -69,7 +69,7 @@
                 margin-bottom: 30px;
             }
 
-            @media (max-width: 599px) {
+            @media (max-width: 799px) {
                 .title {
                     font-size: 30px;
                 }
