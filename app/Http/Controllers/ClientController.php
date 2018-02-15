@@ -17,7 +17,7 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexVendedor()
+    public function indexForVendedor()
     {
         $clientes = Auth::user()->clients()->paginate(15);
         return view('vendedor.client.home',compact('clientes'));
@@ -28,7 +28,7 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createVendedor()
+    public function createForVendedor()
     {
         $fits = Fit::all();
         return view('vendedor.client.create',compact('fits'));
@@ -40,7 +40,7 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeForVendedor(Request $request)
     {
         $cliente = new Client;
         $this->validate($request, [
@@ -107,7 +107,7 @@ class ClientController extends Controller
      * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showForVendedor($id)
     {
         $client = Client::find($id);
         if (!$client || $client->vendedor_id != Auth::id()) {
@@ -123,7 +123,7 @@ class ClientController extends Controller
      * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editForVendedor($id)
     {
         $cliente = Client::find($id);
         $fits = Fit::all();
@@ -141,7 +141,7 @@ class ClientController extends Controller
      * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateForVendedor(Request $request, $id)
     {
         $cliente = Client::find($id);
 

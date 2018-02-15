@@ -21,7 +21,7 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexVendedor()
+    public function indexForVendedor()
     {
         $allOrders = Vendedor::find(Auth::id())->orders;
         $ordenes = Vendedor::find(Auth::id())->orders()->paginate(15);
@@ -38,7 +38,7 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createForVendedor()
     {
         $clientes = Vendedor::find(Auth::id())->clients;
         return view('vendedor.order.create',compact('clientes'));
@@ -50,7 +50,7 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeForVendedor(Request $request)
     {
         return $request;
 
@@ -126,7 +126,7 @@ class OrderController extends Controller
      * @param  \App\Vendedor  $vendedor
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showForVendedor($id)
     {
         $orden = Order::find($id);
         if (!$orden || $orden->vendedor_id != Auth::id()) {
@@ -143,7 +143,7 @@ class OrderController extends Controller
      * @param  \App\Vendedor  $vendedor
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editForVendedor($id)
     {
         $orden = Order::find($id);
 
@@ -161,7 +161,7 @@ class OrderController extends Controller
      * @param  \App\Vendedor  $vendedor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateForVendedor(Request $request, $id)
     {
         return $request;
     }
@@ -172,7 +172,7 @@ class OrderController extends Controller
      * @param $id
      * @return PDF file for stream
      */
-    public function orderpdf($id)
+    public function orderpdfForVendedor($id)
     {
         $orden = Order::find($id);
         

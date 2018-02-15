@@ -18,7 +18,7 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function indexForVendedor()
     {
         // Citas Principales
         $eventos = Auth::user()->events;
@@ -44,7 +44,7 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createForVendedor()
     {
         $clientes = Vendedor::find(Auth::id())->clients;
         return view('vendedor.event.create',compact('clientes'));
@@ -56,7 +56,7 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeForVendedor(Request $request)
     {
         $evento = new Event;
         $this->validate($request, [
@@ -85,7 +85,7 @@ class EventController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showForVendedor($id)
     {
         $evento = Event::find($id);
         if (!$evento || $evento->vendedor_id != Auth::id()) {
@@ -101,7 +101,7 @@ class EventController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editForVendedor($id)
     {
         $evento = Event::find($id);
         if (!$evento || $evento->vendedor_id != Auth::id() || Carbon::parse($evento->fechahora)->isPast() ) {
@@ -119,7 +119,7 @@ class EventController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateForVendedor(Request $request, $id)
     {
         $evento = Event::find($id);
 

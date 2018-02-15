@@ -46,9 +46,9 @@ class DashboardController extends Controller
 	    $recoger = Order::where('pickup','1')->get();
 
 	    // Warning if there are Orders ready for pickup.
-	    if ($recoger->count() > 0) {
-	    	Session::flash('warning', 'Tienes pedidos listos para ser recogidos.');
-	    }
+	    // if ($recoger->count() > 0) {
+	    // 	Session::flash('warning', 'Tienes pedidos listos para ser recogidos.');
+	    // }
 
 	    return view('vendedor.dashboard', compact('ordenes','birthdaysToday','birthdaysWeek','birthdaysMonth','recoger','clientes'));
     }
