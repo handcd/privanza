@@ -14,31 +14,36 @@ class DashboardController extends Controller
 {
     public function vendedorDash()
     {
+    	$currentTime = Carbon::now();
+
 	    $clientes = Client::where('vendedor_id', Auth::id())
 	    					->get();
 
-	    $birthdaysMonth = Client::whereMonth('birthday',Carbon::now()->month)
+	    $birthdaysMonth = Client::whereMonth('birthday',$currentTime->month)
+	    				 		->where('vendedor_id', Auth::id())
 	    						->orderBy('birthday','asc')
 	    						->get();
 
-	    $birthdaysToday = Client::whereMonth('birthday',Carbon::now()->month)
-	    						->whereDay('birthday',Carbon::now()->day)
+	    $birthdaysToday = Client::whereMonth('birthday',$currentTime->month)
+	    						->where('vendedor_id', Auth::id())
+	    						->whereDay('birthday',$currentTime->day)
 	    						->orderBy('birthday','asc')
 	    						->get();
 
-	    $birthdaysWeek = Client::whereMonth('birthday',Carbon::now()->month)
-	    						->whereDay('birthday','>=',Carbon::now()->day)
-	    						->whereDay('birthday','<=',Carbon::now()->addWeek()->day)
+	    $birthdaysWeek = Client::whereMonth('birthday',$currentTime->month)
+	    						->where('vendedor_id', Auth::id())
+	    						->whereDay('birthday','>=',$currentTime->day)
+	    						->whereDay('birthday','<=',$currentTime->addWeek()->day)
 	    						->get();
 
 	    $ordenes = Order::where('vendedor_id',Auth::id())
-	    					->whereYear('created_at',Carbon::now()->year)
+	    					->whereYear('created_at',$currentTime->year)
 	    					->get();
 
 	    $montoVentas = array();
 	    for ($i=1; $i < 13; $i++) { 
 	    	$montoVentas[] = Order::where('vendedor_id',Auth::id())
-	    							->whereYear('created_at',Carbon::now()->year)
+	    							->whereYear('created_at',$currentTime->year)
 	    							->whereMonth('created_at',$i)
 	    							->sum('precio');
 	    }
