@@ -55,6 +55,7 @@ class DatabaseSeeder extends Seeder
         for ($i=1; $i <= 20; $i++) { 
             $orden = factory(App\Order::class)->create([
                 'vendedor_id' => 1,
+                'client_id' => App\Vendedor::find(1)->clients->random(),
             ]);
             if ($orden->vest) {
                 factory(App\Vest::class)->create([
