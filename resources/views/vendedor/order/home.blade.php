@@ -45,6 +45,14 @@
                         @endforelse
                     </tbody>
                 </table>
+                <div class="row text-center">
+                    {{ $noAprobadas->appends([
+                            'aprobadas' => $aprobadas->currentPage(),
+                            'listosEntrega' => $listosEntrega->currentPage(),
+                            'finalizados' => $finalizados->currentPage(),
+                            'general' => $ordenes->currentPage()
+                        ])->links() }}
+                </div>
             </div>
         </div>
     </div>
@@ -83,6 +91,14 @@
                         @endforelse
                     </tbody>
                 </table>
+                <div class="row text-center">
+                    {{ $aprobadas->appends([
+                            'noAprobadas' => $noAprobadas->currentPage(),
+                            'listosEntrega' => $listosEntrega->currentPage(),
+                            'finalizados' => $finalizados->currentPage(),
+                            'general' => $ordenes->currentPage()
+                        ])->links() }}
+                </div>
             </div>
         </div>
     </div>
@@ -121,6 +137,14 @@
                         @endforelse
                     </tbody>
                 </table>
+                <div class="row text-center">
+                    {{ $listosEntrega->appends([
+                            'aprobadas' => $aprobadas->currentPage(),
+                            'noAprobadas' => $noAprobadas->currentPage(),
+                            'finalizados' => $finalizados->currentPage(),
+                            'general' => $ordenes->currentPage()
+                        ])->links() }}
+                </div>
             </div>
         </div>
     </div>
@@ -159,6 +183,14 @@
                         @endforelse
                     </tbody>
                 </table>
+                <div class="row text-center">
+                    {{ $finalizados->appends([
+                            'aprobadas' => $aprobadas->currentPage(),
+                            'noAprobadas' => $noAprobadas->currentPage(),
+                            'listosEntrega' => $listosEntrega->currentPage(),
+                            'general' => $ordenes->currentPage()
+                        ])->links() }}
+                </div>
             </div>
         </div>
     </div>
@@ -167,7 +199,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header" data-background-color="blue">
-                <h4 class="title">Todas los pedidos</h4>
+                <h4 class="title">Todos los pedidos</h4>
                 <p class="category">Lista con todos los pedidos que has ingresado al sistema</p>
             </div>
             <div class="card-content table-responsive">
@@ -187,7 +219,7 @@
                         <tr>
                             <td>{{ $orden->id }}</td>
                             <td><a href="{{ url('/vendedor/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</td>
-                            <td class="text-primary">$2,380</td>
+                            <td class="text-primary">${{ $orden->precio }}</td>
                             <td>{{ $orden->created_at }}</td>
                             <td class="td-actions text-right">
                                 <a href="{{ url('/vendedor/ordenes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden" class="btn btn-success btn-simple btn-xs">
@@ -208,7 +240,12 @@
                     </tbody>
                 </table>
                 <div class="row text-center">
-                    {{ $ordenes->links() }}
+                    {{ $ordenes->appends([
+                            'aprobadas' => $aprobadas->currentPage(),
+                            'noAprobadas' => $noAprobadas->currentPage(),
+                            'listosEntrega' => $listosEntrega->currentPage(),
+                            'finalizados' => $finalizados->currentPage()
+                        ])->links() }}
                 </div>
             </div>
         </div>

@@ -23,12 +23,13 @@ class OrderController extends Controller
      */
     public function indexForVendedor()
     {
-        $allOrders = Vendedor::find(Auth::id())->orders;
-        $ordenes = Vendedor::find(Auth::id())->orders()->paginate(15);
-        $aprobadas = $allOrders->where('approved','1');
-        $noAprobadas = $allOrders->where('approved','0');
-        $listosEntrega = $allOrders->where('recoger','1');
-        $finalizados = $allOrders->where('cobrados','1');
+        $aprobadas = Auth::user()->orders()->where('approved','1')->paginate(5,['*'],'aprobadas');;
+        $noAprobadas = Auth::user()->orders()->where('approved','0')->paginate(5,['*'],'noAprobadas');
+        $listosEntrega = Auth::user()->orders()->where('pickup','1')->paginate(5,['*'],'recoger');
+        $finalizados = Auth::user()->orders()->where('cobrado','1')->paginate(5,['*'],'finalizados');
+
+        // Todas las ordenes paginadas en grupos de 15.
+        $ordenes = Auth::user()->orders()->paginate(15,['*'],'general');
 
         return view('vendedor.order.home',compact('ordenes','aprobadas','noAprobadas','listosEntrega','finalizados'));
     }
