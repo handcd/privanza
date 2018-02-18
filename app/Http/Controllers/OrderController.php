@@ -23,6 +23,7 @@ class OrderController extends Controller
      */
     public function indexForVendedor()
     {
+        // La información para las datatables rápidas paginadas en grupos de 5
         $aprobadas = Auth::user()->orders()->where('approved','1')->paginate(5,['*'],'aprobadas');;
         $noAprobadas = Auth::user()->orders()->where('approved','0')->paginate(5,['*'],'noAprobadas');
         $listosEntrega = Auth::user()->orders()->where('pickup','1')->paginate(5,['*'],'recoger');
