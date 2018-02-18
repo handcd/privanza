@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
         // Fits
         DB::table('fits')->insert([
             'name' => 'Tallas Extra',
-            'description' => 'Medidas para personas con busto amplio.'
+            'description' => 'Medidas para personas robustas.'
         ]);
         DB::table('fits')->insert([
             'name' => 'Normal',
@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('fits')->insert([
             'name' => 'Privanza',
-            'description' => 'Fit más entallado.'
+            'description' => 'Medidas para personas menudas.'
         ]);
 
         factory(App\Vendedor::class, 40)->create();
@@ -52,7 +52,7 @@ class DatabaseSeeder extends Seeder
         factory(App\Validador::class, 10)->create();
 
         // Generate 10 orders for the main Vendedor
-        for ($i=1; $i <= 10; $i++) { 
+        for ($i=1; $i <= 20; $i++) { 
             $orden = factory(App\Order::class)->create([
                 'vendedor_id' => 1,
             ]);
