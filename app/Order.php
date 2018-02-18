@@ -7,15 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
 	/**
-	 * Get the Vendedores that registered the order
+	 * Get the Vendedorthat registered the order
 	 * @param null
-	 * @return Vendedores::array
+	 * @return Vendedor
 	 */
 	public function vendedor()
 	{
 		return $this->belongsTo(Vendedor::class);
 	}
-
+	/**
+	 * Get the Client that owns the order
+	 */
 	public function client()
 	{
 		return $this->belongsTo(Client::class);
@@ -67,5 +69,37 @@ class Order extends Model
     public function chalecoFit()
     {
         return $this->hasOne(Fit::class,'id','fit_chaleco');
+    }
+
+    /**
+    * Determines the status of the current order
+    * @param null
+    * @return string - the name of the current status of the order
+    */
+    public function currentStatus()
+    {
+    	if ($this->facturado) {
+    		return 'facturado';
+    	} elseif ($this->cobrado) {
+    		return 'cobrado';
+    	} elseif ($this->delivered) {
+    		return 'delivered';
+    	} elseif ($this->pickup) {
+    		return 'pickup';
+    	} elseif ($this->revision) {
+    		return 'revision';
+    	} elseif ($this->plancha) {
+    		return 'plancha';
+    	} elseif ($this->ensamble) {
+    		return 'ensamble';
+    	} elseif ($this->corte) {
+    		return 'corte';
+    	} elseif ($this->production) {
+    		return 'production';
+    	} elseif ($this->approved) {
+    		return 'approved';
+    	} else {
+    		return 'unapproved';
+    	}
     }
 }
