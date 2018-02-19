@@ -693,28 +693,28 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
 								<div class="row">
 									<div class="col-md-3 col-xs-6">
 										<label>
-										  <input type="checkbox" name="bolsas[]" value="Parche"/>
+										  <input type="radio" name="bolsasExt" value="0"/>
 										  <img src="{{ asset('img/suit_options/saco/Parches.png') }}">
 										  <p class="text-center">Parche</p>
 										</label>
 									</div>
 									<div class="col-md-3 col-xs-6">
 										<label>
-										  <input type="checkbox" name="bolsas[]" value="Cartera"/>
+										  <input type="radio" name="bolsasExt" value="1"/>
 										  <img src="{{ asset('img/suit_options/saco/Cartera.png') }}">
 										  <p class="text-center">Cartera</p>
 										</label>
 									</div>
 									<div class="col-md-3 col-xs-6">
 										<label>
-										  <input type="checkbox" name="bolsas[]" value="CarteraDiag"/>
+										  <input type="radio" name="bolsasExt" value="2"/>
 										  <img src="{{ asset('img/suit_options/saco/CarteraDiagonal.png') }}">
 										  <p class="text-center">Cartera en Diagonal</p>
 										</label>
 									</div>
 									<div class="col-md-3 col-xs-6">
 										<label>
-										  <input type="checkbox" name="bolsas[]" value="Vivo"/>
+										  <input type="radio" name="bolsasExt" value="3"/>
 										  <img src="{{ asset('img/suit_options/saco/Vivos.png') }}">
 										  <p class="text-center">Vivo (sin cartera)</p>
 										</label>
@@ -723,28 +723,28 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
 								<div class="row">
 									<div class="col-md-3 col-xs-6">
 										<label>
-										  <input type="checkbox" name="bolsas[]" value="VivoDiag"/>
+										  <input type="radio" name="bolsasExt" value="4"/>
 										  <img src="{{ asset('img/suit_options/saco/VivosDiagonal.png') }}">
 										  <p class="text-center">Vivo Diagonal</p>
 										</label>
 									</div>
 									<div class="col-md-3 col-xs-6">
 										<label>
-										  <input type="checkbox" name="bolsas[]" value="CarteraContinental"/>
+										  <input type="radio" name="bolsasExt" value="5"/>
 										  <img src="{{ asset('img/suit_options/saco/CarteraContinental.png') }}">
 										  <p class="text-center">Cartera Continental</p>
 										</label>
 									</div>
 									<div class="col-md-3 col-xs-6">
 										<label>
-										  <input type="checkbox" name="bolsas[]" value="CarteraContinentalDiagonal"/>
+										  <input type="radio" name="bolsasExt" value="6"/>
 										  <img src="{{ asset('img/suit_options/saco/CarteraContinentalDiagonal.png') }}">
 										  <p class="text-center">Cartera Continental Diagonal</p>
 										</label>
 									</div>
 									<div class="col-md-3 col-xs-6">
 										<label>
-										  <input type="checkbox" name="bolsas[]" value="SinBolsas"/>
+										  <input type="radio" name="bolsasExt" value="7"/>
 										  <img src="{{ asset('img/suit_options/saco/SinBolsas.png') }}">
 										  <p class="text-center">Sin Bolsas</p>
 										</label>
