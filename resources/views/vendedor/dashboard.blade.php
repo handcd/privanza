@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-<script src="{{ asset('js/demo.js') }}"></script>
+{{-- <script src="{{ asset('js/demo.js') }}"></script> --}}
 <div class="row">
      <div class="col-lg-3 col-md-6 col-sm-6">
         <div class="card card-stats">
@@ -273,41 +273,102 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header" data-background-color="green">
-                <h4 class="title">Cumpleaños de Clientes</h4>
-                <p class="category">Clientes que hoy cumplen años</p>
-            </div>
-            <div class="card-content table-responsive">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Fecha de Nacimiento</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse ($birthdaysMonth as $cliente)
-                        <tr>
-                            <td>{{ $cliente->id }}</td>
-                            <td>{{ $cliente->name.' '.$cliente->lastname }}</td>
-                            <td>{{ $cliente->birthday }}</td>
-                            <td class="td-actions text-right">
-                                <a href="{{ url('/vendedor/clientes/'.$cliente->id) }}" type="button" rel="tooltip" title="Ver Cliente" class="btn btn-primary btn-simple btn-xs">
-                                    <i class="material-icons">remove_red_eye</i>
+    <div class="col-md-12">
+        <div class="card card-nav-tabs">
+            <div class="card-header" data-background-color="blue">
+                <div class="nav-tabs-navigation">
+                    <div class="nav-tabs-wrapper">
+                        <span class="nav-tabs-title">Citas con Clientes:</span>
+                        <ul class="nav nav-tabs" data-tabs="tabs">
+                            <li class="active">
+                                <a href="#todayEvents" data-toggle="tab">
+                                    <i class="material-icons">today</i> Hoy
+                                    <div class="ripple-container"></div>
                                 </a>
-                            </td>
-                        </tr>
-                        @empty
-                        <tr>
-                            <td colspan="4" class="text-center">Ningún cliente cumple años hoy :(</td>
-                        </tr>
-                        @endforelse
-                    </tbody>
-                </table>
+                            </li>
+                            <li class="">
+                                <a href="#weekEvents" data-toggle="tab">
+                                    <i class="material-icons">view_week</i> Esta Semana
+                                    <div class="ripple-container"></div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="todayEvents">
+                        <table class="table table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Cliente</th>
+                                    <th>Fecha/Hora</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($eventosHoy as $evento)
+                                <tr>
+                                    <td>{{ $evento->id }}</td>
+                                    <td><a href="{{ url('/vendedor/clientes/'.$evento->client->id) }}">{{ $evento->client->name.' '.$evento->client->lastname }}</a></td>
+                                    <td>{{ $evento->fechahora }}</td>
+                                    <td class="td-actions text-right">
+                                        <a href="{{ url('/vendedor/citas/'.$evento->id) }}" type="button" rel="tooltip" title="Ver Cita" class="btn btn-success btn-simple btn-xs">
+                                            <i class="material-icons">remove_red_eye</i>
+                                        </a>
+                                        @if (!Carbon\Carbon::parse($evento->fechahora)->isPast())
+                                             <a href="{{ url('/vendedor/citas/'.$evento->id.'/editar') }}" type="button" rel="tooltip" title="Editar Cita" class="btn btn-primary btn-simple btn-xs">
+                                                <i class="material-icons">edit</i>
+                                            </a>
+                                        @endif
+                                    </td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td colspan="4" class="text-center">No tienes citas el día de hoy :(</td>
+                                </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane" id="weekEvents">
+                        <table class="table table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Fecha de Nacimiento</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($eventosSemana as $evento)
+                                <tr>
+                                    <td>{{ $evento->id }}</td>
+                                    <td><a href="{{ url('/vendedor/clientes/'.$evento->client->id) }}">{{ $evento->client->name.' '.$evento->client->lastname }}</a></td>
+                                    <td>{{ $evento->fechahora }}</td>
+                                    <td class="td-actions text-right">
+                                        <a href="{{ url('/vendedor/citas/'.$evento->id) }}" type="button" rel="tooltip" title="Ver Cita" class="btn btn-success btn-simple btn-xs">
+                                            <i class="material-icons">remove_red_eye</i>
+                                        </a>
+                                        @if (!Carbon\Carbon::parse($evento->fechahora)->isPast())
+                                             <a href="{{ url('/vendedor/citas/'.$evento->id.'/editar') }}" type="button" rel="tooltip" title="Editar Cita" class="btn btn-primary btn-simple btn-xs">
+                                                <i class="material-icons">edit</i>
+                                            </a>
+                                        @endif
+                                    </td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td colspan="4" class="text-center">No tienes citas el día de hoy :(</td>
+                                </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -320,20 +381,9 @@
             labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
             series: [
                 [
-                @php
-                    $max = 1;
-                @endphp
-                @for ($i = 1; $i < 13; $i++)
-                    '{{
-                        $temp = $ordenes
-                            ->where('created_at','>=', Carbon\Carbon::now()->month($i)->startOfMonth())
-                            ->where('created_at','<=', Carbon\Carbon::now()->month($i)->endOfMonth())
-                            ->count()
-                    }}',
-                    @php
-                        if ($temp > $max) { $max = $temp; }
-                    @endphp
-                @endfor
+                @foreach ($prendasVendidas as $prendas)
+                    {{ $prendas }},
+                @endforeach
                 ],
             ]
         };
@@ -343,7 +393,7 @@
                 tension: 0
             }),
             low: 0,
-            high: {{ $max+10 }}, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+            high: {{ max($prendasVendidas)*1.3 }}, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
             chartPadding: {
                 top: 0,
                 right: 0,
@@ -361,20 +411,9 @@
             labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
             series: [
                 [
-                @php
-                    $max = 1;
-                @endphp
-                @for ($i = 1; $i < 13; $i++)
-                    '{{
-                        $temp = $ordenes
-                            ->where('created_at','>=', Carbon\Carbon::now()->month($i)->startOfMonth())
-                            ->where('created_at','<=', Carbon\Carbon::now()->month($i)->endOfMonth())
-                            ->sum('precio_final')
-                    }}',
-                    @php
-                        if ($temp > $max) { $max = $temp; }
-                    @endphp
-                @endfor
+                @foreach ($montoVentas as $monto)
+                    {{ $monto }},
+                @endforeach
                 ]
             ]
         };
@@ -384,7 +423,7 @@
                 tension: 0
             }),
             low: 0,
-            high: {{ $max*1.5 }}, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+            high: {{ max($montoVentas)*1.3 }}, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
             chartPadding: {
                 top: 0,
                 right: 0,
