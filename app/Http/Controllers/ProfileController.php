@@ -6,7 +6,6 @@ use App\Vendedor;
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Session;
 
 class ProfileController extends Controller
 {
@@ -15,15 +14,21 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexVendedor()
+    public function perfilVendedor()
     {
         $vendedor = Vendedor::find(Auth::id());
         return view('vendedor.profile',compact('vendedor'));
     }
 
-    public function askDataChangeVendedor()
+    /**
+     * Send an email to the administrador and validador asking
+     * for a information review.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function dataChangeVendedor(Request $request)
     {
-        Session::flash('success','¡Listo! Hemos enviado una notificación al administrador. En breve se pondrán en contacto contigo para actualizar tus datos.');
+        $request->session()->flash('success','¡Listo! Hemos enviado una notificación al administrador. En breve se pondrán en contacto contigo para actualizar tus datos.');
         return redirect()->back();
     }
 }
