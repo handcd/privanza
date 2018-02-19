@@ -25,7 +25,7 @@ class EventController extends Controller
 
         // Citas del día
         $eventosHoy = $eventos->filter(function ($evento) {
-            return ($evento->fechahora >= Carbon::today() && $evento->fechahora <= Carbon::tomorrow());
+            return ($evento->fechahora >= Carbon::today() && $evento->fechahora < Carbon::tomorrow());
         });
 
         // Citas de la semana
