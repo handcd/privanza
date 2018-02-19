@@ -22,11 +22,38 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function indexForVendedor()
-    {
-        // La información para las datatables rápidas paginadas en grupos de 5
-        $aprobadas = Auth::user()->orders()->where('approved','1')->paginate(5,['*'],'aprobadas');;
+    {   
+        /**
+         * Òrdenes de la vista principal del Vendedor
+         *
+         * Todas las órdenes se paginan en grupos de 5 para no saturar la vista. 
+         * No se pueden paginar las colecciones por lo que comprobamos que el estado que buscamos
+         * se encuentre verdadero (p. ej. 'approved') y que el siguiente estado se encuentre en falso
+         * (p. ej. 'production'). De esa forma podemos asegurar cual es el único status válido.
+         *
+         * Información Adicional: Cuando se trabaja con el seeder la información se llena de forma 
+         *                        arbitraria por lo que muchas órdenes dan un falso positivo a este
+         *                        tipo de validación.
+         */
+
+        // Órdenes sin aprobar 
         $noAprobadas = Auth::user()->orders()->where('approved','0')->paginate(5,['*'],'noAprobadas');
-        $listosEntrega = Auth::user()->orders()->where('pickup','1')->paginate(5,['*'],'recoger');
+
+        // Órdenes aprobadas (pero no en producción)
+        $aprobadas = Auth::user()
+                        ->orders()
+                        ->where('approved','1')
+                        ->where('production','0')
+                        ->paginate(5,['*'],'aprobadas');
+
+        // Órdenes listas para recolección (pero no entregadas)
+        $listosEntrega = Auth::user()
+                            ->orders()
+                            ->where('pickup','1')
+                            ->where('delivered','0')
+                            ->paginate(5,['*'],'recoger');
+
+        // Órdenes cobradas
         $finalizados = Auth::user()->orders()->where('cobrado','1')->paginate(5,['*'],'finalizados');
 
         // Todas las ordenes paginadas en grupos de 15.
