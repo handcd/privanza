@@ -21,7 +21,7 @@
         // if we are on windows OS we activate the perfectScrollbar function
         $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
 
-        $('html').addClass('perfect-scrollbar-on');
+        $('html').addClass('perfect-scrollbar-off');
     } else {
         $('html').addClass('perfect-scrollbar-off');
     }
