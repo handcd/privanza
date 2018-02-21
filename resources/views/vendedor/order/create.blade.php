@@ -808,14 +808,14 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
 									<div class="col-md-6 col-xs-6">
 										<label>
 										  <input type="radio" name="tipoVista" value="0" required="" />
-										  <img src="{{ asset('img/suit_options/saco/interior.normal.png') }}">
+										  <img src="{{ asset('img/suit_options/saco/Chapeta_Normal.png') }}">
 										  <p class="text-center">Normal</p>
 										</label>
 									</div>
 									<div class="col-md-6 col-xs-6">
 										<label>
 										  <input type="radio" name="tipoVista" value="1" />
-										  <img src="{{ asset('img/suit_options/saco/Chapeta-francesa.png') }}">
+										  <img src="{{ asset('img/suit_options/saco/Chapeta_Francesa.png') }}">
 										  <p class="text-center">Chapeta Francesa</p>
 										</label>
 									</div>
