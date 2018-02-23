@@ -373,11 +373,25 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
 								padding-left: 6px !important;
 							}
 
+							.row .col-xs-6:last-child {
+								padding-right: 6px !important;
+							}
+							.row .col-xs-6:first-child {
+								padding-left: 6px !important;
+							}
+
 							@media (max-width: 599px) {
 								.row .col-xs-3:last-child {
 									padding-right: 15px !important;
 								}
 								.row .col-xs-3:first-child {
+									padding-left: 15px !important;
+								}
+
+								.row .col-xs-6:last-child {
+									padding-right: 15px !important;
+								}
+								.row .col-xs-6:first-child {
 									padding-left: 15px !important;
 								}
 
@@ -1065,33 +1079,33 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
 									<h4 class="text-center">Bolsas Internas</h4>
 								</div>
 							</div>
-							<div class="row">
+							<div class="row text-center">
 								<div class="col-md-3 col-xs-6">
 									<label>
-									  <input type="checkbox" name="bolsasInt[]" value="pechoderecho"/>
-									  <img src="{{ asset('img/suit_options/saco/bolsas-internas.media.derecha.png') }}">
-									  <p class="text-center">Pecho Derecho</p>
+									  <input type="radio" name="bolsasInt" value="4 Bolsas"/>
+									  <img src="{{ asset('img/suit_options/saco/4Bolsas.png') }}">
+									  <p class="text-center">2 bolsas de pecho, 1 bolsa para pluma, 1 bolsa cigarrera</p>
 									</label>
 								</div>
 								<div class="col-md-3 col-xs-6">
 									<label>
-									  <input type="checkbox" name="bolsasInt[]" value="pechoizquierdo"/>
-									  <img src="{{ asset('img/suit_options/saco/bolsas-internas.media.png') }}">
-									  <p class="text-center">Pecho Izquierdo</p>
+									  <input type="radio" name="bolsasInt" value="3 Bolsas Pluma"/>
+									  <img src="{{ asset('img/suit_options/saco/2Bolsas_Pecho_Plumera.png') }}">
+									  <p class="text-center">2 bolsas de pecho, 1 bolsa para pluma</p>
 									</label>
 								</div>
-								<div class="col-md-3 col-xs-6">
+								<div class="col-md-3 col-xs-12">
 									<label>
-									  <input type="checkbox" name="bolsasInt[]" value="cigarrera"/>
-									  <img src="{{ asset('img/suit_options/saco/BolsaInterna-Cigarrera.png') }}">
-									  <p class="text-center">Cigarrera</p>
+									  <input type="radio" name="bolsasInt" value="3 Bolsas Cigarrera"/>
+									  <img src="{{ asset('img/suit_options/saco/3Bolsas.png') }}">
+									  <p class="text-center">2 bolsas de pecho, 1 bolsa cigarrera</p>
 									</label>
 								</div>
-								<div class="col-md-3 col-xs-6">
+								<div class="col-md-3 col-xs-12">
 									<label>
-									  <input type="checkbox" name="bolsasInt[]" value="plumera"/>
-									  <img src="{{ asset('img/suit_options/saco/bolsas.internas.plumera.png') }}">
-									  <p class="text-center">Plumera</p>
+									  <input type="radio" name="bolsasInt" value="2 Bolsas"/>
+									  <img src="{{ asset('img/suit_options/saco/2Bolsas_Pecho.png') }}">
+									  <p class="text-center">2 bolsas de pecho</p>
 									</label>
 								</div>
 							</div>
