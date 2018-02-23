@@ -207,6 +207,63 @@
                         <p>{{ $client->notes }}</p>
                     </div>
                 </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Pedidos del Cliente</h4>
+                        <table class="table table-hover">
+                            <thead class="text-primary">
+                                <th>#</th>
+                                <th>Precio</th>
+                                <th>Acciones</th>
+                            </thead>
+                            <tbody>
+                                @forelse ($client->orders as $order)
+                                <tr>
+                                    <td>{{ $order->id }}</td>
+                                    <td>{{ $order->precio }}</td>
+                                    <td class="td-actions text-center">
+                                        <a href="{{ url('/vendedor/ordenes/'.$order->id) }}" type="button" rel="tooltip" title="Ver Orden" class="btn btn-success btn-simple btn-xs">
+                                            <i class="material-icons">remove_red_eye</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td class="text-center" colspan="3">No hay pedidos de este cliente :(</td>
+                                </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Citas con el Cliente</h4>
+                        <table class="table table-hover">
+                            <thead class="text-primary">
+                                <th>#</th>
+                                <th>Fecha</th>
+                                <th>Acciones</th>
+                            </thead>
+                            <tbody>
+                                @forelse ($client->events as $event)
+                                <tr>
+                                    <td>{{ $event->id }}</td>
+                                    <td>{{ Carbon\Carbon::parse($event->fechahora)->toDateString() }}</td>
+                                    <td class="td-actions text-center">
+                                        <a href="{{ url('/vendedor/citas/'.$event->id) }}" type="button" rel="tooltip" title="Ver Cita" class="btn btn-success btn-simple btn-xs">
+                                            <i class="material-icons">remove_red_eye</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td class="text-center" colspan="3">No hay pedidos de este cliente :(</td>
+                                </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
                 <a href="{{ url('/vendedor/clientes') }}" class="btn btn-default">Regresar</a>
             </div>
         </div>
