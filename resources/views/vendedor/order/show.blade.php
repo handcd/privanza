@@ -11,109 +11,119 @@
             <div class="card-content">
                   <h3>Status del Pedido</h3>
                   <h4>Estado General</h4>
-                  <div class="row">
+                  <div class="row text-center">
                         <div class="col-md-2">
-                              <label class="text-primary">Aprobado</label>
                               @if ($orden->approved)
                                     <i class="fa fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <label class="text-primary">Aprobado</label>
                                     <br>
                                     {{ $orden->date_approved }}
                               @else
                                     <i class="fa fa-times-circle fa-lg text-danger" aria-hidden="true"></i>
+                                    <label class="text-primary">Aprobado</label>
                               @endif
                         </div>
                         <div class="col-md-2">
-                              <label class="text-primary">Producción</label>
                               @if ($orden->production)
                                     <i class="fa fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <label class="text-primary">Producción</label>
                                     <br>
                                     {{ $orden->date_production }}
                               @else
                                     <i class="fa fa-times-circle fa-lg text-danger" aria-hidden="true"></i>
+                                    <label class="text-primary">Producción</label>
                               @endif
                         </div>
                         <div class="col-md-2">
-                              <label class="text-primary">Recolección</label>
                               @if ($orden->pickup)
                                     <i class="fa fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <label class="text-primary">Recolección</label>
                                     <br>
                                     {{ $orden->date_pickup }}
                               @else
                                     <i class="fa fa-times-circle fa-lg text-danger" aria-hidden="true"></i>
+                                    <label class="text-primary">Recolección</label>
                               @endif
                         </div>
                         <div class="col-md-2">
-                              <label class="text-primary">Entregado</label>
                               @if ($orden->delivered)
                                     <i class="fa fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <label class="text-primary">Entregado</label>
                                     <br>
                                     {{ $orden->date_delivered }}
                               @else
                                     <i class="fa fa-times-circle fa-lg text-danger" aria-hidden="true"></i>
+                                    <label class="text-primary">Entregado</label>
                               @endif
                         </div>
                         <div class="col-md-2">
-                              <label class="text-primary">Facturado</label>
                               @if ($orden->facturado)
                                     <i class="fa fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <label class="text-primary">Facturado</label>
                                     <br>
                                     {{ $orden->date_facturado }}
                               @else
                                     <i class="fa fa-times-circle fa-lg text-danger" aria-hidden="true"></i>
+                                    <label class="text-primary">Facturado</label>
                               @endif
                         </div>
                         <div class="col-md-2">
-                              <label class="text-primary">Cobrado</label>
                               @if ($orden->cobrado)
                                     <i class="fa fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <label class="text-primary">Cobrado</label>
                                     <br>
                                     {{ $orden->date_cobrado }}
                               @else
                                     <i class="fa fa-times-circle fa-lg text-danger" aria-hidden="true"></i>
+                                    <label class="text-primary">Cobrado</label>
                               @endif
                         </div>
                   </div>
-                  @if (!$orden->production)
+                  @if ($orden->production)
                         <h4>Estado de Producción</h4>
-                        <div class="row">
+                        <div class="row text-center">
                               <div class="col-md-3">
-                                    <label class="text-primary">Corte</label>
                                     @if ($orden->corte)
                                           <i class="fa fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                          <label class="text-primary">Corte</label>
                                           <br>
                                           {{ $orden->date_corte }}
                                     @else
                                           <i class="fa fa-times-circle fa-lg text-danger" aria-hidden="true"></i>
+                                          <label class="text-primary">Corte</label>
                                     @endif
                               </div>
                               <div class="col-md-3">
-                                    <label class="text-primary">Ensamble</label>
                                     @if ($orden->ensamble)
                                           <i class="fa fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                          <label class="text-primary">Ensamble</label>
                                           <br>
                                           {{ $orden->date_ensamble }}
                                     @else
                                           <i class="fa fa-times-circle fa-lg text-danger" aria-hidden="true"></i>
+                                          <label class="text-primary">Ensamble</label>
                                     @endif
                               </div>
                               <div class="col-md-3">
-                                    <label class="text-primary">Plancha</label>
                                     @if ($orden->plancha)
                                           <i class="fa fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                          <label class="text-primary">Plancha</label>
                                           <br>
                                           {{ $orden->date_plancha }}
                                     @else
                                           <i class="fa fa-times-circle fa-lg text-danger" aria-hidden="true"></i>
+                                          <label class="text-primary">Plancha</label>
                                     @endif
                               </div>
                               <div class="col-md-3">
-                                    <label class="text-primary">Revisión</label>
                                     @if ($orden->revision)
                                           <i class="fa fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                          <label class="text-primary">Revisión</label>
                                           <br>
                                           {{ $orden->date_revision }}
                                     @else
                                           <i class="fa fa-times-circle fa-lg text-danger" aria-hidden="true"></i>
+                                          <label class="text-primary">Revisión</label>
                                     @endif
                               </div>
                         </div>
