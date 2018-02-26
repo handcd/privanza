@@ -221,7 +221,7 @@
                                 @forelse ($client->orders as $order)
                                 <tr>
                                     <td>{{ $order->id }}</td>
-                                    <td>{{ $order->precio }}</td>
+                                    <td>${{ $order->precio }}</td>
                                     <td class="td-actions text-center">
                                         <a href="{{ url('/vendedor/ordenes/'.$order->id) }}" type="button" rel="tooltip" title="Ver Orden" class="btn btn-success btn-simple btn-xs">
                                             <i class="material-icons">remove_red_eye</i>
@@ -257,7 +257,7 @@
                                 </tr>
                                 @empty
                                 <tr>
-                                    <td class="text-center" colspan="3">No hay pedidos de este cliente :(</td>
+                                    <td class="text-center" colspan="3">No hay citas con este cliente :(</td>
                                 </tr>
                                 @endforelse
                             </tbody>
