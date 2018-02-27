@@ -1456,7 +1456,7 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
                     </div>
                 	<div class="wizard-footer">
                     	<div class="pull-right">
-                            <input type='button' class='btn btn-next btn-fill btn-default btn-wd' name='next' value='Siguiente' />
+                            <input type='button' class='btn btn-next btn-fill btn-info btn-wd' name='next' value='Siguiente' />
                             <input type='submit' class='btn btn-finish btn-fill btn-success btn-wd' name='finish' value='Finalizar' />
                         </div>
                         <div class="pull-left">
