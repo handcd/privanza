@@ -140,7 +140,7 @@ p{
 							<td width="200" valign="top" align="center">
 								<div class="contentEditableContainer contentImageEditable" >
 			                        <div class="contentEditable" >
-			                           <img src="{{ asset('img/email/logo.png') }}" width="155" height="155"  ata-default="placeholder" alt='Logo'/>
+			                           <img src="{{ asset('img/privanzaB.png') }}" width="155" height="155"  ata-default="placeholder" alt='Logo'/>
 			                        </div>
 			                    </div>
 							</td>
@@ -163,7 +163,7 @@ p{
 							<td width="500" colspan="3" align="center" style="padding-bottom:10px;padding-top:25px;">
 								<div class="contentEditableContainer contentTextEditable" >
 			                        <div class="contentEditable" >
-			                           <h2>{{ $asunto }}</h2>
+			                           <h2>{{ $titulo }}</h2>
 			                        </div>
 			                    </div>
 							</td>
@@ -205,10 +205,10 @@ p{
 							<td width="500" align="center" >
 								<table cellpadding="0" cellspacing="0" border="0" align="center" width="400" height="50">
 									<tr>
-										<td bgcolor="#ED006F" align="center" style="border-radius:4px;" width="400" height="50">
+										<td bgcolor="#00bcd4" align="center" style="border-radius:4px;" width="400" height="50">
 											<div class="contentEditableContainer contentTextEditable" >
 						                        <div class="contentEditable" style='text-align:center;'>
-						                            <a target='_blank' href="{{ url($urlAccion) }}" style="color:#fff;text-decoration:none;font-family:Helvetica, Arial, sans-serif;font-size:16px;color:#fff;border-radius:4px;">Revisar Pedido</a>
+						                            <a target='_blank' href="{{ url($urlAccion) }}" style="color:#fff;text-decoration:none;font-family:Helvetica, Arial, sans-serif;font-size:16px;color:#fff;border-radius:4px;">{{ $mensajeAccion }}</a>
 						                        </div>
 						                    </div>
 										</td>
@@ -243,27 +243,6 @@ p{
 								</div>
 							</div>
 								
-							</td>
-							<td width="40%" height="70" align="right" valign="top" align='right' style="padding-bottom:20px;">
-								<table width="100%" border="0" cellspacing="0" cellpadding="0" align='right'>
-									<tr>
-										<td width='57%'></td>
-										<td valign="top" width='34'>
-											<div class="contentEditableContainer contentFacebookEditable" style='display:inline;'>
-						                        <div class="contentEditable" >
-						                            <img src="{{ asset('img/email/facebook.png') }}" data-default="placeholder" data-max-width="30" width='30' height='30' alt='facebook' style='margin-right:40x;' data-customIcon="true" >
-						                        </div>
-						                    </div>
-										</td>
-										<td valign="top" width='34'>
-											<div class="contentEditableContainer contentTwitterEditable" style='display:inline;'>
-						                      <div class="contentEditable" >
-						                        <img src="{{ asset('img/email/twitter.png') }}" data-default="placeholder" data-max-width="30" width='30' height='30' alt='twitter' style='margin-right:40x;'>
-						                      </div>
-						                    </div>
-										</td>
-									</tr>
-								</table>
 							</td>
 						</tr>
 					</table>
