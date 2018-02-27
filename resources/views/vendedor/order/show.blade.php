@@ -10,6 +10,25 @@
             </div>
             <div class="card-content">
                   <h3>Status del Pedido</h3>
+                  <h4>Datos Generales</h4>
+                  <div class="row">
+                        <div class="col-md-3">
+                              <label class="text-primary">Número de Orden</label>
+                              <p>{{ $orden->id }}</p>
+                        </div>
+                        <div class="col-md-3">
+                              <label class="text-primary">Fecha de Creación</label>
+                              <p>{{ $orden->created_at }}</p>
+                        </div>
+                        <div class="col-md-3">
+                              <label class="text-primary">Fecha de Última Modificación</label>
+                              <p>{{ $orden->updated_at }}</p>
+                        </div>
+                        <div class="col-md-3">
+                              <label class="text-primary">Vendedor</label>
+                              <p>#{{ $orden->vendedor->id.' - '.$orden->vendedor->name.' '.$orden->vendedor->lastname }}</p>
+                        </div>
+                  </div>
                   <h4>Estado General</h4>
                   <div class="row">
                         <div class="col-md-2">
@@ -333,9 +352,59 @@
                   @endif
                   @if ($orden->has_vest)
                         <h3>Chaleco</h3>
+                        <div class="row">
+                              <div class="col-md-3">
+                                    <label class="text-primary">Tipo de Cuello</label>
+                                    <p>{{ $orden->vest->tipo_cuello }}</p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Tipo de Bolsas</label>
+                                    <p>{{ $orden->vest->tipo_bolsas }}</p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Tipo de Espalda</label>
+                                    <p>{{ $orden->vest->tipo_espalda }}</p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Ajustador en la Espalda</label>
+                                    <p>{{ $orden->vest->ajustador_espalda ? 'Si' : 'No' }}</p>
+                              </div>
+                        </div>
                   @endif
                   @if ($orden->has_pants)
                         <h3>Pantalón</h3>
+                        <div class="row">
+                              <div class="col-md-3">
+                                    <label class="text-primary">Con Pase</label>
+                                    <p>{{ $orden->pants->pase ? 'Con Pase' : 'Sin Pase' }}</p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Número de Pliegues</label>
+                                    <p>{{ $orden->pants->pliegues }}</p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Bolsas Traseras</label>
+                                    <p>{{ $orden->pants->bolsas_traseras }}</p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Tipo de Vivo</label>
+                                    <p>{{ $orden->pants->tipo_vivo }}</p>
+                              </div>
+                        </div>
+                        <div class="row">
+                              <div class="col-md-3">
+                                    <label class="text-primary">Color de Ojalera</label>
+                                    <p>{{ $orden->pants->color_ojalera }}</p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Color de Medio Forro</label>
+                                    <p>{{ $orden->pants->color_medio_forro }}</p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Tipo de Dobladillo</label>
+                                    <p>{{ $orden->pants->dobladillo }}</p>
+                              </div>
+                        </div>
                   @endif
             </div>
         </div>
