@@ -25,6 +25,17 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
       	max-width:500px;
   	}
 </style>
+<div>
+	@if ($errors->any())
+	    <div class="alert alert-danger">
+	        <ul>
+	            @foreach ($errors->all() as $error)
+	                <li>{{ $error }}</li>
+	            @endforeach
+	        </ul>
+	    </div>
+	@endif
+</div>
 <div class="row">
     <div class="col-sm-12">
         <!--      Wizard container        -->
@@ -588,7 +599,7 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
 									<div class="col-sm-6">
 										<div class="form-group label-floating">
 											<label class="control-label">Botones en Mangas:</label>
-											<input type="number" min="1" max="4" step="1" name="botonesMagnas" class="form-control" required="true">
+											<input type="number" min="1" max="4" step="1" name="botonesMangas" class="form-control" required="true">
 										</div>
 									</div>
 									<div class="col-sm-6">
@@ -1082,28 +1093,28 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
 							<div class="row text-center">
 								<div class="col-md-3 col-xs-6">
 									<label>
-									  <input type="radio" name="bolsasInt" value="4 Bolsas"/>
+									  <input type="radio" name="bolsasInt" value="0"/>
 									  <img src="{{ asset('img/suit_options/saco/4Bolsas.png') }}">
 									  <p class="text-center">2 bolsas de pecho, 1 bolsa para pluma, 1 bolsa cigarrera</p>
 									</label>
 								</div>
 								<div class="col-md-3 col-xs-6">
 									<label>
-									  <input type="radio" name="bolsasInt" value="3 Bolsas Pluma"/>
+									  <input type="radio" name="bolsasInt" value="1"/>
 									  <img src="{{ asset('img/suit_options/saco/2Bolsas_Pecho_Plumera.png') }}">
 									  <p class="text-center">2 bolsas de pecho, 1 bolsa para pluma</p>
 									</label>
 								</div>
 								<div class="col-md-3 col-xs-12">
 									<label>
-									  <input type="radio" name="bolsasInt" value="3 Bolsas Cigarrera"/>
+									  <input type="radio" name="bolsasInt" value="2"/>
 									  <img src="{{ asset('img/suit_options/saco/3Bolsas.png') }}">
 									  <p class="text-center">2 bolsas de pecho, 1 bolsa cigarrera</p>
 									</label>
 								</div>
 								<div class="col-md-3 col-xs-12">
 									<label>
-									  <input type="radio" name="bolsasInt" value="2 Bolsas"/>
+									  <input type="radio" name="bolsasInt" value="3"/>
 									  <img src="{{ asset('img/suit_options/saco/2Bolsas_Pecho.png') }}">
 									  <p class="text-center">2 bolsas de pecho</p>
 									</label>

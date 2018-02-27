@@ -81,7 +81,7 @@ class OrderController extends Controller
      */
     public function storeForVendedor(Request $request)
     {
-        return $request;
+        //return $request;
 
         $orden = new Order;
         $pantalon = new Pants;
@@ -89,64 +89,295 @@ class OrderController extends Controller
         $saco = new Coat;
 
         $this->validate($request, [
-            'cliente' => 'required', //: "1",
-            'tipoTela' => 'required', //: "isco",
-            'codigoTelaCliente' => 'nullable', //: null,
-            'codigoColorTelaCliente' => 'nullable', //: null,
-            'mtsTelaCliente' => 'nullable', //: null,
-            'codigoTelaIsco' => 'nullable', //: "123",
-            'tipoForro' => 'required', //: "cliente",
-            'codigoForroCliente' => 'nullable', //: "123123",
-            'codigoColorForroCliente' => 'nullable', //: "azulito",
-            'mtsForroCliente' => 'nullable', //: "13.4",
-            'codigoForroIsco' => 'nullable', //: null,
-            'codigoBoton' => 'required', //: "123123",
-            'colorBoton' => 'required', //: "verde",
-            'etiquetaTela' => 'nullable', //: "on",
-            'etiquetaMarca' => 'nullable', //: "on",
-            'marcaEtiqueta' => 'required', //: "ISCO",
-            'tipoGancho' => 'required', //: "1",
-            'perGancho' => 'required', //: "tipoportatrajeees",
-            'tipoPortatrajes' => 'required', //: "1",
-            'botonesFrente' => 'required', //: "1",
-            'aberturasDetras' => 'required', //: "1",
-            'tipoSolapa' => 'required', //: "2",
-            'tipoOjalSolapa' => 'required', //: "1",
-            'colorOjalSolapa' => 'required', //: "rojito",
-            'botonesMagnas' => 'required', //: "3",
-            'tipoOjalManga' => 'required', //: "1",
-            'colorOjalManga' => 'required', //: "Amarillito",
-            'posicionOjalesManga' => 'required', //: "0",
-            'ojalesActivosManga' => 'required', //: "4",
-            'bolsExtParche' => 'nullable', //: "on",
-            'bolsExtCartera' => 'nullable', // "on",
-            'bolsExtVivo' => 'nullable', //: "on",
-            'bolsExtCarteraDiag' => 'nullable', //: "on",
-            'bolsExtVivoDiag' => 'nullable', //: "on",
-            'bolsExtCarteraCont' => 'nullable', //: "on",
-            'pickstitch' => 'nullable', //: "on",
-            'pinponInterno' => 'nullable', //: "on",
-            'pinponInternoColor' => 'required', //: "morado",
-            'pinponInternoCodigo' => 'required', //: "123123",
-            'biesInterno' => 'nullable', //: "on",
-            'biesInternoColor' => 'required', //: "naranja",
-            'biesInternoCodigo' => 'required', //: "aosdifjao",
-            'bolsaPechoDer' => 'nullable', //: "on",
-            'bolsaPechoIzq' => 'nullable', //: "on",
-            'cigarrera' => 'nullable', //: "on",
-            'plumera' => 'nullable', //: "on",
-            'forroBolsasInt' => 'required', //: "verde",
-            'bolsasDelanteras' => 'required', //: "2",
-            'bolsasTraseras' => 'required', //: "2",
-            'bolsasTraserasVivo' => 'required', //: "0",
-            'bolsasTraserasCerrado' => 'required', //: "1",
-            'ribete' => 'nullable', //: "on",
-            'colorRibete' => 'required', //: "azul",
-            'forroPiernas' => 'nullable', //: "on",
-            'colorMedioForro' => 'required', //: "verde",
-            'tipoDobladillo' => 'nullable', //: "1",
+            // Datos Orden
+            'cliente' => 'required|numeric', // "1",
+            // 'saco' => 'required', // "on",
+            // 'chaleco' => 'required', // "on",
+            // 'pantalon' => 'required', // "on",
+            'tipoTela' => 'required', // "cliente",
+            // 'codigoTelaCliente' => 'required', // "suodfoashudf",
+            // 'codigoColorTelaCliente' => 'required', // "aisdhfaidhsf",
+            // 'mtsTelaCliente' => 'required', // "123.3",
+            // 'codigoTelaIsco' => 'required', // null,
+            'tipoForro' => 'required', // "cliente",
+            // 'codigoForroCliente' => 'required', // "123123",
+            // 'codigoColorForroCliente' => 'required', // "asdasd",
+            // 'mtsForroCliente' => 'required', // "12.1",
+            // 'codigoForroIsco' => 'required', // null,
+            'codigoBoton' => 'required', // "asoufhs",
+            'colorBoton' => 'required', // "sadiuhasdiu",
+            // 'etiquetaTela' => 'required', // "on",
+            // 'etiquetaMarca' => 'required', // "on",
+            // 'marcaEtiqueta' => 'required', // "asdasd",
+            'tipoGancho' => 'required', // "1",
+            // 'perGancho' => 'required', // "asdasdasd",
+            'tipoPortatrajes' => 'required', // "1",
+            // 'perPortatrajes' => 'required', // "asdasd",
+
+            // Datos de Saco Externo
+            // 'tipoSolapa' => 'required', // "1",
+            // 'tipoOjalSolapa' => 'required', // "3",
+            // 'colorOjalSolapa' => 'required', // "Vino",
+            // 'otroColorOjalSolapa' => 'required', // "asdasd",
+            // 'botonesFrente' => 'required', // "2",
+            // 'aberturasDetras' => 'required', // "1",
+            // 'botonesMagnas' => 'required', // "4",
+            // 'tipoOjalManga' => 'required', // "1",
+            // 'colorOjalMangas' => 'required', // "Azul Marino",
+            // 'otroColorOjalMangas' => 'required', // "weqweqe",
+            // 'posicionOjalesManga' => 'required', // "0",
+            // 'ojalesActivosManga' => 'required', // "on",
+            // 'bolsasExt' => 'required', // "6",
+            // 'pickstitch' => 'required', // "on",
+            // 'pickstitchfilos' => 'required', // "on",
+            // 'pickstitchaletilla' => 'required', // "on",
+            // 'pickstitchcartera' => 'required', // "on",
+            // 'sinaletilla' => 'required', // "on",
+
+            // Datos de Saco Interno
+            // 'tipoVista' => 'required', // "0",
+            // 'balsamRayasForroMangas' => 'required', // "on",
+            // 'otroForroInternoMangas' => 'required', // "qweqwe",
+            // 'pinPointInterno' => 'required', // "on",
+            // 'colorPinPointInterno' => 'required', // "Negro",
+            // 'otroColorPinPoint' => 'required', // "asdasd",
+            // 'pinPointInternoCodigo' => 'required', // "asdasd",
+            // 'biesInterno' => 'required', // "on",
+            // 'colorBies' => 'required', // "Gris Oxford",
+            // 'otroColorBies' => 'required', // "asdasd",
+            // 'biesInternoCodigo' => 'required', // "asdasd",
+            // 'colorPuntada' => 'required', // "Gris Oxford",
+            // 'otroColorPuntada' => 'required', // "asdasd",
+            // 'bolsasInt' => 'required', // "3 Bolsas Cigarrera",
+            // 'bolsasInternasColor' => 'required', // "asdada",
+            // 'vivosBolsasInternasCuerpo' => 'required', // "on",
+            // 'otroVivosBolsasInternas' => 'required', // "asdasd",
+            // 'puntadaFilosSacoInt' => 'required', // "on",
+            // 'puntadaAletillasSacoInt' => 'required', // "on",
+            // 'puntadaCarterasSacoInt' => 'required', // "on",
+
+            // Datos de Chaleco
+            // 'cuelloChaleco' => 'required', // "0",
+            // 'bolsasChaleco' => 'required', // "1",
+            // 'forroTela' => 'required', // "0",
+            // 'ajustadorChaleco' => 'required', // "on",
+
+            // Datos Pantalón
+            // 'tipoPase' => 'required', // "0",
+            // 'numPliegues' => 'required', // "1",
+            // 'bolsasTraseras' => 'required', // "0",
+            // 'tipoVivo' => 'required', // "1",
+            // 'colorOjaleraEncuarte' => 'required', // "Gris Oxford",
+            // 'otroColorOjaleraEncuarte' => 'required', // "asdsad",
+            // 'colorMedioForroPiernas' => 'required', // "asdasd",
+            // 'dobladillo' => 'required', // "2",
+            // 'finish' => 'required', // "Finalizar"
         ]);
-        
+
+        // Datos Orden
+        $orden = new Order;
+
+        $orden->client_id = $request->cliente;
+        $orden->vendedor_id = Auth::id();
+
+        // Tela
+        if ($request->tipoTela === 'cliente') {
+            $orden->tela_isco = false;
+            $orden->codigo_tela = $request->codigoTelaCliente;
+            $orden->mts_tela_cliente = $request->mtsTelaCliente;
+            $orden->codigo_color_tela_cliente = $request->codigoColorTelaCliente;
+        } else {
+            $orden->tela_isco = true;
+            $orden->codigo_tela = $request->codigoTelaIsco;
+        }
+
+        // Forro
+        if ($request->tipoForro === 'cliente') {
+            $orden->forro_isco = false;
+            $orden->codigo_forro = $request->codigoForroCliente;
+            $orden->mts_forro_cliente = $request->mtsForroCliente;
+            $orden->codigo_color_forro_cliente = $request->codigoColorForroCliente;
+        } else {
+            $orden->forro_isco = true;
+            $orden->codigo_forro = $request->codigoForroIsco;
+        }
+
+        // Botones
+        $orden->codigo_botones = $request->codigoBoton; 
+        $orden->color_botones = $request->colorBoton;
+
+        // Etiquetas
+        $orden->etiquetas_tela = $request->etiquetaTela ? true : false;
+        $orden->etiquetas_marca = $request->etiquetaMarca ? true : false;
+
+        // Marca de la Etiqueta
+        if ($request->etiquetaMarca) {
+            $orden->marca_en_etiqueta = $request->marcaEtiqueta;
+        }
+
+        // Gancho
+        $orden->gancho = $request->tipoGancho;
+        if ($orden->gancho == 1) {
+            $orden->gancho_personalizacion = $request->perGancho;
+        }
+
+        // Portatrajes
+        $orden->portatrajes = $request->tipoPortatrajes;
+        if ($orden->portatrajes == 1) {
+            $orden->portatrajes_personalizacion = $request->perPortatrajes;
+        }
+
+        // Componentes del Traje
+        $orden->vest = $request->chaleco ? true : false;
+        $orden->coat = $request->saco ? true : false;
+        $orden->pants = $request->pantalon ? true : false;
+
+        // Guardar la Orden;
+        $orden->save();
+
+        // Chaleco
+        if ($orden->vest) {
+            $chaleco = new Vest;
+
+            // Datos de Chaleco
+            $chaleco->order_id = $orden->id;
+            $chaleco->tipo_cuello = $request->cuelloChaleco;
+            $chaleco->tipo_bolsas = $request->bolsasChaleco;
+            $chaleco->tipo_espalda = $request->forroTela;
+            $chaleco->ajustador_espalda = $request->ajustadorChaleco ? true : false;
+
+            // Guardar Datos de Chaleco
+            $chaleco->save();
+        }
+
+        // Pantalón
+        if ($orden->pants) {
+            $pantalon = new Pants;
+
+            // Datos del Pantalón
+            $pantalon->order_id = $orden->id;
+            $pantalon->pase = $request->tipoPase;
+            $pantalon->pliegues = $request->numPliegues;
+            $pantalon->bolsas_traseras = $request->bolsasTraseras;
+            $pantalon->tipo_vivo = $request->tipoVivo;
+            // Color Ojalera y Encuarte
+            if ($request->otroColorOjaleraEncuarte) {
+                $pantalon->color_ojalera = $request->otroColorOjaleraEncuarte;
+            } else {
+                $pantalon->color_ojalera = $request->colorOjaleraEncuarte;
+            }
+            
+            $pantalon->color_medio_forro = $request->colorMedioForroPiernas;
+            $pantalon->dobladillo = $request->dobladillo;
+
+            // Guardar Datos de Pantalón
+            $pantalon->save();
+        }
+
+        // Saco
+        if ($orden->coat) {
+            $saco = new Coat;
+
+            $saco->order_id = $orden->id;
+
+            // Datos de Saco Externo
+            $saco->tipo_solapa = $request->tipoSolapa;
+            // Color Ojal de Solapa
+            $saco->tipo_ojal_solapa = $request->tipoOjalSolapa;
+            if ($request->otroColorOjalSolapa) {
+                $saco->color_ojal_solapa = $request->otroColorOjalSolapa;
+            } else {
+                $saco->color_ojal_solapa = $request->colorOjalSolapa;
+            }
+            
+            $saco->botones_frente = $request->botonesFrente;
+            $saco->aberturas_detras = $request->aberturasDetras;
+            $saco->botones_mangas = $request->botonesMangas;
+            $saco->tipo_ojal_manga = $request->tipoOjalManga;
+
+            // Color del Ojal en Mangas
+            if ($request->otroColorOjalMangas) {
+                $saco->color_ojal_manga = $request->otroColorOjalMangas;
+            } else {
+                $saco->color_ojal_manga = $request->colorOjalMangas;
+            }
+
+            $saco->posicion_ojal_manga = $request->posicionOjalesManga;
+            $saco->ojales_activos_manga = $request->ojalesActivosManga ? true : false;
+
+            // Bolsas Exteriores
+            $saco->tipo_bolsas_ext = $request->bolsasExt;
+            $saco->pickstitch = $request->pickstitch ? true : false;
+            $saco->pickstitch_filos = $request->pickstitchfilos == "on" ? true : false;
+            $saco->pickstitch_aletilla = $request->pickstitchaletilla == "on" ? true : false;
+            $saco->pickstitch_cartera = $request->pickstitchcartera == "on" ? true : false;
+            $saco->sin_aletilla = $request->sinaletilla == "on" ? true : false;
+
+            // Datos de Saco Interno
+            $saco->tipo_vista = $request->tipo_vista;
+            $saco->balsam_rayas = $request->balsamRayasForroMangas ? true : false;
+            if ($request->otroForroInternoMangas) {
+                $saco->forro_interno_mangas = $request->otroForroInternoMangas;
+            } else {
+                $saco->forro_interno_mangas = "Balsam a Rayas";
+            }
+
+            // Pin Point
+            $saco->pin_point_interno = $request->pinPointInterno ? true : false;
+            if ($saco->pin_point_interno) {
+                // Color de Pin Point
+                if ($request->otroColorPinPoint) {
+                    $saco->pin_point_interno_color = $request->otroColorPinPoint;
+                } else {
+                    $saco->pin_point_interno_color = $request->colorPinPointInterno;
+                }
+
+                // Código de Pin Point
+                $saco->pin_point_interno_codigo = $request->pinPointInternoCodigo;
+            }
+
+            // Bies
+            $saco->bies = $request->biesInterno ? true : false;
+            if ($saco->bies) {
+                // Color de Bies
+                if ($request->otroColorBies) {
+                    $saco->bies_color = $request->otroColorBies;
+                } else {
+                    $saco->bies_color = $request->colorBies;
+                }
+
+                // Código Bies
+                $saco->bies_codigo = $request->biesInternoCodigo;
+                
+            }
+
+            // Color de la Puntada
+            if ($request->otroColorPuntada) {
+                $saco->puntada_color = $request->otroColorPuntada;
+            } else {
+                $saco->puntada_color = $request->colorPuntada;
+            }
+
+            // Tipo de Bolsas Internas
+            $saco->bolsas_int = $request->bolsasInt;
+            $saco->bolsa_int_color = $request->bolsasInternasColor;
+
+            // Vivos iguales a los vivos del Cuerpo
+            $saco->vivos_bolsas_internas_cuerpo = $request->vivosBolsasInternasCuerpo ? true : false;
+            if (!$saco->vivos_bolsas_internas_cuerpo) {
+                $saco->otro_vivos_bolsas_internas = $request->otroVivosBolsasInternas;
+            }
+            
+            // Puntadas
+            $saco->puntada_filos = $request->puntadaFilosSacoInt ? true : false;
+            $saco->puntada_aletillas = $request->puntadaAletillasSacoInt ? true : false;
+            $saco->puntada_carteras = $request->puntadaCarterasSacoInt ? true : false;
+
+            // Guardar los datos del Saco
+            $saco->save();
+        }
+
+        return redirect('/vendedor/ordenes');
     }
 
     /**

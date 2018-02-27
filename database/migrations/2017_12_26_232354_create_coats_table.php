@@ -50,13 +50,13 @@ class CreateCoatsTable extends Migration
             $table->boolean('balsam_rayas');
             $table->string('forro_interno_mangas');
             $table->boolean('intern_pin_point');
-            $table->string('pin_point_interno_color');
-            $table->string('pin_point_interno_codigo');
+            $table->string('pin_point_interno_color')->nullable();
+            $table->string('pin_point_interno_codigo')->nullable();
             $table->boolean('bies');
-            $table->string('color_bies');
-            $table->string('codigo_bies');
+            $table->string('bies_color')->nullable();
+            $table->string('bies_codigo')->nullable();
             $table->string('puntada_color');
-            $table->integer('bolsas_int'); // 0,1,2,3
+            $table->integer('bolsas_int'); // 0 ,1,2,3
             $table->string('bolsa_int_color')->nullable();
             $table->boolean('vivos_bolsas_internas_cuerpo');
             $table->string('otro_vivos_bolsas_internas');
