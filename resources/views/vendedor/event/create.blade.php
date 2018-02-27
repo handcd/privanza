@@ -50,7 +50,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="control-label">Cliente</label>
-                                <select class="form-control" name="cliente">
+                                <select class="form-control" name="cliente" required="true">
                                     <option disabled="" 
                                     @hasSection('editCliente')
                                     {{-- No hay tipo de evento --}}
