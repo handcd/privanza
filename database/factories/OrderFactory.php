@@ -8,9 +8,9 @@ $factory->define(App\Order::class, function (Faker $faker) {
         'vendedor_id' => App\Vendedor::all()->random()->id,
         'precio' => $faker->randomFloat(2,0,50000),
         //Contenido de Orden
-        'vest' => rand(0,1),
-        'coat' => rand(0,1),
-        'pants' => rand(0,1),
+        'has_vest' => rand(0,1),
+        'has_coat' => rand(0,1),
+        'has_pants' => rand(0,1),
         // Status General de Orden
         'approved' => rand(0,1),
         'date_approved' => $faker->dateTimeBetween('-1 month','-3 weeks'),

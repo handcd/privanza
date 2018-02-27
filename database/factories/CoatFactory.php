@@ -19,7 +19,7 @@ $factory->define(App\Coat::class, function (Faker $faker) {
         'tipo_bolsas_ext' => rand(0,7),
         'pickstitch' => rand(0,1),
         'pickstitch_filos' => rand(0,1),
-        'pickstitch_aletillla' => rand(0,1),
+        'pickstitch_aletilla' => rand(0,1),
         'pickstitch_cartera' => rand(0,1),
         'sin_aletilla' => rand(0,1),
 
@@ -27,7 +27,7 @@ $factory->define(App\Coat::class, function (Faker $faker) {
         'tipo_vista' => rand(0,1), // 0 normal / 1 chapeta francesa
         'balsam_rayas' => rand(0,1),
         'forro_interno_mangas' => $faker->colorName,
-        'intern_pin_point' => rand(0,1),
+        'pin_point_interno' => rand(0,1),
         'pin_point_interno_color' =>  $faker->colorName,
         'pin_point_interno_codigo' => $faker->hexcolor,
         'bies' => rand(0,1),

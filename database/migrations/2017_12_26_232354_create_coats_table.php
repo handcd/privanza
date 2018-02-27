@@ -41,7 +41,7 @@ class CreateCoatsTable extends Migration
             $table->integer('tipo_bolsas_ext');
             $table->boolean('pickstitch');
             $table->boolean('pickstitch_filos');
-            $table->boolean('pickstitch_aletillla');
+            $table->boolean('pickstitch_aletilla');
             $table->boolean('pickstitch_cartera');
             $table->boolean('sin_aletilla');
 
@@ -49,7 +49,7 @@ class CreateCoatsTable extends Migration
             $table->integer('tipo_vista'); // 0 normal / 1 chapeta francesa
             $table->boolean('balsam_rayas');
             $table->string('forro_interno_mangas');
-            $table->boolean('intern_pin_point');
+            $table->boolean('pin_point_interno');
             $table->string('pin_point_interno_color')->nullable();
             $table->string('pin_point_interno_codigo')->nullable();
             $table->boolean('bies');
@@ -59,7 +59,7 @@ class CreateCoatsTable extends Migration
             $table->integer('bolsas_int'); // 0 ,1,2,3
             $table->string('bolsa_int_color')->nullable();
             $table->boolean('vivos_bolsas_internas_cuerpo');
-            $table->string('otro_vivos_bolsas_internas');
+            $table->string('otro_vivos_bolsas_internas')->nullable();
             $table->boolean('puntada_filos');
             $table->boolean('puntada_aletillas');
             $table->boolean('puntada_carteras');

@@ -11,7 +11,7 @@
             <div class="card-content">
                   <h3>Status del Pedido</h3>
                   <h4>Estado General</h4>
-                  <div class="row text-center">
+                  <div class="row">
                         <div class="col-md-2">
                               @if ($orden->approved)
                                     <i class="fa fa-check-circle fa-lg text-success" aria-hidden="true"></i>
@@ -81,7 +81,7 @@
                   </div>
                   @if ($orden->production)
                         <h4>Estado de Producción</h4>
-                        <div class="row text-center">
+                        <div class="row">
                               <div class="col-md-3">
                                     @if ($orden->corte)
                                           <i class="fa fa-check-circle fa-lg text-success" aria-hidden="true"></i>
@@ -170,91 +170,173 @@
                               <p>{{ $orden->client->concept }}</p>
                         </div>
                   </div>
-                  <h3>Saco</h3>
-                  <h4>Saco Externo</h4>
-                  <div class="row">
-                        <div class="col-md-3">
-                              <label class="text-primary">Fit del Saco:</label>
-                              <p>{{ App\Fit::find($orden->client->fit_saco)->name }}</p>
-                        </div>
-                        <div class="col-md-3">
-                              <label class="text-primary">Talla del Saco:</label>
-                              <p>{{ $orden->client->talla_saco }}</p>
-                        </div>
-                        <div class="col-md-3">
-                              <label class="text-primary">Corte del Saco:</label>
-                              <p>
-                              @switch($orden->client->corte_saco)
-                                    @case(1)
-                                          First case...
-                                          @break
-                                    @case(2)
-                                          pasdfpaosdjf
-                                          @break
-                                    @case(3)
-                                          asodifjoasdijf
-                                          @break
-                                  @default
-                                          Default case...
-                              @endswitch
-                              </p>
-                        </div>
-                        <div class="col-md-3">
-                              <label class="text-primary">Largo de Manga:</label>
-                              <p>{{ $orden->client->largo_manga }}</p>
-                        </div>
-                  </div>
-                  <div class="row">
-                        <div class="col-md-3">
-                              <label class="text-primary">Largo de Espalda:</label>
-                              <p>{{ $orden->client->largo_espalda }}</p>
-                        </div>
-                        <div class="col-md-3">
-                              <label class="text-primary">Tipo de Tela</label>
-                              <p>{{ $orden->tela_isco ? 'Tela de ISCO' : 'Tela del Cliente' }}</p>
-                        </div>
-                        <div class="col-md-3">
-                              <label class="text-primary">Código de la Tela</label>
-                              <p>{{ $orden->codigo_tela }}</p>
-                        </div>
-                        @if (!$orden->tela_isco)
+                  @if ($orden->has_coat)
+                        <h3>Saco</h3>
+                        <h4>Saco Externo</h4>
+                        <div class="row">
                               <div class="col-md-3">
-                                    <label class="text-primary">Metros de Tela:</label>
-                                    <p>{{ $orden->mts_tela_cliente }}</p>
+                                    <label class="text-primary">Tipo de Solapa</label>
+                                    <p>{{ $orden->coat->tipo_solapa }}</p>
                               </div>
                               <div class="col-md-3">
-                                    <label class="text-primary">Código de Color Tela:</label>
-                                    <p>{{ $orden->codigo_color_tela_cliente }}</p>
-                              </div>
-                        @endif
-                        <div class="col-md-3">
-                              <label class="text-primary">Tipo de Forro</label>
-                              <p>{{ $orden->forro_isco ? 'Forro del Cliente' : 'Forro de ISCO' }}</p>
-                        </div>
-                        <div class="col-md-3">
-                              <label class="text-primary">Código de Forro</label>
-                              <p>{{ $orden->codigo_forro }}</p>
-                        </div>
-                        @if (!$orden->forro_isco)
-                              <div class="col-md-3">
-                                    <label class="text-primary">Código de Color de Forro:</label>
-                                    <p>{{ $orden->codigo_color_forro_cliente }}</p>
+                                    <label class="text-primary">Tipo de Ojal en Solapa</label>
+                                    <p>{{ $orden->coat->tipo_ojal_solapa }}</p>
                               </div>
                               <div class="col-md-3">
-                                    <label  class="text-primary">Metros de Forro:</label>
-                                    <p>{{ $orden->mts_forro_cliente }}< /p>
+                                    <label class="text-primary">Color en Ojal Solapa</label>
+                                    <p>{{ $orden->coat->color_ojal_solapa }}</p>
                               </div>
-                        @endif
-                  </div>
-                  <h4>Saco Interno</h4>
-                  <div class="row">
-                        <div class="col-md-12">
-                              <label class="text-primary">Notas del Saco:</label>
-                              <p>{{ $orden->client->notas_saco }}</p>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Botones de Frente</label>
+                                    <p>{{ $orden->coat->botones_frente }}</p>
+                              </div>
                         </div>
-                  </div>
-                  <h4>Pantalón</h4>
-                  <h4>Chaleco</h4>
+                        <div class="row">
+                              <div class="col-md-3">
+                                    <label class="text-primary">Aberturas Detrás</label>
+                                    <p>{{ $orden->coat->aberturas_detras }}</p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Botones Mangas</label>
+                                    <p>{{ $orden->coat->botones_mangas }}</p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Tipo de Ojal en Manga</label>
+                                    <p>{{ $orden->coat->tipo_ojal_manga }}</p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Color de Ojal en Manga</label>
+                                    <p>{{ $orden->coat->color_ojal_manga }}</p>
+                              </div>
+                        </div>
+                        <div class="row">
+                              <div class="col-md-3">
+                                    <label class="text-primary">Posición Ojal en Manga</label>
+                                    <p>{{ $orden->coat->posicion_ojal_manga }}</p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Ojales Activos en Manga</label>
+                                    <p>{{ $orden->coat->ojales_activos_manga }}</p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Tipo de Bolsas Exteriores</label>
+                                    <p>{{ $orden->coat->tipo_bolsas_ext }}</p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">PickStitch</label>
+                                    <p>{{ $orden->coat->pickstitch ? 'Si' : 'No' }}</p>
+                              </div>
+                        </div>
+                        <div class="row">
+                              <div class="col-md-3">
+                                    <label class="text-primary">PickStitch en Filos</label>
+                                    <p>{{ $orden->coat->pickstitch_filos ? 'Si' : 'No' }}</p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">PickStitch en Aletilla</label>
+                                    <p>{{ $orden->coat->pickstitch_aletilla ? 'Si' : 'No' }}</p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">PickStitch en Cartera</label>
+                                    <p>{{ $orden->coat->pickstitch_cartera }}</p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Sin Aletilla</label>
+                                    <p>{{ $orden->coat->sin_aletilla ? 'Sin Aletilla' : 'Con Aletilla' }}</p>
+                              </div>
+                        </div>
+                        <h4>Saco Interno</h4>
+                        <div class="row">
+                              <div class="col-md-3">
+                                    <label class="text-primary">Tipo de Vista</label>
+                                    <p>{{ $orden->coat->tipo_vista }}</p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Forro Interno Mangas</label>
+                                    <p>
+                                          @if ($orden->coat->balsam_rayas)
+                                                Balsam a Rayas
+                                          @else
+                                                {{ $orden->coat->forro_interno_mangas }}
+                                          @endif
+                                    </p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Pin Point Interno</label>
+                                    <p>{{ $orden->coat->pin_point_interno ? 'Si' : 'No' }}</p>
+                              </div>
+                              @if ($orden->coat->pin_point_interno)                        
+                                    <div class="col-md-3">
+                                          <label class="text-primary">Color de Pin Point</label>
+                                          <p>{{ $orden->coat->pin_point_interno_color }}</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                          <label class="text-primary">Código de Pin Point</label>
+                                          <p>{{ $orden->coat->pin_point_interno_codigo }}</p>
+                                    </div>
+                              @endif
+                        </div>
+                        <div class="row">
+                              <div class="col-md-3">
+                                    <label class="text-primary">Bies</label>
+                                    <p>{{ $orden->coat->bies ? 'Si' : 'No' }}</p>
+                              </div>
+                              @if ($orden->coat->bies)
+                                    <div class="col-md-3">
+                                          <label class="text-primary">Color de Bies</label>
+                                          <p>{{ $orden->coat->bies_color }}</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                          <label class="text-primary">Código de Bies</label>
+                                          <p>{{ $orden->coat->bies_codigo }}</p>
+                                    </div>
+                              @endif
+                              <div class="col-md-3">
+                                    <label class="text-primary">Color de Puntada</label>
+                                    <p>{{ $orden->coat->puntada_color }}</p>
+                              </div>
+                        </div>
+                        <div class="row">
+                              <div class="col-md-3">
+                                    <label class="text-primary">Bolsas Internas</label>
+                                    <p>{{ $orden->coat->bolsas_int }}</p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Color de Bolsas Internas</label>
+                                    <p>{{ $orden->coat->bolsa_int_color }}</p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Vivos de Bolsas Internas</label>
+                                    <p>
+                                          @if ($orden->coat->vivos_bolsas_internas_cuerpo)
+                                                Vivos igual a los seleccionados en el cuerpo
+                                          @else
+                                                {{ $orden->coat->otro_vivos_bolsas_internas }}
+                                          @endif
+                                    </p>
+                              </div>
+                        </div>
+                        <div class="row">
+                              <div class="col-md-3">
+                                    <label class="text-primary">Puntada en Filos</label>
+                                    <p>{{ $orden->coat->puntada_filos ? 'Si' : 'No' }}</p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Puntada en Aletillas</label>
+                                    <p>{{ $orden->coat->puntada_aletillas ? 'Si' : 'No' }}</p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Puntada en Carteras</label>
+                                    <p>{{ $orden->coat->puntada_carteras ? 'Si' : 'No' }}</p>
+                              </div>
+                        </div>
+                  @endif
+                  @if ($orden->has_vest)
+                        <h3>Chaleco</h3>
+                  @endif
+                  @if ($orden->has_pants)
+                        <h3>Pantalón</h3>
+                  @endif
             </div>
         </div>
 	</div>

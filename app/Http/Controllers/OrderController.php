@@ -228,15 +228,15 @@ class OrderController extends Controller
         }
 
         // Componentes del Traje
-        $orden->vest = $request->chaleco ? true : false;
-        $orden->coat = $request->saco ? true : false;
-        $orden->pants = $request->pantalon ? true : false;
+        $orden->has_vest = $request->chaleco ? true : false;
+        $orden->has_coat = $request->saco ? true : false;
+        $orden->has_pants = $request->pantalon ? true : false;
 
         // Guardar la Orden;
         $orden->save();
 
         // Chaleco
-        if ($orden->vest) {
+        if ($orden->has_vest) {
             $chaleco = new Vest;
 
             // Datos de Chaleco
@@ -251,7 +251,7 @@ class OrderController extends Controller
         }
 
         // Pantalón
-        if ($orden->pants) {
+        if ($orden->has_pants) {
             $pantalon = new Pants;
 
             // Datos del Pantalón
@@ -275,7 +275,7 @@ class OrderController extends Controller
         }
 
         // Saco
-        if ($orden->coat) {
+        if ($orden->has_coat) {
             $saco = new Coat;
 
             $saco->order_id = $orden->id;
@@ -314,7 +314,7 @@ class OrderController extends Controller
             $saco->sin_aletilla = $request->sinaletilla == "on" ? true : false;
 
             // Datos de Saco Interno
-            $saco->tipo_vista = $request->tipo_vista;
+            $saco->tipo_vista = $request->tipoVista;
             $saco->balsam_rayas = $request->balsamRayasForroMangas ? true : false;
             if ($request->otroForroInternoMangas) {
                 $saco->forro_interno_mangas = $request->otroForroInternoMangas;
@@ -377,6 +377,10 @@ class OrderController extends Controller
             $saco->save();
         }
 
+        // Notify the user about the new order
+        $request->session()->flash('success', '¡Se ha registrado correctamente la orden #'.$orden->id.'!');
+
+        // Redirect to Orders:Home
         return redirect('/vendedor/ordenes');
     }
 

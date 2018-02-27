@@ -19,9 +19,9 @@ class CreateOrdersTable extends Migration
             $table->integer('vendedor_id');
             $table->decimal('precio',15,2)->nullable();
             // Contenido de Orden
-            $table->boolean('vest')->default(0);
-            $table->boolean('coat')->default(0);
-            $table->boolean('pants')->default(0);
+            $table->boolean('has_vest')->default(0);
+            $table->boolean('has_coat')->default(0);
+            $table->boolean('has_pants')->default(0);
             // Status General de Orden
             $table->boolean('approved')->default(0);
             $table->dateTime('date_approved')->nullable();
