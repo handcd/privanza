@@ -2,11 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Vendedor;
-use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Jobs\SendVendedorProfileUpdateEmail;
+
+// Facades
+use Auth;
+use Notification;
+
+// Models
+use App\Vendedor;
+use App\Validador;
+use App\Admin;
+
+// Notifications
+use App\Notifications\ValidadorVendedorProfile;
 
 class ProfileController extends Controller
 {
@@ -37,7 +46,7 @@ class ProfileController extends Controller
         }
 
         // Dispatch Email Job
-        dispatch(new SendVendedorProfileUpdateEmail($vendedor));
+        Notification::send(Validador::all(), new ValidadorVendedorProfile($vendedor));
 
         // Flash feedback to user
         $request->session()->flash('success','¡Listo! Hemos enviado una notificación al administrador. En breve se pondrán en contacto contigo para actualizar tus datos.');
