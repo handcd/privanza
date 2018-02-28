@@ -31,11 +31,3 @@ Route::put('/citas/{cita}','EventController@updateForVendedor');
 // Profile
 Route::get('/perfil','ProfileController@perfilVendedor');
 Route::get('/perfil/solicitarCambio', 'ProfileController@dataChangeVendedor');
-
-Route::get('/pruebamail', function() {
-    return view('mails.action',[
-        'asunto' => 'Pedido #23 Aprobado.',
-        'urlAccion' => '/vendedor/ordenes/1',
-        'cuerpo' => 'El pedido ahora se encuentra aprobado, en 24 horas deberá ingresar a producción y posteriormente podrás recogerlo en las instalaciones de Privanza. Si deseas más información puedes consultarla haciendo click en el siguiente botón:'
-    ]);
-});
