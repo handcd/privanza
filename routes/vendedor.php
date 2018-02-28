@@ -18,7 +18,7 @@ Route::post('/ordenes','OrderController@storeForVendedor');
 Route::get('/ordenes/{order}','OrderController@showForVendedor');
 Route::get('/ordenes/{order}/editar','OrderController@editForVendedor');
 Route::put('/ordenes/{order}','OrderController@updateForVendedor');
-Route::get('/ordenes/{order}/pdf','OrderController@orderpdfForVendedor');
+Route::get('/ordenes/{order}/pdf','OrderController@pdfForVendedor');
 
 // Events
 Route::get('/citas','EventController@indexForVendedor');
