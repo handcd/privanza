@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Client;
-use App\Fit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
+
+// Models
+use App\Client;
+use App\Fit;
+
+// Facades
 use Auth;
+use Carbon\Carbon;
 use Session;
 
 class ClientController extends Controller
