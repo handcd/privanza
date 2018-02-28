@@ -9,6 +9,7 @@ use App\Coat;
 use App\Pants;
 use App\Fit;
 use Auth;
+use App\Jobs\SendNewOrderEmails;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use PDF;
@@ -379,6 +380,9 @@ class OrderController extends Controller
 
         // Notify the user about the new order
         $request->session()->flash('success', '¡Se ha registrado correctamente la orden #'.$orden->id.'!');
+
+        // Send Emails about new Order
+        dispatch(new SendNewOrderEmails($orden));
 
         // Redirect to Orders:Home
         return redirect('/vendedor/ordenes');
