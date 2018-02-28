@@ -2,14 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+// Models
 use App\Vendedor;
 use App\Event;
 use App\Client;
-use Illuminate\Http\Request;
+
+// Facades
 use Carbon\Carbon;
 use Auth;
-use App\Http\Controllers\Controller;
 use Session;
+
+// Notifications
 
 class EventController extends Controller
 {
