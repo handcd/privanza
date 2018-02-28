@@ -3,16 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Carbon\Carbon;
+
+// Models
 use App\Client;
 use App\Order;
 use App\Event;
+
+// Facades
 use Auth;
+use Carbon\Carbon;
 use Session;
 use DB;
 
 class DashboardController extends Controller
 {
+	/**
+	 * Get the dashboard for the Vendedor
+	 *
+	 * @param Request $request
+	 * @return view
+	 */
     public function vendedorDash(Request $request)
     {
     	$currentTime = Carbon::now();
