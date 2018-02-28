@@ -2,18 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+// Models
 use App\Vendedor;
+use App\Validador;
+use App\Admin;
 use App\Order;
 use App\Vest;
 use App\Coat;
 use App\Pants;
 use App\Fit;
+
+// Facades
 use Auth;
-use App\Jobs\SendNewOrderEmails;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use PDF;
 use Session;
+use Notification; 
+
+// Notifications Vendedor
+use App\Notifications\VendedorNewOrder;
+use App\Notifications\VendedorPickupOrder;
+
+// Notifications Validador
+use App\Notifications\ValidadorNewOrder;
+use App\Notifications\ValidadorApproveOrder;
+use App\Notifications\ValidadorProductionOrder;
+use App\Notifications\ValidadorProductionCuttingOrder;
+use App\Notifications\ValidadorProductionEnsambleOrder;
+use App\Notifications\ValidadorProductionRevisionOrder;
+use App\Notifications\ValidadorDeliveredOrder;
 
 class OrderController extends Controller
 {
@@ -92,14 +111,14 @@ class OrderController extends Controller
         $this->validate($request, [
             // Datos Orden
             'cliente' => 'required|numeric', // "1",
-            // 'saco' => 'required', // "on",
-            // 'chaleco' => 'required', // "on",
-            // 'pantalon' => 'required', // "on",
+            'saco' => 'nullable', // "on",
+            'chaleco' => 'nullable', // "on",
+            'pantalon' => 'nullable', // "on",
             'tipoTela' => 'required', // "cliente",
-            // 'codigoTelaCliente' => 'required', // "suodfoashudf",
-            // 'codigoColorTelaCliente' => 'required', // "aisdhfaidhsf",
-            // 'mtsTelaCliente' => 'required', // "123.3",
-            // 'codigoTelaIsco' => 'required', // null,
+            'codigoTelaCliente' => 'nullable|required_if:tipoTela,"cliente"', // "suodfoashudf",
+            'codigoColorTelaCliente' => 'nullable|required_if:tipoTela,"cliente"', // "aisdhfaidhsf",
+            'mtsTelaCliente' => 'nullable|required_if:tipoTela,"cliente"', // "123.3",
+            'codigoTelaIsco' => 'nullable|required_if:tipoTela,"cliente"', // null,
             'tipoForro' => 'required', // "cliente",
             // 'codigoForroCliente' => 'required', // "123123",
             // 'codigoColorForroCliente' => 'required', // "asdasd",
@@ -382,7 +401,8 @@ class OrderController extends Controller
         $request->session()->flash('success', '¡Se ha registrado correctamente la orden #'.$orden->id.'!');
 
         // Send Emails about new Order
-        dispatch(new SendNewOrderEmails($orden));
+        Notification::send(Auth::user(), new VendedorNewOrder($orden));
+        Notification::send(Validador::all(), new ValidadorNewOrder($orden));
 
         // Redirect to Orders:Home
         return redirect('/vendedor/ordenes');
@@ -440,7 +460,7 @@ class OrderController extends Controller
      * @param $id
      * @return PDF file for stream
      */
-    public function orderpdfForVendedor($id)
+    public function pdfForVendedor($id)
     {
         $orden = Order::find($id);
         
@@ -450,5 +470,151 @@ class OrderController extends Controller
         PDF::setOptions(['dpi' => 50]);
 
         return PDF::loadview('pdf.order',compact('orden'))->setPaper('a4', 'landscape')->stream('PRIV-OC'.$id.$orden->client->name.'.pdf');
+    }
+
+    /**
+     * Admin and Validador Functions
+     * 
+     * THESE ARE POTENTIALLY DESTRUCTIVE ACTIONS
+     * Just, be careful
+     *
+     */
+
+    /**
+     * Generate a PDF file for an specific Order
+     * This includes sensitive data only available to Validadors or Admins
+     *
+     * @param \App\Order $id
+     * @return PDF file for stream
+     */
+    public function pdfForAdminValidador($id)
+    {
+        $orden = Order::find($id);
+        
+        if (!$orden || $orden->vendedor_id != Auth::id()) {
+            return redirect('/vendedor/ordenes');
+        }
+        PDF::setOptions(['dpi' => 50]);
+
+        return PDF::loadview('pdf.order',compact('orden'))->setPaper('a4', 'landscape')->stream('PRIV-OC'.$id.$orden->client->name.'.pdf');
+    }
+
+    /**
+     * Approve Order
+     * Admin or Validador only, duh
+     *
+     * @param \App\Order $id
+     * @return \Illuminate\Http\Response
+     */
+    public function approveOrder($id)
+    {
+        // Fin the order
+        $order = Order::find($id);
+        if (!$order) {
+
+        }
+    }
+
+    /**
+     * Order in Production
+     * Admin or Validador only, duh
+     *
+     * @param \App\Order $id
+     * @return \Illuminate\Http\Response
+     */
+    public function productionOrder($id)
+    {
+    }
+
+    /**
+     * Order in Production - Corte
+     * Admin or Validador only, duh
+     *
+     * @param \App\Order $id
+     * @return \Illuminate\Http\Response
+     */
+    public function productionCorteOrder($id)
+    {
+    }
+
+    /**
+     * Order in Production - Ensamble
+     * Admin or Validador only, duh
+     *
+     * @param \App\Order $id
+     * @return \Illuminate\Http\Response
+     */
+    public function productionEnsambleOrder($id)
+    {
+    }
+
+    /**
+     * Order in Production - Plancha
+     * Admin or Validador only, duh
+     *
+     * @param \App\Order $id
+     * @return \Illuminate\Http\Response
+     */
+    public function productionPlanchaOrder($id)
+    {
+    }
+
+    /**
+     * Order in Production - Revisión
+     * Admin or Validador only, duh
+     *
+     * @param \App\Order $id
+     * @return \Illuminate\Http\Response
+     */
+    public function productionRevisionOrder($id)
+    {
+    }
+
+    /**
+     * Pickup Ready Order
+     * Admin or Validador only, duh
+     *
+     * @param \App\Order $id
+     * @return \Illuminate\Http\Response
+     */
+    public function pickupOrder($id)
+    {
+        # code...
+    }
+
+    /**
+     * Delivered Order
+     * Admin or Validador only, duh
+     *
+     * @param \App\Order $id
+     * @return \Illuminate\Http\Response
+     */
+    public function deliveredOrder($id)
+    {
+        # code...
+    }
+
+    /**
+     * Invoiced Order
+     * Admin or Validador only, duh
+     *
+     * @param \App\Order $id
+     * @return \Illuminate\Http\Response
+     */
+    public function invoicedOrder($id)
+    {
+        # code...
+    }
+
+    /**
+     * Charged Order
+     * Admin or Validador only, duh
+     *
+     * @param \App\Order $id
+     * @return \Illuminate\Http\Response
+     */
+    public function chargedOrder($id)
+    {
+        # code...
     }
 }
