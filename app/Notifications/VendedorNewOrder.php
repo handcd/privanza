@@ -48,7 +48,7 @@ class VendedorNewOrder extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         // URL
-        $url = url('/vendedor/ordenes/',$this->order->id);
+        $url = url('/vendedor/ordenes',$this->order->id);
 
         return (new MailMessage)
                     ->subject('Pedido Recibido')

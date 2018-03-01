@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class ValidadorApproveOrder extends Notification
+class ValidadorApproveOrder extends Notification implements ShouldQueue
 {
     use Queueable;
 

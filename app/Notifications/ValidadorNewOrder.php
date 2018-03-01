@@ -48,7 +48,7 @@ class ValidadorNewOrder extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         // URL
-        $url = url('/validador/ordenes/',$this->order->id);
+        $url = url('/validador/ordenes',$this->order->id);
 
         return (new MailMessage)
                     ->subject('Nuevo Pedido Recibido')

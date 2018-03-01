@@ -51,8 +51,8 @@ class ValidadorVendedorProfile extends Notification implements ShouldQueue
                     ->subject('Cambio de Información de Vendedor')
                     ->line($this->vendedor->name.' '.$this->vendedor->lastname.' ha solicitado un cambio de información. Para esto a continuación te proporcionaremos los datos de contacto del/la vendedor/a:')
                     ->line('Correo Electrónico: '.$this->vendedor->email)
-                    ->line('Teléfono: '.$this->vendedor->email)
-                    ->action('Revisar Vendedor', url('/validador/vendedores/',$this->vendedor->id))
+                    ->line('Teléfono: '.$this->vendedor->phone)
+                    ->action('Revisar Vendedor', url('/validador/vendedores',$this->vendedor->id))
                     ->line('¡Gracias por usar el sistema!');
     }
 }
