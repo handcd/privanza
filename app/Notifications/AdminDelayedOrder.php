@@ -7,18 +7,24 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class AdminDelayedOrder extends Notification
+class AdminDelayedOrder extends Notification implements ShouldQueue
 {
     use Queueable;
+
+    /**
+     * The Order
+     * @var \App\Order
+     */
+    protected $order;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($order)
     {
-        //
+        $this->order = $order;
     }
 
     /**
@@ -41,21 +47,10 @@ class AdminDelayedOrder extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
-    }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-        return [
-            //
-        ];
+                    ->subject('Notificación de Pedido Atrasado')
+                    ->line('Te enviamos este correo para informarte que el pedido #'.$this->order->id.' de '.$this->order->vendedor->name.' '$this->order->vendedor->name.' para '.$this->order->client->name.' '.$this->order->vendedor->lastname.' se ha atrasado en el flujo de trabajo de Privanza.')
+                    ->line('Para revisar el estado del pedido haz click en el siguiente botón:')
+                    ->action('Revisar Pedido', url('/admin/ordenes',$this->order->id))
+                    ->line('¡Gracias por usar el sistema!');
     }
 }

@@ -12,13 +12,19 @@ class ValidadorApproveOrder extends Notification implements ShouldQueue
     use Queueable;
 
     /**
+     * The Order
+     * @var \App\Order
+     */
+    protected $order;
+
+    /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($order)
     {
-        //
+        $this->order = $order;
     }
 
     /**
@@ -41,21 +47,10 @@ class ValidadorApproveOrder extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
-    }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-        return [
-            //
-        ];
+                    ->subject('Recordatorio: Aprobar Orden')
+                    ->line('Han pasado 24 horas desde que el pedido #'.$this->order->id.' por '.$this->order->vendedor->name.' fue ingresado y no ha sido revisado.')
+                    ->line('Te recomendamos que revises su status para su aprobación o modificación para mantener la línea de trabajo funcionando correctamente.')
+                    ->action('Revisar Orden', url('/validador/ordenes'),$this->order->id)
+                    ->line('¡Gracias por usar el sistema!');
     }
 }
