@@ -26,7 +26,7 @@
                         @forelse ($noAprobadas as $orden)
                         <tr>
                             <td>{{ $orden->id }}</td>
-                            <td><a href="{{ url('/vendedor/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</td>
+                            <td><a href="{{ url('/vendedor/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</a></td>
                             <td class="text-primary">${{ $orden->precio }}</td>
                             <td>{{ $orden->created_at }}</td>
                             <td class="td-actions text-right">
@@ -75,7 +75,7 @@
                         @forelse ($aprobadas as $orden)
                         <tr>
                             <td>{{ $orden->id }}</td>
-                            <td><a href="{{ url('/vendedor/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</td>
+                            <td><a href="{{ url('/vendedor/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</a></td>
                             <td class="text-primary">${{ $orden->precio }}</td>
                             <td>{{ $orden->created_at }}</td>
                             <td class="td-actions text-right">
@@ -102,6 +102,8 @@
             </div>
         </div>
     </div>
+</div>
+<div class="row">
     <div class="col-md-6">
         <div class="card">
             <div class="card-header" data-background-color="red">
@@ -121,7 +123,7 @@
                         @forelse ($listosEntrega as $orden)
                         <tr>
                             <td>{{ $orden->id }}</td>
-                            <td><a href="{{ url('/vendedor/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</td>
+                            <td><a href="{{ url('/vendedor/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</a></td>
                             <td class="text-primary">${{ $orden->precio }}</td>
                             <td>{{ $orden->created_at }}</td>
                             <td class="td-actions text-right">
@@ -167,7 +169,7 @@
                         @forelse ($finalizados as $orden)
                         <tr>
                             <td>{{ $orden->id }}</td>
-                            <td><a href="{{ url('/vendedor/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</td>
+                            <td><a href="{{ url('/vendedor/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</a></td>
                             <td class="text-primary">${{ $orden->precio }}</td>
                             <td>{{ $orden->created_at }}</td>
                             <td class="td-actions text-right">
