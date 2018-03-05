@@ -67,7 +67,7 @@ class DashboardController extends Controller
 	    								->count();
 	    }
 
-	    $ordenes = Auth::user()->orders;
+	    $ordenes = Auth::user()->orders->where('created_at','>=', Carbon::now()->startOfMonth());
 	    $recoger = Order::where('vendedor_id', Auth::id())->where('pickup','1')->get();
 
 	    // Todos los eventos
@@ -91,11 +91,23 @@ class DashboardController extends Controller
 	    return view('vendedor.dashboard', compact('ordenes','birthdaysToday','birthdaysWeek','birthdaysMonth','recoger','clientes','montoVentas','prendasVendidas','eventosHoy','eventosSemana'));
     }
 
+    /**
+     * Get the dashboard for the Validador
+     *
+     * @param Request $request
+     * @return view
+     */
     public function validadorDash()
     {
     	return 'Hola';
     }
 
+    /**
+     * Get the dashboard for the Admin
+     *
+     * @param Request $request
+     * @return view
+     */
     public function adminDash()
     {
     	return 'Holaaa';
