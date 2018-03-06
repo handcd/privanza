@@ -1,8 +1,6 @@
 @extends('vendedor.layout.main')
 
 @section('content')
-<!-- Material Dashboard DEMO methods, don't include it in your project! -->
-{{-- <script src="{{ asset('js/demo.js') }}"></script> --}}
 <div class="row">
      <div class="col-lg-3 col-md-6 col-sm-6">
         <div class="card card-stats">
@@ -11,12 +9,7 @@
             </div>
             <div class="card-content">
                 <p class="category">Total vendido del mes</p>
-                <h3 class="title">{{ $ordenes
-                            ->where('cobrado','1')
-                            ->where('created_at','>=', Carbon\Carbon::now()->startOfMonth())
-                            ->where('created_at','<=', Carbon\Carbon::now()->endOfMonth())
-                            ->sum('precio_final')
-                        }}</h3>
+                <h4 class="title">${{ $totalVendido }}</h4>
             </div>
         </div>
     </div>
@@ -27,7 +20,7 @@
             </div>
             <div class="card-content">
                 <p class="category">Órdenes por aprobar</p>
-                <h3 class="title">{{ $ordenes->where('approved','0')->count() }}</h3>
+                <h3 class="title">{{ $sinAprobar }}</h3>
             </div>
         </div>
     </div>
@@ -37,8 +30,8 @@
                 <i class="material-icons">check</i>
             </div>
             <div class="card-content">
-                <p class="category">Órdenes aprobadas</p>
-                <h3 class="title">{{ $ordenes->where('approved','1')->count() }}</h3>
+                <p class="category">Órdenes aprobadas (cotizadas)</p>
+                <h3 class="title">{{ $aprobadas }}</h3>
             </div>
         </div>
     </div>
@@ -49,10 +42,12 @@
             </div>
             <div class="card-content">
                 <p class="category">Órdenes en producción</p>
-                <h3 class="title">{{ $ordenes->where('production','1')->count() }}</h3>
+                <h3 class="title">{{ $produccion }}</h3>
             </div>           
         </div>
     </div>
+</div>
+<div class="row">
     <div class="col-lg-3 col-md-6 col-sm-6">
         <div class="card card-stats">
             <div class="card-header" data-background-color="green">
@@ -60,7 +55,7 @@
             </div>
             <div class="card-content">
                 <p class="category">Órdenes para Recolección</p>
-                <h3 class="title">{{ $ordenes->where('recoger','1')->count() }}</h3>
+                <h3 class="title">{{ $recoleccion }}</h3>
             </div>           
         </div>
     </div>
@@ -71,7 +66,7 @@
             </div>
             <div class="card-content">
                 <p class="category">Órdenes Entregadas</p>
-                <h3 class="title">{{ $ordenes->where('entregado','1')->count() }}</h3>
+                <h3 class="title">{{ $entregadas }}</h3>
             </div>           
         </div>
     </div>
@@ -82,7 +77,7 @@
             </div>
             <div class="card-content">
                 <p class="category">Órdenes Facturadas</p>
-                <h3 class="title">{{ $ordenes->where('facturado','1')->count() }}</h3>
+                <h3 class="title">{{ $facturadas }}</h3>
             </div>           
         </div>
     </div>
@@ -93,7 +88,7 @@
             </div>
             <div class="card-content">
                 <p class="category">Órdenes Cobradas</p>
-                <h3 class="title">{{ $ordenes->where('cobrado','1')->count() }}</h3>
+                <h3 class="title">{{ $cobradas }}</h3>
             </div>           
         </div>
     </div>
@@ -443,21 +438,9 @@
             labels: ['S1','S2','S3','S4'],
             series: [
                 [
-                @php
-                    $max = 1;
-                    $dt = Carbon\Carbon::now();
-                @endphp
-                @for ($i = 0; $i < 4; $i++)
-                    '{{
-                        $temp = $ordenes
-                            ->where('created_at','>=', Carbon\Carbon::now()->startOfMonth()->addWeeks($i)->startOfWeek())
-                            ->where('created_at','<=', Carbon\Carbon::now()->startOfMonth()->addWeeks($i)->endOfWeek())
-                            ->count()
-                    }}',
-                    @php
-                        if ($temp > $max) { $max = $temp; }
-                    @endphp
-                @endfor
+                @foreach ($ventasPorSemana as $monto)
+                    {{ $monto }},
+                @endforeach
                 ]
 
             ]
@@ -467,7 +450,7 @@
                 showGrid: true
             },
             low: 0,
-            high: {{ $max+5 }},
+            high: {{ max($ventasPorSemana)*1.3 }},
             chartPadding: {
                 top: 0,
                 right: 5,

@@ -25,32 +25,39 @@ class DashboardController extends Controller
 	 */
     public function vendedorDash(Request $request)
     {
+    	// La fecha actual
     	$currentTime = Carbon::now();
 
+    	// Los clientes del vendedor
 	    $clientes = Client::where('vendedor_id', Auth::id())
 	    					->get();
 
+	    // Los cumpleaños del mes
 	    $birthdaysMonth = Client::where('vendedor_id', Auth::id())
 	    						->whereMonth('birthday',$currentTime->month)
 	    						->orderBy('birthday','asc')
 	    						->get();
-
+	    
+	    // Los cumpleaños del día
 	    $birthdaysToday = Client::where('vendedor_id', Auth::id())
 	    						->whereMonth('birthday',$currentTime->month)
 	    						->whereDay('birthday',$currentTime->day)
 	    						->orderBy('birthday','asc')
 	    						->get();
 
+	    // Los cumpleaños de la semana
 	    $birthdaysWeek = Client::where('vendedor_id', Auth::id())
 	    						->whereMonth('birthday',$currentTime->month)
 	    						->whereDay('birthday','>=',$currentTime->day)
 	    						->whereDay('birthday','<=',$currentTime->addWeek()->day)
 	    						->get();
 
+	    // Las órdenes de este año
 	    $ordenes = Order::where('vendedor_id',Auth::id())
 	    					->whereYear('created_at',$currentTime->year)
 	    					->get();
 
+	    // Datos para gráfica de monto de ventas mensual
 	    $montoVentas = array();
 	    for ($i=1; $i < 13; $i++) { 
 	    	$montoVentas[] = Order::where('vendedor_id',Auth::id())
@@ -59,6 +66,7 @@ class DashboardController extends Controller
 	    							->sum('precio');
 	    }
 
+	    // Gráfica de prendas vendidas en el mes
 	    $prendasVendidas = array();
 	    for ($i=1; $i < 13; $i++) { 
 	    	$prendasVendidas[] = Order::where('vendedor_id', Auth::id())
@@ -67,8 +75,74 @@ class DashboardController extends Controller
 	    								->count();
 	    }
 
-	    $ordenes = Auth::user()->orders->where('created_at','>=', Carbon::now()->startOfMonth());
-	    $recoger = Order::where('vendedor_id', Auth::id())->where('pickup','1')->get();
+	    // Gráfica de Ventas del mes
+	    $ventasPorSemana = array();
+	    for ($i=0; $i < 4; $i++) { 
+	    	$ventasPorSemana[] = Order::where('vendedor_id',Auth::id())
+	    							->where('created_at','>=',Carbon::now()->startOfMonth()->addWeeks($i)->startOfWeek())
+	    							->where('created_at','<=',Carbon::now()->startOfMonth()->addWeeks($i)->endOfWeek())
+	    							->count();
+	    }
+
+	    // Ordenes Generales
+	    $ordenes = Auth::user()->orders;
+
+	    // Total Vendido el Mes
+	    $totalVendido = $ordenes
+	    					->filter(function($order){
+	    						return $order->currentStatus() === 'cobrado' && $order->created_at >= Carbon::now()->startOfMonth();
+	    					})
+	    					->sum('precio');
+
+	    // Órdenes sin Aprobar
+	    $sinAprobar = $ordenes
+	    					->filter(function($order){
+	    						return $order->currentStatus() === 'unapproved';
+	    					})
+	    					->count();
+
+	    // Órdenes Aprobadas
+	    $aprobadas = $ordenes
+	    				->filter(function($order){
+	    					return $order->currentStatus() === 'approved';
+	    				})
+	    				->count();
+
+	    // Órdenes en Producción
+	    $produccion = $ordenes
+	    				->filter(function($order){
+	    					return $order->currentStatus() === 'production';
+	    				})
+	    				->count();
+
+	    // Órdenes listas para ser recogidas
+	   	$recoleccion = $ordenes
+	   					->filter(function($order){
+	   						return $order->currentStatus() === 'pickup';
+	   					})
+	   					->count();
+
+	   	// Órdenes entregadas
+	   	$entregadas = $ordenes
+	   					->filter(function($order){
+	   						return $order->currentStatus() === 'delivered';
+	   					})
+	   					->count();
+
+	   	// Órdenes Facturadas
+	   	$facturadas = $ordenes
+	   					->filter(function($order){
+	   						return $order->currentStatus() === 'facturado';
+	   					})
+	   					->count();
+
+	   	// Órdenes Cobradas
+	   	$cobradas = $ordenes
+	   					->filter(function($order){
+	   						return $order->currentStatus() === 'cobrado';
+	   					})
+	   					->count();
+
 
 	    // Todos los eventos
 	    $eventos = Auth::user()->events;
@@ -84,11 +158,11 @@ class DashboardController extends Controller
         });
 
 	    // Warning if there are Orders ready for pickup.
-	    if ($recoger->count() > 0) {
+	    if ($recoleccion > 0) {
 	    	$request->session()->flash('warning', 'Tienes pedidos listos para ser recogidos.');
 	    }
 
-	    return view('vendedor.dashboard', compact('ordenes','birthdaysToday','birthdaysWeek','birthdaysMonth','recoger','clientes','montoVentas','prendasVendidas','eventosHoy','eventosSemana'));
+	    return view('vendedor.dashboard',compact('birthdaysMonth','birthdaysWeek','birthdaysToday','montoVentas','prendasVendidas','ventasPorSemana','totalVendido','sinAprobar','aprobadas','produccion','recoleccion','entregadas','facturadas','cobradas','eventosHoy','eventosSemana'));
     }
 
     /**
