@@ -81,14 +81,14 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
 				                                <select class="form-control" name="cliente" required="true">
 				                                    <option disabled="" 
 				                                    @hasSection('editCliente')
-				                                    {{-- No hay tipo de evento --}}
+				                                    {{-- Ya hay un cliente seleccionado --}}
 				                                    @else
 				                                      selected="" 
 				                                    @endif></option>
 				                                    @foreach ($clientes as $cliente)
 				                                        <option value="{{ $cliente->id }}"
 				                                          @hasSection('editCliente')
-				                                            @if ($__env->getSections()['editCliente'] == $cliente->id)
+				                                            @if ($orden->client->id == $cliente->id)
 				                                              selected="" 
 				                                            @endif
 				                                          @endif>
@@ -113,7 +113,13 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
 								<div class="col-md-4 text-center">
 									<div class="checkbox">
 										<label>
-											<input type="checkbox" name="saco" id="checkSaco">
+											<input type="checkbox" name="saco" id="checkSaco" 
+											@hasSection('editCoat')
+												@if ($orden->has_coat)
+												 	checked="1"
+												 @endif 
+											@endif
+											>
 										</label>
 										Saco
 									</div>
@@ -121,7 +127,13 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
 								<div class="col-md-4 text-center">
 									<div class="checkbox">
 										<label>
-											<input type="checkbox" name="chaleco" id="checkChaleco">
+											<input type="checkbox" name="chaleco" id="checkChaleco"
+											@hasSection('editVest')
+												@if ($orden->has_vest)
+													checked="1"
+												@endif
+											@endif
+											>
 										</label>
 										Chaleco
 									</div>
@@ -129,7 +141,13 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
 								<div class="col-md-4 text-center">
 									<div class="checkbox">
 										<label>
-											<input type="checkbox" name="pantalon" id="checkPantalon">
+											<input type="checkbox" name="pantalon" id="checkPantalon"
+											@hasSection('editPants')
+												@if ($orden->has_pants)
+													checked="1" 
+												@endif
+											@endif
+											>
 										</label>
 										Pantalón
 									</div>
@@ -149,7 +167,13 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
                                     </div>
                                     <div class="col-xs-6">
                                         <div class="choice" id="telaIsco" data-toggle="wizard-radio" rel="tooltip" title="Selecciona esta opción si la tela es propiedad de ISCO.">
-                                            <input type="radio" name="tipoTela" value="isco">
+                                            <input type="radio" name="tipoTela" value="isco"
+											@hasSection('tipoTelaIsco')
+												@if ($orden->tela_isco)
+													checked="1" 
+												@endif
+											@endif
+                                            >
                                             <div class="icon">
                                                 <i class="fa fa-industry" aria-hidden="true"></i>
                                             </div>
