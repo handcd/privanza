@@ -9,14 +9,17 @@
     <title>Privanza | Vendedor</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
+
     <!-- Bootstrap core CSS     -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" />
     <!--  Material Dashboard CSS    -->
     <link href="{{ asset('css/material-dashboard.css?v=1.2.0') }}" rel="stylesheet" />
+    
     <!--     Fonts and icons     -->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='//fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 
     <!--   Core JS Files   -->
     <script src="{{ asset('js/jquery-3.2.1.min.js') }}" type="text/javascript"></script>
