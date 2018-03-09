@@ -14,10 +14,14 @@
             			<label class="text-primary">Fecha de la Cita:</label>
             			<p>{{ Carbon\Carbon::parse($evento->fechahora)->toFormattedDateString() }}</p>
             		</div>
-            		<div class="col-md-4">
+            		<div class="col-md-2">
             			<label class="text-primary">Hora de la Cita:</label>
             			<p>{{ Carbon\Carbon::parse($evento->fechahora)->format('g:i a') }}</p>
             		</div>
+                        <div class="col-md-6">
+                              <label class="text-primary">Notas de la Cita:</label>
+                              <p>{{ $evento->notes }}</p>
+                        </div>
             	</div>
             	<div class="row">
             		<div class="col-md-12">

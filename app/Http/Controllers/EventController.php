@@ -67,7 +67,8 @@ class EventController extends Controller
         $evento = new Event;
         $this->validate($request, [
             'cliente' => 'required',
-            'fechahora' => 'required|date'
+            'fechahora' => 'required|date',
+            'notes' => 'nullable'
         ]);
 
         $cliente = Client::find($request->cliente);
@@ -79,6 +80,7 @@ class EventController extends Controller
         $evento->vendedor_id = Auth::id();
         $evento->client_id = $cliente->id;
         $evento->fechahora = Carbon::parse($request->fechahora)->toDateTimeString();
+        $evento->notes = $request->notes;
         $evento->save();
 
         $request->session()->flash('success', 'Se ha añadido correctamente el evento.');
@@ -131,7 +133,8 @@ class EventController extends Controller
 
         $this->validate($request, [
             'cliente' => 'required',
-            'fechahora' => 'required|date'
+            'fechahora' => 'required|date',
+            'notes' => 'nullable'
         ]);
 
         $cliente = Client::find($request->cliente);
@@ -144,6 +147,7 @@ class EventController extends Controller
         $evento->vendedor_id = Auth::id();
         $evento->client_id = $cliente->id;
         $evento->fechahora = Carbon::parse($request->fechahora)->toDateTimeString();
+        $evento->notes = $request->notes;
         $evento->save();
 
         $request->session()->flash('success', 'Se ha editado correctamente el evento.');

@@ -45,15 +45,6 @@
                     @section('editMethod')
                         @show
                     <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-                            <div class="form-group">
-                                <label class="control-label">Fecha y Hora de la Cita</label>
-                                <input type="hidden" id="fechaoculta" name="fechahora" value="@yield('editFecha')">
-                                <div id="datetimepicker" data-date="@yield('editFecha')"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-4 col-md-offset-2">
                             <div class="form-group">
                                 <label class="control-label">Cliente</label>
@@ -79,6 +70,23 @@
                         </div>
                         <div class="col-md-4">
                             <a href="{{ url('/vendedor/clientes/agregar') }}" class="btn btn-warning pull-right">Si el cliente no se encuentra registrado, haz click aquí</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="form-group">
+                                <label class="control-label">Fecha y Hora de la Cita</label>
+                                <input type="hidden" id="fechaoculta" name="fechahora" value="@yield('editFecha')">
+                                <div id="datetimepicker" data-date="@yield('editFecha')"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Notas de la Cita:</label>
+                                <textarea name="notes" id="notes" rows="5" class="form-control">@yield('editNotes')</textarea>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
