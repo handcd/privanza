@@ -1,6 +1,10 @@
 @extends('vendedor.layout.main')
 
 @section('content')
+<!-- DateTimePicker CSS -->
+<link rel="stylesheet" href="{{ asset('css/datepicker.css') }}">
+<!-- DateTimePicker JS -->
+<script src="{{ asset('js/datepicker.js') }}"></script>
 <style>
   .btn{
       white-space:normal !important;
@@ -41,19 +45,22 @@
                     @section('editMethod')
                         @show
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-8 col-md-offset-2">
                             <div class="form-group">
                                 <label class="control-label">Fecha y Hora de la Cita</label>
-                                <input name="fechahora" type="datetime-local" class="form-control"  required="true" value="@yield('editFecha')">
+                                <input type="hidden" id="fechaoculta" name="fechahora" value="@yield('editFecha')">
+                                <div id="datetimepicker" data-date="@yield('editFecha')"></div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-2">
                             <div class="form-group">
                                 <label class="control-label">Cliente</label>
                                 <select class="form-control" name="cliente" required="true">
                                     <option disabled="" 
                                     @hasSection('editCliente')
-                                    {{-- No hay tipo de evento --}}
+                                        {{-- No hay cliente seleccionado --}}
                                     @else
                                       selected="" 
                                     @endif></option>
@@ -74,12 +81,29 @@
                             <a href="{{ url('/vendedor/clientes/agregar') }}" class="btn btn-warning pull-right">Si el cliente no se encuentra registrado, haz click aquí</a>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success pull-right">Subir</button>
-                    <a href="{{ url('/vendedor/citas') }}" class="btn btn-default">Cancelar</a>
-                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a href="{{ url('/vendedor/citas') }}" class="btn btn-default">Cancelar</a>
+                        </div>
+                        <div class="col-xs-6">
+                            <button type="submit" class="btn btn-success pull-right">Subir</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker').datetimepicker({
+            inline: true,
+            sideBySide: true,
+            showTodayButton: true,
+            defaultDate: '@yield('editFecha')'
+        }).on('dp.change', function () {
+            $('#fechaoculta').val($('#datetimepicker').data('DateTimePicker').date().format());
+        });
+    });
+</script>
 @endsection
