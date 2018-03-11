@@ -1,0 +1,138 @@
+/*
+	Image Radios and Checkboxes
+
+	These are the styles applied to generate the image radios and checkboxes inputs.
+
+	Privanza CRM
+*/
+
+/*
+ HOLABETO
+*/
+
+$azul: #55bed5;
+
+label {
+	/* HIDE RADIO*/
+	input{
+		visibility: hidden; /* Makes input not-clickable */
+		position: absolute; /* Remove input from document flow */
+
+		+ img {
+			cursor: pointer;
+			border:4px solid #333;
+			border-radius: 5px;
+			max-width: 250px;
+			max-height: 250px;
+			transition: .2s;
+
+			+ p {
+				font-size: 1.2em;
+				font-weight: 200;
+				padding-top: 8px;
+				color: #313034;
+				transition: .2s;
+				padding: 3px;
+
+				i {
+			    	transition: .2s;
+			    	opacity: 0;
+			    	background: $azul;
+			    	border-radius: 50%;
+			    	color: #FFF;
+			    	padding: 3px;
+				}
+			}
+		}
+
+		&:checked {
+			+ img {
+				filter: opacity(80%) drop-shadow(8px 8px 10px gray);
+				border:5px solid $azul;
+
+				+ p {
+					//border: 4px solid darken($azul,30%);
+					background-color: $azul;
+					border-radius: 6px;
+					color: #FFF;
+					filter: drop-shadow(8px 8px 10px gray);
+
+					i {
+						background-color: #333;
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+
+	&:hover {
+		p {
+			i {
+				opacity: 1;
+			}
+		}
+
+		img {
+	  		filter: drop-shadow(6px 6px 10px gray) opacity(90%);
+	  	}
+	}
+}
+
+/*
+	Fix for displaying images on rows
+*/
+.row {
+	.col-xs-3 {
+		&:last-child {
+			padding-right: 6px !important;
+		}
+
+		&:first-child {
+			padding-left: 6px !important;
+		}
+	}
+	
+	.col-xs-6 {
+		&:last-child {
+			padding-right: 6px !important;
+		}
+
+		&:first-child {
+			padding-left: 6px !important;
+		}
+	}
+	
+}
+
+
+
+@media (max-width: 599px) {
+	.row {
+		.col-xs-3 {
+			&:last-child {
+				padding-right: 15px !important;
+			}
+
+			&:first-child {
+				padding-left: 15px !important;
+			}
+		}
+		
+		.col-xs-6 {
+			&:last-child {
+				padding-right: 15px !important;
+			}
+
+			&:first-child {
+				padding-left: 15px !important;
+			}
+		}
+		
+	}
+
+	label > input + img{ /* IMAGE STYLES */
+		max-width: 100px;
+		max-height: 100px;
+	}
+}
