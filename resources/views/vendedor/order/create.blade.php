@@ -9,9 +9,9 @@
 <script src="{{ asset('wizard/js/material-bootstrap-wizard.js') }}"></script>
 <script src="{{ asset('wizard/js/jquery.validate.min.js') }}"></script>
 <style>
-/*
-Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
-*/
+	/*
+	Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
+	*/
 	.wizard-container {
 		padding: 0px !important;
 		z-index: auto !important;
@@ -369,73 +369,7 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
 						</div>
 
 						{{-- Saco Externo --}}
-						<style>
-							label > input{ /* HIDE RADIO */
-							  visibility: hidden; /* Makes input not-clickable */
-							  position: absolute; /* Remove input from document flow */
-							}
-
-							label > input + img{ /* IMAGE STYLES */
-							  cursor:pointer;
-							  border:4px solid #333;
-							  border-radius: 5px;
-							  max-width: 250px;
-							  max-height: 250px;
-							}
-
-							label > input + img + p{
-								font-size: 1.2em;
-							    font-weight: 200;
-							    padding-top: 8px;
-							    color: #313034;
-							}
-							label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
-							  border:5px solid #55bed5;
-							  border-radius: 5px;
-							  filter: opacity(80%) drop-shadow(8px 8px 10px gray);
-							}
-							
-							/* Styles for the color picker images */
-							.color-picker img {
-								max-width: 50px;
-								max-height: 50px;
-							}
-
-							.row .col-xs-3:last-child {
-								padding-right: 6px !important;
-							}
-							.row .col-xs-3:first-child {
-								padding-left: 6px !important;
-							}
-
-							.row .col-xs-6:last-child {
-								padding-right: 6px !important;
-							}
-							.row .col-xs-6:first-child {
-								padding-left: 6px !important;
-							}
-
-							@media (max-width: 599px) {
-								.row .col-xs-3:last-child {
-									padding-right: 15px !important;
-								}
-								.row .col-xs-3:first-child {
-									padding-left: 15px !important;
-								}
-
-								.row .col-xs-6:last-child {
-									padding-right: 15px !important;
-								}
-								.row .col-xs-6:first-child {
-									padding-left: 15px !important;
-								}
-
-								label > input + img{ /* IMAGE STYLES */
-									max-width: 100px;
-									max-height: 100px;
-								}
-							}
-						</style>
+						
 						<div class="tab-pane" id="sacoExt">
 							<h4 class="info-text">Datos de la parte Externa del Saco</h4>
 							<div class="row">
@@ -491,64 +425,7 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
 													<p>Selecciona el color del ojal en solapa:</p>
 												</div>
 											</div>
-											<div class="color-picker">
-												<div class="row">
-													<div class="col-md-10 col-md-offset-1">
-														<div class="col-xs-3">
-															<label>
-															  <input type="radio" name="colorOjalSolapa" value="Negro" />
-															  <img src="{{ asset('img/suit_options/colores/negro.png') }}">
-															</label>
-														</div>
-														<div class="col-xs-3">
-															<label>
-															  <input type="radio" name="colorOjalSolapa" value="Gris Oxford" />
-															  <img src="{{ asset('img/suit_options/colores/gris_oxford.png') }}">
-															</label>
-														</div>
-														<div class="col-xs-3">
-															<label>
-															  <input type="radio" name="colorOjalSolapa" value="Gris Claro" />
-															  <img src="{{ asset('img/suit_options/colores/gris_claro.png') }}">
-															</label>
-														</div>
-														<div class="col-xs-3">
-															<label>
-															  <input type="radio" name="colorOjalSolapa" value="Blanco" />
-															  <img src="{{ asset('img/suit_options/colores/blanco.png') }}">
-															</label>
-														</div>
-														<div class="col-xs-3">
-															<label>
-															  <input type="radio" name="colorOjalSolapa" value="Azul Marino" />
-															  <img src="{{ asset('img/suit_options/colores/azul_marino.png') }}">
-															</label>
-														</div>
-														<div class="col-xs-3">
-															<label>
-															  <input type="radio" name="colorOjalSolapa" value="Azul Cielo" />
-															  <img src="{{ asset('img/suit_options/colores/azul_cielo.png') }}">
-															</label>
-														</div>
-														<div class="col-xs-3">
-															<label>
-															  <input type="radio" name="colorOjalSolapa" value="Rojo" />
-															  <img src="{{ asset('img/suit_options/colores/rojo.png') }}">
-															</label>
-														</div>
-														<div class="col-xs-3">
-															<label>
-															  <input type="radio" name="colorOjalSolapa" value="Vino" />
-															  <img src="{{ asset('img/suit_options/colores/vino.png') }}">
-															</label>
-														</div>
-													</div>
-												</div>
-												<div class="form-group label-floating">
-													<label for="" class="control-label">Código de Otro Color:</label>
-													<input type="text" name="otroColorOjalSolapa" class="form-control">
-												</div>
-											</div>
+											@include('partials.color-palette', ['varName' => 'OjalSolapa'])
 										</div>
 									</div>
 								</div>
@@ -594,7 +471,7 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
 										<label>
 										  <input type="radio" name="aberturasDetras" value="0" required="" />
 										  <img src="{{ asset('img/suit_options/saco/Espalda_SinAberturas.png') }}">
-										  <p class="text-center">Sin Aberturas</p>
+										  <p class="text-center">Sin Aberturas <i class="fa fa-check" aria-hidden="true"></i> </p>
 										</label>
 									</div>
 									<div class="col-md-4 col-xs-6">
@@ -644,64 +521,7 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
 												<p>Color de Ojal en Mangas:</p>
 											</div>
 										</div>
-										<div class="color-picker">
-											<div class="row">
-												<div class="col-md-10 col-md-offset-1">
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorOjalMangas" value="Negro" />
-														  <img src="{{ asset('img/suit_options/colores/negro.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorOjalMangas" value="Gris Oxford" />
-														  <img src="{{ asset('img/suit_options/colores/gris_oxford.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorOjalMangas" value="Gris Claro" />
-														  <img src="{{ asset('img/suit_options/colores/gris_claro.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorOjalMangas" value="Blanco" />
-														  <img src="{{ asset('img/suit_options/colores/blanco.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorOjalMangas" value="Azul Marino" />
-														  <img src="{{ asset('img/suit_options/colores/azul_marino.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorOjalMangas" value="Azul Cielo" />
-														  <img src="{{ asset('img/suit_options/colores/azul_cielo.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorOjalMangas" value="Rojo" />
-														  <img src="{{ asset('img/suit_options/colores/rojo.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorOjalMangas" value="Vino" />
-														  <img src="{{ asset('img/suit_options/colores/vino.png') }}">
-														</label>
-													</div>
-												</div>
-											</div>
-											<div class="form-group label-floating">
-												<label for="" class="control-label">Código de Otro Color:</label>
-												<input type="text" name="otroColorOjalMangas" class="form-control">
-											</div>
-										</div>
+										@include('partials.color-palette', ['varName' => 'OjalMangas'])
 									</div>
 								</div>
 								<div class="row">
@@ -905,64 +725,7 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
 										<div class="row">
 											<p class="text-center">Color de Pin Point</p>
 										</div>
-										<div class="color-picker">
-											<div class="row text-center">
-												<div class="col-md-10 col-md-offset-1">
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorPinPointInterno" value="Negro" />
-														  <img src="{{ asset('img/suit_options/colores/negro.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorPinPointInterno" value="Gris Oxford" />
-														  <img src="{{ asset('img/suit_options/colores/gris_oxford.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorPinPointInterno" value="Gris Claro" />
-														  <img src="{{ asset('img/suit_options/colores/gris_claro.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorPinPointInterno" value="Blanco" />
-														  <img src="{{ asset('img/suit_options/colores/blanco.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorPinPointInterno" value="Azul Marino" />
-														  <img src="{{ asset('img/suit_options/colores/azul_marino.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorPinPointInterno" value="Azul Cielo" />
-														  <img src="{{ asset('img/suit_options/colores/azul_cielo.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorPinPointInterno" value="Rojo" />
-														  <img src="{{ asset('img/suit_options/colores/rojo.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorPinPointInterno" value="Vino" />
-														  <img src="{{ asset('img/suit_options/colores/vino.png') }}">
-														</label>
-													</div>
-												</div>
-											</div>
-											<div class="form-group label-floating">
-												<label for="" class="control-label">Código de Otro Color:</label>
-												<input type="text" name="otroColorPinPoint" class="form-control">
-											</div>
-										</div>
+										@include('partials.color-palette', ['varName' => 'PinPointInterno'])
 										<div class="form-group label-floating">
 											<label class="control-label">Código Pin Point<small>(opcional)</small></label>
 											<input type="text" class="form-control" name="pinPointInternoCodigo">
@@ -979,64 +742,7 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
 										<div class="row">
 											<p class="text-center">Color de Bies</p>
 										</div>
-										<div class="color-picker">
-											<div class="row text-center">
-												<div class="col-md-10 col-md-offset-1">
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorBies" value="Negro" />
-														  <img src="{{ asset('img/suit_options/colores/negro.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorBies" value="Gris Oxford" />
-														  <img src="{{ asset('img/suit_options/colores/gris_oxford.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorBies" value="Gris Claro" />
-														  <img src="{{ asset('img/suit_options/colores/gris_claro.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorBies" value="Blanco" />
-														  <img src="{{ asset('img/suit_options/colores/blanco.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorBies" value="Azul Marino" />
-														  <img src="{{ asset('img/suit_options/colores/azul_marino.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorBies" value="Azul Cielo" />
-														  <img src="{{ asset('img/suit_options/colores/azul_cielo.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorBies" value="Rojo" />
-														  <img src="{{ asset('img/suit_options/colores/rojo.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorBies" value="Vino" />
-														  <img src="{{ asset('img/suit_options/colores/vino.png') }}">
-														</label>
-													</div>
-												</div>
-											</div>
-											<div class="form-group label-floating">
-												<label for="" class="control-label">Código de Otro Color:</label>
-												<input type="text" name="otroColorBies" class="form-control">
-											</div>
-										</div>
+										@include('partials.color-palette', ['varName' => 'Bies'])
 										<div class="form-group label-floating">
 											<label class="control-label">Código Bies <small>(opcional)</small></label>
 											<input type="text" class="form-control" name="biesInternoCodigo">
@@ -1049,64 +755,7 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
 							</div>
 							<div class="row">
 								<div class="col-md-4 col-md-offset-4">
-									<div class="color-picker">
-										<div class="row text-center">
-											<div class="col-md-10 col-md-offset-1">
-												<div class="col-xs-3">
-													<label>
-													  <input type="radio" name="colorPuntada" value="Negro" />
-													  <img src="{{ asset('img/suit_options/colores/negro.png') }}">
-													</label>
-												</div>
-												<div class="col-xs-3">
-													<label>
-													  <input type="radio" name="colorPuntada" value="Gris Oxford" />
-													  <img src="{{ asset('img/suit_options/colores/gris_oxford.png') }}">
-													</label>
-												</div>
-												<div class="col-xs-3">
-													<label>
-													  <input type="radio" name="colorPuntada" value="Gris Claro" />
-													  <img src="{{ asset('img/suit_options/colores/gris_claro.png') }}">
-													</label>
-												</div>
-												<div class="col-xs-3">
-													<label>
-													  <input type="radio" name="colorPuntada" value="Blanco" />
-													  <img src="{{ asset('img/suit_options/colores/blanco.png') }}">
-													</label>
-												</div>
-												<div class="col-xs-3">
-													<label>
-													  <input type="radio" name="colorPuntada" value="Azul Marino" />
-													  <img src="{{ asset('img/suit_options/colores/azul_marino.png') }}">
-													</label>
-												</div>
-												<div class="col-xs-3">
-													<label>
-													  <input type="radio" name="colorPuntada" value="Azul Cielo" />
-													  <img src="{{ asset('img/suit_options/colores/azul_cielo.png') }}">
-													</label>
-												</div>
-												<div class="col-xs-3">
-													<label>
-													  <input type="radio" name="colorPuntada" value="Rojo" />
-													  <img src="{{ asset('img/suit_options/colores/rojo.png') }}">
-													</label>
-												</div>
-												<div class="col-xs-3">
-													<label>
-													  <input type="radio" name="colorPuntada" value="Vino" />
-													  <img src="{{ asset('img/suit_options/colores/vino.png') }}">
-													</label>
-												</div>
-											</div>
-										</div>
-										<div class="form-group label-floating">
-											<label for="" class="control-label">Código de Otro Color:</label>
-											<input type="text" name="otroColorPuntada" class="form-control">
-										</div>
-									</div>
+									@include('partials.color-palette', ['varName' => 'Puntada'])
 								</div>
 							</div>
 							<div class="row">
@@ -1376,64 +1025,7 @@ Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
 										<div class="row">
 											<p class="text-center">Color de Ojalera y Encuarte</p>
 										</div>
-										<div class="color-picker">
-											<div class="row">
-												<div class="col-md-10 col-md-offset-1">
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorOjaleraEncuarte" value="Negro" />
-														  <img src="{{ asset('img/suit_options/colores/negro.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorOjaleraEncuarte" value="Gris Oxford" />
-														  <img src="{{ asset('img/suit_options/colores/gris_oxford.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorOjaleraEncuarte" value="Gris Claro" />
-														  <img src="{{ asset('img/suit_options/colores/gris_claro.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorOjaleraEncuarte" value="Blanco" />
-														  <img src="{{ asset('img/suit_options/colores/blanco.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorOjaleraEncuarte" value="Azul Marino" />
-														  <img src="{{ asset('img/suit_options/colores/azul_marino.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorOjaleraEncuarte" value="Azul Cielo" />
-														  <img src="{{ asset('img/suit_options/colores/azul_cielo.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorOjaleraEncuarte" value="Rojo" />
-														  <img src="{{ asset('img/suit_options/colores/rojo.png') }}">
-														</label>
-													</div>
-													<div class="col-xs-3">
-														<label>
-														  <input type="radio" name="colorOjaleraEncuarte" value="Vino" />
-														  <img src="{{ asset('img/suit_options/colores/vino.png') }}">
-														</label>
-													</div>
-												</div>
-											</div>
-											<div class="form-group label-floating">
-												<label for="" class="control-label">Código de Otro Color:</label>
-												<input type="text" name="otroColorOjaleraEncuarte" class="form-control">
-											</div>
-										</div>
+										@include('partials.color-palette', ['varName' => 'OjaleraEncuarte'])
 									</div>
 									<div class="col-md-6">
 										<div class="form-group label-floating">
