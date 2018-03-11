@@ -2540,3 +2540,139 @@ fieldset[disabled] .checkbox input[type=checkbox],
   }
 }
 
+/*
+ Custom styles for the Privanza CRM
+*/
+
+/* Styles for the color picker images */
+
+.color-picker img {
+  max-width: 60px;
+  max-height: 60px;
+}
+
+/*
+	Image Radios and Checkboxes
+
+	These are the styles applied to generate the image radios and checkboxes inputs.
+
+	Privanza CRM
+*/
+
+/*
+ HOLABETO
+*/
+
+label {
+  /* HIDE RADIO*/
+}
+
+label input {
+  visibility: hidden;
+  /* Makes input not-clickable */
+  position: absolute;
+  /* Remove input from document flow */
+}
+
+label input + img {
+  cursor: pointer;
+  border: 4px solid #333;
+  border-radius: 5px;
+  max-width: 250px;
+  max-height: 250px;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+label input + img + p {
+  font-size: 1.2em;
+  font-weight: 200;
+  padding-top: 8px;
+  color: #313034;
+  -webkit-transition: .2s;
+  transition: .2s;
+  padding: 3px;
+}
+
+label input + img + p i {
+  -webkit-transition: .2s;
+  transition: .2s;
+  opacity: 0;
+  background: #55bed5;
+  border-radius: 50%;
+  color: #FFF;
+  padding: 3px;
+}
+
+label input:checked + img {
+  -webkit-filter: opacity(80%) drop-shadow(8px 8px 10px gray);
+          filter: opacity(80%) drop-shadow(8px 8px 10px gray);
+  border: 5px solid #55bed5;
+}
+
+label input:checked + img + p {
+  background-color: #55bed5;
+  border-radius: 6px;
+  color: #FFF;
+  -webkit-filter: drop-shadow(8px 8px 10px gray);
+          filter: drop-shadow(8px 8px 10px gray);
+}
+
+label input:checked + img + p i {
+  background-color: #333;
+  opacity: 1;
+}
+
+label:hover p i {
+  opacity: 1;
+}
+
+label:hover img {
+  -webkit-filter: drop-shadow(6px 6px 10px gray) opacity(90%);
+          filter: drop-shadow(6px 6px 10px gray) opacity(90%);
+}
+
+/*
+	Fix for displaying images on rows
+*/
+
+.row .col-xs-3:last-child {
+  padding-right: 6px !important;
+}
+
+.row .col-xs-3:first-child {
+  padding-left: 6px !important;
+}
+
+.row .col-xs-6:last-child {
+  padding-right: 6px !important;
+}
+
+.row .col-xs-6:first-child {
+  padding-left: 6px !important;
+}
+
+@media (max-width: 599px) {
+  .row .col-xs-3:last-child {
+    padding-right: 15px !important;
+  }
+
+  .row .col-xs-3:first-child {
+    padding-left: 15px !important;
+  }
+
+  .row .col-xs-6:last-child {
+    padding-right: 15px !important;
+  }
+
+  .row .col-xs-6:first-child {
+    padding-left: 15px !important;
+  }
+
+  label > input + img {
+    /* IMAGE STYLES */
+    max-width: 100px;
+    max-height: 100px;
+  }
+}
+
