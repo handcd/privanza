@@ -1028,6 +1028,7 @@
 										@include('partials.color-palette', ['varName' => 'OjaleraEncuarte'])
 									</div>
 									<div class="col-md-6">
+										Ejemplo:aosdfij
 										<div class="form-group label-floating">
 											<label for="" class="control-label">Código Color Medio Forro<small>(opcional)</small></label>
 											<input type="text" name="colorMedioForroPiernas" class="form-control">
