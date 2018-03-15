@@ -41,5 +41,13 @@ $factory->define(App\Coat::class, function (Faker $faker) {
         'puntada_filos' => rand(0,1),
         'puntada_aletillas' => rand(0,1),
         'puntada_carteras' => rand(0,1),
+
+        // Datos Saco
+        'fit_id' => 1,
+        'talla_saco' => 30,
+        'corte_saco' => 1,
+        'largo_manga' => 30,
+        'largo_espalda' => 38,
+        'notes' => $faker->text($maxNbChars = 200),
     ];
 });

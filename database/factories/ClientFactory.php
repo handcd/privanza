@@ -19,25 +19,7 @@ $factory->define(App\Client::class, function (Faker $faker) {
         'bank' => 'HSBC',
         'account_digits' => 1234,
         'concept' => $faker->text($maxNbChars = 200),
-        // Datos Saco
-        'fit_saco' => 1,
-        'talla_saco' => 30,
-        'corte_saco' => 1,
-        'largo_manga' => 30,
-        'largo_espalda' => 38,
-        'notas_saco' => $faker->text($maxNbChars = 200),
-        // Datos Pantalón
-        'fit_pantalon' => 2,
-        'talla_pantalon' => 42,
-        'largo_pantalon_ext' => 42.4,
-        'largo_pantalon_int' => 38.3,
-        'notas_pantalon' => $faker->text($maxNbChars = 200),
-        // Datos Chaleco
-        'fit_chaleco' => 3,
-        'talla_chaleco' => 30,
-        'corte_chaleco' => 3,
-        'largo_espalda_chaleco' => 33,
-        'notas_chaleco' => $faker->text($maxNbChars = 200),
+        
         // Datos Generales
         'vendedor_id' => App\Vendedor::all()->random()->id,
         'contacto' => 'Batman',

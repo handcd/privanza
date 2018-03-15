@@ -12,5 +12,12 @@ $factory->define(App\Pants::class, function (Faker $faker) {
         'color_ojalera' => $faker->colorName,
         'color_medio_forro' => $faker->colorName,
         'dobladillo' => rand(1,2), // 1 normal, 2 valenciana
+
+        // Datos Pantalón
+        'fit_id' => 2,
+        'talla_pantalon' => 42,
+        'largo_pantalon_ext' => 42.4,
+        'largo_pantalon_int' => 38.3,
+        'notes' => $faker->text($maxNbChars = 200),
 	];
 });
