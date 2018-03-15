@@ -4,17 +4,19 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Coat::class, function (Faker $faker) {
     return [
+        // Datos Generales
         'order_id' => App\Order::all()->random()->id,
+
         // Saco - Externo
-        'tipo_solapa' => rand(0,1), // 0pico/1escuadra
-        'tipo_ojal_solapa' => rand(0,2), // 0al tono/1en contraste/2activo
+        'tipo_solapa' => rand(0,1),
+        'tipo_ojal_solapa' => rand(0,2),
         'color_ojal_solapa' => $faker->colorName,
-        'botones_frente' => rand(1,6), // 1,2,3,6
-        'aberturas_detras' => rand(0,2), // 0,1,2
-        'botones_mangas' => rand(1,4), // 1-4
-        'tipo_ojal_manga' => rand(0,3), // al tono/en contraste/activos
+        'botones_frente' => rand(1,6),
+        'aberturas_detras' => rand(0,2),
+        'botones_mangas' => rand(1,4),
+        'tipo_ojal_manga' => rand(0,3),
         'color_ojal_manga' => $faker->colorName,
-        'posicion_ojal_manga' => rand(0,1), // 0 Cascada, 1 en línea
+        'posicion_ojal_manga' => rand(0,1),
         'ojales_activos_manga' => rand(0,1), 
         'tipo_bolsas_ext' => rand(0,7),
         'pickstitch' => rand(0,1),
@@ -24,7 +26,7 @@ $factory->define(App\Coat::class, function (Faker $faker) {
         'sin_aletilla' => rand(0,1),
 
         // Saco - Interno
-        'tipo_vista' => rand(0,1), // 0 normal / 1 chapeta francesa
+        'tipo_vista' => rand(0,1),
         'balsam_rayas' => rand(0,1),
         'forro_interno_mangas' => $faker->colorName,
         'pin_point_interno' => rand(0,1),
@@ -42,12 +44,12 @@ $factory->define(App\Coat::class, function (Faker $faker) {
         'puntada_aletillas' => rand(0,1),
         'puntada_carteras' => rand(0,1),
 
-        // Datos Saco
-        'fit_id' => 1,
-        'talla_saco' => 30,
-        'corte_saco' => 1,
-        'largo_manga' => 30,
-        'largo_espalda' => 38,
-        'notes' => $faker->text($maxNbChars = 200),
+        // Medidas Corporales
+        'fit_id' => App\Fit::all()->random()->id,
+        'talla' => rand(12,50),
+        'corte' => rand(0,2),
+        'largo_manga' => rand(10,40),
+        'largo_espalda' => rand(10,40),
+        'notas' => $faker->text($maxNbChars = 200),
     ];
 });
