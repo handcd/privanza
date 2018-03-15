@@ -1023,7 +1023,7 @@
 								<div class="col-md-8 col-md-offset-2">
 									<div class="col-md-6">
 										<div class="row">
-											<p class="text-center">Color de Ojalera y Encuarte</p>
+											<p class="text-center">Color de Bies en Ojalera y Encuarte</p>
 										</div>
 										@include('partials.color-palette', ['varName' => 'OjaleraEncuarte'])
 									</div>
