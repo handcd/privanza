@@ -27,10 +27,10 @@ class CreatePantsTable extends Migration
 
             // Datos Pantalón
             $table->integer('fit_id');
-            $table->integer('talla_pantalon');
-            $table->float('largo_pantalon_ext');
-            $table->float('largo_pantalon_int');
-            $table->string('notas_pantalon')->nullable();
+            $table->integer('talla');
+            $table->float('largo_ext');
+            $table->float('largo_int');
+            $table->string('notas')->nullable();
 
             $table->timestamps();
         });

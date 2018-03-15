@@ -20,10 +20,10 @@ class CreateVestsTable extends Migration
 
             // Datos Chaleco
             $table->integer('fit_id');
-            $table->integer('talla_chaleco');
-            $table->integer('corte_chaleco');
-            $table->float('largo_espalda_chaleco');
-            $table->string('notas_chaleco')->nullable();
+            $table->integer('talla');
+            $table->integer('corte');
+            $table->float('largo_espalda');
+            $table->string('notas')->nullable();
 
             // Clothing data
             $table->integer('tipo_cuello'); // 1 En V/2 Con Solapa

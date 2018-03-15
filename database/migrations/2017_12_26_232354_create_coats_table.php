@@ -66,11 +66,11 @@ class CreateCoatsTable extends Migration
 
             // Datos Saco
             $table->integer('fit_id');
-            $table->integer('talla_saco');
-            $table->integer('corte_saco');
+            $table->integer('talla');
+            $table->integer('corte');
             $table->float('largo_manga');
             $table->float('largo_espalda');
-            $table->string('notas_saco')->nullable();
+            $table->string('notas')->nullable();
 
             $table->timestamps();
         });
