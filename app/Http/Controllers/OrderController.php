@@ -135,6 +135,11 @@ class OrderController extends Controller
             // 'perPortatrajes' => 'required', // "asdasd",
 
             // Datos de Saco Externo
+            'fitSaco' => 'nullable|required_if:saco,"on"|numeric',
+            'tallaSaco' => 'nullable|required_if:saco,"on"|numeric',
+            'corteSaco' => 'nullable|required_if:saco,"on"|numeric',
+            'largoMangaSaco' => 'nullable|required_if:saco,"on"|numeric',
+            'largoEspaldaSaco' => 'nullable|required_if:saco,"on"|numeric',
             // 'tipoSolapa' => 'required', // "1",
             // 'tipoOjalSolapa' => 'required', // "3",
             // 'colorOjalSolapa' => 'required', // "Vino",
@@ -177,12 +182,20 @@ class OrderController extends Controller
             // 'puntadaCarterasSacoInt' => 'required', // "on",
 
             // Datos de Chaleco
+            'fitChaleco' => 'nullable|required_if:chaleco,"on"|numeric',
+            'tallaChaleco' => 'nullable|required_if:chaleco,"on"|numeric',
+            'corteChaleco' => 'nullable|required_if:chaleco,"on"|numeric',
+            'espaldaChaleco' => 'nullable|required_if:chaleco,"on"|numeric',
             // 'cuelloChaleco' => 'required', // "0",
             // 'bolsasChaleco' => 'required', // "1",
             // 'forroTela' => 'required', // "0",
             // 'ajustadorChaleco' => 'required', // "on",
 
             // Datos Pantalón
+            'fitPantalon' => 'nullable|required_if:pantalon,"on"|numeric',
+            'tallaPantalon' => 'nullable|required_if:pantalon,"on"|numeric',
+            'largoPantalonExt' => 'nullable|required_if:pantalon,"on"|numeric',
+            'largoPantalonInt' => 'nullable|required_if:pantalon,"on"|numeric',
             // 'tipoPase' => 'required', // "0",
             // 'numPliegues' => 'required', // "1",
             // 'bolsasTraseras' => 'required', // "0",
@@ -259,6 +272,12 @@ class OrderController extends Controller
         if ($orden->has_vest) {
             $chaleco = new Vest;
 
+            // Medidas Corporales
+            $chaleco->fit_id = $request->fitChaleco;
+            $chaleco->talla = $request->tallaChaleco;
+            $chaleco->corte = $request->corteChaleco;
+            $chaleco->largo_espalda = $request->espaldaChaleco;
+
             // Datos de Chaleco
             $chaleco->order_id = $orden->id;
             $chaleco->tipo_cuello = $request->cuelloChaleco;
@@ -273,6 +292,12 @@ class OrderController extends Controller
         // Pantalón
         if ($orden->has_pants) {
             $pantalon = new Pants;
+
+            // Medidas Corporales
+            $pantalon->fit_id = $request->fitPantalon;
+            $pantalon->talla = $request->tallaPantalon;
+            $pantalon->largo_ext = $request->largoPantalonExt;
+            $pantalon->largo_int = $request->largoPantalonInt;
 
             // Datos del Pantalón
             $pantalon->order_id = $orden->id;
@@ -297,6 +322,13 @@ class OrderController extends Controller
         // Saco
         if ($orden->has_coat) {
             $saco = new Coat;
+
+            // Medidas Corporales
+            $saco->fit_id = $request->fitSaco;
+            $saco->talla = $request->tallaSaco;
+            $saco->corte = $request->corteSaco;
+            $saco->largo_manga = $request->largoMangaSaco;
+            $saco->largo_espalda = $request->largoEspaldaSaco;
 
             $saco->order_id = $orden->id;
 
