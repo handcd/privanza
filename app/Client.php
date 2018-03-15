@@ -32,22 +32,4 @@ class Client extends Model
     {
         return $this->belongsTo(Vendedor::class);
     }
-
-    /**
-     * Fits de Saco, Pantalón y Chaleco
-     */
-    public function sacoFit()
-    {
-        return $this->hasOne(Fit::class,'id','fit_saco');
-    }
-
-    public function pantalonFit()
-    {
-        return $this->hasOne(Fit::class,'id','fit_pantalon');
-    }
-
-    public function chalecoFit()
-    {
-        return $this->hasOne(Fit::class,'id','fit_chaleco');
-    }
 }

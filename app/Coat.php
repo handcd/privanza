@@ -15,4 +15,14 @@ class Coat extends Model
 	{
 		return $this->belongsTo(Order::class);
 	}
+
+	/**
+	 * Get the Fit related to this Order
+	 * @param null
+	 * @return Fit:class
+	 */
+	public function fit()
+	{
+		return $this->belongsTo(Fit::class);
+	}
 }
