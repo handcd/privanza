@@ -1029,8 +1029,23 @@
 									</div>
 									<div class="col-md-6">
 										<div class="form-group label-floating">
+											<label for="" class="control-label">Color Medio Forro </label>
+											<select class="form-control" name="colorMedioForroPiernas" required="true">
+												<option disabled="" 
+				                                    @hasSection('editCliente')
+				                                    {{-- Ya hay un cliente seleccionado --}}
+				                                    @else
+				                                      selected="" 
+				                                    @endif></option>
+		                                    	<option value="Azul Marino">Azul Marino</option>
+  												<option value="Gris">Gris</option>
+  												<option value="Negro">Negro</option>
+		                                </select>
+											
+										</div>
+										<div class="form-group label-floating">
 											<label for="" class="control-label">Código Color Medio Forro<small>(opcional)</small></label>
-											<input type="text" name="colorMedioForroPiernas" class="form-control">
+											<input type="text" name="otroColorMedioForroPiernas" class="form-control">
 										</div>
 									</div>
 								</div>
