@@ -24,6 +24,14 @@ class CreatePantsTable extends Migration
             $table->string('color_ojalera');
             $table->string('color_medio_forro');
             $table->integer('dobladillo'); // 1 normal, 2 valenciana
+
+            // Datos Pantalón
+            $table->integer('fit_id');
+            $table->integer('talla_pantalon');
+            $table->float('largo_pantalon_ext');
+            $table->float('largo_pantalon_int');
+            $table->string('notas_pantalon')->nullable();
+
             $table->timestamps();
         });
     }
