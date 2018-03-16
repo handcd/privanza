@@ -27,6 +27,13 @@ class CreatePantsTable extends Migration
             $table->integer('pretina');
             $table->string('color_pretina');
 
+            // Datos Pantalón
+            $table->integer('fit_id');
+            $table->integer('talla');
+            $table->float('largo_ext');
+            $table->float('largo_int');
+            $table->string('notas')->nullable();
+
             $table->timestamps();
         });
     }

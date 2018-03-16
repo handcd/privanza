@@ -52,20 +52,7 @@ class ClientController extends Controller
             'apellido' => 'required',
             'email' => 'required | unique:clients',
             'birthday' => 'required | date',
-            'addressVisit' => 'required',
-            'fitSaco' => 'required',
-            'tallaSaco' => 'required',
-            'corteSaco' => 'required',
-            'largoManga' => 'required',
-            'largoEspalda' => 'required',
-            'fitChaleco' => 'required',
-            'tallaChaleco' => 'required',
-            'corteChaleco' => 'required',
-            'largoEspaldaChaleco' => 'required',
-            'fitPantalon' => 'required',
-            'tallaPantalon' => 'required',
-            'largoExtPantalon' => 'required',
-            'largoIntPantalon' => 'required'
+            'addressVisit' => 'required'
         ]);
 
         $cliente->name = $request->nombre;
@@ -81,22 +68,6 @@ class ClientController extends Controller
         $cliente->bank = $request->bank;
         $cliente->account_digits = $request->digitos;
         $cliente->concept = $request->concept;
-        $cliente->fit_saco = $request->fitSaco;
-        $cliente->talla_saco = $request->tallaSaco;
-        $cliente->corte_saco = $request->corteSaco;
-        $cliente->largo_manga = $request->largoManga;
-        $cliente->largo_espalda = $request->largoEspalda;
-        $cliente->notas_saco = $request->notasSaco;
-        $cliente->fit_pantalon = $request->fitPantalon;
-        $cliente->talla_pantalon = $request->tallaPantalon;
-        $cliente->largo_pantalon_ext = $request->largoExtPantalon;
-        $cliente->largo_pantalon_int = $request->largoIntPantalon;
-        $cliente->notas_pantalon = $request->notasPantalon;
-        $cliente->fit_chaleco = $request->fitChaleco;
-        $cliente->talla_chaleco = $request->tallaChaleco;
-        $cliente->corte_chaleco = $request->corteChaleco;
-        $cliente->largo_espalda_chaleco = $request->largoEspaldaChaleco;
-        $cliente->notas_chaleco = $request->notasChaleco;
         $cliente->vendedor_id = Auth::id();
         $cliente->contacto = $request->contactoReferencia;
         $cliente->save();
@@ -158,20 +129,7 @@ class ClientController extends Controller
             'apellido' => 'required',
             'email' => 'required',
             'birthday' => 'required | date',
-            'addressVisit' => 'required',
-            'fitSaco' => 'required',
-            'tallaSaco' => 'required',
-            'corteSaco' => 'required',
-            'largoManga' => 'required',
-            'largoEspalda' => 'required',
-            'fitChaleco' => 'required',
-            'tallaChaleco' => 'required',
-            'corteChaleco' => 'required',
-            'largoEspaldaChaleco' => 'required',
-            'fitPantalon' => 'required',
-            'tallaPantalon' => 'required',
-            'largoExtPantalon' => 'required',
-            'largoIntPantalon' => 'required'
+            'addressVisit' => 'required'
         ]);
 
         $cliente->name = $request->nombre;
@@ -187,22 +145,6 @@ class ClientController extends Controller
         $cliente->bank = $request->bank;
         $cliente->account_digits = $request->digitos;
         $cliente->concept = $request->concept;
-        $cliente->fit_saco = $request->fitSaco;
-        $cliente->talla_saco = $request->tallaSaco;
-        $cliente->corte_saco = $request->corteSaco;
-        $cliente->largo_manga = $request->largoManga;
-        $cliente->largo_espalda = $request->largoEspalda;
-        $cliente->notas_saco = $request->notasSaco;
-        $cliente->fit_pantalon = $request->fitPantalon;
-        $cliente->talla_pantalon = $request->tallaPantalon;
-        $cliente->largo_pantalon_ext = $request->largoExtPantalon;
-        $cliente->largo_pantalon_int = $request->largoIntPantalon;
-        $cliente->notas_pantalon = $request->notasPantalon;
-        $cliente->fit_chaleco = $request->fitChaleco;
-        $cliente->talla_chaleco = $request->tallaChaleco;
-        $cliente->corte_chaleco = $request->corteChaleco;
-        $cliente->largo_espalda_chaleco = $request->largoEspaldaChaleco;
-        $cliente->notas_chaleco = $request->notasChaleco;
         $cliente->vendedor_id = Auth::id();
         $cliente->contacto = $request->contactoReferencia;
         $cliente->save();

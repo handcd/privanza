@@ -191,6 +191,42 @@
                   </div>
                   @if ($orden->has_coat)
                         <h3>Saco</h3>
+                        <h4>Medidas de Cliente</h4>
+                        <div class="row">
+                              <div class="col-md-3">
+                                    <label class="text-primary">Fit</label>
+                                    <p>{{ $orden->coat->fit->name }}<br><small>{{$orden->coat->fit->description}}</small></p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Talla de Saco</label>
+                                    <p>{{ $orden->coat->talla }}</p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Corte de Saco</label>
+                                    <p>
+                                          @switch($orden->coat->corte)
+                                                @case(1)
+                                                      Chico
+                                                      @break
+                                                @case(2)
+                                                      Regular
+                                                      @break
+                                              @default
+                                                      Largo
+                                          @endswitch
+                                    </p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Largo de Manga</label>
+                                    <p>{{ $orden->coat->largo_manga }} <small>pulgadas</small></p>
+                              </div>
+                        </div>
+                        <div class="row">
+                              <div class="col-md-3">
+                                    <label class="text-primary">Largo de Espalda</label>
+                                    <p>{{ $orden->coat->largo_espalda }} <small>pulgadas</small></p>
+                              </div>
+                        </div>
                         <h4>Saco Externo</h4>
                         <div class="row">
                               <div class="col-md-3">
@@ -350,8 +386,40 @@
                               </div>
                         </div>
                   @endif
+                  {{-- Vest Data --}}
                   @if ($orden->has_vest)
                         <h3>Chaleco</h3>
+                        <h4>Medidas de Cliente</h4>
+                        <div class="row">
+                              <div class="col-md-3">
+                                    <label class="text-primary">Fit</label>
+                                    <p>{{ $orden->vest->fit->name }} <br><small>{{ $orden->vest->fit->description }}</small></p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Talla</label>
+                                    <p>{{ $orden->vest->talla }}</p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Corte</label>
+                                    <p>
+                                          @switch($orden->vest->corte)
+                                                @case(1)
+                                                      Chico
+                                                      @break
+                                                @case(2)
+                                                      Regular
+                                                      @break
+                                              @default
+                                                      Largo
+                                          @endswitch
+                                    </p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Largo Espalda</label>
+                                    <p>{{ $orden->vest->largo_espalda }}</p>
+                              </div>
+                        </div>
+                        <h4>Especificaciones del Chaleco</h4>
                         <div class="row">
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Cuello</label>
@@ -371,8 +439,29 @@
                               </div>
                         </div>
                   @endif
+
                   @if ($orden->has_pants)
                         <h3>Pantalón</h3>
+                        <h4>Medidas de Cliente</h4>
+                        <div class="row">
+                              <div class="col-md-3">
+                                    <label class="text-primary">Fit</label>
+                                    <p>{{ $orden->pants->fit->name }} <br><small>{{ $orden->pants->fit->description}}</small></p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Talla</label>
+                                    <p>{{ $orden->pants->talla }}</p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Largo Exterior Terminado</label>
+                                    <p>{{ $orden->pants->largo_ext }}</p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Largo Interior Terminado</label>
+                                    <p>{{ $orden->pants->largo_int }}</p>
+                              </div>
+                        </div>
+                        <h4>Especificaciones del Pedido</h4>
                         <div class="row">
                               <div class="col-md-3">
                                     <label class="text-primary">Con Pase</label>

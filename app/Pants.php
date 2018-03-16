@@ -15,4 +15,14 @@ class Pants extends Model
 	{
 		return $this->belongsTo(Order::class);
 	}
+
+	/**
+	 * Get the Fit for this Model
+	 * @param null
+	 * @return Fit::class
+	 */
+	public function fit()
+	{
+		return $this->belongsTo(Fit::class);
+	}
 }

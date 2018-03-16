@@ -63,6 +63,15 @@ class CreateCoatsTable extends Migration
             $table->boolean('puntada_filos');
             $table->boolean('puntada_aletillas');
             $table->boolean('puntada_carteras');
+
+            // Datos Saco
+            $table->integer('fit_id');
+            $table->integer('talla');
+            $table->integer('corte');
+            $table->float('largo_manga');
+            $table->float('largo_espalda');
+            $table->string('notas')->nullable();
+
             $table->timestamps();
         });
     }

@@ -71,125 +71,7 @@
                         <p>{{ $client->concept }}</p>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <h4>Datos de Saco</h4>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <label class="text-primary">Fit Utilizado:</label>
-                        <p>{{ $client->sacoFit->name }}</p>
-                    </div>
-                    <div class="col-md-4">
-                        <label class="text-primary">Talla del Saco</label>
-                        <p>{{ $client->talla_saco }}</p>
-                    </div>
-                    <div class="col-md-4">
-                        <label class="text-primary">Corte</label>
-                        <p>
-                        @switch($client->corte_saco)
-                            @case(1)
-                                Largo
-                                @break
-                            @case(2)
-                                Regular
-                                @break
-                            @case(3)
-                                Corto
-                                @break
-                            @default
-                                    No hay ningún corte seleccionado
-                        @endswitch
-                        </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <label class="text-primary">Largo de Manga:</label>
-                        <p>{{ $client->largo_manga }} pulgadas</p>
-                    </div>
-                    <div class="col-md-4">
-                        <label class="text-primary">Largo de Espalda:</label>
-                        <p>{{ $client->largo_espalda }} pulgadas</p>
-                    </div>
-                    <div class="col-md-4">
-                        <label class="text-primary">Notas del Saco:</label>
-                        <p>{{ $client->notas_saco }}</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <h4>Datos del Pantalón</h4>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <label class="text-primary">Fit del Pantalón</label>
-                        <p>{{ $client->pantalonFit->name }}</p>
-                    </div>
-                    <div class="col-md-4">
-                        <label class="text-primary">Talla de Pantalón:</label>
-                        <p>{{ $client->talla_pantalon }}</p>
-                    </div>
-                    <div class="col-md-4">
-                        <label class="text-primary">Largo Externo terminado:</label>
-                        <p>{{ $client->largo_pantalon_ext }}</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <label class="text-primary">Largo Interno terminado:</label>
-                        <p>{{ $client->largo_pantalon_int }}</p>
-                    </div>
-                    <div class="col-md-4">
-                        <label class="text-primary">Notas del Pantalón:</label>
-                        <p>{{ $client->notas_pantalon }}</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <h4>Datos Chaleco</h4>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <label class="text-primary">Fit Chaleco:</label>
-                        <p>{{ $client->chalecoFit->name }}</p>
-                    </div>
-                    <div class="col-md-4">
-                        <label class="text-primary">Talla del Chaleco:</label>
-                        <p>{{ $client->talla_chaleco }}</p>
-                    </div>
-                    <div class="col-md-4">
-                        <label class="text-primary">Corte del Chaleco:</label>
-                        <p>
-                        @switch($client->corte_chaleco)
-                            @case(1)
-                                Largo
-                                @break
-                            @case(2)
-                                Regular
-                                @break
-                            @case(3)
-                                Corto
-                                @break
-                            @default
-                                No hay ningún corte seleccionado.
-                        @endswitch
-                        </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <label class="text-primary">Largo de Espalda Chaleco:</label>
-                        <p>{{ $client->largo_espalda_chaleco }}</p>
-                    </div>
-                    <div class="col-md-4">
-                        <label class="text-primary">Notas del Chaleco</label>
-                        <p>{{ $client->notas_chaleco }}</p>
-                    </div>
-                </div>
+
                 <div class="row">
                     <div class="col-md-12">
                         <h4>Referencia</h4>
@@ -204,7 +86,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h4>Notas del Cliente</h4>
-                        <p>{{ $client->notes }}</p>
+                        <p>{{ $client->notes ? $client->notes : '(Sin notas).' }}</p>
                     </div>
                 </div>
                 <hr>
@@ -218,7 +100,7 @@
                                 <th>Acciones</th>
                             </thead>
                             <tbody>
-                                @forelse ($client->orders as $order)
+                                @forelse ($client->orders->where('vendedor_id',Auth::id()) as $order)
                                 <tr>
                                     <td>{{ $order->id }}</td>
                                     <td>${{ $order->precio }}</td>
@@ -245,7 +127,7 @@
                                 <th>Acciones</th>
                             </thead>
                             <tbody>
-                                @forelse ($client->events as $event)
+                                @forelse ($client->events->where('vendedor_id',Auth::id()) as $event)
                                 <tr>
                                     <td>{{ $event->id }}</td>
                                     <td>{{ Carbon\Carbon::parse($event->fechahora)->toDateString() }}</td>

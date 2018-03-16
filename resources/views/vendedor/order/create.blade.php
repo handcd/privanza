@@ -374,6 +374,57 @@
 							<h4 class="info-text">Datos de la parte Externa del Saco</h4>
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
+									<p>Medidas Corporales de Cliente:</p>
+									<div class="row">
+										<div class="col-md-6 col-md-offset-3">
+											<div class="form-group label-floating">
+												<label class="control-label">Selecciona un Fit</label>
+												<select name="fitSaco" id="fitSaco" class="form-control">
+													<option disabled="" selected=""></option>
+													@foreach (\App\Fit::all() as $fit)
+														<option value="{{ $fit->id }}">{{ $fit->name }}</option>
+													@endforeach
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group label-floating">
+												<label class="control-label">Talla del Saco:</label>
+												<input type="number" min="10" step="1" name="tallaSaco" id="tallaSaco" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group label-floating">
+												<label for="corteSaco" class="control-label">Corte del Saco:</label>
+												<select name="corteSaco" id="corteSaco" class="form-control">
+													<option disabled="" selected=""></option>
+													<option value="0">Chico</option>
+													<option value="1">Regular</option>
+													<option value="2">Largo</option>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group label-floating">
+												<label for="largoMangaSaco" class="control-label">Largo de la Manga <small>(en pulgadas)</small>:</label>
+												<input type="number" step="0.1" min="0" name="largoMangaSaco" id="largoMangaSaco" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group label-floating">
+												<label for="largoEspaldaSaco" class="control-label">Largo de Espalda <small>(en pulgadas)</small>:</label>
+												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-10 col-md-offset-1">
 									<p class="col-md-12">Selecciona el tipo de solapa:</p>
 									<div class="col-md-3 col-xs-6">
 										<label>
@@ -850,8 +901,52 @@
 						</div>
 
 						{{-- Tab Chaleco--}}
+
 						<div class="tab-pane" id="chaleco">
                     		<h3 class="info-text">Datos del Chaleco</h3>
+                    		<div class="row">
+                    			<div class="col-md-10 col-md-offset-1">
+                    				<p>Medidas Corporales de Cliente:</p>
+                    				<div class="row">
+                    					<div class="col-md-6">
+                    						<div class="form-group label-floating">
+												<label class="control-label">Fit para Chaleco</label>
+												<select name="fitChaleco" id="fitChaleco" class="form-control">
+													<option disabled="" selected=""></option>
+													@foreach (\App\Fit::all() as $fit)
+														<option value="{{ $fit->id }}">{{ $fit->name }}</option>
+													@endforeach
+												</select>
+											</div>
+                    					</div>
+                    					<div class="col-md-6">
+                    						<div class="form-group label-floating">
+                    							<label class="control-label">Talla de Chaleco:</label>
+                    							<input type="number" min="10" step="1" name="tallaChaleco" id="tallaChaleco" class="form-control">
+                    						</div>
+                    					</div>
+                    				</div>
+                    				<div class="row">
+                    					<div class="col-md-6">
+                    						<div class="form-group label-floating">
+                    							<label class="control-label">Corte de Chaleco:</label>
+                    							<select name="corteChaleco" id="corteChaleco" class="form-control">
+                    								<option disabled="" selected=""></option>
+                    								<option value="0">Corto</option>
+                    								<option value="1">Regular</option>
+                    								<option value="2">Largo</option>
+                    							</select>
+                    						</div>
+                    					</div>
+                    					<div class="col-md-6">
+                    						<div class="form-group label-floating">
+                    							<label class="control-label">Medida Espalda para Chaleco <small>(en pulgadas)</small>:</label>
+                    							<input type="number" min="0" step="0.1" name="espaldaChaleco" id="espaldaChaleco" class="form-control">
+                    						</div>
+                    					</div>
+                    				</div>
+                    			</div>
+                    		</div>
                     		<h5 class="info-text">Tipo de Cuello</h5>
                     		<div class="row">
                     			<div class="col-md-8 col-md-offset-2 text-center">
@@ -927,9 +1022,47 @@
                     		</div>
                     	</div>
 
-                    	{{-- Tab Pantalon --}}
+                    	{{-- Tab Pantalón --}}
 						<div class="tab-pane" id="pantalon">
 							<h4 class="info-text">Datos del Pantalón</h4>
+							<div class="row">
+								<div class="col-md-10 col-md-offset-1">
+									<p>Medidas Corporales para Pantalón:</p>
+									<div class="row">
+										<div class="col-md-6">
+                    						<div class="form-group label-floating">
+												<label class="control-label">Fit para Pantalón</label>
+												<select name="fitPantalon" id="fitPantalon" class="form-control">
+													<option disabled="" selected=""></option>
+													@foreach (\App\Fit::all() as $fit)
+														<option value="{{ $fit->id }}">{{ $fit->name }}</option>
+													@endforeach
+												</select>
+											</div>
+                    					</div>
+										<div class="col-md-6">
+											<div class="form-group label-floating">
+												<label class="control-label">Talla del Pantalón:</label>
+												<input type="number" min="10" step="1" name="tallaPantalon" id="tallaPantalon" class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group label-floating">
+												<label class="control-label">Largo Externo Terminado:</label>
+												<input type="number" min="10" step="0.1" name="largoPantalonExt" id="largoPantalonExt" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group label-floating">
+												<label class="control-label">Largo Interno Terminado:</label>
+												<input type="number" min="10" step="0.1" name="largoPantalonInt" id="largoPantalonInt" class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 							<div class="row">
 								<p class="text-center">Tipo de Pase:</p>
 								<div class="col-md-8 col-md-offset-2 text-center">

@@ -30,25 +30,6 @@ class CreateClientsTable extends Migration
             $table->string('bank')->nullable();
             $table->string('account_digits')->nullable();
             $table->string('concept')->nullable();
-            // Datos Saco
-            $table->integer('fit_saco');
-            $table->integer('talla_saco');
-            $table->integer('corte_saco');
-            $table->float('largo_manga');
-            $table->float('largo_espalda');
-            $table->string('notas_saco')->nullable();
-            // Datos Pantalón
-            $table->integer('fit_pantalon');
-            $table->integer('talla_pantalon');
-            $table->float('largo_pantalon_ext');
-            $table->float('largo_pantalon_int');
-            $table->string('notas_pantalon')->nullable();
-            // Datos Chaleco
-            $table->integer('fit_chaleco');
-            $table->integer('talla_chaleco');
-            $table->integer('corte_chaleco');
-            $table->float('largo_espalda_chaleco');
-            $table->string('notas_chaleco')->nullable();
             // Datos Generales
             $table->integer('vendedor_id');
             $table->string('contacto')->nullable();
