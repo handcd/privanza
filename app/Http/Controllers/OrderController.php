@@ -292,8 +292,15 @@ class OrderController extends Controller
             }else{
                 $pantalon->color_medio_forro = $request->colorMedioForroPiernas;
             }
-            
+            //Dobladillo
             $pantalon->dobladillo = $request->dobladillo;
+            //Pretina
+            $pantalon->pretina = $request->pretina;
+            if ($request->otroColorBiesPretina) {
+                $pantalon->color_pretina = $request->otroColorBiesPretina;
+            }else{
+                $pantalon->color_pretina = $request->colorOjaleraEncuarte;
+            }
 
             // Guardar Datos de Pantalón
             $pantalon->save();
