@@ -404,6 +404,17 @@
                                     <label class="text-primary">Tipo de Dobladillo</label>
                                     <p>{{ $orden->pants->dobladillo }}</p>
                               </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Tipo de Pretina</label>
+                                    <p>{{ $orden->pants->pretina }}</p>
+                              </div>
+
+                        </div>
+                        <div class="row">
+                              <div class="col-md-3">
+                                    <label class="text-primary">Color de Pretina</label>
+                                    <p>{{ $orden->pants->color_pretina }}</p>
+                              </div>
                         </div>
                   @endif
             </div>

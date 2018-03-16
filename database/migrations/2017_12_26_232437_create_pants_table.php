@@ -24,6 +24,9 @@ class CreatePantsTable extends Migration
             $table->string('color_ojalera');
             $table->string('color_medio_forro');
             $table->integer('dobladillo'); // 1 normal, 2 valenciana
+            $table->integer('pretina');
+            $table->string('color_pretina');
+
             $table->timestamps();
         });
     }

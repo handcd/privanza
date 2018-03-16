@@ -1040,7 +1040,7 @@
 		                                    	<option value="Azul Marino">Azul Marino</option>
   												<option value="Gris">Gris</option>
   												<option value="Negro">Negro</option>
-		                                </select>
+		                                	</select>
 											
 										</div>
 										<div class="form-group label-floating">
@@ -1050,6 +1050,45 @@
 									</div>
 								</div>
 							</div>
+							<!-- Pretina-->
+							<div class="row">
+								<div class="col-md-12">
+									<h4 class="text-center">Pretina</h4>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-8 col-md-offset-2">
+									<div class="col-md-6">
+										<div class="form-group label-floating">
+											<label for="" class="control-label">Tipo de pretina</label>
+											<select class="form-control" name="pretina" required="true">
+													<option disabled="" 
+					                                    @hasSection('editCliente')
+					                                    {{-- Ya hay un cliente seleccionado --}}
+					                                    @else
+					                                      selected="" 
+					                                    @endif></option>
+			                                    	<option value="0">Flexon</option>
+	  												<option value="1">Snutex</option>
+	  												<option value="2">Bies</option>
+			                                </select>										
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group label-floating">
+											<div class="checkbox">
+												<label><input type="checkbox" name="colorBiesPretina" value="colorOjaleraEncuarte"> Mismo color Ojalera y Encuarte</label>
+											</div>									
+										</div>
+										<div class="form-group label-floating">									
+												<label for="" class="control-label">Código de otro color de Pretina<small>(opcional)</small></label>
+												<input type="text" name="otroColorBiesPretina" class="form-control">		
+										</div>
+									</div>
+									
+								</div>
+							</div>
+							<!--Dobladillo-->
 							<div class="row">
 								<div class="col-md-12">
 									<h4 class="text-center">Dobladillo</h4>

@@ -11,6 +11,8 @@ $factory->define(App\Pants::class, function (Faker $faker) {
         'tipo_vivo' => rand(1,2), // 1 Vivo Doble con Ojal, 2 Vivo Sencillo con Ojal
         'color_ojalera' => $faker->colorName,
         'color_medio_forro' => $faker->colorName,
+        'pretina' => rand(0,2),
+        'color_pretina' => $faker->colorName,
         'dobladillo' => rand(1,2), // 1 normal, 2 valenciana
 	];
 });
