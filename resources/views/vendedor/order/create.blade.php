@@ -697,35 +697,12 @@
 									<div class="col-md-12">
 										<h4 class="text-center">Otros</h4>
 									</div>
-									<div class="col-md-6">
-										<div class="col-md-6">
-											<label>
-											  <input type="checkbox" name="pickstitch" />
-											  <img src="{{ asset('img/suit_options/saco/pick-stitch.png') }}">
-											  <p class="text-center">Pick Stitch para Saco</p>
-											</label>
-										</div>
-										<div class="col-md-6">
-											¿Dónde se aplicará el Pick Stitch?
-											<div class="checkbox">
-												<label>
-													<input type="checkbox" name="pickstitchfilos">
-													Filos
-												</label>
-											</div>
-											<div class="checkbox">
-												<label>
-													<input type="checkbox" name="pickstitchaletilla">
-													Aletilla
-												</label>
-											</div>
-											<div class="checkbox">
-												<label>
-													<input type="checkbox" name="pickstitchcartera">
-													Cartera
-												</label>
-											</div>
-										</div>
+									<div class="col-md-6 text-center">
+										<label>
+										  <input type="checkbox" name="pickstitch" />
+										  <img src="{{ asset('img/suit_options/saco/pick-stitch.png') }}">
+										  <p class="text-center">Pick Stitch para Saco</p>
+										</label>
 									</div>
 									<div class="col-md-6">
 										Opciones de Aletilla
