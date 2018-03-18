@@ -158,6 +158,7 @@ class OrderController extends Controller
             // 'pickstitchaletilla' => 'required', // "on",
             // 'pickstitchcartera' => 'required', // "on",
             // 'sinaletilla' => 'required', // "on",
+            'notasSacoExt' => 'nullable',
 
             // Datos de Saco Interno
             // 'tipoVista' => 'required', // "0",
@@ -180,6 +181,7 @@ class OrderController extends Controller
             // 'puntadaFilosSacoInt' => 'required', // "on",
             // 'puntadaAletillasSacoInt' => 'required', // "on",
             // 'puntadaCarterasSacoInt' => 'required', // "on",
+            'notasSacoInt' => 'nullable',
 
             // Datos de Chaleco
             'fitChaleco' => 'nullable|required_if:chaleco,"on"|numeric',
@@ -190,6 +192,7 @@ class OrderController extends Controller
             // 'bolsasChaleco' => 'required', // "1",
             // 'forroTela' => 'required', // "0",
             // 'ajustadorChaleco' => 'required', // "on",
+            'notasChaleco' => 'nullable',
 
             // Datos Pantalón
             'fitPantalon' => 'nullable|required_if:pantalon,"on"|numeric',
@@ -205,8 +208,9 @@ class OrderController extends Controller
             // 'colorMedioForroPiernas' => 'required', // "asdasd",
             // 'dobladillo' => 'required', // "2",
             // 'finish' => 'required', // "Finalizar"
+            'notasPantalon' => 'nullable',
         ]);
-
+        
         // Datos Orden
         $orden = new Order;
 
@@ -285,6 +289,8 @@ class OrderController extends Controller
             $chaleco->tipo_espalda = $request->forroTela;
             $chaleco->ajustador_espalda = $request->ajustadorChaleco ? true : false;
 
+            $chaleco->notas = $request->notasChaleco;
+
             // Guardar Datos de Chaleco
             $chaleco->save();
         }
@@ -298,6 +304,7 @@ class OrderController extends Controller
             $pantalon->talla = $request->tallaPantalon;
             $pantalon->largo_ext = $request->largoPantalonExt;
             $pantalon->largo_int = $request->largoPantalonInt;
+            $pantalon->notas = $request->notasPantalon;
 
             // Datos del Pantalón
             $pantalon->order_id = $orden->id;
@@ -436,6 +443,10 @@ class OrderController extends Controller
             $saco->puntada_filos = $request->puntadaFilosSacoInt ? true : false;
             $saco->puntada_aletillas = $request->puntadaAletillasSacoInt ? true : false;
             $saco->puntada_carteras = $request->puntadaCarterasSacoInt ? true : false;
+
+            // Notas del Saco
+            $saco->notas_ext = $request->notasSacoExt;
+            $saco->notas_int = $request->notasSacoInt;
 
             // Guardar los datos del Saco
             $saco->save();
