@@ -37,7 +37,6 @@ $factory->define(App\Coat::class, function (Faker $faker) {
         'bies_codigo' => $faker->hexColor,
         'puntada_color' => $faker->colorName,
         'bolsas_int' => rand(0,3),
-        'bolsa_int_color' => $faker->colorName,
         'vivos_bolsas_internas_cuerpo' => rand(0,1),
         'otro_vivos_bolsas_internas' => $faker->word,
         'puntada_filos' => rand(0,1),

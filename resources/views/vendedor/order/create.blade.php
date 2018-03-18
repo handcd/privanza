@@ -852,14 +852,6 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-6 col-md-offset-3">
-									<div class="form-group label-floating">
-										<label class="control-label">Código de Color de Forro <small>(opcional)</small></label>
-										<input type="text" class="form-control" name="bolsasInternasColor">
-									</div>
-								</div>
-							</div>
-							<div class="row">
 								<div class="col-md-5 col-md-offset-1">
 									<div class="row">
 										<h5 class="text-center">Vivos en Bolsas Internas</h5>

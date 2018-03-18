@@ -431,7 +431,6 @@ class OrderController extends Controller
 
             // Tipo de Bolsas Internas
             $saco->bolsas_int = $request->bolsasInt;
-            $saco->bolsa_int_color = $request->bolsasInternasColor;
 
             // Vivos iguales a los vivos del Cuerpo
             $saco->vivos_bolsas_internas_cuerpo = $request->vivosBolsasInternasCuerpo ? true : false;
