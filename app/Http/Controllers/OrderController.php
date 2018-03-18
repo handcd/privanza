@@ -376,6 +376,9 @@ class OrderController extends Controller
 
             $saco->posicion_ojal_manga = $request->posicionOjalesManga;
             $saco->ojales_activos_manga = $request->ojalesActivosManga ? true : false;
+            if ($saco->ojales_activos_manga) {
+                $saco->posicion_ojales_activos_manga = $request->posicionOjalesActivosManga;
+            }
 
             // Bolsas Exteriores
             $saco->tipo_bolsas_ext = $request->bolsasExt;
