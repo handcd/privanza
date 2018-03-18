@@ -601,14 +601,31 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-sm-4 col-sm-offset-4">
 										<p class="text-center">Ojales Activos en Manga</p>
+									<div class="col-md-4 col-md-offset-2">
 										<div class="checkbox">
 											<label>
 												<input type="checkbox" name="ojalesActivosManga">
 												Selecciona para que los ojales sean activos
 											</label>
 										</div>
+										<div class="form-group label-floating">
+			                                <label class="control-label">Posición de Ojales Activos</label>
+			                                <select class="form-control" name="posicionOjalesActivosManga" required="true">
+			                                    <option disabled="" 
+			                                    @hasSection('editCliente')
+			                                    {{-- Ya hay un cliente seleccionado --}}
+			                                    @else
+			                                      selected="" 
+			                                    @endif></option>
+			                                    <option value="0">Todos los ojales</option>
+			                                    <option value="1">3º y 4º</option>
+			                                    <option value="2">4º</option>
+			                                </select>
+			                            </div>
+									</div>
+									<div class="col-md-4">
+										<img src="{{ asset('img/suit_options/saco/Manga_Normal.png') }}" alt="Imágen de Indicador de Botones">
 									</div>
 								</div>
 								<div class="row">
