@@ -42,9 +42,6 @@ class CreateCoatsTable extends Migration
             */
             $table->integer('tipo_bolsas_ext');
             $table->boolean('pickstitch');
-            $table->boolean('pickstitch_filos');
-            $table->boolean('pickstitch_aletilla');
-            $table->boolean('pickstitch_cartera');
             $table->boolean('sin_aletilla');
 
             // Saco - Interno
