@@ -363,10 +363,6 @@
                                     <p>{{ $orden->coat->bolsas_int }}</p>
                               </div>
                               <div class="col-md-3">
-                                    <label class="text-primary">Color de Bolsas Internas</label>
-                                    <p>{{ $orden->coat->bolsa_int_color }}</p>
-                              </div>
-                              <div class="col-md-3">
                                     <label class="text-primary">Vivos de Bolsas Internas</label>
                                     <p>
                                           @if ($orden->coat->vivos_bolsas_internas_cuerpo)
