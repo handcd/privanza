@@ -277,18 +277,35 @@
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Ojales Activos en Manga</label>
-                                    <p>{{ $orden->coat->ojales_activos_manga }}</p>
+                                    <p>{{ $orden->coat->ojales_activos_manga ? 'Si' : 'No' }}</p>
                               </div>
+                              @if ($orden->coat->ojales_activos_manga)
+                                    <div class="col-md-3">
+                                          <label class="text-primary">Posición de los Ojales Activos en Manga</label>
+                                          <p>
+                                                @switch($orden->coat->posicion_ojales_activos_manga)
+                                                      @case(0)
+                                                            Todos los Ojales Activos
+                                                            @break
+                                                      @case(1)
+                                                            3º y 4º Ojales Activos <strong>únicamente</strong>.
+                                                            @break
+                                                    @default
+                                                            4º Ojal Activo <strong>únicamente</strong>
+                                                @endswitch
+                                          </p>
+                                    </div>
+                              @endif
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Bolsas Exteriores</label>
                                     <p>{{ $orden->coat->tipo_bolsas_ext }}</p>
                               </div>
+                        </div>
+                        <div class="row">
                               <div class="col-md-3">
                                     <label class="text-primary">PickStitch</label>
                                     <p>{{ $orden->coat->pickstitch ? 'Si' : 'No' }}</p>
                               </div>
-                        </div>
-                        <div class="row">
                               <div class="col-md-3">
                                     <label class="text-primary">PickStitch en Filos</label>
                                     <p>{{ $orden->coat->pickstitch_filos ? 'Si' : 'No' }}</p>
@@ -301,12 +318,12 @@
                                     <label class="text-primary">PickStitch en Cartera</label>
                                     <p>{{ $orden->coat->pickstitch_cartera }}</p>
                               </div>
+                        </div>
+                        <div class="row">
                               <div class="col-md-3">
                                     <label class="text-primary">Sin Aletilla</label>
                                     <p>{{ $orden->coat->sin_aletilla ? 'Sin Aletilla' : 'Con Aletilla' }}</p>
                               </div>
-                        </div>
-                        <div class="row">
                               <div class="col-md-6">
                                     <label class="text-primary">Notas de Saco Externo</label>
                                     <p>{{ $orden->coat->notas_ext }}</p>
