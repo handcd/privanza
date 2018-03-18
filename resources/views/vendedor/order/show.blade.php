@@ -248,6 +248,12 @@
                         </div>
                         <div class="row">
                               <div class="col-md-3">
+                                    <label class="text-primary">Ojal Activo en Solapa</label>
+                                    <p>{{ $orden->coat->ojal_activo_solapa ? 'Ojal Activo.' : 'Ojal Inactivo' }}</p>
+                              </div>
+                        </div>
+                        <div class="row">
+                              <div class="col-md-3">
                                     <label class="text-primary">Aberturas Detrás</label>
                                     <p>{{ $orden->coat->aberturas_detras }}</p>
                               </div>
