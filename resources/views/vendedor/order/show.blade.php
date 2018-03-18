@@ -307,20 +307,6 @@
                                     <p>{{ $orden->coat->pickstitch ? 'Si' : 'No' }}</p>
                               </div>
                               <div class="col-md-3">
-                                    <label class="text-primary">PickStitch en Filos</label>
-                                    <p>{{ $orden->coat->pickstitch_filos ? 'Si' : 'No' }}</p>
-                              </div>
-                              <div class="col-md-3">
-                                    <label class="text-primary">PickStitch en Aletilla</label>
-                                    <p>{{ $orden->coat->pickstitch_aletilla ? 'Si' : 'No' }}</p>
-                              </div>
-                              <div class="col-md-3">
-                                    <label class="text-primary">PickStitch en Cartera</label>
-                                    <p>{{ $orden->coat->pickstitch_cartera }}</p>
-                              </div>
-                        </div>
-                        <div class="row">
-                              <div class="col-md-3">
                                     <label class="text-primary">Sin Aletilla</label>
                                     <p>{{ $orden->coat->sin_aletilla ? 'Sin Aletilla' : 'Con Aletilla' }}</p>
                               </div>

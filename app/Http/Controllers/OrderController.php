@@ -154,9 +154,6 @@ class OrderController extends Controller
             // 'ojalesActivosManga' => 'required', // "on",
             // 'bolsasExt' => 'required', // "6",
             // 'pickstitch' => 'required', // "on",
-            // 'pickstitchfilos' => 'required', // "on",
-            // 'pickstitchaletilla' => 'required', // "on",
-            // 'pickstitchcartera' => 'required', // "on",
             // 'sinaletilla' => 'required', // "on",
             'notasSacoExt' => 'nullable',
 
@@ -383,9 +380,6 @@ class OrderController extends Controller
             // Bolsas Exteriores
             $saco->tipo_bolsas_ext = $request->bolsasExt;
             $saco->pickstitch = $request->pickstitch ? true : false;
-            $saco->pickstitch_filos = $request->pickstitchfilos == "on" ? true : false;
-            $saco->pickstitch_aletilla = $request->pickstitchaletilla == "on" ? true : false;
-            $saco->pickstitch_cartera = $request->pickstitchcartera == "on" ? true : false;
             $saco->sin_aletilla = $request->sinaletilla == "on" ? true : false;
 
             // Datos de Saco Interno

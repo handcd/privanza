@@ -22,9 +22,6 @@ $factory->define(App\Coat::class, function (Faker $faker) {
         'posicion_ojales_activos_manga' => rand(0,2),
         'tipo_bolsas_ext' => rand(0,7),
         'pickstitch' => rand(0,1),
-        'pickstitch_filos' => rand(0,1),
-        'pickstitch_aletilla' => rand(0,1),
-        'pickstitch_cartera' => rand(0,1),
         'sin_aletilla' => rand(0,1),
 
         // Saco - Interno
