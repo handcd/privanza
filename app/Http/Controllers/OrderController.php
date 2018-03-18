@@ -360,6 +360,7 @@ class OrderController extends Controller
             } else {
                 $saco->color_ojal_solapa = $request->colorOjalSolapa;
             }
+            $saco->ojal_activo_solapa = $request->ojalActivoSolapa;
             
             $saco->botones_frente = $request->botonesFrente;
             $saco->aberturas_detras = $request->aberturasDetras;
