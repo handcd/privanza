@@ -10,6 +10,7 @@ $factory->define(App\Coat::class, function (Faker $faker) {
         // Saco - Externo
         'tipo_solapa' => rand(0,1),
         'tipo_ojal_solapa' => rand(0,2),
+        'ojal_activo_solapa' => rand(0,1),
         'color_ojal_solapa' => $faker->colorName,
         'botones_frente' => rand(1,6),
         'aberturas_detras' => rand(0,2),
