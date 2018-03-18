@@ -50,6 +50,7 @@ $factory->define(App\Coat::class, function (Faker $faker) {
         'corte' => rand(0,2),
         'largo_manga' => rand(10,40),
         'largo_espalda' => rand(10,40),
-        'notas' => $faker->text($maxNbChars = 200),
+        'notas_int' => $faker->text($maxNbChars = 200),
+        'notas_ext' => $faker->text($maxNbChars = 200),
     ];
 });

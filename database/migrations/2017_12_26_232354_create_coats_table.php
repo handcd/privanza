@@ -70,7 +70,8 @@ class CreateCoatsTable extends Migration
             $table->integer('corte');
             $table->float('largo_manga');
             $table->float('largo_espalda');
-            $table->string('notas')->nullable();
+            $table->string('notas_int')->nullable();
+            $table->string('notas_ext')->nullable();
 
             $table->timestamps();
         });

@@ -300,6 +300,12 @@
                                     <p>{{ $orden->coat->sin_aletilla ? 'Sin Aletilla' : 'Con Aletilla' }}</p>
                               </div>
                         </div>
+                        <div class="row">
+                              <div class="col-md-6">
+                                    <label class="text-primary">Notas de Saco Externo</label>
+                                    <p>{{ $orden->coat->notas_ext }}</p>
+                              </div>
+                        </div>
                         <h4>Saco Interno</h4>
                         <div class="row">
                               <div class="col-md-3">
@@ -385,6 +391,12 @@
                                     <p>{{ $orden->coat->puntada_carteras ? 'Si' : 'No' }}</p>
                               </div>
                         </div>
+                        <div class="row">
+                              <div class="col-md-6">
+                                    <label class="text-primary">Notas de Saco Interno</label>
+                                    <p>{{ $orden->coat->notas_int }}</p>
+                              </div>
+                        </div>
                   @endif
                   {{-- Vest Data --}}
                   @if ($orden->has_vest)
@@ -436,6 +448,12 @@
                               <div class="col-md-3">
                                     <label class="text-primary">Ajustador en la Espalda</label>
                                     <p>{{ $orden->vest->ajustador_espalda ? 'Si' : 'No' }}</p>
+                              </div>
+                        </div>
+                        <div class="row">
+                              <div class="col-md-6">
+                                    <label class="text-primary">Notas de Chaleco</label>
+                                    <p>{{ $orden->vest->notas }}</p>
                               </div>
                         </div>
                   @endif
@@ -503,6 +521,10 @@
                               <div class="col-md-3">
                                     <label class="text-primary">Color de Pretina</label>
                                     <p>{{ $orden->pants->color_pretina }}</p>
+                              </div>
+                              <div class="col-md-6">
+                                    <label class="text-primary">Notas de Pantalón</label>
+                                    <p>{{ $orden->pants->notas }}</p>
                               </div>
                         </div>
                   @endif
