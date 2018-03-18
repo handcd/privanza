@@ -714,6 +714,13 @@
 										</div>
 									</div>
 								</div>
+								<div class="row">
+									<h4>Notas del Saco Externo</h4>
+									<div class="form-group label-floating">
+		                                <label class="control-label">Notas que puedan ayudar a tener una mejor idea de lo que quiere el cliente...</label>
+		                                <textarea name="notasSacoExt" id="notasSacoExt" rows="5" class="form-control"></textarea>
+		                            </div>
+								</div>
 							</div>
 						</div>
 						
@@ -898,6 +905,15 @@
 									</div>
 								</div>
 							</div>
+							<div class="row">
+								<div class="col-md-10 col-md-offset-1">
+									<h4>Notas del Saco Interno</h4>
+									<div class="form-group label-floating">
+		                                <label class="control-label">Notas que puedan ayudar a tener una mejor idea de lo que quiere el cliente...</label>
+		                                <textarea name="notasSacoInt" id="notasSacoInt" rows="5" class="form-control"></textarea>
+		                            </div>
+								</div>
+							</div>
 						</div>
 
 						{{-- Tab Chaleco--}}
@@ -1020,6 +1036,15 @@
 									</label>
                     			</div>
                     		</div>
+                    		<div class="row">
+                    			<div class="col-md-10 col-md-offset-1">
+									<h4>Notas del Chaleco</h4>
+									<div class="form-group label-floating">
+		                                <label class="control-label">Notas que puedan ayudar a tener una mejor idea de lo que quiere el cliente...</label>
+		                                <textarea name="notasChaleco" id="notasChaleco" rows="5" class="form-control"></textarea>
+		                            </div>
+								</div>
+							</div>
                     	</div>
 
                     	{{-- Tab Pantalón --}}
@@ -1241,6 +1266,15 @@
 										  <p class="text-center">Valenciana Española</p>
 										</label>
 									</div>
+								</div>
+							</div>
+							<div class="row">
+                    			<div class="col-md-10 col-md-offset-1">
+									<h4>Notas del Pantalón</h4>
+									<div class="form-group label-floating">
+		                                <label class="control-label">Notas que puedan ayudar a tener una mejor idea de lo que quiere el cliente...</label>
+		                                <textarea name="notasPantalon" id="notasPantalon" rows="5" class="form-control"></textarea>
+		                            </div>
 								</div>
 							</div>
 						</div>
