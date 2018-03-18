@@ -457,7 +457,7 @@
 								</div>
 								<div class="col-md-10 col-md-offset-1">
 									<div class="row">
-										<h4 class="col-md-12 text-center">Ojal en Solapa</h4>
+										<h4 class="text-center">Ojal en Solapa</h4>
 										<div class="col-sm-6">
 											<div class="form-group label-floating">
 												<label class="control-label">Tipo de Ojal en Solapa</label>
@@ -466,8 +466,14 @@
 													<option value="0">Sin Ojal en Solapa</option>
 													<option value="1">Al tono</option>
 													<option value="2">En contraste</option>
-													<option value="3">Activo</option>
 												</select>
+											</div>
+											<p class="text-center">Ojal Activo en Solapa</p>
+											<div class="checkbox">
+												<label>
+													<input type="checkbox" name="ojalActivoSolapa">
+													Selecciona para que el ojal sea activo
+												</label>
 											</div>
 										</div>
 										<div class="col-sm-6">
