@@ -284,6 +284,11 @@ class OrderController extends Controller
             $chaleco->tipo_cuello = $request->cuelloChaleco;
             $chaleco->tipo_bolsas = $request->bolsasChaleco;
             $chaleco->tipo_espalda = $request->forroTela;
+            if ($request->tipoForroChaleco) {
+                $chaleco->tipo_forro = $request->tipoForroChaleco;
+            } else {
+                $chaleco->tipo_forro = $request->codigoOtroForroChaleco;
+            }
             $chaleco->ajustador_espalda = $request->ajustadorChaleco ? true : false;
 
             $chaleco->notas = $request->notasChaleco;
