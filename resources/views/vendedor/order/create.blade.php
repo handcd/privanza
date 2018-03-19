@@ -1024,6 +1024,21 @@
                     				</div>
                     			</div>
                     		</div>
+                    		<div class="row">
+                    			<p class="text-center">Tipo de Forro</p>
+                    			<div class="col-md-8 col-md-offset-2">
+                    				<div class="checkbox text-center">
+										<label>
+											<input type="checkbox" name="tipoForroChaleco" value="Mismo Seleccionado en Saco">
+											Mismo Seleccionado en Saco
+										</label>
+									</div>
+									<div class="form-group label-floating">
+										<label class="control-label">Código de Otro Forro <small>(opcional)</small>:</label>
+										<input type="text" class="form-control" name="codigoOtroForroChaleco">
+									</div>
+                    			</div>
+                    		</div>
                     		<h4 class="info-text">Opciones Extra</h4>
                     		<div class="row">
                     			<div class="col-md-8 col-md-offset-2 text-center">

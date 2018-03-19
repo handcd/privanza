@@ -450,12 +450,18 @@
                                     <label class="text-primary">Tipo de Espalda</label>
                                     <p>{{ $orden->vest->tipo_espalda }}</p>
                               </div>
+                              @if ($orden->vest->tipo_espalda == 1)
+                                   <div class="col-md-3">
+                                          <label class="text-primary">Tipo de Forro para Espalda</label>
+                                          <p>{{ $orden->vest->tipo_forro }}</p>
+                                    </div> 
+                              @endif
+                        </div>
+                        <div class="row">
                               <div class="col-md-3">
                                     <label class="text-primary">Ajustador en la Espalda</label>
                                     <p>{{ $orden->vest->ajustador_espalda ? 'Si' : 'No' }}</p>
                               </div>
-                        </div>
-                        <div class="row">
                               <div class="col-md-6">
                                     <label class="text-primary">Notas de Chaleco</label>
                                     <p>{{ $orden->vest->notas }}</p>
