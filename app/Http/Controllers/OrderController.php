@@ -73,13 +73,26 @@ class OrderController extends Controller
                             ->where('delivered','0')
                             ->paginate(5,['*'],'recoger');
 
+        // Órdenes ya entregadas
+        $entregados = Auth::user()
+                            ->orders()
+                            ->where('delivered','1')
+                            ->where('facturado','0')
+                            ->paginate(5,['*'],'entregados');
+
+        // Órdenes facturadas
+        $facturados = Auth::user()
+                            ->orders()
+                            ->where('facturado','1')
+                            ->paginate(5,['*'],'facturados');
+
         // Órdenes cobradas
-        $finalizados = Auth::user()->orders()->where('cobrado','1')->paginate(5,['*'],'finalizados');
+        $cobrados = Auth::user()->orders()->where('cobrado','1')->paginate(5,['*'],'cobrados');
 
         // Todas las ordenes paginadas en grupos de 15.
         $ordenes = Auth::user()->orders()->paginate(15,['*'],'general');
 
-        return view('vendedor.order.home',compact('ordenes','aprobadas','noAprobadas','listosEntrega','finalizados'));
+        return view('vendedor.order.home',compact('ordenes','aprobadas','noAprobadas','listosEntrega','entregados','facturados','cobrados'));
     }
 
     /**
