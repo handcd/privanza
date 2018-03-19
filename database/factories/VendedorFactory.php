@@ -19,7 +19,7 @@ $factory->define(App\Vendedor::class, function (Faker $faker) {
         'account_digits' => 1234,
         'concept' => 'Venta de Trajes',
         'bank' => 'Banorte',
-        'type' => 1,
+        'type' => rand(0,1),
         'remember_token' => str_random(10),
     ];
 });
