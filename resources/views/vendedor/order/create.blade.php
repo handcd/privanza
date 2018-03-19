@@ -557,7 +557,13 @@
 									<div class="col-sm-6">
 										<div class="form-group label-floating">
 											<label class="control-label">Botones en Mangas:</label>
-											<input type="number" min="1" max="4" step="1" name="botonesMangas" class="form-control" required="true">
+											<select name="botonesMangas" id="botonesMangas" class="form-control" required="true">
+												<option disabled="" selected=""></option>
+												<option value="1">1 Botón</option>
+												<option value="2">2 Botones</option>
+												<option value="3">3 Botones</option>
+												<option value="4">4 Botones</option>
+											</select>
 										</div>
 									</div>
 									<div class="col-sm-6">
