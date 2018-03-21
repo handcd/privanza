@@ -1,5 +1,7 @@
 # Privanza
 
+[![buddy pipeline](https://app.buddy.works/humbertowoody/privanza/pipelines/pipeline/129691/badge.svg?token=14b82acb7e05cc499cfb882ed720c7d749acff4f0a0273c2b6cdbafc752ddfbc "buddy pipeline")](https://app.buddy.works/humbertowoody/privanza/pipelines/pipeline/129691)
+
 Este es el proyecto de un CRM con control de Procesos para __Privanza__. El objetivo general es poder brindar un funcionamiento completo para el equipo interno y externo de la empresa.
 
 El sistema cuenta con las siguientes acciones:
