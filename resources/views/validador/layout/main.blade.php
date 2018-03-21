@@ -102,7 +102,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="{{ url('/vendedor/') }}">Vendedor</a>
+                        <a class="navbar-brand" href="{{ url('/validador') }}">Validador</a>
                     </div>
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
@@ -113,12 +113,12 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="{{ url('/vendedor/logout') }}"
+                                        <a href="{{ url('/validador/logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Cerrar Sesión
                                         </a>
-                                        <form id="logout-form" action="{{ url('/vendedor/logout') }}" method="POST" style="display: none;">
+                                        <form id="logout-form" action="{{ url('/validador/logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
