@@ -6,6 +6,15 @@
 <!-- DateTimePicker JS -->
 <script src="{{ asset('js/datepicker.js') }}"></script>
 <div class="row">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="card">
         <div class="card-header" data-background-color="purple">
             <h4 class="title">Añadir nuevo Vendedor</h4>
@@ -38,41 +47,45 @@
                     </div>
                 </div>
 
+                
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group label-floating">
                             <label class="control-label">Dirección</label>
                             <input  name="address" type="text" class="form-control" required="true" value="@yield('editAddress')">
                         </div>
-                    </div>
-                    <div class="col-md-4">
                         <div class="form-group label-floating">
                             <label class="control-label">Teléfono</label>
                             <input name="phone" type="phone" class="form-control" required="true" value="@yield('editPhone')">
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-5 col-md-offset-1">
                         <label>Fecha de Nacimiento:</label>
                         <div style="overflow:hidden;">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-8">
                                         <input type="hidden" id="birthday" name="birthday" value="@yield('editBirthday')">
-                                        <div id="datetimepicker12"></div>
+                                        <div id="datetimepicker"></div>
                                     </div>
                                 </div>
                             </div>
                             <script type="text/javascript">
                                 $(function () {
-                                    $('#datetimepicker12').datetimepicker({
+                                    $('#datetimepicker').datetimepicker({
                                         inline: true,
                                         format: 'MM/dd/YYYY',
-                                        viewMode: 'decades',
+                                        viewMode: 
+                                        @hasSection('editBirthday')
+                                            'days'
+                                        @else
+                                            'decades'
+                                        @endif
+                                        ,
+                                        maxDate: 'now',
                                         defaultDate: '@yield('editBirthday')',
                                     }).on('dp.change', () => {
-                                        $('#birthday').val($('#datetimepicker12').data('DateTimePicker').date().format());
+                                        $('#birthday').val($('#datetimepicker').data('DateTimePicker').date().format());
                                     });
                                 });
                             </script>
@@ -84,19 +97,19 @@
                     <div class="col-md-4">
                         <div class="form-group label-floating">
                             <label class="control-label">RFC</label>
-                            <input type="text" class="form-control" value="@yield('editRFC')">
+                            <input type="text" name="rfc" class="form-control" value="@yield('editRFC')">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group label-floating">
                             <label class="control-label">Ùltimos 4 dígitos de la Cuenta</label>
-                            <input type="text" class="form-control" value="@yield('editDigits')">
+                            <input type="text" name="digits" class="form-control" value="@yield('editDigits')">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group label-floating">
                             <label class="control-label">Banco</label>
-                            <input type="text" class="form-control" value="@yield('editBank')">
+                            <input type="text" name="bank" class="form-control" value="@yield('editBank')">
                         </div>
                     </div>
                 </div>
@@ -104,13 +117,13 @@
                     <div class="col-md-6">
                         <div class="form-group label-floating">
                             <label class="control-label">Dirección Legal</label>
-                            <input type="text" class="form-control" value="@yield('editLegalAddress')">
+                            <input type="text" name="legalAddress" class="form-control" value="@yield('editLegalAddress')">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group label-floating">
                             <label class="control-label">Concepto de Facturación</label>
-                            <input type="text" class="form-control" value="@yield('editConcept')">
+                            <input type="text" name="concept" class="form-control" value="@yield('editConcept')">
                         </div>
                     </div>
                 </div>
@@ -123,7 +136,7 @@
 							<label>
 								<input type="radio" name="enabled" value="1" required 
 								@hasSection('editEnabled')
-                                  @if ($__env->getSections()['editEnabled'] == "si")
+                                  @if ($vendedor->enabled)
                                     checked 
                                   @endif 
                                 @else
@@ -136,7 +149,7 @@
 							<label>
 								<input type="radio" name="enabled" value="0"
 								@hasSection('editAprobado')
-                                  @if ($__env->getSections()['editEnabled'] == "no")
+                                  @if (!$vendedor->enabled)
                                     checked 
                                   @endif 
                                 @endif>
@@ -147,10 +160,26 @@
                     <div class="col-md-4">
                         <div class="form-group label-floating">
                             <label class="control-label">Tipo de Vendedor</label>
-                            <select name="tipo" id="tipo" required="true" class="form-control">
-                                <option disabled="" selected=""></option>
-                                <option value="0">Vendedor ISCO</option>
-                                <option value="1">Vendedor Externo</option>
+                            <select name="type" id="type" required="true" class="form-control">
+                                <option disabled=""
+                                @hasSection('editType')
+                                    <!-- hola --!>
+                                @else
+                                    selected=""
+                                @endif
+                                ></option>
+                                <option value="0"
+                                @hasSection('editType')
+                                    @if ($vendedor->type == 0)
+                                        selected="" 
+                                    @endif
+                                @endif>Vendedor ISCO</option>
+                                <option value="1"
+                                @hasSection('editType')
+                                    @if ($vendedor->type == 1)
+                                        selected="" 
+                                    @endif
+                                @endif>Vendedor Externo</option>
                             </select>
                         </div>
                     </div>

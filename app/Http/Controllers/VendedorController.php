@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 // Models
 use App\Vendedor;
@@ -69,5 +70,57 @@ class VendedorController extends Controller
 		}
 
 		return view('validador.vendedor.edit',compact('vendedor'));
+	}
+
+	/**
+	 * Add a new vendedor into the system
+	 *
+	 * @param Request $request
+	 * @return \Illuminate\Http\Response
+	 */
+	public function store(Request $request)
+	{
+		$vendedor = new Vendedor;
+
+		$this->validate($request, [
+			'name' => 'required',  						
+			'lastname' => 'required',  					
+			'email' => 'required|email|unique:vendedors',  
+			'address' => 'required',  					
+			'phone' => 'required',  					
+			'birthday' => 'required|date',  			
+			'rfc' => 'nullable',  						
+			'digits' => 'nullable',  					
+			'bank' => 'nullable',  						
+			'legalAddress' => 'nullable',  				
+			'concept' => 'nullable',  					
+			'enabled' => 'required',  					
+			'type' => 'required',
+			'password' => 'required'						
+		]);
+
+		$vendedor->name = $request->name;
+		$vendedor->lastname = $request->lastname;
+		$vendedor->email = $request->email;
+		$vendedor->address_home = $request->address;
+		$vendedor->phone = $request->phone;
+		$vendedor->birthday = Carbon::parse($request->birthday)->toDateTimeString();
+		$vendedor->rfc = $request->rfc;
+		$vendedor->account_digits = $request->digits;
+		$vendedor->bank = $request->bank;
+		$vendedor->address_legal = $request->legalAddress;
+		$vendedor->concept = $request->concept;
+		$vendedor->enabled = $request->enabled == "1" ? true:false;
+		$vendedor->type = $request->type;
+		$vendedor->password = bcrypt($request->password);
+
+		$vendedor->save();
+
+		// Feedback to the user
+		$request->session()->flash('success', '¡Listo! '.$vendedor->name.' ha sido agregado exitosamente. Se le ha enviado un correo electrónico con la información de inicio de sesión así como una notificación para ti y el administrador.');
+
+
+		// Redirect to home of CRUD
+		return redirect('/validador/vendedores');
 	}
 }
