@@ -860,7 +860,7 @@
 							<div class="row">
 								<div class="col-md-5 col-md-offset-1">
 									<div class="row">
-										<h5 class="text-center">Vivos en Bolsas Internas</h5>
+										<h5 class="text-center">Forro de Vivos en Bolsas Internas</h5>
 									</div>
 									<div class="row col-xs-offset-1">
 										<div class="checkbox">
