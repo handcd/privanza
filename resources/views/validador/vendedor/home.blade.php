@@ -9,13 +9,13 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header" data-background-color="purple">
+            <div class="card-header" data-background-color="blue">
                 <h4 class="title">Todos los vendedores</h4>
                 <p class="category">Todos los vendedores registrados en el sistema</p>
             </div>
             <div class="card-content table-responsive">
                 <div class="col-md-6">
-                    <input id="filter" class="form-control" type="text" placeholder="Buscar Cliente...">
+                    <input id="filter" class="form-control" type="text" placeholder="Buscar Vendedor...">
                 </div>
                 <table class="table table-hover">
                     <thead>
@@ -26,7 +26,7 @@
                         <th>Acciones</th>
                     </thead>
                     <tbody class="searchable">
-                        @foreach ($vendedores as $vendedor)
+                        @forelse ($vendedores as $vendedor)
                         <tr>
                             <td>{{ $vendedor->id }}</td>
                             <td>{{ $vendedor->name }}</td>
@@ -41,9 +41,16 @@
                                 </a>
                             </td>
                         </tr>
-                        @endforeach
+                        @empty
+                        <tr>
+                            <td colspan="5" class="text-center">No hay vendedores registrados aún :(</td>
+                        </tr>
+                        @endforelse
                     </tbody>
                 </table>
+                <div class="row text-center">
+                    {{ $vendedores->links() }}
+                </div>
             </div>
         </div>
     </div>
