@@ -42,4 +42,32 @@ class VendedorController extends Controller
 
 		return view('validador.vendedor.show',compact('vendedor'));
 	}
+
+	/**
+	 * Show the form for a Client creation
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function create()
+	{
+		return view('validador.vendedor.create');
+	}
+
+	/**
+	 * Show the form for editing an existing Vendedor
+	 *
+	 * @param integer $id Vendedor
+	 * @return \Illuminate\Http\Response
+	 */
+	public function edit(Request $request, $id)
+	{
+		$vendedor = Vendedor::find($id);
+
+		if (!$vendedor) {
+			$request->session()->flash('danger', 'El vendedor que deseas editar no ha sido encontrado. Corrobora la información e inténtalo de nuevo.');
+			return redirect('/validador/vendedores');
+		}
+
+		return view('validador.vendedor.edit',compact('vendedor'));
+	}
 }
