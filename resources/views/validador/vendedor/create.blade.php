@@ -130,7 +130,11 @@
 
                 <h4>Información de la cuenta</h4>
 				<div class="row">
-					<div class="col-md-4 col-md-offset-2">
+					<div class="col-md-4 
+                    @hasSection('editId')
+                        col-md-offset-2
+                    @else
+                    @endif">
 						<p>La cuenta se encuentra:</p>
 						<div class="radio">
 							<label>
@@ -183,6 +187,18 @@
                             </select>
                         </div>
                     </div>
+                    @hasSection('editId')
+                    @else
+                    <div class="col-md-4">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Contraseña</label>
+                            <input type="text" name="password" class="form-control">
+                        </div>
+                        <p>
+                            <strong>NOTA:</strong> La contraseña que aquí ingreses será la contraseña que el <i>Vendedor</i> utilizará <strong>sólamente el primer inicio de sesión</strong> posteriormente podrá actualizarla siguiendo el procedimiento de <kbd>Olvidé Mi Contraseña</kbd> durante el inicio de sesión. Esta contraseña <b>NO</b> debe ser algo permanente por lo que sugerimos sea algo simple.
+                        </p>
+                    </div>
+                    @endif
 				</div>
                 <button type="submit" class="btn btn-success pull-right">Registrar Vendedor</button>
                 <a href="{{ url('/validador/vendedores') }}" class="btn btn-default">Cancelar</a>
