@@ -21,7 +21,7 @@ class VendedorController extends Controller
 	 */
 	public function index()
 	{
-		$vendedores = Vendedor::all();
+		$vendedores = Vendedor::paginate(15);
 		return view('validador.vendedor.home',compact('vendedores'));
 	}
 
