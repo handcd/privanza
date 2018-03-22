@@ -192,7 +192,7 @@
                     <div class="col-md-4">
                         <div class="form-group label-floating">
                             <label class="control-label">Contraseña</label>
-                            <input type="text" name="password" class="form-control">
+                            <input type="text" name="password" class="form-control" required="">
                         </div>
                         <p>
                             <strong>NOTA:</strong> La contraseña que aquí ingreses será la contraseña que el <i>Vendedor</i> utilizará <strong>sólamente el primer inicio de sesión</strong> posteriormente podrá actualizarla siguiendo el procedimiento de <kbd>Olvidé Mi Contraseña</kbd> durante el inicio de sesión. Esta contraseña <b>NO</b> debe ser algo permanente por lo que sugerimos sea algo simple.
