@@ -139,7 +139,7 @@
 						<div class="radio">
 							<label>
 								<input type="radio" name="enabled" value="1" required 
-								@hasSection('editEnabled')
+								@hasSection('editId')
                                   @if ($vendedor->enabled)
                                     checked 
                                   @endif 
@@ -152,7 +152,7 @@
 						<div class="radio">
 							<label>
 								<input type="radio" name="enabled" value="0"
-								@hasSection('editAprobado')
+								@hasSection('editId')
                                   @if (!$vendedor->enabled)
                                     checked 
                                   @endif 
