@@ -7,18 +7,24 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class AdminNewVendedor extends Notification
+class AdminNewVendedor extends Notification implements ShouldQueue
 {
     use Queueable;
+
+    /**
+     * The Vendedor
+     * @var vendedor
+     */
+    protected $vendedor;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($vendedor)
     {
-        //
+        $this->vendedor = $vendedor;
     }
 
     /**
@@ -41,21 +47,13 @@ class AdminNewVendedor extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
-    }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-        return [
-            //
-        ];
+                    ->subject('Nuevo Vendedor')
+                    ->line('Se ha registrado un nuevo vendedor en el sistema. Datos del vendedor:')
+                    ->line('Nombre: '.$this->vendedor->name)
+                    ->line('Email: '.$this->vendedor->email)
+                    ->line('Teléfono: '.$this->vendedor->phone)
+                    ->line('Para ver más detalles puedes revisar al vendedor haciendo click en el siguiente botón:')
+                    ->action('Revisar Vendedor', url('/admin/vendedores',$this->vendedor->id))
+                    ->line('¡Gracias por usar el sistema!');
     }
 }

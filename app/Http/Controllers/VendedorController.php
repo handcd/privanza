@@ -14,6 +14,8 @@ use App\Validador;
 
 // Notifications
 use App\Notifications\VendedorNew;
+use App\Notifications\AdminNewVendedor;
+use App\Notifications\ValidadorNewVendedor;
 
 class VendedorController extends Controller
 {
@@ -121,8 +123,9 @@ class VendedorController extends Controller
 		// Notify new Vendedor
 		Notification::send($vendedor,new VendedorNew($vendedor,$request->password));
 		// Notify Admin
-
+		Notification::send(Admin::all(), new AdminNewVendedor($vendedor));
 		// Notify current Validador
+		Notification::send(Auth::user(), new ValidadorNewVendedor($vendedor));
 
 		// Feedback to the user
 		$request->session()->flash('success', '¡Listo! '.$vendedor->name.' ha sido agregado exitosamente. Se le ha enviado un correo electrónico con la información de inicio de sesión así como una notificación para ti y el administrador.');
