@@ -12,6 +12,7 @@ $factory->define(App\Validador::class, function (Faker $faker) {
         'password' => $password ?: $password = bcrypt('validador123'),
         'birthday' => $faker->dateTimeThisCentury,
         'job_position' => $faker->jobTitle,
+        'phone' => $faker->phoneNumber,
         'enabled' => 1,
     ];
 });

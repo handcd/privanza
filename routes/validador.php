@@ -27,6 +27,14 @@ Route::get('/ordenes/{order}/editar','OrderController@edit');
 Route::put('/ordenes/{order}','OrderController@update');
 Route::get('/ordenes/{order}/aprobar');
 
+// Events
+Route::get('/citas','EventController@indexForValidador');
+Route::get('/citas/agregar','EventController@createForValidador');
+Route::post('/citas','EventController@storeForValidador');
+Route::get('/citas/{cita}','EventController@showForValidador');
+Route::get('/citas/{cita}/editar','EventController@editForValidador');
+Route::put('/citas/{cita}','EventController@updateForValidador');
+
 // Vendedores
 Route::get('/vendedores','VendedorController@index');
 Route::get('/vendedores/agregar','VendedorController@create');
