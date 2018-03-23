@@ -9,13 +9,21 @@ use App\Http\Controllers\Controller;
 use App\Vendedor;
 use App\Event;
 use App\Client;
+use App\Admin;
 
 // Facades
 use Carbon\Carbon;
 use Auth;
 use Session;
+use Notification;
 
 // Notifications
+use App\Notifications\ValidadorNewEvent;    // Cuando el Vendedor/Admin añaden cita
+use App\Notifications\ValidadorEditedEvent; // Cuando el Vendedor/Admin editan cita
+use App\Notifications\VendedorNewEvent;     // Cuando el Validador/Admin añaden cita
+use App\Notifications\VendedorEditedEvent;  // Cuando el Validador/Admin editan cita
+use App\Notifications\AdminNewEvent;        // Cuando el Validador/Vendedor añaden cita
+use App\Notifications\AdminEditedEvent;     // Cuando el Validador/Vendedor editan cita
 
 class EventController extends Controller
 {
@@ -97,7 +105,7 @@ class EventController extends Controller
     {
         $evento = new Event;
         $this->validate($request, [
-            'cliente' => 'required',
+            'cliente' => 'required|exists:clients,id',
             'fechahora' => 'required|date',
             'notes' => 'nullable'
         ]);
@@ -114,7 +122,13 @@ class EventController extends Controller
         $evento->notes = $request->notes;
         $evento->save();
 
-        $request->session()->flash('success', 'Se ha añadido correctamente el evento.');
+        // Notifications
+        Notification::send(Validador::all(),new ValidadorNewEvent($evento));
+        Notification::send(Admin::all(), new AdminNewEvent($evento));
+
+        // Feedback to the user
+        $request->session()->flash('success', 'Se ha añadido correctamente la cita.');
+
         return redirect('/vendedor/citas');
     }
 
@@ -133,6 +147,22 @@ class EventController extends Controller
             'fechahora' => 'required|date',
             'notes' => 'nullable'
         ]);
+
+        $evento->client_id = $request->cliente;
+        $evento->vendedor_id = $evento->client->vendedor->id;
+        $evento->fechahora = Carbon::parse($request->fechahora)->toDateTimeString();
+        $evento->notes = $request->notes;
+
+        $evento->save();
+
+        // Notifications
+        Notification::send($evento->vendedor,new VendedorNewEvent($evento));
+        Notification::send(Admin::all(), new AdminNewEvent($evento));
+
+        // Feedback to the user
+        $request->session()->flash('success', '¡Listo! Hemos añadido la cita y notificado a '.$evento->vendedor->name);
+
+        return redirect('/validador/citas');
     }
 
     /**
