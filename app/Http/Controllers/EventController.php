@@ -182,6 +182,22 @@ class EventController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param \App\Event $event
+     * @return \Illuminate\Http\Response
+     */
+    public function showForValidador($id)
+    {
+        $evento = Event::find($id);
+        if (!$evento) {
+            Session::flash('danger','La cita que deseas consultar no puede ser mostrada porque no existe.');
+            return redirect('/validador/citas');
+        }
+        return view('validador.event.show',compact('evento'));
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Event  $event
@@ -199,6 +215,24 @@ class EventController extends Controller
     }
 
     /**
+     * Shw the form for editing the specified resource.
+     *
+     * @param \App\Event $id
+     * @param \Illuminate\Http\Response
+     */
+    public function editForValidador($id)
+    {
+        $evento = Event::find($id);
+        if (!$evento) {
+            Session::flash('danger', 'La citas que indicas no existe o no puede ser ubicada.');
+            return redirect('/validador/citas');
+        }
+
+        $clientes = Client::all();
+        return view('validador.event.edit',compact('evento','clientes'));
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -210,7 +244,7 @@ class EventController extends Controller
         $evento = Event::find($id);
 
         $this->validate($request, [
-            'cliente' => 'required',
+            'cliente' => 'required|exists:clients,id',
             'fechahora' => 'required|date',
             'notes' => 'nullable'
         ]);
@@ -228,7 +262,47 @@ class EventController extends Controller
         $evento->notes = $request->notes;
         $evento->save();
 
-        $request->session()->flash('success', 'Se ha editado correctamente el evento.');
+        // Notifications
+        Notification::send(Validador::all(), new ValidadorEditedEvent($evento));
+        Notification::send(Admin::all(), new AdminEditedEvent($evento));
+
+        // Feedback to the user
+        $request->session()->flash('success', 'Se ha editado correctamente la cita y se ha notificado al Validador y Administrador.');
+        return redirect('/vendedor/citas');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Event  $event
+     * @return \Illuminate\Http\Response
+     */
+    public function updateForValidador(Request $request, $id)
+    {
+        $evento = Event::find($id);
+
+        $this->validate($request, [
+            'cliente' => 'required|exists:clients,id',
+            'fechahora' => 'required|date',
+            'notes' => 'nullable'
+        ]);
+
+        $cliente = Client::find($request->cliente);
+
+        $evento->vendedor_id = $cliente->vendedor->id;
+        $evento->client_id = $cliente->id;
+        $evento->fechahora = Carbon::parse($request->fechahora)->toDateTimeString();
+        $evento->notes = $request->notes;
+        $evento->save();
+
+        // Notifications
+        Notification::send($evento->vendedor, new VendedorEditedEvent($evento));
+        Notification::send(Admin::all(), new AdminEditedEvent($evento));
+
+        // Feedback to the user
+        $request->session()->flash('success', 'Se ha editado correctamente la cita y se ha enviado una notificación al Vendedor.');
+
         return redirect('/vendedor/citas');
     }
 }

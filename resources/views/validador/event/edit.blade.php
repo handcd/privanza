@@ -1,4 +1,4 @@
-@extends('vendedor.event.create')
+@extends('validador.event.create')
 
 @section('editId',$evento->id)
 @section('editCliente',$evento->client->id)
