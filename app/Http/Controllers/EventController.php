@@ -303,6 +303,6 @@ class EventController extends Controller
         // Feedback to the user
         $request->session()->flash('success', 'Se ha editado correctamente la cita y se ha enviado una notificación al Vendedor.');
 
-        return redirect('/vendedor/citas');
+        return redirect('/validador/citas');
     }
 }
