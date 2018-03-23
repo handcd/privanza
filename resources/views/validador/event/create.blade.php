@@ -6,7 +6,7 @@
 <!-- DateTimePicker JS -->
 <script src="{{ asset('js/datepicker.js') }}"></script>
 <style>
-  .btn{
+  .btn {
       white-space:normal !important;
       max-width:500px;
   }

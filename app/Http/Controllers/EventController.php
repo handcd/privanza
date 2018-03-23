@@ -45,6 +45,25 @@ class EventController extends Controller
         return view('vendedor.event.home',compact('eventos','eventosHoy','eventosSemana'));
     }
 
+    public function indexForValidador()
+    {
+        // Todas las citas
+        $eventos = Event::paginate(15,['*'],'citas');
+
+        // Citas del día
+        $eventosHoy = Event::where('fechahora','>=',Carbon::today())
+                            ->where('fechahora','<',Carbon::tomorrow())
+                            ->paginate(5,['*'],'citasHoy');
+
+        // Citas de la semana
+        $eventosSemana = Event::where('fechahora','>=',Carbon::today())
+                                ->where('fechahora','<',Carbon::today()->addWeek())
+                                ->paginate(5,['*'],'citasSemana');
+
+
+        return view('validador.event.home',compact('eventos','eventosHoy','eventosSemana'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -54,6 +73,18 @@ class EventController extends Controller
     {
         $clientes = Vendedor::find(Auth::id())->clients;
         return view('vendedor.event.create',compact('clientes'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createForValidador()
+    {
+        $clientes = Client::all();
+        $vendedores = Vendedor::all();
+        return view('validador.event.create',compact('clientes','vendedores'));
     }
 
     /**
@@ -85,6 +116,23 @@ class EventController extends Controller
 
         $request->session()->flash('success', 'Se ha añadido correctamente el evento.');
         return redirect('/vendedor/citas');
+    }
+
+    /**
+     * Store a newly created resource from the Validador in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeForValidador(Request $request)
+    {
+        $evento = new Event;
+
+        $this->validate($request,[
+            'cliente' => 'required|exists:clients,id',
+            'fechahora' => 'required|date',
+            'notes' => 'nullable'
+        ]);
     }
 
     /**
