@@ -364,7 +364,39 @@
 		                            	<label class="control-label">Personalización Portatrajes: <small>(opcional)</small></label>
 		                            	<input type="text" name="perPortatrajes" class="form-control">
 		                            </div>
+								</div>								
+							</div>
+							{{-- Bordado de iniciales--}}
+							<div class="row">
+								<h4 class="text-center">Bordado de iniciales (opcional)</h4>
+								<div class="col-md-4 col-md-offset-4">											
+									<div class="form-group label-floating">
+										<label class="control-label">Nombre <small>(Máximo 10 caracteres)</small></label>
+		                            	<input type="text" name="bordadoNombre" class="form-control" maxlength="10">
+		                            </div>
+									<div class="row text-center">
+										<div class="col-xs-3 col-xs-offset-3">
+											<label>
+			  									<input type="radio" name="letra" value="Molde" />
+			  									<img src="{{ asset('img/suit_options/letras/bordado_molde.png') }}">
+			  									<p>Letra de molde</p>
+											</label>									
+										</div>
+										<div class="col-xs-3">
+											<label>
+			  									<input type="radio" name="letra" value="Cursiva" />
+			  									<img src="{{ asset('img/suit_options/letras/bordado_cursiva.png') }}">
+			  									<p>Letra cursiva</p>
+											</label>
+										</div>										
+									</div>									
+										<p>El color por defecto para el bordado es gris plata, si desea un color distinto, colóquelo abajo</p>									
+									<div class="form-group label-floating">
+										<label class="control-label">Otro Color <small>(Opcional)</small></label>
+		                            	<input type="text" name="bordadoColor" class="form-control">
+		                            </div>	
 								</div>
+								
 							</div>
 						</div>
 
@@ -860,7 +892,7 @@
 							<div class="row">
 								<div class="col-md-5 col-md-offset-1">
 									<div class="row">
-										<h5 class="text-center">Forro de Vivos en Bolsas Internas</h5>
+										<h5 class="text-center">Vivos en Bolsas Internas</h5>
 									</div>
 									<div class="row col-xs-offset-1">
 										<div class="checkbox">

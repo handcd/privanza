@@ -273,6 +273,16 @@ class OrderController extends Controller
         if ($orden->portatrajes == 1) {
             $orden->portatrajes_personalizacion = $request->perPortatrajes;
         }
+        //Bordado
+        $orden->bordado = $request->bordadoNombre;
+        $orden->letra = $request->letra;
+
+        if ($request->bordadoColor) {
+            $orden->bordadoColor = $request->bordadoColor;
+        }else{
+            $orden->bordadoColor = 'Gris Plata';
+        }
+
 
         // Componentes del Traje
         $orden->has_vest = $request->chaleco ? true : false;
@@ -375,7 +385,7 @@ class OrderController extends Controller
             } else {
                 $saco->color_ojal_solapa = $request->colorOjalSolapa;
             }
-            $saco->ojal_activo_solapa = $request->ojalActivoSolapa;
+            $saco->ojal_activo_solapa = $request->ojalActivoSolapa ? true : false;
             
             $saco->botones_frente = $request->botonesFrente;
             $saco->aberturas_detras = $request->aberturasDetras;

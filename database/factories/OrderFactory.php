@@ -51,6 +51,9 @@ $factory->define(App\Order::class, function (Faker $faker) {
         'gancho_personalizacion' => $faker->sentence(),
         'portatrajes' => rand(0,1),
         'portatrajes_personalizacion' => $faker->sentence(),
+        'bordado' => $faker->sentence(),
+        'letra' => $faker->sentence(),
+        'bordadoColor' => $faker->sentence(),
         // 'notas_tela' => $faker->sentences(3),
     ];
 });

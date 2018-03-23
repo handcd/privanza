@@ -189,6 +189,21 @@
                               <p>{{ $orden->client->concept }}</p>
                         </div>
                   </div>
+                  <h3>Datos de pedido</h3>
+                  <div class="row">
+                        <div class="col-md-3">
+                              <label class="text-primary">Nombre bordado</label>
+                              <p>{{ $orden->bordado }}</p>
+                        </div>
+                        <div class="col-md-3">
+                              <label class="text-primary">Tipo de Letra</label>
+                              <p>{{ $orden->letra }}</p>
+                        </div>
+                        <div class="col-md-3">
+                              <label class="text-primary">Color de bordado</label>
+                              <p> {{ $orden->bordadoColor }} </p>
+                        </div>
+                  </div>
                   @if ($orden->has_coat)
                         <h3>Saco</h3>
                         <h4>Medidas de Cliente</h4>
@@ -533,7 +548,7 @@
                                     <label class="text-primary">Color de Pretina</label>
                                     <p>{{ $orden->pants->color_pretina }}</p>
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-md-3">
                                     <label class="text-primary">Notas de Pantalón</label>
                                     <p>{{ $orden->pants->notas }}</p>
                               </div>
