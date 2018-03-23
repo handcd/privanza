@@ -7,18 +7,24 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class VendedorEditedEvent extends Notification
+class VendedorEditedEvent extends Notification implements ShouldQueue
 {
     use Queueable;
+
+    /**
+     * The event
+     * @var \App\Event $evento
+     */
+    protected $evento;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($evento)
     {
-        //
+        $this->evento = $evento;
     }
 
     /**
@@ -41,21 +47,9 @@ class VendedorEditedEvent extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
-    }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-        return [
-            //
-        ];
+                    ->subject('Una cita ha sido editada')
+                    ->line('Se han cambiado los datos de tu cita #'.$this->evento->id.'. Para revisar la nueva información puedes ingresar al sistema haciendo click en el siguiente botón:')
+                    ->action('Revisar Cita', url('/vendedor/citas',$this->evento->id))
+                    ->line('¡Gracias por usar el sistema!');
     }
 }

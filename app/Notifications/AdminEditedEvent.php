@@ -7,18 +7,25 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class AdminEditedEvent extends Notification
+class AdminEditedEvent extends Notification implements ShouldQueue
 {
     use Queueable;
 
     /**
+     * The event
+     * @var \App\Event $evento
+     */
+    protected $evento;
+
+    /**
      * Create a new notification instance.
      *
+     * @param \App\Event $evento
      * @return void
      */
-    public function __construct()
+    public function __construct($evento)
     {
-        //
+        $this->evento = $evento;
     }
 
     /**
@@ -41,21 +48,9 @@ class AdminEditedEvent extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
-    }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-        return [
-            //
-        ];
+                    ->subject('Una cita ha sido modificada')
+                    ->line('La cita #'.$this->evento->id.' ha sido editada. Para revisar los datos de la misma, haz click en el siguiente botón:')
+                    ->action('Revisar Cita', url('/admin/citas',$this->evento->id))
+                    ->line('¡Gracias por usar el sistema!');
     }
 }
