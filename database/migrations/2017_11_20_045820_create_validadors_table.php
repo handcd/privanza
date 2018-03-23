@@ -20,6 +20,7 @@ class CreateValidadorsTable extends Migration
             $table->string('password');
             $table->date('birthday');
             $table->string('job_position');
+            $table->string('phone');
             $table->boolean('enabled')->default(1);
             $table->rememberToken();
             $table->timestamps();
