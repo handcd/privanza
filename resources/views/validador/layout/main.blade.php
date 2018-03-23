@@ -40,7 +40,7 @@
 
 <body>
     <div class="wrapper">
-        <div class="sidebar" data-color="blue" data-image="{{ asset('img/sidebar-1.jpg') }}">
+        <div class="sidebar" data-color="blue" data-image="{{ asset('img/sidebar-0.png') }}">
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
