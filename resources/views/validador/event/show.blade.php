@@ -75,7 +75,7 @@
 </div>
 <div class="row">
 	<div class="col-md-12">
-		<a href="{{ url('/vendedor/citas') }}" class="btn btn-info">Regresar</a>
+		<a href="{{ url('/validador/citas') }}" class="btn btn-info">Regresar</a>
 	</div>
 </div>
 @endsection
