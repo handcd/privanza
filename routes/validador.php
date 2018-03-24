@@ -27,6 +27,14 @@ Route::get('/ordenes/{order}/editar','OrderController@edit');
 Route::put('/ordenes/{order}','OrderController@update');
 Route::get('/ordenes/{order}/aprobar');
 
+// Ajustes
+Route::get('/ajustes','AdjustmentController@indexForValidador');
+Route::get('/ajustes/agregar', 'AdjustmentController@create');
+Route::post('/ajustes','AdjustmentController@store');
+Route::get('/ajustes/{ajuste}','AdjustmentController@show');
+Route::get('/ajustes/{ajuste}/editar','AdjustmentController@edit');
+Route::put('/ajustes/{ajuste}','AdjustmentController@update');
+
 // Events
 Route::get('/citas','EventController@indexForValidador');
 Route::get('/citas/agregar','EventController@createForValidador');
