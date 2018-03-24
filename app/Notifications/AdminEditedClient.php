@@ -7,18 +7,25 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class AdminEditedClient extends Notification
+class AdminEditedClient extends Notification implements ShouldQueue
 {
     use Queueable;
 
     /**
+     * The Client
+     * @var \App\Client $client
+     */
+    protected $client;
+
+    /**
      * Create a new notification instance.
      *
+     * @param \App\Client $client
      * @return void
      */
-    public function __construct()
+    public function __construct($client)
     {
-        //
+        $this->client = $client;
     }
 
     /**
@@ -41,21 +48,9 @@ class AdminEditedClient extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
-    }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-        return [
-            //
-        ];
+                    ->subject('Un cliente ha sido modificado')
+                    ->line('La información del cliente #'.$this->client->id.' ('.$this->client->name.') ha sido modificada. Para revisar los cambios, haz click en el siguiente botón:')
+                    ->action('Revisar Cliente',url('/admin/clientes',$this->client->id))
+                    ->line('¡Gracias por usar el sistema!');
     }
 }
