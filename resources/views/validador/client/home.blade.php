@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-md-12" style="float: right;">
-        <a class="btn btn-success btn-large" href="{{ url('/validador/clientes/agregar') }}"><i class="material-icons">add</i>Añadir nuevo cliente</a>
+        <a class="btn btn-success btn-large" href="{{ url('/validador/clientes/agregar') }}"><i class="material-icons">add</i>Añadir nuevo Cliente</a>
     </div>
 </div>
 <div class="row">
@@ -22,15 +22,17 @@
                         <th>#</th>
                         <th>Nombre(s)</th>
                         <th>Apellido(s)</th>
+                        <th>Vendedor Asignado</th>
                         <th>Correo Electrónico</th>
                         <th>Acciones</th>
                     </thead>
                     <tbody class="searchable">
-                        @foreach ($clientes as $cliente)
+                        @forelse ($clientes as $cliente)
                         <tr>
                             <td>{{ $cliente->id }}</td>
                             <td>{{ $cliente->name }}</td>
                             <td>{{ $cliente->lastname }}</td>
+                            <td><a href="{{ url('/validador/vendedores/'.$cliente->vendedor->id) }}">{{ $cliente->vendedor->name }}</a></td>
                             <td><a href="mailto:{{$cliente->email}}">{{ $cliente->email }}</a></td>
                             <td class="td-actions text-right">
                                 <a href="{{ url('/validador/clientes/'.$cliente->id) }}" type="button" rel="tooltip" title="Ver Cliente" class="btn btn-success btn-simple btn-xs">
@@ -41,7 +43,11 @@
                                 </a>
                             </td>
                         </tr>
-                        @endforeach
+                        @empty
+                        <tr>
+                            <td class="text-center" colspan="5">No hay ningún cliente registrado en el sistema.</td>
+                        </tr>
+                        @endforelse
                     </tbody>
                 </table>
                 <div class="row text-center">

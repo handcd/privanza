@@ -11,12 +11,12 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 // Clientes functionality
-Route::get('/clientes','ClientController@index');
-Route::get('/clientes/agregar', 'ClientController@create');
-Route::post('/clientes','ClientController@store');
-Route::get('/clientes/{client}','ClientController@show');
-Route::get('/clientes/{client}/editar','ClientController@edit');
-Route::put('/clientes/{client}','ClientController@update');
+Route::get('/clientes','ClientController@indexForValidador');
+Route::get('/clientes/agregar', 'ClientController@createForValidador');
+Route::post('/clientes','ClientController@storeForValidador');
+Route::get('/clientes/{client}','ClientController@showForValidador');
+Route::get('/clientes/{client}/editar','ClientController@editForValidador');
+Route::put('/clientes/{client}','ClientController@updateForValidador');
 
 // Orders
 Route::get('/ordenes','OrderController@index');
