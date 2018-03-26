@@ -6,6 +6,7 @@ $factory->define(App\Order::class, function (Faker $faker) {
     return [
         'client_id' => App\Client::all()->random()->id,
         'vendedor_id' => App\Vendedor::all()->random()->id,
+        'consecutivo_op' => rand(1,100000),
         'precio' => $faker->randomFloat(2,0,50000),
         //Contenido de Orden
         'has_vest' => rand(0,1),

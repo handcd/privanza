@@ -15,10 +15,13 @@ class CreateAdjustmentsTable extends Migration
     {
         Schema::create('adjustments', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('adjustment_order_id');
             $table->datetime('promesa_planta');
             $table->datetime('promesa_cliente');
-            $table->decimal('precio_general',15,2)->nullable();
+            $table->decimal('precio',15,2)->nullable();
             $table->integer('num_prendas');
+            $table->string('descripcion');
+            $table->string('tipo_prenda');
             $table->timestamps();
         });
     }
