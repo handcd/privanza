@@ -32,4 +32,12 @@ class Client extends Model
     {
         return $this->belongsTo(Vendedor::class);
     }
+
+    /**
+     * Get the adjustments for this Client
+     */
+    public function adjustments()
+    {
+        return $this->hasMany(AdjustmentOrder::class);
+    }
 }
