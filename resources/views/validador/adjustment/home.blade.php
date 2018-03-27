@@ -18,17 +18,17 @@
 					<thead>
 						<th>#</th>
 						<th>Cliente</th>
-						<th>Consecutivo de Ajuste</th>
-						<th>Consecutivo de Orden de Producción</th>
+						<th class="text-center">Consecutivo de Ajuste</th>
+						<th class="text-center">Consecutivo de Orden de Producción</th>
 						<th>Acciones</th>
 					</thead>
 					<tbody>
 						@forelse ($sinAprobar as $orden)
 						<tr>
 							<td>{{ $orden->id }}</td>
-							<td><a href="{{ url('/validador/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</td>
+							<td><a href="{{ url('/validador/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</a></td>
 							<td class="text-center">{{ $orden->consecutivo_ajuste }}</td>
-							<td>{{ $orden->consecutivo_op }}</td>
+							<td class="text-center">{{ $orden->consecutivo_op }}</td>
 							<td class="td-actions text-right">
                                 <a href="{{ url('/validador/ajustes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden de Ajustes" class="btn btn-success btn-simple btn-xs">
                                     <i class="material-icons">remove_red_eye</i>
@@ -66,17 +66,17 @@
 					<thead>
 						<th>#</th>
 						<th>Cliente</th>
-						<th>Consecutivo de Ajuste</th>
-						<th>Consecutivo de Orden de Producción</th>
+						<th class="text-center">Consecutivo de Ajuste</th>
+						<th class="text-center">Consecutivo de Orden de Producción</th>
 						<th>Acciones</th>
 					</thead>
 					<tbody>
 						@forelse ($aprobadas as $orden)
 						<tr>
 							<td>{{ $orden->id }}</td>
-							<td>{{ $orden->client->name }}</td>
+							<td><a href="{{ url('/validador/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</a></td>
 							<td class="text-center">{{ $orden->consecutivo_ajuste }}</td>
-							<td>{{ $orden->consecutivo_op }}</td>
+							<td class="text-center">{{ $orden->consecutivo_op }}</td>
 							<td class="td-actions text-right">
                                 <a href="{{ url('/validador/ajustes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden de Ajustes" class="btn btn-success btn-simple btn-xs">
                                     <i class="material-icons">remove_red_eye</i>
@@ -116,17 +116,17 @@
 					<thead>
 						<th>#</th>
 						<th>Cliente</th>
-						<th>Consecutivo de Ajuste</th>
-						<th>Consecutivo de Orden de Producción</th>
+						<th class="text-center">Consecutivo de Ajuste</th>
+						<th class="text-center">Consecutivo de Orden de Producción</th>
 						<th>Acciones</th>
 					</thead>
 					<tbody>
 						@forelse ($finalizadas as $orden)
 						<tr>
 							<td>{{ $orden->id }}</td>
-							<td>{{ $orden->client->name }}</td>
+							<td><a href="{{ url('/validador/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</a></td>
 							<td class="text-center">{{ $orden->consecutivo_ajuste }}</td>
-							<td>{{ $orden->consecutivo_op }}</td>
+							<td class="text-center">{{ $orden->consecutivo_op }}</td>
 							<td class="td-actions text-right">
                                 <a href="{{ url('/validador/ajustes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden de Ajustes" class="btn btn-success btn-simple btn-xs">
                                     <i class="material-icons">remove_red_eye</i>
@@ -169,19 +169,19 @@
                     <thead>
                         <th>#</th>
                         <th>Cliente</th>
-                        <th>Consecutivo de Ajuste</th>
-                        <th>Consecutivo de Orden de Producción</th>
-                        <th>Precio General</th>
+                        <th class="text-center">Consecutivo de Ajuste</th>
+                        <th class="text-center">Consecutivo de Orden de Producción</th>
+                        <th class="text-center">Precio General</th>
                         <th>Acciones</th>
                     </thead>
                     <tbody class="searchable">
                         @forelse ($ordenes as $orden)
                         <tr>
                             <td>{{ $orden->id }}</td>
-                            <td>{{ $orden->client->name }}</td>
+                            <td><a href="{{ url('/validador/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</a></td>
                             <td class="text-center">{{ $orden->consecutivo_ajuste }}</td>
-                            <td>{{ $orden->consecutivo_op }}</td>
-                            <td>${{ $orden->precio_general }}</td>
+                            <td class="text-center">{{ $orden->consecutivo_op }}</td>
+                            <td class="text-center">${{ $orden->precio_general }}</td>
                             <td class="td-actions text-right">
                                 <a href="{{ url('/validador/ajustes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden de Ajustes" class="btn btn-success btn-simple btn-xs">
                                     <i class="material-icons">remove_red_eye</i>

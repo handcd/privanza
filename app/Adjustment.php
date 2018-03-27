@@ -12,6 +12,7 @@ class Adjustment extends Model
 	 */
 	public function adjustmentOrder()
 	{
+		return 'pito';
 		return $this->belongsTo(AdjustmentOrder::class);
 	}
 }
