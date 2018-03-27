@@ -1180,20 +1180,30 @@
 									</label>
 								</div>
 							</div>
-							<div class="row">
-								<div class="col-md-6 col-md-offset-3">
-									<h4 class="text-center">Bolsas Traseras</h4>
-									<div class="form-group label-floating">
-										<label class="control-label">Número de Bolsas Traseras</label>
-										<select name="bolsasTraseras" class="form-control" required="true">
-											<option disabled="" selected=""></option>
-											<option value="0">Sin bolsas traseras</option>
-											<option value="1">Una bolsa trasera</option>
-											<option value="2">Dos bolsas traseras</option>
-										</select>
-									</div>
+							<div class="row text-center">
+								<h4 class="text-center">Bolsas Traseras</h4>
+								<div class="col-md-4">
+									<label>
+									  <input type="radio" name="bolsasTraseras" value="0" />
+									  <img src="{{ asset('img/suit_options/numero_bolsas/PantalonSinBolsas.png') }}">
+									  <p class="text-center">Sin Bolsas</p>
+									</label>
 								</div>
-							</div>
+								<div class="col-md-4">
+									<label>
+									  <input type="radio" name="bolsasTraseras" value="1" />
+									  <img src="{{ asset('img/suit_options/numero_bolsas/PantalonUnaBolsa.png') }}">
+									  <p class="text-center">Una bolsa</p>
+									</label>
+								</div>
+								<div class="col-md-4">
+									<label>
+									  <input type="radio" name="bolsasTraseras" value="2" />
+									  <img src="{{ asset('img/suit_options/numero_bolsas/PantalonDosBolsas.png') }}">
+									  <p class="text-center">Dos bolsas</p>
+									</label>
+								</div>
+							</div>							
 							<div class="row">
 								<div class="col-md-12">
 									<h4 class="text-center">Tipo de Bolsas Traseras</h4>

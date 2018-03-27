@@ -661,7 +661,7 @@
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Vivo</label>
-                                    @if ( $orden->vest->tipo_vivo === 0)
+                                    @if ( $orden->pants->tipo_vivo === 0)
                                           <p>Vivo doble con ojal</p>
                                     @else
                                           <p>Vivo sencillo con ojal</p>
@@ -679,7 +679,7 @@
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Dobladillo</label>
-                                    @if ( $orden->vest->dobladillo === 0)
+                                    @if ( $orden->pants->dobladillo === 0)
                                           <p>Dobladillo normal</p>
                                     @else
                                           <p>Valenciana Española</p>
@@ -687,7 +687,7 @@
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Pretina</label>
-                                    @switch($orden->coat->pretina)
+                                    @switch($orden->pants->pretina)
                                           @case(0)
                                                 <p>Flexon</p>
                                                 @break
