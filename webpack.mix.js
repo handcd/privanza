@@ -34,4 +34,4 @@ mix.scripts([
 
 
 // App.js
-mix.js('resources/assets/js/app.js', 'public/js');
+mix.js('resources/assets/js/adjustments.js', 'public/js');

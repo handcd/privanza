@@ -36,8 +36,6 @@
     <script src="{{ asset('js/bootstrap-notify.js') }}"></script>
     <!-- Material Dashboard javascript methods -->
     <script src="{{ asset('js/material-dashboard.js?v=1.2.0') }}"></script>
-
-    <script src="{{ asset('js/app.js') }}"></script>
     
 </head>
 

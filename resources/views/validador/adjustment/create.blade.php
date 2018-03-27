@@ -1,6 +1,7 @@
 @extends('validador.layout.main')
 
 @section('content')
+<script src="{{ asset('js/adjustments.js') }}"></script>
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -24,7 +25,7 @@
                         @show
                     
                     <h4>Datos Generales de la Orden</h4>
-                    
+
 
                     <button type="submit" class="btn btn-success pull-right">Confirmar</button>
                     <a href="{{ url('/vendedor/clientes') }}" class="btn btn-default">Cancelar</a>

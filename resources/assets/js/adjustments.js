@@ -6,4 +6,12 @@
 
 require('./bootstrap');
 
-console.log('lol');
+const endpoint = '/validador/allclients';
+
+axios.get(endpoint)
+	.then(function(response) {
+		console.log(response);
+	})
+	.catch(function (error) {
+		console.log(error);
+	});

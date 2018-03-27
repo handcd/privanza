@@ -1,5 +1,9 @@
 <?php
 
+Route::get('/allclients', function(){
+	return App\Vendedor::all();
+});
+
 Route::get('/dashboard', function () {
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
