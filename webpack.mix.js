@@ -1,5 +1,6 @@
 let mix = require('laravel-mix');
 
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -29,4 +30,8 @@ mix.styles([
 mix.scripts([
 	'resources/assets/bower/moment/min/moment.min.js',
 	'resources/assets/bower/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
-],'public/js/datepicker.js')
+],'public/js/datepicker.js');
+
+
+// App.js
+mix.js('resources/assets/js/app.js', 'public/js');

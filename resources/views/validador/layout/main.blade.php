@@ -9,6 +9,7 @@
     <title>Privanza | Validador</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!--     Fonts and icons     -->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
@@ -35,6 +36,8 @@
     <script src="{{ asset('js/bootstrap-notify.js') }}"></script>
     <!-- Material Dashboard javascript methods -->
     <script src="{{ asset('js/material-dashboard.js?v=1.2.0') }}"></script>
+
+    <script src="{{ asset('js/app.js') }}"></script>
     
 </head>
 
