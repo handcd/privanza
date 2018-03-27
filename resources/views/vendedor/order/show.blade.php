@@ -192,9 +192,62 @@
                   <h3>Datos de pedido</h3>
                   <div class="row">
                         <div class="col-md-3">
+                              <label class="text-primary">Código de tela</label>
+                              <p> {{ $orden->codigo_tela }} </p>
+                        </div>
+                        <div class="col-md-3">
+                              <label class="text-primary">Código de Forro</label>
+                              <p> {{$orden->codigo_forro }}</p>
+                        </div>
+                        <div class="col-md-3">
+                              <label class="text-primary">Código de botones</label>
+                              <p> {{$orden->codigo_botones }} </p>
+                        </div>
+                        <div class="col-md-3">
+                              <label class="text-primary">Color de botones</label>
+                              <p> {{ $orden->color_botones }} </p>
+                        </div>
+                  </div>
+                  <div class="row">
+                        <div class="col-md-3">
+                              <label class="text-primary">Etiqueta de tela</label>
+                              @if ($orden->etiquetas_tela === 1)
+                                    <p> Sí </p>
+                              @else
+                                    <p> No </p>
+                              @endif
+                        </div>
+                        <div class="col-md-3">
+                              <label class="text-primary">Etiqueta de marca</label>
+                              @if ($orden->etiquetas_marca === 1)
+                                    <p> Sí </p>
+                              @else
+                                    <p> No </p>
+                              @endif
+                        </div>
+                        <div class="col-md-3">
+                              <label class="text-primary">Gancho</label>
+                              @if ($orden->gancho === 1)
+                                    <p> Personalizado </p>
+                              @else
+                                    <p> Normal </p>
+                              @endif
+                        </div>
+                        <div class="col-md-3">
+                              <label class="text-primary">Portatrajes</label>
+                              @if ($orden->portatrajes === 1)
+                                    <p> Personalizado </p>
+                              @else
+                                    <p> Cubrepolvos </p>
+                              @endif
+                        </div>
+                        
+                  </div>
+                  <div class="row"> 
+                        <div class="col-md-3">
                               <label class="text-primary">Nombre bordado</label>
                               <p>{{ $orden->bordado }}</p>
-                        </div>
+                        </div>                       
                         <div class="col-md-3">
                               <label class="text-primary">Tipo de Letra</label>
                               <p>{{ $orden->letra }}</p>
