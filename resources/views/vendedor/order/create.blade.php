@@ -1214,14 +1214,14 @@
 									<div class="col-xs-6">
 										<label>
 										  <input type="radio" name="tipoVivo" value="1" />
-										  <img src="{{ asset('img/suit_options/pantalon/Vivo_Doble_Ojal.png') }}">
+										  <img src="{{ asset('img/suit_options/pantalon/VivoDobleOjal.png') }}">
 										  <p class="text-center">Vivo Doble con Ojal</p>
 										</label>
 									</div>
 									<div class="col-xs-6">
 										<label>
 										  <input type="radio" name="tipoVivo" value="2" />
-										  <img src="{{ asset('img/suit_options/pantalon/VivoSencillo_Ojal.png') }}">
+										  <img src="{{ asset('img/suit_options/pantalon/VivoSencilloOjal.png') }}">
 										  <p class="text-center">Vivo Sencillo con Ojal</p>
 										</label>
 									</div>
