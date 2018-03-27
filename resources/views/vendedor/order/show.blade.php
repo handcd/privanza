@@ -299,18 +299,43 @@
                         <div class="row">
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Solapa</label>
-                                    <p>{{ $orden->coat->tipo_solapa }}</p>
+                                    
+                                    @switch($orden->coat->tipo_solapa)
+                                          @case(0)
+                                                <p>Solapa en pico normal</p>
+                                                @break
+                                          @case(1)
+                                                <p>Solapa en pico ancha</p>
+                                                @break
+                                          @case(2)
+                                                <p>Solapa en escuadra normal</p>
+                                                @break
+                                          @case(3)
+                                                <p>Solapa en escuadra ancha</p>
+                                                @break
+                                    @endswitch
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Ojal en Solapa</label>
-                                    <p>{{ $orden->coat->tipo_ojal_solapa }}</p>
+                                     @switch($orden->coat->tipo_ojal_solapa)
+                                          @case(0)
+                                                <p>Sin ojal en solapa</p>
+                                                @break
+                                          @case(1)
+                                                <p>Al tono</p>
+                                                @break
+                                          @case(2)
+                                                <p>En contraste</p>
+                                                @break
+                                          
+                                    @endswitch
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Color en Ojal Solapa</label>
                                     <p>{{ $orden->coat->color_ojal_solapa }}</p>
                               </div>
                               <div class="col-md-3">
-                                    <label class="text-primary">Botones de Frente</label>
+                                    <label class="text-primary">Número de botones de Frente</label>
                                     <p>{{ $orden->coat->botones_frente }}</p>
                               </div>
                         </div>
@@ -331,7 +356,11 @@
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Ojal en Manga</label>
-                                    <p>{{ $orden->coat->tipo_ojal_manga }}</p>
+                                    @if ($orden->coat->tipo_ojal_manga === 0)
+                                          <p>Al tono</p>
+                                    @else
+                                          <p>En contraste</p>
+                                    @endif
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Color de Ojal en Manga</label>
@@ -341,7 +370,11 @@
                         <div class="row">
                               <div class="col-md-3">
                                     <label class="text-primary">Posición Ojal en Manga</label>
-                                    <p>{{ $orden->coat->posicion_ojal_manga }}</p>
+                                    @if ($orden->coat->posicion_ojal_manga === 0 )
+                                          <p>Botones en cascada</p>
+                                    @else
+                                          <p>Botones en línea</p>
+                                    @endif
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Ojales Activos en Manga</label>
@@ -366,7 +399,32 @@
                               @endif
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Bolsas Exteriores</label>
-                                    <p>{{ $orden->coat->tipo_bolsas_ext }}</p>
+                                    @switch($orden->coat->tipo_bolsas_ext)
+                                          @case(0)
+                                                <p>Parche</p>
+                                                @break
+                                          @case(1)
+                                                <p>Cartera</p>
+                                                @break
+                                          @case(2)
+                                                <p>Cartera diagonal</p>
+                                                @break
+                                          @case(3)
+                                                <p>Vivo (sin cartera)</p>
+                                                @break
+                                          @case(4)
+                                                <p>Vivo diagonal</p>
+                                                @break
+                                          @case(5)
+                                                <p>Cartera continental</p>
+                                                @break
+                                          @case(6)
+                                                <p>Cartera continental diagonal</p>
+                                                @break
+                                          @case(7)
+                                                <p>Sin bolsas</p>
+                                                @break
+                                    @endswitch
                               </div>
                         </div>
                         <div class="row">
@@ -387,7 +445,11 @@
                         <div class="row">
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Vista</label>
-                                    <p>{{ $orden->coat->tipo_vista }}</p>
+                                    @if ( $orden->coat->tipo_vista === 0)
+                                          <p>Normal</p>
+                                    @else
+                                          <p>Chapeta Francesa</p>
+                                    @endif
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Forro Interno Mangas</label>
@@ -437,7 +499,20 @@
                         <div class="row">
                               <div class="col-md-3">
                                     <label class="text-primary">Bolsas Internas</label>
-                                    <p>{{ $orden->coat->bolsas_int }}</p>
+                                    @switch($orden->coat->bolsas_int)
+                                          @case(0)
+                                                <p>2 bolsas de pecho, 1 bolsa para pluma, 1 bolsa cigarrera</p>
+                                                @break
+                                          @case(1)
+                                                <p>2 bolsas de pecho, 1 bolsa para pluma</p>
+                                                @break
+                                          @case(2)
+                                                <p>2 bolsas de pecho, 1 bolsa cigarrera</p>
+                                                @break
+                                          @case(3)
+                                                <p>2 bolsas de pecho</p>
+                                                @break
+                                    @endswitch
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Vivos de Bolsas Internas</label>
@@ -508,15 +583,27 @@
                         <div class="row">
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Cuello</label>
-                                    <p>{{ $orden->vest->tipo_cuello }}</p>
+                                    @if ( $orden->vest->tipo_cuello === 0)
+                                          <p>En "V"</p>
+                                    @else
+                                          <p>Con solapa</p>
+                                    @endif
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Bolsas</label>
-                                    <p>{{ $orden->vest->tipo_bolsas }}</p>
+                                    @if ( $orden->vest->tipo_bolsas === 0)
+                                          <p>Vivos</p>
+                                    @else
+                                          <p>Aletillas</p>
+                                    @endif
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Espalda</label>
-                                    <p>{{ $orden->vest->tipo_espalda }}</p>
+                                    @if ( $orden->vest->tipo_espalda === 0)
+                                          <p>Forro</p>
+                                    @else
+                                          <p>Tela</p>
+                                    @endif
                               </div>
                               @if ($orden->vest->tipo_espalda == 1)
                                    <div class="col-md-3">
@@ -574,7 +661,11 @@
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Vivo</label>
-                                    <p>{{ $orden->pants->tipo_vivo }}</p>
+                                    @if ( $orden->vest->tipo_vivo === 0)
+                                          <p>Vivo doble con ojal</p>
+                                    @else
+                                          <p>Vivo sencillo con ojal</p>
+                                    @endif
                               </div>
                         </div>
                         <div class="row">
@@ -588,11 +679,25 @@
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Dobladillo</label>
-                                    <p>{{ $orden->pants->dobladillo }}</p>
+                                    @if ( $orden->vest->dobladillo === 0)
+                                          <p>Dobladillo normal</p>
+                                    @else
+                                          <p>Valenciana Española</p>
+                                    @endif
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Pretina</label>
-                                    <p>{{ $orden->pants->pretina }}</p>
+                                    @switch($orden->coat->pretina)
+                                          @case(0)
+                                                <p>Flexon</p>
+                                                @break
+                                          @case(1)
+                                                <p>Snutex</p>
+                                                @break
+                                          @case(2)
+                                                <p>Bies</p>
+                                                @break                                          
+                                    @endswitch
                               </div>
 
                         </div>
