@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->integer('client_id');
             $table->integer('vendedor_id');
+            $table->integer('consecutivo_op')->nullable();
             $table->decimal('precio',15,2)->nullable();
             // Contenido de Orden
             $table->boolean('has_vest')->default(0);

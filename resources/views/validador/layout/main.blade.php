@@ -9,12 +9,13 @@
     <title>Privanza | Validador</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!--     Fonts and icons     -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='//fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <!-- Bootstrap core CSS     -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" />
     <!--  Material Dashboard CSS    -->
@@ -47,7 +48,7 @@
         Tip 2: you can also add an image using data-image tag
     -->
             <div class="logo">
-                <a href="{{ url('/') }}" class="simple-text">
+                <a href="{{ url('/validador') }}" class="simple-text">
                     Privanza
                 </a>
             </div>
@@ -75,6 +76,12 @@
                         <a href="{{ url('validador/vendedores') }}">
                             <i class="fa fa-users" aria-hidden="true"></i>
                             <p>Vendedores</p>
+                        </a>
+                    </li>
+                    <li {{ Request::path() == 'validador/ajustes' ? ' class=active' : '' }}>
+                        <a href="{{ url('validador/ajustes') }}">
+                            <i class="material-icons">tune</i>
+                            <p>Ajustes</p>
                         </a>
                     </li>
                      <li {{ Request::path() == 'validador/citas' ? ' class=active' : '' }}>

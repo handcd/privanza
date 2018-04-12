@@ -95,5 +95,8 @@ class DatabaseSeeder extends Seeder
             }
 
         }
+
+        factory(App\AdjustmentOrder::class,100)->create();
+        factory(App\Adjustment::class,666)->create();
     }
 }

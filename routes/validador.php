@@ -1,5 +1,11 @@
 <?php
 
+// Static Route to get the matching order based on the Production Order Number
+Route::get('/op/{op}', function($op){
+	$orden = App\Order::where('consecutivo_op',$op)->get();
+	return $orden;
+});
+
 Route::get('/dashboard', function () {
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
@@ -26,6 +32,14 @@ Route::get('/ordenes/{order}','OrderController@show');
 Route::get('/ordenes/{order}/editar','OrderController@edit');
 Route::put('/ordenes/{order}','OrderController@update');
 Route::get('/ordenes/{order}/aprobar');
+
+// Ajustes
+Route::get('/ajustes','AdjustmentController@indexForValidador');
+Route::get('/ajustes/agregar', 'AdjustmentController@createForValidador');
+Route::post('/ajustes','AdjustmentController@storeForValidador');
+Route::get('/ajustes/{ajuste}','AdjustmentController@showForValidador');
+Route::get('/ajustes/{ajuste}/editar','AdjustmentController@editForValidador');
+Route::put('/ajustes/{ajuste}','AdjustmentController@updateForValidador');
 
 // Events
 Route::get('/citas','EventController@indexForValidador');
