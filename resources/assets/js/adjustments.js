@@ -10,6 +10,9 @@
 // Require for Axios
 require('./bootstrap');
 
+const server = 'https://privanza.handcreativedesign.com.mx';
+// const server = 'http://localhost:8000';
+
 const endpoint = '/validador/op/';
 const boton = document.getElementById('botonop');
 const input = document.getElementById('consecutivo_op');
@@ -33,7 +36,7 @@ boton.addEventListener('click', () => {
 	boton.classList.add('disabled');
 	boton.textContent = "Cargando...";
 
-	axios.get(endpoint+input.value)
+	axios.get(server+endpoint+input.value)
 		.then(response => {
 			if (response.data.length > 0 ) {
 				$.notify({
