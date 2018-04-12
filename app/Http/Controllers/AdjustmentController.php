@@ -26,8 +26,8 @@ class AdjustmentController extends Controller
 	{
 		$ordenes = AdjustmentOrder::paginate(15,['*'],'general');
 
-		$aprobadas = AdjustmentOrder::where('status',1)->paginate(5,['*'],'aprobadas');
 		$sinAprobar = AdjustmentOrder::where('status',0)->paginate(5,['*'],'sinAprobar');
+		$aprobadas = AdjustmentOrder::where('status',1)->paginate(5,['*'],'aprobadas');
 		$finalizadas = AdjustmentOrder::where('status',2)->paginate(5,['*'],'finalizadas');
 
 		return view('validador.adjustment.home',compact('ordenes','aprobadas','sinAprobar','finalizadas'));
@@ -52,11 +52,44 @@ class AdjustmentController extends Controller
 
 	/**
 	 * Store the request
+	 *
 	 * @param \Illuminate\Http\Request $request
 	 */
 	public function storeForValidador(Request $request)
 	{
-		return $request;
+		$this->validate($request, [
+            'consecutivo_ajustes' => 'required',
+            'consecutivo_op2' => 'nullable',
+            'client_id' => 'required|exists:clients,id',
+            'status' => 'required'
+        ]);
+
+        $orden = new AdjustmentOrder;
+
+        $orden->client_id = $request->client_id;
+        $orden->consecutivo_ajuste = $request->consecutivo_ajustes;
+        $orden->consecutivo_op = $request->consecutivo_op2;
+        $orden->status = $request->status;
+
+        $orden->save();
+
+        for ($i=0; $i < sizeof($request->fechaClienteOculta); $i++) { 
+        	$ajuste = new Adjustment;
+        	$ajuste->adjustment_order_id = $orden->id;
+        	$ajuste->promesa_planta = Carbon::parse($request->fechaPlantaOculta[$i])->toDateTimeString();
+        	$ajuste->promesa_cliente = Carbon::parse($request->fechaClienteOculta[$i])->toDateTimeString();
+        	$ajuste->precio = $request->precio[$i];
+        	$ajuste->num_prendas = $request->num_prendas[$i];
+        	$ajuste->descripcion = $request->descripcion[$i];
+        	$ajuste->tipo_prenda = $request->tipo_prenda[$i];
+        	$ajuste->save();
+        }
+
+        // Feedback the user
+        $request->session()->flash('success', 'Se ha añadido exitosamente la Orden de Ajustes #'.$orden->id.' al sistema.');
+
+        // Redirect back to the main view.
+        return redirect('/validador/ajustes');
 	}
 
 	/**
@@ -66,7 +99,8 @@ class AdjustmentController extends Controller
 	public function createForValidador()
 	{
 		$ordenes = Order::all();
-		return view('validador.adjustment.create',compact('ordenes'));
+		$clientes = Client::all();
+		return view('validador.adjustment.create',compact('ordenes','clientes'));
 	}
 
 	/**
@@ -76,23 +110,82 @@ class AdjustmentController extends Controller
 	 */
 	public function editForValidador($id)
 	{
-		$ordenes = Order::all();
 		$adjustmentOrder = AdjustmentOrder::find($id);
 
 		if (!$adjustmentOrder) {
 			$request->session()->flash('danger', 'La Orden de Ajustes que deseas editar no ha sido encontrada.');
 			return back();
 		}
+		
+		$ordenes = Order::all();
+		$clientes = Client::all();
 
-		return view('validador.adjustment.edit',compact('ordenes'));
+		return view('validador.adjustment.edit',compact('ordenes','adjustmentOrder','clientes'));
 	}
 
 	/**
 	 * Update the specified resource
 	 * @return \Illuminate\Http\Request
 	 */
-	public function updateForValidador()
+	public function updateForValidador(Request $request, $id)
 	{
-		return 'papapapapa';
+		$this->validate($request, [
+            'consecutivo_ajustes' => 'required',
+            'consecutivo_op2' => 'nullable',
+            'client_id' => 'required|exists:clients,id',
+            'status' => 'required'
+        ]);
+
+        $orden = AdjustmentOrder::find($id);
+
+        if (!$orden) {
+        	$request->session()->flash('danger', 'La información que proporcionaste tiene errores o no existe.');
+        	return redirect('/validador/ajustes/'.$id.'/editar');
+        }
+
+        $orden->client_id = $request->client_id;
+        $orden->consecutivo_ajuste = $request->consecutivo_ajustes;
+        $orden->consecutivo_op = $request->consecutivo_op2;
+        $orden->status = $request->status;
+
+        $orden->save();
+
+        // Existing Adjustments
+        for ($i=0; $i < sizeof($request->editIdOculto); $i++) { 
+        	$ajuste = Adjustment::find($request->editIdOculto[$i]);
+
+        	if ($ajuste) {
+	        	$ajuste->adjustment_order_id = $orden->id;
+	        	$ajuste->promesa_planta = Carbon::parse($request->fechaPlantaOculta[$i])->toDateTimeString();
+	        	$ajuste->promesa_cliente = Carbon::parse($request->fechaClienteOculta[$i])->toDateTimeString();
+	        	$ajuste->precio = $request->precio[$i];
+	        	$ajuste->num_prendas = $request->num_prendas[$i];
+	        	$ajuste->descripcion = $request->descripcion[$i];
+	        	$ajuste->tipo_prenda = $request->tipo_prenda[$i];
+	        	$ajuste->save();
+        	} else {
+        		$request->session()->flash('danger', 'Ocurrió un valor actualizando la información de un ajuste específico (#'.$request->editIdOculto[$i].').');
+        		return redirect('/validador/ajustes/'.$id.'/editar');
+        	}
+        }
+
+        // New Adjustments
+        for ($i=sizeof($request->editIdOculto); $i < sizeof($request->fechaClienteOculta) ; $i++) { 
+        	$ajuste = new Adjustment;
+        	$ajuste->adjustment_order_id = $orden->id;
+        	$ajuste->promesa_planta = Carbon::parse($request->fechaPlantaOculta[$i])->toDateTimeString();
+        	$ajuste->promesa_cliente = Carbon::parse($request->fechaClienteOculta[$i])->toDateTimeString();
+        	$ajuste->precio = $request->precio[$i];
+        	$ajuste->num_prendas = $request->num_prendas[$i];
+        	$ajuste->descripcion = $request->descripcion[$i];
+        	$ajuste->tipo_prenda = $request->tipo_prenda[$i];
+        	$ajuste->save();
+        }
+
+        // Feedback the user
+        $request->session()->flash('success', 'Se ha actualizado exitosamente la Orden de Ajustes #'.$orden->id.' en el sistema.');
+
+        // Redirect back to the main view.
+        return redirect('/validador/ajustes');
 	}
 }
