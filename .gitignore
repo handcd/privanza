@@ -11,3 +11,9 @@ npm-debug.log
 yarn-error.log
 .env
 *.DS_Store
+
+/public/js/adjustments.js
+/public/js/datepicker.js
+/public/css/material-dashboard.css
+/public/css/datepicker.css
+/public/wizard/css/material-bootstrap-wizard.css
