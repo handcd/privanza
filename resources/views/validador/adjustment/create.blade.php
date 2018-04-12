@@ -45,7 +45,7 @@
                         </div>
                     </div>
                 @endif
-                <form action="{{ url('/validador/ajustes') }}/@yield('editId')" method="post" onsubmit="return confirm('¿La información que deseas registrar es correcta?');" novalidate="true">
+                <form action="{{ url('/validador/ajustes') }}/@yield('editId')" method="post" onsubmit="return confirm('¿La información que deseas registrar es correcta?');">
                     {{ csrf_field() }}
                     @section('editMethod')
                         @show
