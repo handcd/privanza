@@ -16,9 +16,8 @@ class CreateAdjustmentOrdersTable extends Migration
         Schema::create('adjustment_orders', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('client_id');
-            $table->integer('consecutivo_ajuste');
-            $table->integer('consecutivo_op')->nullable();
-            $table->decimal('precio_general',15,2)->nullable();
+            $table->string('consecutivo_ajuste');
+            $table->string('consecutivo_op')->nullable();
             $table->integer('status')->default(0); // 0 Unapproved, 1 Approved, 2 Finished
             $table->timestamps();
         });
