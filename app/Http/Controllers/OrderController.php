@@ -419,14 +419,22 @@ class OrderController extends Controller
                 $saco->forro_interno_mangas = "Balsam a Rayas";
             }
 
+            
+            // Color de la Puntada
+            if ($request->otroColorPuntada) {
+                $saco->puntada_color = $request->otroColorPuntada;
+            } else {
+                $saco->puntada_color = $request->colorPuntada;
+            }
+
             // Pin Point
             $saco->pin_point_interno = $request->pinPointInterno ? true : false;
             if ($saco->pin_point_interno) {
                 // Color de Pin Point
                 if ($request->otroColorPinPoint) {
-                    $saco->pin_point_interno_color = $request->otroColorPinPoint;
+                    $saco->pin_point_interno_color = $request->otroColorPuntada;
                 } else {
-                    $saco->pin_point_interno_color = $request->colorPinPointInterno;
+                    $saco->pin_point_interno_color = $request->colorPuntada;
                 }
 
                 // Código de Pin Point
@@ -438,9 +446,9 @@ class OrderController extends Controller
             if ($saco->bies) {
                 // Color de Bies
                 if ($request->otroColorBies) {
-                    $saco->bies_color = $request->otroColorBies;
+                    $saco->bies_color = $request->otroColorPuntada;
                 } else {
-                    $saco->bies_color = $request->colorBies;
+                    $saco->bies_color = $request->colorPuntada;
                 }
 
                 // Código Bies
@@ -448,12 +456,7 @@ class OrderController extends Controller
                 
             }
 
-            // Color de la Puntada
-            if ($request->otroColorPuntada) {
-                $saco->puntada_color = $request->otroColorPuntada;
-            } else {
-                $saco->puntada_color = $request->colorPuntada;
-            }
+            
 
             // Tipo de Bolsas Internas
             $saco->bolsas_int = $request->bolsasInt;

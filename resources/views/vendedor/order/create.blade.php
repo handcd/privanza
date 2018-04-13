@@ -8,6 +8,7 @@
 <script src="{{ asset('wizard/js/jquery.bootstrap.js') }}" type="text/javascript"></script>
 <script src="{{ asset('wizard/js/material-bootstrap-wizard.js') }}"></script>
 <script src="{{ asset('wizard/js/jquery.validate.min.js') }}"></script>
+
 <style>
 	/*
 	Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
@@ -808,52 +809,52 @@
 							<div class="row">
 								<h4 class="text-center">Accesorios</h4>
 							</div>
+							<!--Bies & PinPoint-->
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
 									<div class="col-md-6">
-										<div class="row text-center">
+										<!--Imagen PinPoint-->
+										<div class="text-center">
 											<label>	
-											  <input type="checkbox" name="pinPointInterno" />
+											  <input type="checkbox" name="pinPointInterno" id="PinPointInterno" />
 											  <img src="{{ asset('img/suit_options/saco/pin-point.png') }}">
 											  <p class="text-center">Pin Point</p>
 											</label>
 										</div>
-										<div class="row">
-											<p class="text-center">Color de Pin Point</p>
-										</div>
-										@include('partials.color-palette', ['varName' => 'PinPointInterno'])
-										<div class="form-group label-floating">
+										<div class="label-floating form-group">
 											<label class="control-label">Código Pin Point<small>(opcional)</small></label>
 											<input type="text" class="form-control" name="pinPointInternoCodigo">
 										</div>
+										<!--Fin PinPoint-->
 									</div>
+													
 									<div class="col-md-6">
-										<div class="row text-center">
+										<!--Imagen de Bies-->
+										<div class="text-center">
 											<label>
-											  <input type="checkbox" name="biesInterno" />
+											  <input type="checkbox" name="biesInterno" id="BiesInterno" />
 											  <img src="{{ asset('img/suit_options/saco/Bies.png') }}">
 											  <p class="text-center">Bies</p>
 											</label>
 										</div>
-										<div class="row">
-											<p class="text-center">Color de Bies</p>
-										</div>
-										@include('partials.color-palette', ['varName' => 'Bies'])
-										<div class="form-group label-floating">
-											<label class="control-label">Código Bies <small>(opcional)</small></label>
+										<div class="label-floating form-group">
+											<label class="control-label">Código Bies<small>(opcional)</small></label>
 											<input type="text" class="form-control" name="biesInternoCodigo">
 										</div>
 									</div>
+										<!--Fin de imagen de Bies-->
 								</div>
+								
 							</div>
+							<!--Fin de Bies & PinPoint-->
+							<!--Color de Bies & PinPoint-->
 							<div class="row">
-								<h4 class="text-center">Color de Puntada</h4>
-							</div>
-							<div class="row">
-								<div class="col-md-4 col-md-offset-4">
+								<div class="col-md-4 col-md-offset-4" style="display: none;" id="colorPalette">
 									@include('partials.color-palette', ['varName' => 'Puntada'])
 								</div>
+								
 							</div>
+							<!--Fin de Color de Bies & PinPoint-->
 							<div class="row">
 								<div class="col-md-12">
 									<h4 class="text-center">Bolsas Internas</h4>
@@ -1361,4 +1362,27 @@
         </div> <!-- wizard container -->
     </div>
 </div> <!-- row -->
+
+<script>
+	const biesInterno = document.getElementById('BiesInterno');
+	const pinPointInterno = document.getElementById('PinPointInterno');
+	
+	function logica(e){		
+		let palette = document.getElementById('colorPalette');
+		if(biesInterno.checked || pinPointInterno.checked){			
+			$(palette).show();
+		}else {
+			$(palette).hide();
+		}
+	}
+
+	biesInterno.addEventListener('click', () => {
+		logica();
+	});
+	pinPointInterno.addEventListener('click', () => {
+		logica();
+	});
+
+
+</script>
 @endsection
