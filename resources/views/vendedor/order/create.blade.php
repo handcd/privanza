@@ -722,14 +722,7 @@
 										  <img src="{{ asset('img/suit_options/saco/CarteraContinentalDiagonal.png') }}">
 										  <p class="text-center">Cartera Continental Diagonal</p>
 										</label>
-									</div>
-									<div class="col-md-3 col-xs-6">
-										<label>
-										  <input type="radio" name="bolsasExt" value="7"/>
-										  <img src="{{ asset('img/suit_options/saco/SinBolsas.png') }}">
-										  <p class="text-center">Sin Bolsas</p>
-										</label>
-									</div>
+									</div>									
 								</div>
 								<div class="row">
 									<div class="col-md-12">
