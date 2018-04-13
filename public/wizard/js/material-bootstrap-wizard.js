@@ -24,7 +24,7 @@ var mobile_device = false;
  Allows for tabs to be accesed without validation. Also avoids the sequential order on the wizard.
  You're a wizard, privanza.
 */
-var debug = false;
+var debug = true;
 
 $(document).ready(function(){
 
