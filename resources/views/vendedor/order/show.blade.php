@@ -421,9 +421,7 @@
                                           @case(6)
                                                 <p>Cartera continental diagonal</p>
                                                 @break
-                                          @case(7)
-                                                <p>Sin bolsas</p>
-                                                @break
+                                          
                                     @endswitch
                               </div>
                         </div>
