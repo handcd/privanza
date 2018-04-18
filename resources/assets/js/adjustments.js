@@ -10,6 +10,7 @@
 // Require for Axios
 require('./bootstrap');
 
+const server = process.env.MIX_APP_URL;
 const endpoint = '/validador/op/';
 const boton = document.getElementById('botonop');
 const input = document.getElementById('consecutivo_op');
@@ -33,7 +34,9 @@ boton.addEventListener('click', () => {
 	boton.classList.add('disabled');
 	boton.textContent = "Cargando...";
 
-	axios.get(endpoint+input.value)
+	console.log('URL endpoint: '+server+endpoint+input.value);
+	
+	axios.get(server+endpoint+input.value)
 		.then(response => {
 			if (response.data.length > 0 ) {
 				$.notify({

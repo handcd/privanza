@@ -766,6 +766,7 @@ module.exports = __webpack_require__(34);
 // Require for Axios
 __webpack_require__(9);
 
+var server = "http://localhost:8000";
 var endpoint = '/validador/op/';
 var boton = document.getElementById('botonop');
 var input = document.getElementById('consecutivo_op');
@@ -789,7 +790,9 @@ boton.addEventListener('click', function () {
 	boton.classList.add('disabled');
 	boton.textContent = "Cargando...";
 
-	axios.get(endpoint + input.value).then(function (response) {
+	console.log('URL endpoint: ' + server + endpoint + input.value);
+
+	axios.get(server + endpoint + input.value).then(function (response) {
 		if (response.data.length > 0) {
 			$.notify({
 				icon: 'done',
