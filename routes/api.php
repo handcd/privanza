@@ -16,3 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Static Route to get the matching order based on the Production Order Number
+Route::get('/op/{op}', 'OrderController@findOP');
