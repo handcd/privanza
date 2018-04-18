@@ -700,4 +700,18 @@ class OrderController extends Controller
     {
         # code...
     }
+
+    /**
+     * API ACTIONS
+     */
+
+    /**
+     * Find OP, returns the order matching an OP
+     *
+     * @param $op
+     */
+    public function findOP($op)
+    {
+        return Order::where('consecutivo_op',$op)->get();
+    }
 }
