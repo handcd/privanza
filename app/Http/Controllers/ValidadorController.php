@@ -102,5 +102,70 @@ class ValidadorController extends Controller
 		return redirect('/admin/validadores');
     }
 
+    /**
+     * Edit a Validador in the app
+     *
+     * @param \App\Validador $id
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Request $request, $id)
+    {
+    	$validador = Validador::find($id);
+
+    	if (!$validador) {
+    		$request->session()->flash('warning', 'No hemos podido encontrar a ningún Validador con el ID '.$id.', verifica la información e inténtalo de nuevo.');
+    		return redirect('/admin/validadores');
+    	}
+
+    	return view('admin.validador.edit',compact('validador'));
+    }
+
+    /**
+     * Update the specified Validador
+     *
+     * @param \App\Validador $id
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+    	// Find or fail tracking the Validador
+    	$validador = Validador::find($id);
+
+    	if (!$validador) {
+    		$request->session()->flash('danger', 'El validador que deseas modificar no se ha encontrado en el sistema. Corrobora la información e inténtalo de nuevo más tarde.');
+    		return redirect('/admin/validadores');
+    	}
+
+    	$this->validate($request, [
+			'name' => 'required',  						
+			'lastname' => 'required',  					
+			'email' => 'required|email',  
+			'job_position' => 'required',  					
+			'phone' => 'required',  					
+			'birthday' => 'required|date',  					
+			'enabled' => 'required'						
+		]);
+
+		// Assign data
+		$validador->name = $request->name;
+		$validador->lastname = $request->lastname;
+		$validador->email = $request->email;
+		$validador->job_position = $request->job_position;
+		$validador->phone = $request->phone;
+		$validador->birthday = Carbon::parse($request->birthday)->toDateTimeString();
+		$validador->enabled = $request->enabled == "1" ? true : false;
+
+		// Save the data to DB
+		$validador->save();
+
+		// Feedback to the Admin
+		$request->session()->flash('success', '¡Listo! Se ha editado correctamnete la información de '.$validador->name.'.');
+
+		// Redirect to home of CRUD
+		return redirect('/admin/validadores');
+    }
+
 
 }
