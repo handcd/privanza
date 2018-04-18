@@ -102,6 +102,12 @@
                             <p>Mi Perfil</p>
                         </a>
                     </li>
+                    <li {{ Request::path() == 'admin/configuracion' ? ' class=active' : '' }}>
+                        <a href="{{ url('admin/configuracion') }}">
+                            <i class="material-icons">settings</i>
+                            <p>Ajustes de Sistema</p>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
