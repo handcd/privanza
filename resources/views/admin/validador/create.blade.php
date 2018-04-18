@@ -1,4 +1,4 @@
-@extends('validador.layout.main')
+@extends('admin.layout.main')
 
 @section('content')
 <!-- DateTimePicker CSS -->
@@ -17,11 +17,11 @@
     @endif
     <div class="card">
         <div class="card-header" data-background-color="purple">
-            <h4 class="title">Añadir nuevo Vendedor</h4>
-            <p class="category">Completa la información del nuevo vendedor</p>
+            <h4 class="title">Añadir nuevo Validador</h4>
+            <p class="category">Completa la información del nuevo validador</p>
         </div>
         <div class="card-content">
-            <form action="{{ url('/validador/vendedores') }}/@yield('editId')" method="post">
+            <form action="{{ url('/admin/validadores') }}/@yield('editId')" method="post">
                 {{ csrf_field() }}
                 @section('editMethod')
                     @show
@@ -51,8 +51,8 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group label-floating">
-                            <label class="control-label">Dirección</label>
-                            <input  name="address" type="text" class="form-control" required="true" value="@yield('editAddress')">
+                            <label class="control-label">Posición dentro de ISCO</label>
+                            <input  name="job_position" type="text" class="form-control" required="true" value="@yield('editJobPosition')">
                         </div>
                         <div class="form-group label-floating">
                             <label class="control-label">Teléfono</label>
@@ -92,55 +92,21 @@
                         </div>
                     </div>
                 </div>
-                <h4>Datos Fiscales <small>(opcionales)</small></h4>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group label-floating">
-                            <label class="control-label">RFC</label>
-                            <input type="text" name="rfc" class="form-control" value="@yield('editRFC')">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group label-floating">
-                            <label class="control-label">Ùltimos 4 dígitos de la Cuenta</label>
-                            <input type="text" name="digits" class="form-control" value="@yield('editDigits')">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group label-floating">
-                            <label class="control-label">Banco</label>
-                            <input type="text" name="bank" class="form-control" value="@yield('editBank')">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group label-floating">
-                            <label class="control-label">Dirección Legal</label>
-                            <input type="text" name="legalAddress" class="form-control" value="@yield('editLegalAddress')">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group label-floating">
-                            <label class="control-label">Concepto de Facturación</label>
-                            <input type="text" name="concept" class="form-control" value="@yield('editConcept')">
-                        </div>
-                    </div>
-                </div>
 
                 <h4>Información de la cuenta</h4>
 				<div class="row">
 					<div class="col-md-4 
                     @hasSection('editId')
-                        col-md-offset-2
+                        col-md-offset-4
                     @else
+                        col-md-offset-2
                     @endif">
 						<p>La cuenta se encuentra:</p>
 						<div class="radio">
 							<label>
 								<input type="radio" name="enabled" value="1" required 
 								@hasSection('editId')
-                                  @if ($vendedor->enabled)
+                                  @if ($validador->enabled)
                                     checked 
                                   @endif 
                                 @else
@@ -153,7 +119,7 @@
 							<label>
 								<input type="radio" name="enabled" value="0"
 								@hasSection('editId')
-                                  @if (!$vendedor->enabled)
+                                  @if (!$validador->enabled)
                                     checked 
                                   @endif 
                                 @endif>
@@ -161,32 +127,6 @@
 							</label>
 						</div>
 					</div>
-                    <div class="col-md-4">
-                        <div class="form-group label-floating">
-                            <label class="control-label">Tipo de Vendedor</label>
-                            <select name="type" id="type" required="true" class="form-control">
-                                <option disabled=""
-                                @hasSection('editType')
-                                    <!-- hola --!>
-                                @else
-                                    selected=""
-                                @endif
-                                ></option>
-                                <option value="0"
-                                @hasSection('editType')
-                                    @if ($vendedor->type == 0)
-                                        selected="" 
-                                    @endif
-                                @endif>Vendedor ISCO</option>
-                                <option value="1"
-                                @hasSection('editType')
-                                    @if ($vendedor->type == 1)
-                                        selected="" 
-                                    @endif
-                                @endif>Vendedor Externo</option>
-                            </select>
-                        </div>
-                    </div>
                     @hasSection('editId')
                     @else
                     <div class="col-md-4">
@@ -195,13 +135,13 @@
                             <input type="text" name="password" class="form-control" required="">
                         </div>
                         <p>
-                            <strong>NOTA:</strong> La contraseña que aquí ingreses será la contraseña que el <i>Vendedor</i> utilizará <strong>sólamente el primer inicio de sesión</strong> posteriormente podrá actualizarla siguiendo el procedimiento de <kbd>Olvidé Mi Contraseña</kbd> durante el inicio de sesión. Esta contraseña <b>NO</b> debe ser algo permanente por lo que sugerimos sea algo simple.
+                            <strong>NOTA:</strong> La contraseña que aquí ingreses será la contraseña que el <i>Validador</i> utilizará <strong>sólamente el primer inicio de sesión</strong> posteriormente podrá actualizarla siguiendo el procedimiento de <kbd>Olvidé Mi Contraseña</kbd> durante el inicio de sesión. Esta contraseña <b>NO</b> debe ser algo permanente por lo que sugerimos sea algo simple.
                         </p>
                     </div>
                     @endif
 				</div>
-                <button type="submit" class="btn btn-success pull-right">Registrar Vendedor</button>
-                <a href="{{ url('/validador/vendedores') }}" class="btn btn-default">Cancelar</a>
+                <button type="submit" class="btn btn-success pull-right">Registrar Validador</button>
+                <a href="{{ url('/admin/validadores') }}" class="btn btn-default">Cancelar</a>
                 <div class="clearfix"></div>
             </form>
         </div>
