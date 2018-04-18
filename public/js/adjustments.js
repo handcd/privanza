@@ -752,9 +752,8 @@ module.exports = __webpack_require__(34);
 
 /***/ }),
 /* 8 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
 /*
  * Adjustment Functionality
  *
