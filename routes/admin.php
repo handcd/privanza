@@ -1,20 +1,7 @@
 <?php
 
-Route::get('/home', function () {
-    $users[] = Auth::user();
-    $users[] = Auth::guard()->user();
-    $users[] = Auth::guard('admin')->user();
-
-    //dd($users);
-
-    return view('admin.dashboard');
-})->name('home');
-
-// Static Route to get the matching order based on the Production Order Number
-Route::get('/op/{op}', function($op){
-	$orden = App\Order::where('consecutivo_op',$op)->get();
-	return $orden;
-});
+// Dashboard
+Route::get('/dashboard','DashboardController@adminDash');
 
 // Clientes functionality
 Route::get('/clientes','ClientController@indexForAdmin');
