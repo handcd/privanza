@@ -1,4 +1,4 @@
-@extends('validador.layout.main')
+@extends('admin.layout.main')
 
 @section('content')
 <div class="row">
@@ -82,7 +82,7 @@
                         <p>{{ $client->vendedor->name.' '.$client->vendedor->lastname }}</p>
                     </div>
                     <div class="col-md-3">
-                        <a href="{{ url('/validador/vendedores/'.$client->vendedor->id) }}" class="btn btn-info">Ver Vendedor</a>
+                        <a href="{{ url('/admin/vendedores/'.$client->vendedor->id) }}" class="btn btn-info">Ver Vendedor</a>
                     </div>
                 </div>
                 <div class="row">
@@ -118,7 +118,7 @@
                                     <td>{{ $order->id }}</td>
                                     <td>${{ $order->precio }}</td>
                                     <td class="td-actions text-center">
-                                        <a href="{{ url('/validador/ordenes/'.$order->id) }}" type="button" rel="tooltip" title="Ver Orden" class="btn btn-success btn-simple btn-xs">
+                                        <a href="{{ url('/admin/ordenes/'.$order->id) }}" type="button" rel="tooltip" title="Ver Orden" class="btn btn-success btn-simple btn-xs">
                                             <i class="material-icons">remove_red_eye</i>
                                         </a>
                                     </td>
@@ -145,7 +145,7 @@
                                     <td>{{ $event->id }}</td>
                                     <td>{{ Carbon\Carbon::parse($event->fechahora)->toDateString() }}</td>
                                     <td class="td-actions text-center">
-                                        <a href="{{ url('/validador/citas/'.$event->id) }}" type="button" rel="tooltip" title="Ver Cita" class="btn btn-success btn-simple btn-xs">
+                                        <a href="{{ url('/admin/citas/'.$event->id) }}" type="button" rel="tooltip" title="Ver Cita" class="btn btn-success btn-simple btn-xs">
                                             <i class="material-icons">remove_red_eye</i>
                                         </a>
                                     </td>
@@ -159,7 +159,7 @@
                         </table>
                     </div>
                 </div>
-                <a href="{{ url('/validador/clientes') }}" class="btn btn-default">Regresar</a>
+                <a href="{{ url('/admin/clientes') }}" class="btn btn-default">Regresar</a>
             </div>
         </div>
     </div>

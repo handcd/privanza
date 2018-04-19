@@ -1,4 +1,4 @@
-@extends('validador.client.create')
+@extends('admin.client.create')
 
 {{-- Info General --}}
 @section('editId',$cliente->id)
