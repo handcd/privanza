@@ -69,4 +69,8 @@ Route::put('/validadores/{validador}','ValidadorController@update');
 Route::get('/validadores/{validador}/activar','ValidadorController@activar');
 Route::get('/validadores/{validador}/desactivar','ValidadorController@desactivar');
 
+// Profile
+Route::get('/perfil','ProfileController@perfilAdmin');
+Route::get('/perfil/modificar', 'ProfileController@editarPerfilAdmin');
+Route::post('/perfil','ProfileController@actualizarPerfilAdmin');
 
