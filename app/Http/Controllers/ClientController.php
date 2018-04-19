@@ -30,7 +30,7 @@ use App\Notifications\ValidadorEditedClient;    // Cuando Vendedor/Admin editan 
 class ClientController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource as a Vendedor
      *
      * @return \Illuminate\Http\Response
      */
@@ -52,7 +52,18 @@ class ClientController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display the home view for Admin
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexForAdmin()
+    {
+        $clientes = Client::paginate(15);
+        return view('admin.client.home',compact('clientes'));
+    }
+
+    /**
+     * Show the form for creating a new resource as a Vendedor
      *
      * @return \Illuminate\Http\Response
      */
@@ -75,7 +86,19 @@ class ClientController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Show the form for creating a new resource as an Admin
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createForAdmin()
+    {
+        $fits = Fit::all();
+        $vendedores = Vendedor::all();
+        return view('admin.client.create',compact('fits','vendedores'));
+    }
+
+    /**
+     * Store a newly created resource in storage as a Vendedor
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -163,7 +186,52 @@ class ClientController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Store a newly created resource in storage as an Admin.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeForAdmin(Request $request)
+    {
+        $cliente = new Client;
+        $this->validate($request, [
+            'nombre' => 'required',
+            'apellido' => 'required',
+            'email' => 'required | unique:clients',
+            'vendedor' => 'required | exists:vendedors,id',
+            'birthday' => 'required | date',
+            'addressVisit' => 'required'
+        ]);
+
+        $cliente->name = $request->nombre;
+        $cliente->lastname = $request->apellido;
+        $cliente->phone = $request->phone;
+        $cliente->email = $request->email;
+        $cliente->address_visit = $request->addressVisit;
+        $cliente->address_delivery = $request->addressDelivery;
+        $cliente->birthday = Carbon::parse($request->birthday)->toDateTimeString();
+        $cliente->notes = $request->notas;
+        $cliente->address_legal = $request->addressLegal;
+        $cliente->rfc = $request->rfc;
+        $cliente->bank = $request->bank;
+        $cliente->account_digits = $request->digitos;
+        $cliente->concept = $request->concept;
+        $cliente->vendedor_id = $request->vendedor;
+        $cliente->contacto = $request->contactoReferencia;
+        $cliente->save();
+
+        // Notifications
+        Notification::send($cliente->vendedor, new VendedorNewClient($cliente));
+        Notification::send(Validador::all(), new ValidadorNewClient($cliente));
+
+        // Feedback to the user
+        $request->session()->flash('success', 'Se ha añadido correctamente un cliente nuevo.');
+
+        return redirect('/admin/clientes');
+    }
+
+    /**
+     * Display the specified resource for the Vendedor
      *
      * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
@@ -197,7 +265,25 @@ class ClientController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Display the Client for the Admin
+     *
+     * @param \App\Client $client
+     * @return \Illuminate\Http\Response
+     */
+    public function showForAdmin(Request $request, $id)
+    {
+        $client = Client::find($id);
+
+        if (!$client) {
+            $request->session()->flash('danger', 'El cliente que buscas no existe o no puede ser mostrado.');
+            return redirect('/admin/clientes');
+        }
+
+        return view('admin.client.show',compact('client'));
+    }
+
+    /**
+     * Show the form for editing the specified resource as Vendedor
      *
      * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
@@ -235,7 +321,28 @@ class ClientController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Show the form for editing the specified resource as an Admin
+     *
+     * @param \App\Client $client
+     * @return \Illuminate\Http\Response
+     */
+    public function editForAdmin($id)
+    {
+        $cliente = Client::find($id);
+
+        if (!$cliente) {
+            $request->session()->flash('danger', 'El cliente que deseas editar no existe.');
+            return redirect('/admin/clientes');
+        }
+
+        $vendedores = Vendedor::all();
+        $fit = Fit::all();
+
+        return view('admin.client.edit',compact('cliente','fits','vendedores'));
+    }
+
+    /**
+     * Update the specified resource in storage for Vendedor
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Client  $client
@@ -285,7 +392,7 @@ class ClientController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in storage for Validador
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Client  $client
@@ -332,5 +439,55 @@ class ClientController extends Controller
         // Feedback to the user
         $request->session()->flash('success', 'El cliente ha sido editado correctamente.');
         return redirect('/validador/clientes');
+    }
+
+    /**
+     * Update the specified resource in storage for Admin
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Client  $client
+     * @return \Illuminate\Http\Response
+     */
+    public function updateForAdmin(Request $request, $id)
+    {
+        $cliente = Client::find($id);
+
+        if (!$cliente) {
+            return redirect('/admin/clientes/'.$id.'/editar');
+        }
+
+        $this->validate($request, [
+            'nombre' => 'required',
+            'apellido' => 'required',
+            'email' => 'required',
+            'birthday' => 'required | date',
+            'addressVisit' => 'required',
+            'vendedor' => 'required | exists:vendedors,id'
+        ]);
+
+        $cliente->name = $request->nombre;
+        $cliente->lastname = $request->apellido;
+        $cliente->phone = $request->phone;
+        $cliente->email = $request->email;
+        $cliente->address_visit = $request->addressVisit;
+        $cliente->address_delivery = $request->addressDelivery;
+        $cliente->birthday = Carbon::parse($request->birthday)->toDateTimeString();
+        $cliente->notes = $request->notas;
+        $cliente->address_legal = $request->addressLegal;
+        $cliente->rfc = $request->rfc;
+        $cliente->bank = $request->bank;
+        $cliente->account_digits = $request->digitos;
+        $cliente->concept = $request->concept;
+        $cliente->vendedor_id = $request->vendedor;
+        $cliente->contacto = $request->contactoReferencia;
+        $cliente->save();
+
+        // Notifications
+        Notification::send($cliente->vendedor, new VendedorEditedClient($cliente));
+        Notification::send(Admin::all(), new AdminEditedClient($cliente));
+
+        // Feedback to the user
+        $request->session()->flash('success', 'El cliente ha sido editado correctamente.');
+        return redirect('/admin/clientes');
     }
 }
