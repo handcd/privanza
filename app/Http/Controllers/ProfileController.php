@@ -25,9 +25,13 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function perfilVendedor()
+    public function perfilVendedor(Request $request)
     {
         $vendedor = Vendedor::find(Auth::id());
+        if (!$vendedor) {
+            $request->session()->flash('danger', 'Ha ocurrido un problema al tratar de mostrar tu perfil.');
+            return redirect('/vendedor');
+        }
         return view('vendedor.profile',compact('vendedor'));
     }
 
@@ -35,14 +39,77 @@ class ProfileController extends Controller
      * Display the Validador's Profile
      * @return \Illuminate\Http\Response
      */
-    public function perfilValidador()
+    public function perfilValidador(Request $request)
     {
         $validador = Validador::find(Auth::id());
         if (!$validador) {
             $request->session()->flash('danger', 'Ha ocurrido un problema al tratar de mostrar tu perfil.');
-            return redirect()->back();
+            return redirect('/validador');
         }
         return view('validador.profile',compact('validador'));
+    }
+
+    /**
+     * Show the Admin's Profile
+     * @return \Illuminate\Http\Response
+     */
+    public function perfilAdmin(Request $request)
+    {
+        $admin = Admin::find(Auth::id());
+        if (!$admin) {
+            $request->session()->flash('danger', 'Ha ocurrido un problema al tratar de mostrar tu perfil.');
+            return redirect('/admin');
+        }
+        return view('admin.profile.home',compact('admin'));
+    }
+
+    /**
+     * Show the form for editing an Admin's profile
+     * @return \Illuminate\Http\Response
+     */
+    public function editarPerfilAdmin()
+    {
+        $admin = Admin::find(Auth::id());
+        if (!$admin) {
+            $request->session()->flash('danger', 'Ha ocurrido un problema al tratar de localizar al administrador con ID #'.Auth::id().'.');
+            return redirect('/admin');
+        }
+        return view('admin.profile.edit',compact('admin'));
+    }
+
+    /**
+     * Update an specific Admin's info
+     * 
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function actualizarPerfilAdmin(Request $request)
+    {
+        // Validate Request
+        $this->validate($request,[
+            'name' => 'required',
+            'email' => 'required|email',
+        ]);
+
+        // Validate Authentication
+        $admin = Admin::find(Auth::id());
+        if (!$admin) {
+            $request->session()->flash('danger', 'Ha ocurrido un problema al tratar de localizar al administrador con ID #'.Auth::id().'.');
+            return redirect('/admin');
+        }
+
+        // Change data
+        $admin->name = $request->name;
+        $admin->email = $request->email;
+
+        // Save changes to DB
+        $admin->save();
+
+        // Feedback user
+        $request->session()->flash('success', 'Hemos actualizado correctamente tu información.');
+
+        // Redirect
+        return redirect('/admin/perfil');
     }
 
     /**
@@ -96,4 +163,5 @@ class ProfileController extends Controller
         // Redirect back
         return redirect()->back();
     }
+
 }
