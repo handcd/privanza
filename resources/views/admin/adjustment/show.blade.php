@@ -1,4 +1,4 @@
-@extends('validador.layout.main')
+@extends('admin.layout.main')
 
 @section('content')
 <div class="row">
@@ -95,7 +95,7 @@
 </div>
 <div class="row">
 	<div class="col-md-12">
-		<a href="{{ url('/validador/ajustes') }}" class="btn btn-info">Regresar</a>
+		<a href="{{ url('/admin/ajustes') }}" class="btn btn-info">Regresar</a>
 	</div>
 </div>
 @endsection

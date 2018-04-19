@@ -1,9 +1,9 @@
-@extends('validador.layout.main')
+@extends('admin.layout.main')
 
 @section('content')
 <div class="row">
     <div class="col-md-12" style="float: right;">
-        <a class="btn btn-success btn-large" href="{{ url('/validador/ajustes/agregar') }}"><i class="material-icons">add</i>Añadir nuevo Ajuste</a>
+        <a class="btn btn-success btn-large" href="{{ url('/admin/ajustes/agregar') }}"><i class="material-icons">add</i>Añadir nuevo Ajuste</a>
     </div>
 </div>
 <div class="row">
@@ -26,14 +26,14 @@
 						@forelse ($sinAprobar as $orden)
 						<tr>
 							<td>{{ $orden->id }}</td>
-							<td><a href="{{ url('/validador/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</a></td>
+							<td><a href="{{ url('/admin/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</a></td>
 							<td class="text-center">{{ $orden->consecutivo_ajuste }}</td>
 							<td class="text-center">{{ $orden->consecutivo_op }}</td>
 							<td class="td-actions text-right">
-                                <a href="{{ url('/validador/ajustes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden de Ajustes" class="btn btn-success btn-simple btn-xs">
+                                <a href="{{ url('/admin/ajustes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden de Ajustes" class="btn btn-success btn-simple btn-xs">
                                     <i class="material-icons">remove_red_eye</i>
                                 </a>
-                                 <a href="{{ url('/validador/ajustes/'.$orden->id.'/editar') }}" type="button" rel="tooltip" title="Editar Orden de Ajustes" class="btn btn-primary btn-simple btn-xs">
+                                 <a href="{{ url('/admin/ajustes/'.$orden->id.'/editar') }}" type="button" rel="tooltip" title="Editar Orden de Ajustes" class="btn btn-primary btn-simple btn-xs">
                                     <i class="material-icons">edit</i>
                                 </a>
                             </td>
@@ -74,14 +74,14 @@
 						@forelse ($aprobadas as $orden)
 						<tr>
 							<td>{{ $orden->id }}</td>
-							<td><a href="{{ url('/validador/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</a></td>
+							<td><a href="{{ url('/admin/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</a></td>
 							<td class="text-center">{{ $orden->consecutivo_ajuste }}</td>
 							<td class="text-center">{{ $orden->consecutivo_op }}</td>
 							<td class="td-actions text-right">
-                                <a href="{{ url('/validador/ajustes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden de Ajustes" class="btn btn-success btn-simple btn-xs">
+                                <a href="{{ url('/admin/ajustes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden de Ajustes" class="btn btn-success btn-simple btn-xs">
                                     <i class="material-icons">remove_red_eye</i>
                                 </a>
-                                 <a href="{{ url('/validador/ajustes/'.$orden->id.'/editar') }}" type="button" rel="tooltip" title="Editar Orden de Ajustes" class="btn btn-primary btn-simple btn-xs">
+                                 <a href="{{ url('/admin/ajustes/'.$orden->id.'/editar') }}" type="button" rel="tooltip" title="Editar Orden de Ajustes" class="btn btn-primary btn-simple btn-xs">
                                     <i class="material-icons">edit</i>
                                 </a>
                             </td>
@@ -124,14 +124,14 @@
 						@forelse ($finalizadas as $orden)
 						<tr>
 							<td>{{ $orden->id }}</td>
-							<td><a href="{{ url('/validador/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</a></td>
+							<td><a href="{{ url('/admin/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</a></td>
 							<td class="text-center">{{ $orden->consecutivo_ajuste }}</td>
 							<td class="text-center">{{ $orden->consecutivo_op }}</td>
 							<td class="td-actions text-right">
-                                <a href="{{ url('/validador/ajustes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden de Ajustes" class="btn btn-success btn-simple btn-xs">
+                                <a href="{{ url('/admin/ajustes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden de Ajustes" class="btn btn-success btn-simple btn-xs">
                                     <i class="material-icons">remove_red_eye</i>
                                 </a>
-                                 <a href="{{ url('/validador/ajustes/'.$orden->id.'/editar') }}" type="button" rel="tooltip" title="Editar Orden de Ajustes" class="btn btn-primary btn-simple btn-xs">
+                                 <a href="{{ url('/admin/ajustes/'.$orden->id.'/editar') }}" type="button" rel="tooltip" title="Editar Orden de Ajustes" class="btn btn-primary btn-simple btn-xs">
                                     <i class="material-icons">edit</i>
                                 </a>
                             </td>
@@ -177,14 +177,14 @@
                         @forelse ($ordenes as $orden)
                         <tr>
                             <td>{{ $orden->id }}</td>
-                            <td><a href="{{ url('/validador/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</a></td>
+                            <td><a href="{{ url('/admin/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</a></td>
                             <td class="text-center">{{ $orden->consecutivo_ajuste }}</td>
                             <td class="text-center">{{ $orden->consecutivo_op }}</td>
                             <td class="td-actions text-right">
-                                <a href="{{ url('/validador/ajustes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden de Ajustes" class="btn btn-success btn-simple btn-xs">
+                                <a href="{{ url('/admin/ajustes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden de Ajustes" class="btn btn-success btn-simple btn-xs">
                                     <i class="material-icons">remove_red_eye</i>
                                 </a>
-                                 <a href="{{ url('/validador/ajustes/'.$orden->id.'/editar') }}" type="button" rel="tooltip" title="Editar Orden de Ajustes" class="btn btn-primary btn-simple btn-xs">
+                                 <a href="{{ url('/admin/ajustes/'.$orden->id.'/editar') }}" type="button" rel="tooltip" title="Editar Orden de Ajustes" class="btn btn-primary btn-simple btn-xs">
                                     <i class="material-icons">edit</i>
                                 </a>
                             </td>

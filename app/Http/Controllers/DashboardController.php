@@ -184,6 +184,6 @@ class DashboardController extends Controller
      */
     public function adminDash()
     {
-    	return 'Holaaa';
+    	return view('admin.dashboard');
     }
 }
