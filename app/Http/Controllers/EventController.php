@@ -10,6 +10,7 @@ use App\Vendedor;
 use App\Event;
 use App\Client;
 use App\Admin;
+use App\Validador;
 
 // Facades
 use Carbon\Carbon;
@@ -53,6 +54,11 @@ class EventController extends Controller
         return view('vendedor.event.home',compact('eventos','eventosHoy','eventosSemana'));
     }
 
+    /**
+     * Display the home for Validador
+     * 
+     * @return \Illuminate\Http\Response
+     */
     public function indexForValidador()
     {
         // Todas las citas
@@ -73,7 +79,29 @@ class EventController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display the home view for Admin
+     */
+    public function indexForAdmin()
+    {
+        // Todas las citas
+        $eventos = Event::paginate(15,['*'],'citas');
+
+        // Citas del día
+        $eventosHoy = Event::where('fechahora','>=',Carbon::today())
+                            ->where('fechahora','<',Carbon::tomorrow())
+                            ->paginate(5,['*'],'citasHoy');
+
+        // Citas de la semana
+        $eventosSemana = Event::where('fechahora','>=',Carbon::today())
+                                ->where('fechahora','<',Carbon::today()->addWeek())
+                                ->paginate(5,['*'],'citasSemana');
+
+
+        return view('admin.event.home',compact('eventos','eventosHoy','eventosSemana'));
+    }
+
+    /**
+     * Show the form for creating a new resource by validador.
      *
      * @return \Illuminate\Http\Response
      */
@@ -93,6 +121,18 @@ class EventController extends Controller
         $clientes = Client::all();
         $vendedores = Vendedor::all();
         return view('validador.event.create',compact('clientes','vendedores'));
+    }
+
+    /**
+     * Show the form for creating a new resource by admin.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createForAdmin()
+    {
+        $clientes = Client::all();
+        $vendedores = Vendedor::all();
+        return view('admin.event.create',compact('clientes','vendedores'));
     }
 
     /**
@@ -166,6 +206,39 @@ class EventController extends Controller
     }
 
     /**
+     * Store a newly created resource from the Admin in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeForAdmin(Request $request)
+    {
+        $evento = new Event;
+
+        $this->validate($request,[
+            'cliente' => 'required|exists:clients,id',
+            'fechahora' => 'required|date',
+            'notes' => 'nullable'
+        ]);
+
+        $evento->client_id = $request->cliente;
+        $evento->vendedor_id = $evento->client->vendedor->id;
+        $evento->fechahora = Carbon::parse($request->fechahora)->toDateTimeString();
+        $evento->notes = $request->notes;
+
+        $evento->save();
+
+        // Notifications
+        Notification::send($evento->vendedor,new VendedorNewEvent($evento));
+        Notification::send(Validador::all(), new ValidadorNewEvent($evento));
+
+        // Feedback to the user
+        $request->session()->flash('success', '¡Listo! Hemos añadido la cita y notificado a '.$evento->vendedor->name.' y a los validadores para que estén al pendiente de la misma.');
+
+        return redirect('/admin/citas');
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  \App\Event  $event
@@ -182,7 +255,7 @@ class EventController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified resource for Validador.
      *
      * @param \App\Event $event
      * @return \Illuminate\Http\Response
@@ -198,7 +271,23 @@ class EventController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Display the specified resource for Admin.
+     *
+     * @param \App\Event $event
+     * @return \Illuminate\Http\Response
+     */
+    public function showForAdmin($id)
+    {
+        $evento = Event::find($id);
+        if (!$evento) {
+            Session::flash('danger','La cita que deseas consultar no puede ser mostrada porque no existe.');
+            return redirect('/validador/citas');
+        }
+        return view('admin.event.show',compact('evento'));
+    }
+
+    /**
+     * Show the form for editing the specified resource by Vendedor.
      *
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
@@ -215,7 +304,7 @@ class EventController extends Controller
     }
 
     /**
-     * Shw the form for editing the specified resource.
+     * Show the form for editing the specified resource by Validador.
      *
      * @param \App\Event $id
      * @param \Illuminate\Http\Response
@@ -224,12 +313,30 @@ class EventController extends Controller
     {
         $evento = Event::find($id);
         if (!$evento) {
-            Session::flash('danger', 'La citas que indicas no existe o no puede ser ubicada.');
+            Session::flash('danger', 'La cita que indicas no existe o no puede ser ubicada.');
             return redirect('/validador/citas');
         }
 
         $clientes = Client::all();
         return view('validador.event.edit',compact('evento','clientes'));
+    }
+
+    /**
+     * Shw the form for editing the specified resource by Admin.
+     *
+     * @param \App\Event $id
+     * @param \Illuminate\Http\Response
+     */
+    public function editForAdmin($id)
+    {
+        $evento = Event::find($id);
+        if (!$evento) {
+            Session::flash('danger', 'La cita que indicas no existe o no puede ser ubicada.');
+            return redirect('/admin/citas');
+        }
+
+        $clientes = Client::all();
+        return view('admin.event.edit',compact('evento','clientes'));
     }
 
     /**
@@ -272,7 +379,7 @@ class EventController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in storage by Validador
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Event  $event
@@ -304,5 +411,40 @@ class EventController extends Controller
         $request->session()->flash('success', 'Se ha editado correctamente la cita y se ha enviado una notificación al Vendedor.');
 
         return redirect('/validador/citas');
+    }
+
+    /**
+     * Update the specified resource in storage by Admin
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Event  $event
+     * @return \Illuminate\Http\Response
+     */
+    public function updateForAdmin(Request $request, $id)
+    {
+        $evento = Event::find($id);
+
+        $this->validate($request, [
+            'cliente' => 'required|exists:clients,id',
+            'fechahora' => 'required|date',
+            'notes' => 'nullable'
+        ]);
+
+        $cliente = Client::find($request->cliente);
+
+        $evento->vendedor_id = $cliente->vendedor->id;
+        $evento->client_id = $cliente->id;
+        $evento->fechahora = Carbon::parse($request->fechahora)->toDateTimeString();
+        $evento->notes = $request->notes;
+        $evento->save();
+
+        // Notifications
+        Notification::send($evento->vendedor, new VendedorEditedEvent($evento));
+        Notification::send(Validador::all(), new ValidadorEditedEvent($evento));
+
+        // Feedback to the user
+        $request->session()->flash('success', 'Se ha editado correctamente la cita y se ha enviado una notificación al Vendedor.');
+
+        return redirect('/admin/citas');
     }
 }
