@@ -1,9 +1,9 @@
-@extends('validador.layout.main')
+@extends('admin.layout.main')
 
 @section('content')
 <div class="row">
     <div class="col-md-12" style="float: right;">
-        <a class="btn btn-success btn-large" href="{{ url('/validador/clientes/agregar') }}"><i class="material-icons">add</i>Añadir nuevo Cliente</a>
+        <a class="btn btn-success btn-large" href="{{ url('/admin/clientes/agregar') }}"><i class="material-icons">add</i>Añadir nuevo Cliente</a>
     </div>
 </div>
 <div class="row">
@@ -32,13 +32,13 @@
                             <td>{{ $cliente->id }}</td>
                             <td>{{ $cliente->name }}</td>
                             <td>{{ $cliente->lastname }}</td>
-                            <td><a href="{{ url('/validador/vendedores/'.$cliente->vendedor->id) }}">{{ $cliente->vendedor->name }}</a></td>
+                            <td><a href="{{ url('/admin/vendedores/'.$cliente->vendedor->id) }}">{{ $cliente->vendedor->name }}</a></td>
                             <td><a href="mailto:{{$cliente->email}}">{{ $cliente->email }}</a></td>
                             <td class="td-actions text-right">
-                                <a href="{{ url('/validador/clientes/'.$cliente->id) }}" type="button" rel="tooltip" title="Ver Cliente" class="btn btn-success btn-simple btn-xs">
+                                <a href="{{ url('/admin/clientes/'.$cliente->id) }}" type="button" rel="tooltip" title="Ver Cliente" class="btn btn-success btn-simple btn-xs">
                                     <i class="material-icons">remove_red_eye</i>
                                 </a>
-                                 <a href="{{ url('/validador/clientes/'.$cliente->id.'/editar') }}" type="button" rel="tooltip" title="Editar Cliente" class="btn btn-primary btn-simple btn-xs">
+                                 <a href="{{ url('/admin/clientes/'.$cliente->id.'/editar') }}" type="button" rel="tooltip" title="Editar Cliente" class="btn btn-primary btn-simple btn-xs">
                                     <i class="material-icons">edit</i>
                                 </a>
                             </td>
