@@ -1,4 +1,4 @@
-@extends('validador.layout.main')
+@extends('admin.layout.main')
 
 @section('content')
 <div class="row">
@@ -31,7 +31,7 @@
             	<div class="row">
             		<div class="col-md-3">
             			<label class="text-primary">Nombre</label>
-            			<p><a href="{{ url('/validador/clientes/'.$evento->client->id) }}">{{ $evento->client->name.' '.$evento->client->lastname }}</a></p>
+            			<p><a href="{{ url('/admin/clientes/'.$evento->client->id) }}">{{ $evento->client->name.' '.$evento->client->lastname }}</a></p>
             		</div>
                         <div class="col-md-3">
                               <label class="text-primary">Teléfono</label>
@@ -75,7 +75,7 @@
 </div>
 <div class="row">
 	<div class="col-md-12">
-		<a href="{{ url('/validador/citas') }}" class="btn btn-info">Regresar</a>
+		<a href="{{ url('/admin/citas') }}" class="btn btn-info">Regresar</a>
 	</div>
 </div>
 @endsection
