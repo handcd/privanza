@@ -320,8 +320,14 @@
 											</label>
 											Se Reciben Etiquetas de Marca
 										</div>
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" name="etiquetaPrivanza">
+											</label>
+											Etiqueta Privanza
+										</div>
 										<div class="form-group label-floating">
-											<label class="control-label">Marca: <small>(opcional: dejar en blanco para Privanza)</small></label>
+											<label class="control-label">Otra Marca: <small>(opcional: dejar en blanco para Privanza)</small></label>
 											<input type="text" class="form-control" name="marcaEtiqueta">
 										</div>
 									</div>
@@ -338,7 +344,7 @@
 		                                      selected="" 
 		                                    @endif></option>
 		                                        <option value="0">Normal</option>
-		                                        <option value="1">Personalizado</option>
+		                                        <option value="1">Personalizado Privanza</option>
 		                                </select>
 		                            </div>
 		                            <div class="form-group label-floating">
@@ -358,7 +364,7 @@
 		                                      selected="" 
 		                                    @endif></option>
 		                                        <option value="0">Cubrepolvos</option>
-		                                        <option value="1">Personalizado</option>
+		                                        <option value="1">Personalizado Privanza</option>
 		                                </select>
 		                            </div>
 		                            <div class="form-group label-floating">
@@ -372,7 +378,7 @@
 								<h4 class="text-center">Bordado de iniciales (opcional)</h4>
 								<div class="col-md-4 col-md-offset-4">											
 									<div class="form-group label-floating">
-										<label class="control-label">Nombre <small>(Máximo 10 caracteres)</small></label>
+										<label class="control-label">Nombre <small>(Máximo 10 caracteres, los puntos también cuentan)</small></label>
 		                            	<input type="text" name="bordadoNombre" class="form-control" maxlength="10">
 		                            </div>
 									<div class="row text-center">

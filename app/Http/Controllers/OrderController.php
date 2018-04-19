@@ -256,6 +256,7 @@ class OrderController extends Controller
         // Etiquetas
         $orden->etiquetas_tela = $request->etiquetaTela ? true : false;
         $orden->etiquetas_marca = $request->etiquetaMarca ? true : false;
+        $orden->etiquetas_privanza = $request->etiquetaPrivanza ? true : false;
 
         // Marca de la Etiqueta
         if ($request->etiquetaMarca) {
