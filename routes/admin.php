@@ -37,14 +37,12 @@ Route::get('/citas/{cita}/editar','EventController@editForAdmin');
 Route::put('/citas/{cita}','EventController@updateForAdmin');
 
 // Vendedores
-Route::get('/vendedores','VendedorController@index');
-Route::get('/vendedores/agregar','VendedorController@create');
-Route::post('/vendedores','VendedorController@store');
-Route::get('/vendedores/{vendedor}','VendedorController@show');
-Route::get('/vendedores/{vendedor}/editar','VendedorController@edit');
-Route::put('/vendedores/{vendedor}','VendedorController@update');
-Route::get('/vendedores/{vendedor}/activar','VendedorController@activar');
-Route::get('/vendedores/{vendedor}/desactivar','VendedorController@desactivar');
+Route::get('/vendedores','VendedorController@indexForAdmin');
+Route::get('/vendedores/agregar','VendedorController@createForAdmin');
+Route::post('/vendedores','VendedorController@storeForAdmin');
+Route::get('/vendedores/{vendedor}','VendedorController@showForAdmin');
+Route::get('/vendedores/{vendedor}/editar','VendedorController@editForAdmin');
+Route::put('/vendedores/{vendedor}','VendedorController@updateForAdmin');
 
 // Validadores
 Route::get('/validadores','ValidadorController@index');
