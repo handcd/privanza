@@ -1,4 +1,4 @@
-@extends('validador.layout.main')
+@extends('admin.layout.main')
 
 @section('content')
 <!-- DateTimePicker CSS -->
@@ -21,7 +21,7 @@
             <p class="category">Completa la información del nuevo vendedor</p>
         </div>
         <div class="card-content">
-            <form action="{{ url('/validador/vendedores') }}/@yield('editId')" method="post">
+            <form action="{{ url('/admin/vendedores') }}/@yield('editId')" method="post">
                 {{ csrf_field() }}
                 @section('editMethod')
                     @show
@@ -201,7 +201,7 @@
                     @endif
 				</div>
                 <button type="submit" class="btn btn-success pull-right">Registrar Vendedor</button>
-                <a href="{{ url('/validador/vendedores') }}" class="btn btn-default">Cancelar</a>
+                <a href="{{ url('/admin/vendedores') }}" class="btn btn-default">Cancelar</a>
                 <div class="clearfix"></div>
             </form>
         </div>

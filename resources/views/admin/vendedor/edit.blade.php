@@ -1,4 +1,4 @@
-@extends('validador.vendedor.create')
+@extends('admin.vendedor.create')
 
 @section('editId',$vendedor->id)
 @section('editName',$vendedor->name)

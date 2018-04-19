@@ -50,8 +50,6 @@ Route::post('/vendedores','VendedorController@store');
 Route::get('/vendedores/{vendedor}','VendedorController@show');
 Route::get('/vendedores/{vendedor}/editar','VendedorController@edit');
 Route::put('/vendedores/{vendedor}','VendedorController@update');
-Route::get('/vendedores/{vendedor}/activar','VendedorController@activar');
-Route::get('/vendedores/{vendedor}/desactivar','VendedorController@desactivar');
 
 // Profile
 Route::get('/perfil','ProfileController@perfilValidador');

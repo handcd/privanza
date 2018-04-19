@@ -1,4 +1,4 @@
-@extends('validador.layout.main')
+@extends('admin.layout.main')
 
 @section('content')
 <div class="row">
@@ -82,8 +82,8 @@
                                 <tbody>
                                     @foreach ($vendedor->orders as $order)
                                         <tr>
-                                            <td><a href="{{ url('/validador/ordenes/'.$order->id) }}">{{$order->id}}</a></td>
-                                            <td><a href="{{ url('/validador/clientes/'.$order->client->id) }}">{{ $order->client->name }}</a></td>
+                                            <td><a href="{{ url('/admin/ordenes/'.$order->id) }}">{{$order->id}}</a></td>
+                                            <td><a href="{{ url('/admin/clientes/'.$order->client->id) }}">{{ $order->client->name }}</a></td>
                                             <td>
                                                 @switch($order->currentStatus())
                                                     @case('facturado')
@@ -123,10 +123,10 @@
                                             </td>
                                             <td>{{ $order->precio }}</td>
                                             <td class="td-actions text-right">
-                                                <a href="{{ url('/validador/ordenes/'.$order->id) }}" type="button" rel="tooltip" title="Ver Pedido" class="btn btn-success btn-simple btn-xs">
+                                                <a href="{{ url('/admin/ordenes/'.$order->id) }}" type="button" rel="tooltip" title="Ver Pedido" class="btn btn-success btn-simple btn-xs">
                                                     <i class="material-icons">remove_red_eye</i>
                                                 </a>
-                                                 <a href="{{ url('/validador/ordenes/'.$order->id.'/editar') }}" type="button" rel="tooltip" title="Editar Pedido" class="btn btn-primary btn-simple btn-xs">
+                                                 <a href="{{ url('/admin/ordenes/'.$order->id.'/editar') }}" type="button" rel="tooltip" title="Editar Pedido" class="btn btn-primary btn-simple btn-xs">
                                                     <i class="material-icons">edit</i>
                                                 </a>
                                             </td>
@@ -149,14 +149,14 @@
                                 <tbody>
                                     @foreach ($vendedor->events as $event)
                                         <tr>
-                                            <td><a href="{{ url('/validador/citas/'.$event->id) }}">{{$event->id}}</a></td>
-                                            <td><a href="{{ url('/validador/clientes/'.$event->client->id) }}">{{ $event->client->name }}</a></td>
+                                            <td><a href="{{ url('/admin/citas/'.$event->id) }}">{{$event->id}}</a></td>
+                                            <td><a href="{{ url('/admin/clientes/'.$event->client->id) }}">{{ $event->client->name }}</a></td>
                                             <td>{{ $event->fechahora }}</td>
                                             <td class="td-actions text-right">
-                                                <a href="{{ url('/validador/citas/'.$event->id) }}" type="button" rel="tooltip" title="Ver Cita" class="btn btn-success btn-simple btn-xs">
+                                                <a href="{{ url('/admin/citas/'.$event->id) }}" type="button" rel="tooltip" title="Ver Cita" class="btn btn-success btn-simple btn-xs">
                                                     <i class="material-icons">remove_red_eye</i>
                                                 </a>
-                                                 <a href="{{ url('/validador/citas/'.$event->id.'/editar') }}" type="button" rel="tooltip" title="Editar Cita" class="btn btn-primary btn-simple btn-xs">
+                                                 <a href="{{ url('/admin/citas/'.$event->id.'/editar') }}" type="button" rel="tooltip" title="Editar Cita" class="btn btn-primary btn-simple btn-xs">
                                                     <i class="material-icons">edit</i>
                                                 </a>
                                             </td>
@@ -167,7 +167,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="{{ url('/validador/vendedores') }}" class="btn btn-default">Regresar</a>
+                <a href="{{ url('/admin/vendedores') }}" class="btn btn-default">Regresar</a>
             </div>
         </div>
     </div>
