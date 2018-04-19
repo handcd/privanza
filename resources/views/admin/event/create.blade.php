@@ -1,4 +1,4 @@
-@extends('validador.layout.main')
+@extends('admin.layout.main')
 
 @section('content')
 <!-- DateTimePicker CSS -->
@@ -40,7 +40,7 @@
                 </p>
             </div>
             <div class="card-content">
-                <form action="{{ url('/validador/citas') }}/@yield('editId')" method="post">
+                <form action="{{ url('/admin/citas') }}/@yield('editId')" method="post">
                     {{ csrf_field() }}
                     @section('editMethod')
                         @show
@@ -69,7 +69,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <a href="{{ url('/validador/clientes/agregar') }}" class="btn btn-warning pull-right">Si el cliente no se encuentra registrado, haz click aquí</a>
+                            <a href="{{ url('/admin/clientes/agregar') }}" class="btn btn-warning pull-right">Si el cliente no se encuentra registrado, haz click aquí</a>
                         </div>
                     </div>
                     <div class="row">
@@ -96,7 +96,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-6">
-                            <a href="{{ url('/validador/citas') }}" class="btn btn-default">Cancelar</a>
+                            <a href="{{ url('/admin/citas') }}" class="btn btn-default">Cancelar</a>
                         </div>
                         <div class="col-xs-6">
                             <button type="submit" class="btn btn-success pull-right">Subir</button>

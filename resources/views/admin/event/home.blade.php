@@ -1,9 +1,9 @@
-@extends('validador.layout.main')
+@extends('admin.layout.main')
 
 @section('content')
 <div class="row">
     <div class="col-md-12" style="float: right;">
-        <a class="btn btn-success btn-large" href="{{ url('/validador/citas/agregar') }}"><i class="material-icons">add</i>Agregar una Cita</a>
+        <a class="btn btn-success btn-large" href="{{ url('/admin/citas/agregar') }}"><i class="material-icons">add</i>Agregar una Cita</a>
     </div>
 </div>
 <div class="row">
@@ -26,18 +26,16 @@
                         @forelse ($eventosHoy as $evento)
                         <tr>
                             <td>{{ $evento->id }}</td>
-                            <td><a href="{{ url('/validador/vendedores/'.$evento->vendedor->id) }}">{{ $evento->vendedor->name }}</a></td>
-                            <td><a href="{{ url('/validador/clientes/'.$evento->client->id) }}">{{ $evento->client->name }}</td>
+                            <td><a href="{{ url('/admin/vendedores/'.$evento->vendedor->id) }}">{{ $evento->vendedor->name }}</a></td>
+                            <td><a href="{{ url('/admin/clientes/'.$evento->client->id) }}">{{ $evento->client->name }}</td>
                             <td>{{ $evento->fechahora }}</td>
                             <td class="td-actions text-right">
-                                <a href="{{ url('/validador/citas/'.$evento->id) }}" type="button" rel="tooltip" title="Ver Cita" class="btn btn-success btn-simple btn-xs">
+                                <a href="{{ url('/admin/citas/'.$evento->id) }}" type="button" rel="tooltip" title="Ver Cita" class="btn btn-success btn-simple btn-xs">
                                     <i class="material-icons">remove_red_eye</i>
                                 </a>
-                                @if (!Carbon\Carbon::parse($evento->fechahora)->isPast())
-                                     <a href="{{ url('/validador/citas/'.$evento->id.'/editar') }}" type="button" rel="tooltip" title="Editar Cita" class="btn btn-primary btn-simple btn-xs">
-                                        <i class="material-icons">edit</i>
-                                    </a>
-                                @endif
+                                 <a href="{{ url('/admin/citas/'.$evento->id.'/editar') }}" type="button" rel="tooltip" title="Editar Cita" class="btn btn-primary btn-simple btn-xs">
+                                    <i class="material-icons">edit</i>
+                                </a>
                             </td>
                         </tr>
                         @empty
@@ -75,18 +73,16 @@
                         @forelse ($eventosSemana as $evento)
                         <tr>
                             <td>{{ $evento->id }}</td>
-                            <td><a href="{{ url('/validador/vendedores/'.$evento->vendedor->id) }}">{{ $evento->vendedor->name }}</a></td>
-                            <td><a href="{{ url('/validador/clientes/'.$evento->client->id) }}">{{ $evento->client->name }}</td>
+                            <td><a href="{{ url('/admin/vendedores/'.$evento->vendedor->id) }}">{{ $evento->vendedor->name }}</a></td>
+                            <td><a href="{{ url('/admin/clientes/'.$evento->client->id) }}">{{ $evento->client->name }}</td>
                             <td>{{ $evento->fechahora }}</td>
                             <td class="td-actions text-right">
-                                <a href="{{ url('/validador/citas/'.$evento->id) }}" type="button" rel="tooltip" title="Ver Cita" class="btn btn-success btn-simple btn-xs">
+                                <a href="{{ url('/admin/citas/'.$evento->id) }}" type="button" rel="tooltip" title="Ver Cita" class="btn btn-success btn-simple btn-xs">
                                     <i class="material-icons">remove_red_eye</i>
                                 </a>
-                                @if (!Carbon\Carbon::parse($evento->fechahora)->isPast())
-                                     <a href="{{ url('/validador/citas/'.$evento->id.'/editar') }}" type="button" rel="tooltip" title="Editar Cita" class="btn btn-primary btn-simple btn-xs">
-                                        <i class="material-icons">edit</i>
-                                    </a>
-                                @endif
+                                <a href="{{ url('/admin/citas/'.$evento->id.'/editar') }}" type="button" rel="tooltip" title="Editar Cita" class="btn btn-primary btn-simple btn-xs">
+                                    <i class="material-icons">edit</i>
+                                </a>
                             </td>
                         </tr>
                         @empty
@@ -129,18 +125,16 @@
                         @forelse ($eventos->sortByDesc('fechahora') as $evento)
                         <tr>
                             <td>{{ $evento->id }}</td>
-                            <td><a href="{{ url('/validador/vendedores/'.$evento->vendedor->id) }}">{{ $evento->vendedor->name }}</a></td>
-                            <td><a href="{{ url('/validador/clientes/'.$evento->client->id) }}">{{ $evento->client->name }}</td>
+                            <td><a href="{{ url('/admin/vendedores/'.$evento->vendedor->id) }}">{{ $evento->vendedor->name }}</a></td>
+                            <td><a href="{{ url('/admin/clientes/'.$evento->client->id) }}">{{ $evento->client->name }}</td>
                             <td>{{ $evento->fechahora }}</td>
                             <td class="td-actions text-right">
-                                <a href="{{ url('/validador/citas/'.$evento->id) }}" type="button" rel="tooltip" title="Ver Cita" class="btn btn-success btn-simple btn-xs">
+                                <a href="{{ url('/admin/citas/'.$evento->id) }}" type="button" rel="tooltip" title="Ver Cita" class="btn btn-success btn-simple btn-xs">
                                     <i class="material-icons">remove_red_eye</i>
                                 </a>
-                                @if (!Carbon\Carbon::parse($evento->fechahora)->isPast())
-                                     <a href="{{ url('/validador/citas/'.$evento->id.'/editar') }}" type="button" rel="tooltip" title="Editar Cita" class="btn btn-primary btn-simple btn-xs">
-                                        <i class="material-icons">edit</i>
-                                    </a>
-                                @endif
+                                 <a href="{{ url('/admin/citas/'.$evento->id.'/editar') }}" type="button" rel="tooltip" title="Editar Cita" class="btn btn-primary btn-simple btn-xs">
+                                    <i class="material-icons">edit</i>
+                                </a>
                             </td>
                         </tr>
                         @empty
