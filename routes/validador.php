@@ -1,11 +1,5 @@
 <?php
 
-// Static Route to get the matching order based on the Production Order Number
-Route::get('/op/{op}', function($op){
-	$orden = App\Order::where('consecutivo_op',$op)->get();
-	return $orden;
-});
-
 Route::get('/dashboard', function () {
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
