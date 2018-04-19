@@ -1,4 +1,4 @@
-@extends('validador.adjustment.create')
+@extends('admin.adjustment.create')
 
 {{-- Info General --}}
 @section('editId',$adjustmentOrder->id)

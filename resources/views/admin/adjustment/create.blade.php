@@ -1,4 +1,4 @@
-@extends('validador.layout.main')
+@extends('admin.layout.main')
 
 @section('content')
 <!-- DateTimePicker CSS -->
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                 @endif
-                <form action="{{ url('/validador/ajustes') }}/@yield('editId')" method="post" onsubmit="return confirm('¿La información que deseas registrar es correcta?');">
+                <form action="{{ url('/admin/ajustes') }}/@yield('editId')" method="post" onsubmit="return confirm('¿La información que deseas registrar es correcta?');">
                     {{ csrf_field() }}
                     @section('editMethod')
                         @show
@@ -136,7 +136,7 @@
                     <div id="ajustes-container"></div>
 
                     <button type="submit" class="btn btn-success pull-right">Confirmar</button>
-                    <a href="{{ url('/validador/ajustes') }}" class="btn btn-default">Cancelar</a>
+                    <a href="{{ url('/admin/ajustes') }}" class="btn btn-default">Cancelar</a>
                     <div class="clearfix"></div>
                 </form>
             </div>
