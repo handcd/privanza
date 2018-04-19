@@ -767,7 +767,7 @@ module.exports = __webpack_require__(34);
 __webpack_require__(9);
 
 var server = "http://localhost:8000";
-var endpoint = '/validador/op/';
+var endpoint = '/api/op/';
 var boton = document.getElementById('botonop');
 var input = document.getElementById('consecutivo_op');
 
