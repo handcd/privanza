@@ -500,9 +500,8 @@
 										<div class="col-sm-6">
 											<div class="form-group label-floating">
 												<label class="control-label">Tipo de Ojal en Solapa</label>
-												<select name="tipoOjalSolapa" class="form-control" required="true">
+												<select name="tipoOjalSolapa" class="form-control" required="true" id="ojalEnSolapa">
 													<option disabled="" selected=""></option>
-													<option value="0">Sin Ojal en Solapa</option>
 													<option value="1">Al tono</option>
 													<option value="2">En contraste</option>
 												</select>
@@ -515,7 +514,7 @@
 												</label>
 											</div>
 										</div>
-										<div class="col-sm-6">
+										<div class="col-sm-6" id="solapaContraste" style="display: none;">
 											<div class="row">
 												<div class="col-md-12">
 													<p>Selecciona el color del ojal en solapa:</p>
@@ -607,8 +606,8 @@
 									</div>
 									<div class="col-sm-6">
 										<div class="form-group label-floating">
-											<label class="control-label">Tipo de Ojal en Manga</label>
-											<select name="tipoOjalManga" required="true" class="form-control">
+											<label class="control-label">Ojal en Manga</label>
+											<select name="tipoOjalManga" required="true" class="form-control" id="">
 												<option disabled="" selected=""></option>
 												<option value="0">Al tono</option>
 												<option value="1">En contraste</option>
@@ -739,11 +738,17 @@
 										<label>
 										  <input type="checkbox" name="pickstitch" />
 										  <img src="{{ asset('img/suit_options/saco/pick-stitch.png') }}">
-										  <p class="text-center">Pick Stitch para Saco</p>
+										  <p class="text-center">Pick Stitch para Saco (Se incluye en filos, aletilla y cartera)</p>
 										</label>
 									</div>
 									<div class="col-md-6">
 										Opciones de Aletilla
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" name="aletillaNormal">
+												Aletilla normal
+											</label>
+										</div>
 										<div class="checkbox">
 											<label>
 												<input type="checkbox" name="sinaletilla">
@@ -1365,6 +1370,7 @@
 <script>
 	const biesInterno = document.getElementById('BiesInterno');
 	const pinPointInterno = document.getElementById('PinPointInterno');
+	const solapaEnContraste = document.getElementById('ojalEnSolapa');
 	
 	function logica(e){		
 		let palette = document.getElementById('colorPalette');
@@ -1375,12 +1381,25 @@
 		}
 	}
 
+	function coloresSolapaEnContraste(e){
+		let paleta = document.getElementById('solapaContraste');
+		if(solapaEnContraste.value == 2){
+			$(paleta).show();
+		}else {
+			$(paleta).hide();
+		}
+	}
+
 	biesInterno.addEventListener('click', () => {
 		logica();
 	});
 	pinPointInterno.addEventListener('click', () => {
 		logica();
 	});
+
+	solapaEnContraste.addEventListener('click', () => {
+			coloresSolapaEnContraste();
+		 });
 
 
 </script>

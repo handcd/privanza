@@ -18,7 +18,7 @@ class CreateCoatsTable extends Migration
             $table->integer('order_id');
             // Saco - Externo
             $table->integer('tipo_solapa'); // 0 pico/1escuadra
-            $table->integer('tipo_ojal_solapa'); // 0 Sin Ojal / 1 Al Tono / 2 En Contraste
+            $table->integer('tipo_ojal_solapa'); // 1 Al Tono / 2 En Contraste
             $table->boolean('ojal_activo_solapa');
             $table->string('color_ojal_solapa');
             $table->integer('botones_frente'); // 1,2,3,6
@@ -43,6 +43,7 @@ class CreateCoatsTable extends Migration
             $table->integer('tipo_bolsas_ext');
             $table->boolean('pickstitch');
             $table->boolean('sin_aletilla');
+            $table->boolean('aletilla');
 
             // Saco - Interno
             $table->integer('tipo_vista'); // 0 normal / 1 chapeta francesa

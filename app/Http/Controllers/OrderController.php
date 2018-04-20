@@ -410,6 +410,7 @@ class OrderController extends Controller
             $saco->tipo_bolsas_ext = $request->bolsasExt;
             $saco->pickstitch = $request->pickstitch ? true : false;
             $saco->sin_aletilla = $request->sinaletilla == "on" ? true : false;
+            $saco->aletilla = $request->aletillaNormal == "on" ? true : false;
 
             // Datos de Saco Interno
             $saco->tipo_vista = $request->tipoVista;
