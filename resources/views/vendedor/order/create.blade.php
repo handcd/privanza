@@ -1165,13 +1165,6 @@
 								<h4 class="text-center">Bolsas Traseras</h4>
 								<div class="col-md-4">
 									<label>
-									  <input type="radio" name="bolsasTraseras" value="0" />
-									  <img src="{{ asset('img/suit_options/numero_bolsas/PantalonSinBolsas.png') }}">
-									  <p class="text-center">Sin Bolsas</p>
-									</label>
-								</div>
-								<div class="col-md-4">
-									<label>
 									  <input type="radio" name="bolsasTraseras" value="1" />
 									  <img src="{{ asset('img/suit_options/numero_bolsas/PantalonUnaBolsa.png') }}">
 									  <p class="text-center">Una bolsa</p>
@@ -1223,24 +1216,15 @@
 									</div>
 									<div class="col-md-6">
 										<div class="form-group label-floating">
-											<label for="" class="control-label">Color Medio Forro </label>
-											<select class="form-control" name="colorMedioForroPiernas" required="true">
-												<option disabled="" 
-				                                    @hasSection('editCliente')
-				                                    {{-- Ya hay un cliente seleccionado --}}
-				                                    @else
-				                                      selected="" 
-				                                    @endif></option>
-		                                    	<option value="Azul Marino">Azul Marino</option>
-  												<option value="Gris">Gris</option>
-  												<option value="Negro">Negro</option>
-		                                	</select>
+											
+		                                	<div class="form-group label-floating">
+											<div class="checkbox">
+												<label><input type="checkbox" name="colorMedioForroPiernas" value="MedioForroInteriorAlTono">Medio Forro interior al tono</label>
+											</div>									
+										</div>
 											
 										</div>
-										<div class="form-group label-floating">
-											<label for="" class="control-label">Código Color Medio Forro<small>(opcional)</small></label>
-											<input type="text" name="otroColorMedioForroPiernas" class="form-control">
-										</div>
+										
 									</div>
 								</div>
 							</div>
@@ -1271,7 +1255,7 @@
 									<div class="col-md-6">
 										<div class="form-group label-floating">
 											<div class="checkbox">
-												<label><input type="checkbox" name="colorBiesPretina" value="colorOjaleraEncuarte"> Mismo color Ojalera y Encuarte</label>
+												<label><input type="checkbox" name="colorBiesPretina" value="colorOjaleraEncuarte"> Bies del mismo color Ojalera y Encuarte</label>
 											</div>									
 										</div>
 										<div class="form-group label-floating">									
