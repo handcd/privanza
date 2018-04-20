@@ -903,42 +903,18 @@
 										<div class="checkbox">
 											<label>
 												<input type="checkbox" name="vivosBolsasInternasCuerpo">
-												Mismo seleccionado en Cuerpo
+												Del mismo forro en cuerpo	
 											</label>
 										</div>
 									</div>
 									<div class="row col-xs-offset-1">
 										<div class="form-group label-floating">
-											<label class="control-label">Otro tipo de Vivos <small>(opcional)</small></label>
+											<label class="control-label">En contraste a otro tono <small>(opcional)</small></label>
 											<input type="text" class="form-control" name="otroVivosBolsasInternas">
 										</div>
 									</div>
 								</div>
-								<div class="col-md-5 col-md-offset-1">
-									<div class="row">
-										<h5 class="text-center">Puntadas</h5>
-									</div>
-									<div class="row col-xs-offset-1">
-										<div class="checkbox">
-											<label>
-												<input type="checkbox" name="puntadaFilosSacoInt">
-												Puntada en Filos
-											</label>
-										</div>
-										<div class="checkbox">
-											<label>
-												<input type="checkbox" name="puntadaAletillasSacoInt">
-												Puntada en Aletillas
-											</label>
-										</div>
-										<div class="checkbox">
-											<label>
-												<input type="checkbox" name="puntadaCarterasSacoInt">
-												Puntada en Carteras
-											</label>
-										</div>
-									</div>
-								</div>
+								
 							</div>
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
