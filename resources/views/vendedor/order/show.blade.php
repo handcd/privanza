@@ -214,7 +214,7 @@
                               @if ($orden->etiquetas_tela === 1)
                                     <p> Sí </p>
                               @else
-                                    <p> No </p>
+                                    <p> Privanza </p>
                               @endif
                         </div>
                         <div class="col-md-3">
@@ -222,13 +222,13 @@
                               @if ($orden->etiquetas_marca === 1)
                                     <p> Sí </p>
                               @else
-                                    <p> No </p>
+                                    <p> Privanza </p>
                               @endif
                         </div>
                         <div class="col-md-3">
                               <label class="text-primary">Gancho</label>
                               @if ($orden->gancho === 1)
-                                    <p> Personalizado </p>
+                                    <p> Personalizado Privanza</p>
                               @else
                                     <p> Normal </p>
                               @endif
@@ -236,7 +236,7 @@
                         <div class="col-md-3">
                               <label class="text-primary">Portatrajes</label>
                               @if ($orden->portatrajes === 1)
-                                    <p> Personalizado </p>
+                                    <p> Personalizado Privanza </p>
                               @else
                                     <p> Cubrepolvos </p>
                               @endif
@@ -332,7 +332,11 @@
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Color en Ojal Solapa</label>
-                                    <p>{{ $orden->coat->color_ojal_solapa }}</p>
+                                    @if ($orden->coat->color_ojal_solapa !== null)
+                                          <p>{{ $orden->coat->color_ojal_solapa }}</p>
+                                    @else
+                                          <p>Al tono</p>
+                                    @endif
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Número de botones de Frente</label>

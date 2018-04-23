@@ -306,7 +306,7 @@
 							</div>
 							<div class="row">
 								<div class="col-md-4">
-									<h4 class="text-center">Etiquetas</h4>
+									<h4 class="text-center">Etiquetas (no seleccionar ninguno para Privanza)</h4>
 									<div class="col-md-10 col-md-offset-1">
 										<div class="checkbox">
 											<label>
