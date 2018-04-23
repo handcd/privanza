@@ -319,13 +319,7 @@
 												<input type="checkbox" name="etiquetaMarca">
 											</label>
 											Se Reciben Etiquetas de Marca
-										</div>
-										<div class="checkbox">
-											<label>
-												<input type="checkbox" name="etiquetaPrivanza">
-											</label>
-											Etiqueta Privanza
-										</div>
+										</div>										
 										<div class="form-group label-floating">
 											<label class="control-label">Otra Marca: <small>(opcional: dejar en blanco para Privanza)</small></label>
 											<input type="text" class="form-control" name="marcaEtiqueta">
@@ -514,7 +508,7 @@
 												</label>
 											</div>
 										</div>
-										<div class="col-sm-6" id="solapaContraste" style="display: none;">
+										<div class="col-sm-6" id="solapaContraste">
 											<div class="row">
 												<div class="col-md-12">
 													<p>Selecciona el color del ojal en solapa:</p>
@@ -607,7 +601,7 @@
 									<div class="col-sm-6">
 										<div class="form-group label-floating">
 											<label class="control-label">Ojal en Manga</label>
-											<select name="tipoOjalManga" required="true" class="form-control" id="">
+											<select name="tipoOjalManga" required="true" class="form-control">
 												<option disabled="" selected=""></option>
 												<option value="0">Al tono</option>
 												<option value="1">En contraste</option>
@@ -742,13 +736,8 @@
 										</label>
 									</div>
 									<div class="col-md-6">
-										Opciones de Aletilla
-										<div class="checkbox">
-											<label>
-												<input type="checkbox" name="aletillaNormal">
-												Aletilla normal
-											</label>
-										</div>
+										Opciones de Aletilla (Por defecto lo confeccionamos con aletilla normal)
+										
 										<div class="checkbox">
 											<label>
 												<input type="checkbox" name="sinaletilla">
@@ -1333,7 +1322,7 @@
 	const solapaEnContraste = document.getElementById('ojalEnSolapa');
 	
 	function logica(e){		
-		let palette = document.getElementById('colorPalette');
+		var palette = document.getElementById('colorPalette');
 		if(biesInterno.checked || pinPointInterno.checked){			
 			$(palette).show();
 		}else {
@@ -1342,13 +1331,19 @@
 	}
 
 	function coloresSolapaEnContraste(e){
-		let paleta = document.getElementById('solapaContraste');
+		var paleta = document.getElementById('solapaContraste');
 		if(solapaEnContraste.value == 2){
 			$(paleta).show();
 		}else {
 			$(paleta).hide();
 		}
 	}
+
+	$(document).ready(function() {
+    	var colorDeSolapaEnContraste = document.getElementById('solapaContraste');
+    	$(colorDeSolapaEnContraste).hide();
+    	console.log('ñañañañaaaa');
+	});
 
 	biesInterno.addEventListener('click', () => {
 		logica();

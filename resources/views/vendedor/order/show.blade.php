@@ -431,8 +431,8 @@
                                     <p>{{ $orden->coat->pickstitch ? 'Si' : 'No' }}</p>
                               </div>
                               <div class="col-md-3">
-                                    <label class="text-primary">Sin Aletilla</label>
-                                    <p>{{ $orden->coat->sin_aletilla ? 'Sin Aletilla' : 'Con Aletilla' }}</p>
+                                    <label class="text-primary">Aletilla</label>
+                                    <p>{{ $orden->coat->sin_aletilla ? 'Sin Aletilla' : 'Aletilla normal' }}</p>
                               </div>
                               <div class="col-md-6">
                                     <label class="text-primary">Notas de Saco Externo</label>

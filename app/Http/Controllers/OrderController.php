@@ -256,7 +256,6 @@ class OrderController extends Controller
         // Etiquetas
         $orden->etiquetas_tela = $request->etiquetaTela ? true : false;
         $orden->etiquetas_marca = $request->etiquetaMarca ? true : false;
-        $orden->etiquetas_privanza = $request->etiquetaPrivanza ? true : false;
 
         // Marca de la Etiqueta
         if ($request->etiquetaMarca) {
@@ -381,13 +380,18 @@ class OrderController extends Controller
             $saco->tipo_solapa = $request->tipoSolapa;
             // Color Ojal de Solapa
             $saco->tipo_ojal_solapa = $request->tipoOjalSolapa;
-            if ($request->otroColorOjalSolapa) {
-                $saco->color_ojal_solapa = $request->otroColorOjalSolapa;
-            } else {
-                $saco->color_ojal_solapa = $request->colorOjalSolapa;
+            
+            if ($request->tipoOjalSolapa == 2) {
+                if ($request->otroColorOjalSolapa) {
+                    $saco->color_ojal_solapa = $request->otroColorOjalSolapa;
+                } else {
+                    $saco->color_ojal_solapa = $request->colorOjalSolapa;
+                }
             }
+          
             $saco->ojal_activo_solapa = $request->ojalActivoSolapa ? true : false;
             
+            //Botones
             $saco->botones_frente = $request->botonesFrente;
             $saco->aberturas_detras = $request->aberturasDetras;
             $saco->botones_mangas = $request->botonesMangas;
@@ -409,8 +413,11 @@ class OrderController extends Controller
             // Bolsas Exteriores
             $saco->tipo_bolsas_ext = $request->bolsasExt;
             $saco->pickstitch = $request->pickstitch ? true : false;
-            $saco->sin_aletilla = $request->sinaletilla == "on" ? true : false;
-            $saco->aletilla = $request->aletillaNormal == "on" ? true : false;
+            if ($request->sinaletilla) {
+                $saco->sin_aletilla = $request->sinaletilla == "on";
+            }else{
+                $saco->sin_aletilla = $request->sinaletilla == "off";
+            }
 
             // Datos de Saco Interno
             $saco->tipo_vista = $request->tipoVista;

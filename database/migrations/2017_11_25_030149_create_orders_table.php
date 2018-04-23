@@ -58,7 +58,6 @@ class CreateOrdersTable extends Migration
             $table->string('color_botones');
             $table->boolean('etiquetas_tela'); // Si/No
             $table->boolean('etiquetas_marca'); // Si/No
-            $table->boolean('etiquetas_privanza');//Sí/No
             $table->string('marca_en_etiqueta')->nullable();
             $table->integer('gancho'); // Normal/Personalizado
             $table->string('gancho_personalizacion')->nullable();
