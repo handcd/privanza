@@ -29,6 +29,11 @@ class DatabaseSeeder extends Seeder
             'email' => 'validador@privanza.com'
         ]);
 
+        // Database
+        DB::table('configurations')->insert([
+            'horas_aviso_no_aprobada' => 22
+        ]);
+
         // Fits
         DB::table('fits')->insert([
             'name' => 'Tallas Extra',

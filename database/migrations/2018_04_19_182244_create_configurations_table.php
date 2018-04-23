@@ -14,6 +14,8 @@ class CreateConfigurationsTable extends Migration
     public function up()
     {
         Schema::create('configurations', function (Blueprint $table) {
+            // ID
+            $table->increments('id');
             // Tiempos de aviso entre acciones
             $table->integer('horas_aviso_no_aprobada')->default(22);
             $table->integer('horas_aviso_aprobada')->default(22);
