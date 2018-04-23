@@ -59,3 +59,6 @@ Route::put('/perfil','ProfileController@actualizarPerfilAdmin');
 Route::get('/perfil','ProfileController@perfilAdmin');
 Route::get('/perfil/editar', 'ProfileController@editarPerfilAdmin');
 
+// Configuration
+Route::put('/configuracion','ConfigurationController@update');
+Route::get('/configuracion','ConfigurationController@index');
