@@ -380,13 +380,10 @@ class OrderController extends Controller
             $saco->tipo_solapa = $request->tipoSolapa;
             // Color Ojal de Solapa
             $saco->tipo_ojal_solapa = $request->tipoOjalSolapa;
-            
-            if ($request->tipoOjalSolapa == 2) {
-                if ($request->otroColorOjalSolapa) {
-                    $saco->color_ojal_solapa = $request->otroColorOjalSolapa;
-                } else {
-                    $saco->color_ojal_solapa = $request->colorOjalSolapa;
-                }
+            if ($request->otroColorOjalSolapa) {
+                $saco->color_ojal_solapa = $request->otroColorOjalSolapa;
+            } else {
+                $saco->color_ojal_solapa = $request->colorOjalSolapa;
             }
           
             $saco->ojal_activo_solapa = $request->ojalActivoSolapa ? true : false;
@@ -413,11 +410,8 @@ class OrderController extends Controller
             // Bolsas Exteriores
             $saco->tipo_bolsas_ext = $request->bolsasExt;
             $saco->pickstitch = $request->pickstitch ? true : false;
-            if ($request->sinaletilla) {
-                $saco->sin_aletilla = $request->sinaletilla == "on";
-            }else{
-                $saco->sin_aletilla = $request->sinaletilla == "off";
-            }
+            $saco->sin_aletilla = $request->sinaletilla ? "on" : "off";
+            
 
             // Datos de Saco Interno
             $saco->tipo_vista = $request->tipoVista;

@@ -601,7 +601,7 @@
 									<div class="col-sm-6">
 										<div class="form-group label-floating">
 											<label class="control-label">Ojal en Manga</label>
-											<select name="tipoOjalManga" required="true" class="form-control">
+											<select name="tipoOjalManga" required="true" class="form-control" id="tipoDeOjalEnManga">
 												<option disabled="" selected=""></option>
 												<option value="0">Al tono</option>
 												<option value="1">En contraste</option>
@@ -610,7 +610,7 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-md-6 col-md-offset-3">
+									<div class="col-md-6 col-md-offset-3" id="colorDeOjalEnMangas">
 										<div class="row">
 											<div class="col-md-12">
 												<p>Color de Ojal en Mangas:</p>
@@ -1320,6 +1320,7 @@
 	const biesInterno = document.getElementById('BiesInterno');
 	const pinPointInterno = document.getElementById('PinPointInterno');
 	const solapaEnContraste = document.getElementById('ojalEnSolapa');
+	const ojalDeMangaEnContraste = document.getElementById('tipoDeOjalEnManga');
 	
 	function logica(e){		
 		var palette = document.getElementById('colorPalette');
@@ -1331,20 +1332,32 @@
 	}
 
 	function coloresSolapaEnContraste(e){
-		var paleta = document.getElementById('solapaContraste');
+		var coloresDeSolapaEnContraste = document.getElementById('solapaContraste');
 		if(solapaEnContraste.value == 2){
-			$(paleta).show();
+			$(coloresDeSolapaEnContraste).show();
 		}else {
-			$(paleta).hide();
+			$(coloresDeSolapaEnContraste).hide();
+		}
+	}
+	function coloresOjalEnManga(e){
+		var colorDeMangaEnContraste = document.getElementById('colorDeOjalEnMangas'); 
+		if(ojalDeMangaEnContraste.value == 1){
+			$(colorDeMangaEnContraste).show();
+		}else {
+			$(colorDeMangaEnContraste).hide();
 		}
 	}
 
 	$(document).ready(function() {
     	var colorDeSolapaEnContraste = document.getElementById('solapaContraste');
+    	
     	$(colorDeSolapaEnContraste).hide();
-    	console.log('ñañañañaaaa');
+    	
 	});
-
+	$(document).ready(function(){
+		var colorDeMangaEnContraste = document.getElementById('colorDeOjalEnMangas');
+		$(colorDeMangaEnContraste).hide();
+	});
 	biesInterno.addEventListener('click', () => {
 		logica();
 	});
@@ -1353,9 +1366,11 @@
 	});
 
 	solapaEnContraste.addEventListener('click', () => {
-			coloresSolapaEnContraste();
-		 });
-
+		coloresSolapaEnContraste();
+	});
+	ojalDeMangaEnContraste.addEventListener('click', () => {
+		coloresOjalEnManga();
+	})
 
 </script>
 @endsection

@@ -64,9 +64,9 @@ class CreateOrdersTable extends Migration
             $table->integer('portatrajes'); // Cubrepolvos/Personalizado
             $table->string('portatrajes_personalizacion')->nullable();
             $table->string('notas_tela')->nullable();
-            $table->string('bordado');
+            $table->string('bordado')->nullable();
             $table->string('letra');
-            $table->string('bordadoColor');
+            $table->string('bordadoColor')->nullable();
             $table->timestamps();
         });
     }

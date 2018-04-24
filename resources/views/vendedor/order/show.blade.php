@@ -368,7 +368,11 @@
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Color de Ojal en Manga</label>
-                                    <p>{{ $orden->coat->color_ojal_manga }}</p>
+                                    @if ( $orden->coat->color_ojal_manga !== null)
+                                          <p>{{ $orden->coat->color_ojal_manga }}</p>
+                                    @else
+                                          <p>Al tono</p>
+                                    @endif
                               </div>
                         </div>
                         <div class="row">

@@ -25,7 +25,7 @@ class CreateCoatsTable extends Migration
             $table->integer('aberturas_detras'); // 0,1,2
             $table->integer('botones_mangas'); // 0-4
             $table->integer('tipo_ojal_manga'); // al tono/en contraste/activos
-            $table->string('color_ojal_manga');
+            $table->string('color_ojal_manga')->nullable();
             $table->integer('posicion_ojal_manga'); // 0 Cascada, 1 en línea
             $table->boolean('ojales_activos_manga');
             $table->integer('posicion_ojales_activos_manga')->nullable(); // 0 Todos los Ojales / 1 3º y 4º / 2 4º
