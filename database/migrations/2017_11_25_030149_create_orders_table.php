@@ -65,7 +65,7 @@ class CreateOrdersTable extends Migration
             $table->string('portatrajes_personalizacion')->nullable();
             $table->string('notas_tela')->nullable();
             $table->string('bordado')->nullable();
-            $table->string('letra');
+            $table->string('letra')->nullable();
             $table->string('bordadoColor')->nullable();
             $table->timestamps();
         });

@@ -343,12 +343,9 @@ class OrderController extends Controller
             } else {
                 $pantalon->color_ojalera = $request->colorOjaleraEncuarte;
             }
-            //color medio forro piernas 
-            if ($request->otroColorMedioForroPiernas) {
-                $pantalon->color_medio_forro = $request->otroColorMedioForroPiernas;
-            }else{
-                $pantalon->color_medio_forro = $request->colorMedioForroPiernas;
-            }
+            //color medio forro piernas            
+            $pantalon->color_medio_forro = $request->colorMedioForroPiernas ? true : false;            
+
             //Dobladillo
             $pantalon->dobladillo = $request->dobladillo;
             //Pretina
@@ -410,7 +407,7 @@ class OrderController extends Controller
             // Bolsas Exteriores
             $saco->tipo_bolsas_ext = $request->bolsasExt;
             $saco->pickstitch = $request->pickstitch ? true : false;
-            $saco->sin_aletilla = $request->sinaletilla ? "on" : "off";
+            $saco->sin_aletilla = $request->sinaletilla ? true : false;
             
 
             // Datos de Saco Interno
@@ -471,9 +468,16 @@ class OrderController extends Controller
             }
             
             // Puntadas
-            $saco->puntada_filos = $request->puntadaFilosSacoInt ? true : false;
-            $saco->puntada_aletillas = $request->puntadaAletillasSacoInt ? true : false;
-            $saco->puntada_carteras = $request->puntadaCarterasSacoInt ? true : false;
+            if ($request->pickstitch) {
+                $saco->puntada_filos = $request->puntadaFilosSacoInt = true;
+                $saco->puntada_aletillas = $request->puntadaAletillasSacoInt = true;
+                $saco->puntada_carteras = $request->puntadaCarterasSacoInt = true;
+            }else{
+                $saco->puntada_filos = $request->puntadaFilosSacoInt = false;
+                $saco->puntada_aletillas = $request->puntadaAletillasSacoInt = false;
+                $saco->puntada_carteras = $request->puntadaCarterasSacoInt = false;  
+            }
+            
 
             // Notas del Saco
             $saco->notas_ext = $request->notasSacoExt;

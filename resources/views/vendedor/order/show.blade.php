@@ -301,16 +301,16 @@
                                     <label class="text-primary">Tipo de Solapa</label>
                                     
                                     @switch($orden->coat->tipo_solapa)
-                                          @case(0)
+                                          @case(1)
                                                 <p>Solapa en pico normal</p>
                                                 @break
-                                          @case(1)
+                                          @case(2)
                                                 <p>Solapa en pico ancha</p>
                                                 @break
-                                          @case(2)
+                                          @case(3)
                                                 <p>Solapa en escuadra normal</p>
                                                 @break
-                                          @case(3)
+                                          @case(6)
                                                 <p>Solapa en escuadra ancha</p>
                                                 @break
                                     @endswitch
@@ -332,11 +332,17 @@
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Color en Ojal Solapa</label>
-                                    @if ($orden->coat->color_ojal_solapa !== null)
-                                          <p>{{ $orden->coat->color_ojal_solapa }}</p>
-                                    @else
-                                          <p>Al tono</p>
-                                    @endif
+                                    @switch($orden->coat->tipo_ojal_solapa === 1)
+                                          @case(0)
+                                                <p>Al tono</p>
+                                                @break
+                                          @case(1)
+                                                <p>Al tono</p>
+                                                @break
+                                          @case(2)                                   
+                                                <p>{{ $orden->coat->color_ojal_solapa }}</p>
+                                                @break
+                                    @endswitch
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Número de botones de Frente</label>
@@ -368,10 +374,10 @@
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Color de Ojal en Manga</label>
-                                    @if ( $orden->coat->color_ojal_manga !== null)
-                                          <p>{{ $orden->coat->color_ojal_manga }}</p>
-                                    @else
+                                    @if ( $orden->coat->tipo_ojal_manga === 0)
                                           <p>Al tono</p>
+                                    @else
+                                          <p>{{ $orden->coat->color_ojal_manga }}</p>
                                     @endif
                               </div>
                         </div>
@@ -498,8 +504,8 @@
                                     </div>
                               @endif
                               <div class="col-md-3">
-                                    <label class="text-primary">Color de Puntada</label>
-                                    <p>{{ $orden->coat->puntada_color }}</p>
+                                    <label class="text-primary">Color de Puntada al tono</label>
+                                    <p>{{ $orden->coat->puntada_color ? 'Sí' : 'No' }}</p>
                               </div>
                         </div>
                         <div class="row">
@@ -681,7 +687,7 @@
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Color de Medio Forro</label>
-                                    <p>{{ $orden->pants->color_medio_forro }}</p>
+                                    <p>{{ $orden->pants->color_medio_forro ? 'Sí' : 'No'}}</p>
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Dobladillo</label>

@@ -1146,7 +1146,7 @@
 									<label>
 									  <input type="radio" name="numPliegues" value="2" />
 									  <img src="{{ asset('img/suit_options/pantalon/Pliegues_2.png') }}">
-									  <p class="text-center">2 Pliegue</p>
+									  <p class="text-center">2 Pliegues</p>
 									</label>
 								</div>
 							</div>
@@ -1317,11 +1317,41 @@
 </div> <!-- row -->
 
 <script>
+	//Variables para obeter elementos input
 	const biesInterno = document.getElementById('BiesInterno');
 	const pinPointInterno = document.getElementById('PinPointInterno');
 	const solapaEnContraste = document.getElementById('ojalEnSolapa');
 	const ojalDeMangaEnContraste = document.getElementById('tipoDeOjalEnManga');
-	
+
+	//Variables para obtener paletas de colores y ocultar componentes
+	const coloresDeSolapaEnContraste = document.getElementById('solapaContraste');
+	const colorDeMangaEnContraste = document.getElementById('colorDeOjalEnMangas'); 
+
+	//Funcion para oocultar componentes
+	function iniciarComponentes(){ 
+		$(colorDeMangaEnContraste).hide();
+    	$(coloresDeSolapaEnContraste).hide();
+	}
+
+	//Mostrar y ocultar paleta de colores para ojal de solapa en contraste
+	function coloresSolapaEnContraste(e){		
+		if(solapaEnContraste.value == 2){
+			$(coloresDeSolapaEnContraste).show();
+		}else {
+			$(coloresDeSolapaEnContraste).hide();
+		}
+	}
+
+	//Mostrar y ocultar paleta de colores para ojal en contraste de manga
+	function coloresOjalEnManga(e){		
+		if(ojalDeMangaEnContraste.value == 1){
+			$(colorDeMangaEnContraste).show();
+		}else {
+			$(colorDeMangaEnContraste).hide();
+		}
+	}
+
+	//Lógica para Bies & pinpoint
 	function logica(e){		
 		var palette = document.getElementById('colorPalette');
 		if(biesInterno.checked || pinPointInterno.checked){			
@@ -1331,46 +1361,30 @@
 		}
 	}
 
-	function coloresSolapaEnContraste(e){
-		var coloresDeSolapaEnContraste = document.getElementById('solapaContraste');
-		if(solapaEnContraste.value == 2){
-			$(coloresDeSolapaEnContraste).show();
-		}else {
-			$(coloresDeSolapaEnContraste).hide();
-		}
-	}
-	function coloresOjalEnManga(e){
-		var colorDeMangaEnContraste = document.getElementById('colorDeOjalEnMangas'); 
-		if(ojalDeMangaEnContraste.value == 1){
-			$(colorDeMangaEnContraste).show();
-		}else {
-			$(colorDeMangaEnContraste).hide();
-		}
-	}
+	//Función para agregar eventos 
+	function agregarEventos(){
+		console.log('Declarando eventos dentro de la funcion');
+		biesInterno.addEventListener('click', () => {
+			logica();
+		});
+		pinPointInterno.addEventListener('click', () => {
+		logica();
+		});
 
+		solapaEnContraste.addEventListener('click', () => {
+			coloresSolapaEnContraste();
+		});
+		ojalDeMangaEnContraste.addEventListener('click', () => {
+			coloresOjalEnManga();
+		});
+	}
+	//Agregar eventos y ocultar componentes al cargar la página
 	$(document).ready(function() {
-    	var colorDeSolapaEnContraste = document.getElementById('solapaContraste');
-    	
-    	$(colorDeSolapaEnContraste).hide();
-    	
+    	console.log('Ocultando componentes... ');
+    	iniciarComponentes();
+    	console.log('Agregando eventos...');
+    	agregarEventos();
+    	console.log('Listo!');
 	});
-	$(document).ready(function(){
-		var colorDeMangaEnContraste = document.getElementById('colorDeOjalEnMangas');
-		$(colorDeMangaEnContraste).hide();
-	});
-	biesInterno.addEventListener('click', () => {
-		logica();
-	});
-	pinPointInterno.addEventListener('click', () => {
-		logica();
-	});
-
-	solapaEnContraste.addEventListener('click', () => {
-		coloresSolapaEnContraste();
-	});
-	ojalDeMangaEnContraste.addEventListener('click', () => {
-		coloresOjalEnManga();
-	})
-
 </script>
 @endsection
