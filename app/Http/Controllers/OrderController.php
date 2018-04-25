@@ -431,7 +431,7 @@ class OrderController extends Controller
             $saco->pin_point_interno = $request->pinPointInterno ? true : false;
             if ($saco->pin_point_interno) {
                 // Color de Pin Point
-                if ($request->otroColorPinPoint) {
+                if ($request->otroColorPuntada) {
                     $saco->pin_point_interno_color = $request->otroColorPuntada;
                 } else {
                     $saco->pin_point_interno_color = $request->colorPuntada;
@@ -445,7 +445,7 @@ class OrderController extends Controller
             $saco->bies = $request->biesInterno ? true : false;
             if ($saco->bies) {
                 // Color de Bies
-                if ($request->otroColorBies) {
+                if ($request->otroColorPuntada) {
                     $saco->bies_color = $request->otroColorPuntada;
                 } else {
                     $saco->bies_color = $request->colorPuntada;
@@ -468,17 +468,9 @@ class OrderController extends Controller
             }
             
             // Puntadas
-            if ($request->pickstitch) {
-                $saco->puntada_filos = $request->puntadaFilosSacoInt = true;
-                $saco->puntada_aletillas = $request->puntadaAletillasSacoInt = true;
-                $saco->puntada_carteras = $request->puntadaCarterasSacoInt = true;
-            }else{
-                $saco->puntada_filos = $request->puntadaFilosSacoInt = false;
-                $saco->puntada_aletillas = $request->puntadaAletillasSacoInt = false;
-                $saco->puntada_carteras = $request->puntadaCarterasSacoInt = false;  
-            }
-            
-
+            $saco->puntada_filos = $request->pickstitch ? true : false;
+            $saco->puntada_aletillas = $request->pickstitch ? true : false;
+            $saco->puntada_carteras = $request->pickstitch ? true : false;
             // Notas del Saco
             $saco->notas_ext = $request->notasSacoExt;
             $saco->notas_int = $request->notasSacoInt;

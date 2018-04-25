@@ -332,17 +332,10 @@
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Color en Ojal Solapa</label>
-                                    @switch($orden->coat->tipo_ojal_solapa === 1)
-                                          @case(0)
-                                                <p>Al tono</p>
-                                                @break
-                                          @case(1)
-                                                <p>Al tono</p>
-                                                @break
-                                          @case(2)                                   
-                                                <p>{{ $orden->coat->color_ojal_solapa }}</p>
-                                                @break
-                                    @endswitch
+                                    
+                                    <p>{{ $orden->coat->tipo_ojal_solapa ? 'Al tono' :  $orden->coat->color_ojal_solapa }}</p>
+
+
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Número de botones de Frente</label>

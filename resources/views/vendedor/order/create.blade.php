@@ -842,7 +842,7 @@
 							<!--Fin de Bies & PinPoint-->
 							<!--Color de Bies & PinPoint-->
 							<div class="row">
-								<div class="col-md-4 col-md-offset-4" style="display: none;" id="colorPalette">
+								<div class="col-md-4 col-md-offset-4" id="colorPalette">
 									@include('partials.color-palette', ['varName' => 'Puntada'])
 								</div>
 								
@@ -1326,15 +1326,17 @@
 	//Variables para obtener paletas de colores y ocultar componentes
 	const coloresDeSolapaEnContraste = document.getElementById('solapaContraste');
 	const colorDeMangaEnContraste = document.getElementById('colorDeOjalEnMangas'); 
+	const colorDeBiesYPinPoint = document.getElementById('colorPalette');
 
 	//Funcion para oocultar componentes
 	function iniciarComponentes(){ 
 		$(colorDeMangaEnContraste).hide();
     	$(coloresDeSolapaEnContraste).hide();
+    	$(colorDeBiesYPinPoint).hide();
 	}
 
 	//Mostrar y ocultar paleta de colores para ojal de solapa en contraste
-	function coloresSolapaEnContraste(e){		
+	function coloresSolapaEnContraste(){		
 		if(solapaEnContraste.value == 2){
 			$(coloresDeSolapaEnContraste).show();
 		}else {
@@ -1343,7 +1345,7 @@
 	}
 
 	//Mostrar y ocultar paleta de colores para ojal en contraste de manga
-	function coloresOjalEnManga(e){		
+	function coloresOjalEnManga(){		
 		if(ojalDeMangaEnContraste.value == 1){
 			$(colorDeMangaEnContraste).show();
 		}else {
@@ -1352,12 +1354,11 @@
 	}
 
 	//Lógica para Bies & pinpoint
-	function logica(e){		
-		var palette = document.getElementById('colorPalette');
+	function coloresPinPointBies(){	
 		if(biesInterno.checked || pinPointInterno.checked){			
-			$(palette).show();
+			$(colorDeBiesYPinPoint).show();
 		}else {
-			$(palette).hide();
+			$(colorDeBiesYPinPoint).hide();
 		}
 	}
 
@@ -1365,12 +1366,11 @@
 	function agregarEventos(){
 		console.log('Declarando eventos dentro de la funcion');
 		biesInterno.addEventListener('click', () => {
-			logica();
+			coloresPinPointBies();
 		});
 		pinPointInterno.addEventListener('click', () => {
-		logica();
+			coloresPinPointBies();
 		});
-
 		solapaEnContraste.addEventListener('click', () => {
 			coloresSolapaEnContraste();
 		});
