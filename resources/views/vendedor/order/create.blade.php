@@ -461,28 +461,28 @@
 									<p class="col-md-12">Selecciona el tipo de solapa:</p>
 									<div class="col-md-3 col-xs-6">
 										<label>
-										  <input type="radio" name="tipoSolapa" value="1" required="" />
+										  <input type="radio" name="tipoSolapa" value="0" required="" />
 										  <img src="{{ asset('img/suit_options/saco/Cuello_picodelgado.png') }}">
 										  <p class="text-center">Solapa en Pico <b>Normal</b></p>
 										</label>
 									</div>
 									<div class="col-md-3 col-xs-6">
 										<label>
-										  <input type="radio" name="tipoSolapa" value="2" />
+										  <input type="radio" name="tipoSolapa" value="1" />
 										  <img src="{{ asset('img/suit_options/saco/Cuello_PicoAncho.png') }}">
 										  <p class="text-center">Solapa en Pico <b>Ancha</b></p>
 										</label>
 									</div>
 									<div class="col-md-3 col-xs-6">
 										<label>
-										  <input type="radio" name="tipoSolapa" value="3" />
+										  <input type="radio" name="tipoSolapa" value="2" />
 										  <img src="{{ asset('img/suit_options/saco/Cuello_Delgado.png') }}">
 										  <p class="text-center">Solapa en Escuadra <b>Normal</b></p>
 										</label>
 									</div>
 									<div class="col-md-3 col-xs-6">
 										<label>
-										  <input type="radio" name="tipoSolapa" value="6" />
+										  <input type="radio" name="tipoSolapa" value="3" />
 										  <img src="{{ asset('img/suit_options/saco/Cuello_Ancho.png') }}">
 										  <p class="text-center">Solapa en Escuadra <b>Ancha</b></p>
 										</label>

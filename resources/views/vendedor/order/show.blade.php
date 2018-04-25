@@ -301,16 +301,16 @@
                                     <label class="text-primary">Tipo de Solapa</label>
                                     
                                     @switch($orden->coat->tipo_solapa)
-                                          @case(1)
+                                          @case(0)
                                                 <p>Solapa en pico normal</p>
                                                 @break
-                                          @case(2)
+                                          @case(1)
                                                 <p>Solapa en pico ancha</p>
                                                 @break
-                                          @case(3)
+                                          @case(2)
                                                 <p>Solapa en escuadra normal</p>
                                                 @break
-                                          @case(6)
+                                          @case(3)
                                                 <p>Solapa en escuadra ancha</p>
                                                 @break
                                     @endswitch
