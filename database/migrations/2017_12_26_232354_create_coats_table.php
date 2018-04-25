@@ -54,7 +54,7 @@ class CreateCoatsTable extends Migration
             $table->boolean('bies');
             $table->string('bies_color')->nullable();
             $table->string('bies_codigo')->nullable();
-            $table->string('puntada_color')->nullable();
+            $table->string('color_puntada')->nullable();
             $table->integer('bolsas_int'); // 0 ,1,2,3
             $table->boolean('vivos_bolsas_internas_cuerpo');
             $table->string('otro_vivos_bolsas_internas')->nullable();

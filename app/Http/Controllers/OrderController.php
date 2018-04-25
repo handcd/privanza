@@ -422,9 +422,9 @@ class OrderController extends Controller
             
             // Color de la Puntada
             if ($request->otroColorPuntada) {
-                $saco->puntada_color = $request->otroColorPuntada;
+                $saco->color_puntada = $request->otroColorPuntada;
             } else {
-                $saco->puntada_color = $request->colorPuntada;
+                $saco->color_puntada = $request->colorPuntada;
             }
 
             // Pin Point

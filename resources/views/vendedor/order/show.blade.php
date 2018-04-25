@@ -498,7 +498,7 @@
                               @endif
                               <div class="col-md-3">
                                     <label class="text-primary">Color de Puntada al tono</label>
-                                    <p>{{ $orden->coat->puntada_color ? 'Sí' : 'No' }}</p>
+                                    <p>{{ $orden->coat->color_puntada ? 'Sí' : 'No' }}</p>
                               </div>
                         </div>
                         <div class="row">
