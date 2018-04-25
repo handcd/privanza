@@ -344,7 +344,7 @@ class OrderController extends Controller
                 $pantalon->color_ojalera = $request->colorOjaleraEncuarte;
             }
             //color medio forro piernas            
-            $pantalon->color_medio_forro = $request->colorMedioForroPiernas ? true : false;            
+            $pantalon->medio_forro_piernas_al_tono = $request->medioForroPiernasAlTono ? true : false;            
 
             //Dobladillo
             $pantalon->dobladillo = $request->dobladillo;

@@ -1208,7 +1208,7 @@
 											
 		                                	<div class="form-group label-floating">
 											<div class="checkbox">
-												<label><input type="checkbox" name="colorMedioForroPiernas" value="MedioForroInteriorAlTono">Medio Forro interior al tono</label>
+												<label><input type="checkbox" name="medioForroPiernasAlTono" value="true">Medio Forro interior al tono</label>
 											</div>									
 										</div>
 											

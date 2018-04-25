@@ -680,7 +680,7 @@
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Color de Medio Forro</label>
-                                    <p>{{ $orden->pants->color_medio_forro ? 'Sí' : 'No'}}</p>
+                                    <p>{{ $orden->pants->medio_forro_piernas_al_tono ? 'Sí' : 'No'}}</p>
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Dobladillo</label>
