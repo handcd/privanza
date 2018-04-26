@@ -18,14 +18,14 @@ class CreateCoatsTable extends Migration
             $table->integer('order_id');
             // Saco - Externo
             $table->integer('tipo_solapa'); // 0 pico/1escuadra
-            $table->integer('tipo_ojal_solapa'); // 0 Sin Ojal / 1 Al Tono / 2 En Contraste
+            $table->integer('tipo_ojal_solapa'); // 1 Al Tono / 2 En Contraste
             $table->boolean('ojal_activo_solapa');
-            $table->string('color_ojal_solapa');
+            $table->string('color_ojal_solapa')->nullable();
             $table->integer('botones_frente'); // 1,2,3,6
             $table->integer('aberturas_detras'); // 0,1,2
             $table->integer('botones_mangas'); // 0-4
             $table->integer('tipo_ojal_manga'); // al tono/en contraste/activos
-            $table->string('color_ojal_manga');
+            $table->string('color_ojal_manga')->nullable();
             $table->integer('posicion_ojal_manga'); // 0 Cascada, 1 en línea
             $table->boolean('ojales_activos_manga');
             $table->integer('posicion_ojales_activos_manga')->nullable(); // 0 Todos los Ojales / 1 3º y 4º / 2 4º
@@ -54,7 +54,7 @@ class CreateCoatsTable extends Migration
             $table->boolean('bies');
             $table->string('bies_color')->nullable();
             $table->string('bies_codigo')->nullable();
-            $table->string('puntada_color');
+            $table->string('color_puntada')->nullable();
             $table->integer('bolsas_int'); // 0 ,1,2,3
             $table->boolean('vivos_bolsas_internas_cuerpo');
             $table->string('otro_vivos_bolsas_internas')->nullable();

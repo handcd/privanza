@@ -214,7 +214,7 @@
                               @if ($orden->etiquetas_tela === 1)
                                     <p> Sí </p>
                               @else
-                                    <p> No </p>
+                                    <p> Privanza </p>
                               @endif
                         </div>
                         <div class="col-md-3">
@@ -222,13 +222,13 @@
                               @if ($orden->etiquetas_marca === 1)
                                     <p> Sí </p>
                               @else
-                                    <p> No </p>
+                                    <p> Privanza </p>
                               @endif
                         </div>
                         <div class="col-md-3">
                               <label class="text-primary">Gancho</label>
                               @if ($orden->gancho === 1)
-                                    <p> Personalizado </p>
+                                    <p> Personalizado Privanza</p>
                               @else
                                     <p> Normal </p>
                               @endif
@@ -236,7 +236,7 @@
                         <div class="col-md-3">
                               <label class="text-primary">Portatrajes</label>
                               @if ($orden->portatrajes === 1)
-                                    <p> Personalizado </p>
+                                    <p> Personalizado Privanza </p>
                               @else
                                     <p> Cubrepolvos </p>
                               @endif
@@ -332,7 +332,10 @@
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Color en Ojal Solapa</label>
-                                    <p>{{ $orden->coat->color_ojal_solapa }}</p>
+                                    
+                                    <p>{{ $orden->coat->tipo_ojal_solapa ? 'Al tono' :  $orden->coat->color_ojal_solapa }}</p>
+
+
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Número de botones de Frente</label>
@@ -364,7 +367,11 @@
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Color de Ojal en Manga</label>
-                                    <p>{{ $orden->coat->color_ojal_manga }}</p>
+                                    @if ( $orden->coat->tipo_ojal_manga === 0)
+                                          <p>Al tono</p>
+                                    @else
+                                          <p>{{ $orden->coat->color_ojal_manga }}</p>
+                                    @endif
                               </div>
                         </div>
                         <div class="row">
@@ -431,8 +438,8 @@
                                     <p>{{ $orden->coat->pickstitch ? 'Si' : 'No' }}</p>
                               </div>
                               <div class="col-md-3">
-                                    <label class="text-primary">Sin Aletilla</label>
-                                    <p>{{ $orden->coat->sin_aletilla ? 'Sin Aletilla' : 'Con Aletilla' }}</p>
+                                    <label class="text-primary">Aletilla</label>
+                                    <p>{{ $orden->coat->sin_aletilla ? 'Sin Aletilla' : 'Aletilla normal' }}</p>
                               </div>
                               <div class="col-md-6">
                                     <label class="text-primary">Notas de Saco Externo</label>
@@ -490,8 +497,8 @@
                                     </div>
                               @endif
                               <div class="col-md-3">
-                                    <label class="text-primary">Color de Puntada</label>
-                                    <p>{{ $orden->coat->puntada_color }}</p>
+                                    <label class="text-primary">Color de Puntada al tono</label>
+                                    <p>{{ $orden->coat->color_puntada ? 'Sí' : 'No' }}</p>
                               </div>
                         </div>
                         <div class="row">
@@ -673,7 +680,7 @@
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Color de Medio Forro</label>
-                                    <p>{{ $orden->pants->color_medio_forro }}</p>
+                                    <p>{{ $orden->pants->medio_forro_piernas_al_tono ? 'Sí' : 'No'}}</p>
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Dobladillo</label>
