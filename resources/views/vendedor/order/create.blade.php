@@ -1205,15 +1205,12 @@
 									</div>
 									<div class="col-md-6">
 										<div class="form-group label-floating">
-											
 		                                	<div class="form-group label-floating">
-											<div class="checkbox">
-												<label><input type="checkbox" name="medioForroPiernasAlTono" value="true">Medio Forro interior al tono</label>
-											</div>									
-										</div>
-											
-										</div>
-										
+												<div class="checkbox">
+													<label><input type="checkbox" name="medioForroPiernasAlTono" value="true">Medio Forro interior al tono</label>
+												</div>									
+											</div>											
+										</div>										
 									</div>
 								</div>
 							</div>
