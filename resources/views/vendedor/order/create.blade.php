@@ -649,7 +649,7 @@
 										</div>
 										<div class="form-group label-floating">
 			                                <label class="control-label">Posición de Ojales Activos</label>
-			                                <select class="form-control" name="posicionOjalesActivosManga" required="true">
+			                                <select class="form-control" name="posicionOjalesActivosManga">
 			                                    <option disabled="" 
 			                                    @hasSection('editCliente')
 			                                    {{-- Ya hay un cliente seleccionado --}}
