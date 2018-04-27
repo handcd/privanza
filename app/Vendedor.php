@@ -29,6 +29,36 @@ class Vendedor extends Authenticatable
     ];
 
     /**
+     * To check if user is an Admin
+     * 
+     * @return boolean
+     */
+    public function isAdmin()
+    {
+        return false;
+    }
+
+    /**
+     * To check if user is a Validador
+     *
+     * @return boolean
+     */
+    public function isValidador()
+    {
+        return false;
+    }
+
+    /**
+     * To check if user is a Vendedor
+     *
+     * @return boolean
+     */
+    public function isVendedor()
+    {
+        return true;
+    }
+
+    /**
      * Get the orders by the current Vendedor
      * @param void
      * @return Orders
