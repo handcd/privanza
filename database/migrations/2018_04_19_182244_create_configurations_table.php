@@ -59,7 +59,6 @@ class CreateConfigurationsTable extends Migration
             $table->boolean('notificar_validador_cambio_ajuste')->default(1);
             $table->boolean('notificar_validador_nuevo_vendedor')->default(1);
             $table->boolean('notificar_validador_cambio_vendedor')->default(1);
-            $table->boolean('notificar_validador_nuevo_validador')->default(1);
             $table->boolean('notificar_validador_cambio_validador')->default(1);
             $table->boolean('notificar_validador_nuevo_cliente')->default(1);
             $table->boolean('notificar_validador_cambio_cliente')->default(1);
@@ -80,7 +79,6 @@ class CreateConfigurationsTable extends Migration
             $table->boolean('notificar_vendedor_cambio_orden')->default(1);
             $table->boolean('notificar_vendedor_nueva_cita')->default(1);
             $table->boolean('notificar_vendedor_cambio_cita')->default(1);
-            $table->boolean('notificar_vendedor_nuevo_vendedor')->default(1);
             $table->boolean('notificar_vendedor_cambio_vendedor')->default(1);
             $table->boolean('notificar_vendedor_nuevo_cliente')->default(1);
             $table->boolean('notificar_vendedor_cambio_cliente')->default(1);
