@@ -11,6 +11,7 @@ use App\Vendedor;
 use App\Validador;
 use App\Admin;
 use App\Fit;
+use App\Configuration;
 
 // Facades
 use Auth;
@@ -19,16 +20,26 @@ use Session;
 use Notification;
 
 // Notifications
-use App\Notifications\AdminNewClient;           // Cuando Validador/Vendedor añaden un cliente
-use App\Notifications\AdminEditedClient;        // Cuando Validador/Vendedor editan un cliente
-use App\Notifications\VendedorNewClient;        // Cuando Admin/Validador añaden un cliente
-use App\Notifications\VendedorEditedClient;     // Cuando Admin/Validador editan un cliente
-use App\Notifications\ValidadorNewClient;       // Cuando Vendedor/Admin añaden un cliente
-use App\Notifications\ValidadorEditedClient;    // Cuando Vendedor/Admin editan un cliente
+use App\Notifications\NewClient;
+use App\Notifications\EditedClient;
 
 
 class ClientController extends Controller
 {
+    /**
+     * Application's configuration
+     * @var \App\Configuration $configuracion
+     */
+    protected $configuracion;
+
+    /**
+     * Constructor of the class
+     */
+    public function __construct()
+    {
+        $this->configuracion = Configuration::first();
+    }
+
     /**
      * Display a listing of the resource as a Vendedor
      *
@@ -132,8 +143,16 @@ class ClientController extends Controller
         $cliente->save();
 
         // Notifications
-        Notification::send(Validador::all(), new ValidadorNewClient($cliente));
-        Notification::send(Admin::all(), new AdminNewClient($cliente));
+        if ($this->configuracion->notificar_validador_nuevo_cliente) {
+            foreach (Validador::all() as $validador) {
+                Notification::send($validador, new NewClient($validador,$cliente));
+            }
+        }
+        if ($this->configuracion->notificar_admin_nuevo_cliente) {
+            foreach (Admin::all() as $admin) {
+                Notification::send($admin, new NewClient($admin,$cliente));
+            }
+        }
 
         // Feedback to the user
         $request->session()->flash('success', 'Se ha añadido correctamente un cliente nuevo.');
@@ -176,8 +195,14 @@ class ClientController extends Controller
         $cliente->save();
 
         // Notifications
-        Notification::send($cliente->vendedor, new VendedorNewClient($cliente));
-        Notification::send(Admin::all(), new AdminNewClient($cliente));
+        if ($this->configuracion->notificar_vendedor_nuevo_cliente) {
+            Notification::send($cliente->vendedor, new NewClient($cliente->vendedor, $cliente));
+        }
+        if ($this->configuracion->notificar_admin_nuevo_cliente) {
+            foreach (Admin::all() as $admin) {
+                Notification::send($admin, new NewClient($admin,$cliente));
+            }
+        }
 
         // Feedback to the user
         $request->session()->flash('success', 'Se ha añadido correctamente un cliente nuevo.');
@@ -221,8 +246,14 @@ class ClientController extends Controller
         $cliente->save();
 
         // Notifications
-        Notification::send($cliente->vendedor, new VendedorNewClient($cliente));
-        Notification::send(Validador::all(), new ValidadorNewClient($cliente));
+        if ($this->configuracion->notificar_vendedor_nuevo_cliente) {
+            Notification::send($cliente->vendedor, new NewClient($cliente->vendedor,$cliente));
+        }
+        if ($this->configuracion->notificar_validador_nuevo_cliente) {
+            foreach (Validador::all() as $validador) {
+                Notification::send($validador, new NewClient($validador,$cliente));
+            }
+        }
 
         // Feedback to the user
         $request->session()->flash('success', 'Se ha añadido correctamente un cliente nuevo.');
@@ -382,8 +413,16 @@ class ClientController extends Controller
         $cliente->save();
 
         // Notifications
-        Notification::send(Validador::all(), new ValidadorEditedClient($cliente));
-        Notification::send(Admin::all(), new AdminEditedClient($cliente));
+        if ($this->configuracion->notificar_validador_cambio_cliente) {
+            foreach (Validador::all() as $validador) {
+                Notification::send($validador, new EditedClient($validador,$cliente));
+            }
+        }
+        if ($this->configuracion->notificar_admin_cambio_cliente) {
+            foreach (Admin::all() as $admin) {
+                Notification::send($admin, new EditedClient($admin,$cliente));
+            }
+        }
 
         // Feedback to the user
         $request->session()->flash('success', 'El cliente ha sido editado correctamente.');
@@ -433,8 +472,14 @@ class ClientController extends Controller
         $cliente->save();
 
         // Notifications
-        Notification::send($cliente->vendedor, new VendedorEditedClient($cliente));
-        Notification::send(Admin::all(), new AdminEditedClient($cliente));
+        if ($this->configuracion->notificar_vendedor_cambio_cliente) {
+            Notification::send($cliente->vendedor, new EditedClient($cliente->vendedor, $cliente));
+        }
+        if ($this->configuracion->notificar_admin_cambio_cliente) {
+            foreach (Admin::all() as $admin) {
+                Notification::send($admin, new EditedClient($admin,$cliente));
+            }
+        }
 
         // Feedback to the user
         $request->session()->flash('success', 'El cliente ha sido editado correctamente.');
@@ -483,8 +528,14 @@ class ClientController extends Controller
         $cliente->save();
 
         // Notifications
-        Notification::send($cliente->vendedor, new VendedorEditedClient($cliente));
-        Notification::send(Admin::all(), new AdminEditedClient($cliente));
+        if ($this->configuracion->notificar_vendedor_cambio_cliente) {
+            Notification::send($cliente->vendedor, new EditedClient($cliente->vendedor, $cliente));
+        }
+        if ($this->configuracion->notificar_validador_cambio_cliente) {
+            foreach (Validador::all() as $validador) {
+                Notification::send($validador, new EditedClient($validador,$cliente));
+            }
+        }
 
         // Feedback to the user
         $request->session()->flash('success', 'El cliente ha sido editado correctamente.');
