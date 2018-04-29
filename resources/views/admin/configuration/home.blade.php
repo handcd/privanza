@@ -90,53 +90,23 @@
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" name="notificar_admin_status_orden"
-									@if ($configuration->notificar_admin_status_orden)
+									<input type="checkbox" name="notificar_admin_nueva_cita"
+									@if ($configuration->notificar_admin_nueva_cita)
 										checked="true" 
 									@endif
 									>
 								</label>
-								Notificar sobre retrasos en el Status del Pedido
+								Notificar Nueva Cita
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" name="notificar_admin_nuevo_vendedor"
-									@if ($configuration->notificar_admin_nuevo_vendedor)
+									<input type="checkbox" name="notificar_admin_cambio_cita"
+									@if ($configuration->notificar_admin_cambio_cita)
 										checked="true" 
 									@endif
 									>
 								</label>
-								Notificar Nuevo Vendedor
-							</div>
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" name="notificar_admin_cambio_vendedor"
-									@if ($configuration->notificar_admin_cambio_vendedor)
-										checked="true" 
-									@endif
-									>
-								</label>
-								Notificar Cambios en algún Vendedor
-							</div>
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" name="notificar_admin_nuevo_cliente"
-									@if ($configuration->notificar_admin_nuevo_cliente)
-										checked="true" 
-									@endif
-									>
-								</label>
-								Notificar Nuevo Cliente
-							</div>
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" name="notificar_admin_cambio_cliente"
-									@if ($configuration->notificar_admin_cambio_cliente)
-										checked="true" 
-									@endif
-									>
-								</label>
-								Notificar Cambios en algún Cliente
+								Notificar Cambios en alguna Cita
 							</div>
 							<div class="checkbox">
 								<label>
@@ -160,37 +130,167 @@
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" name="notificar_admin_nueva_cita"
-									@if ($configuration->notificar_admin_nueva_cita)
+									<input type="checkbox" name="notificar_admin_nuevo_vendedor"
+									@if ($configuration->notificar_admin_nuevo_vendedor)
 										checked="true" 
 									@endif
 									>
 								</label>
-								Notificar Nueva Cita
+								Notificar Nuevo Vendedor
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" name="notificar_admin_cambio_cita"
-									@if ($configuration->notificar_admin_cambio_cita)
+									<input type="checkbox" name="notificar_admin_cambio_vendedor"
+									@if ($configuration->notificar_admin_cambio_vendedor)
 										checked="true" 
 									@endif
 									>
 								</label>
-								Notificar Cambios en alguna Cita
+								Notificar Cambios en algún Vendedor
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_admin_nuevo_validador"
+									@if ($configuration->notificar_admin_nuevo_validador)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar Nuevo Validador
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_admin_cambio_validador"
+									@if ($configuration->notificar_admin_cambio_validador)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar Cambio en Validador
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_admin_nuevo_cliente"
+									@if ($configuration->notificar_admin_nuevo_cliente)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar Nuevo Cliente
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_admin_cambio_cliente"
+									@if ($configuration->notificar_admin_cambio_cliente)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar Cambios en algún Cliente
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_admin_orden_aprobada"
+									@if ($configuration->notificar_admin_orden_aprobada)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la Orden sea Aprobada
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_admin_orden_produccion"
+									@if ($configuration->notificar_admin_orden_produccion)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la Orden entre a Producción
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_admin_orden_produccion_corte"
+									@if ($configuration->notificar_admin_orden_produccion_corte)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la Orden pase a Corte
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_admin_orden_produccion_ensamble"
+									@if ($configuration->notificar_admin_orden_produccion_ensamble)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la Orden pase a Ensamble
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_admin_orden_produccion_plancha"
+									@if ($configuration->notificar_admin_orden_produccion_plancha)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la Orden pase a Plancha
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_admin_orden_produccion_revision"
+									@if ($configuration->notificar_admin_orden_produccion_revision)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la Orden pase a Revisión
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_admin_orden_pickup"
+									@if ($configuration->notificar_admin_orden_pickup)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la Orden esté lista para Recolección
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_admin_orden_entregada"
+									@if ($configuration->notificar_admin_orden_entregada)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la Orden haya sido Entregada
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_admin_orden_cobrada"
+									@if ($configuration->notificar_admin_orden_cobrada)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la Orden haya sido Cobrada
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_admin_orden_facturada"
+									@if ($configuration->notificar_admin_orden_facturada)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la Orden haya sido Facturada
 							</div>
                 		</div>
                 		<div class="col-md-4">
                 			<h4>Validador</h4>
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" name="notificar_validador_desactivado"
-									@if ($configuration->notificar_validador_desactivado)
-										checked="true" 
-									@endif
-									>
-								</label>
-								Notificar al Validador si su cuenta se encuentra desactivada
-							</div>
 							<div class="checkbox">
 								<label>
 									<input type="checkbox" name="notificar_validador_nueva_orden"
@@ -213,53 +313,23 @@
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" name="notificar_validador_status_orden"
-									@if ($configuration->notificar_validador_status_orden)
+									<input type="checkbox" name="notificar_validador_nueva_cita"
+									@if ($configuration->notificar_validador_nueva_cita)
 										checked="true" 
 									@endif
 									>
 								</label>
-								Notificar sobre retrasos en el Status del Pedido
+								Notificar Nueva Cita
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" name="notificar_validador_nuevo_vendedor"
-									@if ($configuration->notificar_validador_nuevo_vendedor)
+									<input type="checkbox" name="notificar_validador_cambio_cita"
+									@if ($configuration->notificar_validador_cambio_cita)
 										checked="true" 
 									@endif
 									>
 								</label>
-								Notificar Nuevo Vendedor
-							</div>
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" name="notificar_validador_cambio_vendedor"
-									@if ($configuration->notificar_validador_cambio_vendedor)
-										checked="true" 
-									@endif
-									>
-								</label>
-								Notificar Cambios en algún Vendedor
-							</div>
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" name="notificar_validador_nuevo_cliente"
-									@if ($configuration->notificar_validador_nuevo_cliente)
-										checked="true" 
-									@endif
-									>
-								</label>
-								Notificar Nuevo Cliente
-							</div>
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" name="notificar_validador_cambio_cliente"
-									@if ($configuration->notificar_validador_cambio_cliente)
-										checked="true" 
-									@endif
-									>
-								</label>
-								Notificar Cambios en algún Cliente
+								Notificar Cambios en alguna Cita
 							</div>
 							<div class="checkbox">
 								<label>
@@ -283,37 +353,177 @@
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" name="notificar_validador_nueva_cita"
-									@if ($configuration->notificar_validador_nueva_cita)
+									<input type="checkbox" name="notificar_validador_nuevo_vendedor"
+									@if ($configuration->notificar_validador_nuevo_vendedor)
 										checked="true" 
 									@endif
 									>
 								</label>
-								Notificar Nueva Cita
+								Notificar Nuevo Vendedor
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" name="notificar_validador_cambio_cita"
-									@if ($configuration->notificar_validador_cambio_cita)
+									<input type="checkbox" name="notificar_validador_cambio_vendedor"
+									@if ($configuration->notificar_validador_cambio_vendedor)
 										checked="true" 
 									@endif
 									>
 								</label>
-								Notificar Cambios en alguna Cita
+								Notificar Cambios en algún Vendedor
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_validador_cambio_validador"
+									@if ($configuration->notificar_validador_cambio_validador)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar Cambios de Información en Validador
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_validador_nuevo_cliente"
+									@if ($configuration->notificar_validador_nuevo_cliente)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar Nuevo Cliente
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_validador_cambio_cliente"
+									@if ($configuration->notificar_validador_cambio_cliente)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar Cambios en algún Cliente
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_validador_orden_aprobada"
+									@if ($configuration->notificar_validador_orden_aprobada)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la Orden sea Aprobada
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_validador_orden_produccion"
+									@if ($configuration->notificar_validador_orden_produccion)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la Orden entre a Producción
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_validador_orden_produccion_corte"
+									@if ($configuration->notificar_validador_orden_produccion_corte)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la Orden pase a Corte
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_validador_orden_produccion_ensamble"
+									@if ($configuration->notificar_validador_orden_produccion_ensamble)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la Orden pase a Ensamble
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_validador_orden_produccion_plancha"
+									@if ($configuration->notificar_validador_orden_produccion_plancha)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la Orden pase a Plancha
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_validador_orden_produccion_revision"
+									@if ($configuration->notificar_validador_orden_produccion_revision)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la Orden pase a Revisión
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_validador_orden_pickup"
+									@if ($configuration->notificar_validador_orden_pickup)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la Orden esté lista para Recolección
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_validador_orden_entregada"
+									@if ($configuration->notificar_validador_orden_entregada)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la Orden haya sido Entregada
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_validador_orden_cobrada"
+									@if ($configuration->notificar_validador_orden_cobrada)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la Orden haya sido Cobrada
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_validador_orden_facturada"
+									@if ($configuration->notificar_validador_orden_facturada)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la Orden haya sido Facturada
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_validador_desactivado"
+									@if ($configuration->notificar_validador_desactivado)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar al Validador si su cuenta se encuentra desactivada
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_validador_activado"
+									@if ($configuration->notificar_validador_activado)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar al Validador si su cuenta ha sido reactivada
 							</div>
                 		</div>
                 		<div class="col-md-4">
                 			<h4>Vendedor</h4>
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" name="notificar_vendedor_desactivado"
-									@if ($configuration->notificar_vendedor_desactivado)
-										checked="true" 
-									@endif
-									>
-								</label>
-								Notificar al Vendedor si su cuenta se encuentra desactivada
-							</div>
 							<div class="checkbox">
 								<label>
 									<input type="checkbox" name="notificar_vendedor_nueva_orden"
@@ -336,13 +546,33 @@
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" name="notificar_vendedor_status_orden"
-									@if ($configuration->notificar_vendedor_status_orden)
+									<input type="checkbox" name="notificar_vendedor_nueva_cita"
+									@if ($configuration->notificar_vendedor_nueva_cita)
 										checked="true" 
 									@endif
 									>
 								</label>
-								Notificar sobre retrasos en el Status del Pedido
+								Notificar Nueva Cita
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_vendedor_cambio_cita"
+									@if ($configuration->notificar_vendedor_cambio_cita)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar Cambios en alguna Cita
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_vendedor_cambio_vendedor"
+									@if ($configuration->notificar_vendedor_cambio_vendedor)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar Cambios en información Vendedor
 							</div>
 							<div class="checkbox">
 								<label>
@@ -366,23 +596,83 @@
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" name="notificar_vendedor_nueva_cita"
-									@if ($configuration->notificar_vendedor_nueva_cita)
+									<input type="checkbox" name="notificar_vendedor_orden_aprobada"
+									@if ($configuration->notificar_vendedor_orden_aprobada)
 										checked="true" 
 									@endif
 									>
 								</label>
-								Notificar Nueva Cita
+								Notificar cuando la Orden sea Aprobada
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" name="notificar_vendedor_cambio_cita"
-									@if ($configuration->notificar_vendedor_cambio_cita)
+									<input type="checkbox" name="notificar_vendedor_orden_produccion"
+									@if ($configuration->notificar_vendedor_orden_produccion)
 										checked="true" 
 									@endif
 									>
 								</label>
-								Notificar Cambios en alguna Cita
+								Notificar cuando la Orden entre a Producción
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_vendedor_orden_pickup"
+									@if ($configuration->notificar_vendedor_orden_pickup)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la Orden esté lista para ser recogida
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_vendedor_orden_entregada"
+									@if ($configuration->notificar_vendedor_orden_entregada)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la Orden sea entregada
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_vendedor_orden_cobrada"
+									@if ($configuration->notificar_vendedor_orden_cobrada)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la Orden sea Cobrada
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_vendedor_orden_facturada"
+									@if ($configuration->notificar_vendedor_orden_facturada)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la Orden sea Facturada
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_vendedor_desactivado"
+									@if ($configuration->notificar_vendedor_desactivado)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar al Vendedor si su cuenta se desactiva
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_vendedor_activado"
+									@if ($configuration->notificar_vendedor_activado)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar al Vendedor si su cuenta se activa
 							</div>
                 		</div>
                 	</div>
