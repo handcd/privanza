@@ -18,7 +18,26 @@ Route::post('/ordenes','OrderController@storeForAdmin');
 Route::get('/ordenes/{order}','OrderController@showForAdmin');
 Route::get('/ordenes/{order}/editar','OrderController@editForAdmin');
 Route::put('/ordenes/{order}','OrderController@updateForAdmin');
-Route::get('/ordenes/{order}/aprobar');
+Route::get('/ordenes/{order}/approved','OrderController@approveOrder');
+Route::get('/ordenes/{order}/produccion','OrderController@productionOrder');
+Route::get('/ordenes/{order}/produccionCorte','OrderController@productionCorteOrder');
+Route::get('/ordenes/{order}/produccionEnsamble','OrderController@productionEnsambleOrder');
+Route::get('/ordenes/{order}/produccionPlancha','OrderController@productionPlanchaOrder');
+Route::get('/ordenes/{order}/produccionRevision','OrderController@productionRevisionOrder');
+Route::get('/ordenes/{order}/pickup','OrderController@pickupOrder');
+Route::get('/ordenes/{order}/delivered','OrderController@deliveredOrder');
+Route::get('/ordenes/{order}/charged','OrderController@chargedOrder');
+Route::get('/ordenes/{order}/invoiced','OrderController@invoicedOrder');
+Route::get('/ordenes/{order}/notApproved','OrderController@approveOrder');
+Route::get('/ordenes/{order}/notProduccion','OrderController@productionOrder');
+Route::get('/ordenes/{order}/notProduccionCorte','OrderController@productionCorteOrder');
+Route::get('/ordenes/{order}/notProduccionEnsamble','OrderController@productionEnsambleOrder');
+Route::get('/ordenes/{order}/notProduccionPlancha','OrderController@productionPlanchaOrder');
+Route::get('/ordenes/{order}/notProduccionRevision','OrderController@productionRevisionOrder');
+Route::get('/ordenes/{order}/notPickup','OrderController@pickupOrder');
+Route::get('/ordenes/{order}/notDelivered','OrderController@deliveredOrder');
+Route::get('/ordenes/{order}/notCharged','OrderController@chargedOrder');
+Route::get('/ordenes/{order}/notInvoiced','OrderController@invoicedOrder');
 
 // Ajustes
 Route::get('/ajustes','AdjustmentController@indexForAdmin');
