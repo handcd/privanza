@@ -11,14 +11,28 @@ use Notification;
 use App\Vendedor;
 use App\Admin;
 use App\Validador;
+use App\Configuration;
 
 // Notifications
-use App\Notifications\VendedorNew;
-use App\Notifications\AdminNewVendedor;
-use App\Notifications\ValidadorNewVendedor;
+use App\Notifications\NewVendedor;
+use App\Notifications\EditedVendedor;
 
 class VendedorController extends Controller
 {
+	/**
+     * Application's configuration
+     * @var \App\Configuration $configuracion
+     */
+    protected $configuracion;
+
+    /**
+     * Constructor of the class
+     */
+    public function __construct()
+    {
+        $this->configuracion = Configuration::first();
+    }
+
 	/**
 	 * Display the listing of all Vendedores
 	 *
@@ -177,12 +191,18 @@ class VendedorController extends Controller
 
 		$vendedor->save();
 
-		// Notify new Vendedor
-		Notification::send($vendedor,new VendedorNew($vendedor,$request->password));
-		// Notify Admin
-		Notification::send(Admin::all(), new AdminNewVendedor($vendedor));
-		// Notify current Validador
-		Notification::send(Auth::user(), new ValidadorNewVendedor($vendedor));
+		// Email notifications
+		Notification::send($vendedor, new NewVendedor($vendedor,$vendedor,$request->password));
+		if ($this->configuracion->notificar_validador_nuevo_vendedor) {
+			foreach (Validador::all() as $validador) {
+				Notification::send($validador, new NewVendedor($validador,$vendedor));
+			}
+		}
+		if ($this->configuracion->notificar_admin_nuevo_vendedor) {
+			foreach (Admin::all() as $admin) {
+				Notification::send($admin, new NewVendedor($admin,$vendedor));
+			}
+		}
 
 		// Feedback to the user
 		$request->session()->flash('success', '¡Listo! '.$vendedor->name.' ha sido agregado exitosamente. Se le ha enviado un correo electrónico con la información de inicio de sesión así como una notificación para ti y el administrador.');
@@ -236,12 +256,18 @@ class VendedorController extends Controller
 
 		$vendedor->save();
 
-		// Notify new Vendedor
-		Notification::send($vendedor,new VendedorNew($vendedor,$request->password));
-		// Notify current Admin
-		Notification::send(Auth::user(), new AdminNewVendedor($vendedor));
-		// Notify all Validadores
-		Notification::send(Validador::all(), new ValidadorNewVendedor($vendedor));
+		// Email notifications
+		Notification::send($vendedor, new NewVendedor($vendedor,$vendedor,$request->password));
+		if ($this->configuracion->notificar_validador_nuevo_vendedor) {
+			foreach (Validador::all() as $validador) {
+				Notification::send($validador, new NewVendedor($validador,$vendedor));
+			}
+		}
+		if ($this->configuracion->notificar_admin_nuevo_vendedor) {
+			foreach (Admin::all() as $admin) {
+				Notification::send($admin, new NewVendedor($admin,$vendedor));
+			}
+		}
 
 		// Feedback to the user
 		$request->session()->flash('success', '¡Listo! '.$vendedor->name.' ha sido agregado exitosamente. Se le ha enviado un correo electrónico con la información de inicio de sesión así como una notificación para ti y el administrador.');
@@ -259,13 +285,14 @@ class VendedorController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
+		// Get the desired vendedor's model
 		$vendedor = Vendedor::find($id);
-
+		// Validate vendedor's existence
 		if (!$vendedor) {
 			$request->session()->flash('danger', 'Ha ocurrido un error y no hemos podido encontrar el vendedor al que hace referencia la información.');
 			return redirect()->back();
 		}
-
+		// Validate request
 		$this->validate($request, [
 			'name' => 'required',  						
 			'lastname' => 'required',  					
@@ -281,7 +308,7 @@ class VendedorController extends Controller
 			'enabled' => 'required',  					
 			'type' => 'required'						
 		]);
-
+		// Assign request data to model
 		$vendedor->name = $request->name;
 		$vendedor->lastname = $request->lastname;
 		$vendedor->email = $request->email;
@@ -295,11 +322,28 @@ class VendedorController extends Controller
 		$vendedor->concept = $request->concept;
 		$vendedor->enabled = $request->enabled == "1" ? true:false;
 		$vendedor->type = $request->type;
-
+		// Save to DB
 		$vendedor->save();
 
+		// Email notifications
+		if ($this->configuracion->notificar_vendedor_cambio_vendedor) {
+			Notification::send($vendedor, new EditedVendedor($vendedor,$vendedor));
+		}
+		if ($this->configuracion->notificar_validador_cambio_vendedor) {
+			foreach (Validador::all() as $validador) {
+				Notification::send($validador, new EditedVendedor($validador,$vendedor));
+			}
+		}
+		if ($this->configuracion->notificar_admin_cambio_vendedor) {
+			foreach (Admin::all() as $admin) {
+				Notification::send($admin, new EditedVendedor($admin,$vendedor));
+			}
+		}
+
+		// Feedback to the user
 		$request->session()->flash('success', '¡Listo! Hemos actualizado correctamente la información de '.$vendedor->name.'.');
 
+		// Redirect to home
 		return redirect('/validador/vendedores');
 	}
 
@@ -311,13 +355,16 @@ class VendedorController extends Controller
 	 */
 	public function updateForAdmin(Request $request, $id)
 	{
+		// Get the desired vendedor's model
 		$vendedor = Vendedor::find($id);
 
+		// Validate Vendedor's existence
 		if (!$vendedor) {
 			$request->session()->flash('danger', 'Ha ocurrido un error y no hemos podido encontrar el vendedor al que hace referencia la información.');
 			return redirect('/admin/vendedores');
 		}
 
+		// Validate request
 		$this->validate($request, [
 			'name' => 'required',  						
 			'lastname' => 'required',  					
@@ -333,7 +380,7 @@ class VendedorController extends Controller
 			'enabled' => 'required',  					
 			'type' => 'required'						
 		]);
-
+		// Assign Request data to Model
 		$vendedor->name = $request->name;
 		$vendedor->lastname = $request->lastname;
 		$vendedor->email = $request->email;
@@ -347,11 +394,28 @@ class VendedorController extends Controller
 		$vendedor->concept = $request->concept;
 		$vendedor->enabled = $request->enabled == "1" ? true:false;
 		$vendedor->type = $request->type;
-
+		// Save to DB
 		$vendedor->save();
 
+		// Email notifications
+		if ($this->configuracion->notificar_vendedor_cambio_vendedor) {
+			Notification::send($vendedor, new EditedVendedor($vendedor,$vendedor));
+		}
+		if ($this->configuracion->notificar_validador_cambio_vendedor) {
+			foreach (Validador::all() as $validador) {
+				Notification::send($validador, new EditedVendedor($validador,$vendedor));
+			}
+		}
+		if ($this->configuracion->notificar_admin_cambio_vendedor) {
+			foreach (Admin::all() as $admin) {
+				Notification::send($admin, new EditedVendedor($admin,$vendedor));
+			}
+		}
+
+		// Feedback the user
 		$request->session()->flash('success', '¡Listo! Hemos actualizado correctamente la información de '.$vendedor->name.'.');
 
+		// Redirect to home
 		return redirect('/admin/vendedores');
 	}
 }
