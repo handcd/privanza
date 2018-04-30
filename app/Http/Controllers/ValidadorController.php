@@ -8,15 +8,31 @@ use Auth;
 use Notification;
 
 // Notifications
-use App\Notifications\ValidadorNew;
+use App\Notifications\NewValidador;
+use App\Notifications\EditedValidador;
 
 // Models
 use App\Vendedor;
 use App\Admin;
 use App\Validador;
+use App\Configuration;
 
 class ValidadorController extends Controller
 {
+    /**
+     * Application's configuration
+     * @var \App\Configuration $configuracion
+     */
+    protected $configuracion;
+
+    /**
+     * Constructor of the class
+     */
+    public function __construct()
+    {
+        $this->configuracion = Configuration::first();
+    }
+
 	/**
 	 * Display the home view for the CRUD
 	 *
@@ -92,8 +108,13 @@ class ValidadorController extends Controller
 		// Save the data to DB
 		$validador->save();
 
-		// Notify new Validador
-		Notification::send($validador, new ValidadorNew($validador,$request->password));
+		// Email based notifications
+        Notification::send($validador, new NewValidador($validador,$validador,$request->password));
+        if ($this->configuracion->notificar_admin_nuevo_validador) {
+            foreach (Admin::all() as $admin) {
+                Notification::send($admin, new NewValidador($admin,$validador));
+            }
+        }
 
 		// Feedback to the Admin
 		$request->session()->flash('success', '¡Listo! '.$validador->name.' ha sido añadido correctamente como Validador. Se le ha enviado un email con la información para que se integre al sistema.');
@@ -159,6 +180,16 @@ class ValidadorController extends Controller
 
 		// Save the data to DB
 		$validador->save();
+
+        // Email based notifications
+        if ($this->configuracion->notificar_validador_cambio_validador) {
+            Notification::send($validador, new EditedValidador($validador,$validador));
+        }
+        if ($this->configuracion->notificar_admin_cambio_validador) {
+            foreach (Admin::all() as $admin) {
+                Notification::send($admin, new EditedValidador($admin,$validador));
+            }
+        }
 
 		// Feedback to the Admin
 		$request->session()->flash('success', '¡Listo! Se ha editado correctamnete la información de '.$validador->name.'.');
