@@ -76,17 +76,4 @@ class NewOrder extends Notification implements ShouldQueue
                         ->line('¡Gracias por usar el sistema!');
         }
     }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-        return [
-            //
-        ];
-    }
 }

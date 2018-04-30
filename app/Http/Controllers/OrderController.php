@@ -14,6 +14,7 @@ use App\Vest;
 use App\Coat;
 use App\Pants;
 use App\Fit;
+use App\Configuration;
 
 // Facades
 use Auth;
@@ -21,21 +22,25 @@ use PDF;
 use Session;
 use Notification; 
 
-// Notifications Vendedor
-use App\Notifications\VendedorNewOrder;
-use App\Notifications\VendedorPickupOrder;
-
-// Notifications Validador
-use App\Notifications\ValidadorNewOrder;
-use App\Notifications\ValidadorApproveOrder;
-use App\Notifications\ValidadorProductionOrder;
-use App\Notifications\ValidadorProductionCuttingOrder;
-use App\Notifications\ValidadorProductionEnsambleOrder;
-use App\Notifications\ValidadorProductionRevisionOrder;
-use App\Notifications\ValidadorDeliveredOrder;
+// Notifications 
+use App\Notifications\NewOrder;
 
 class OrderController extends Controller
 {
+    /**
+     * Application's configuration
+     * @var \App\Configuration $configuracion
+     */
+    protected $configuracion;
+
+    /**
+     * Constructor of the class
+     */
+    public function __construct()
+    {
+        $this->configuracion = Configuration::first();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -484,8 +489,19 @@ class OrderController extends Controller
         $request->session()->flash('success', '¡Se ha registrado correctamente la orden #'.$orden->id.'!');
 
         // Send Emails about new Order
-        Notification::send(Auth::user(), new VendedorNewOrder($orden));
-        Notification::send(Validador::all(), new ValidadorNewOrder($orden));
+        if ($configuracion->notificar_vendedor_nueva_orden) {
+            Notification::send($orden->vendedor, new NewOrder($orden->vendedor,$orden));
+        }
+        if ($configuracion->notificar_validador_nueva_orden) {
+            foreach (Validador::all() as $validador) {
+                Notification::send($validador, new NewOrder($validador,$orden));
+            }
+        }
+        if ($configuracion->notificar_admin_nueva_orden) {
+            foreach (Admin::all() as $admin) {
+                Notification::send($admin, new NewOrder($admin,$orden));
+            }
+        }
 
         // Redirect to Orders:Home
         return redirect('/vendedor/ordenes');
