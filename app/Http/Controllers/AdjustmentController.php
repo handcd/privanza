@@ -12,12 +12,30 @@ use App\Adjustment;
 use App\AdjustmentOrder;
 use App\Client;
 use App\Order;
+use App\Configuration;
+use App\Validador;
+use App\Admin;
 
 // Notifications
-
+use App\Notifications\NewAdjustment;
+use App\Notifications\EditedAdjustment;
 
 class AdjustmentController extends Controller
 {
+    /**
+     * Application's configuration
+     * @var \App\Configuration $configuracion
+     */
+    protected $configuracion;
+
+    /**
+     * Constructor of the class
+     */
+    public function __construct()
+    {
+        $this->configuracion = Configuration::first();
+    }
+
 	/**
 	 * Get the index view for Validadors
 	 * @return \Illuminate\Http\Request
@@ -117,6 +135,18 @@ class AdjustmentController extends Controller
         	$ajuste->save();
         }
 
+        // Notifications via email
+        if ($this->configuracion->notificar_validador_nuevo_ajuste) {
+        	foreach (Validador::all() as $validador) {
+        		Notification::send($validador, new NewAdjustment($validador,$orden));
+        	}
+        }
+        if ($this->configuracion->notificar_admin_nuevo_ajuste) {
+        	foreach (Admin::all() as $admin) {
+        		Notification::send($admin, new NewAdjustment($admin,$orden));
+        	}
+        }
+
         // Feedback the user
         $request->session()->flash('success', 'Se ha añadido exitosamente la Orden de Ajustes #'.$orden->id.' al sistema.');
 
@@ -157,6 +187,18 @@ class AdjustmentController extends Controller
         	$ajuste->descripcion = $request->descripcion[$i];
         	$ajuste->tipo_prenda = $request->tipo_prenda[$i];
         	$ajuste->save();
+        }
+
+        // Notifications via email
+        if ($this->configuracion->notificar_validador_nuevo_ajuste) {
+        	foreach (Validador::all() as $validador) {
+        		Notification::send($validador, new NewAdjustment($validador,$orden));
+        	}
+        }
+        if ($this->configuracion->notificar_admin_nuevo_ajuste) {
+        	foreach (Admin::all() as $admin) {
+        		Notification::send($admin, new NewAdjustment($admin,$orden));
+        	}
         }
 
         // Feedback the user
@@ -287,6 +329,18 @@ class AdjustmentController extends Controller
         	$ajuste->save();
         }
 
+        // Email Notifications
+        if ($this->configuracion->notificar_validador_cambio_ajuste) {
+        	foreach (Validador::all() as $validador) {
+        		Notification::send($validador, new EditedAdjustment($validador, $orden));
+        	}
+        }
+        if ($this->configuracion->notificar_admin_cambio_ajuste) {
+        	foreach (Admin::all() as $admin) {
+        		Notification::send($admin, new EditedAdjustment($admin, $orden));
+        	}
+        }
+
         // Feedback the user
         $request->session()->flash('success', 'Se ha actualizado exitosamente la Orden de Ajustes #'.$orden->id.' en el sistema.');
 
@@ -351,6 +405,18 @@ class AdjustmentController extends Controller
         	$ajuste->descripcion = $request->descripcion[$i];
         	$ajuste->tipo_prenda = $request->tipo_prenda[$i];
         	$ajuste->save();
+        }
+
+        // Email Notifications
+        if ($this->configuracion->notificar_validador_cambio_ajuste) {
+        	foreach (Validador::all() as $validador) {
+        		Notification::send($validador, new EditedAdjustment($validador, $orden));
+        	}
+        }
+        if ($this->configuracion->notificar_admin_cambio_ajuste) {
+        	foreach (Admin::all() as $admin) {
+        		Notification::send($admin, new EditedAdjustment($admin, $orden));
+        	}
         }
 
         // Feedback the user

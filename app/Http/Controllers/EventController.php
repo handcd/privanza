@@ -11,6 +11,7 @@ use App\Event;
 use App\Client;
 use App\Admin;
 use App\Validador;
+use App\Configuration;
 
 // Facades
 use Carbon\Carbon;
@@ -19,15 +20,25 @@ use Session;
 use Notification;
 
 // Notifications
-use App\Notifications\ValidadorNewEvent;    // Cuando el Vendedor/Admin añaden cita
-use App\Notifications\ValidadorEditedEvent; // Cuando el Vendedor/Admin editan cita
-use App\Notifications\VendedorNewEvent;     // Cuando el Validador/Admin añaden cita
-use App\Notifications\VendedorEditedEvent;  // Cuando el Validador/Admin editan cita
-use App\Notifications\AdminNewEvent;        // Cuando el Validador/Vendedor añaden cita
-use App\Notifications\AdminEditedEvent;     // Cuando el Validador/Vendedor editan cita
+use App\Notifications\NewEvent;    // Cuando el Vendedor/Admin añaden cita
+use App\Notifications\EditedEvent; // Cuando el Vendedor/Admin editan cita
 
 class EventController extends Controller
 {
+    /**
+     * Application's configuration
+     * @var \App\Configuration $configuracion
+     */
+    protected $configuracion;
+
+    /**
+     * Constructor of the class
+     */
+    public function __construct()
+    {
+        $this->configuracion = Configuration::first();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -163,8 +174,19 @@ class EventController extends Controller
         $evento->save();
 
         // Notifications
-        Notification::send(Validador::all(),new ValidadorNewEvent($evento));
-        Notification::send(Admin::all(), new AdminNewEvent($evento));
+        if ($this->configuracion->notificar_vendedor_nueva_cita) {
+            Notification::send($evento->vendedor, new NewEvent($evento->vendedor,$evento));
+        }
+        if ($this->configuracion->notificar_validador_nueva_cita) { 
+            foreach (Validador::all() as $validador) {
+                  Notification::send($validador, new NewEvent($validador,$evento));
+              }
+        }
+        if ($this->configuracion->notificar_admin_nueva_cita) {
+            foreach (Admin::all() as $admin) {
+                Notification::send($admin, new NewEvent($admin,$evento));
+            }
+        }
 
         // Feedback to the user
         $request->session()->flash('success', 'Se ha añadido correctamente la cita.');
@@ -196,8 +218,19 @@ class EventController extends Controller
         $evento->save();
 
         // Notifications
-        Notification::send($evento->vendedor,new VendedorNewEvent($evento));
-        Notification::send(Admin::all(), new AdminNewEvent($evento));
+        if ($this->configuracion->notificar_vendedor_nueva_cita) {
+            Notification::send($evento->vendedor, new NewEvent($evento->vendedor,$evento));
+        }
+        if ($this->configuracion->notificar_validador_nueva_cita) { 
+            foreach (Validador::all() as $validador) {
+                  Notification::send($validador, new NewEvent($validador,$evento));
+              }
+        }
+        if ($this->configuracion->notificar_admin_nueva_cita) {
+            foreach (Admin::all() as $admin) {
+                Notification::send($admin, new NewEvent($admin,$evento));
+            }
+        }
 
         // Feedback to the user
         $request->session()->flash('success', '¡Listo! Hemos añadido la cita y notificado a '.$evento->vendedor->name);
@@ -229,8 +262,19 @@ class EventController extends Controller
         $evento->save();
 
         // Notifications
-        Notification::send($evento->vendedor,new VendedorNewEvent($evento));
-        Notification::send(Validador::all(), new ValidadorNewEvent($evento));
+        if ($this->configuracion->notificar_vendedor_nueva_cita) {
+            Notification::send($evento->vendedor, new NewEvent($evento->vendedor,$evento));
+        }
+        if ($this->configuracion->notificar_validador_nueva_cita) { 
+            foreach (Validador::all() as $validador) {
+                  Notification::send($validador, new NewEvent($validador,$evento));
+              }
+        }
+        if ($this->configuracion->notificar_admin_nueva_cita) {
+            foreach (Admin::all() as $admin) {
+                Notification::send($admin, new NewEvent($admin,$evento));
+            }
+        }
 
         // Feedback to the user
         $request->session()->flash('success', '¡Listo! Hemos añadido la cita y notificado a '.$evento->vendedor->name.' y a los validadores para que estén al pendiente de la misma.');
@@ -370,8 +414,19 @@ class EventController extends Controller
         $evento->save();
 
         // Notifications
-        Notification::send(Validador::all(), new ValidadorEditedEvent($evento));
-        Notification::send(Admin::all(), new AdminEditedEvent($evento));
+        if ($this->configuracion->notificar_vendedor_cambio_cita) {
+            Notification::send($evento->vendedor, new EditedEvent($evento->vendedor,$evento));
+        }
+        if ($this->configuracion->notificar_validador_cambio_cita) {
+            foreach (Validador::all() as $validador) {
+                Notification::send($validador, new EditedEvent($validador,$evento));
+            }
+        }
+        if ($this->configuracion->notificar_admin_cambio_cita) {
+            foreach (Admin::all() as $admin) {
+                Notification::send($admin, new EditedEvent($admin,$evento));
+            }
+        }
 
         // Feedback to the user
         $request->session()->flash('success', 'Se ha editado correctamente la cita y se ha notificado al Validador y Administrador.');
@@ -404,8 +459,19 @@ class EventController extends Controller
         $evento->save();
 
         // Notifications
-        Notification::send($evento->vendedor, new VendedorEditedEvent($evento));
-        Notification::send(Admin::all(), new AdminEditedEvent($evento));
+        if ($this->configuracion->notificar_vendedor_cambio_cita) {
+            Notification::send($evento->vendedor, new EditedEvent($evento->vendedor,$evento));
+        }
+        if ($this->configuracion->notificar_validador_cambio_cita) {
+            foreach (Validador::all() as $validador) {
+                Notification::send($validador, new EditedEvent($validador,$evento));
+            }
+        }
+        if ($this->configuracion->notificar_admin_cambio_cita) {
+            foreach (Admin::all() as $admin) {
+                Notification::send($admin, new EditedEvent($admin,$evento));
+            }
+        }
 
         // Feedback to the user
         $request->session()->flash('success', 'Se ha editado correctamente la cita y se ha enviado una notificación al Vendedor.');
@@ -439,8 +505,19 @@ class EventController extends Controller
         $evento->save();
 
         // Notifications
-        Notification::send($evento->vendedor, new VendedorEditedEvent($evento));
-        Notification::send(Validador::all(), new ValidadorEditedEvent($evento));
+        if ($this->configuracion->notificar_vendedor_cambio_cita) {
+            Notification::send($evento->vendedor, new EditedEvent($evento->vendedor,$evento));
+        }
+        if ($this->configuracion->notificar_validador_cambio_cita) {
+            foreach (Validador::all() as $validador) {
+                Notification::send($validador, new EditedEvent($validador,$evento));
+            }
+        }
+        if ($this->configuracion->notificar_admin_cambio_cita) {
+            foreach (Admin::all() as $admin) {
+                Notification::send($admin, new EditedEvent($admin,$evento));
+            }
+        }
 
         // Feedback to the user
         $request->session()->flash('success', 'Se ha editado correctamente la cita y se ha enviado una notificación al Vendedor.');

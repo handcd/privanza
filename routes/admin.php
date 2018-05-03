@@ -18,7 +18,16 @@ Route::post('/ordenes','OrderController@storeForAdmin');
 Route::get('/ordenes/{order}','OrderController@showForAdmin');
 Route::get('/ordenes/{order}/editar','OrderController@editForAdmin');
 Route::put('/ordenes/{order}','OrderController@updateForAdmin');
-Route::get('/ordenes/{order}/aprobar');
+Route::get('/ordenes/{order}/approved','OrderController@approveOrder');
+Route::get('/ordenes/{order}/produccion','OrderController@productionOrder');
+Route::get('/ordenes/{order}/produccionCorte','OrderController@productionCorteOrder');
+Route::get('/ordenes/{order}/produccionEnsamble','OrderController@productionEnsambleOrder');
+Route::get('/ordenes/{order}/produccionPlancha','OrderController@productionPlanchaOrder');
+Route::get('/ordenes/{order}/produccionRevision','OrderController@productionRevisionOrder');
+Route::get('/ordenes/{order}/pickup','OrderController@pickupOrder');
+Route::get('/ordenes/{order}/delivered','OrderController@deliveredOrder');
+Route::get('/ordenes/{order}/charged','OrderController@chargedOrder');
+Route::get('/ordenes/{order}/invoiced','OrderController@invoicedOrder');
 
 // Ajustes
 Route::get('/ajustes','AdjustmentController@indexForAdmin');
@@ -59,3 +68,6 @@ Route::put('/perfil','ProfileController@actualizarPerfilAdmin');
 Route::get('/perfil','ProfileController@perfilAdmin');
 Route::get('/perfil/editar', 'ProfileController@editarPerfilAdmin');
 
+// Configuration
+Route::put('/configuracion','ConfigurationController@update');
+Route::get('/configuracion','ConfigurationController@index');

@@ -29,6 +29,36 @@ class Validador extends Authenticatable
     ];
 
     /**
+     * To check if user is an Admin
+     * 
+     * @return boolean
+     */
+    public function isAdmin()
+    {
+        return false;
+    }
+
+    /**
+     * To check if user is a Validador
+     *
+     * @return boolean
+     */
+    public function isValidador()
+    {
+        return true;
+    }
+
+    /**
+     * To check if user is a Vendedor
+     *
+     * @return boolean
+     */
+    public function isVendedor()
+    {
+        return false;
+    }
+
+    /**
      * Send the password reset notification.
      *
      * @param  string  $token
