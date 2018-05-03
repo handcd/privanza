@@ -736,7 +736,7 @@
 							</div>
                 		</div>
                 	</div>
-                	<p class="pull-left">Esta configuración fue actualizada por última vez el: <strong>{{ $configuration->updated_at }}<strong></p>
+                	<p class="pull-left">Esta configuración fue actualizada por última vez el: <strong>{{ $configuration->updated_at }}</strong></p>
                     <button type="submit" class="btn btn-danger pull-right">Actualizar Configuración</button>
                     <div class="clearfix"></div>
                 </form>
