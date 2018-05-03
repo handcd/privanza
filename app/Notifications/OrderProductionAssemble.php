@@ -7,18 +7,27 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class OrderProductionAssemble extends Notification
+class OrderProductionAssemble extends Notification implements ShouldQueue
 {
     use Queueable;
+
+    /**
+     * The user and the order
+     * @var $user
+     * @var \App\Order $order
+     */
+    protected $user;
+    protected $order;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user, $order)
     {
-        //
+        $this->user = $user;
+        $this->order = $order;
     }
 
     /**
@@ -40,22 +49,18 @@ class OrderProductionAssemble extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
-    }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-        return [
-            //
-        ];
+        if ($this->user->isAdmin()) {
+            return (new MailMessage)
+                        ->subject('Una Orden ha sido marcada como en Producción - Ensamble')
+                        ->line('La orden #'.$this->order->id. ' con número de Orden de Producción #'.$this->order->consecutivo_op.' ha sido marcada como en **producción - ensamble**. Para revisar más detalles de la misma, haz click en el siguiente botón:')
+                        ->action('Revisar Orden',url('/admin/ordenes',$this->order->id))
+                        ->line('¡Gracias por usar el Sistema!');
+        } else {
+            return (new MailMessage)
+                        ->subject('Una Orden ha sido marcada como en Producción - Ensamble')
+                        ->line('La orden #'.$this->order->id. ' con número de Orden de Producción #'.$this->order->consecutivo_op.' ha sido marcada como en **producción - ensamble**. Para revisar más detalles de la misma, haz click en el siguiente botón:')
+                        ->action('Revisar Orden',url('/validador/ordenes',$this->order->id))
+                        ->line('¡Gracias por usar el Sistema!');
+        }
     }
 }
