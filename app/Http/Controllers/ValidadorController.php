@@ -10,6 +10,8 @@ use Notification;
 // Notifications
 use App\Notifications\NewValidador;
 use App\Notifications\EditedValidador;
+use App\Notifications\ValidadorEnabled;
+use App\Notifications\ValidadorDisabled;
 
 // Models
 use App\Vendedor;
@@ -176,6 +178,29 @@ class ValidadorController extends Controller
 		$validador->job_position = $request->job_position;
 		$validador->phone = $request->phone;
 		$validador->birthday = Carbon::parse($request->birthday)->toDateTimeString();
+
+        // Notifications for enabling and disabling validadores
+        if ($validador->enabled && !($request->enabled == "1")) {
+            if ($this->configuracion->notificar_admin_validador_desactivado) {
+                foreach (Admin::all() as $admin) {
+                    Notification::send($admin, new ValidadorDisabled($admin,$validador));
+                }
+            }
+            if ($this->configuracion->notificar_validador_desacitvado) {
+                Notification::send($validador, new ValidadorDisabled($validador,$validador));
+            }
+        } else {
+            if ($this->configuracion->notificar_admin_validador_activado) {
+                foreach (Admin::all() as $admin) {
+                    Notification::send($admin, new ValidadorEnabled($admin,$validador));
+                }
+            }
+            if ($this->configuracion->notificar_validador_activado) {
+                Notification::send($validador, new ValidadorEnabled($validador,$validador));
+            }
+        }
+
+        // Assigning data
 		$validador->enabled = $request->enabled == "1" ? true : false;
 
 		// Save the data to DB

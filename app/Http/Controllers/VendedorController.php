@@ -16,6 +16,8 @@ use App\Configuration;
 // Notifications
 use App\Notifications\NewVendedor;
 use App\Notifications\EditedVendedor;
+use App\Notifications\VendedorEnabled;
+use App\Notifications\VendedorDisabled;
 
 class VendedorController extends Controller
 {
@@ -320,7 +322,39 @@ class VendedorController extends Controller
 		$vendedor->bank = $request->bank;
 		$vendedor->address_legal = $request->legalAddress;
 		$vendedor->concept = $request->concept;
-		$vendedor->enabled = $request->enabled == "1" ? true:false;
+
+		// Notifications for account activated/deactivated
+		if ($vendedor->enabled && ($request->enabled == "1")) {
+			if ($this->configuracion->notificar_admin_vendedor_activado) {
+				foreach (Admin::all() as $admin) {
+					Notification::send($admin, new VendedorEnabled($admin,$vendedor));
+				}
+			}
+			if ($this->configuracion->notificar_validador_vendedor_activado) {
+				foreach (Validador::all() as $validador) {
+					Notification::send($validador, new VendedorEnabled($validador,$vendedor));
+				}
+			}
+			if ($this->configuracion->notificar_vendedor_activado) {
+				Notification::send($vendedor, new VendedorEnabled($vendedor,$vendedor));
+			}
+		} else {
+			if ($this->configuracion->notificar_admin_vendedor_desactivado) {
+				foreach (Admin::all() as $admin) {
+					Notification::send($admin, new VendedorDisabled($admin,$vendedor));
+				}
+			}
+			if ($this->configuracion->notificar_validador_vendedor_desactivado) {
+				foreach (Validador::all() as $validador) {
+					Notification::send($validador, new VendedorDisabled($validador,$vendedor));
+				}
+			}
+			if ($this->configuracion->notificar_vendedor_desactivado) {
+				Notification::send($vendedor, new VendedorDisabled($vendedor,$vendedor));
+			}
+		}
+
+		$vendedor->enabled = $request->enabled == "1" ? true : false;
 		$vendedor->type = $request->type;
 		// Save to DB
 		$vendedor->save();
@@ -392,6 +426,38 @@ class VendedorController extends Controller
 		$vendedor->bank = $request->bank;
 		$vendedor->address_legal = $request->legalAddress;
 		$vendedor->concept = $request->concept;
+		
+		// Notifications for account activated/deactivated
+		if ($vendedor->enabled && ($request->enabled == "1")) {
+			if ($this->configuracion->notificar_admin_vendedor_activado) {
+				foreach (Admin::all() as $admin) {
+					Notification::send($admin, new VendedorEnabled($admin,$vendedor));
+				}
+			}
+			if ($this->configuracion->notificar_validador_vendedor_activado) {
+				foreach (Validador::all() as $validador) {
+					Notification::send($validador, new VendedorEnabled($validador,$vendedor));
+				}
+			}
+			if ($this->configuracion->notificar_vendedor_activado) {
+				Notification::send($vendedor, new VendedorEnabled($vendedor,$vendedor));
+			}
+		} else {
+			if ($this->configuracion->notificar_admin_vendedor_desactivado) {
+				foreach (Admin::all() as $admin) {
+					Notification::send($admin, new VendedorDisabled($admin,$vendedor));
+				}
+			}
+			if ($this->configuracion->notificar_validador_vendedor_desactivado) {
+				foreach (Validador::all() as $validador) {
+					Notification::send($validador, new VendedorDisabled($validador,$vendedor));
+				}
+			}
+			if ($this->configuracion->notificar_vendedor_desactivado) {
+				Notification::send($vendedor, new VendedorDisabled($vendedor,$vendedor));
+			}
+		}
+		
 		$vendedor->enabled = $request->enabled == "1" ? true:false;
 		$vendedor->type = $request->type;
 		// Save to DB

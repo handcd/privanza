@@ -288,6 +288,46 @@
 								</label>
 								Notificar cuando la Orden haya sido Facturada
 							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_admin_vendedor_activado"
+									@if ($configuration->notificar_admin_vendedor_activado)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la cuenta de un Vendedor sea Activada
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_admin_vendedor_desactivado"
+									@if ($configuration->notificar_admin_vendedor_desactivado)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la cuenta de un Vendedor sea Desactivada
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_admin_validador_activado"
+									@if ($configuration->notificar_admin_validador_activado)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la cuenta de un Validador sea Activada
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_admin_validador_desactivado"
+									@if ($configuration->notificar_admin_validador_desactivado)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la cuenta de un Validador sea Desactivada
+							</div>
                 		</div>
                 		<div class="col-md-4">
                 			<h4>Validador</h4>
@@ -520,6 +560,26 @@
 									>
 								</label>
 								Notificar al Validador si su cuenta ha sido reactivada
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_validador_vendedor_activado"
+									@if ($configuration->notificar_validador_vendedor_activado)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la cuenta de un Vendedor sea Activada
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notificar_validador_vendedor_desactivado"
+									@if ($configuration->notificar_validador_vendedor_desactivado)
+										checked="true" 
+									@endif
+									>
+								</label>
+								Notificar cuando la cuenta de un Vendedor sea Desactivada
 							</div>
                 		</div>
                 		<div class="col-md-4">

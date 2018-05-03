@@ -50,6 +50,10 @@ class CreateConfigurationsTable extends Migration
             $table->boolean('notificar_admin_orden_entregada')->default(1);
             $table->boolean('notificar_admin_orden_cobrada')->default(1);
             $table->boolean('notificar_admin_orden_facturada')->default(1);
+            $table->boolean('notificar_admin_vendedor_activado')->default(1);
+            $table->boolean('notificar_admin_vendedor_desactivado')->default(1);
+            $table->boolean('notificar_admin_validador_activado')->default(1);
+            $table->boolean('notificar_admin_validador_desactivado')->default(1);
             // Validador
             $table->boolean('notificar_validador_nueva_orden')->default(1);
             $table->boolean('notificar_validador_cambio_orden')->default(1);
@@ -74,6 +78,8 @@ class CreateConfigurationsTable extends Migration
             $table->boolean('notificar_validador_orden_facturada')->default(1);
             $table->boolean('notificar_validador_desactivado')->default(0);
             $table->boolean('notificar_validador_activado')->default(0);
+            $table->boolean('notificar_validador_vendedor_activado')->default(0);
+            $table->boolean('notificar_validador_vendedor_desactivado')->default(0);
             // Vendedor
             $table->boolean('notificar_vendedor_nueva_orden')->default(1);
             $table->boolean('notificar_vendedor_cambio_orden')->default(1);

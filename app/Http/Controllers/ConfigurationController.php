@@ -79,6 +79,10 @@ class ConfigurationController extends Controller
         $configuration->notificar_admin_orden_entregada = $request->notificar_admin_orden_entregada ? true : false;
         $configuration->notificar_admin_orden_cobrada = $request->notificar_admin_orden_cobrada ? true : false;
         $configuration->notificar_admin_orden_facturada = $request->notificar_admin_orden_facturada ? true : false;
+        $configuration->notificar_admin_validador_activado = $request->notificar_admin_validador_activado ? true : false;
+        $configuration->notificar_admin_validador_desactivado = $request->notificar_admin_validador_desactivado ? true : false;
+        $configuration->notificar_admin_vendedor_activado = $request->notificar_admin_vendedor_activado ? true : false;
+        $configuration->notificar_admin_vendedor_desactivado = $request->notificar_admin_vendedor_desactivado ? true : false;
         // Validador
         $configuration->notificar_validador_nueva_orden = $request->notificar_validador_nueva_orden ? true : false;
         $configuration->notificar_validador_cambio_orden = $request->notificar_validador_cambio_orden ? true : false;
@@ -103,6 +107,8 @@ class ConfigurationController extends Controller
         $configuration->notificar_validador_orden_facturada = $request->notificar_validador_orden_facturada ? true : false;
         $configuration->notificar_validador_desactivado = $request->notificar_validador_desactivado ? true : false;
         $configuration->notificar_validador_activado = $request->notificar_validador_activado ? true : false;
+        $configuration->notificar_validador_vendedor_activado = $request->notificar_validador_vendedor_activado ? true : false;
+        $configuration->notificar_validador_vendedor_desactivado = $request->notificar_validador_vendedor_desactivado ? true : false;
         // Vendedor
         $configuration->notificar_vendedor_nueva_orden = $request->notificar_vendedor_nueva_orden ? true : false;
         $configuration->notificar_vendedor_cambio_orden = $request->notificar_vendedor_cambio_orden ? true : false;
