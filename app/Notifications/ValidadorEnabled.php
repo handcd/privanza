@@ -53,7 +53,7 @@ class ValidadorEnabled extends Notification implements ShouldQueue
             return (new MailMessage)
                         ->subject('La cuenta de '.$this->validador->name.' ha sido reactivada')
                         ->line('La cuenta del validador '.$this->validador->name.' '.$this->validador->lastname.' ha sido reactivada por lo que ya puede ingresar de nuevo al sistema para utilizarlo. Para revisar al validador, haz click en el siguiente botón:')
-                        ->action('Revisar validador',url('/admin/validador',$this->validador->id))
+                        ->action('Revisar validador',url('/admin/validadores',$this->validador->id))
                         ->line('¡Gracias por usar el sistema!');
         } else {
             return (new MailMessage)

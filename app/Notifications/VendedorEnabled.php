@@ -53,13 +53,13 @@ class VendedorEnabled extends Notification implements ShouldQueue
             return (new MailMessage)
                         ->subject('La cuenta de '.$this->vendedor->name.' ha sido reactivada')
                         ->line('La cuenta del vendedor '.$this->vendedor->name.' '.$this->vendedor->lastname.' ha sido reactivada por lo que ya puede ingresar de nuevo al sistema para utilizarlo. Para revisar al vendedor, haz click en el siguiente botón:')
-                        ->action('Revisar Vendedor',url('/admin/vendedor',$this->vendedor->id))
+                        ->action('Revisar Vendedor',url('/admin/vendedores',$this->vendedor->id))
                         ->line('¡Gracias por usar el sistema!');
         } elseif ($this->user->isValidador()) {
             return (new MailMessage)
                         ->subject('La cuenta de '.$this->vendedor->name.' ha sido reactivada')
                         ->line('La cuenta del vendedor '.$this->vendedor->name.' '.$this->vendedor->lastname.' ha sido reactivada por lo que ya puede ingresar de nuevo al sistema para utilizarlo. Para revisar al vendedor, haz click en el siguiente botón:')
-                        ->action('Revisar Vendedor',url('/validador/vendedor',$this->vendedor->id))
+                        ->action('Revisar Vendedor',url('/validador/vendedores',$this->vendedor->id))
                         ->line('¡Gracias por usar el sistema!');
         } else {
             return (new MailMessage)

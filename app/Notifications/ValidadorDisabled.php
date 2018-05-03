@@ -53,7 +53,7 @@ class ValidadorDisabled extends Notification implements ShouldQueue
             return (new MailMessage)
                         ->subject('La cuenta de '.$this->validador->name.' ha sido desactivada')
                         ->line('La cuenta del validador '.$this->validador->name.' '.$this->validador->lastname.' ha sido desactivada por lo que ya **NO** puede ingresar de nuevo al sistema para utilizarlo. Para revisar al validador, haz click en el siguiente botón:')
-                        ->action('Revisar Validador',url('/admin/validador',$this->validador->id))
+                        ->action('Revisar Validador',url('/admin/validadores',$this->validador->id))
                         ->line('¡Gracias por usar el sistema!');
         } else {
             return (new MailMessage)
