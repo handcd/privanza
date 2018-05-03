@@ -21,9 +21,21 @@ use Auth;
 use PDF;
 use Session;
 use Notification; 
+use Carbon\Carbon;
 
 // Notifications 
 use App\Notifications\NewOrder;
+use App\Notifications\EditedOrder;
+use App\Notifications\OrderApproved;
+use App\Notifications\OrderProduction;
+use App\Notifications\OrderProductionCut;
+use App\Notifications\OrderProductionAssemble;
+use App\Notifications\OrderProductionIron;
+use App\Notifications\OrderProductionReview;
+use App\Notifications\OrderPickup;
+use App\Notifications\OrderDelivered;
+use App\Notifications\OrderCharged;
+use App\Notifications\OrderInvoiced;
 
 class OrderController extends Controller
 {
@@ -607,10 +619,46 @@ class OrderController extends Controller
      */
     public function approveOrder($id)
     {
-        // Fin the order
-        $order = Order::find($id);
-        if (!$order) {
+        // Validate user is Admin or Validador
+        if (!(Auth::user()->isAdmin() || Auth::user()->isValidador())) {
+            return redirect('/vendedor/ordenes/'.$id);
+        }
+        // Get the order
+        $orden = Order::find($id);
+        // Validate order existence
+        if (!$orden) {
+            return redirect('/'.(Auth::user()->isAdmin() ? 'admin' : 'validador').'/ordenes'.$id);
+        }
+        // Validate order previously approved for Admin
+        if ($orden->approved && Auth::user()->isAdmin()) {
+            $orden->approved = false;
+            return redirect('/admin/ordenes/'.$id);
+        }
+        // Approve Order and save
+        $orden->approved = true;
+        $orden->date_approved = Carbon::now();
+        $orden->save();
 
+        // Notify users
+        if ($this->configuracion->notificar_vendedor_orden_aprobada) {
+            Notification::send($orden->vendedor, new OrderApproved($orden->vendedor,$orden));
+        }
+        if ($this->configuracion->notificar_validador_orden_aprobada) {
+            foreach (Validador::all() as $validador) {
+                Notification::send($validador, new OrderApproved($validador,$orden));
+            }
+        }
+        if ($this->configuracion->notificar_admin_orden_aprobada) {
+            foreach (Admin::all() as $admin) {
+                Notification::send($admin, new OrderApproved($admin,$orden));
+            }
+        }
+
+        // Redirect
+        if (Auth::user()->isAdmin()) {
+            return redirect('/admin/ordenes/'.$id);
+        } else {
+            return redirect('/validador/ordenes/'.$id);
         }
     }
 
@@ -623,6 +671,47 @@ class OrderController extends Controller
      */
     public function productionOrder($id)
     {
+        // Validate user is admin or validador
+        if (!(Auth::user()->isAdmin() || Auth::user()->isValidador())) {
+            return redirect('/vendedor/ordenes/'.$id);
+        }
+        // Find the order
+        $orden = Order::find($id);
+        // Validate order existence
+        if (!$orden) {
+            return redirect('/'.(Auth::user()->isAdmin() ? 'admin' : 'validador').'/ordenes'.$id);
+        }
+        // Validate order already in production for admin toggle
+        if ($orden->production && Auth::user()->isAdmin()) {
+            $orden->production = false;
+            return redirect('/admin/ordenes/'.$id);
+        }
+        // Set status to 1 and save
+        $orden->production = true;
+        $orden->date_production = Carbon::now();
+        $orden->save();
+
+        // Notify users
+        if ($this->configuracion->notificar_vendedor_orden_produccion) {
+            Notification::send($orden->vendedor, new OrderProduction($orden->vendedor,$orden));
+        }
+        if ($this->configuracion->notificar_validador_orden_produccion) {
+            foreach (Validador::all() as $validador) {
+                Notification::send($validador, new OrderProduction($validador,$orden));
+            }
+        }
+        if ($this->configuracion->notificar_admin_orden_produccion) {
+            foreach (Admin::all() as $admin) {
+                Notification::send($admin, new OrderProduction($admin,$orden));
+            }
+        }
+
+        // Redirect
+        if (Auth::user()->isAdmin()) {
+            return redirect('/admin/ordenes/'.$id);
+        } else {
+            return redirect('/validador/ordenes/'.$id);
+        }
     }
 
     /**
@@ -634,6 +723,44 @@ class OrderController extends Controller
      */
     public function productionCorteOrder($id)
     {
+        // Validate user is admin or validador
+        if (!(Auth::user()->isAdmin() || Auth::user()->isValidador())) {
+            return redirect('/vendedor/ordenes/'.$id);
+        }
+        // Find the order
+        $orden = Order::find($id);
+        // Validate order existence
+        if (!$orden) {
+            return redirect('/'.(Auth::user()->isAdmin() ? 'admin' : 'validador').'/ordenes'.$id);
+        }
+        // Validate order already set and user admin for toggle
+        if ($orden->corte && Auth::user()->isAdmin()) {
+            $orden->corte = false;
+            return redirect('/admin/ordenes/'.$id);
+        }
+        // Set status to true and save
+        $orden->corte = true;
+        $orden->date_corte = Carbon::now();
+        $orden->save();
+
+        // Notify users
+        if ($this->configuracion->notificar_validador_orden_produccion_corte) {
+            foreach (Validador::all() as $validador) {
+                Notification::send($validador, new OrderProductionCut($validador,$orden));
+            }
+        }
+        if ($this->configuracion->notificar_admin_orden_produccion_corte) {
+            foreach (Admin::all() as $admin) {
+                Notification::send($admin, new OrderProductionCut($admin,$orden));
+            }
+        }
+
+        // Redirect
+        if (Auth::user()->isAdmin()) {
+            return redirect('/admin/ordenes/'.$id);
+        } else {
+            return redirect('/validador/ordenes/'.$id);
+        }
     }
 
     /**
@@ -645,6 +772,44 @@ class OrderController extends Controller
      */
     public function productionEnsambleOrder($id)
     {
+        // Validate user is admin or validador
+        if (!(Auth::user()->isAdmin() || Auth::user()->isValidador())) {
+            return redirect('/vendedor/ordenes/'.$id);
+        }
+        // Find the order
+        $orden = Order::find($id);
+        // Validate order existence
+        if (!$orden) {
+            return redirect('/'.(Auth::user()->isAdmin() ? 'admin' : 'validador').'/ordenes'.$id);
+        }
+        // Toggle for admin if order already set
+        if ($orden->ensamble && Auth::user()->isAdmin()) {
+            $orden->ensamble = false;
+            return redirect('/admin/ordenes/'.$id);
+        }
+        // Set to true and save
+        $orden->ensamble = true;
+        $orden->date_ensamble = Carbon::now();
+        $orden->save();
+
+        // Notify users
+        if ($this->configuracion->notificar_validador_orden_produccion_ensamble) {
+            foreach (Validador::all() as $validador) {
+                Notification::send($validador, new OrderProductionAssemble($validador,$orden));
+            }
+        }
+        if ($this->configuracion->notificar_admin_orden_produccion_ensamble) {
+            foreach (Admin::all() as $admin) {
+                Notification::send($admin, new OrderProductionAssemble($admin,$orden));
+            }
+        }
+
+        // Redirect
+        if (Auth::user()->isAdmin()) {
+            return redirect('/admin/ordenes/'.$id);
+        } else {
+            return redirect('/validador/ordenes/'.$id);
+        }
     }
 
     /**
@@ -656,6 +821,44 @@ class OrderController extends Controller
      */
     public function productionPlanchaOrder($id)
     {
+        // Validate user is admin or validador
+        if (!(Auth::user()->isAdmin() || Auth::user()->isValidador())) {
+            return redirect('/vendedor/ordenes/'.$id);
+        }
+        // Find the order
+        $orden = Order::find($id);
+        // Validate order existence
+        if (!$orden) {
+            return redirect('/'.(Auth::user()->isAdmin() ? 'admin' : 'validador').'/ordenes'.$id);
+        }
+        // Toggle status for admin
+        if ($orden->plancha && Auth::user()->isAdmin()) {
+            $orden->plancha = false;
+            return redirect('/admin/ordenes/'.$id);
+        }
+        // Set status to true and save
+        $orden->plancha = true;
+        $orden->date_plancha = Carbon::now();
+        $orden->save();
+
+        // Notify users
+        if ($this->configuracion->notificar_validador_orden_produccion_plancha) {
+            foreach (Validador::all() as $validador) {
+                Notification::send($validador, new OrderProductionIron($validador,$orden));
+            }
+        }
+        if ($this->configuracion->notificar_admin_orden_produccion_plancha) {
+            foreach (Admin::all() as $admin) {
+                Notification::send($admin, new OrderProductionIron($admin,$orden));
+            }
+        }
+
+        // Redirect
+        if (Auth::user()->isAdmin()) {
+            return redirect('/admin/ordenes/'.$id);
+        } else {
+            return redirect('/validador/ordenes/'.$id);
+        }
     }
 
     /**
@@ -667,6 +870,45 @@ class OrderController extends Controller
      */
     public function productionRevisionOrder($id)
     {
+        // Validate user is admin or validador
+        if (!(Auth::user()->isAdmin() || Auth::user()->isValidador())) {
+            return redirect('/vendedor/ordenes/'.$id);
+        }
+
+        // Find the order
+        $orden = Order::find($id);
+        // Validate order existence
+        if (!$orden) {
+            return redirect('/'.(Auth::user()->isAdmin() ? 'admin' : 'validador').'/ordenes'.$id);
+        }
+        // Toggle order status for admin
+        if ($orden->revision && Auth::user()->isAdmin()) {
+            $orden->revision = false;
+            return redirect('/admin/ordenes/'.$id);
+        }
+        // Set status to true and save
+        $orden->revision = true;
+        $orden->date_revision = Carbon::now();
+        $orden->save();
+
+        // Notify users
+        if ($this->configuracion->notificar_validador_orden_produccion_revision) {
+            foreach (Validador::all() as $validador) {
+                Notification::send($validador, new OrderProductionReview($validador,$orden));
+            }
+        }
+        if ($this->configuracion->notificar_admin_orden_produccion_revision) {
+            foreach (Admin::all() as $admin) {
+                Notification::send($admin, new OrderProductionReview($admin,$orden));
+            }
+        }
+
+        // Redirect
+        if (Auth::user()->isAdmin()) {
+            return redirect('/admin/ordenes/'.$id);
+        } else {
+            return redirect('/validador/ordenes/'.$id);
+        }
     }
 
     /**
@@ -678,7 +920,45 @@ class OrderController extends Controller
      */
     public function pickupOrder($id)
     {
-        # code...
+        // Validate user is admin or validador
+        if (!(Auth::user()->isAdmin() || Auth::user()->isValidador())) {
+            return redirect('/vendedor/ordenes/'.$id);
+        }
+
+        // Find the order
+        $orden = Order::find($id);
+        // Validate order existence
+        if (!$orden) {
+            return redirect('/'.(Auth::user()->isAdmin() ? 'admin' : 'validador').'/ordenes'.$id);
+        }
+        // Toggle order status if admin
+        if ($orden->pickup && Auth::user()->isAdmin()) {
+            $orden->pickup = false;
+            return redirect('/admin/ordenes/'.$id);
+        }
+        // Set status to true and save
+        $orden->pickup = true;
+        $orden->date_pickup = Carbon::now();
+        $orden->save();
+
+        // Notify users
+        if ($this->configuracion->notificar_validador_orden_pickup) {
+            foreach (Validador::all() as $validador) {
+                Notification::send($validador, new OrderPickup($validador,$orden));
+            }
+        }
+        if ($this->configuracion->notificar_admin_orden_pickup) {
+            foreach (Admin::all() as $admin) {
+                Notification::send($admin, new OrderPickup($admin,$orden));
+            }
+        }
+
+        // Redirect
+        if (Auth::user()->isAdmin()) {
+            return redirect('/admin/ordenes/'.$id);
+        } else {
+            return redirect('/validador/ordenes/'.$id);
+        }
     }
 
     /**
@@ -690,7 +970,44 @@ class OrderController extends Controller
      */
     public function deliveredOrder($id)
     {
-        # code...
+        // Validate user is admin or validador
+        if (!(Auth::user()->isAdmin() || Auth::user()->isValidador())) {
+            return redirect('/vendedor/ordenes/'.$id);
+        }
+        // Find the order
+        $orden = Order::find($id);
+        // Validate order existence
+        if (!$orden) {
+            return redirect('/'.(Auth::user()->isAdmin() ? 'admin' : 'validador').'/ordenes'.$id);
+        }
+        // Toggle order status if admin
+        if ($orden->delivered && Auth::user()->isAdmin()) {
+            $orden->delivered = false;
+            return redirect('/admin/ordenes/'.$id);
+        }
+        // Set status to true and save
+        $orden->delivered = true;
+        $orden->date_delivered = Carbon::now();
+        $orden->save();
+
+        // Notify users
+        if ($this->configuracion->notificar_validador_orden_entregada) {
+            foreach (Validador::all() as $validador) {
+                Notification::send($validador, new OrderDelivered($validador,$orden));
+            }
+        }
+        if ($this->configuracion->notificar_admin_orden_entregada) {
+            foreach (Admin::all() as $admin) {
+                Notification::send($admin, new OrderDelivered($admin,$orden));
+            }
+        }
+
+        // Redirect
+        if (Auth::user()->isAdmin()) {
+            return redirect('/admin/ordenes/'.$id);
+        } else {
+            return redirect('/validador/ordenes/'.$id);
+        }
     }
 
     /**
@@ -702,7 +1019,44 @@ class OrderController extends Controller
      */
     public function invoicedOrder($id)
     {
-        # code...
+        // Validate if user is admin or validador
+        if (!(Auth::user()->isAdmin() || Auth::user()->isValidador())) {
+            return redirect('/vendedor/ordenes/'.$id);
+        }
+        // Find order
+        $orden = Order::find($id);
+        // Validate order existence
+        if (!$orden) {
+            return redirect('/'.(Auth::user()->isAdmin() ? 'admin' : 'validador').'/ordenes'.$id);
+        }
+        // Toggle order status if admin
+        if ($orden->facturado && Auth::user()->isAdmin()) {
+            $orden->facturado = false;
+            return redirect('/admin/ordenes/'.$id);
+        }
+        // Set status to true and save
+        $orden->facturado = true;
+        $orden->date_facturado = Carbon::now();
+        $orden->save();
+
+        // Notify users
+        if ($this->configuracion->notificar_validador_orden_facturada) {
+            foreach (Validador::all() as $validador) {
+                Notification::send($validador, new OrderInvoiced($validador,$orden));
+            }
+        }
+        if ($this->configuracion->notificar_admin_orden_facturada) {
+            foreach (Admin::all() as $admin) {
+                Notification::send($admin, new OrderInvoiced($admin,$orden));
+            }
+        }
+
+        // Redirect
+        if (Auth::user()->isAdmin()) {
+            return redirect('/admin/ordenes/'.$id);
+        } else {
+            return redirect('/validador/ordenes/'.$id);
+        }
     }
 
     /**
@@ -714,7 +1068,44 @@ class OrderController extends Controller
      */
     public function chargedOrder($id)
     {
-        # code...
+        // Validate if user is admin or validador
+        if (!(Auth::user()->isAdmin() || Auth::user()->isValidador())) {
+            return redirect('/vendedor/ordenes/'.$id);
+        }
+        // Find order
+        $orden = Order::find($id);
+        // Validate order existence
+        if (!$orden) {
+            return redirect('/'.(Auth::user()->isAdmin() ? 'admin' : 'validador').'/ordenes'.$id);
+        }
+        // Toggle order status if admin
+        if ($orden->cobrado && Auth::user()->isAdmin()) {
+            $orden->cobrado = false;
+            return redirect('/admin/ordenes/'.$id);
+        }
+        // Set statu to true and save
+        $orden->cobrado = true;
+        $orden->date_cobrado = Carbon::now();
+        $orden->save();
+
+        // Notify users
+        if ($this->configuracion->notificar_validador_orden_cobrada) {
+            foreach (Validador::all() as $validador) {
+                Notification::send($validador, new OrderCharged($validador,$orden));
+            }
+        }
+        if ($this->configuracion->notificar_admin_orden_cobrada) {
+            foreach (Admin::all() as $admin) {
+                Notification::send($admin, new OrderApproved($admin,$orden));
+            }
+        }
+
+        // Redirect
+        if (Auth::user()->isAdmin()) {
+            return redirect('/admin/ordenes/'.$id);
+        } else {
+            return redirect('/validador/ordenes/'.$id);
+        }
     }
 
     /**
