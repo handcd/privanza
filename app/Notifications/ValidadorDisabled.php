@@ -61,7 +61,7 @@ class ValidadorDisabled extends Notification implements ShouldQueue
                         ->line('Tu cuenta en Privanza ha sido desactivada. Para más información puedes ponerte en contacto con Privanza en:')
                         ->line('E-Mail: hola@privanza.com')
                         ->line('Teléfono: 123123123')
-                        ->line('Por ahora no podrás acceder al sistema pero tu información no ha sido borrada.')
+                        ->line('Por ahora no podrás acceder al sistema pero tu información no ha sido borrada.');
         }
     }
 }
