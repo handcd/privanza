@@ -180,16 +180,16 @@ class ValidadorController extends Controller
 		$validador->birthday = Carbon::parse($request->birthday)->toDateTimeString();
 
         // Notifications for enabling and disabling validadores
-        if ($validador->enabled && !($request->enabled == "1")) {
+        if ($validador->enabled && ($request->enabled != "1")) {
             if ($this->configuracion->notificar_admin_validador_desactivado) {
                 foreach (Admin::all() as $admin) {
                     Notification::send($admin, new ValidadorDisabled($admin,$validador));
                 }
             }
-            if ($this->configuracion->notificar_validador_desacitvado) {
+            if ($this->configuracion->notificar_validador_desactivado) {
                 Notification::send($validador, new ValidadorDisabled($validador,$validador));
             }
-        } else {
+        } elseif (!$validador->enabled && ($request->enabled == "1")) {
             if ($this->configuracion->notificar_admin_validador_activado) {
                 foreach (Admin::all() as $admin) {
                     Notification::send($admin, new ValidadorEnabled($admin,$validador));

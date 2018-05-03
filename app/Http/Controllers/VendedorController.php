@@ -324,7 +324,7 @@ class VendedorController extends Controller
 		$vendedor->concept = $request->concept;
 
 		// Notifications for account activated/deactivated
-		if ($vendedor->enabled && ($request->enabled == "1")) {
+		if (!$vendedor->enabled && ($request->enabled == "1")) {
 			if ($this->configuracion->notificar_admin_vendedor_activado) {
 				foreach (Admin::all() as $admin) {
 					Notification::send($admin, new VendedorEnabled($admin,$vendedor));
@@ -338,7 +338,7 @@ class VendedorController extends Controller
 			if ($this->configuracion->notificar_vendedor_activado) {
 				Notification::send($vendedor, new VendedorEnabled($vendedor,$vendedor));
 			}
-		} else {
+		} elseif ($vendedor->enabled && ($request->enabled != "1")) {
 			if ($this->configuracion->notificar_admin_vendedor_desactivado) {
 				foreach (Admin::all() as $admin) {
 					Notification::send($admin, new VendedorDisabled($admin,$vendedor));
@@ -428,7 +428,7 @@ class VendedorController extends Controller
 		$vendedor->concept = $request->concept;
 		
 		// Notifications for account activated/deactivated
-		if ($vendedor->enabled && ($request->enabled == "1")) {
+		if (!$vendedor->enabled && ($request->enabled == "1")) {
 			if ($this->configuracion->notificar_admin_vendedor_activado) {
 				foreach (Admin::all() as $admin) {
 					Notification::send($admin, new VendedorEnabled($admin,$vendedor));
@@ -442,7 +442,7 @@ class VendedorController extends Controller
 			if ($this->configuracion->notificar_vendedor_activado) {
 				Notification::send($vendedor, new VendedorEnabled($vendedor,$vendedor));
 			}
-		} else {
+		} elseif ($vendedor->enabled && ($request->enabled != "1")) {
 			if ($this->configuracion->notificar_admin_vendedor_desactivado) {
 				foreach (Admin::all() as $admin) {
 					Notification::send($admin, new VendedorDisabled($admin,$vendedor));
@@ -457,7 +457,7 @@ class VendedorController extends Controller
 				Notification::send($vendedor, new VendedorDisabled($vendedor,$vendedor));
 			}
 		}
-		
+
 		$vendedor->enabled = $request->enabled == "1" ? true:false;
 		$vendedor->type = $request->type;
 		// Save to DB
