@@ -306,7 +306,7 @@
 							</div>
 							<div class="row">
 								<div class="col-md-4">
-									<h4 class="text-center">Etiquetas</h4>
+									<h4 class="text-center">Etiquetas (no seleccionar ninguno para Privanza)</h4>
 									<div class="col-md-10 col-md-offset-1">
 										<div class="checkbox">
 											<label>
@@ -319,9 +319,9 @@
 												<input type="checkbox" name="etiquetaMarca">
 											</label>
 											Se Reciben Etiquetas de Marca
-										</div>
+										</div>										
 										<div class="form-group label-floating">
-											<label class="control-label">Marca: <small>(opcional: dejar en blanco para Privanza)</small></label>
+											<label class="control-label">Otra Marca: <small>(opcional: dejar en blanco para Privanza)</small></label>
 											<input type="text" class="form-control" name="marcaEtiqueta">
 										</div>
 									</div>
@@ -338,7 +338,7 @@
 		                                      selected="" 
 		                                    @endif></option>
 		                                        <option value="0">Normal</option>
-		                                        <option value="1">Personalizado</option>
+		                                        <option value="1">Personalizado Privanza</option>
 		                                </select>
 		                            </div>
 		                            <div class="form-group label-floating">
@@ -358,7 +358,7 @@
 		                                      selected="" 
 		                                    @endif></option>
 		                                        <option value="0">Cubrepolvos</option>
-		                                        <option value="1">Personalizado</option>
+		                                        <option value="1">Personalizado Privanza</option>
 		                                </select>
 		                            </div>
 		                            <div class="form-group label-floating">
@@ -372,7 +372,7 @@
 								<h4 class="text-center">Bordado de iniciales (opcional)</h4>
 								<div class="col-md-4 col-md-offset-4">											
 									<div class="form-group label-floating">
-										<label class="control-label">Nombre <small>(Máximo 10 caracteres)</small></label>
+										<label class="control-label">Nombre <small>(Máximo 10 caracteres, los puntos también cuentan)</small></label>
 		                            	<input type="text" name="bordadoNombre" class="form-control" maxlength="10">
 		                            </div>
 									<div class="row text-center">
@@ -461,28 +461,28 @@
 									<p class="col-md-12">Selecciona el tipo de solapa:</p>
 									<div class="col-md-3 col-xs-6">
 										<label>
-										  <input type="radio" name="tipoSolapa" value="1" required="" />
+										  <input type="radio" name="tipoSolapa" value="0" required="" />
 										  <img src="{{ asset('img/suit_options/saco/Cuello_picodelgado.png') }}">
 										  <p class="text-center">Solapa en Pico <b>Normal</b></p>
 										</label>
 									</div>
 									<div class="col-md-3 col-xs-6">
 										<label>
-										  <input type="radio" name="tipoSolapa" value="2" />
+										  <input type="radio" name="tipoSolapa" value="1" />
 										  <img src="{{ asset('img/suit_options/saco/Cuello_PicoAncho.png') }}">
 										  <p class="text-center">Solapa en Pico <b>Ancha</b></p>
 										</label>
 									</div>
 									<div class="col-md-3 col-xs-6">
 										<label>
-										  <input type="radio" name="tipoSolapa" value="3" />
+										  <input type="radio" name="tipoSolapa" value="2" />
 										  <img src="{{ asset('img/suit_options/saco/Cuello_Delgado.png') }}">
 										  <p class="text-center">Solapa en Escuadra <b>Normal</b></p>
 										</label>
 									</div>
 									<div class="col-md-3 col-xs-6">
 										<label>
-										  <input type="radio" name="tipoSolapa" value="6" />
+										  <input type="radio" name="tipoSolapa" value="3" />
 										  <img src="{{ asset('img/suit_options/saco/Cuello_Ancho.png') }}">
 										  <p class="text-center">Solapa en Escuadra <b>Ancha</b></p>
 										</label>
@@ -494,9 +494,8 @@
 										<div class="col-sm-6">
 											<div class="form-group label-floating">
 												<label class="control-label">Tipo de Ojal en Solapa</label>
-												<select name="tipoOjalSolapa" class="form-control" required="true">
+												<select name="tipoOjalSolapa" class="form-control" required="true" id="ojalEnSolapa">
 													<option disabled="" selected=""></option>
-													<option value="0">Sin Ojal en Solapa</option>
 													<option value="1">Al tono</option>
 													<option value="2">En contraste</option>
 												</select>
@@ -509,7 +508,7 @@
 												</label>
 											</div>
 										</div>
-										<div class="col-sm-6">
+										<div class="col-sm-6" id="solapaContraste">
 											<div class="row">
 												<div class="col-md-12">
 													<p>Selecciona el color del ojal en solapa:</p>
@@ -601,8 +600,8 @@
 									</div>
 									<div class="col-sm-6">
 										<div class="form-group label-floating">
-											<label class="control-label">Tipo de Ojal en Manga</label>
-											<select name="tipoOjalManga" required="true" class="form-control">
+											<label class="control-label">Ojal en Manga</label>
+											<select name="tipoOjalManga" required="true" class="form-control" id="tipoDeOjalEnManga">
 												<option disabled="" selected=""></option>
 												<option value="0">Al tono</option>
 												<option value="1">En contraste</option>
@@ -611,7 +610,7 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-md-6 col-md-offset-3">
+									<div class="col-md-6 col-md-offset-3" id="colorDeOjalEnMangas">
 										<div class="row">
 											<div class="col-md-12">
 												<p>Color de Ojal en Mangas:</p>
@@ -650,7 +649,7 @@
 										</div>
 										<div class="form-group label-floating">
 			                                <label class="control-label">Posición de Ojales Activos</label>
-			                                <select class="form-control" name="posicionOjalesActivosManga" required="true">
+			                                <select class="form-control" name="posicionOjalesActivosManga">
 			                                    <option disabled="" 
 			                                    @hasSection('editCliente')
 			                                    {{-- Ya hay un cliente seleccionado --}}
@@ -733,11 +732,12 @@
 										<label>
 										  <input type="checkbox" name="pickstitch" />
 										  <img src="{{ asset('img/suit_options/saco/pick-stitch.png') }}">
-										  <p class="text-center">Pick Stitch para Saco</p>
+										  <p class="text-center">Pick Stitch para Saco (Se incluye en filos, aletilla y cartera)</p>
 										</label>
 									</div>
 									<div class="col-md-6">
-										Opciones de Aletilla
+										Opciones de Aletilla (Por defecto lo confeccionamos con aletilla normal)
+										
 										<div class="checkbox">
 											<label>
 												<input type="checkbox" name="sinaletilla">
@@ -842,7 +842,7 @@
 							<!--Fin de Bies & PinPoint-->
 							<!--Color de Bies & PinPoint-->
 							<div class="row">
-								<div class="col-md-4 col-md-offset-4" style="display: none;" id="colorPalette">
+								<div class="col-md-4 col-md-offset-4" id="colorPalette">
 									@include('partials.color-palette', ['varName' => 'Puntada'])
 								</div>
 								
@@ -892,42 +892,18 @@
 										<div class="checkbox">
 											<label>
 												<input type="checkbox" name="vivosBolsasInternasCuerpo">
-												Mismo seleccionado en Cuerpo
+												Del mismo forro en cuerpo	
 											</label>
 										</div>
 									</div>
 									<div class="row col-xs-offset-1">
 										<div class="form-group label-floating">
-											<label class="control-label">Otro tipo de Vivos <small>(opcional)</small></label>
+											<label class="control-label">En contraste a otro tono <small>(opcional)</small></label>
 											<input type="text" class="form-control" name="otroVivosBolsasInternas">
 										</div>
 									</div>
 								</div>
-								<div class="col-md-5 col-md-offset-1">
-									<div class="row">
-										<h5 class="text-center">Puntadas</h5>
-									</div>
-									<div class="row col-xs-offset-1">
-										<div class="checkbox">
-											<label>
-												<input type="checkbox" name="puntadaFilosSacoInt">
-												Puntada en Filos
-											</label>
-										</div>
-										<div class="checkbox">
-											<label>
-												<input type="checkbox" name="puntadaAletillasSacoInt">
-												Puntada en Aletillas
-											</label>
-										</div>
-										<div class="checkbox">
-											<label>
-												<input type="checkbox" name="puntadaCarterasSacoInt">
-												Puntada en Carteras
-											</label>
-										</div>
-									</div>
-								</div>
+								
 							</div>
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
@@ -1170,19 +1146,12 @@
 									<label>
 									  <input type="radio" name="numPliegues" value="2" />
 									  <img src="{{ asset('img/suit_options/pantalon/Pliegues_2.png') }}">
-									  <p class="text-center">2 Pliegue</p>
+									  <p class="text-center">2 Pliegues</p>
 									</label>
 								</div>
 							</div>
 							<div class="row text-center">
 								<h4 class="text-center">Bolsas Traseras</h4>
-								<div class="col-md-4">
-									<label>
-									  <input type="radio" name="bolsasTraseras" value="0" />
-									  <img src="{{ asset('img/suit_options/numero_bolsas/PantalonSinBolsas.png') }}">
-									  <p class="text-center">Sin Bolsas</p>
-									</label>
-								</div>
 								<div class="col-md-4">
 									<label>
 									  <input type="radio" name="bolsasTraseras" value="1" />
@@ -1236,24 +1205,12 @@
 									</div>
 									<div class="col-md-6">
 										<div class="form-group label-floating">
-											<label for="" class="control-label">Color Medio Forro </label>
-											<select class="form-control" name="colorMedioForroPiernas" required="true">
-												<option disabled="" 
-				                                    @hasSection('editCliente')
-				                                    {{-- Ya hay un cliente seleccionado --}}
-				                                    @else
-				                                      selected="" 
-				                                    @endif></option>
-		                                    	<option value="Azul Marino">Azul Marino</option>
-  												<option value="Gris">Gris</option>
-  												<option value="Negro">Negro</option>
-		                                	</select>
-											
-										</div>
-										<div class="form-group label-floating">
-											<label for="" class="control-label">Código Color Medio Forro<small>(opcional)</small></label>
-											<input type="text" name="otroColorMedioForroPiernas" class="form-control">
-										</div>
+		                                	<div class="form-group label-floating">
+												<div class="checkbox">
+													<label><input type="checkbox" name="medioForroPiernasAlTono" value="true">Medio Forro interior al tono</label>
+												</div>									
+											</div>											
+										</div>										
 									</div>
 								</div>
 							</div>
@@ -1284,7 +1241,7 @@
 									<div class="col-md-6">
 										<div class="form-group label-floating">
 											<div class="checkbox">
-												<label><input type="checkbox" name="colorBiesPretina" value="colorOjaleraEncuarte"> Mismo color Ojalera y Encuarte</label>
+												<label><input type="checkbox" name="colorBiesPretina" value="colorOjaleraEncuarte"> Bies del mismo color Ojalera y Encuarte</label>
 											</div>									
 										</div>
 										<div class="form-group label-floating">									
@@ -1357,25 +1314,74 @@
 </div> <!-- row -->
 
 <script>
+	//Variables para obeter elementos input
 	const biesInterno = document.getElementById('BiesInterno');
 	const pinPointInterno = document.getElementById('PinPointInterno');
-	
-	function logica(e){		
-		let palette = document.getElementById('colorPalette');
-		if(biesInterno.checked || pinPointInterno.checked){			
-			$(palette).show();
+	const solapaEnContraste = document.getElementById('ojalEnSolapa');
+	const ojalDeMangaEnContraste = document.getElementById('tipoDeOjalEnManga');
+
+	//Variables para obtener paletas de colores y ocultar componentes
+	const coloresDeSolapaEnContraste = document.getElementById('solapaContraste');
+	const colorDeMangaEnContraste = document.getElementById('colorDeOjalEnMangas'); 
+	const colorDeBiesYPinPoint = document.getElementById('colorPalette');
+
+	//Funcion para oocultar componentes
+	function iniciarComponentes(){ 
+		$(colorDeMangaEnContraste).hide();
+    	$(coloresDeSolapaEnContraste).hide();
+    	$(colorDeBiesYPinPoint).hide();
+	}
+
+	//Mostrar y ocultar paleta de colores para ojal de solapa en contraste
+	function coloresSolapaEnContraste(){		
+		if(solapaEnContraste.value == 2){
+			$(coloresDeSolapaEnContraste).show();
 		}else {
-			$(palette).hide();
+			$(coloresDeSolapaEnContraste).hide();
 		}
 	}
 
-	biesInterno.addEventListener('click', () => {
-		logica();
-	});
-	pinPointInterno.addEventListener('click', () => {
-		logica();
-	});
+	//Mostrar y ocultar paleta de colores para ojal en contraste de manga
+	function coloresOjalEnManga(){		
+		if(ojalDeMangaEnContraste.value == 1){
+			$(colorDeMangaEnContraste).show();
+		}else {
+			$(colorDeMangaEnContraste).hide();
+		}
+	}
 
+	//Lógica para Bies & pinpoint
+	function coloresPinPointBies(){	
+		if(biesInterno.checked || pinPointInterno.checked){			
+			$(colorDeBiesYPinPoint).show();
+		}else {
+			$(colorDeBiesYPinPoint).hide();
+		}
+	}
 
+	//Función para agregar eventos 
+	function agregarEventos(){
+		console.log('Declarando eventos dentro de la funcion');
+		biesInterno.addEventListener('click', () => {
+			coloresPinPointBies();
+		});
+		pinPointInterno.addEventListener('click', () => {
+			coloresPinPointBies();
+		});
+		solapaEnContraste.addEventListener('click', () => {
+			coloresSolapaEnContraste();
+		});
+		ojalDeMangaEnContraste.addEventListener('click', () => {
+			coloresOjalEnManga();
+		});
+	}
+	//Agregar eventos y ocultar componentes al cargar la página
+	$(document).ready(function() {
+    	console.log('Ocultando componentes... ');
+    	iniciarComponentes();
+    	console.log('Agregando eventos...');
+    	agregarEventos();
+    	console.log('Listo!');
+	});
 </script>
 @endsection
