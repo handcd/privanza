@@ -1,5 +1,6 @@
 {
     "/js/adjustments.js": "/js/adjustments.js",
+    "/wizard/js/orderwizard.js": "/wizard/js/orderwizard.js",
     "/css/material-dashboard.css": "/css/material-dashboard.css",
     "/wizard/css/material-bootstrap-wizard.css": "/wizard/css/material-bootstrap-wizard.css",
     "/css/datepicker.css": "/css/datepicker.css",
