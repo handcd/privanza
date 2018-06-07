@@ -32,6 +32,8 @@ mix.scripts([
 	'resources/assets/bower/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
 ],'public/js/datepicker.js');
 
+// Order Wizard
+mix.js('resources/assets/js/orderwizard.js','public/wizard/js');
 
 // App.js
 mix.js('resources/assets/js/adjustments.js', 'public/js');

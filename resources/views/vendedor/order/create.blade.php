@@ -306,7 +306,8 @@
 							</div>
 							<div class="row">
 								<div class="col-md-4">
-									<h4 class="text-center">Etiquetas (no seleccionar ninguno para Privanza)</h4>
+									<h4 class="text-center">Etiquetas</h4>
+									<p class="text-center">(No seleccionar ninguno para Privanza)</p>
 									<div class="col-md-10 col-md-offset-1">
 										<div class="checkbox">
 											<label>
@@ -316,11 +317,11 @@
 										</div>
 										<div class="checkbox">
 											<label>
-												<input type="checkbox" name="etiquetaMarca">
+												<input type="checkbox" name="etiquetaMarca" id="checkEtiquetaMarca">
 											</label>
 											Se Reciben Etiquetas de Marca
 										</div>										
-										<div class="form-group label-floating">
+										<div class="form-group label-floating" id="marcaEtiqueta">
 											<label class="control-label">Otra Marca: <small>(opcional: dejar en blanco para Privanza)</small></label>
 											<input type="text" class="form-control" name="marcaEtiqueta">
 										</div>
@@ -330,7 +331,7 @@
 									<h4 class="text-center">Gancho</h4>
 									<div class="form-group label-floating">
 		                                <label class="control-label">Tipo de gancho...</label>
-		                                <select class="form-control" name="tipoGancho" required="true">
+		                                <select class="form-control" id="tipoGancho" name="tipoGancho" required="true">
 		                                    <option disabled="" 
 		                                    @hasSection('editCliente')
 		                                    {{-- No hay tipo de evento --}}
@@ -341,7 +342,7 @@
 		                                        <option value="1">Personalizado Privanza</option>
 		                                </select>
 		                            </div>
-		                            <div class="form-group label-floating">
+		                            <div class="form-group label-floating" id="personalizacionGancho">
 		                            	<label class="control-label">Personalización Gancho: <small>(opcional)</small></label>
 		                            	<input type="text" name="perGancho" class="form-control">
 		                            </div>
@@ -350,7 +351,7 @@
 									<h4 class="text-center">Portatrajes</h4>
 									<div class="form-group label-floating">
 		                                <label class="control-label">Tipo de portatrajes...</label>
-		                                <select class="form-control" name="tipoPortatrajes" required="true">
+		                                <select class="form-control" id="tipoPortatrajes" name="tipoPortatrajes" required="true">
 		                                    <option disabled="" 
 		                                    @hasSection('editCliente')
 		                                    {{-- No hay tipo de evento --}}
@@ -361,7 +362,7 @@
 		                                        <option value="1">Personalizado Privanza</option>
 		                                </select>
 		                            </div>
-		                            <div class="form-group label-floating">
+		                            <div class="form-group label-floating" id="personalizacionPortatrajes">
 		                            	<label class="control-label">Personalización Portatrajes: <small>(opcional)</small></label>
 		                            	<input type="text" name="perPortatrajes" class="form-control">
 		                            </div>
@@ -372,7 +373,7 @@
 								<h4 class="text-center">Bordado de iniciales (opcional)</h4>
 								<div class="col-md-4 col-md-offset-4">											
 									<div class="form-group label-floating">
-										<label class="control-label">Nombre <small>(Máximo 10 caracteres, los puntos también cuentan)</small></label>
+										<label class="control-label">Nombre <small>(Máximo 10 caracteres, los puntos también cuentan):</small></label>
 		                            	<input type="text" name="bordadoNombre" class="form-control" maxlength="10">
 		                            </div>
 									<div class="row text-center">
@@ -393,7 +394,7 @@
 									</div>									
 										<p>El color por defecto para el bordado es gris plata, si desea un color distinto, colóquelo abajo</p>									
 									<div class="form-group label-floating">
-										<label class="control-label">Otro Color <small>(Opcional)</small></label>
+										<label class="control-label">Otro Color <small>(opcional)</small>:</label>
 		                            	<input type="text" name="bordadoColor" class="form-control">
 		                            </div>	
 								</div>
@@ -560,7 +561,7 @@
 										<label>
 										  <input type="radio" name="aberturasDetras" value="0" required="" />
 										  <img src="{{ asset('img/suit_options/saco/Espalda_SinAberturas.png') }}">
-										  <p class="text-center">Sin Aberturas <i class="fa fa-check" aria-hidden="true"></i> </p>
+										  <p class="text-center">Sin Aberturas</p>
 										</label>
 									</div>
 									<div class="col-md-4 col-xs-6">
@@ -643,11 +644,11 @@
 									<div class="col-md-4 col-md-offset-2">
 										<div class="checkbox">
 											<label>
-												<input type="checkbox" name="ojalesActivosManga">
-												Selecciona para que los ojales sean activos
+												<input type="checkbox" name="ojalesActivosManga" id="ojalesActivosManga">
+												Que los ojales sean activos.
 											</label>
 										</div>
-										<div class="form-group label-floating">
+										<div class="form-group label-floating" id="divOjalesActivosManga">
 			                                <label class="control-label">Posición de Ojales Activos</label>
 			                                <select class="form-control" name="posicionOjalesActivosManga">
 			                                    <option disabled="" 
@@ -736,8 +737,10 @@
 										</label>
 									</div>
 									<div class="col-md-6">
-										Opciones de Aletilla (Por defecto lo confeccionamos con aletilla normal)
-										
+										<p>
+											Opciones de Aletilla
+											<small>(Por defecto lo confeccionamos con aletilla normal)</small>
+										</p>
 										<div class="checkbox">
 											<label>
 												<input type="checkbox" name="sinaletilla">
@@ -815,7 +818,7 @@
 											</label>
 										</div>
 										<div class="label-floating form-group">
-											<label class="control-label">Código Pin Point<small>(opcional)</small></label>
+											<label class="control-label">Código de Pin Point <small>(opcional)</small></label>
 											<input type="text" class="form-control" name="pinPointInternoCodigo">
 										</div>
 										<!--Fin PinPoint-->
@@ -831,7 +834,7 @@
 											</label>
 										</div>
 										<div class="label-floating form-group">
-											<label class="control-label">Código Bies<small>(opcional)</small></label>
+											<label class="control-label">Código de Bies <small>(opcional)</small></label>
 											<input type="text" class="form-control" name="biesInternoCodigo">
 										</div>
 									</div>
@@ -1031,11 +1034,11 @@
                     			<div class="col-md-8 col-md-offset-2">
                     				<div class="checkbox text-center">
 										<label>
-											<input type="checkbox" name="tipoForroChaleco" value="Mismo Seleccionado en Saco">
+											<input type="checkbox" name="tipoForroChaleco" id="tipoForroChaleco" value="Mismo Seleccionado en Saco">
 											Mismo Seleccionado en Saco
 										</label>
 									</div>
-									<div class="form-group label-floating">
+									<div class="form-group label-floating" id="otroForroChaleco">
 										<label class="control-label">Código de Otro Forro <small>(opcional)</small>:</label>
 										<input type="text" class="form-control" name="codigoOtroForroChaleco">
 									</div>
@@ -1312,76 +1315,5 @@
         </div> <!-- wizard container -->
     </div>
 </div> <!-- row -->
-
-<script>
-	//Variables para obeter elementos input
-	const biesInterno = document.getElementById('BiesInterno');
-	const pinPointInterno = document.getElementById('PinPointInterno');
-	const solapaEnContraste = document.getElementById('ojalEnSolapa');
-	const ojalDeMangaEnContraste = document.getElementById('tipoDeOjalEnManga');
-
-	//Variables para obtener paletas de colores y ocultar componentes
-	const coloresDeSolapaEnContraste = document.getElementById('solapaContraste');
-	const colorDeMangaEnContraste = document.getElementById('colorDeOjalEnMangas'); 
-	const colorDeBiesYPinPoint = document.getElementById('colorPalette');
-
-	//Funcion para oocultar componentes
-	function iniciarComponentes(){ 
-		$(colorDeMangaEnContraste).hide();
-    	$(coloresDeSolapaEnContraste).hide();
-    	$(colorDeBiesYPinPoint).hide();
-	}
-
-	//Mostrar y ocultar paleta de colores para ojal de solapa en contraste
-	function coloresSolapaEnContraste(){		
-		if(solapaEnContraste.value == 2){
-			$(coloresDeSolapaEnContraste).show();
-		}else {
-			$(coloresDeSolapaEnContraste).hide();
-		}
-	}
-
-	//Mostrar y ocultar paleta de colores para ojal en contraste de manga
-	function coloresOjalEnManga(){		
-		if(ojalDeMangaEnContraste.value == 1){
-			$(colorDeMangaEnContraste).show();
-		}else {
-			$(colorDeMangaEnContraste).hide();
-		}
-	}
-
-	//Lógica para Bies & pinpoint
-	function coloresPinPointBies(){	
-		if(biesInterno.checked || pinPointInterno.checked){			
-			$(colorDeBiesYPinPoint).show();
-		}else {
-			$(colorDeBiesYPinPoint).hide();
-		}
-	}
-
-	//Función para agregar eventos 
-	function agregarEventos(){
-		console.log('Declarando eventos dentro de la funcion');
-		biesInterno.addEventListener('click', () => {
-			coloresPinPointBies();
-		});
-		pinPointInterno.addEventListener('click', () => {
-			coloresPinPointBies();
-		});
-		solapaEnContraste.addEventListener('click', () => {
-			coloresSolapaEnContraste();
-		});
-		ojalDeMangaEnContraste.addEventListener('click', () => {
-			coloresOjalEnManga();
-		});
-	}
-	//Agregar eventos y ocultar componentes al cargar la página
-	$(document).ready(function() {
-    	console.log('Ocultando componentes... ');
-    	iniciarComponentes();
-    	console.log('Agregando eventos...');
-    	agregarEventos();
-    	console.log('Listo!');
-	});
-</script>
+<script src="{{ asset('wizard/js/orderwizard.js') }}"></script>
 @endsection
