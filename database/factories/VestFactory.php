@@ -13,12 +13,10 @@ $factory->define(App\Vest::class, function (Faker $faker) {
         'tipo_bolsas' => rand(0,1),
         'tipo_espalda' => rand(1,2),
         'tipo_forro' => $faker->text(50),
-        'ajustador_espalda' => rand(0,1),
 
         // Medidas Corporales
         'fit_id' => 3,
         'talla' => 30,
         'corte' => 2,
-        'largo_espalda' => 33,
     ];
 });

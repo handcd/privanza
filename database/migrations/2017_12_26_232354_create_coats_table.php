@@ -66,8 +66,6 @@ class CreateCoatsTable extends Migration
             $table->integer('fit_id');
             $table->integer('talla');
             $table->integer('corte');
-            $table->float('largo_manga');
-            $table->float('largo_espalda');
             $table->string('notas_int')->nullable();
             $table->string('notas_ext')->nullable();
 

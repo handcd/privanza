@@ -22,7 +22,6 @@ class CreateVestsTable extends Migration
             $table->integer('fit_id');
             $table->integer('talla');
             $table->integer('corte');
-            $table->float('largo_espalda');
             $table->string('notas')->nullable();
 
             // Clothing data
@@ -30,7 +29,6 @@ class CreateVestsTable extends Migration
             $table->integer('tipo_bolsas')->nullable(); // 0 Vivo/1 Aletilla
             $table->integer('tipo_espalda'); // 1 Forro/ 2 Tela
             $table->string('tipo_forro')->nullable(); 
-            $table->boolean('ajustador_espalda');
             $table->timestamps();
         });
     }

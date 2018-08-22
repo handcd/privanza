@@ -156,6 +156,226 @@
 							</div>
 							<div class="row">
 								<div class="col-md-6 col-md-offset-3">
+									<div class="col-md-6 col-md-offset-3">
+										<h4 class="text-center">Medidas generales del cliente</h4>
+									</div>
+									<div class="col-md-6 col-md-offset-3">
+										<h4 class="text-center">Saco <small> (en pulgadas)</small></h4>
+									</div>
+									<div class="row">
+										<div class="col-xs-4">
+											<div class="form-group label-floating">
+												<label for="largoMangaSaco" class="control-label">Largo Talle:</label>
+												<input type="number" step="0.1" min="0" name="largoMangaSaco" id="largoMangaSaco" class="form-control" min="0" >
+											</div>
+										</div>
+										<div class="col-xs-4">
+											<div class="form-group label-floating">
+												<label for="largoEspaldaSaco" class="control-label">Largo de saco:</label>
+												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
+											</div>
+										</div>
+										<div class="col-xs-4">
+											<div class="form-group label-floating">
+												<label for="largoEspaldaSaco" class="control-label">Circunferencia de tórax:</label>
+												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-4">
+											<div class="form-group label-floating">
+												<label for="largoMangaSaco" class="control-label">Circunferencia de abdomen:</label>
+												<input type="number" step="0.1" min="0" name="largoMangaSaco" id="largoMangaSaco" class="form-control" min="0">
+											</div>
+										</div>
+										<div class="col-xs-4">
+											<div class="form-group label-floating">
+												<label for="largoEspaldaSaco" class="control-label">Circunferencia de cadera o base:</label>
+												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
+											</div>
+										</div>
+										<div class="col-xs-4">
+											<div class="form-group label-floating">
+												<label for="largoEspaldaSaco" class="control-label">Ancho espalda/bata:</label>
+												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-4">
+											<div class="form-group label-floating">
+												<label for="largoMangaSaco" class="control-label">Ancho hombro <small>(izquierdo)</small>:</label>
+												<input type="number" step="0.1" min="0" name="largoMangaSaco" id="largoMangaSaco" class="form-control" min="0">
+											</div>
+										</div>
+										<div class="col-xs-4">
+											<div class="form-group label-floating">
+												<label for="largoEspaldaSaco" class="control-label">Ancho hombro <small>(derecho)</small>:</label>
+												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
+											</div>
+										</div>
+										<div class="col-xs-4">
+											<div class="form-group label-floating">
+												<label for="largoEspaldaSaco" class="control-label">Travéz espalda:</label>
+												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-4">
+											<div class="form-group label-floating">
+												<label for="largoMangaSaco" class="control-label">Largo de la Manga <small>(izquierda)</small>:</label>
+												<input type="number" step="0.1" min="0" name="largoMangaSaco" id="largoMangaSaco" class="form-control" min="0" >
+											</div>
+										</div>
+										<div class="col-xs-4">
+											<div class="form-group label-floating">
+												<label for="largoEspaldaSaco" class="control-label">Largo de la Manga <small>(derecha)</small>:</label>
+												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
+											</div>
+										</div>
+										<div class="col-xs-4">
+											<div class="form-group label-floating">
+												<label for="largoEspaldaSaco" class="control-label">Frente completo:</label>
+												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-4 col-md-offset-4">
+											<div class="form-group label-floating">
+												<label for="largoEspaldaSaco" class="control-label">Estatura <small>(en metros)</small>:</label>
+												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="1">
+											</div>
+										</div>
+									</div>
+								</div>	
+								{{-- Medidas del chaleco --}}
+								<div class="col-md-6 col-md-offset-3">
+									<div class="col-md-6 col-md-offset-3">
+										<h4 class="text-center">Chaleco <small> (en pulgadas)</small></h4>
+									</div>
+									<div class="row">
+										<div class="col-xs-4">
+											<div class="form-group label-floating">
+												<label for="largoMangaSaco" class="control-label">Largo Talle:</label>
+												<input type="number" step="0.1" min="0" name="largoMangaSaco" id="largoMangaSaco" class="form-control" min="0" >
+											</div>
+										</div>
+										<div class="col-xs-4">
+											<div class="form-group label-floating">
+												<label for="largoEspaldaSaco" class="control-label">Circunferencia de abdomen:</label>
+												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
+											</div>
+										</div>
+										<div class="col-xs-4">
+											<div class="form-group label-floating">
+												<label for="largoEspaldaSaco" class="control-label">Circunferencia de tórax:</label>
+												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-4">
+											<div class="form-group label-floating">
+												<label for="largoMangaSaco" class="control-label">Escote:</label>
+												<input type="number" step="0.1" min="0" name="largoMangaSaco" id="largoMangaSaco" class="form-control" min="0">
+											</div>
+										</div>
+										<div class="col-xs-4">
+											<div class="form-group label-floating">
+												<label for="largoEspaldaSaco" class="control-label">Largo frente:</label>
+												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
+											</div>
+										</div>
+										<div class="col-xs-4">
+											<div class="form-group label-floating">
+												<label for="largoEspaldaSaco" class="control-label">Largo espalda:</label>
+												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-6">
+											<div class="form-group label-floating">
+												<label for="largoMangaSaco" class="control-label">Ancho hombro <small>(derecho)</small>:</label>
+												<input type="number" step="0.1" min="0" name="largoMangaSaco" id="largoMangaSaco" class="form-control" min="0">
+											</div>
+										</div>
+										<div class="col-xs-6">
+											<div class="form-group label-floating">
+												<label for="largoEspaldaSaco" class="control-label">Largo de saco <small>(izquierdo)</small>:</label>
+												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
+											</div>
+										</div>
+									</div>
+								</div>	
+
+								{{-- Medidas del pantalón --}}	
+								<div class="col-md-6 col-md-offset-3">
+									<div class="col-md-6 col-md-offset-3">
+										<h4 class="text-center">Pantalón <small> (en pulgadas)</small></h4>
+									</div>
+									<div class="row">
+										<div class="col-xs-4">
+											<div class="form-group label-floating">
+												<label for="largoMangaSaco" class="control-label">Largo externo <small>(izquierdo)</small>:</label>
+												<input type="number" step="0.1" min="0" name="largoMangaSaco" id="largoMangaSaco" class="form-control" min="0">
+											</div>
+										</div>
+										<div class="col-xs-4">
+											<div class="form-group label-floating">
+												<label for="largoEspaldaSaco" class="control-label">Largo externo <small>(derecho)</small>:</label>
+												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
+											</div>
+										</div>
+										<div class="col-xs-4">
+											<div class="form-group label-floating">
+												<label for="largoEspaldaSaco" class="control-label">Contorno de tiro:</label>
+												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-4">
+											<div class="form-group label-floating">
+												<label for="largoMangaSaco" class="control-label">Circunferencia de cintura:</label>
+												<input type="number" step="0.1" min="0" name="largoMangaSaco" id="largoMangaSaco" class="form-control" min="0">
+											</div>
+										</div>
+										<div class="col-xs-4">
+											<div class="form-group label-floating">
+												<label for="largoEspaldaSaco" class="control-label">Entrepierna:</label>
+												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control">
+											</div>
+										</div>
+										<div class="col-xs-4">
+											<div class="form-group label-floating">
+												<label for="largoEspaldaSaco" class="control-label">Circunferencia de cadera o base:</label>
+												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-6">
+											<div class="form-group label-floating">
+												<label for="largoMangaSaco" class="control-label">Ancho rodilla:</label>
+												<input type="number" step="0.1" min="0" name="largoMangaSaco" id="largoMangaSaco" class="form-control" min="0">
+											</div>
+										</div>
+										<div class="col-xs-6">
+											<div class="form-group label-floating">
+												<label for="largoEspaldaSaco" class="control-label">Ancho de fondo:</label>
+												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
+											</div>
+										</div>
+									</div>
+								</div>		
+							</div>
+							{{-- Datos generales --}}
+							<div class="row">
+								<div class="col-md-6 col-md-offset-3">
 									<h4 class="text-center">¿Qué tipo de tela se usará?</h4>
                                     <div class="col-xs-6">
                                         <div class="choice" id="telaCliente" data-toggle="wizard-radio" rel="tooltip" title="Selecciona esta opción si la tela la proporcionará el cliente.">
@@ -195,9 +415,27 @@
 											<span class="input-group-addon">
 												<i class="fa fa-pencil" aria-hidden="true"></i>
 											</span>
+	                                    	<div class="form-group label-floating">
+	                                          	<label class="control-label">Nombre de la tela:</label>
+	                                          	<input name="nombreTela" type="text" class="form-control">
+	                                        </div>
+	                                    </div>
+	                                    <div class="input-group">
+											<span class="input-group-addon">
+												<i class="fa fa-barcode" aria-hidden="true"></i>
+											</span>
 	                                        <div class="form-group label-floating">
 	                                          	<label class="control-label">Código de Color de Tela:</label>
 	                                          	<input name="codigoColorTelaCliente" type="text" class="form-control">
+	                                        </div>
+	                                    </div>
+	                                    <div class="input-group">
+											<span class="input-group-addon">
+												<i class="fa fa-pencil" aria-hidden="true"></i>
+											</span>
+	                                        <div class="form-group label-floating">
+	                                          	<label class="control-label">Color de Tela:</label>
+	                                          	<input name="colorTelaCliente" type="text" class="form-control">
 	                                        </div>
 	                                    </div>
 	                                    <div class="input-group">
@@ -206,7 +444,7 @@
 											</span>
 	                                        <div class="form-group label-floating">
 	                                          	<label class="control-label">Metros entregados:</label>
-	                                          	<input name="mtsTelaCliente" type="number" step="0.1" class="form-control">
+	                                          	<input name="mtsTelaCliente" type="number" step="0.1" class="form-control" min="0">
 	                                        </div>
 	                                    </div>
                                     </div>
@@ -218,6 +456,33 @@
 	                                    	<div class="form-group label-floating">
 	                                          	<label class="control-label">Código de Tela ISCO:</label>
 	                                          	<input name="codigoTelaIsco" type="text" class="form-control">
+	                                        </div>
+	                                    </div>
+	                                    <div class="input-group">
+											<span class="input-group-addon">
+												<i class="fa fa-pencil" aria-hidden="true"></i>
+											</span>
+	                                    	<div class="form-group label-floating">
+	                                          	<label class="control-label">Nombre de la tela:</label>
+	                                          	<input name="nombreTelaIsco" type="text" class="form-control">
+	                                        </div>
+	                                    </div>
+	                                    <div class="input-group">
+											<span class="input-group-addon">
+												<i class="fa fa-barcode" aria-hidden="true"></i>
+											</span>
+	                                        <div class="form-group label-floating">
+	                                          	<label class="control-label">Código de Color de Tela:</label>
+	                                          	<input name="codigoColorTelaIsco" type="text" class="form-control">
+	                                        </div>
+	                                    </div>
+	                                    <div class="input-group">
+											<span class="input-group-addon">
+												<i class="fa fa-pencil" aria-hidden="true"></i>
+											</span>
+	                                        <div class="form-group label-floating">
+	                                          	<label class="control-label">Color de Tela:</label>
+	                                          	<input name="colorTelaIsco" type="text" class="form-control">
 	                                        </div>
 	                                    </div>
                                     </div>
@@ -258,9 +523,27 @@
 											<span class="input-group-addon">
 												<i class="fa fa-pencil" aria-hidden="true"></i>
 											</span>
+	                                    	<div class="form-group label-floating">
+	                                          	<label class="control-label">Nombre del Forro:</label>
+	                                          	<input name="nombreForroCliente" type="text" class="form-control">
+	                                        </div>
+	                                    </div>
+	                                    <div class="input-group">
+											<span class="input-group-addon">
+												<i class="fa fa-barcode" aria-hidden="true"></i>
+											</span>
 	                                        <div class="form-group label-floating">
 	                                          	<label class="control-label">Código de Color de Forro:</label>
 	                                          	<input name="codigoColorForroCliente" type="text" class="form-control">
+	                                        </div>
+	                                    </div>
+	                                    <div class="input-group">
+											<span class="input-group-addon">
+												<i class="fa fa-pencil" aria-hidden="true"></i>
+											</span>
+	                                    	<div class="form-group label-floating">
+	                                          	<label class="control-label">Color del Forro:</label>
+	                                          	<input name="colorForroCliente" type="text" class="form-control">
 	                                        </div>
 	                                    </div>
 	                                    <div class="input-group">
@@ -283,23 +566,63 @@
 	                                          	<input name="codigoForroIsco" type="text" class="form-control">
 	                                        </div>
 	                                    </div>
+	                                    <div class="input-group">
+											<span class="input-group-addon">
+												<i class="fa fa-pencil" aria-hidden="true"></i>
+											</span>
+	                                    	<div class="form-group label-floating">
+	                                          	<label class="control-label">Nombre del Forro:</label>
+	                                          	<input name="nombreForroIsco" type="text" class="form-control">
+	                                        </div>
+	                                    </div>
+	                                    <div class="input-group">
+											<span class="input-group-addon">
+												<i class="fa fa-barcode" aria-hidden="true"></i>
+											</span>
+	                                        <div class="form-group label-floating">
+	                                          	<label class="control-label">Código de Color de Forro:</label>
+	                                          	<input name="codigoColorForroIsco" type="text" class="form-control">
+	                                        </div>
+	                                    </div>
+	                                    <div class="input-group">
+											<span class="input-group-addon">
+												<i class="fa fa-pencil" aria-hidden="true"></i>
+											</span>
+	                                    	<div class="form-group label-floating">
+	                                          	<label class="control-label">Color del Forro:</label>
+	                                          	<input name="colorForroIsco" type="text" class="form-control">
+	                                        </div>
+	                                    </div>
                                     </div>
 								</div>
 							</div>
 
 							<div class="row">
+								
 								<div class="col-md-8 col-md-offset-2">
 									<h4 class="text-center">Datos de Botones</h4>
+									<div class="checkbox text-center">
+										<label>
+											<input type="checkbox" name="botonesCliente" id="botonesCliente	">
+										</label>
+										Botones de cliente
+									</div>
 									<div class="col-md-6">
 										<div class="form-group label-floating">
 											<label for="" class="control-label">Código de Botones</label>
-											<input type="text" name="codigoBoton" required class="form-control">
+											<input type="text" name="codigoBotones" required class="form-control">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group label-floating">
+											<label for="" class="control-label">Código de color de Botones</label>
+											<input type="text" name="codigoColorBotones" required class="form-control">
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group label-floating">
 											<label for="" class="control-label">Color de Botones</label>
-											<input type="text" class="form-control" name="colorBoton" required="">
+											<input type="text" class="form-control" name="colorBotones" required="">
 										</div>
 									</div>
 								</div>
@@ -397,6 +720,13 @@
 										<label class="control-label">Otro Color <small>(opcional)</small>:</label>
 		                            	<input type="text" name="bordadoColor" class="form-control">
 		                            </div>	
+		                            <div class="row">
+									<center><h4>Notas del Bordado</h4></center>
+									<div class="form-group label-floating">
+		                                <label class="control-label">Notas que puedan ayudar a tener una mejor idea de lo que quiere el cliente...</label>
+		                                <textarea name="notasBordado"  rows="2" class="form-control"></textarea>
+		                            </div>
+								</div>
 								</div>
 								
 							</div>
@@ -409,8 +739,8 @@
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
 									<p>Medidas Corporales de Cliente:</p>
-									<div class="row">
-										<div class="col-md-6 col-md-offset-3">
+										<div class="col-md-6 ">
+										
 											<div class="form-group label-floating">
 												<label class="control-label">Selecciona un Fit</label>
 												<select name="fitSaco" id="fitSaco" class="form-control">
@@ -421,7 +751,6 @@
 												</select>
 											</div>
 										</div>
-									</div>
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group label-floating">
@@ -434,27 +763,14 @@
 												<label for="corteSaco" class="control-label">Corte del Saco:</label>
 												<select name="corteSaco" id="corteSaco" class="form-control">
 													<option disabled="" selected=""></option>
-													<option value="0">Chico</option>
+													<option value="0">Corto</option>
 													<option value="1">Regular</option>
 													<option value="2">Largo</option>
 												</select>
 											</div>
 										</div>
 									</div>
-									<div class="row">
-										<div class="col-md-6">
-											<div class="form-group label-floating">
-												<label for="largoMangaSaco" class="control-label">Largo de la Manga <small>(en pulgadas)</small>:</label>
-												<input type="number" step="0.1" min="0" name="largoMangaSaco" id="largoMangaSaco" class="form-control">
-											</div>
-										</div>
-										<div class="col-md-6">
-											<div class="form-group label-floating">
-												<label for="largoEspaldaSaco" class="control-label">Largo de Espalda <small>(en pulgadas)</small>:</label>
-												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control">
-											</div>
-										</div>
-									</div>
+									
 								</div>
 							</div>
 							<div class="row">
@@ -658,8 +974,9 @@
 			                                      selected="" 
 			                                    @endif></option>
 			                                    <option value="0">Todos los ojales</option>
-			                                    <option value="1">3º y 4º</option>
-			                                    <option value="2">4º</option>
+			                                    <option value="1">3° y 4°</option>
+			                                    <option value="2">4°</option>
+			                                    <option value="3">3° al tono, 4° en contraste</option>
 			                                </select>
 			                            </div>
 									</div>
@@ -946,7 +1263,7 @@
                     					</div>
                     				</div>
                     				<div class="row">
-                    					<div class="col-md-6">
+                    					<div class="col-md-6 col-md-offset-3">
                     						<div class="form-group label-floating">
                     							<label class="control-label">Corte de Chaleco:</label>
                     							<select name="corteChaleco" id="corteChaleco" class="form-control">
@@ -957,12 +1274,7 @@
                     							</select>
                     						</div>
                     					</div>
-                    					<div class="col-md-6">
-                    						<div class="form-group label-floating">
-                    							<label class="control-label">Medida Espalda para Chaleco <small>(en pulgadas)</small>:</label>
-                    							<input type="number" min="0" step="0.1" name="espaldaChaleco" id="espaldaChaleco" class="form-control">
-                    						</div>
-                    					</div>
+                    					
                     				</div>
                     			</div>
                     		</div>
@@ -1044,16 +1356,7 @@
 									</div>
                     			</div>
                     		</div>
-                    		<h4 class="info-text">Opciones Extra</h4>
-                    		<div class="row">
-                    			<div class="col-md-8 col-md-offset-2 text-center">
-            						<label>
-									  <input type="checkbox" name="ajustadorChaleco"/>
-									  <img src="{{ asset('img/suit_options/chaleco/Chaleco_espalda_ajustador.png') }}">
-									  <p class="text-center">Ajustador Espalda</p>
-									</label>
-                    			</div>
-                    		</div>
+                    		
                     		<div class="row">
                     			<div class="col-md-10 col-md-offset-1">
 									<h4>Notas del Chaleco</h4>
@@ -1090,20 +1393,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="row">
-										<div class="col-md-6">
-											<div class="form-group label-floating">
-												<label class="control-label">Largo Externo Terminado:</label>
-												<input type="number" min="10" step="0.1" name="largoPantalonExt" id="largoPantalonExt" class="form-control">
-											</div>
-										</div>
-										<div class="col-md-6">
-											<div class="form-group label-floating">
-												<label class="control-label">Largo Interno Terminado:</label>
-												<input type="number" min="10" step="0.1" name="largoPantalonInt" id="largoPantalonInt" class="form-control">
-											</div>
-										</div>
-									</div>
+									
 								</div>
 							</div>
 							<div class="row">
@@ -1211,8 +1501,16 @@
 		                                	<div class="form-group label-floating">
 												<div class="checkbox">
 													<label><input type="checkbox" name="medioForroPiernasAlTono" value="true">Medio Forro interior al tono</label>
-												</div>									
+												</div>								
 											</div>											
+										</div>
+										<div class="form-group label-floating">									
+												<label for="" class="control-label">Código de otro color<small></small></label>
+												<input type="text" name="codigoOtroColorMedioForro" class="form-control">		
+										</div>
+										<div class="form-group label-floating">									
+												<label for="" class="control-label">Color<small></small></label>
+												<input type="text" name="otroColorMedioForro" class="form-control">		
 										</div>										
 									</div>
 								</div>

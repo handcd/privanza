@@ -146,9 +146,9 @@ class OrderController extends Controller
             'pantalon' => 'nullable', // "on",
             'tipoTela' => 'required', // "cliente",
             'codigoTelaCliente' => 'nullable|required_if:tipoTela,"cliente"', // "suodfoashudf",
-            'codigoColorTelaCliente' => 'nullable|required_if:tipoTela,"cliente"', // "aisdhfaidhsf",
+            'codigoColorTelaCliente' => 'nullable', // "aisdhfaidhsf",
             'mtsTelaCliente' => 'nullable|required_if:tipoTela,"cliente"', // "123.3",
-            'codigoTelaIsco' => 'nullable|required_if:tipoTela,"cliente"', // null,
+            'codigoTelaIsco' => 'nullable', // null,
             'tipoForro' => 'required', // "cliente",
             // 'codigoForroCliente' => 'required', // "123123",
             // 'codigoColorForroCliente' => 'required', // "asdasd",
@@ -248,27 +248,40 @@ class OrderController extends Controller
         if ($request->tipoTela === 'cliente') {
             $orden->tela_isco = false;
             $orden->codigo_tela = $request->codigoTelaCliente;
+            $orden->nombre_tela = $request->nombreTelaCliente;
+            $orden->codigo_color_tela = $request->codigoColorTelaCliente;
+            $orden->color_tela = $request->colorTelaCliente;
             $orden->mts_tela_cliente = $request->mtsTelaCliente;
-            $orden->codigo_color_tela_cliente = $request->codigoColorTelaCliente;
         } else {
             $orden->tela_isco = true;
             $orden->codigo_tela = $request->codigoTelaIsco;
+            $orden->nombre_tela = $request->nombreTelaIsco;
+            $orden->codigo_color_tela = $request->codigoColorTelaIsco;
+            $orden->color_tela = $request->colorTelaIsco;
         }
 
         // Forro
         if ($request->tipoForro === 'cliente') {
             $orden->forro_isco = false;
             $orden->codigo_forro = $request->codigoForroCliente;
+            $orden->nombre_forro = $request->nombreForroCliente;            
+            $orden->codigo_color_forro = $request->codigoColorForroCliente;
+            $orden->color_forro = $request->colorForroCliente;
             $orden->mts_forro_cliente = $request->mtsForroCliente;
-            $orden->codigo_color_forro_cliente = $request->codigoColorForroCliente;
         } else {
             $orden->forro_isco = true;
             $orden->codigo_forro = $request->codigoForroIsco;
+            $orden->nombre_forro = $request->nombreForroIsco;
+            $orden->codigo_color_forro = $request->codigoColorForroIsco;
+            $orden->color_forro = $request->colorForroIsco;  
+
         }
 
         // Botones
-        $orden->codigo_botones = $request->codigoBoton; 
-        $orden->color_botones = $request->colorBoton;
+        $orden->tipo_botones = $request->botonesCliente ? true : false;
+        $orden->codigo_botones = $request->codigoBotones; 
+        $orden->codigo_color_botones = $request->codigoColorBotones;
+        $orden->color_botones = $request->colorBotones;
 
         // Etiquetas
         $orden->etiquetas_tela = $request->etiquetaTela ? true : false;
@@ -329,7 +342,6 @@ class OrderController extends Controller
             } else {
                 $chaleco->tipo_forro = $request->codigoOtroForroChaleco;
             }
-            $chaleco->ajustador_espalda = $request->ajustadorChaleco ? true : false;
 
             $chaleco->notas = $request->notasChaleco;
 

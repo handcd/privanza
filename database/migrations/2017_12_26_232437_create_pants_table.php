@@ -23,6 +23,9 @@ class CreatePantsTable extends Migration
             $table->integer('tipo_vivo'); // 1 Vivo Doble con Ojal, 2 Vivo Sencillo con Ojal
             $table->string('color_ojalera');
             $table->boolean('medio_forro_piernas_al_tono');
+            $table->string('codigo_otro_color_medio_forro')->nullable();
+            $table->string('otro_color_medio_forro')->nullable();
+
             $table->integer('dobladillo'); // 1 normal, 2 valenciana
             $table->integer('pretina');
             $table->string('color_pretina');
@@ -30,8 +33,6 @@ class CreatePantsTable extends Migration
             // Datos Pantalón
             $table->integer('fit_id');
             $table->integer('talla');
-            $table->float('largo_ext');
-            $table->float('largo_int');
             $table->string('notas')->nullable();
 
             $table->timestamps();

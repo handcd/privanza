@@ -34,27 +34,44 @@ $factory->define(App\Order::class, function (Faker $faker) {
         'date_plancha' => $faker->dateTimeBetween('-17 days','-16 days'),
         'revision' => rand(0,1),
         'date_revision' => $faker->dateTimeBetween('-16 days','-2 weeks'),
-        // // Etiquetado y Empaque
+        // // Medidas generales del cliente
+        //Saco
+        
+
+        // // Etiquetado y Empaque        
+        //tela
         'tela_isco' => rand(0,1),
         'codigo_tela' => $faker->word,
+        'nombre_tela' => $faker->word,
+        'codigo_color_tela' => $faker->hexcolor,
+        'color_tela' => $faker->colorName,
         'mts_tela_cliente' => $faker->randomFloat(1,1.5,5),
-        'codigo_color_tela_cliente' => $faker->colorName,
+        //forro
         'forro_isco' => rand(0,1),
         'codigo_forro' => $faker->word,
+        'nombre_forro' => $faker->word,
+        'codigo_color_forro' => $faker->hexcolor,
+        'color_forro' => $faker->colorName,
         'mts_forro_cliente' => $faker->randomFloat(1,1.5,5),
-        'codigo_color_forro_cliente' => $faker->hexcolor,
-        'codigo_botones' => $faker->word,
+        //botones
+        'tipo_botones' => rand(0,1),
+        'codigo_botones' => $faker->word,        
+        'codigo_color_botones' => $faker->hexcolor,
         'color_botones' => $faker->colorName,
+        //etiquetas
         'etiquetas_tela' => rand(0,1),
         'etiquetas_marca' => rand(0,1),
         'marca_en_etiqueta' => $faker->sentence(),
+        //gancho
         'gancho' => rand(0,1),
         'gancho_personalizacion' => $faker->sentence(),
+        //portatrajes
         'portatrajes' => rand(0,1),
         'portatrajes_personalizacion' => $faker->sentence(),
-        'bordado' => $faker->sentence(),
+        'bordado' => $faker->colorName,
+        //bordado
         'letra' => $faker->sentence(),
-        'bordadoColor' => $faker->sentence(),
-        // 'notas_tela' => $faker->sentences(3),
+        'bordadoColor' => $faker->hexcolor,
+        'notasBordado' => $faker->sentence(),
     ];
 });
