@@ -57,8 +57,8 @@
 					<div class="wizard-navigation">
 						<ul>
 							<li><a href="#inicio" data-toggle="tab">Datos Iniciales</a></li>
-                            <li><a href="#sacoExt" data-toggle="tab">Saco Externo</a></li>
-                            <li><a href="#sacoInt" data-toggle="tab">Saco Interno</a></li>
+                            <li><a href="#medidas" data-toggle="tab">Medidas</a></li>
+                            <li><a href="#saco" data-toggle="tab">Saco</a></li>
                             <li><a href="#chaleco" data-toggle="tab">Chaleco</a></li>
                             <li><a href="#pantalon" data-toggle="tab">Pantalón</a></li>
                             <li><a href="#finalizar" data-toggle="tab">Finalizar</a></li>
@@ -154,225 +154,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="row">
-								<div class="col-md-6 col-md-offset-3">
-									<div class="col-md-6 col-md-offset-3">
-										<h4 class="text-center">Medidas generales del cliente</h4>
-									</div>
-									<div class="col-md-6 col-md-offset-3">
-										<h4 class="text-center">Saco <small> (en pulgadas)</small></h4>
-									</div>
-									<div class="row">
-										<div class="col-xs-4">
-											<div class="form-group label-floating">
-												<label for="largoMangaSaco" class="control-label">Largo Talle:</label>
-												<input type="number" step="0.1" min="0" name="largoMangaSaco" id="largoMangaSaco" class="form-control" min="0" >
-											</div>
-										</div>
-										<div class="col-xs-4">
-											<div class="form-group label-floating">
-												<label for="largoEspaldaSaco" class="control-label">Largo de saco:</label>
-												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
-											</div>
-										</div>
-										<div class="col-xs-4">
-											<div class="form-group label-floating">
-												<label for="largoEspaldaSaco" class="control-label">Circunferencia de tórax:</label>
-												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-xs-4">
-											<div class="form-group label-floating">
-												<label for="largoMangaSaco" class="control-label">Circunferencia de abdomen:</label>
-												<input type="number" step="0.1" min="0" name="largoMangaSaco" id="largoMangaSaco" class="form-control" min="0">
-											</div>
-										</div>
-										<div class="col-xs-4">
-											<div class="form-group label-floating">
-												<label for="largoEspaldaSaco" class="control-label">Circunferencia de cadera o base:</label>
-												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
-											</div>
-										</div>
-										<div class="col-xs-4">
-											<div class="form-group label-floating">
-												<label for="largoEspaldaSaco" class="control-label">Ancho espalda/bata:</label>
-												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-xs-4">
-											<div class="form-group label-floating">
-												<label for="largoMangaSaco" class="control-label">Ancho hombro <small>(izquierdo)</small>:</label>
-												<input type="number" step="0.1" min="0" name="largoMangaSaco" id="largoMangaSaco" class="form-control" min="0">
-											</div>
-										</div>
-										<div class="col-xs-4">
-											<div class="form-group label-floating">
-												<label for="largoEspaldaSaco" class="control-label">Ancho hombro <small>(derecho)</small>:</label>
-												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
-											</div>
-										</div>
-										<div class="col-xs-4">
-											<div class="form-group label-floating">
-												<label for="largoEspaldaSaco" class="control-label">Travéz espalda:</label>
-												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-xs-4">
-											<div class="form-group label-floating">
-												<label for="largoMangaSaco" class="control-label">Largo de la Manga <small>(izquierda)</small>:</label>
-												<input type="number" step="0.1" min="0" name="largoMangaSaco" id="largoMangaSaco" class="form-control" min="0" >
-											</div>
-										</div>
-										<div class="col-xs-4">
-											<div class="form-group label-floating">
-												<label for="largoEspaldaSaco" class="control-label">Largo de la Manga <small>(derecha)</small>:</label>
-												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
-											</div>
-										</div>
-										<div class="col-xs-4">
-											<div class="form-group label-floating">
-												<label for="largoEspaldaSaco" class="control-label">Frente completo:</label>
-												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-xs-4 col-md-offset-4">
-											<div class="form-group label-floating">
-												<label for="largoEspaldaSaco" class="control-label">Estatura <small>(en metros)</small>:</label>
-												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="1">
-											</div>
-										</div>
-									</div>
-								</div>	
-								{{-- Medidas del chaleco --}}
-								<div class="col-md-6 col-md-offset-3">
-									<div class="col-md-6 col-md-offset-3">
-										<h4 class="text-center">Chaleco <small> (en pulgadas)</small></h4>
-									</div>
-									<div class="row">
-										<div class="col-xs-4">
-											<div class="form-group label-floating">
-												<label for="largoMangaSaco" class="control-label">Largo Talle:</label>
-												<input type="number" step="0.1" min="0" name="largoMangaSaco" id="largoMangaSaco" class="form-control" min="0" >
-											</div>
-										</div>
-										<div class="col-xs-4">
-											<div class="form-group label-floating">
-												<label for="largoEspaldaSaco" class="control-label">Circunferencia de abdomen:</label>
-												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
-											</div>
-										</div>
-										<div class="col-xs-4">
-											<div class="form-group label-floating">
-												<label for="largoEspaldaSaco" class="control-label">Circunferencia de tórax:</label>
-												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-xs-4">
-											<div class="form-group label-floating">
-												<label for="largoMangaSaco" class="control-label">Escote:</label>
-												<input type="number" step="0.1" min="0" name="largoMangaSaco" id="largoMangaSaco" class="form-control" min="0">
-											</div>
-										</div>
-										<div class="col-xs-4">
-											<div class="form-group label-floating">
-												<label for="largoEspaldaSaco" class="control-label">Largo frente:</label>
-												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
-											</div>
-										</div>
-										<div class="col-xs-4">
-											<div class="form-group label-floating">
-												<label for="largoEspaldaSaco" class="control-label">Largo espalda:</label>
-												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-xs-6">
-											<div class="form-group label-floating">
-												<label for="largoMangaSaco" class="control-label">Ancho hombro <small>(derecho)</small>:</label>
-												<input type="number" step="0.1" min="0" name="largoMangaSaco" id="largoMangaSaco" class="form-control" min="0">
-											</div>
-										</div>
-										<div class="col-xs-6">
-											<div class="form-group label-floating">
-												<label for="largoEspaldaSaco" class="control-label">Largo de saco <small>(izquierdo)</small>:</label>
-												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
-											</div>
-										</div>
-									</div>
-								</div>	
-
-								{{-- Medidas del pantalón --}}	
-								<div class="col-md-6 col-md-offset-3">
-									<div class="col-md-6 col-md-offset-3">
-										<h4 class="text-center">Pantalón <small> (en pulgadas)</small></h4>
-									</div>
-									<div class="row">
-										<div class="col-xs-4">
-											<div class="form-group label-floating">
-												<label for="largoMangaSaco" class="control-label">Largo externo <small>(izquierdo)</small>:</label>
-												<input type="number" step="0.1" min="0" name="largoMangaSaco" id="largoMangaSaco" class="form-control" min="0">
-											</div>
-										</div>
-										<div class="col-xs-4">
-											<div class="form-group label-floating">
-												<label for="largoEspaldaSaco" class="control-label">Largo externo <small>(derecho)</small>:</label>
-												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
-											</div>
-										</div>
-										<div class="col-xs-4">
-											<div class="form-group label-floating">
-												<label for="largoEspaldaSaco" class="control-label">Contorno de tiro:</label>
-												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-xs-4">
-											<div class="form-group label-floating">
-												<label for="largoMangaSaco" class="control-label">Circunferencia de cintura:</label>
-												<input type="number" step="0.1" min="0" name="largoMangaSaco" id="largoMangaSaco" class="form-control" min="0">
-											</div>
-										</div>
-										<div class="col-xs-4">
-											<div class="form-group label-floating">
-												<label for="largoEspaldaSaco" class="control-label">Entrepierna:</label>
-												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control">
-											</div>
-										</div>
-										<div class="col-xs-4">
-											<div class="form-group label-floating">
-												<label for="largoEspaldaSaco" class="control-label">Circunferencia de cadera o base:</label>
-												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-xs-6">
-											<div class="form-group label-floating">
-												<label for="largoMangaSaco" class="control-label">Ancho rodilla:</label>
-												<input type="number" step="0.1" min="0" name="largoMangaSaco" id="largoMangaSaco" class="form-control" min="0">
-											</div>
-										</div>
-										<div class="col-xs-6">
-											<div class="form-group label-floating">
-												<label for="largoEspaldaSaco" class="control-label">Ancho de fondo:</label>
-												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" min="0">
-											</div>
-										</div>
-									</div>
-								</div>		
-							</div>
+							
 							{{-- Datos generales --}}
 							<div class="row">
 								<div class="col-md-6 col-md-offset-3">
@@ -732,9 +514,53 @@
 							</div>
 						</div>
 
-						{{-- Saco Externo --}}
+						{{-- Medidas del cliente --}}
 						
-						<div class="tab-pane" id="sacoExt">
+						<div class="tab-pane" id="medidas">
+							<h4 class="info-text">Medidas Generales del cliente</h4>
+							<div class="row">
+								<div class="col-md-10 col-md-offset-1">
+									<p>Medidas Corporales de Cliente:</p>
+										<div class="col-md-6 ">
+										
+											<div class="form-group label-floating">
+												<label class="control-label">Selecciona un Fit</label>
+												<select name="fitSaco" id="fitSaco" class="form-control">
+													<option disabled="" selected=""></option>
+													@foreach (\App\Fit::all() as $fit)
+														<option value="{{ $fit->id }}">{{ $fit->name }}</option>
+													@endforeach
+												</select>
+											</div>
+										</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group label-floating">
+												<label class="control-label">Talla del Saco:</label>
+												<input type="number" min="10" step="1" name="tallaSaco" id="tallaSaco" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group label-floating">
+												<label for="corteSaco" class="control-label">Corte del Saco:</label>
+												<select name="corteSaco" id="corteSaco" class="form-control">
+													<option disabled="" selected=""></option>
+													<option value="0">Corto</option>
+													<option value="1">Regular</option>
+													<option value="2">Largo</option>
+												</select>
+											</div>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+
+						{{-- Medidas del cliente --}}	
+						
+						{{-- Saco Interno --}}
+						<div class="tab-pane" id="saco">
 							<h4 class="info-text">Datos de la parte Externa del Saco</h4>
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
@@ -1074,16 +900,10 @@
 		                            </div>
 								</div>
 							</div>
-						</div>
-						
-						{{-- Saco Interno --}}
-						<div class="tab-pane" id="sacoInt">
-							<h4 class="info-text">Datos de la parte Interna del Saco</h4>
-							<div class="row">
-								<p class="text-center">Tipo de Vista:</p>
-							</div>
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1 text-center">
+									<h4 class="info-text">Datos de la parte Interna del Saco</h4>
+									<p class="text-center">Tipo de Vista:</p>
 									<div class="col-md-6 col-xs-6">
 										<label>
 										  <input type="radio" name="tipoVista" value="0" required="" />
@@ -1102,8 +922,6 @@
 							</div>
 							<div class="row">
 								<h4 class="text-center">Forro Interno en Mangas</h4>
-							</div>
-							<div class="row">
 								<div class="col-md-6 col-md-offset-3">
 									<div class="checkbox">
 										<label>
@@ -1204,24 +1022,20 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-5 col-md-offset-1">
+								<div class="col-xs-3 col-xs-offset-5">
 									<div class="row">
 										<h5 class="text-center">Vivos en Bolsas Internas</h5>
 									</div>
-									<div class="row col-xs-offset-1">
 										<div class="checkbox">
 											<label>
 												<input type="checkbox" name="vivosBolsasInternasCuerpo">
 												Del mismo forro en cuerpo	
 											</label>
 										</div>
-									</div>
-									<div class="row col-xs-offset-1">
 										<div class="form-group label-floating">
 											<label class="control-label">En contraste a otro tono <small>(opcional)</small></label>
 											<input type="text" class="form-control" name="otroVivosBolsasInternas">
 										</div>
-									</div>
 								</div>
 								
 							</div>
@@ -1233,7 +1047,7 @@
 		                                <textarea name="notasSacoInt" id="notasSacoInt" rows="5" class="form-control"></textarea>
 		                            </div>
 								</div>
-							</div>
+							</div>						
 						</div>
 
 						{{-- Tab Chaleco--}}
