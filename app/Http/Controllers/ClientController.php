@@ -140,6 +140,34 @@ class ClientController extends Controller
         $cliente->concept = $request->concept;
         $cliente->vendedor_id = Auth::id();
         $cliente->contacto = $request->contactoReferencia;
+        //Medidas
+        $cliente->altura = $request->altura;
+        $cliente->peso = $request->peso;
+        $cliente->edad = $request->edad;
+        $cliente->hombros = $request->hombros;
+        $cliente->abdomen = $request->abdomen;
+        $cliente->pecho = $request->pecho;
+        $cliente->espalda = $request->espalda;
+        $cliente->contornoCuello = $request->contornoCuello;
+        $cliente->contornoBiceps = $request->contornoBiceps;
+        $cliente->medidaHombros = $request->medidaHombros;
+        $cliente->brazoDerecho = $request->brazoDerecho;
+        $cliente->brazoIzquierdo = $request->brazoIzquierdo;
+        $cliente->hombroDerecho = $request->hombroDerecho;
+        $cliente->hombroIzquierdo = $request->hombroIzquierdo;
+        $cliente->anchoEspalda = $request->anchoEspalda;
+        $cliente->largoTorso = $request->largoTorso;
+        $cliente->contornoPecho = $request->contornoPecho;
+        $cliente->punio = $request->punio;
+        $cliente->contornoAbdomen = $request->contornoAbdomen;
+        $cliente->contornoCintura = $request->contornoCintura;
+        $cliente->contornoCadera = $request->contornoCadera;
+        $cliente->largoTiro = $request->largoTiro;
+        $cliente->largoInternoPantalon = $request->largoInternoPantalon;
+        $cliente->largoExternoPantalon = $request->largoExternoPantalon;
+        $cliente->contornoMuslo = $request->contornoMuslo;
+        $cliente->contornoRodilla = $request->contornoRodilla;
+        //Guardar
         $cliente->save();
 
         // Notifications

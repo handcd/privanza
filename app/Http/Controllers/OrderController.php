@@ -132,7 +132,7 @@ class OrderController extends Controller
     public function storeForVendedor(Request $request)
     {
         //return $request;
-
+        $configuracion = new Configuration;
         $orden = new Order;
         $pantalon = new Pants;
         $chaleco = new Vest;
@@ -144,32 +144,32 @@ class OrderController extends Controller
             'saco' => 'nullable', // "on",
             'chaleco' => 'nullable', // "on",
             'pantalon' => 'nullable', // "on",
-            'tipoTela' => 'required', // "cliente",
-            'codigoTelaCliente' => 'nullable|required_if:tipoTela,"cliente"', // "suodfoashudf",
-            'codigoColorTelaCliente' => 'nullable|required_if:tipoTela,"cliente"', // "aisdhfaidhsf",
-            'mtsTelaCliente' => 'nullable|required_if:tipoTela,"cliente"', // "123.3",
-            'codigoTelaIsco' => 'nullable|required_if:tipoTela,"cliente"', // null,
-            'tipoForro' => 'required', // "cliente",
+            'tipoTela' => 'nullable', // "cliente",
+            'codigoTelaCliente' => 'nullable', // "suodfoashudf",
+            'codigoColorTelaCliente' => 'nullable', // "aisdhfaidhsf",
+            'mtsTelaCliente' => 'nullable', // "123.3",
+            'codigoTelaIsco' => 'nullable', // null,
+            'tipoForro' => 'nullable', // "cliente",
             // 'codigoForroCliente' => 'required', // "123123",
             // 'codigoColorForroCliente' => 'required', // "asdasd",
             // 'mtsForroCliente' => 'required', // "12.1",
             // 'codigoForroIsco' => 'required', // null,
-            'codigoBoton' => 'required', // "asoufhs",
-            'colorBoton' => 'required', // "sadiuhasdiu",
+            'codigoBoton' => 'nullable', // "asoufhs",
+            'colorBoton' => 'nullable', // "sadiuhasdiu",
             // 'etiquetaTela' => 'required', // "on",
             // 'etiquetaMarca' => 'required', // "on",
             // 'marcaEtiqueta' => 'required', // "asdasd",
-            'tipoGancho' => 'required', // "1",
+            'tipoGancho' => 'nullable', // "1",
             // 'perGancho' => 'required', // "asdasdasd",
-            'tipoPortatrajes' => 'required', // "1",
+            'tipoPortatrajes' => 'nullable', // "1",
             // 'perPortatrajes' => 'required', // "asdasd",
 
             // Datos de Saco Externo
-            'fitSaco' => 'nullable|required_if:saco,"on"|numeric',
-            'tallaSaco' => 'nullable|required_if:saco,"on"|numeric',
-            'corteSaco' => 'nullable|required_if:saco,"on"|numeric',
-            'largoMangaSaco' => 'nullable|required_if:saco,"on"|numeric',
-            'largoEspaldaSaco' => 'nullable|required_if:saco,"on"|numeric',
+            'fitSaco' => 'nullable|numeric',
+            'tallaSaco' => 'nullable|numeric',
+            'corteSaco' => 'nullable|numeric',
+            'largoMangaSaco' => 'nullable|numeric',
+            'largoEspaldaSaco' => 'nullable|numeric',
             // 'tipoSolapa' => 'required', // "1",
             // 'tipoOjalSolapa' => 'required', // "3",
             // 'colorOjalSolapa' => 'required', // "Vino",
@@ -211,10 +211,10 @@ class OrderController extends Controller
             'notasSacoInt' => 'nullable',
 
             // Datos de Chaleco
-            'fitChaleco' => 'nullable|required_if:chaleco,"on"|numeric',
-            'tallaChaleco' => 'nullable|required_if:chaleco,"on"|numeric',
-            'corteChaleco' => 'nullable|required_if:chaleco,"on"|numeric',
-            'espaldaChaleco' => 'nullable|required_if:chaleco,"on"|numeric',
+            'fitChaleco' => 'nullable|numeric',
+            'tallaChaleco' => 'nullable|numeric',
+            'corteChaleco' => 'nullable|numeric',
+            'espaldaChaleco' => 'nullable|numeric',
             // 'cuelloChaleco' => 'required', // "0",
             // 'bolsasChaleco' => 'required', // "1",
             // 'forroTela' => 'required', // "0",
@@ -222,10 +222,10 @@ class OrderController extends Controller
             'notasChaleco' => 'nullable',
 
             // Datos Pantalón
-            'fitPantalon' => 'nullable|required_if:pantalon,"on"|numeric',
-            'tallaPantalon' => 'nullable|required_if:pantalon,"on"|numeric',
-            'largoPantalonExt' => 'nullable|required_if:pantalon,"on"|numeric',
-            'largoPantalonInt' => 'nullable|required_if:pantalon,"on"|numeric',
+            'fitPantalon' => 'nullable|numeric',
+            'tallaPantalon' => 'nullable|numeric',
+            'largoPantalonExt' => 'nullable|numeric',
+            'largoPantalonInt' => 'nullable|numeric',
             // 'tipoPase' => 'required', // "0",
             // 'numPliegues' => 'required', // "1",
             // 'bolsasTraseras' => 'required', // "0",
@@ -248,27 +248,41 @@ class OrderController extends Controller
         if ($request->tipoTela === 'cliente') {
             $orden->tela_isco = false;
             $orden->codigo_tela = $request->codigoTelaCliente;
+            $orden->nombre_tela = $request->nombreTelaCliente;
+            $orden->codigo_color_tela = $request->codigoColorTelaCliente;
+            $orden->color_tela = $request->colorTelaCliente;
             $orden->mts_tela_cliente = $request->mtsTelaCliente;
-            $orden->codigo_color_tela_cliente = $request->codigoColorTelaCliente;
         } else {
             $orden->tela_isco = true;
             $orden->codigo_tela = $request->codigoTelaIsco;
+            $orden->nombre_tela = $request->nombreTelaIsco;
+            $orden->codigo_color_tela = $request->codigoColorTelaIsco;
+            $orden->color_tela = $request->colorTelaIsco;
         }
 
         // Forro
         if ($request->tipoForro === 'cliente') {
             $orden->forro_isco = false;
             $orden->codigo_forro = $request->codigoForroCliente;
+            $orden->nombre_forro = $request->nombreForroCliente;            
+            $orden->codigo_color_forro = $request->codigoColorForroCliente;
+            $orden->color_forro = $request->colorForroCliente;
             $orden->mts_forro_cliente = $request->mtsForroCliente;
-            $orden->codigo_color_forro_cliente = $request->codigoColorForroCliente;
         } else {
             $orden->forro_isco = true;
             $orden->codigo_forro = $request->codigoForroIsco;
+            $orden->nombre_forro = $request->nombreForroIsco;
+            $orden->codigo_color_forro = $request->codigoColorForroIsco;
+            $orden->color_forro = $request->colorForroIsco;  
+
         }
 
         // Botones
-        $orden->codigo_botones = $request->codigoBoton; 
-        $orden->color_botones = $request->colorBoton;
+        $orden->tipo_botones = $request->botonesCliente ? true : false;
+        $orden->codigo_botones = $request->codigoBotones; 
+        $orden->codigo_color_botones = $request->codigoColorBotones;
+        $orden->color_botones = $request->colorBotones;
+        $orden->cantidad_botones = $request->cantidadBotones;
 
         // Etiquetas
         $orden->etiquetas_tela = $request->etiquetaTela ? true : false;
@@ -281,13 +295,13 @@ class OrderController extends Controller
 
         // Gancho
         $orden->gancho = $request->tipoGancho;
-        if ($orden->gancho == 1) {
+        if ($orden->gancho == 2) {
             $orden->gancho_personalizacion = $request->perGancho;
         }
 
         // Portatrajes
         $orden->portatrajes = $request->tipoPortatrajes;
-        if ($orden->portatrajes == 1) {
+        if ($orden->portatrajes == 2) {
             $orden->portatrajes_personalizacion = $request->perPortatrajes;
         }
         //Bordado
@@ -300,11 +314,11 @@ class OrderController extends Controller
             $orden->bordadoColor = 'Gris Plata';
         }
 
-
         // Componentes del Traje
         $orden->has_vest = $request->chaleco ? true : false;
         $orden->has_coat = $request->saco ? true : false;
         $orden->has_pants = $request->pantalon ? true : false;
+
 
         // Guardar la Orden;
         $orden->save();
@@ -317,7 +331,6 @@ class OrderController extends Controller
             $chaleco->fit_id = $request->fitChaleco;
             $chaleco->talla = $request->tallaChaleco;
             $chaleco->corte = $request->corteChaleco;
-            $chaleco->largo_espalda = $request->espaldaChaleco;
 
             // Datos de Chaleco
             $chaleco->order_id = $orden->id;
@@ -329,7 +342,6 @@ class OrderController extends Controller
             } else {
                 $chaleco->tipo_forro = $request->codigoOtroForroChaleco;
             }
-            $chaleco->ajustador_espalda = $request->ajustadorChaleco ? true : false;
 
             $chaleco->notas = $request->notasChaleco;
 
@@ -344,8 +356,6 @@ class OrderController extends Controller
             // Medidas Corporales
             $pantalon->fit_id = $request->fitPantalon;
             $pantalon->talla = $request->tallaPantalon;
-            $pantalon->largo_ext = $request->largoPantalonExt;
-            $pantalon->largo_int = $request->largoPantalonInt;
             $pantalon->notas = $request->notasPantalon;
 
             // Datos del Pantalón
@@ -385,8 +395,6 @@ class OrderController extends Controller
             $saco->fit_id = $request->fitSaco;
             $saco->talla = $request->tallaSaco;
             $saco->corte = $request->corteSaco;
-            $saco->largo_manga = $request->largoMangaSaco;
-            $saco->largo_espalda = $request->largoEspaldaSaco;
 
             $saco->order_id = $orden->id;
 

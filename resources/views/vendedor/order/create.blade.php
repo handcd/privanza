@@ -57,8 +57,8 @@
 					<div class="wizard-navigation">
 						<ul>
 							<li><a href="#inicio" data-toggle="tab">Datos Iniciales</a></li>
-                            <li><a href="#sacoExt" data-toggle="tab">Saco Externo</a></li>
-                            <li><a href="#sacoInt" data-toggle="tab">Saco Interno</a></li>
+                            <!--<li><a href="#medidas" data-toggle="tab">Medidas</a></li>!-->
+                            <li><a href="#saco" data-toggle="tab">Saco</a></li>
                             <li><a href="#chaleco" data-toggle="tab">Chaleco</a></li>
                             <li><a href="#pantalon" data-toggle="tab">Pantalón</a></li>
                             <li><a href="#finalizar" data-toggle="tab">Finalizar</a></li>
@@ -79,7 +79,7 @@
 											</span>
 											<div class="form-group label-floating">
 				                                <label class="control-label">Cliente</label>
-				                                <select class="form-control" name="cliente" required="true">
+				                                <select class="form-control" name="cliente" ue">
 				                                    <option disabled="" 
 				                                    @hasSection('editCliente')
 				                                    {{-- Ya hay un cliente seleccionado --}}
@@ -154,6 +154,8 @@
 									</div>
 								</div>
 							</div>
+							
+							{{-- Datos generales --}}
 							<div class="row">
 								<div class="col-md-6 col-md-offset-3">
 									<h4 class="text-center">¿Qué tipo de tela se usará?</h4>
@@ -195,9 +197,27 @@
 											<span class="input-group-addon">
 												<i class="fa fa-pencil" aria-hidden="true"></i>
 											</span>
+	                                    	<div class="form-group label-floating">
+	                                          	<label class="control-label">Nombre de la tela:</label>
+	                                          	<input name="nombreTela" type="text" class="form-control">
+	                                        </div>
+	                                    </div>
+	                                    <div class="input-group">
+											<span class="input-group-addon">
+												<i class="fa fa-barcode" aria-hidden="true"></i>
+											</span>
 	                                        <div class="form-group label-floating">
 	                                          	<label class="control-label">Código de Color de Tela:</label>
 	                                          	<input name="codigoColorTelaCliente" type="text" class="form-control">
+	                                        </div>
+	                                    </div>
+	                                    <div class="input-group">
+											<span class="input-group-addon">
+												<i class="fa fa-pencil" aria-hidden="true"></i>
+											</span>
+	                                        <div class="form-group label-floating">
+	                                          	<label class="control-label">Color de Tela:</label>
+	                                          	<input name="colorTelaCliente" type="text" class="form-control">
 	                                        </div>
 	                                    </div>
 	                                    <div class="input-group">
@@ -206,7 +226,7 @@
 											</span>
 	                                        <div class="form-group label-floating">
 	                                          	<label class="control-label">Metros entregados:</label>
-	                                          	<input name="mtsTelaCliente" type="number" step="0.1" class="form-control">
+	                                          	<input name="mtsTelaCliente" type="number" step="0.1" class="form-control" min="0">
 	                                        </div>
 	                                    </div>
                                     </div>
@@ -218,6 +238,33 @@
 	                                    	<div class="form-group label-floating">
 	                                          	<label class="control-label">Código de Tela ISCO:</label>
 	                                          	<input name="codigoTelaIsco" type="text" class="form-control">
+	                                        </div>
+	                                    </div>
+	                                    <div class="input-group">
+											<span class="input-group-addon">
+												<i class="fa fa-pencil" aria-hidden="true"></i>
+											</span>
+	                                    	<div class="form-group label-floating">
+	                                          	<label class="control-label">Nombre de la tela:</label>
+	                                          	<input name="nombreTelaIsco" type="text" class="form-control">
+	                                        </div>
+	                                    </div>
+	                                    <div class="input-group">
+											<span class="input-group-addon">
+												<i class="fa fa-barcode" aria-hidden="true"></i>
+											</span>
+	                                        <div class="form-group label-floating">
+	                                          	<label class="control-label">Código de Color de Tela:</label>
+	                                          	<input name="codigoColorTelaIsco" type="text" class="form-control">
+	                                        </div>
+	                                    </div>
+	                                    <div class="input-group">
+											<span class="input-group-addon">
+												<i class="fa fa-pencil" aria-hidden="true"></i>
+											</span>
+	                                        <div class="form-group label-floating">
+	                                          	<label class="control-label">Color de Tela:</label>
+	                                          	<input name="colorTelaIsco" type="text" class="form-control">
 	                                        </div>
 	                                    </div>
                                     </div>
@@ -258,9 +305,27 @@
 											<span class="input-group-addon">
 												<i class="fa fa-pencil" aria-hidden="true"></i>
 											</span>
+	                                    	<div class="form-group label-floating">
+	                                          	<label class="control-label">Nombre del Forro:</label>
+	                                          	<input name="nombreForroCliente" type="text" class="form-control">
+	                                        </div>
+	                                    </div>
+	                                    <div class="input-group">
+											<span class="input-group-addon">
+												<i class="fa fa-barcode" aria-hidden="true"></i>
+											</span>
 	                                        <div class="form-group label-floating">
 	                                          	<label class="control-label">Código de Color de Forro:</label>
 	                                          	<input name="codigoColorForroCliente" type="text" class="form-control">
+	                                        </div>
+	                                    </div>
+	                                    <div class="input-group">
+											<span class="input-group-addon">
+												<i class="fa fa-pencil" aria-hidden="true"></i>
+											</span>
+	                                    	<div class="form-group label-floating">
+	                                          	<label class="control-label">Color del Forro:</label>
+	                                          	<input name="colorForroCliente" type="text" class="form-control">
 	                                        </div>
 	                                    </div>
 	                                    <div class="input-group">
@@ -283,23 +348,69 @@
 	                                          	<input name="codigoForroIsco" type="text" class="form-control">
 	                                        </div>
 	                                    </div>
+	                                    <div class="input-group">
+											<span class="input-group-addon">
+												<i class="fa fa-pencil" aria-hidden="true"></i>
+											</span>
+	                                    	<div class="form-group label-floating">
+	                                          	<label class="control-label">Nombre del Forro:</label>
+	                                          	<input name="nombreForroIsco" type="text" class="form-control">
+	                                        </div>
+	                                    </div>
+	                                    <div class="input-group">
+											<span class="input-group-addon">
+												<i class="fa fa-barcode" aria-hidden="true"></i>
+											</span>
+	                                        <div class="form-group label-floating">
+	                                          	<label class="control-label">Código de Color de Forro:</label>
+	                                          	<input name="codigoColorForroIsco" type="text" class="form-control">
+	                                        </div>
+	                                    </div>
+	                                    <div class="input-group">
+											<span class="input-group-addon">
+												<i class="fa fa-pencil" aria-hidden="true"></i>
+											</span>
+	                                    	<div class="form-group label-floating">
+	                                          	<label class="control-label">Color del Forro:</label>
+	                                          	<input name="colorForroIsco" type="text" class="form-control">
+	                                        </div>
+	                                    </div>
                                     </div>
 								</div>
 							</div>
 
 							<div class="row">
+								
 								<div class="col-md-8 col-md-offset-2">
 									<h4 class="text-center">Datos de Botones</h4>
+									<div class="checkbox text-center">
+										<label>
+											<input type="checkbox" name="botonesCliente" id="botonesCliente">
+										</label>
+										Botones de cliente
+									</div>
 									<div class="col-md-6">
 										<div class="form-group label-floating">
 											<label for="" class="control-label">Código de Botones</label>
-											<input type="text" name="codigoBoton" required class="form-control">
+											<input type="text" name="codigoBotones" class="form-control">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group label-floating">
+											<label for="" class="control-label">Código de color de Botones</label>
+											<input type="text" name="codigoColorBotones" class="form-control">
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group label-floating">
 											<label for="" class="control-label">Color de Botones</label>
-											<input type="text" class="form-control" name="colorBoton" required="">
+											<input type="text" class="form-control" name="colorBotones">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group label-floating" id="cantidadBotones">
+											<label for="" class="control-label">Cantidad de botones</label>
+											<input type="number" class="form-control" name="cantidadBotones">
 										</div>
 									</div>
 								</div>
@@ -322,7 +433,7 @@
 											Se Reciben Etiquetas de Marca
 										</div>										
 										<div class="form-group label-floating" id="marcaEtiqueta">
-											<label class="control-label">Otra Marca: <small>(opcional: dejar en blanco para Privanza)</small></label>
+											<label class="control-label">Ingrese la marca:</small></label>
 											<input type="text" class="form-control" name="marcaEtiqueta">
 										</div>
 									</div>
@@ -331,7 +442,7 @@
 									<h4 class="text-center">Gancho</h4>
 									<div class="form-group label-floating">
 		                                <label class="control-label">Tipo de gancho...</label>
-		                                <select class="form-control" id="tipoGancho" name="tipoGancho" required="true">
+		                                <select class="form-control" id="tipoGancho" name="tipoGancho">
 		                                    <option disabled="" 
 		                                    @hasSection('editCliente')
 		                                    {{-- No hay tipo de evento --}}
@@ -340,6 +451,7 @@
 		                                    @endif></option>
 		                                        <option value="0">Normal</option>
 		                                        <option value="1">Personalizado Privanza</option>
+		                                        <option value="2">Otro</option>
 		                                </select>
 		                            </div>
 		                            <div class="form-group label-floating" id="personalizacionGancho">
@@ -351,7 +463,7 @@
 									<h4 class="text-center">Portatrajes</h4>
 									<div class="form-group label-floating">
 		                                <label class="control-label">Tipo de portatrajes...</label>
-		                                <select class="form-control" id="tipoPortatrajes" name="tipoPortatrajes" required="true">
+		                                <select class="form-control" id="tipoPortatrajes" name="tipoPortatrajes">
 		                                    <option disabled="" 
 		                                    @hasSection('editCliente')
 		                                    {{-- No hay tipo de evento --}}
@@ -360,6 +472,7 @@
 		                                    @endif></option>
 		                                        <option value="0">Cubrepolvos</option>
 		                                        <option value="1">Personalizado Privanza</option>
+		                                        <option value="2">Otro</option>
 		                                </select>
 		                            </div>
 		                            <div class="form-group label-floating" id="personalizacionPortatrajes">
@@ -397,20 +510,232 @@
 										<label class="control-label">Otro Color <small>(opcional)</small>:</label>
 		                            	<input type="text" name="bordadoColor" class="form-control">
 		                            </div>	
+		                            <div class="row">
+									<center><h4>Notas del Bordado</h4></center>
+									<div class="form-group label-floating">
+		                                <label class="control-label">Notas que puedan ayudar a tener una mejor idea de lo que quiere el cliente...</label>
+		                                <textarea name="notasBordado"  rows="2" class="form-control"></textarea>
+		                            </div>
+								</div>
 								</div>
 								
 							</div>
 						</div>
 
-						{{-- Saco Externo --}}
+						{{-- Medidas del cliente --}}
 						
-						<div class="tab-pane" id="sacoExt">
+						<div class="tab-pane" id="medidas">
+							<h4 class="info-text">Medidas Generales del cliente</h4>
+							<div class="row">
+								<div class="col-md-10 col-md-offset-1">
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group label-floating">
+												<label class="control-label">Altura <small>(En centímetros)</small>:</label>
+												<input type="number" min="10" step="1" name="altura" id="altura" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group label-floating">
+												<label class="control-label">Peso <small>(En kilogramos)</small>:</label>
+												<input type="number" min="10" step=".1" name="peso" id="peso" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group label-floating">
+												<label class="control-label">Edad <small>(En años)</small>:</label>
+												<input type="number" min="10" step="1" name="edad" id="edad" class="form-control">
+											</div>
+										</div>										
+									</div>	
+									<h4 class="info-text">Perfil</h4>
+									<div class="row">
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label for="hombros" class="control-label">Hombros:</label>
+												<select name="hombros" id="hombros" class="form-control">
+													<option disabled="" selected=""></option>
+													<option value="0">Rectos</option>
+													<option value="1">Normales</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label for="abdomen" class="control-label">Abdomen:</label>
+												<select name="abdomen" id="abdomen" class="form-control">
+													<option disabled="" selected=""></option>
+													<option value="0">Delgado</option>
+													<option value="1">Normal</option>
+													<option value="2">Voluminoso</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label for="pecho" class="control-label">Pecho:</label>
+												<select name="pecho" id="pecho" class="form-control">
+													<option disabled="" selected=""></option>
+													<option value="0">Musculoso</option>
+													<option value="1">Normal</option>
+													<option value="2">Curpulento</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label for="espalda" class="control-label">Espalda:</label>
+												<select name="espalda" id="espalda" class="form-control">
+													<option disabled="" selected=""></option>
+													<option value="0">Recta</option>
+													<option value="1">Normal</option>
+													<option value="2">Encorvada</option>
+												</select>
+											</div>
+										</div>																
+									</div>
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group label-floating">
+												<label class="control-label">Contorno de cuello <small>(En pulgadas)</small>:</label>
+												<input type="number" min="1" step="0.1" name="contornoCuello" id="contornoCuello" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group label-floating">
+												<label class="control-label">Contorno de Biceps <small>(En pulgadas)</small>:</label>
+												<input type="number" min="1" step="0.1" name="contornoBiceps" id="contornoBiceps" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group label-floating">
+												<label class="control-label">Medida de hombros <small>(En pulgadas)</small>:</label>
+												<input type="number" min="1" step="0.1" name="medidaHombros" id="medidaHombros" class="form-control">
+											</div>
+										</div>		
+									</div>		
+									<h4 class="info-text">Largo de brazo <small>(En pulgadas)</small></h4>	
+									<div class="row">
+										<div class="col-md-4 col-md-offset-2">
+											<div class="form-group label-floating">
+												<label class="control-label">Brazo derecho:</label>
+												<input type="number" min="1" step="0.1" name="brazoDerecho" id=brazoDerecho" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-4 col-md-offset-1">
+											<div class="form-group label-floating">
+												<label class="control-label">Brazo izquierdo:</label>
+												<input type="number" min="1" step="0.1" name="brazoIzquierdo" id="brazoIzquierdo" class="form-control">
+											</div>
+										</div>											
+									</div>	
+									<h4 class="info-text">Largo de hombros <small>(En pulgadas)</small></h4>	
+									<div class="row">
+										<div class="col-md-4 col-md-offset-2">
+											<div class="form-group label-floating">
+												<label class="control-label">Hombro izquierdo:</label>
+												<input type="number" min="1" step="0.1" name="hombroDerecho" id=hombroDerecho" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-4 col-md-offset-1">
+											<div class="form-group label-floating">
+												<label class="control-label">Hombro derecho:</label>
+												<input type="number" min="1" step="0.1" name="hombroIzquierdo" id="hombroIzquierdo" class="form-control">
+											</div>
+										</div>											
+									</div>	
+									<div class="row">
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label class="control-label">Ancho espalda:</label>
+												<input type="number" min="1" step="0.1" name="anchoEspalda" id="anchoEspalda" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label class="control-label">Largo Torso:</label>
+												<input type="number" min="1" step="0.1" name="largoTorso" id="largoTorso" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label class="control-label">Contorno pecho:</label>
+												<input type="number" min="1" step="0.1" name="contornoPecho" id="contornoPecho" class="form-control">
+											</div>
+										</div>	
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label class="control-label">Puño:</label>
+												<input type="number" min="1" step="0.1" name="punio" id="punio" class="form-control">
+											</div>
+										</div>		
+									</div>	
+									<div class="row">
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label class="control-label">Contorno abdomen:</label>
+												<input type="number" min="1" step="0.1" name="contornoAbdomen" id="contornoAbdomen" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label class="control-label">Cintura:</label>
+												<input type="number" min="1" step="0.1" name="contornoCintura" id="contornoCintura" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label class="control-label">Cadera:</label>
+												<input type="number" min="1" step="0.1" name="contornoCadera" id="contornoCadera" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label class="control-label">Largo tiro:</label>
+												<input type="number" min="1" step="0.1" name="largoTiro" id="largoTiro" class="form-control">
+											</div>
+										</div>
+									</div>		
+									<div class="row">
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label class="control-label">Largo externo pantalón:</label>
+												<input type="number" min="1" step="0.1" name="largoExternoPantalon" id="largoExternoPantalon" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label class="control-label">Largo interno pantalón:</label>
+												<input type="number" min="1" step="0.1" name="largoInternoPantalon" id="largoInternoPantalon" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label class="control-label">Muslo:</label>
+												<input type="number" min="1" step="0.1" name="contornoMuslo" id="contornoMuslo" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label class="control-label">Rodilla:</label>
+												<input type="number" min="1" step="0.1" name="contornoRodilla" id="contornoRodilla" class="form-control">
+											</div>
+										</div>
+									</div>									
+								</div>	
+							</div>
+						</div>
+
+						{{-- Medidas del cliente --}}	
+						
+						{{-- Saco Interno --}}
+						<div class="tab-pane" id="saco">
 							<h4 class="info-text">Datos de la parte Externa del Saco</h4>
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
-									<p>Medidas Corporales de Cliente:</p>
-									<div class="row">
-										<div class="col-md-6 col-md-offset-3">
+									<p>Medidas Corporales de Cliente <small>(De referencia)</small>:</p>
+										<div class="col-md-6 ">
+										
 											<div class="form-group label-floating">
 												<label class="control-label">Selecciona un Fit</label>
 												<select name="fitSaco" id="fitSaco" class="form-control">
@@ -421,11 +746,10 @@
 												</select>
 											</div>
 										</div>
-									</div>
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group label-floating">
-												<label class="control-label">Talla del Saco:</label>
+												<label class="control-label">Largo de manga deseado:</label>
 												<input type="number" min="10" step="1" name="tallaSaco" id="tallaSaco" class="form-control">
 											</div>
 										</div>
@@ -434,27 +758,14 @@
 												<label for="corteSaco" class="control-label">Corte del Saco:</label>
 												<select name="corteSaco" id="corteSaco" class="form-control">
 													<option disabled="" selected=""></option>
-													<option value="0">Chico</option>
+													<option value="0">Corto</option>
 													<option value="1">Regular</option>
 													<option value="2">Largo</option>
 												</select>
 											</div>
 										</div>
 									</div>
-									<div class="row">
-										<div class="col-md-6">
-											<div class="form-group label-floating">
-												<label for="largoMangaSaco" class="control-label">Largo de la Manga <small>(en pulgadas)</small>:</label>
-												<input type="number" step="0.1" min="0" name="largoMangaSaco" id="largoMangaSaco" class="form-control">
-											</div>
-										</div>
-										<div class="col-md-6">
-											<div class="form-group label-floating">
-												<label for="largoEspaldaSaco" class="control-label">Largo de Espalda <small>(en pulgadas)</small>:</label>
-												<input type="number" step="0.1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control">
-											</div>
-										</div>
-									</div>
+									
 								</div>
 							</div>
 							<div class="row">
@@ -462,7 +773,7 @@
 									<p class="col-md-12">Selecciona el tipo de solapa:</p>
 									<div class="col-md-3 col-xs-6">
 										<label>
-										  <input type="radio" name="tipoSolapa" value="0" required="" />
+										  <input type="radio" name="tipoSolapa" value="0" />
 										  <img src="{{ asset('img/suit_options/saco/Cuello_picodelgado.png') }}">
 										  <p class="text-center">Solapa en Pico <b>Normal</b></p>
 										</label>
@@ -495,7 +806,7 @@
 										<div class="col-sm-6">
 											<div class="form-group label-floating">
 												<label class="control-label">Tipo de Ojal en Solapa</label>
-												<select name="tipoOjalSolapa" class="form-control" required="true" id="ojalEnSolapa">
+												<select name="tipoOjalSolapa" class="form-control" ue" id="ojalEnSolapa">
 													<option disabled="" selected=""></option>
 													<option value="1">Al tono</option>
 													<option value="2">En contraste</option>
@@ -525,7 +836,7 @@
 									<p class="col-md-12">Selecciona el número de botones:</p>
 									<div class="col-md-3 col-xs-6">
 										<label>
-										  <input type="radio" name="botonesFrente" value="1" required="" />
+										  <input type="radio" name="botonesFrente" value="1" />
 										  <img src="{{ asset('img/suit_options/saco/Saco_1boton.png') }}">
 										  <p class="text-center">1 Botón</p>
 										</label>
@@ -559,7 +870,7 @@
 									<p class="col-md-12">Selecciona el número de aberturas detrás:</p>
 									<div class="col-md-4 col-xs-6">
 										<label>
-										  <input type="radio" name="aberturasDetras" value="0" required="" />
+										  <input type="radio" name="aberturasDetras" value="0" />
 										  <img src="{{ asset('img/suit_options/saco/Espalda_SinAberturas.png') }}">
 										  <p class="text-center">Sin Aberturas</p>
 										</label>
@@ -590,7 +901,7 @@
 									<div class="col-sm-6">
 										<div class="form-group label-floating">
 											<label class="control-label">Botones en Mangas:</label>
-											<select name="botonesMangas" id="botonesMangas" class="form-control" required="true">
+											<select name="botonesMangas" id="botonesMangas" class="form-control" ue">
 												<option disabled="" selected=""></option>
 												<option value="1">1 Botón</option>
 												<option value="2">2 Botones</option>
@@ -602,7 +913,7 @@
 									<div class="col-sm-6">
 										<div class="form-group label-floating">
 											<label class="control-label">Ojal en Manga</label>
-											<select name="tipoOjalManga" required="true" class="form-control" id="tipoDeOjalEnManga">
+											<select name="tipoOjalManga" ue" class="form-control" id="tipoDeOjalEnManga">
 												<option disabled="" selected=""></option>
 												<option value="0">Al tono</option>
 												<option value="1">En contraste</option>
@@ -625,7 +936,7 @@
 										<p class="col-md-12">Selecciona la posición de los ojales:</p>
 										<div class="col-xs-6">
 											<label>
-											  <input type="radio" name="posicionOjalesManga" value="0" required="" />
+											  <input type="radio" name="posicionOjalesManga" value="0" />
 											  <img src="{{ asset('img/suit_options/saco/Manga_Cascada.png') }}">
 											  <p class="text-center">Botones en Cascada</p>
 											</label>
@@ -658,8 +969,9 @@
 			                                      selected="" 
 			                                    @endif></option>
 			                                    <option value="0">Todos los ojales</option>
-			                                    <option value="1">3º y 4º</option>
-			                                    <option value="2">4º</option>
+			                                    <option value="3">Primero</option>
+			                                    <option value="1">3° y 4°</option>
+			                                    <option value="2">4°</option>
 			                                </select>
 			                            </div>
 									</div>
@@ -757,19 +1069,13 @@
 		                            </div>
 								</div>
 							</div>
-						</div>
-						
-						{{-- Saco Interno --}}
-						<div class="tab-pane" id="sacoInt">
-							<h4 class="info-text">Datos de la parte Interna del Saco</h4>
-							<div class="row">
-								<p class="text-center">Tipo de Vista:</p>
-							</div>
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1 text-center">
+									<h4 class="info-text">Datos de la parte Interna del Saco</h4>
+									<p class="text-center">Tipo de Vista:</p>
 									<div class="col-md-6 col-xs-6">
 										<label>
-										  <input type="radio" name="tipoVista" value="0" required="" />
+										  <input type="radio" name="tipoVista" value="0" />
 										  <img src="{{ asset('img/suit_options/saco/Chapeta_Normal.png') }}">
 										  <p class="text-center">Normal</p>
 										</label>
@@ -785,8 +1091,6 @@
 							</div>
 							<div class="row">
 								<h4 class="text-center">Forro Interno en Mangas</h4>
-							</div>
-							<div class="row">
 								<div class="col-md-6 col-md-offset-3">
 									<div class="checkbox">
 										<label>
@@ -844,11 +1148,15 @@
 							</div>
 							<!--Fin de Bies & PinPoint-->
 							<!--Color de Bies & PinPoint-->
-							<div class="row">
-								<div class="col-md-4 col-md-offset-4" id="colorPalette">
-									@include('partials.color-palette', ['varName' => 'Puntada'])
-								</div>
-								
+							<div class="row">		
+								<div class="col-md-10 col-md-offset-1">						
+									<div class="col-md-6" id="colorPalettePinPoint">
+										@include('partials.color-palette', ['varName' => 'Puntada'])
+									</div>	
+									<div class="col-md-6" id="colorPaletteBies">
+										@include('partials.color-palette', ['varName' => 'Puntada'])
+									</div>
+								</div>					
 							</div>
 							<!--Fin de Color de Bies & PinPoint-->
 							<div class="row">
@@ -887,24 +1195,20 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-5 col-md-offset-1">
+								<div class="col-xs-3 col-xs-offset-5">
 									<div class="row">
 										<h5 class="text-center">Vivos en Bolsas Internas</h5>
 									</div>
-									<div class="row col-xs-offset-1">
 										<div class="checkbox">
 											<label>
 												<input type="checkbox" name="vivosBolsasInternasCuerpo">
 												Del mismo forro en cuerpo	
 											</label>
 										</div>
-									</div>
-									<div class="row col-xs-offset-1">
 										<div class="form-group label-floating">
 											<label class="control-label">En contraste a otro tono <small>(opcional)</small></label>
 											<input type="text" class="form-control" name="otroVivosBolsasInternas">
 										</div>
-									</div>
 								</div>
 								
 							</div>
@@ -916,7 +1220,7 @@
 		                                <textarea name="notasSacoInt" id="notasSacoInt" rows="5" class="form-control"></textarea>
 		                            </div>
 								</div>
-							</div>
+							</div>						
 						</div>
 
 						{{-- Tab Chaleco--}}
@@ -925,7 +1229,7 @@
                     		<h3 class="info-text">Datos del Chaleco</h3>
                     		<div class="row">
                     			<div class="col-md-10 col-md-offset-1">
-                    				<p>Medidas Corporales de Cliente:</p>
+                    				<p>Medidas Corporales de Cliente <small>(De referencia)</small>:</p>
                     				<div class="row">
                     					<div class="col-md-6">
                     						<div class="form-group label-floating">
@@ -946,9 +1250,9 @@
                     					</div>
                     				</div>
                     				<div class="row">
-                    					<div class="col-md-6">
+                    					<div class="col-md-6 col-md-offset-3">
                     						<div class="form-group label-floating">
-                    							<label class="control-label">Corte de Chaleco:</label>
+                    							<label class="control-label">Corte de Chaleco <small>(De referencia):</small></label>
                     							<select name="corteChaleco" id="corteChaleco" class="form-control">
                     								<option disabled="" selected=""></option>
                     								<option value="0">Corto</option>
@@ -957,12 +1261,7 @@
                     							</select>
                     						</div>
                     					</div>
-                    					<div class="col-md-6">
-                    						<div class="form-group label-floating">
-                    							<label class="control-label">Medida Espalda para Chaleco <small>(en pulgadas)</small>:</label>
-                    							<input type="number" min="0" step="0.1" name="espaldaChaleco" id="espaldaChaleco" class="form-control">
-                    						</div>
-                    					</div>
+                    					
                     				</div>
                     			</div>
                     		</div>
@@ -1044,16 +1343,7 @@
 									</div>
                     			</div>
                     		</div>
-                    		<h4 class="info-text">Opciones Extra</h4>
-                    		<div class="row">
-                    			<div class="col-md-8 col-md-offset-2 text-center">
-            						<label>
-									  <input type="checkbox" name="ajustadorChaleco"/>
-									  <img src="{{ asset('img/suit_options/chaleco/Chaleco_espalda_ajustador.png') }}">
-									  <p class="text-center">Ajustador Espalda</p>
-									</label>
-                    			</div>
-                    		</div>
+                    		
                     		<div class="row">
                     			<div class="col-md-10 col-md-offset-1">
 									<h4>Notas del Chaleco</h4>
@@ -1070,7 +1360,7 @@
 							<h4 class="info-text">Datos del Pantalón</h4>
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
-									<p>Medidas Corporales para Pantalón:</p>
+									<p>Medidas Corporales para Pantalón <small>(De referencia)</small>:</p>
 									<div class="row">
 										<div class="col-md-6">
                     						<div class="form-group label-floating">
@@ -1090,20 +1380,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="row">
-										<div class="col-md-6">
-											<div class="form-group label-floating">
-												<label class="control-label">Largo Externo Terminado:</label>
-												<input type="number" min="10" step="0.1" name="largoPantalonExt" id="largoPantalonExt" class="form-control">
-											</div>
-										</div>
-										<div class="col-md-6">
-											<div class="form-group label-floating">
-												<label class="control-label">Largo Interno Terminado:</label>
-												<input type="number" min="10" step="0.1" name="largoPantalonInt" id="largoPantalonInt" class="form-control">
-											</div>
-										</div>
-									</div>
+									
 								</div>
 							</div>
 							<div class="row">
@@ -1155,7 +1432,7 @@
 							</div>
 							<div class="row text-center">
 								<h4 class="text-center">Bolsas Traseras</h4>
-								<div class="col-md-4">
+								<div class="col-md-4 col-md-offset-2">
 									<label>
 									  <input type="radio" name="bolsasTraseras" value="1" />
 									  <img src="{{ asset('img/suit_options/numero_bolsas/PantalonUnaBolsa.png') }}">
@@ -1211,8 +1488,16 @@
 		                                	<div class="form-group label-floating">
 												<div class="checkbox">
 													<label><input type="checkbox" name="medioForroPiernasAlTono" value="true">Medio Forro interior al tono</label>
-												</div>									
+												</div>								
 											</div>											
+										</div>
+										<div class="form-group label-floating">									
+												<label for="" class="control-label">Código de otro color<small></small></label>
+												<input type="text" name="codigoOtroColorMedioForro" class="form-control">		
+										</div>
+										<div class="form-group label-floating">									
+												<label for="" class="control-label">Color<small></small></label>
+												<input type="text" name="otroColorMedioForro" class="form-control">		
 										</div>										
 									</div>
 								</div>
@@ -1228,7 +1513,7 @@
 									<div class="col-md-6">
 										<div class="form-group label-floating">
 											<label for="" class="control-label">Tipo de pretina</label>
-											<select class="form-control" name="pretina" required="true">
+											<select class="form-control" name="pretina" ue">
 													<option disabled="" 
 					                                    @hasSection('editCliente')
 					                                    {{-- Ya hay un cliente seleccionado --}}

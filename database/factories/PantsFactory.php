@@ -15,6 +15,8 @@ $factory->define(App\Pants::class, function (Faker $faker) {
         'tipo_vivo' => rand(1,2), // 1 Vivo Doble con Ojal, 2 Vivo Sencillo con Ojal
         'color_ojalera' => $faker->colorName,
         'medio_forro_piernas_al_tono' => rand(0,1),
+        'codigo_otro_color_medio_forro' => $faker->sentence(),
+        'otro_color_medio_forro' => $faker->hexcolor,
         'pretina' => rand(0,2),
         'color_pretina' => $faker->colorName,
         'dobladillo' => rand(1,2), // 1 normal, 2 valenciana
@@ -22,7 +24,5 @@ $factory->define(App\Pants::class, function (Faker $faker) {
         // Medidas Corporales
         'fit_id' => 2,
         'talla' => 42,
-        'largo_ext' => 42.4,
-        'largo_int' => 38.3,
 	];
 });

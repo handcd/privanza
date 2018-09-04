@@ -90,16 +90,18 @@ module.exports = __webpack_require__(10);
  * en el formulario general de Privanza.
  */
 
-//Variables para obeter elementos input
+//Variables para obtener elementos input
 var biesInterno = document.getElementById('BiesInterno');
 var pinPointInterno = document.getElementById('PinPointInterno');
 var solapaEnContraste = document.getElementById('ojalEnSolapa');
 var ojalDeMangaEnContraste = document.getElementById('tipoDeOjalEnManga');
 
+
 //Variables para obtener paletas de colores y ocultar componentes
 var coloresDeSolapaEnContraste = document.getElementById('solapaContraste');
 var colorDeMangaEnContraste = document.getElementById('colorDeOjalEnMangas');
-var colorDeBiesYPinPoint = document.getElementById('colorPalette');
+var colorDeBies = document.getElementById('colorPaletteBies');
+var colorDePinPoint = document.getElementById('colorPalettePinPoint');
 
 // Elementos Ocultos
 var divMarcaEtiqueta = document.getElementById('marcaEtiqueta');
@@ -107,6 +109,7 @@ var divPerGancho = document.getElementById('personalizacionGancho');
 var divPerPortatraje = document.getElementById('personalizacionPortatrajes');
 var divForroChaleco = document.getElementById('otroForroChaleco');
 var divOjalesActivosManga = document.getElementById('divOjalesActivosManga');
+var divCantidadDeBotones = document.getElementById('cantidadBotones');
 
 // Elementos que contienen la lógica de hide/show
 var checkEtiquetaMarca = document.getElementById('checkEtiquetaMarca');
@@ -114,13 +117,15 @@ var selectTipoGancho = document.getElementById('tipoGancho');
 var selectTipoPortatrajes = document.getElementById('tipoPortatrajes');
 var checkForroChaleco = document.getElementById('tipoForroChaleco');
 var checkOjalesActivosManga = document.getElementById('ojalesActivosManga');
+var checkBotonesDeCliente = document.getElementById('botonesCliente');
 
 //Funcion para oocultar componentes
 function iniciarComponentes() {
     $(colorDeMangaEnContraste).hide();
     $(coloresDeSolapaEnContraste).hide();
-    $(colorDeBiesYPinPoint).hide();
-
+    $(colorDeBies).hide();
+    $(colorDePinPoint).hide();
+    $(divCantidadDeBotones).hide();
     $(divMarcaEtiqueta).hide();
     $(divPerGancho).hide();
     $(divPerPortatraje).hide();
@@ -131,7 +136,15 @@ function iniciarComponentes() {
  * Funciones para lógica de control de elementos, cada una es específica
  * a lo que se defina en el Business Logic.
  */
+//Mostrar el campo para ingresar el número de botones, sólo si los entrega el cliente
+function mostrarOcultarCantidadBotones(){
+    if (checkBotonesDeCliente.checked) {
+        $(divCantidadDeBotones).show();
+    }else{
+        $(divCantidadDeBotones).hide();
+    }
 
+}
 // Mostrar el campo para otra marca sólamente si se reciben etiquetas de marca.
 function mostrarOcultarOtraMarca() {
     $(divMarcaEtiqueta).toggle();
@@ -167,17 +180,23 @@ function coloresOjalEnManga() {
 }
 
 //Lógica para Bies & pinpoint
-function coloresPinPointBies() {
-    if (biesInterno.checked || pinPointInterno.checked) {
-        $(colorDeBiesYPinPoint).show();
+function coloresBies() {
+    if (biesInterno.checked) {
+        $(colorPaletteBies).show();
     } else {
-        $(colorDeBiesYPinPoint).hide();
+        $(colorPaletteBies).hide();
     }
 }
-
+function coloresPinPoint() {
+    if (pinPointInterno.checked) {
+        $(colorPalettePinPoint).show();
+    } else {
+        $(colorPalettePinPoint).hide();
+    }
+}
 // Mostrar y ocultar personalización de gancho
 function mostrarOcultarPersonalizacionGancho() {
-    if (selectTipoGancho.value == "1") {
+    if (selectTipoGancho.value == "2") {
         $(divPerGancho).show();
     } else {
         $(divPerGancho).hide();
@@ -186,7 +205,7 @@ function mostrarOcultarPersonalizacionGancho() {
 
 // Mostrar y ocultar personalización de portatrajes
 function mostrarOcultarPersonalizacionPortatraje() {
-    if (selectTipoPortatrajes.value == "1") {
+    if (selectTipoPortatrajes.value == "2") {
         $(divPerPortatraje).show();
     } else {
         $(divPerPortatraje).hide();
@@ -201,10 +220,10 @@ function mostrarOcultarPersonalizacionPortatraje() {
 function agregarEventos() {
     console.log('Declarando eventos dentro de la funcion');
     biesInterno.addEventListener('click', function () {
-        coloresPinPointBies();
+        coloresBies();
     });
     pinPointInterno.addEventListener('click', function () {
-        coloresPinPointBies();
+        coloresPinPoint();
     });
     solapaEnContraste.addEventListener('click', function () {
         coloresSolapaEnContraste();
@@ -231,6 +250,9 @@ function agregarEventos() {
 
     checkOjalesActivosManga.addEventListener('click', function () {
         mostrarOcultarOjalesActivosManga();
+    });
+    checkBotonesDeCliente.addEventListener('click', function () {
+        mostrarOcultarCantidadBotones();
     });
 
     console.log('Finalización de Declaración de Eventos en función.');

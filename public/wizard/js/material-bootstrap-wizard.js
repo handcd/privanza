@@ -188,35 +188,33 @@ $(document).ready(function(){
         $('.wizard-card').bootstrapWizard('disable',1);
         $('.wizard-card').bootstrapWizard('disable',2);
         $('.wizard-card').bootstrapWizard('disable',3);
-        $('.wizard-card').bootstrapWizard('disable',4);
+        //$('.wizard-card').bootstrapWizard('disable',4);
     }
 
     // Handle checkboxes for order types
     $('#checkSaco').click( function () {
         if (this.checked) {
             $('.wizard-card').bootstrapWizard('enable',1);
-            $('.wizard-card').bootstrapWizard('enable',2);
         } else {
             $('.wizard-card').bootstrapWizard('disable',1);
-            $('.wizard-card').bootstrapWizard('disable',2);
         }
         refreshAnimation($('.wizard-card'), 0);
     });
 
     $('#checkChaleco').click( function () {
         if (this.checked) {
-            $('.wizard-card').bootstrapWizard('enable',3);
+            $('.wizard-card').bootstrapWizard('enable',2);
         } else {
-            $('.wizard-card').bootstrapWizard('disable',3);
+            $('.wizard-card').bootstrapWizard('disable',2);
         }
         refreshAnimation($('.wizard-card'), 0);
     });
 
     $('#checkPantalon').click( function () {
         if (this.checked) {
-            $('.wizard-card').bootstrapWizard('enable',4);
+            $('.wizard-card').bootstrapWizard('enable',3);
         } else {
-            $('.wizard-card').bootstrapWizard('disable',4);
+            $('.wizard-card').bootstrapWizard('disable',3);
         }
         refreshAnimation($('.wizard-card'), 0);
     });
