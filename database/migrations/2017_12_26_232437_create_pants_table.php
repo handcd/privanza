@@ -32,7 +32,7 @@ class CreatePantsTable extends Migration
             $table->integer('talla');
             $table->float('largo_ext');
             $table->float('largo_int');
-            $table->string('notas')->nullable();
+            $table->string('notas',1000)->nullable();
 
             $table->timestamps();
         });

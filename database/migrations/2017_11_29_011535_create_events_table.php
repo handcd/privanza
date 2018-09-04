@@ -18,7 +18,7 @@ class CreateEventsTable extends Migration
             $table->integer('vendedor_id');
             $table->integer('client_id');
             $table->datetime('fechahora');
-            $table->string('notes')->nullable();
+            $table->string('notes',1000)->nullable();
             $table->timestamps();
         });
     }

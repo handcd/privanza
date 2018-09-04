@@ -23,13 +23,13 @@ class CreateClientsTable extends Migration
             $table->string('address_visit');
             $table->string('address_delivery')->nullable();
             $table->date('birthday');
-            $table->string('notes')->nullable();
+            $table->string('notes',1000)->nullable();
             // Datos Facturación
             $table->string('address_legal')->nullable();
             $table->string('rfc')->nullable();
             $table->string('bank')->nullable();
             $table->string('account_digits')->nullable();
-            $table->string('concept')->nullable();
+            $table->string('concept',1000)->nullable();
             // Datos Generales
             $table->integer('vendedor_id');
             $table->string('contacto')->nullable();

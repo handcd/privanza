@@ -20,7 +20,7 @@ class CreateAdjustmentsTable extends Migration
             $table->datetime('promesa_cliente');
             $table->decimal('precio',15,2)->nullable();
             $table->integer('num_prendas');
-            $table->string('descripcion')->nullable();
+            $table->string('descripcion',1000)->nullable();
             $table->string('tipo_prenda');
             $table->timestamps();
         });
