@@ -185,7 +185,7 @@ $(document).ready(function(){
 
     // Disable initial options
     if (!debug) {
-        $('.wizard-card').bootstrapWizard('disable',1);
+        $('.wizard-card').bootstrapWizard('enable',1);
         $('.wizard-card').bootstrapWizard('disable',2);
         $('.wizard-card').bootstrapWizard('disable',3);
         $('.wizard-card').bootstrapWizard('disable',4);
@@ -194,10 +194,8 @@ $(document).ready(function(){
     // Handle checkboxes for order types
     $('#checkSaco').click( function () {
         if (this.checked) {
-            $('.wizard-card').bootstrapWizard('enable',1);
             $('.wizard-card').bootstrapWizard('enable',2);
         } else {
-            $('.wizard-card').bootstrapWizard('disable',1);
             $('.wizard-card').bootstrapWizard('disable',2);
         }
         refreshAnimation($('.wizard-card'), 0);

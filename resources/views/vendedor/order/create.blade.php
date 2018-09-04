@@ -79,7 +79,7 @@
 											</span>
 											<div class="form-group label-floating">
 				                                <label class="control-label">Cliente</label>
-				                                <select class="form-control" name="cliente" required="true">
+				                                <select class="form-control" name="cliente" ue">
 				                                    <option disabled="" 
 				                                    @hasSection('editCliente')
 				                                    {{-- Ya hay un cliente seleccionado --}}
@@ -392,19 +392,19 @@
 									<div class="col-md-6">
 										<div class="form-group label-floating">
 											<label for="" class="control-label">Código de Botones</label>
-											<input type="text" name="codigoBotones" required class="form-control">
+											<input type="text" name="codigoBotones" class="form-control">
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group label-floating">
 											<label for="" class="control-label">Código de color de Botones</label>
-											<input type="text" name="codigoColorBotones" required class="form-control">
+											<input type="text" name="codigoColorBotones" class="form-control">
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group label-floating">
 											<label for="" class="control-label">Color de Botones</label>
-											<input type="text" class="form-control" name="colorBotones" required="">
+											<input type="text" class="form-control" name="colorBotones">
 										</div>
 									</div>
 								</div>
@@ -436,7 +436,7 @@
 									<h4 class="text-center">Gancho</h4>
 									<div class="form-group label-floating">
 		                                <label class="control-label">Tipo de gancho...</label>
-		                                <select class="form-control" id="tipoGancho" name="tipoGancho" required="true">
+		                                <select class="form-control" id="tipoGancho" name="tipoGancho">
 		                                    <option disabled="" 
 		                                    @hasSection('editCliente')
 		                                    {{-- No hay tipo de evento --}}
@@ -456,7 +456,7 @@
 									<h4 class="text-center">Portatrajes</h4>
 									<div class="form-group label-floating">
 		                                <label class="control-label">Tipo de portatrajes...</label>
-		                                <select class="form-control" id="tipoPortatrajes" name="tipoPortatrajes" required="true">
+		                                <select class="form-control" id="tipoPortatrajes" name="tipoPortatrajes">
 		                                    <option disabled="" 
 		                                    @hasSection('editCliente')
 		                                    {{-- No hay tipo de evento --}}
@@ -520,39 +520,200 @@
 							<h4 class="info-text">Medidas Generales del cliente</h4>
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
-									<p>Medidas Corporales de Cliente:</p>
-										<div class="col-md-6 ">
-										
-											<div class="form-group label-floating">
-												<label class="control-label">Selecciona un Fit</label>
-												<select name="fitSaco" id="fitSaco" class="form-control">
-													<option disabled="" selected=""></option>
-													@foreach (\App\Fit::all() as $fit)
-														<option value="{{ $fit->id }}">{{ $fit->name }}</option>
-													@endforeach
-												</select>
-											</div>
-										</div>
 									<div class="row">
-										<div class="col-md-6">
+										<div class="col-md-4">
 											<div class="form-group label-floating">
-												<label class="control-label">Talla del Saco:</label>
-												<input type="number" min="10" step="1" name="tallaSaco" id="tallaSaco" class="form-control">
+												<label class="control-label">Altura <small>(En centímetros)</small>:</label>
+												<input type="number" min="10" step="1" name="altura" id="altura" class="form-control">
 											</div>
 										</div>
-										<div class="col-md-6">
+										<div class="col-md-4">
 											<div class="form-group label-floating">
-												<label for="corteSaco" class="control-label">Corte del Saco:</label>
-												<select name="corteSaco" id="corteSaco" class="form-control">
+												<label class="control-label">Peso <small>(En kilogramos)</small>:</label>
+												<input type="number" min="10" step=".1" name="peso" id="peso" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group label-floating">
+												<label class="control-label">Edad <small>(En años)</small>:</label>
+												<input type="number" min="10" step="1" name="edad" id="edad" class="form-control">
+											</div>
+										</div>										
+									</div>	
+									<h4 class="info-text">Perfil</h4>
+									<div class="row">
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label for="hombros" class="control-label">Hombros:</label>
+												<select name="hombros" id="hombros" class="form-control">
 													<option disabled="" selected=""></option>
-													<option value="0">Corto</option>
-													<option value="1">Regular</option>
-													<option value="2">Largo</option>
+													<option value="0">Rectos</option>
+													<option value="1">Normales</option>
 												</select>
 											</div>
 										</div>
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label for="abdomen" class="control-label">Abdomen:</label>
+												<select name="abdomen" id="abdomen" class="form-control">
+													<option disabled="" selected=""></option>
+													<option value="0">Delgado</option>
+													<option value="1">Normal</option>
+													<option value="2">Voluminoso</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label for="pecho" class="control-label">Pecho:</label>
+												<select name="pecho" id="pecho" class="form-control">
+													<option disabled="" selected=""></option>
+													<option value="0">Musculoso</option>
+													<option value="1">Normal</option>
+													<option value="2">Curpulento</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label for="espalda" class="control-label">Espalda:</label>
+												<select name="espalda" id="espalda" class="form-control">
+													<option disabled="" selected=""></option>
+													<option value="0">Recta</option>
+													<option value="1">Normal</option>
+													<option value="2">Encorvada</option>
+												</select>
+											</div>
+										</div>																
 									</div>
-									
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group label-floating">
+												<label class="control-label">Contorno de cuello <small>(En pulgadas)</small>:</label>
+												<input type="number" min="1" step="0.1" name="contornoCuello" id="contornoCuello" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group label-floating">
+												<label class="control-label">Contorno de Biceps <small>(En pulgadas)</small>:</label>
+												<input type="number" min="1" step="0.1" name="contornoBiceps" id="contornoBiceps" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group label-floating">
+												<label class="control-label">Medida de hombros <small>(En pulgadas)</small>:</label>
+												<input type="number" min="1" step="0.1" name="medidaHombros" id="medidaHombros" class="form-control">
+											</div>
+										</div>		
+									</div>		
+									<h4 class="info-text">Largo de brazo <small>(En pulgadas)</small></h4>	
+									<div class="row">
+										<div class="col-md-4 col-md-offset-2">
+											<div class="form-group label-floating">
+												<label class="control-label">Brazo derecho:</label>
+												<input type="number" min="1" step="0.1" name="brazoDerecho" id=brazoDerecho" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-4 col-md-offset-1">
+											<div class="form-group label-floating">
+												<label class="control-label">Brazo izquierdo:</label>
+												<input type="number" min="1" step="0.1" name="brazoIzquierdo" id="brazoIzquierdo" class="form-control">
+											</div>
+										</div>											
+									</div>	
+									<h4 class="info-text">Largo de hombros <small>(En pulgadas)</small></h4>	
+									<div class="row">
+										<div class="col-md-4 col-md-offset-2">
+											<div class="form-group label-floating">
+												<label class="control-label">Hombro izquierdo:</label>
+												<input type="number" min="1" step="0.1" name="hombroDerecho" id=hombroDerecho" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-4 col-md-offset-1">
+											<div class="form-group label-floating">
+												<label class="control-label">Hombro derecho:</label>
+												<input type="number" min="1" step="0.1" name="hombroIzquierdo" id="hombroIzquierdo" class="form-control">
+											</div>
+										</div>											
+									</div>	
+									<div class="row">
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label class="control-label">Ancho espalda:</label>
+												<input type="number" min="1" step="0.1" name="anchoEspalda" id="anchoEspalda" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label class="control-label">Largo Torso:</label>
+												<input type="number" min="1" step="0.1" name="largoTorso" id="largoTorso" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label class="control-label">Contorno pecho:</label>
+												<input type="number" min="1" step="0.1" name="contornoPecho" id="contornoPecho" class="form-control">
+											</div>
+										</div>	
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label class="control-label">Puño:</label>
+												<input type="number" min="1" step="0.1" name="punio" id="punio" class="form-control">
+											</div>
+										</div>		
+									</div>	
+									<div class="row">
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label class="control-label">Contorno abdomen:</label>
+												<input type="number" min="1" step="0.1" name="contornoAbdomen" id="contornoAbdomen" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label class="control-label">Cintura:</label>
+												<input type="number" min="1" step="0.1" name="contornoCintura" id="contornoCintura" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label class="control-label">Cadera:</label>
+												<input type="number" min="1" step="0.1" name="contornoCadera" id="contornoCadera" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label class="control-label">Largo tiro:</label>
+												<input type="number" min="1" step="0.1" name="largoTiro" id="largoTiro" class="form-control">
+											</div>
+										</div>
+									</div>		
+									<div class="row">
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label class="control-label">Largo externo pantalón:</label>
+												<input type="number" min="1" step="0.1" name="largoExternoPantalon" id="largoExternoPantalon" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label class="control-label">Largo interno pantalón:</label>
+												<input type="number" min="1" step="0.1" name="largoInternoPantalon" id="largoInternoPantalon" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label class="control-label">Muslo:</label>
+												<input type="number" min="1" step="0.1" name="contornoMuslo" id="contornoMuslo" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label class="control-label">Rodilla:</label>
+												<input type="number" min="1" step="0.1" name="contornoRodilla" id="contornoRodilla" class="form-control">
+											</div>
+										</div>
+									</div>									
 								</div>
 							</div>
 						</div>
@@ -604,7 +765,7 @@
 									<p class="col-md-12">Selecciona el tipo de solapa:</p>
 									<div class="col-md-3 col-xs-6">
 										<label>
-										  <input type="radio" name="tipoSolapa" value="0" required="" />
+										  <input type="radio" name="tipoSolapa" value="0" />
 										  <img src="{{ asset('img/suit_options/saco/Cuello_picodelgado.png') }}">
 										  <p class="text-center">Solapa en Pico <b>Normal</b></p>
 										</label>
@@ -637,7 +798,7 @@
 										<div class="col-sm-6">
 											<div class="form-group label-floating">
 												<label class="control-label">Tipo de Ojal en Solapa</label>
-												<select name="tipoOjalSolapa" class="form-control" required="true" id="ojalEnSolapa">
+												<select name="tipoOjalSolapa" class="form-control" ue" id="ojalEnSolapa">
 													<option disabled="" selected=""></option>
 													<option value="1">Al tono</option>
 													<option value="2">En contraste</option>
@@ -667,7 +828,7 @@
 									<p class="col-md-12">Selecciona el número de botones:</p>
 									<div class="col-md-3 col-xs-6">
 										<label>
-										  <input type="radio" name="botonesFrente" value="1" required="" />
+										  <input type="radio" name="botonesFrente" value="1" />
 										  <img src="{{ asset('img/suit_options/saco/Saco_1boton.png') }}">
 										  <p class="text-center">1 Botón</p>
 										</label>
@@ -701,7 +862,7 @@
 									<p class="col-md-12">Selecciona el número de aberturas detrás:</p>
 									<div class="col-md-4 col-xs-6">
 										<label>
-										  <input type="radio" name="aberturasDetras" value="0" required="" />
+										  <input type="radio" name="aberturasDetras" value="0" />
 										  <img src="{{ asset('img/suit_options/saco/Espalda_SinAberturas.png') }}">
 										  <p class="text-center">Sin Aberturas</p>
 										</label>
@@ -732,7 +893,7 @@
 									<div class="col-sm-6">
 										<div class="form-group label-floating">
 											<label class="control-label">Botones en Mangas:</label>
-											<select name="botonesMangas" id="botonesMangas" class="form-control" required="true">
+											<select name="botonesMangas" id="botonesMangas" class="form-control" ue">
 												<option disabled="" selected=""></option>
 												<option value="1">1 Botón</option>
 												<option value="2">2 Botones</option>
@@ -744,7 +905,7 @@
 									<div class="col-sm-6">
 										<div class="form-group label-floating">
 											<label class="control-label">Ojal en Manga</label>
-											<select name="tipoOjalManga" required="true" class="form-control" id="tipoDeOjalEnManga">
+											<select name="tipoOjalManga" ue" class="form-control" id="tipoDeOjalEnManga">
 												<option disabled="" selected=""></option>
 												<option value="0">Al tono</option>
 												<option value="1">En contraste</option>
@@ -767,7 +928,7 @@
 										<p class="col-md-12">Selecciona la posición de los ojales:</p>
 										<div class="col-xs-6">
 											<label>
-											  <input type="radio" name="posicionOjalesManga" value="0" required="" />
+											  <input type="radio" name="posicionOjalesManga" value="0" />
 											  <img src="{{ asset('img/suit_options/saco/Manga_Cascada.png') }}">
 											  <p class="text-center">Botones en Cascada</p>
 											</label>
@@ -906,7 +1067,7 @@
 									<p class="text-center">Tipo de Vista:</p>
 									<div class="col-md-6 col-xs-6">
 										<label>
-										  <input type="radio" name="tipoVista" value="0" required="" />
+										  <input type="radio" name="tipoVista" value="0" />
 										  <img src="{{ asset('img/suit_options/saco/Chapeta_Normal.png') }}">
 										  <p class="text-center">Normal</p>
 										</label>
@@ -1340,7 +1501,7 @@
 									<div class="col-md-6">
 										<div class="form-group label-floating">
 											<label for="" class="control-label">Tipo de pretina</label>
-											<select class="form-control" name="pretina" required="true">
+											<select class="form-control" name="pretina" ue">
 													<option disabled="" 
 					                                    @hasSection('editCliente')
 					                                    {{-- Ya hay un cliente seleccionado --}}
