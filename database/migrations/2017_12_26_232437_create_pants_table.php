@@ -33,6 +33,7 @@ class CreatePantsTable extends Migration
             // Datos Pantalón
             $table->integer('fit_id')->nullable();
             $table->integer('talla')->nullable();
+
             $table->string('notas',1000)->nullable();
 
             $table->timestamps();
