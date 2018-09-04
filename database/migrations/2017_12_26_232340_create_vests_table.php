@@ -22,7 +22,7 @@ class CreateVestsTable extends Migration
             $table->integer('fit_id')->nullable();
             $table->integer('talla')->nullable();
             $table->integer('corte')->nullable();
-            $table->string('notas')->nullable();
+            $table->string('notas',1000)->nullable();
 
             // Clothing data
             $table->integer('tipo_cuello')->nullable(); // 1 En V/2 Con Solapa

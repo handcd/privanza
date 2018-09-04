@@ -65,6 +65,7 @@ class CreateOrdersTable extends Migration
             $table->string('codigo_botones')->nullable();
             $table->string('codigo_color_botones')->nullable();
             $table->string('color_botones')->nullable();
+            $table->integer('cantidad_botones')->nullable();
             //Etiquetas
             $table->boolean('etiquetas_tela')->nullable(); // Si/No
             $table->boolean('etiquetas_marca')->nullable(); // Si/No
@@ -79,7 +80,8 @@ class CreateOrdersTable extends Migration
             $table->string('bordado')->nullable();
             $table->string('letra')->nullable();
             $table->string('bordadoColor')->nullable();
-            $table->string('notasBordado')->nullable();            
+            $table->string('notasBordado',1000)->nullable();
+            //Fecha de creación y de edición
             $table->timestamps();
         });
     }

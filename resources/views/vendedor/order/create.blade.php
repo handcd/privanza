@@ -57,7 +57,7 @@
 					<div class="wizard-navigation">
 						<ul>
 							<li><a href="#inicio" data-toggle="tab">Datos Iniciales</a></li>
-                            <li><a href="#medidas" data-toggle="tab">Medidas</a></li>
+                            <!--<li><a href="#medidas" data-toggle="tab">Medidas</a></li>!-->
                             <li><a href="#saco" data-toggle="tab">Saco</a></li>
                             <li><a href="#chaleco" data-toggle="tab">Chaleco</a></li>
                             <li><a href="#pantalon" data-toggle="tab">Pantalón</a></li>
@@ -385,7 +385,7 @@
 									<h4 class="text-center">Datos de Botones</h4>
 									<div class="checkbox text-center">
 										<label>
-											<input type="checkbox" name="botonesCliente" id="botonesCliente	">
+											<input type="checkbox" name="botonesCliente" id="botonesCliente">
 										</label>
 										Botones de cliente
 									</div>
@@ -405,6 +405,12 @@
 										<div class="form-group label-floating">
 											<label for="" class="control-label">Color de Botones</label>
 											<input type="text" class="form-control" name="colorBotones">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group label-floating" id="cantidadBotones">
+											<label for="" class="control-label">Cantidad de botones</label>
+											<input type="number" class="form-control" name="cantidadBotones">
 										</div>
 									</div>
 								</div>
@@ -427,7 +433,7 @@
 											Se Reciben Etiquetas de Marca
 										</div>										
 										<div class="form-group label-floating" id="marcaEtiqueta">
-											<label class="control-label">Otra Marca: <small>(opcional: dejar en blanco para Privanza)</small></label>
+											<label class="control-label">Ingrese la marca:</small></label>
 											<input type="text" class="form-control" name="marcaEtiqueta">
 										</div>
 									</div>
@@ -445,6 +451,7 @@
 		                                    @endif></option>
 		                                        <option value="0">Normal</option>
 		                                        <option value="1">Personalizado Privanza</option>
+		                                        <option value="2">Otro</option>
 		                                </select>
 		                            </div>
 		                            <div class="form-group label-floating" id="personalizacionGancho">
@@ -465,6 +472,7 @@
 		                                    @endif></option>
 		                                        <option value="0">Cubrepolvos</option>
 		                                        <option value="1">Personalizado Privanza</option>
+		                                        <option value="2">Otro</option>
 		                                </select>
 		                            </div>
 		                            <div class="form-group label-floating" id="personalizacionPortatrajes">
@@ -714,7 +722,7 @@
 											</div>
 										</div>
 									</div>									
-								</div>
+								</div>	
 							</div>
 						</div>
 
@@ -725,7 +733,7 @@
 							<h4 class="info-text">Datos de la parte Externa del Saco</h4>
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
-									<p>Medidas Corporales de Cliente:</p>
+									<p>Medidas Corporales de Cliente <small>(De referencia)</small>:</p>
 										<div class="col-md-6 ">
 										
 											<div class="form-group label-floating">
@@ -741,7 +749,7 @@
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group label-floating">
-												<label class="control-label">Talla del Saco:</label>
+												<label class="control-label">Largo de manga deseado:</label>
 												<input type="number" min="10" step="1" name="tallaSaco" id="tallaSaco" class="form-control">
 											</div>
 										</div>
@@ -961,9 +969,9 @@
 			                                      selected="" 
 			                                    @endif></option>
 			                                    <option value="0">Todos los ojales</option>
+			                                    <option value="3">Primero</option>
 			                                    <option value="1">3° y 4°</option>
 			                                    <option value="2">4°</option>
-			                                    <option value="3">3° al tono, 4° en contraste</option>
 			                                </select>
 			                            </div>
 									</div>
@@ -1140,11 +1148,15 @@
 							</div>
 							<!--Fin de Bies & PinPoint-->
 							<!--Color de Bies & PinPoint-->
-							<div class="row">
-								<div class="col-md-4 col-md-offset-4" id="colorPalette">
-									@include('partials.color-palette', ['varName' => 'Puntada'])
-								</div>
-								
+							<div class="row">		
+								<div class="col-md-10 col-md-offset-1">						
+									<div class="col-md-6" id="colorPalettePinPoint">
+										@include('partials.color-palette', ['varName' => 'Puntada'])
+									</div>	
+									<div class="col-md-6" id="colorPaletteBies">
+										@include('partials.color-palette', ['varName' => 'Puntada'])
+									</div>
+								</div>					
 							</div>
 							<!--Fin de Color de Bies & PinPoint-->
 							<div class="row">
@@ -1217,7 +1229,7 @@
                     		<h3 class="info-text">Datos del Chaleco</h3>
                     		<div class="row">
                     			<div class="col-md-10 col-md-offset-1">
-                    				<p>Medidas Corporales de Cliente:</p>
+                    				<p>Medidas Corporales de Cliente <small>(De referencia)</small>:</p>
                     				<div class="row">
                     					<div class="col-md-6">
                     						<div class="form-group label-floating">
@@ -1240,7 +1252,7 @@
                     				<div class="row">
                     					<div class="col-md-6 col-md-offset-3">
                     						<div class="form-group label-floating">
-                    							<label class="control-label">Corte de Chaleco:</label>
+                    							<label class="control-label">Corte de Chaleco <small>(De referencia):</small></label>
                     							<select name="corteChaleco" id="corteChaleco" class="form-control">
                     								<option disabled="" selected=""></option>
                     								<option value="0">Corto</option>
@@ -1348,7 +1360,7 @@
 							<h4 class="info-text">Datos del Pantalón</h4>
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
-									<p>Medidas Corporales para Pantalón:</p>
+									<p>Medidas Corporales para Pantalón <small>(De referencia)</small>:</p>
 									<div class="row">
 										<div class="col-md-6">
                     						<div class="form-group label-floating">
@@ -1420,7 +1432,7 @@
 							</div>
 							<div class="row text-center">
 								<h4 class="text-center">Bolsas Traseras</h4>
-								<div class="col-md-4">
+								<div class="col-md-4 col-md-offset-2">
 									<label>
 									  <input type="radio" name="bolsasTraseras" value="1" />
 									  <img src="{{ asset('img/suit_options/numero_bolsas/PantalonUnaBolsa.png') }}">

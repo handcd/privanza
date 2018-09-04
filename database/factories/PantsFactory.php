@@ -24,7 +24,5 @@ $factory->define(App\Pants::class, function (Faker $faker) {
         // Medidas Corporales
         'fit_id' => 2,
         'talla' => 42,
-        'largo_ext' => 42.4,
-        'largo_int' => 38.3,
 	];
 });

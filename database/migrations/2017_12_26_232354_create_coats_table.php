@@ -66,8 +66,8 @@ class CreateCoatsTable extends Migration
             $table->integer('fit_id')->nullable();
             $table->integer('talla')->nullable();
             $table->integer('corte')->nullable();
-            $table->string('notas_int')->nullable();
-            $table->string('notas_ext')->nullable();
+            $table->string('notas_int',1000)->nullable();
+            $table->string('notas_ext',1000)->nullable();
 
             $table->timestamps();
         });

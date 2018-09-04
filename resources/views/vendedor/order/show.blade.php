@@ -29,7 +29,7 @@
                               <p>#{{ $orden->vendedor->id.' - '.$orden->vendedor->name.' '.$orden->vendedor->lastname }}</p>
                         </div>
                   </div>
-                  <h4>Estado General</h4>
+                  <h3>Estado General</h3>
                   <div class="row">
                         <div class="col-md-2">
                               @if ($orden->approved)
@@ -99,7 +99,7 @@
                         </div>
                   </div>
                   @if ($orden->production)
-                        <h4>Estado de Producción</h4>
+                        <h3>Estado de Producción</h3>
                         <div class="row">
                               <div class="col-md-3">
                                     @if ($orden->corte)
@@ -166,7 +166,168 @@
                               <p><a href="tel:{{ $orden->client->phone }}">{{ $orden->client->phone }}</a></p>
                         </div>
                   </div>
-                  <h4>Facturación</h4>
+                  <h3>Medidas generales</h3>
+                  <div class="row">
+                        <div class="col-md-4">
+                              <label class="text-primary">Altura</label>
+                              <p>{{ $orden->client->altura  }} Cm.</p>
+                        </div>
+                        <div class="col-md-4">
+                              <label class="text-primary">Peso</label>
+                              <p>{{ $orden->client->peso }} Kg.</p>
+                        </div>
+                        <div class="col-md-4">
+                              <label class="text-primary">Edad</label>
+                              <p>{{ $orden->client->edad }} Años</p>
+                        </div>
+                        
+                  </div>
+                  <div class="row">
+                        <div class="col-md-3">
+                              <label class="text-primary">Abdomen</label>
+                              @switch( $orden->client->abdomen )
+                                    @case(0)
+                                          <p>Delgado</p>
+                                          @break
+                                    @case(1)
+                                          <p>Normal</p>
+                                          @break
+                                    @case(2)
+                                          <p>Voluminoso</p>
+                                          @break
+                                    @default
+                                          <p>Entrada inválida</p>
+                              @endswitch
+
+                        </div>
+                        <div class="col-md-3">
+                              <label class="text-primary">Pecho</label>
+                              @switch( $orden->client->pecho )
+                                    @case(0)
+                                          <p>Musculoso</p>
+                                          @break
+                                    @case(1)
+                                          <p>Normal</p>
+                                          @break
+                                    @case(2)
+                                          <p>Curpulento</p>
+                                          @break
+                                    @default
+                                          <p>Entrada inválida</p>
+                              @endswitch
+                        </div>
+                        <div class="col-md-3">
+                              <label class="text-primary">Espalda</label>
+                              @switch( $orden->client->esplada )
+                                    @case(0)
+                                          <p>Recta</p>
+                                          @break
+                                    @case(1)
+                                          <p>Normal</p>
+                                          @break
+                                    @case(2)
+                                          <p>Encorvada</p>
+                                          @break
+                                    @default
+                                          <p>Entrada inválida</p>
+                              @endswitch
+                        </div>
+                        <div class="col-md-3">
+                              <label class="text-primary">Tipo de hombros</label>
+                              @if( $orden->client->hombros === 0 )
+                                    <p>Rectos</p>
+                              @else
+                                    <p>Normales</p>
+                              @endif
+                        </div>
+                  </div>
+                  <div class="row">
+                        <div class="col-md-4">
+                              <label class="text-primary">Contorno de cuello</label>
+                              <p>{{ $orden->client->contornoCuello  }} pulgadas</p>
+                        </div>
+                        <div class="col-md-4">
+                              <label class="text-primary">Contorno de biceps</label>
+                              <p>{{ $orden->client->contornoBiceps }} pulgadas</p>
+                        </div>
+                        <div class="col-md-4">
+                              <label class="text-primary">Medida Hombros</label>
+                              <p>{{ $orden->client->medidaHombros }} pulgadas</p>
+                        </div>
+                  </div>
+                  <div class="row">
+                        <div class="col-md-3">
+                              <label class="text-primary">Brazo derecho</label>
+                              <p>{{ $orden->client->brazoDerecho }} pulgadas</p>
+                        </div>
+                        <div class="col-md-3">
+                              <label class="text-primary">Brazo izquierdo</label>
+                              <p>{{ $orden->client->brazoIzquierdo }} pulgadas</p>
+                        </div>
+                        <div class="col-md-3">
+                              <label class="text-primary">Hombro derecho</label>
+                              <p>{{ $orden->client->hombroDerecho }} pulgadas</p>
+                        </div>
+                        <div class="col-md-3">
+                              <label class="text-primary">Hombro izquierdo</label>
+                              <p>{{ $orden->client->hombroIzquierdo }} pulgadas</p>
+                        </div>
+                  </div>
+                  <div class="row">
+                        <div class="col-md-3">
+                              <label class="text-primary">Ancho de espalda</label>
+                              <p>{{ $orden->client->anchoEspalda }} pulgadas</p>
+                        </div>
+                        <div class="col-md-3">
+                              <label class="text-primary">Largo de torso</label>
+                              <p>{{ $orden->client->largoTorso }} pulgadas</p>
+                        </div>
+                        <div class="col-md-3">
+                              <label class="text-primary">Contorno de pecho</label>
+                              <p>{{ $orden->client->contornoPecho }} pulgadas</p>
+                        </div>
+                        <div class="col-md-3">
+                              <label class="text-primary">Puño</label>
+                              <p>{{ $orden->client->punio }} pulgadas</p>
+                        </div>
+                  </div>
+                  <div class="row">
+                        <div class="col-md-3">
+                              <label class="text-primary">Contorno de Abdomen</label>
+                              <p>{{ $orden->client->contornoAbdomen }} pulgadas</p>
+                        </div>
+                        <div class="col-md-3">
+                              <label class="text-primary">Contorno de cintura</label>
+                              <p>{{ $orden->client->contornoCintura }} pulgadas</p>
+                        </div>
+                        <div class="col-md-3">
+                              <label class="text-primary">Contorno de cadera</label>
+                              <p>{{ $orden->client->contornoCadera }} pulgadas</p>
+                        </div>
+                        <div class="col-md-3">
+                              <label class="text-primary">Largo de tiro</label>
+                              <p>{{ $orden->client->largoTiro }} pulgadas</p>
+                        </div>
+                  </div>
+                  <div class="row">
+                        <div class="col-md-3">
+                              <label class="text-primary">Largo interno de pantalón</label>
+                              <p>{{ $orden->client->largoInternoPantalon }} pulgadas</p>
+                        </div>
+                        <div class="col-md-3">
+                              <label class="text-primary">Largo externo de pantalón</label>
+                              <p>{{ $orden->client->largoExternoPantalon }} pulgadas</p>
+                        </div>
+                        <div class="col-md-3">
+                              <label class="text-primary">Contorno muslo</label>
+                              <p>{{ $orden->client->contornoMuslo }} pulgadas</p>
+                        </div>
+                        <div class="col-md-3">
+                              <label class="text-primary">Contorno rodilla</label>
+                              <p>{{ $orden->client->contornoRodilla }} pulgadas</p>
+                        </div>
+                  </div>
+                  <h3>Facturación</h3>
                   <div class="row">
                         <div class="col-md-3">
                               <label class="text-primary">R.F.C</label>
@@ -191,21 +352,25 @@
                   </div>
                   <h3>Datos de pedido</h3>
                   <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                               <label class="text-primary">Código de tela</label>
                               <p> {{ $orden->codigo_tela }} </p>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                               <label class="text-primary">Código de Forro</label>
                               <p> {{$orden->codigo_forro }}</p>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                               <label class="text-primary">Código de botones</label>
                               <p> {{$orden->codigo_botones }} </p>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                               <label class="text-primary">Color de botones</label>
                               <p> {{ $orden->color_botones }} </p>
+                        </div>
+                        <div class="col-md-2">
+                              <label class="text-primary">Cantidad de botones</label>
+                              <p> {{ $orden->cantidad_botones }} </p>
                         </div>
                   </div>
                   <div class="row">
@@ -266,11 +431,11 @@
                                     <p>{{ $orden->coat->fit->name }}<br><small>{{$orden->coat->fit->description}}</small></p>
                               </div>
                               <div class="col-md-3">
-                                    <label class="text-primary">Talla de Saco</label>
+                                    <label class="text-primary">Largo de manga deseado en Saco</label>
                                     <p>{{ $orden->coat->talla }}</p>
                               </div>
                               <div class="col-md-3">
-                                    <label class="text-primary">Corte de Saco</label>
+                                    <label class="text-primary">Corte de Saco <small>(De referencia)</small></label>
                                     <p>
                                           @switch($orden->coat->corte)
                                                 @case(1)
@@ -395,10 +560,12 @@
                                                       @case(0)
                                                             Todos los Ojales Activos
                                                             @break
+                                                      @case(3)
+                                                            Primero
                                                       @case(1)
                                                             3º y 4º Ojales Activos <strong>únicamente</strong>.
                                                             @break
-                                                    @default
+                                                      @default
                                                             4º Ojal Activo <strong>únicamente</strong>
                                                 @endswitch
                                           </p>
