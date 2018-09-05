@@ -19,18 +19,17 @@ class CreateVestsTable extends Migration
             $table->integer('order_id');
 
             // Datos Chaleco
-            $table->integer('fit_id');
-            $table->integer('talla');
-            $table->integer('corte');
-            $table->float('largo_espalda');
+            $table->integer('fit_id')->nullable();
+            $table->integer('talla')->nullable();
+            $table->integer('corte')->nullable();
+
             $table->string('notas',1000)->nullable();
 
             // Clothing data
-            $table->integer('tipo_cuello'); // 1 En V/2 Con Solapa
+            $table->integer('tipo_cuello')->nullable(); // 1 En V/2 Con Solapa
             $table->integer('tipo_bolsas')->nullable(); // 0 Vivo/1 Aletilla
-            $table->integer('tipo_espalda'); // 1 Forro/ 2 Tela
+            $table->integer('tipo_espalda')->nullable(); // 1 Forro/ 2 Tela
             $table->string('tipo_forro')->nullable(); 
-            $table->boolean('ajustador_espalda');
             $table->timestamps();
         });
     }

@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Medidas para personas robustas.'
         ]);
         DB::table('fits')->insert([
-            'name' => 'Normal',
+            'name' => 'Clásico',
             'description' => 'Medidas de talla normal.'
         ]);
         DB::table('fits')->insert([

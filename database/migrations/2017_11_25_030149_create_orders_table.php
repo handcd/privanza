@@ -46,27 +46,42 @@ class CreateOrdersTable extends Migration
             $table->boolean('revision')->default(0);
             $table->dateTime('date_revision')->nullable();
             // Etiquetado y Empaque
-            $table->boolean('tela_isco');
+            //Tela
+            $table->boolean('tela_isco')->nullable();
             $table->string('codigo_tela')->nullable();
+            $table->string('nombre_tela')->nullable();
+            $table->string('codigo_color_tela')->nullable();
+            $table->string('color_tela')->nullable();
             $table->float('mts_tela_cliente')->nullable();
-            $table->string('codigo_color_tela_cliente')->nullable();
-            $table->boolean('forro_isco');
+            //Forro
+            $table->boolean('forro_isco')->nullable();
             $table->string('codigo_forro')->nullable();
+            $table->string('nombre_forro')->nullable();            
+            $table->string('codigo_color_forro')->nullable();
+            $table->string('color_forro')->nullable();            
             $table->float('mts_forro_cliente')->nullable();
-            $table->string('codigo_color_forro_cliente')->nullable();
-            $table->string('codigo_botones');
-            $table->string('color_botones');
-            $table->boolean('etiquetas_tela'); // Si/No
-            $table->boolean('etiquetas_marca'); // Si/No
+            //Botones
+            $table->string('tipo_botones')->nullable();
+            $table->string('codigo_botones')->nullable();
+            $table->string('codigo_color_botones')->nullable();
+            $table->string('color_botones')->nullable();
+            $table->integer('cantidad_botones')->nullable();
+            //Etiquetas
+            $table->boolean('etiquetas_tela')->nullable(); // Si/No
+            $table->boolean('etiquetas_marca')->nullable(); // Si/No
             $table->string('marca_en_etiqueta')->nullable();
-            $table->integer('gancho'); // Normal/Personalizado
+            //Gancho
+            $table->integer('gancho')->nullable(); // Normal/Personalizado
             $table->string('gancho_personalizacion')->nullable();
-            $table->integer('portatrajes'); // Cubrepolvos/Personalizado
+            $table->integer('portatrajes')->nullable(); // Cubrepolvos/Personalizado
             $table->string('portatrajes_personalizacion')->nullable();
             $table->string('notas_tela')->nullable();
+            //Bordado
             $table->string('bordado')->nullable();
             $table->string('letra')->nullable();
             $table->string('bordadoColor')->nullable();
+            $table->string('notasBordado',1000)->nullable();
+            //Fecha de creación y de edición
             $table->timestamps();
         });
     }

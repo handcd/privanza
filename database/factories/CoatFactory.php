@@ -46,8 +46,6 @@ $factory->define(App\Coat::class, function (Faker $faker) {
         'fit_id' => App\Fit::all()->random()->id,
         'talla' => rand(12,50),
         'corte' => rand(0,2),
-        'largo_manga' => rand(10,40),
-        'largo_espalda' => rand(10,40),
         'notas_int' => $faker->text($maxNbChars = 200),
         'notas_ext' => $faker->text($maxNbChars = 200),
     ];

@@ -17,21 +17,23 @@ class CreatePantsTable extends Migration
             $table->increments('id');
             $table->integer('order_id');
 
-            $table->boolean('pase'); // Con pase, Sin Pase
-            $table->integer('pliegues'); // 0-2
-            $table->integer('bolsas_traseras');
-            $table->integer('tipo_vivo'); // 1 Vivo Doble con Ojal, 2 Vivo Sencillo con Ojal
-            $table->string('color_ojalera');
-            $table->boolean('medio_forro_piernas_al_tono');
-            $table->integer('dobladillo'); // 1 normal, 2 valenciana
-            $table->integer('pretina');
-            $table->string('color_pretina');
+            $table->boolean('pase')->nullable(); // Con pase, Sin Pase
+            $table->integer('pliegues')->nullable(); // 0-2
+            $table->integer('bolsas_traseras')->nullable();
+            $table->integer('tipo_vivo')->nullable(); // 1 Vivo Doble con Ojal, 2 Vivo Sencillo con Ojal
+            $table->string('color_ojalera')->nullable();
+            $table->boolean('medio_forro_piernas_al_tono')->nullable();
+            $table->string('codigo_otro_color_medio_forro')->nullable();
+            $table->string('otro_color_medio_forro')->nullable();
+
+            $table->integer('dobladillo')->nullable(); // 1 normal, 2 valenciana
+            $table->integer('pretina')->nullable();
+            $table->string('color_pretina')->nullable();
 
             // Datos Pantalón
-            $table->integer('fit_id');
-            $table->integer('talla');
-            $table->float('largo_ext');
-            $table->float('largo_int');
+            $table->integer('fit_id')->nullable();
+            $table->integer('talla')->nullable();
+
             $table->string('notas',1000)->nullable();
 
             $table->timestamps();
