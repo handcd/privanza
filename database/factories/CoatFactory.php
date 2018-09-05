@@ -45,7 +45,6 @@ $factory->define(App\Coat::class, function (Faker $faker) {
         // Medidas Corporales
         'fit_id' => App\Fit::all()->random()->id,
         'talla' => rand(12,50),
-        'corte' => rand(0,2),
         'notas_int' => $faker->text($maxNbChars = 200),
         'notas_ext' => $faker->text($maxNbChars = 200),
     ];
