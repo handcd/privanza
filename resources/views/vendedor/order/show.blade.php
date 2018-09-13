@@ -427,27 +427,12 @@
                         <h4>Medidas de Cliente</h4>
                         <div class="row">
                               <div class="col-md-3">
-                                    <label class="text-primary">Fit</label>
+                                    <label class="text-primary">Fit deseado</label>
                                     <p>{{ $orden->coat->fit->name }}<br><small>{{$orden->coat->fit->description}}</small></p>
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Largo de manga deseado en Saco</label>
                                     <p>{{ $orden->coat->talla }}</p>
-                              </div>
-                              <div class="col-md-3">
-                                    <label class="text-primary">Corte de Saco <small>(De referencia)</small></label>
-                                    <p>
-                                          @switch($orden->coat->corte)
-                                                @case(1)
-                                                      Chico
-                                                      @break
-                                                @case(2)
-                                                      Regular
-                                                      @break
-                                              @default
-                                                      Largo
-                                          @endswitch
-                                    </p>
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Largo de Manga</label>
@@ -558,15 +543,16 @@
                                           <p>
                                                 @switch($orden->coat->posicion_ojales_activos_manga)
                                                       @case(0)
-                                                            Todos los Ojales Activos
+                                                            Cuarto
                                                             @break
-                                                      @case(3)
-                                                            Primero
                                                       @case(1)
-                                                            3º y 4º Ojales Activos <strong>únicamente</strong>.
+                                                            Tercero y cuarto
+                                                            @break
+                                                      @case(2)
+                                                            Segundo, tercero y cuarto
                                                             @break
                                                       @default
-                                                            4º Ojal Activo <strong>únicamente</strong>
+                                                            Todos
                                                 @endswitch
                                           </p>
                                     </div>

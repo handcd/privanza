@@ -28,7 +28,8 @@ class CreateCoatsTable extends Migration
             $table->string('color_ojal_manga')->nullable();
             $table->integer('posicion_ojal_manga')->nullable(); // 0 Cascada, 1 en línea
             $table->boolean('ojales_activos_manga')->nullable();
-            $table->integer('posicion_ojales_activos_manga')->nullable(); // 0 Todos los Ojales / 1 3º y 4º / 2 4º
+            $table->integer('posicion_ojales_activos_manga')->nullable(); /* 0-> Cuarto | 1-> Tercero y cuarto |
+            2-> Segundo, tercero y cuarto | 3-> Todos*/
             
             /*
                 0) Parche
