@@ -733,11 +733,11 @@
 							<h4 class="info-text">Datos de la parte Externa del Saco</h4>
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
-									<p>Medidas Corporales de Cliente <small>(De referencia)</small>:</p>
+									<p>Observaciones generales del cliente:</p>
 										<div class="col-md-6 ">
 										
 											<div class="form-group label-floating">
-												<label class="control-label">Selecciona un Fit</label>
+												<label class="control-label">Fit deseado</label>
 												<select name="fitSaco" id="fitSaco" class="form-control">
 													<option disabled="" selected=""></option>
 													@foreach (\App\Fit::all() as $fit)
@@ -753,7 +753,7 @@
 												<input type="number" min="10" step="1" name="tallaSaco" id="tallaSaco" class="form-control">
 											</div>
 										</div>
-										<div class="col-md-6">
+										{{-- <div class="col-md-6">
 											<div class="form-group label-floating">
 												<label for="corteSaco" class="control-label">Corte del Saco:</label>
 												<select name="corteSaco" id="corteSaco" class="form-control">
@@ -763,7 +763,7 @@
 													<option value="2">Largo</option>
 												</select>
 											</div>
-										</div>
+										</div>--}}
 									</div>
 									
 								</div>
@@ -1229,7 +1229,7 @@
                     		<h3 class="info-text">Datos del Chaleco</h3>
                     		<div class="row">
                     			<div class="col-md-10 col-md-offset-1">
-                    				<p>Medidas Corporales de Cliente <small>(De referencia)</small>:</p>
+                    				<p>Observaciones generales del cliente:</p>
                     				<div class="row">
                     					<div class="col-md-6">
                     						<div class="form-group label-floating">
@@ -1360,7 +1360,7 @@
 							<h4 class="info-text">Datos del Pantalón</h4>
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
-									<p>Medidas Corporales para Pantalón <small>(De referencia)</small>:</p>
+									<p>Observaciones generales del cliente:</p>
 									<div class="row">
 										<div class="col-md-6">
                     						<div class="form-group label-floating">
