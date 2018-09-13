@@ -832,7 +832,7 @@
 											</div>
 											<div class="checkbox">
 												<label>
-													<input type="checkbox" name="ojalActivosManga">
+													<input type="checkbox" name="ojalesActivosManga" id="ojalesActivosManga">
 													Selecciona para que el ojal sea activo
 												</label>
 											</div>
@@ -853,8 +853,8 @@
 			                            	</div>			                            	
 										</div>
 										<div class="col-md-6 col-md-offset-6">
-											<img src="{{ asset('img/suit_options/saco/Manga_Normal.png') }}" alt="Imágen de Indicador de Botones">
-										</div>										
+											<img src="{{ asset('img/suit_options/saco/Manga_Normal.jpg') }}" alt="Imágen de Indicador de Botones">
+										</div>									
 									</div>
 								</div>
 								<div class="col-md-10 col-sm-offset-1">
@@ -1104,11 +1104,11 @@
 							<!--Bies & PinPoint-->
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
-									<div class="col-md-6">
+									<div class="col-md-4">
 										<!--Imagen PinPoint-->
 										<div class="text-center">
 											<label>	
-											  <input type="checkbox" name="pinPointInterno" id="PinPointInterno" />
+											  <input type="checkbox" name="pinPointInterno" id="PinPointInterno" class="chk" />
 											  <img src="{{ asset('img/suit_options/saco/pin-point.png') }}">
 											  <p class="text-center">Pin Point</p>
 											</label>
@@ -1120,18 +1120,33 @@
 										<!--Fin PinPoint-->
 									</div>
 													
-									<div class="col-md-6">
+									<div class="col-md-4">
 										<!--Imagen de Bies-->
 										<div class="text-center">
 											<label>
-											  <input type="checkbox" name="biesInterno" id="BiesInterno" />
-											  <img src="{{ asset('img/suit_options/saco/Bies.png') }}">
+											  <input type="checkbox" name="biesInterno" id="BiesInterno" class="chk" />
+											  <img src="{{ asset('img/suit_options/saco/bies.jpg') }}">
 											  <p class="text-center">Bies</p>
 											</label>
 										</div>
 										<div class="label-floating form-group">
 											<label class="control-label">Código de Bies <small>(opcional)</small></label>
 											<input type="text" class="form-control" name="biesInternoCodigo">
+										</div>
+									</div>
+										<!--Fin de imagen de Bies-->
+										<div class="col-md-4">
+										<!--Imagen de Bies-->
+										<div class="text-center">
+											<label>
+											  <input type="checkbox" id="PinpointBiesInterno" class="chk" />
+											  <img src="{{ asset('img/suit_options/saco/pinpointBies.png') }}">
+											  <p class="text-center">PinPoint y Bies</p>
+											</label>
+										</div>
+										<div class="label-floating form-group">
+											<label class="control-label">Código <small>(opcional)</small></label>
+											<input type="text" class="form-control" name="pinpointbiesInternoCodigo">
 										</div>
 									</div>
 										<!--Fin de imagen de Bies-->
@@ -1142,7 +1157,7 @@
 							<!--Color de Bies & PinPoint-->
 							<div class="row">		
 								<div class="col-md-10 col-md-offset-1">							
-									<div class="col-md-6" id="colorPaletteBiesPinpoint">
+									<div class="col-md-6 col-md-offset-3" id="colorPaletteBiesPinpoint">
 										@include('partials.color-palette', ['varName' => 'Puntada'])
 									</div>
 								</div>					
@@ -1255,7 +1270,7 @@
 										<div class="col-xs-6">
 											<label>
 											  <input type="radio" name="cuelloChaleco" value="1" />
-											  <img src="{{ asset('img/suit_options/chaleco/Chaleco_Solapa.png') }}">
+											  <img src="{{ asset('img/suit_options/chaleco/Chaleco_Solapa.jpg') }}">
 											  <p class="text-center">Con Solapa</p>
 											</label>
 										</div>
@@ -1362,25 +1377,26 @@
 							<div class="row">
 								<p class="text-center">Tipo de Pase:</p>
 								<div class="col-md-8 col-md-offset-2 text-center">
-									<div class="col-md-6">
+									<div class="col-md-6 col-md-offset-3">
 										<label>
-										  <input type="radio" name="tipoPase" value="0" />
+										  <input type="radio" name="tipoPase" value="0" checked="" />
 										  <img src="{{ asset('img/suit_options/pantalon/P.Con.Pase.png') }}">
 										  <p class="text-center">Con Pase</p>
 										</label>
 									</div>
-									<div class="col-md-6">
+									{{--<div class="col-md-6">
 										<label>
 										  <input type="radio" name="tipoPase" value="1" />
 										  <img src="{{ asset('img/suit_options/pantalon/P.Sin.Pase.png') }}">
 										  <p class="text-center">Sin Pase</p>
 										</label>
-									</div>
+									</div>--}}
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-12">
 									<h4 class="text-center">Número de Pliegues</h4>
+									<p class="text-center">Va con dos bolsas frontales en diagonal</p>
 								</div>
 							</div>
 							<div class="row text-center">
@@ -1408,22 +1424,22 @@
 							</div>
 							<div class="row text-center">
 								<h4 class="text-center">Bolsas Traseras</h4>
-								<div class="col-md-4 col-md-offset-2">
+								{{--<div class="col-md-4 col-md-offset-2">
 									<label>
 									  <input type="radio" name="bolsasTraseras" value="1" />
 									  <img src="{{ asset('img/suit_options/numero_bolsas/PantalonUnaBolsa.png') }}">
 									  <p class="text-center">Una bolsa</p>
 									</label>
-								</div>
-								<div class="col-md-4">
+								</div>--}}
+								<div class="col-md-6 col-md-offset-3">
 									<label>
-									  <input type="radio" name="bolsasTraseras" value="2" />
+									  <input type="radio" name="bolsasTraseras" value="2" checked="" />
 									  <img src="{{ asset('img/suit_options/numero_bolsas/PantalonDosBolsas.png') }}">
 									  <p class="text-center">Dos bolsas</p>
 									</label>
 								</div>
 							</div>							
-							<div class="row">
+							{{--<div class="row">
 								<div class="col-md-12">
 									<h4 class="text-center">Tipo de Bolsas Traseras</h4>
 								</div>
@@ -1445,7 +1461,7 @@
 										</label>
 									</div>
 								</div>
-							</div>
+							</div>--}}
 							<div class="row">
 								<div class="col-md-12">
 									<h4 class="text-center">Interior</h4>
@@ -1578,4 +1594,9 @@
     </div>
 </div> <!-- row -->
 <script src="{{ asset('wizard/js/orderwizard.js') }}"></script>
+<script>
+	$('input.chk').on('change', function() {
+    $('input.chk').not(this).prop('checked', false);  
+});
+</script>
 @endsection

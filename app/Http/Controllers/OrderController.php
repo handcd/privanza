@@ -336,6 +336,7 @@ class OrderController extends Controller
             $chaleco->order_id = $orden->id;
             $chaleco->tipo_cuello = $request->cuelloChaleco;
             $chaleco->tipo_bolsas = $request->bolsasChaleco;
+
             $chaleco->tipo_espalda = $request->forroTela;
             if ($request->tipoForroChaleco) {
                 $chaleco->tipo_forro = $request->tipoForroChaleco;
@@ -364,24 +365,20 @@ class OrderController extends Controller
             $pantalon->pliegues = $request->numPliegues;
             $pantalon->bolsas_traseras = $request->bolsasTraseras;
             $pantalon->tipo_vivo = $request->tipoVivo;
-            // Color Ojalera y Encuarte
+            // Color Ojalera, Encuarte y Pretina
             if ($request->otroColorOjaleraEncuarte) {
                 $pantalon->color_ojalera = $request->otroColorOjaleraEncuarte;
+                $pantalon->color_pretina = $request->otroColorOjaleraEncuarte;
             } else {
                 $pantalon->color_ojalera = $request->colorOjaleraEncuarte;
+                $pantalon->color_pretina = $request->colorOjaleraEncuarte;
             }
             //color medio forro piernas            
             $pantalon->medio_forro_piernas_al_tono = $request->medioForroPiernasAlTono ? true : false;            
 
             //Dobladillo
             $pantalon->dobladillo = $request->dobladillo;
-            //Pretina
-            $pantalon->pretina = $request->pretina;
-            if ($request->otroColorBiesPretina) {
-                $pantalon->color_pretina = $request->otroColorBiesPretina;
-            }else{
-                $pantalon->color_pretina = $request->colorOjaleraEncuarte;
-            }
+            
 
             // Guardar Datos de Pantalón
             $pantalon->save();

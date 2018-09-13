@@ -100,8 +100,8 @@ var ojalDeMangaEnContraste = document.getElementById('tipoDeOjalEnManga');
 //Variables para obtener paletas de colores y ocultar componentes
 var coloresDeSolapaEnContraste = document.getElementById('solapaContraste');
 var colorDeMangaEnContraste = document.getElementById('colorDeOjalEnMangas');
-var colorDeBies = document.getElementById('colorPaletteBies');
-var colorDePinPoint = document.getElementById('colorPalettePinPoint');
+//var colorDeBies = document.getElementById('colorPaletteBies');
+var colorDeBiesPinpoint = document.getElementById('colorPaletteBiesPinpoint');
 
 // Elementos Ocultos
 var divMarcaEtiqueta = document.getElementById('marcaEtiqueta');
@@ -123,8 +123,8 @@ var checkBotonesDeCliente = document.getElementById('botonesCliente');
 function iniciarComponentes() {
     $(colorDeMangaEnContraste).hide();
     $(coloresDeSolapaEnContraste).hide();
-    $(colorDeBies).hide();
-    $(colorDePinPoint).hide();
+    $(colorDeBiesPinpoint).hide();
+    //$(colorDePinPoint).hide();
     $(divCantidadDeBotones).hide();
     $(divMarcaEtiqueta).hide();
     $(divPerGancho).hide();
@@ -158,7 +158,12 @@ function mostrarOcultarOtroForroChaleco() {
 
 // Mostrar el campo para ojales activos en manga
 function mostrarOcultarOjalesActivosManga() {
-    $(divOjalesActivosManga).toggle();
+    //$(divOjalesActivosManga).toggle();
+    if (checkOjalesActivosManga.checked) {
+        $(divOjalesActivosManga).show();
+    }else{
+        $(divOjalesActivosManga).hide();
+    }
 }
 
 //Mostrar y ocultar paleta de colores para ojal de solapa en contraste
@@ -180,20 +185,20 @@ function coloresOjalEnManga() {
 }
 
 //Lógica para Bies & pinpoint
-function coloresBies() {
-    if (biesInterno.checked) {
-        $(colorPaletteBies).show();
+function coloresBiesPinpoint() {
+    if (biesInterno.checked || pinPointInterno.checked) {
+        $(colorPaletteBiesPinpoint).show();
     } else {
-        $(colorPaletteBies).hide();
+        $(colorPaletteBiesPinpoint).hide();
     }
 }
-function coloresPinPoint() {
+/*function coloresPinPoint() {
     if (pinPointInterno.checked) {
         $(colorPalettePinPoint).show();
     } else {
         $(colorPalettePinPoint).hide();
     }
-}
+}*/
 // Mostrar y ocultar personalización de gancho
 function mostrarOcultarPersonalizacionGancho() {
     if (selectTipoGancho.value == "2") {
@@ -220,10 +225,10 @@ function mostrarOcultarPersonalizacionPortatraje() {
 function agregarEventos() {
     console.log('Declarando eventos dentro de la funcion');
     biesInterno.addEventListener('click', function () {
-        coloresBies();
+        coloresBiesPinpoint();
     });
     pinPointInterno.addEventListener('click', function () {
-        coloresPinPoint();
+        coloresBiesPinpoint();
     });
     solapaEnContraste.addEventListener('click', function () {
         coloresSolapaEnContraste();

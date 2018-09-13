@@ -17,7 +17,7 @@ $factory->define(App\Pants::class, function (Faker $faker) {
         'medio_forro_piernas_al_tono' => rand(0,1),
         'codigo_otro_color_medio_forro' => $faker->sentence(),
         'otro_color_medio_forro' => $faker->hexcolor,
-        'pretina' => rand(0,2),
+        //'pretina' => rand(0,2),
         'color_pretina' => $faker->colorName,
         'dobladillo' => rand(1,2), // 1 normal, 2 valenciana
 
