@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Privanza',
             'description' => 'Medidas para personas menudas.'
         ]);
-
+        /*
         factory(App\Vendedor::class, 40)->create();
         factory(App\Client::class, 30)->create([
             'vendedor_id' => 1,
@@ -56,7 +56,7 @@ class DatabaseSeeder extends Seeder
         factory(App\Event::class, 600)->create();
         factory(App\Validador::class, 10)->create();
 
-        // Generate 10 orders for the main Vendedor
+        //Generate 10 orders for the main Vendedor
         for ($i=1; $i <= 20; $i++) { 
             $orden = factory(App\Order::class)->create([
                 'vendedor_id' => 1,
@@ -102,6 +102,6 @@ class DatabaseSeeder extends Seeder
         }
 
         factory(App\AdjustmentOrder::class,100)->create();
-        factory(App\Adjustment::class,666)->create();
+        factory(App\Adjustment::class,666)->create();*/
     }
 }

@@ -753,17 +753,7 @@
 												<input type="number" min="10" step="1" name="tallaSaco" id="tallaSaco" class="form-control">
 											</div>
 										</div>
-										{{-- <div class="col-md-6">
-											<div class="form-group label-floating">
-												<label for="corteSaco" class="control-label">Corte del Saco:</label>
-												<select name="corteSaco" id="corteSaco" class="form-control">
-													<option disabled="" selected=""></option>
-													<option value="0">Corto</option>
-													<option value="1">Regular</option>
-													<option value="2">Largo</option>
-												</select>
-											</div>
-										</div>--}}
+										
 									</div>
 									
 								</div>

@@ -391,7 +391,6 @@ class OrderController extends Controller
             // Medidas Corporales
             $saco->fit_id = $request->fitSaco;
             $saco->talla = $request->tallaSaco;
-            $saco->corte = $request->corteSaco;
 
             $saco->order_id = $orden->id;
 
@@ -584,8 +583,17 @@ class OrderController extends Controller
             return redirect('/vendedor/ordenes');
         }
         PDF::setOptions(['dpi' => 50]);
-
-        return PDF::loadview('pdf.order',compact('orden'))->setPaper('a4', 'landscape')->stream('PRIV-OC'.$id.$orden->client->name.'.pdf');
+        if ($orden->has_coat) {
+            $saco = $orden->Coat;
+        }
+        if ($orden->has_pants) {
+            $pantalon = $orden->Pants;
+        }
+        if ($orden->has_vest) {
+            $chaleco = $orden->Vest;
+        }
+        //  return $saco;
+        return PDF::loadview('pdf.order',compact('orden','saco','pantalon','chaleco'))->setPaper('a4', 'landscape')->stream('PRIV-OC'.$id.$orden->client->name.'.pdf');
     }
 
     /**
