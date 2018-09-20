@@ -24,7 +24,7 @@
         }
         td {
             font-family: "Helvetica";
-            font-size: 5;
+            font-size: 6;
         }
         tbody:before, tbody:after { display: none; }
     </style> 
@@ -46,7 +46,7 @@
         </thead>
     </table> 
     {{-- Especificaciones --}}         
-    <h3>Especificaciones:</h3>
+    <h4>Especificaciones:</h4>
     
     {{-- Saco --}}
     @if($orden->has_coat)
@@ -69,7 +69,11 @@
                 <td>
                     Largo de Manga deseado:
                     <br>
-                    {{ $saco->talla}} pulgadas
+                    @if($saco->talla) 
+                        {{ $saco->talla }} pulgadas
+                    @else
+                        Desconocido
+                    @endif
                 </td>
                 <td>
                     Tipo de solapa: 
@@ -109,8 +113,6 @@
                         No
                     @endif
                 </td>
-            </tr>
-            <tr>
                 <td>
                     Color de ojal en manga:
                     <br>
@@ -166,8 +168,10 @@
                             Desconocido
                     @endswitch
                 </td>
+            </tr>
+            <tr>                
                 <td>
-                    Número de botones en mangas:
+                    No. de botones en mangas:
                     <br>
                     @switch( $saco->botones_mangas)
                         @case(1)
@@ -186,6 +190,77 @@
                             Desconocido
                     @endswitch
                 </td>
+                <td>
+                    Posición de ojales en mangas:
+                    <br>
+                    @switch($saco->posicion_ojal_manga)
+                        @case(0)
+                            Botones en cascada
+                            @break
+                        @case(1)
+                            Botones en línea
+                            @break
+                        @default
+                            Desconocido
+                    @endswitch
+                </td>
+                <td>
+                    Bolsas externas:
+                    <br>
+                    @switch($saco->tipo_bolsas_ext)
+                        @case(0)
+                            Parche
+                            @break
+                        @case(1)
+                            Cartera
+                            @break
+                        @case(2)
+                            Cartera en diagonal
+                            @break
+                        @case(3)
+                            Vivo (sin cartera)
+                            @break
+                        @case(4)
+                            Vivo Diagonal
+                            @break
+                        @case(5)
+                            Cartera continental
+                            @break
+                        @case(6)
+                            Cartera diagonal
+                            @break
+                        @case(7)
+                            Sin bolsas
+                            @break
+                        @default
+                            Desconocido
+                    @endswitch
+                </td>
+                <td>
+                    Pick stitch:
+                    <br>
+                    @if( $saco->pickstitch === 1 )
+                        Sí
+                    @else
+                        No
+                    @endif
+                </td>
+                <td>
+                    Aletillas:
+                    <br>
+                    @if( $saco->sin_aletilla === 1 )
+                        Sin aletillas
+                    @else
+                        Con aletillas
+                    @endif
+                </td>
+                @if( $saco->notas_int)
+                    <td>
+                        Notas:
+                        <br>
+                            {{ $saco->notas_int }}
+                    </td>
+                @endif
             </tr>
             <tr>
                 <td>
