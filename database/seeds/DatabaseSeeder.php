@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
         factory(App\Vendedor::class)->create([
             'name' => 'Erick Rodríguez'
             'email' => 'erick.ro@gmail.com'
-            'password' => bcrypt('nancyisco123'),
+            'password' => bcrypt('erickisco123'),
         ]);
         //Laureano
         factory(App\Vendedor::class)->create([
@@ -42,13 +42,13 @@ class DatabaseSeeder extends Seeder
         factory(App\Vendedor::class)->create([
             'name' => 'Admon'
             'email' => 'admon@casaartoria.com'
-            'password' => bcrypt('nancyisco123'),
+            'password' => bcrypt('admonisco123'),
         ]);
         //Alejandra Encinas
         factory(App\Vendedor::class)->create([
             'name' => 'Alejandra Encinas'
             'email' => 'alejandra.encinas@isco.com.mx'
-            'password' => bcrypt('nancyisco123'),
+            'password' => bcrypt('alejandraisco123'),
         ]);
 
         // Validador
