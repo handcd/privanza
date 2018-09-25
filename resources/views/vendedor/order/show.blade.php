@@ -684,20 +684,6 @@
                               </div>
                         </div>
                         <div class="row">
-                              <div class="col-md-3">
-                                    <label class="text-primary">Puntada en Filos</label>
-                                    <p>{{ $orden->coat->puntada_filos ? 'Si' : 'No' }}</p>
-                              </div>
-                              <div class="col-md-3">
-                                    <label class="text-primary">Puntada en Aletillas</label>
-                                    <p>{{ $orden->coat->puntada_aletillas ? 'Si' : 'No' }}</p>
-                              </div>
-                              <div class="col-md-3">
-                                    <label class="text-primary">Puntada en Carteras</label>
-                                    <p>{{ $orden->coat->puntada_carteras ? 'Si' : 'No' }}</p>
-                              </div>
-                        </div>
-                        <div class="row">
                               <div class="col-md-6">
                                     <label class="text-primary">Notas de Saco Interno</label>
                                     <p>{{ $orden->coat->notas_int }}</p>

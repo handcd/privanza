@@ -14,19 +14,48 @@ class DatabaseSeeder extends Seeder
     {
         // Administrador 
         DB::table('admins')->insert([
-            'name' => 'Test Admin',
-            'email' => 'admin@privanza.com',
-            'password' => bcrypt('admin123'),
+            'name' => 'Veronica López',
+            'email' => 'velopez@isco.com.mx',
+            'password' => bcrypt('vlopez123'),
         ]);
         
-        // Vendedor 
+        // Vendedores
+        //Nancy
         factory(App\Vendedor::class)->create([
-            'email' => 'vendedor@privanza.com'
+            'name' => 'Nancy'
+            'email' => 'nancy@isco.com.mx'
+            'password' => bcrypt('nancyisco123'),
+        ]);
+        //Erick
+        factory(App\Vendedor::class)->create([
+            'name' => 'Erick Rodríguez'
+            'email' => 'erick.ro@gmail.com'
+            'password' => bcrypt('nancyisco123'),
+        ]);
+        //Laureano
+        factory(App\Vendedor::class)->create([
+            'name' => 'Laureano Fernandez'
+            'email' => 'laureano.fdz@isco.com.mx'
+            'password' => bcrypt('laureanoisco123'),
+        ]);
+        //Admon
+        factory(App\Vendedor::class)->create([
+            'name' => 'Admon'
+            'email' => 'admon@casaartoria.com'
+            'password' => bcrypt('nancyisco123'),
+        ]);
+        //Alejandra Encinas
+        factory(App\Vendedor::class)->create([
+            'name' => 'Alejandra Encinas'
+            'email' => 'alejandra.encinas@isco.com.mx'
+            'password' => bcrypt('nancyisco123'),
         ]);
 
         // Validador
         factory(App\Validador::class)->create([
-            'email' => 'validador@privanza.com'
+            'name' => 'Yuliana Ramírez'
+            'email' => 'yramirez@isco.com.mx'
+            'password' => bcrypt('yramirez123'),
         ]);
 
         // Database

@@ -42,6 +42,8 @@
               <td scope="col">Fecha de elaboración: {{ Carbon\Carbon::now() }}</td>
               <td scope="col">Vendedor: {{ $orden->vendedor->name }}</td>
               <td scope="col">Cliente: {{ $orden->client->name}} {{$orden->client->lastname }}</td>
+              <td> Teléfono del cliente: {{ $orden->client->phone}}</td>
+              <td>Correo eléctronico del cliente: {{ $orden->client->email}}</td>
             </tr>
         </thead>
     </table> 
@@ -191,7 +193,7 @@
                     @endswitch
                 </td>
                 <td>
-                    Posición de ojales en mangas:
+                    Posición de botones en mangas:
                     <br>
                     @switch($saco->posicion_ojal_manga)
                         @case(0)
@@ -254,32 +256,80 @@
                         Con aletillas
                     @endif
                 </td>
+                <td>
+                    Tipo de vista interna:
+                    <br>
+                    @if( $saco->tipo_vista === 0 )
+                        Normal
+                    @elseif( $saco->tipo_vista === 1 )
+                        Chapeta Francesa
+                    @else
+                        Desconocido
+                    @endif
+                </td>
+                <td>
+                    Forro interno de mangas:
+                    <br>
+                    @if( $saco->balsam_rayas === 1 )
+                        Balsam a Rayas
+                    @else
+                        {{ $saco->forro_interno_mangas}}
+                    @endif
+                </td>
+                <td>
+                    Accesorios: 
+                    Aquí va lo del pinpoint
+                </td>                   
+                @if( $saco->bolsas_int )
+                    <td>
+                    Bolsas internas:
+                    @switch( $saco->bolsas_int)
+                        @case(1) 2 bolsas en pecho, 1 p/pluma, 1 p/cigarrera 
+                            @break
+                        @case(2) 2 bolsas en pecho, 1 p/pluma
+                            @break
+                        @case(3) 2 bolsas en pecho, 1 p/cigarrera
+                            @break 
+                        @case(4) 2 bolsas en pecho
+                            @break
+                        @default Desconocido
+                    @endswitch
+                    </td>
+                @endif               
+            </tr>
+           
+        </table> 
+        <table class="table table-bordered">
+             <tr>
+                @if( $saco->vivos_bolsas_internas_cuerpo)
+                    <td>
+                        Vivos en bolsas internas:
+                        <br>
+                        Del mismo forro en cuerpo
+                    </td>
+                @elseif( $saco->otro_vivos_bolsas_internas)
+                    <td>
+                        Vivos en bolsas internas:
+                        <br>
+                        {{ $saco->otro_vivos_bolsas_internas }}
+                    </td>
+                @endif
                 @if( $saco->notas_int)
                     <td>
-                        Notas:
+                        Notas de saco interno:
                         <br>
                             {{ $saco->notas_int }}
                     </td>
                 @endif
+                @if( $saco->notas_ext)
+                    <td>
+                        Notas de saco externo:
+                        <br>
+                            {{ $saco->notas_ext }}
+                    </td>
+                @endif
             </tr>
-            <tr>
-                <td>
-                    
-                </td>
-                <td>
-                    
-                </td>
-                <td>
-                    
-                </td>
-                <td>
-                    
-                </td>
-                <td>
-                    
-                </td>
-            </tr>
-        </table>    
+        </table>   
     @endif
     {{--
     <div class="col-xs-2">
@@ -292,45 +342,208 @@
     {{-- Chaleco --}}
     @if($orden->has_vest)
         <div class="row">
-        <div class="col-xs-12">
-            <b>Chaleco</b>
+            <div class="col-xs-12">
+                <b>Chaleco</b>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-1">
-            <p> 
-            Fit Deseado:
-            @if($chaleco->fit_id)
-                {{ $chaleco->fit->name}}
-            @else
-                Desconocido
-            @endif                                   
-            </p>    
-        </div>
-    </div>
+        <table class="table table-bordered">
+            <tr>
+                <td>
+                    Fit Deseado:
+                    <br>
+                    @if($chaleco->fit_id)
+                        {{ $chaleco->fit->name}}
+                    @else
+                        Desconocido
+                    @endif    
+                </td>
+                <td>
+                    Largo de espalda deseado:
+                    <br>
+                    @if($chaleco->talla) 
+                        {{ $chaleco->talla }} pulgadas
+                    @else
+                        Desconocido
+                    @endif
+                </td>
+                <td>
+                    Tipo de cuello:
+                    <br>
+                    @if( $chaleco->tipo_cuello === 1 )
+                        Cuello en 'V'
+                    @elseif( $chaleco->tipo_cuello === 2 )
+                        Con solapa
+                    @else
+                        Desconocido
+                    @endif
+                </td>
+                <td>
+                    Bolsas delanteras:
+                    <br>
+                    @if( $chaleco->tipo_bolsas === 0 )
+                        Vivo
+                    @elseif( $chaleco->tipo_bolsas === 1 )
+                        Con aletillas
+                    @else
+                        Desconocido
+                    @endif
+                </td>
+                <td>
+                    Forro o tela:
+                    <br>
+                    @if( $chaleco->tipo_espalda === 2 )
+                        Tela
+                    @elseif( $chaleco->tipo_espalda === 1 )
+                        Forro. {{ $chaleco->tipo_forro}}
+                    @else
+                        Desconocido
+                    @endif
+                </td>
+                @if( $chaleco->notas )
+                    <td>
+                        Notas: {{ $chaleco->notas}}
+                    </td>
+                @endif
+            </tr>
+        </table>
     @endif
     {{-- Fin Chaleco --}}
     {{-- Pantalón --}}
     @if($orden->has_pants)
         <div class="row">
-        <div class="col-xs-12">
-            <b>Pantalón</b>
+            <div class="col-xs-12">
+                <b>Pantalón</b>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-1">
-            <p> 
-            Fit Deseado:
-            @if($pantalon->fit_id)
-                {{ $pantalon->fit->name}}
-            @else
-                Desconocido
-            @endif                                   
-            </p>
-        </div>
-    </div>
+        <table class="table table-bordered">
+            <tr>
+                <td>
+                    Fit Deseado:
+                    <br>
+                    @if($pantalon->fit_id)
+                        {{ $pantalon->fit->name }}
+                    @else
+                        Desconocido
+                    @endif    
+                </td>
+                <td>
+                    Talla de pantalón:
+                    <br>
+                    @if($pantalon->talla) 
+                        {{ $pantalon->talla }} pulgadas
+                    @else
+                        Desconocido
+                    @endif
+                </td>
+                <td>
+                    Tipo de pase:
+                    <br>
+                    Con pase
+                </td>
+                <td>
+                    Número de pliegues:
+                    <br>
+                    @if( $pantalon->pliegues === 0 )
+                        Sin pliegues
+                    @elseif( $pantalon->pliegues === 1 )
+                        Un pliegue
+                    @elseif( $pantalo->pliegues === 2)
+                        Dos pliegues
+                    @else
+                        Desconocido
+                    @endif
+                </td>
+                <td>
+                    Bolsas traseras:
+                    <br>
+                    Dos bolsas traseras, vivo sencillo con ojal.                    
+                </td>
+                <td>
+                    Color de bies, ojalera, encuarte y pretina:
+                    <br>
+                    {{ $pantalon->color_ojalera }}
+                </td>
+                <td>
+                    Medio forro interior:
+                    <br>
+                    @if( $pantalon->medio_forro_piernas_al_tono )
+                        Al tono
+                    @else
+                        {{ $pantalon->codigo_otro_color_medio_forro }} {{ $pantalon->otro_color_medio_forro}}
+                    @endif
+                </td>
+            </tr>
+        </table>
+        <table class="table table-bordered">
+            <tr>
+                <td>
+                    Dobladillo:
+                    <br>
+                    @switch( $pantalon->dobladillo)
+                        @case(1)
+                            Normal
+                            @break
+                        @case(2)
+                            Valenciana
+                            @break
+                        @default
+                            Desconocido
+                    @endswitch
+                </td>
+                <td>
+                    Notas:
+                    <br>
+                    {{ $pantalon->notas }}
+                </td>
+            </tr>
+        </table>
     @endif
     {{--Fin Pantalón --}}
+    {{-- Cuadros --}}
+    <table class="table table-bordered">
+        <tr>
+            <td style="font-size: 10; width: 250; height: 150">
+                Tela:
+                <br><br><br><br>
+
+            </td>
+            <td style="font-size: 10; width: 250">
+                Forro en cuerpo:
+            </td>
+            <td style="font-size: 10; width: 250">
+                Vivos de bolsas internas:
+
+            </td>
+        </tr>        
+    </table>
+    <table class="table table-bordered">
+        <tr>
+            <td style="height: 50">
+                <br><br><br><br><br>
+                Elaboro (original)
+            </td>
+            <td>
+                <br><br><br><br><br>
+                Almacen de telas
+            </td>
+            <td>
+                <br><br><br><br><br>
+                Almacén de Habios
+            </td>
+            <td>
+                <br><br><br><br><br>
+                Control de calidad
+            </td>
+            <td>
+                <br><br><br><br><br>
+                Sala de corte
+            </td>
+            <td>
+                <br><br><br><br><br>
+                Almacen producto terminado
+            </td>
+        </tr>
+    </table>
     
 </body>
 </html>
