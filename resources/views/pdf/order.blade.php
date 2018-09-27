@@ -47,6 +47,256 @@
             </tr>
         </thead>
     </table> 
+    <h4>Medidas generales</h4>
+    <table class="table table-bordered">
+        <tr>
+            <td>
+            Altura:
+            <br>
+            @if($orden->client->altura)                
+                {{ $orden->client->altura  }} Cm.
+            @else
+                Desconocido
+            @endif
+            </td>
+            <td>
+            Peso:
+            <br>
+            @if($orden->client->peso)
+                {{ $orden->client->peso  }} Kg.
+            @else
+                Desconocido
+            @endif
+            </td>
+            <td>
+            Edad:
+            <br>
+            @if($orden->client->edad)
+                {{ $orden->client->edad  }} Kg.
+            @else
+                Desconocido
+            @endif
+            </td>
+            <td>
+            Abdomen:
+            <br>
+            @if($orden->client->abdomen)
+                 @switch( $orden->client->abdomen )
+                    @case(0)
+                          <p>Delgado</p>
+                          @break
+                    @case(1)
+                          <p>Normal</p>
+                          @break
+                    @case(2)
+                          <p>Voluminoso</p>
+                          @break
+                    @default
+                          <p>Entrada inválida</p>
+                @endswitch
+            @else
+                Desconocido
+            @endif
+            </td>
+            <td>
+            Pecho:
+            <br>
+            @if($orden->client->pecho)
+                @switch( $orden->client->pecho )
+                    @case(0)
+                            <p>Musculoso</p>
+                            @break
+                    @case(1)
+                            <p>Normal</p>
+                            @break
+                    @case(2)
+                            <p>Curpulento</p>
+                            @break
+                    @default
+                            <p>Entrada inválida</p>
+                @endswitch 
+            @else
+                Desconocido
+            @endif
+            </td>
+            <td>
+            Espalda:
+            <br>
+            @if($orden->client->espalda)
+                @switch( $orden->client->esplada )
+                    @case(0)
+                        <p>Recta</p>
+                        @break
+                    @case(1)
+                        <p>Normal</p>
+                        @break
+                    @case(2)
+                        <p>Encorvada</p>
+                        @break
+                    @default
+                        <p>Entrada inválida</p>
+                @endswitch
+            @else
+                Desconocido
+            @endif
+            </td>
+            <td>
+            Tipo de hombros:
+            <br>
+            @if($orden->client->hombros === 0 )
+                Rectos
+            @else
+                Normales
+            @endif
+            </td>
+            <td>
+            Contorno de cuello:
+            <br>
+            @if($orden->client->contornoCuello)
+                {{ $orden->client->contornoCuello  }} pulgadas
+            @else
+                Desconocido
+            @endif
+            </td>
+            <td>
+            Contorno de biceps:
+            <br>
+            @if($orden->client->contornoBiceps)
+                {{ $orden->client->contornoBiceps  }} pulgadas 
+            @else
+                Desconocido
+            @endif
+            </td>
+            <td>
+            Medida de hombros:
+            <br>
+            @if($orden->client->medidaHombros)
+                {{ $orden->client->medidaHombros  }} 
+            @else
+                Desconocido
+            @endif
+            </td>
+        </tr>
+        <tr>
+            <td>
+            Medida brazo derecho:
+            <br>
+            @if($orden->client->brazoDerecho)
+                {{ $orden->client->brazoDerecho  }} 
+            @else
+                Desconocido
+            @endif
+            </td>
+            <td>
+            Medida brazo izquierdo:
+            <br>
+            @if($orden->client->brazoIzquierdo)
+                {{ $orden->client->brazoIzquierdo  }} 
+            @else
+                Desconocido
+            @endif
+            </td>
+            <td>
+            Medida hombro derecho:
+            <br>
+            @if($orden->client->hombroDerecho)
+                {{ $orden->client->hombroDerecho  }} 
+            @else
+                Desconocido
+            @endif
+            </td>
+            <td>
+            Medida hombro izquierdo:
+            <br>
+            @if($orden->client->hombroIzquierdo)
+                {{ $orden->client->hombroIzquierdo  }} 
+            @else
+                Desconocido
+            @endif
+            </td>
+            <td>
+            Ancho espalda:
+            <br>
+            @if($orden->client->anchoEspalda)
+                {{ $orden->client->anchoEspalda  }} 
+            @else
+                Desconocido
+            @endif
+            </td>
+            <td>
+                Largo de torso:
+                <br>
+            @if($orden->client->largoTorso)
+                {{ $orden->client->largoTorso  }} 
+            @else
+                Desconocido
+            @endif
+            </td>
+            <td>
+                Contorno de pecho:
+                <br>
+            @if($orden->client->contornoPecho)
+                {{ $orden->client->contornoPecho  }} 
+            @else
+                Desconocido
+            @endif
+            </td>
+            <td>
+                Contorno de puño:
+                <br>
+            @if($orden->client->punio)
+                {{ $orden->client->punio  }} 
+            @else
+                Desconocido
+            @endif
+            </td>
+            <td>
+                Contorno de abdomen:
+                <br>
+            @if($orden->client->contornoAbdomen)
+                {{ $orden->client->contornoAbdomen  }} 
+            @else
+                Desconocido
+            @endif
+            </td>
+            <td>
+                Contorno de cintura:
+                <br>
+            @if($orden->client->contornoCintura)
+                {{ $orden->client->contornoCintura  }} 
+            @else
+                Desconocido
+            @endif
+            </td>
+            <td>
+                Contorno de cadera:
+                <br>
+            @if($orden->client->)
+                {{ $orden->client->  }} 
+            @else
+                Desconocido
+            @endif
+            </td>
+            <td>
+                Largo de tiro:
+                <br>
+            @if($orden->client->)
+                {{ $orden->client->  }} 
+            @else
+                Desconocido
+            @endif
+            </td>
+            {{--<td>
+
+            @if($orden->client->)
+                {{ $orden->client->  }} 
+            @else
+                Desconocido
+            @endif
+            </td>--}}
+        </tr>
+        
+    </table>
     {{-- Especificaciones --}}         
     <h4>Especificaciones:</h4>
     
@@ -116,8 +366,7 @@
                     @endif
                 </td>
                 <td>
-                    Color de ojal en manga:
-                    <br>
+                    Color de ojal en manga: 
                     @if( $saco->tipo_ojal_manga === 2) 
                         En Contraste. Color {{ $saco->color_ojal_manga}}.
                     @else
@@ -502,15 +751,15 @@
     {{-- Cuadros --}}
     <table class="table table-bordered">
         <tr>
-            <td style="font-size: 10; width: 250; height: 150">
+            <td style="font-size: 10; width: 236px; height: 236px">
                 Tela:
                 <br><br><br><br>
 
             </td>
-            <td style="font-size: 10; width: 250">
+            <td style="font-size: 10; width: 236px">
                 Forro en cuerpo:
             </td>
-            <td style="font-size: 10; width: 250">
+            <td style="font-size: 10; width: 236px">
                 Vivos de bolsas internas:
 
             </td>
