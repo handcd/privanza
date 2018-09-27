@@ -22,39 +22,39 @@ class DatabaseSeeder extends Seeder
         // Vendedores
         //Nancy
         factory(App\Vendedor::class)->create([
-            'name' => 'Nancy'
-            'email' => 'nancy@isco.com.mx'
+            'name' => 'Nancy',
+            'email' => 'nancy@isco.com.mx',
             'password' => bcrypt('nancyisco123'),
         ]);
         //Erick
         factory(App\Vendedor::class)->create([
-            'name' => 'Erick Rodríguez'
-            'email' => 'erick.ro@gmail.com'
+            'name' => 'Erick Rodríguez',
+            'email' => 'erick.ro@gmail.com',
             'password' => bcrypt('erickisco123'),
         ]);
         //Laureano
         factory(App\Vendedor::class)->create([
-            'name' => 'Laureano Fernandez'
-            'email' => 'laureano.fdz@isco.com.mx'
+            'name' => 'Laureano Fernandez',
+            'email' => 'laureano.fdz@isco.com.mx',
             'password' => bcrypt('laureanoisco123'),
         ]);
         //Admon
         factory(App\Vendedor::class)->create([
-            'name' => 'Admon'
-            'email' => 'admon@casaartoria.com'
+            'name' => 'Alejandro',
+            'email' => 'admon@casaartoria.com',
             'password' => bcrypt('admonisco123'),
         ]);
         //Alejandra Encinas
         factory(App\Vendedor::class)->create([
-            'name' => 'Alejandra Encinas'
-            'email' => 'alejandra.encinas@isco.com.mx'
+            'name' => 'Alejandra Encinas',
+            'email' => 'alejandra.encinas@isco.com.mx',
             'password' => bcrypt('alejandraisco123'),
         ]);
 
         // Validador
         factory(App\Validador::class)->create([
-            'name' => 'Yuliana Ramírez'
-            'email' => 'yramirez@isco.com.mx'
+            'name' => 'Yuliana Ramírez',
+            'email' => 'yramirez@isco.com.mx',
             'password' => bcrypt('yramirez123'),
         ]);
 

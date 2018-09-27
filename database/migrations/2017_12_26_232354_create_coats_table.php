@@ -48,15 +48,12 @@ class CreateCoatsTable extends Migration
             $table->integer('tipo_vista')->nullable(); // 0 normal / 1 chapeta francesa
             $table->boolean('balsam_rayas')->nullable();
             $table->string('forro_interno_mangas')->nullable();
-            //Accesorios
-            //Pinpoint
-            $table->boolean('pin_point_interno')->nullable();
-            $table->string('pin_point_interno_color')->nullable();
-            $table->string('pin_point_interno_codigo')->nullable();
-            //Bies
-            $table->boolean('bies')->nullable();
-            $table->string('bies_color')->nullable();
-            $table->string('bies_codigo')->nullable();
+
+            //Accesorios  
+            $table->integer('tipo_accesorio')->nullable();
+            $table->string('accesorio_color')->nullable();
+            $table->string('accesorio_codigo')->nullable();
+
             //Código en paleta de colores
             $table->string('color_puntada')->nullable();
 

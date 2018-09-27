@@ -47,7 +47,7 @@
             </tr>
         </thead>
     </table> 
-    <h4>Medidas generales</h4>
+    <h4>Medidas Corporales:</h4>
     <table class="table table-bordered">
         <tr>
             <td>
@@ -72,7 +72,7 @@
             Edad:
             <br>
             @if($orden->client->edad)
-                {{ $orden->client->edad  }} Kg.
+                {{ $orden->client->edad  }} años
             @else
                 Desconocido
             @endif
@@ -171,7 +171,7 @@
             Medida de hombros:
             <br>
             @if($orden->client->medidaHombros)
-                {{ $orden->client->medidaHombros  }} 
+                {{ $orden->client->medidaHombros  }} pulgadas
             @else
                 Desconocido
             @endif
@@ -182,7 +182,7 @@
             Medida brazo derecho:
             <br>
             @if($orden->client->brazoDerecho)
-                {{ $orden->client->brazoDerecho  }} 
+                {{ $orden->client->brazoDerecho  }} pulgadas
             @else
                 Desconocido
             @endif
@@ -191,7 +191,7 @@
             Medida brazo izquierdo:
             <br>
             @if($orden->client->brazoIzquierdo)
-                {{ $orden->client->brazoIzquierdo  }} 
+                {{ $orden->client->brazoIzquierdo  }} pulgadas
             @else
                 Desconocido
             @endif
@@ -200,7 +200,7 @@
             Medida hombro derecho:
             <br>
             @if($orden->client->hombroDerecho)
-                {{ $orden->client->hombroDerecho  }} 
+                {{ $orden->client->hombroDerecho  }} pulgadas
             @else
                 Desconocido
             @endif
@@ -209,7 +209,7 @@
             Medida hombro izquierdo:
             <br>
             @if($orden->client->hombroIzquierdo)
-                {{ $orden->client->hombroIzquierdo  }} 
+                {{ $orden->client->hombroIzquierdo  }} pulgadas
             @else
                 Desconocido
             @endif
@@ -218,7 +218,7 @@
             Ancho espalda:
             <br>
             @if($orden->client->anchoEspalda)
-                {{ $orden->client->anchoEspalda  }} 
+                {{ $orden->client->anchoEspalda  }} pulgadas
             @else
                 Desconocido
             @endif
@@ -227,7 +227,7 @@
                 Largo de torso:
                 <br>
             @if($orden->client->largoTorso)
-                {{ $orden->client->largoTorso  }} 
+                {{ $orden->client->largoTorso }} pulgadas
             @else
                 Desconocido
             @endif
@@ -236,7 +236,7 @@
                 Contorno de pecho:
                 <br>
             @if($orden->client->contornoPecho)
-                {{ $orden->client->contornoPecho  }} 
+                {{ $orden->client->contornoPecho }} pulgadas
             @else
                 Desconocido
             @endif
@@ -245,7 +245,7 @@
                 Contorno de puño:
                 <br>
             @if($orden->client->punio)
-                {{ $orden->client->punio  }} 
+                {{ $orden->client->punio }} pulgadas
             @else
                 Desconocido
             @endif
@@ -254,7 +254,7 @@
                 Contorno de abdomen:
                 <br>
             @if($orden->client->contornoAbdomen)
-                {{ $orden->client->contornoAbdomen  }} 
+                {{ $orden->client->contornoAbdomen }} pulgadas
             @else
                 Desconocido
             @endif
@@ -263,36 +263,75 @@
                 Contorno de cintura:
                 <br>
             @if($orden->client->contornoCintura)
-                {{ $orden->client->contornoCintura  }} 
+                {{ $orden->client->contornoCintura }} pulgadas
             @else
                 Desconocido
             @endif
             </td>
+        </tr>
+        <tr>
             <td>
                 Contorno de cadera:
                 <br>
-            @if($orden->client->)
-                {{ $orden->client->  }} 
-            @else
-                Desconocido
-            @endif
+                @if($orden->client->contornoCadera)
+                    {{ $orden->client->contornoCadera  }} pulgadas
+                @else
+                    Desconocido
+                @endif
             </td>
             <td>
                 Largo de tiro:
                 <br>
-            @if($orden->client->)
-                {{ $orden->client->  }} 
+                @if($orden->client->largoTiro)
+                    {{ $orden->client->largoTiro }} pulgadas
+                @else
+                    Desconocido
+                @endif
+            </td>
+            <td>
+                Largo interno de pantalón:
+                <br>
+            @if($orden->client->largoInternoPantalon)
+                {{ $orden->client->largoInternoPantalon }} pulgadas
             @else
                 Desconocido
             @endif
             </td>
+            <td>
+                Largo externo de pantalón:
+                <br>
+                @if($orden->client->largoExternoPantalon )
+                    {{ $orden->client->largoExternoPantalon }} pulgadas
+                @else
+                    Desconocido
+                @endif
+            </td>
+            <td>
+                Contorno de muslo:
+                <br>
+                @if( $orden->client->contornoMuslo)
+                    {{ $orden->client->contornoMuslo }} pulgadas
+                @else
+                    Desconocido
+                @endif
+            </td>
+            <td>
+                Contorno de Rodilla:
+                <br>
+                @if( $orden->client->contornoRodilla )
+                    {{ $orden->client->contornoRodilla }} pulgadas
+                @else
+                    Desconocido
+                @endif
+            </td>
             {{--<td>
-
-            @if($orden->client->)
-                {{ $orden->client->  }} 
-            @else
-                Desconocido
-            @endif
+                
+                <br>
+                @if( $orden->client-> )
+                    {{ $orden->client-> }} 
+                @else
+                    Desconocido
+                @endif
             </td>--}}
         </tr>
         
@@ -527,7 +566,15 @@
                 </td>
                 <td>
                     Accesorios: 
-                    Aquí va lo del pinpoint
+                    <br>
+                    @if( $saco->tipoAccesorio == 0)
+                        PinPoint. Color {{ $saco->accesorio_color }}
+                    @elseif( $saco->tipoAccesorio == 1)
+                        Bies. Color {{ $saco->accesorio_color}}
+                    @else
+                        Pinpoint y bies {{ $saco->accesorio_color}}
+                    @endif
+
                 </td>                   
                 @if( $saco->bolsas_int )
                     <td>
@@ -696,7 +743,7 @@
                         Sin pliegues
                     @elseif( $pantalon->pliegues === 1 )
                         Un pliegue
-                    @elseif( $pantalo->pliegues === 2)
+                    @elseif( $pantalon->pliegues === 2)
                         Dos pliegues
                     @else
                         Desconocido
@@ -751,25 +798,33 @@
     {{-- Cuadros --}}
     <table class="table table-bordered">
         <tr>
-            <td style="font-size: 10; width: 236px; height: 236px">
-                Tela:
-                <br><br><br><br>
-
+            <td style="height: 50">
+                <br><br><br><br><br>
+                Testigo de tela:
             </td>
-            <td style="font-size: 10; width: 236px">
-                Forro en cuerpo:
+            <td>
+                <br><br><br><br><br>
+                Testigo de forro en cuerpo:
             </td>
-            <td style="font-size: 10; width: 236px">
-                Vivos de bolsas internas:
-
+            <td>
+                <br><br><br><br><br>
+                Testigo de forro en mangas:
             </td>
-        </tr>        
+            <td>
+                <br><br><br><br><br>
+                Testigo de forro en vivos de bolsas internas:
+            </td>
+        </tr>
     </table>
     <table class="table table-bordered">
         <tr>
             <td style="height: 50">
                 <br><br><br><br><br>
                 Elaboro (original)
+            </td>
+            <td>
+                <br><br><br><br><br>
+                Producción
             </td>
             <td>
                 <br><br><br><br><br>

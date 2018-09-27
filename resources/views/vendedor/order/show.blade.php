@@ -426,10 +426,12 @@
                         <h3>Saco</h3>
                         <h4>Medidas de Cliente</h4>
                         <div class="row">
+                              @if( $orden->coat->fit)
                               <div class="col-md-3">
                                     <label class="text-primary">Fit deseado</label>
                                     <p>{{ $orden->coat->fit->name }}<br><small>{{$orden->coat->fit->description}}</small></p>
                               </div>
+                              @endif
                               <div class="col-md-3">
                                     <label class="text-primary">Largo de manga deseado en Saco</label>
                                     <p>{{ $orden->coat->talla }}</p>
@@ -699,25 +701,7 @@
                                     <label class="text-primary">Fit</label>
                                     <p>{{ $orden->vest->fit->name }} <br><small>{{ $orden->vest->fit->description }}</small></p>
                               </div>
-                              <div class="col-md-3">
-                                    <label class="text-primary">Talla</label>
-                                    <p>{{ $orden->vest->talla }}</p>
-                              </div>
-                              <div class="col-md-3">
-                                    <label class="text-primary">Corte</label>
-                                    <p>
-                                          @switch($orden->vest->corte)
-                                                @case(1)
-                                                      Chico
-                                                      @break
-                                                @case(2)
-                                                      Regular
-                                                      @break
-                                              @default
-                                                      Largo
-                                          @endswitch
-                                    </p>
-                              </div>
+                              
                               <div class="col-md-3">
                                     <label class="text-primary">Largo Espalda</label>
                                     <p>{{ $orden->vest->largo_espalda }}</p>

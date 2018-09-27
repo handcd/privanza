@@ -330,7 +330,6 @@ class OrderController extends Controller
             // Medidas Corporales
             $chaleco->fit_id = $request->fitChaleco;
             $chaleco->talla = $request->tallaChaleco;
-            $chaleco->corte = $request->corteChaleco;
 
             // Datos de Chaleco
             $chaleco->order_id = $orden->id;
@@ -440,43 +439,41 @@ class OrderController extends Controller
                 $saco->forro_interno_mangas = "Balsam a Rayas";
             }
 
-            
-            // Color de la Puntada
-            if ($request->otroColorPuntada) {
-                $saco->color_puntada = $request->otroColorPuntada;
-            } else {
-                $saco->color_puntada = $request->colorPuntada;
-            }
+                        
 
-            // Pin Point
-            $saco->pin_point_interno = $request->pinPointInterno ? true : false;
-            if ($saco->pin_point_interno) {
-                // Color de Pin Point
+            //Bies y pinpoint
+            $saco->tipo_accesorio = $request->tipoAccesorio;
+            if ($saco->tipo_accesorio === 0) {
+                // Color Pinpoint
                 if ($request->otroColorPuntada) {
-                    $saco->pin_point_interno_color = $request->otroColorPuntada;
+                    $saco->accesorio_color = $request->otroColorPuntada;
                 } else {
-                    $saco->pin_point_interno_color = $request->colorPuntada;
+                    $saco->accesorio_color = $request->colorPuntada;
                 }
 
-                // Código de Pin Point
-                $saco->pin_point_interno_codigo = $request->pinPointInternoCodigo;
-            }
-
-            // Bies
-            $saco->bies = $request->biesInterno ? true : false;
-            if ($saco->bies) {
-                // Color de Bies
+                // Código de Pinpoint
+                $saco->accesorio_codigo = $request->pinPointInternoCodigo;
+                
+            }elseif ($saco->tipo_accesorio === 1) {
+                //Color de Bies
                 if ($request->otroColorPuntada) {
-                    $saco->bies_color = $request->otroColorPuntada;
+                    $saco->accesorio_color = $request->otroColorPuntada;
                 } else {
-                    $saco->bies_color = $request->colorPuntada;
+                    $saco->accesorio_color = $request->colorPuntada;
                 }
 
                 // Código Bies
-                $saco->bies_codigo = $request->biesInternoCodigo;
-                
-            }
+                $saco->accesorio_codigo = $request->biesInternoCodigo;
+            }else{
+                if ($request->otroColorPuntada) {
+                    $saco->accesorio_color = $request->otroColorPuntada;
+                } else {
+                    $saco->accesorio_color = $request->colorPuntada;
+                }
 
+                // Código Bies y pinpoint
+                $saco->accesorio_codigo = $request->pinpointbiesInternoCodigo;
+            }
             
 
             // Tipo de Bolsas Internas

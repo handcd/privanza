@@ -91,8 +91,12 @@ module.exports = __webpack_require__(10);
  */
 
 //Variables para obtener elementos input
-var biesInterno = document.getElementById('BiesInterno');
-var pinPointInterno = document.getElementById('PinPointInterno');
+//var biesInterno = document.getElementById('BiesInterno');
+//var pinPointInterno = document.getElementById('PinPointInterno');
+//var biesPinPointInterno = document.getElementById('biesPinPointInterno');
+var tipoAccesorio1 = document.getElementById('tipoAccesorio1');
+var tipoAccesorio2 = document.getElementById('tipoAccesorio2');
+var tipoAccesorio3 = document.getElementById('tipoAccesorio3');
 var solapaEnContraste = document.getElementById('ojalEnSolapa');
 var ojalDeMangaEnContraste = document.getElementById('tipoDeOjalEnManga');
 
@@ -101,6 +105,7 @@ var ojalDeMangaEnContraste = document.getElementById('tipoDeOjalEnManga');
 var coloresDeSolapaEnContraste = document.getElementById('solapaContraste');
 var colorDeMangaEnContraste = document.getElementById('colorDeOjalEnMangas');
 //var colorDeBies = document.getElementById('colorPaletteBies');
+//var colorDePinpoint = document.getElementById('colorPalettePinpoint');
 var colorDeBiesPinpoint = document.getElementById('colorPaletteBiesPinpoint');
 
 // Elementos Ocultos
@@ -123,8 +128,10 @@ var checkBotonesDeCliente = document.getElementById('botonesCliente');
 function iniciarComponentes() {
     $(colorDeMangaEnContraste).hide();
     $(coloresDeSolapaEnContraste).hide();
+
     $(colorDeBiesPinpoint).hide();
-    //$(colorDePinPoint).hide();
+    //$(colorDeBies).hide();
+    //$(colorDePinpoint).hide();
     $(divCantidadDeBotones).hide();
     $(divMarcaEtiqueta).hide();
     $(divPerGancho).hide();
@@ -185,11 +192,26 @@ function coloresOjalEnManga() {
 }
 
 //Lógica para Bies & pinpoint
-function coloresBiesPinpoint() {
-    if (biesInterno.checked || pinPointInterno.checked) {
-        $(colorPaletteBiesPinpoint).show();
+function coloresBies() {
+    if (tipoAccesorio1.checked) {
+        console.log("tu mama");
+        $(colorDeBiesPinpoint).show();
     } else {
-        $(colorPaletteBiesPinpoint).hide();
+        $(colorDeBiesPinpoint).hide();
+    }
+}
+function coloresPinPoint() {
+    if (tipoAccesorio2.checked ) {
+        $(colorDeBiesPinpoint).show();
+    } else {
+        $(colorDeBiesPinpoint).hide();
+    }
+}
+function coloresBiesPinpoint() {
+    if (tipoAccesorio3.checked ) {
+        $(colorDeBiesPinpoint).show();
+    } else {
+        $(colorDeBiesPinpoint).hide();
     }
 }
 /*function coloresPinPoint() {
@@ -224,12 +246,18 @@ function mostrarOcultarPersonalizacionPortatraje() {
 //Función para agregar eventos 
 function agregarEventos() {
     console.log('Declarando eventos dentro de la funcion');
-    biesInterno.addEventListener('click', function () {
+    tipoAccesorio1.addEventListener('click', function () {
+        coloresBies();
+    });
+    tipoAccesorio2.addEventListener('click', function () {
+        coloresPinPoint();
+    });
+    tipoAccesorio3.addEventListener('click', function () {
         coloresBiesPinpoint();
     });
-    pinPointInterno.addEventListener('click', function () {
+    /*pinPointInterno.addEventListener('click', function () {
         coloresBiesPinpoint();
-    });
+    });*/
     solapaEnContraste.addEventListener('click', function () {
         coloresSolapaEnContraste();
     });
