@@ -734,7 +734,7 @@
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
 									<p>Observaciones generales del cliente:</p>
-										<div class="col-md-6 ">
+										<div class="col-md-4 ">
 										
 											<div class="form-group label-floating">
 												<label class="control-label">Fit deseado</label>
@@ -747,10 +747,16 @@
 											</div>
 										</div>
 									<div class="row">
-										<div class="col-md-6">
+										<div class="col-md-4">
 											<div class="form-group label-floating">
 												<label class="control-label">Largo de manga deseado:</label>
 												<input type="number" min="10" step="1" name="tallaSaco" id="tallaSaco" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label class="control-label">Largo de espalda deseado:</label>
+												<input type="number" min="10" step="1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control">
 											</div>
 										</div>
 										

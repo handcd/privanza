@@ -392,18 +392,22 @@
                         </div>
                         <div class="col-md-3">
                               <label class="text-primary">Gancho</label>
-                              @if ($orden->gancho === 1)
-                                    <p> Personalizado Privanza</p>
+                              @if ($orden->gancho === 0)
+                                    <p> Normal</p>
+                              @elseif( $orden->gancho === 1)
+                                    <p> Personalizado privanza </p>
                               @else
-                                    <p> Normal </p>
+                                    <p>{{ $orden->gancho_personalizacion }}</p>                                    
                               @endif
                         </div>
                         <div class="col-md-3">
                               <label class="text-primary">Portatrajes</label>
-                              @if ($orden->portatrajes === 1)
-                                    <p> Personalizado Privanza </p>
-                              @else
+                              @if ($orden->portatrajes === 0)
                                     <p> Cubrepolvos </p>
+                              @elseif( $orden->portatrajes === 1)
+                                    <p> Personalizado privanza </p>
+                              @else
+                                    <p>{{ $orden->portatrajes_personalizacion }}</p>                                    
                               @endif
                         </div>
                         

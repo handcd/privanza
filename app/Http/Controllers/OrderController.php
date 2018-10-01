@@ -314,6 +314,8 @@ class OrderController extends Controller
             $orden->bordadoColor = 'Gris Plata';
         }
 
+        $orden->notasBordado = $request->notasBordado;
+
         // Componentes del Traje
         $orden->has_vest = $request->chaleco ? true : false;
         $orden->has_coat = $request->saco ? true : false;
@@ -390,6 +392,7 @@ class OrderController extends Controller
             // Medidas Corporales
             $saco->fit_id = $request->fitSaco;
             $saco->talla = $request->tallaSaco;
+            $saco->largo_espalda_deseado = $request->largoEspaldaSaco;
 
             $saco->order_id = $orden->id;
 
