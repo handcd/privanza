@@ -77,16 +77,16 @@ class DatabaseSeeder extends Seeder
             'description' => 'Medidas para personas menudas.'
         ]);
         
-        factory(App\Vendedor::class, 10)->create();
+        /*factory(App\Vendedor::class, 10)->create();
         factory(App\Client::class, 10)->create([
             'vendedor_id' => 1,
         ]);
         factory(App\Client::class, App\Vendedor::all()->count()*15)->create();
         factory(App\Event::class, 10)->create();
-        factory(App\Validador::class, 10)->create();
+        factory(App\Validador::class, 10)->create();*/
 
         //Generate 10 orders for the main Vendedor
-        for ($i=1; $i <= 20; $i++) { 
+        /*for ($i=1; $i <= 20; $i++) { 
             $orden = factory(App\Order::class)->create([
                 'vendedor_id' => 1,
                 'client_id' => App\Vendedor::find(1)->clients->random(),
@@ -107,10 +107,10 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
 
-        }
+        }*/
 
         // Generate 100 random orders
-        for ($i=1; $i <= 11; $i++) { 
+        /*for ($i=1; $i <= 11; $i++) { 
             $orden = factory(App\Order::class)->create();
             if ($orden->has_vest) {
                 factory(App\Vest::class)->create([
@@ -131,6 +131,6 @@ class DatabaseSeeder extends Seeder
         }
 
         factory(App\AdjustmentOrder::class,10)->create();
-        factory(App\Adjustment::class,10)->create();
+        factory(App\Adjustment::class,10)->create();*/
     }
 }
