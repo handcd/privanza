@@ -27,7 +27,7 @@ class CreatePantsTable extends Migration
             $table->string('otro_color_medio_forro')->nullable();
 
             $table->integer('dobladillo')->nullable(); // 1 normal, 2 valenciana
-            $table->integer('pretina')->nullable();
+           // $table->integer('pretina')->nullable();
             $table->string('color_pretina')->nullable();
 
             // Datos Pantalón

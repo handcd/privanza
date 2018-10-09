@@ -392,18 +392,22 @@
                         </div>
                         <div class="col-md-3">
                               <label class="text-primary">Gancho</label>
-                              @if ($orden->gancho === 1)
-                                    <p> Personalizado Privanza</p>
+                              @if ($orden->gancho === 0)
+                                    <p> Normal</p>
+                              @elseif( $orden->gancho === 1)
+                                    <p> Personalizado privanza </p>
                               @else
-                                    <p> Normal </p>
+                                    <p>{{ $orden->gancho_personalizacion }}</p>                                    
                               @endif
                         </div>
                         <div class="col-md-3">
                               <label class="text-primary">Portatrajes</label>
-                              @if ($orden->portatrajes === 1)
-                                    <p> Personalizado Privanza </p>
-                              @else
+                              @if ($orden->portatrajes === 0)
                                     <p> Cubrepolvos </p>
+                              @elseif( $orden->portatrajes === 1)
+                                    <p> Personalizado privanza </p>
+                              @else
+                                    <p>{{ $orden->portatrajes_personalizacion }}</p>                                    
                               @endif
                         </div>
                         
@@ -426,28 +430,15 @@
                         <h3>Saco</h3>
                         <h4>Medidas de Cliente</h4>
                         <div class="row">
+                              @if( $orden->coat->fit)
                               <div class="col-md-3">
-                                    <label class="text-primary">Fit</label>
+                                    <label class="text-primary">Fit deseado</label>
                                     <p>{{ $orden->coat->fit->name }}<br><small>{{$orden->coat->fit->description}}</small></p>
                               </div>
+                              @endif
                               <div class="col-md-3">
                                     <label class="text-primary">Largo de manga deseado en Saco</label>
                                     <p>{{ $orden->coat->talla }}</p>
-                              </div>
-                              <div class="col-md-3">
-                                    <label class="text-primary">Corte de Saco <small>(De referencia)</small></label>
-                                    <p>
-                                          @switch($orden->coat->corte)
-                                                @case(1)
-                                                      Chico
-                                                      @break
-                                                @case(2)
-                                                      Regular
-                                                      @break
-                                              @default
-                                                      Largo
-                                          @endswitch
-                                    </p>
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Largo de Manga</label>
@@ -558,15 +549,16 @@
                                           <p>
                                                 @switch($orden->coat->posicion_ojales_activos_manga)
                                                       @case(0)
-                                                            Todos los Ojales Activos
+                                                            Cuarto
                                                             @break
-                                                      @case(3)
-                                                            Primero
                                                       @case(1)
-                                                            3º y 4º Ojales Activos <strong>únicamente</strong>.
+                                                            Tercero y cuarto
+                                                            @break
+                                                      @case(2)
+                                                            Segundo, tercero y cuarto
                                                             @break
                                                       @default
-                                                            4º Ojal Activo <strong>únicamente</strong>
+                                                            Todos
                                                 @endswitch
                                           </p>
                                     </div>
@@ -698,20 +690,6 @@
                               </div>
                         </div>
                         <div class="row">
-                              <div class="col-md-3">
-                                    <label class="text-primary">Puntada en Filos</label>
-                                    <p>{{ $orden->coat->puntada_filos ? 'Si' : 'No' }}</p>
-                              </div>
-                              <div class="col-md-3">
-                                    <label class="text-primary">Puntada en Aletillas</label>
-                                    <p>{{ $orden->coat->puntada_aletillas ? 'Si' : 'No' }}</p>
-                              </div>
-                              <div class="col-md-3">
-                                    <label class="text-primary">Puntada en Carteras</label>
-                                    <p>{{ $orden->coat->puntada_carteras ? 'Si' : 'No' }}</p>
-                              </div>
-                        </div>
-                        <div class="row">
                               <div class="col-md-6">
                                     <label class="text-primary">Notas de Saco Interno</label>
                                     <p>{{ $orden->coat->notas_int }}</p>
@@ -727,25 +705,7 @@
                                     <label class="text-primary">Fit</label>
                                     <p>{{ $orden->vest->fit->name }} <br><small>{{ $orden->vest->fit->description }}</small></p>
                               </div>
-                              <div class="col-md-3">
-                                    <label class="text-primary">Talla</label>
-                                    <p>{{ $orden->vest->talla }}</p>
-                              </div>
-                              <div class="col-md-3">
-                                    <label class="text-primary">Corte</label>
-                                    <p>
-                                          @switch($orden->vest->corte)
-                                                @case(1)
-                                                      Chico
-                                                      @break
-                                                @case(2)
-                                                      Regular
-                                                      @break
-                                              @default
-                                                      Largo
-                                          @endswitch
-                                    </p>
-                              </div>
+                              
                               <div class="col-md-3">
                                     <label class="text-primary">Largo Espalda</label>
                                     <p>{{ $orden->vest->largo_espalda }}</p>

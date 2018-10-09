@@ -17,6 +17,5 @@ $factory->define(App\Vest::class, function (Faker $faker) {
         // Medidas Corporales
         'fit_id' => 3,
         'talla' => 30,
-        'corte' => 2,
     ];
 });

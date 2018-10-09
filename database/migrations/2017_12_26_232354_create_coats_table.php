@@ -17,9 +17,9 @@ class CreateCoatsTable extends Migration
             $table->increments('id');
             $table->integer('order_id');
             // Saco - Externo
-            $table->integer('tipo_solapa')->nullable(); // 0 pico/1escuadra
+            $table->integer('tipo_solapa')->nullable(); // 0 pico normal| 1 pico ancha | 2 escuadra normal | 3 escuadra ancha
             $table->integer('tipo_ojal_solapa')->nullable(); // 1 Al Tono / 2 En Contraste
-            $table->boolean('ojal_activo_solapa')->nullable();
+            $table->boolean('ojal_activo_solapa')->nullable(); //0 No, 1 Sí
             $table->string('color_ojal_solapa')->nullable();
             $table->integer('botones_frente')->nullable(); // 1,2,3,6
             $table->integer('aberturas_detras')->nullable(); // 0,1,2
@@ -28,7 +28,8 @@ class CreateCoatsTable extends Migration
             $table->string('color_ojal_manga')->nullable();
             $table->integer('posicion_ojal_manga')->nullable(); // 0 Cascada, 1 en línea
             $table->boolean('ojales_activos_manga')->nullable();
-            $table->integer('posicion_ojales_activos_manga')->nullable(); // 0 Todos los Ojales / 1 3º y 4º / 2 4º
+            $table->integer('posicion_ojales_activos_manga')->nullable(); /* 0-> Cuarto | 1-> Tercero y cuarto | 2-> Segundo, tercero y cuarto | 3-> Todos*/
+            $table->integer('posicion_ojal_solapa')->nullable(); /* 0-> Primero | 1-> Uno y dos | 2-> uno, dos y tres | 3-> Todos | 4-> cuatro */
             
             /*
                 0) Parche
@@ -48,13 +49,15 @@ class CreateCoatsTable extends Migration
             $table->integer('tipo_vista')->nullable(); // 0 normal / 1 chapeta francesa
             $table->boolean('balsam_rayas')->nullable();
             $table->string('forro_interno_mangas')->nullable();
-            $table->boolean('pin_point_interno')->nullable();
-            $table->string('pin_point_interno_color')->nullable();
-            $table->string('pin_point_interno_codigo')->nullable();
-            $table->boolean('bies')->nullable();
-            $table->string('bies_color')->nullable();
-            $table->string('bies_codigo')->nullable();
+
+            //Accesorios  
+            $table->integer('tipo_accesorio')->nullable();
+            $table->string('accesorio_color')->nullable();
+            $table->string('accesorio_codigo')->nullable();
+
+            //Código en paleta de colores
             $table->string('color_puntada')->nullable();
+
             $table->integer('bolsas_int')->nullable(); // 0 ,1,2,3
             $table->boolean('vivos_bolsas_internas_cuerpo')->nullable();
             $table->string('otro_vivos_bolsas_internas')->nullable();
@@ -65,6 +68,7 @@ class CreateCoatsTable extends Migration
             // Datos Saco
             $table->integer('fit_id')->nullable();
             $table->integer('talla')->nullable();
+            $table->integer('largo_espalda_deseado')->nullable();
 
             $table->string('notas_int',1000)->nullable();
             $table->string('notas_ext',1000)->nullable();

@@ -733,11 +733,11 @@
 							<h4 class="info-text">Datos de la parte Externa del Saco</h4>
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
-									<p>Medidas Corporales de Cliente <small>(De referencia)</small>:</p>
-										<div class="col-md-6 ">
+									<p>Observaciones generales del cliente:</p>
+										<div class="col-md-4 ">
 										
 											<div class="form-group label-floating">
-												<label class="control-label">Selecciona un Fit</label>
+												<label class="control-label">Fit deseado</label>
 												<select name="fitSaco" id="fitSaco" class="form-control">
 													<option disabled="" selected=""></option>
 													@foreach (\App\Fit::all() as $fit)
@@ -747,23 +747,19 @@
 											</div>
 										</div>
 									<div class="row">
-										<div class="col-md-6">
+										<div class="col-md-4">
 											<div class="form-group label-floating">
 												<label class="control-label">Largo de manga deseado:</label>
 												<input type="number" min="10" step="1" name="tallaSaco" id="tallaSaco" class="form-control">
 											</div>
 										</div>
-										<div class="col-md-6">
+										<div class="col-md-3">
 											<div class="form-group label-floating">
-												<label for="corteSaco" class="control-label">Corte del Saco:</label>
-												<select name="corteSaco" id="corteSaco" class="form-control">
-													<option disabled="" selected=""></option>
-													<option value="0">Corto</option>
-													<option value="1">Regular</option>
-													<option value="2">Largo</option>
-												</select>
+												<label class="control-label">Largo de espalda deseado:</label>
+												<input type="number" min="10" step="1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control">
 											</div>
 										</div>
+										
 									</div>
 									
 								</div>
@@ -801,35 +797,92 @@
 									</div>
 								</div>
 								<div class="col-md-10 col-md-offset-1">
-									<div class="row">
-										<h4 class="text-center">Ojal en Solapa</h4>
-										<div class="col-sm-6">
-											<div class="form-group label-floating">
-												<label class="control-label">Tipo de Ojal en Solapa</label>
-												<select name="tipoOjalSolapa" class="form-control" ue" id="ojalEnSolapa">
-													<option disabled="" selected=""></option>
-													<option value="1">Al tono</option>
-													<option value="2">En contraste</option>
-												</select>
-											</div>
-											<p class="text-center">Ojal Activo en Solapa</p>
-											<div class="checkbox">
-												<label>
-													<input type="checkbox" name="ojalActivoSolapa">
-													Selecciona para que el ojal sea activo
-												</label>
-											</div>
-										</div>
-										<div class="col-sm-6" id="solapaContraste">
-											<div class="row">
-												<div class="col-md-12">
-													<p>Selecciona el color del ojal en solapa:</p>
-												</div>
-											</div>
-											@include('partials.color-palette', ['varName' => 'OjalSolapa'])
-										</div>
+									<h4 class="text-center">Ojales</h4>
+							<div class="row">
+								<div class="col-sm-4 col-sm-offset-1">
+									<h5 class="text-center">Mangas</h5>
+									<div class="form-group label-floating">
+										<label class="control-label">Color de ojal en Manga</label>
+										<select name="tipoOjalManga" class="form-control" id="tipoDeOjalEnManga">
+											<option disabled="" selected=""></option>
+											<option value="0">Al tono</option>
+											<option value="1">En contraste</option>
+										</select>
 									</div>
-								</div>
+									<div class="checkbox">
+										<label>
+											<input type="checkbox" name="ojalesActivosManga" id="ojalesActivosManga">
+											Selecciona para que el ojal sea activo
+										</label>
+									</div>
+									<div class="form-group label-floating" id="divOjalesActivosManga">
+	                                		<label class="control-label">Posición de Ojales Activos</label>
+	                                		<select class="form-control" name="posicionOjalesActivosManga">
+			                                    <option disabled="" 
+			                                    @hasSection('editCliente')
+			                                    {{-- Ya hay un cliente seleccionado --}}
+			                                    @else
+			                                      selected="" 
+			                                    @endif></option>
+			                                    <option value="0"> 4</option>
+			                                    <option value="3"> 3 y 4</option>
+			                                    <option value="1"> 2, 3, 4 </option>
+			                                    <option value="2"> Todos</option>
+			                                </select>	                                		
+	                            	</div>			                            	
+								</div>		
+								
+								<div class="col-sm-4 col-sm-offset-1">
+									<h5 class="text-center">Solapa</h5>
+									<div class="form-group label-floating">
+										<label class="control-label">Color de ojal en Solapa</label>
+										<select name="tipoOjalSolapa" class="form-control" id="ojalEnSolapa">
+											<option disabled="" selected=""></option>
+											<option value="1">Al tono</option>
+											<option value="2">En contraste</option>
+										</select>
+									</div>
+									<div class="checkbox">
+										<label>
+											<input type="checkbox" name="ojalActivoSolapa">
+											Selecciona para que el ojal sea activo
+										</label>
+									</div>
+									<div class="form-group label-floating" id="divOjalesActivosSolapa">
+	                                	<label class="control-label">Posición de Ojales Activos</label>
+                                		<select class="form-control" name="posicionOjalesSolapa">
+		                                    <option disabled="" 
+		                                    @hasSection('editCliente')
+		                                    {{-- Ya hay un cliente seleccionado --}}
+		                                    @else
+		                                      selected="" 
+		                                    @endif></option>
+		                                    <option value="0"> 1</option>
+		                                    <option value="1"> 1 y 2</option>
+		                                    <option value="2"> 1, 2, 3 </option>
+		                                    <option value="3"> Todos</option>
+		                                    <option value="4"> 4</option>
+		                                </select>	                                		
+	                            	</div>
+								</div>					
+							</div>
+						</div>
+						<div class="col-md-10 col-sm-offset-1">
+							<div class="col-md-6">
+								<img src="{{ asset('img/suit_options/saco/Manga_Normal.jpg') }}" alt="Imágen de Indicador de Botones">
+							</div>		
+							<div class="col-sm-6" id="solapaContraste">
+								{{--<div class="row">--}}
+										<p>Selecciona el color del ojal en solapa:</p>
+									
+									@include('partials.color-palette', ['varName' => 'OjalSolapa'])
+								{{--</div>--}}										
+							</div>									
+						</div>
+
+
+
+
 							</div>
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
@@ -898,7 +951,7 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-sm-6">
+									<div class="col-sm-6 col-sm-offset-3">
 										<div class="form-group label-floating">
 											<label class="control-label">Botones en Mangas:</label>
 											<select name="botonesMangas" id="botonesMangas" class="form-control" ue">
@@ -910,27 +963,9 @@
 											</select>
 										</div>
 									</div>
-									<div class="col-sm-6">
-										<div class="form-group label-floating">
-											<label class="control-label">Ojal en Manga</label>
-											<select name="tipoOjalManga" ue" class="form-control" id="tipoDeOjalEnManga">
-												<option disabled="" selected=""></option>
-												<option value="0">Al tono</option>
-												<option value="1">En contraste</option>
-											</select>
-										</div>
-									</div>
+									
 								</div>
-								<div class="row">
-									<div class="col-md-6 col-md-offset-3" id="colorDeOjalEnMangas">
-										<div class="row">
-											<div class="col-md-12">
-												<p>Color de Ojal en Mangas:</p>
-											</div>
-										</div>
-										@include('partials.color-palette', ['varName' => 'OjalMangas'])
-									</div>
-								</div>
+								
 								<div class="row">
 									<div class="col-md-10 col-md-offset-1">
 										<p class="col-md-12">Selecciona la posición de los ojales:</p>
@@ -950,35 +985,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="row">
-										<p class="text-center">Ojales Activos en Manga</p>
-									<div class="col-md-4 col-md-offset-2">
-										<div class="checkbox">
-											<label>
-												<input type="checkbox" name="ojalesActivosManga" id="ojalesActivosManga">
-												Que los ojales sean activos.
-											</label>
-										</div>
-										<div class="form-group label-floating" id="divOjalesActivosManga">
-			                                <label class="control-label">Posición de Ojales Activos</label>
-			                                <select class="form-control" name="posicionOjalesActivosManga">
-			                                    <option disabled="" 
-			                                    @hasSection('editCliente')
-			                                    {{-- Ya hay un cliente seleccionado --}}
-			                                    @else
-			                                      selected="" 
-			                                    @endif></option>
-			                                    <option value="0">Todos los ojales</option>
-			                                    <option value="3">Primero</option>
-			                                    <option value="1">3° y 4°</option>
-			                                    <option value="2">4°</option>
-			                                </select>
-			                            </div>
-									</div>
-									<div class="col-md-4">
-										<img src="{{ asset('img/suit_options/saco/Manga_Normal.png') }}" alt="Imágen de Indicador de Botones">
-									</div>
-								</div>
+								
 								<div class="row">
 									<div class="col-md-12">
 										<h4 class="text-center">Bolsas Externas</h4>
@@ -1111,49 +1118,46 @@
 							</div>
 							<!--Bies & PinPoint-->
 							<div class="row">
-								<div class="col-md-10 col-md-offset-1">
-									<div class="col-md-6">
-										<!--Imagen PinPoint-->
-										<div class="text-center">
-											<label>	
-											  <input type="checkbox" name="pinPointInterno" id="PinPointInterno" />
-											  <img src="{{ asset('img/suit_options/saco/pin-point.png') }}">
-											  <p class="text-center">Pin Point</p>
-											</label>
-										</div>
-										<div class="label-floating form-group">
-											<label class="control-label">Código de Pin Point <small>(opcional)</small></label>
-											<input type="text" class="form-control" name="pinPointInternoCodigo">
-										</div>
-										<!--Fin PinPoint-->
+								<div class="col-md-4">
+									<label>
+									  <input type="radio" name="tipoAccesorio" id="tipoAccesorio1" value="0"/>
+									  <img src="{{ asset('img/suit_options/saco/pin-point.png') }}">
+									  <p class="text-center">PinPoint</p>
+									</label>
+									<div class="label-floating form-group">
+										<label class="control-label">Código de Pin Point <small>(opcional)</small></label>
+										<input type="text" class="form-control" name="pinPointInternoCodigo">
 									</div>
-													
-									<div class="col-md-6">
-										<!--Imagen de Bies-->
-										<div class="text-center">
-											<label>
-											  <input type="checkbox" name="biesInterno" id="BiesInterno" />
-											  <img src="{{ asset('img/suit_options/saco/Bies.png') }}">
-											  <p class="text-center">Bies</p>
-											</label>
-										</div>
-										<div class="label-floating form-group">
-											<label class="control-label">Código de Bies <small>(opcional)</small></label>
-											<input type="text" class="form-control" name="biesInternoCodigo">
-										</div>
-									</div>
-										<!--Fin de imagen de Bies-->
 								</div>
-								
+								<div class="col-md-4">
+									<label>
+									  <input type="radio" name="tipoAccesorio" value="1" id="tipoAccesorio2"/>
+									  <img src="{{ asset('img/suit_options/saco/bies.jpg') }}">
+									  <p class="text-center">Bies</p>
+									</label>
+									<div class="label-floating form-group">
+										<label class="control-label">Código de Bies <small>(opcional)</small></label>
+										<input type="text" class="form-control" name="biesInternoCodigo">
+									</div>
+								</div>
+								<div class="col-md-4">
+									<label>
+										<input type="radio" name="tipoAccesorio" value="2" id="tipoAccesorio3"/>
+										<img src="{{ asset('img/suit_options/saco/pinpointBies.png') }}">
+										<p class="text-center">Pin Point y Bies</p>
+									</label>
+									<div class="label-floating form-group">
+										<label class="control-label">Código <small>(opcional)</small></label>
+										<input type="text" class="form-control" name="pinpointbiesInternoCodigo">
+									</div>
+								</div>
 							</div>
 							<!--Fin de Bies & PinPoint-->
 							<!--Color de Bies & PinPoint-->
+							
 							<div class="row">		
-								<div class="col-md-10 col-md-offset-1">						
-									<div class="col-md-6" id="colorPalettePinPoint">
-										@include('partials.color-palette', ['varName' => 'Puntada'])
-									</div>	
-									<div class="col-md-6" id="colorPaletteBies">
+								<div class="col-md-10 col-md-offset-1">							
+									<div class="col-md-6 col-md-offset-3" id="colorPaletteBiesPinpoint">
 										@include('partials.color-palette', ['varName' => 'Puntada'])
 									</div>
 								</div>					
@@ -1229,11 +1233,11 @@
                     		<h3 class="info-text">Datos del Chaleco</h3>
                     		<div class="row">
                     			<div class="col-md-10 col-md-offset-1">
-                    				<p>Medidas Corporales de Cliente <small>(De referencia)</small>:</p>
+                    				<p>Observaciones generales del cliente:</p>
                     				<div class="row">
                     					<div class="col-md-6">
                     						<div class="form-group label-floating">
-												<label class="control-label">Fit para Chaleco</label>
+												<label class="control-label">Fit deseado</label>
 												<select name="fitChaleco" id="fitChaleco" class="form-control">
 													<option disabled="" selected=""></option>
 													@foreach (\App\Fit::all() as $fit)
@@ -1244,25 +1248,12 @@
                     					</div>
                     					<div class="col-md-6">
                     						<div class="form-group label-floating">
-                    							<label class="control-label">Talla de Chaleco:</label>
+                    							<label class="control-label">Largo de espalda deseado:</label>
                     							<input type="number" min="10" step="1" name="tallaChaleco" id="tallaChaleco" class="form-control">
                     						</div>
                     					</div>
                     				</div>
-                    				<div class="row">
-                    					<div class="col-md-6 col-md-offset-3">
-                    						<div class="form-group label-floating">
-                    							<label class="control-label">Corte de Chaleco <small>(De referencia):</small></label>
-                    							<select name="corteChaleco" id="corteChaleco" class="form-control">
-                    								<option disabled="" selected=""></option>
-                    								<option value="0">Corto</option>
-                    								<option value="1">Regular</option>
-                    								<option value="2">Largo</option>
-                    							</select>
-                    						</div>
-                    					</div>
-                    					
-                    				</div>
+                    				
                     			</div>
                     		</div>
                     		<h5 class="info-text">Tipo de Cuello</h5>
@@ -1279,7 +1270,7 @@
 										<div class="col-xs-6">
 											<label>
 											  <input type="radio" name="cuelloChaleco" value="1" />
-											  <img src="{{ asset('img/suit_options/chaleco/Chaleco_Solapa.png') }}">
+											  <img src="{{ asset('img/suit_options/chaleco/Chaleco_Solapa.jpg') }}">
 											  <p class="text-center">Con Solapa</p>
 											</label>
 										</div>
@@ -1360,7 +1351,7 @@
 							<h4 class="info-text">Datos del Pantalón</h4>
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
-									<p>Medidas Corporales para Pantalón <small>(De referencia)</small>:</p>
+									<p>Observaciones generales del cliente:</p>
 									<div class="row">
 										<div class="col-md-6">
                     						<div class="form-group label-floating">
@@ -1386,25 +1377,26 @@
 							<div class="row">
 								<p class="text-center">Tipo de Pase:</p>
 								<div class="col-md-8 col-md-offset-2 text-center">
-									<div class="col-md-6">
+									<div class="col-md-6 col-md-offset-3">
 										<label>
-										  <input type="radio" name="tipoPase" value="0" />
+										  <input type="radio" name="tipoPase" value="0" checked="" />
 										  <img src="{{ asset('img/suit_options/pantalon/P.Con.Pase.png') }}">
 										  <p class="text-center">Con Pase</p>
 										</label>
 									</div>
-									<div class="col-md-6">
+									{{--<div class="col-md-6">
 										<label>
 										  <input type="radio" name="tipoPase" value="1" />
 										  <img src="{{ asset('img/suit_options/pantalon/P.Sin.Pase.png') }}">
 										  <p class="text-center">Sin Pase</p>
 										</label>
-									</div>
+									</div>--}}
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-12">
 									<h4 class="text-center">Número de Pliegues</h4>
+									<p class="text-center">Va con dos bolsas frontales en diagonal con vivo</p>
 								</div>
 							</div>
 							<div class="row text-center">
@@ -1432,22 +1424,22 @@
 							</div>
 							<div class="row text-center">
 								<h4 class="text-center">Bolsas Traseras</h4>
-								<div class="col-md-4 col-md-offset-2">
+								{{--<div class="col-md-4 col-md-offset-2">
 									<label>
 									  <input type="radio" name="bolsasTraseras" value="1" />
 									  <img src="{{ asset('img/suit_options/numero_bolsas/PantalonUnaBolsa.png') }}">
 									  <p class="text-center">Una bolsa</p>
 									</label>
-								</div>
-								<div class="col-md-4">
+								</div>--}}
+								<div class="col-md-6 col-md-offset-3">
 									<label>
-									  <input type="radio" name="bolsasTraseras" value="2" />
+									  <input type="radio" name="bolsasTraseras" value="2" checked="" />
 									  <img src="{{ asset('img/suit_options/numero_bolsas/PantalonDosBolsas.png') }}">
 									  <p class="text-center">Dos bolsas</p>
 									</label>
 								</div>
 							</div>							
-							<div class="row">
+							{{--<div class="row">
 								<div class="col-md-12">
 									<h4 class="text-center">Tipo de Bolsas Traseras</h4>
 								</div>
@@ -1469,17 +1461,17 @@
 										</label>
 									</div>
 								</div>
-							</div>
+							</div>--}}
 							<div class="row">
 								<div class="col-md-12">
 									<h4 class="text-center">Interior</h4>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-8 col-md-offset-2">
+								<div class="col-md-10 col-md-offset-1">
 									<div class="col-md-6">
 										<div class="row">
-											<p class="text-center">Color de Bies en Ojalera y Encuarte</p>
+											<p class="text-center">Color de Bies en Ojalera, Encuarte y Pretina</p>
 										</div>
 										@include('partials.color-palette', ['varName' => 'OjaleraEncuarte'])
 									</div>
@@ -1503,6 +1495,7 @@
 								</div>
 							</div>
 							<!-- Pretina-->
+							{{--
 							<div class="row">
 								<div class="col-md-12">
 									<h4 class="text-center">Pretina</h4>
@@ -1516,7 +1509,7 @@
 											<select class="form-control" name="pretina" ue">
 													<option disabled="" 
 					                                    @hasSection('editCliente')
-					                                    {{-- Ya hay un cliente seleccionado --}}
+					                                    Ya hay un cliente seleccionado 
 					                                    @else
 					                                      selected="" 
 					                                    @endif></option>
@@ -1539,7 +1532,7 @@
 									</div>
 									
 								</div>
-							</div>
+							</div>--}}
 							<!--Dobladillo-->
 							<div class="row">
 								<div class="col-md-12">
@@ -1601,4 +1594,5 @@
     </div>
 </div> <!-- row -->
 <script src="{{ asset('wizard/js/orderwizard.js') }}"></script>
+
 @endsection

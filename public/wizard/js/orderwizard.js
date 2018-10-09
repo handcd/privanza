@@ -91,8 +91,12 @@ module.exports = __webpack_require__(10);
  */
 
 //Variables para obtener elementos input
-var biesInterno = document.getElementById('BiesInterno');
-var pinPointInterno = document.getElementById('PinPointInterno');
+//var biesInterno = document.getElementById('BiesInterno');
+//var pinPointInterno = document.getElementById('PinPointInterno');
+//var biesPinPointInterno = document.getElementById('biesPinPointInterno');
+var tipoAccesorio1 = document.getElementById('tipoAccesorio1');
+var tipoAccesorio2 = document.getElementById('tipoAccesorio2');
+var tipoAccesorio3 = document.getElementById('tipoAccesorio3');
 var solapaEnContraste = document.getElementById('ojalEnSolapa');
 var ojalDeMangaEnContraste = document.getElementById('tipoDeOjalEnManga');
 
@@ -100,8 +104,9 @@ var ojalDeMangaEnContraste = document.getElementById('tipoDeOjalEnManga');
 //Variables para obtener paletas de colores y ocultar componentes
 var coloresDeSolapaEnContraste = document.getElementById('solapaContraste');
 var colorDeMangaEnContraste = document.getElementById('colorDeOjalEnMangas');
-var colorDeBies = document.getElementById('colorPaletteBies');
-var colorDePinPoint = document.getElementById('colorPalettePinPoint');
+//var colorDeBies = document.getElementById('colorPaletteBies');
+//var colorDePinpoint = document.getElementById('colorPalettePinpoint');
+var colorDeBiesPinpoint = document.getElementById('colorPaletteBiesPinpoint');
 
 // Elementos Ocultos
 var divMarcaEtiqueta = document.getElementById('marcaEtiqueta');
@@ -109,6 +114,7 @@ var divPerGancho = document.getElementById('personalizacionGancho');
 var divPerPortatraje = document.getElementById('personalizacionPortatrajes');
 var divForroChaleco = document.getElementById('otroForroChaleco');
 var divOjalesActivosManga = document.getElementById('divOjalesActivosManga');
+var divOjalesActivosSolapa = document.getElementById('divOjalesActivosSolapa');
 var divCantidadDeBotones = document.getElementById('cantidadBotones');
 
 // Elementos que contienen la lógica de hide/show
@@ -118,18 +124,22 @@ var selectTipoPortatrajes = document.getElementById('tipoPortatrajes');
 var checkForroChaleco = document.getElementById('tipoForroChaleco');
 var checkOjalesActivosManga = document.getElementById('ojalesActivosManga');
 var checkBotonesDeCliente = document.getElementById('botonesCliente');
+//var tipoOjalEnSolapa = document.getElementById('ojalEnSolapa');
 
 //Funcion para oocultar componentes
 function iniciarComponentes() {
     $(colorDeMangaEnContraste).hide();
     $(coloresDeSolapaEnContraste).hide();
-    $(colorDeBies).hide();
-    $(colorDePinPoint).hide();
+
+    $(colorDeBiesPinpoint).hide();
+    //$(colorDeBies).hide();
+    //$(colorDePinpoint).hide();
     $(divCantidadDeBotones).hide();
     $(divMarcaEtiqueta).hide();
     $(divPerGancho).hide();
     $(divPerPortatraje).hide();
     $(divOjalesActivosManga).hide();
+    $(divOjalesActivosSolapa).hide();
 }
 
 /**
@@ -158,12 +168,27 @@ function mostrarOcultarOtroForroChaleco() {
 
 // Mostrar el campo para ojales activos en manga
 function mostrarOcultarOjalesActivosManga() {
-    $(divOjalesActivosManga).toggle();
+    if (checkOjalesActivosManga.checked) {
+        $(divOjalesActivosManga).show();
+    }else{
+        $(divOjalesActivosManga).hide();
+    }
+}
+function mostrarOcultarOjalesActivosSolapa() {
+    if (solapaEnContraste.value == 2) {
+        $(divOjalesActivosSolapa).show();
+    }else{
+        $(divOjalesActivosSolapa).hide();
+    }
 }
 
 //Mostrar y ocultar paleta de colores para ojal de solapa en contraste
 function coloresSolapaEnContraste() {
     if (solapaEnContraste.value == 2) {
+        $(coloresDeSolapaEnContraste).show();
+    }else if(ojalDeMangaEnContraste.value == 1){
+        $(coloresDeSolapaEnContraste).show();
+    }else if (solapaEnContraste.value == 2 || ojalDeMangaEnContraste.value == 1) {
         $(coloresDeSolapaEnContraste).show();
     } else {
         $(coloresDeSolapaEnContraste).hide();
@@ -171,27 +196,34 @@ function coloresSolapaEnContraste() {
 }
 
 //Mostrar y ocultar paleta de colores para ojal en contraste de manga
-function coloresOjalEnManga() {
+/*function coloresOjalEnManga() {
     if (ojalDeMangaEnContraste.value == 1) {
-        $(colorDeMangaEnContraste).show();
+        $(coloresDeSolapaEnContraste).show();
     } else {
-        $(colorDeMangaEnContraste).hide();
+        $(coloresDeSolapaEnContraste).hide();
     }
-}
+}*/
 
 //Lógica para Bies & pinpoint
 function coloresBies() {
-    if (biesInterno.checked) {
-        $(colorPaletteBies).show();
+    if (tipoAccesorio1.checked) {
+        $(colorDeBiesPinpoint).show();
     } else {
-        $(colorPaletteBies).hide();
+        $(colorDeBiesPinpoint).hide();
     }
 }
 function coloresPinPoint() {
-    if (pinPointInterno.checked) {
-        $(colorPalettePinPoint).show();
+    if (tipoAccesorio2.checked ) {
+        $(colorDeBiesPinpoint).show();
     } else {
-        $(colorPalettePinPoint).hide();
+        $(colorDeBiesPinpoint).hide();
+    }
+}
+function coloresBiesPinpoint() {
+    if (tipoAccesorio3.checked ) {
+        $(colorDeBiesPinpoint).show();
+    } else {
+        $(colorDeBiesPinpoint).hide();
     }
 }
 // Mostrar y ocultar personalización de gancho
@@ -219,18 +251,28 @@ function mostrarOcultarPersonalizacionPortatraje() {
 //Función para agregar eventos 
 function agregarEventos() {
     console.log('Declarando eventos dentro de la funcion');
-    biesInterno.addEventListener('click', function () {
+    tipoAccesorio1.addEventListener('click', function () {
         coloresBies();
     });
-    pinPointInterno.addEventListener('click', function () {
+    tipoAccesorio2.addEventListener('click', function () {
         coloresPinPoint();
     });
+    tipoAccesorio3.addEventListener('click', function () {
+        coloresBiesPinpoint();
+    });
+    /*pinPointInterno.addEventListener('click', function () {
+        coloresBiesPinpoint();
+    });*/
     solapaEnContraste.addEventListener('click', function () {
         coloresSolapaEnContraste();
     });
     ojalDeMangaEnContraste.addEventListener('click', function () {
-        coloresOjalEnManga();
+        coloresSolapaEnContraste();
     });
+    solapaEnContraste.addEventListener('click',function(){
+        mostrarOcultarOjalesActivosSolapa();
+    });
+
 
     checkEtiquetaMarca.addEventListener('click', function () {
         mostrarOcultarOtraMarca();
@@ -255,7 +297,7 @@ function agregarEventos() {
         mostrarOcultarCantidadBotones();
     });
 
-    console.log('Finalización de Declaración de Eventos en función.');
+    console.log('Finalización de Declaración de Eventos en función:)');
 }
 
 //Agregar eventos y ocultar componentes al cargar la página

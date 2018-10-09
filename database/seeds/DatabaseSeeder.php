@@ -14,19 +14,48 @@ class DatabaseSeeder extends Seeder
     {
         // Administrador 
         DB::table('admins')->insert([
-            'name' => 'Test Admin',
-            'email' => 'admin@privanza.com',
-            'password' => bcrypt('admin123'),
+            'name' => 'Veronica López',
+            'email' => 'velopez@isco.com.mx',
+            'password' => bcrypt('vlopez123'),
         ]);
         
-        // Vendedor 
+        // Vendedores
+        //Nancy
         factory(App\Vendedor::class)->create([
-            'email' => 'vendedor@privanza.com'
+            'name' => 'Nancy',
+            'email' => 'nancy@isco.com.mx',
+            'password' => bcrypt('nancyisco123'),
+        ]);
+        //Erick
+        factory(App\Vendedor::class)->create([
+            'name' => 'Erick Rodríguez',
+            'email' => 'erick.ro@gmail.com',
+            'password' => bcrypt('erickisco123'),
+        ]);
+        //Laureano
+        factory(App\Vendedor::class)->create([
+            'name' => 'Laureano Fernandez',
+            'email' => 'laureano.fdz@isco.com.mx',
+            'password' => bcrypt('laureanoisco123'),
+        ]);
+        //Admon
+        factory(App\Vendedor::class)->create([
+            'name' => 'Alejandro',
+            'email' => 'admon@casaartoria.com',
+            'password' => bcrypt('admonisco123'),
+        ]);
+        //Alejandra Encinas
+        factory(App\Vendedor::class)->create([
+            'name' => 'Alejandra Encinas',
+            'email' => 'alejandra.encinas@isco.com.mx',
+            'password' => bcrypt('alejandraisco123'),
         ]);
 
         // Validador
         factory(App\Validador::class)->create([
-            'email' => 'validador@privanza.com'
+            'name' => 'Yuliana Ramírez',
+            'email' => 'yramirez@isco.com.mx',
+            'password' => bcrypt('yramirez123'),
         ]);
 
         // Database
@@ -47,16 +76,16 @@ class DatabaseSeeder extends Seeder
             'name' => 'Privanza',
             'description' => 'Medidas para personas menudas.'
         ]);
-
-        factory(App\Vendedor::class, 40)->create();
-        factory(App\Client::class, 30)->create([
+        
+        factory(App\Vendedor::class, 10)->create();
+        factory(App\Client::class, 10)->create([
             'vendedor_id' => 1,
         ]);
         factory(App\Client::class, App\Vendedor::all()->count()*15)->create();
-        factory(App\Event::class, 600)->create();
+        factory(App\Event::class, 10)->create();
         factory(App\Validador::class, 10)->create();
 
-        // Generate 10 orders for the main Vendedor
+        //Generate 10 orders for the main Vendedor
         for ($i=1; $i <= 20; $i++) { 
             $orden = factory(App\Order::class)->create([
                 'vendedor_id' => 1,
@@ -81,7 +110,7 @@ class DatabaseSeeder extends Seeder
         }
 
         // Generate 100 random orders
-        for ($i=11; $i <= 110; $i++) { 
+        for ($i=1; $i <= 11; $i++) { 
             $orden = factory(App\Order::class)->create();
             if ($orden->has_vest) {
                 factory(App\Vest::class)->create([
@@ -101,7 +130,7 @@ class DatabaseSeeder extends Seeder
 
         }
 
-        factory(App\AdjustmentOrder::class,100)->create();
-        factory(App\Adjustment::class,666)->create();
+        factory(App\AdjustmentOrder::class,10)->create();
+        factory(App\Adjustment::class,10)->create();
     }
 }

@@ -22,6 +22,7 @@ use PDF;
 use Session;
 use Notification; 
 use Carbon\Carbon;
+use Dompdf\Dompdf;
 
 // Notifications 
 use App\Notifications\NewOrder;
@@ -314,6 +315,8 @@ class OrderController extends Controller
             $orden->bordadoColor = 'Gris Plata';
         }
 
+        $orden->notasBordado = $request->notasBordado;
+
         // Componentes del Traje
         $orden->has_vest = $request->chaleco ? true : false;
         $orden->has_coat = $request->saco ? true : false;
@@ -330,12 +333,12 @@ class OrderController extends Controller
             // Medidas Corporales
             $chaleco->fit_id = $request->fitChaleco;
             $chaleco->talla = $request->tallaChaleco;
-            $chaleco->corte = $request->corteChaleco;
 
             // Datos de Chaleco
             $chaleco->order_id = $orden->id;
             $chaleco->tipo_cuello = $request->cuelloChaleco;
             $chaleco->tipo_bolsas = $request->bolsasChaleco;
+
             $chaleco->tipo_espalda = $request->forroTela;
             if ($request->tipoForroChaleco) {
                 $chaleco->tipo_forro = $request->tipoForroChaleco;
@@ -364,24 +367,20 @@ class OrderController extends Controller
             $pantalon->pliegues = $request->numPliegues;
             $pantalon->bolsas_traseras = $request->bolsasTraseras;
             $pantalon->tipo_vivo = $request->tipoVivo;
-            // Color Ojalera y Encuarte
+            // Color Ojalera, Encuarte y Pretina
             if ($request->otroColorOjaleraEncuarte) {
                 $pantalon->color_ojalera = $request->otroColorOjaleraEncuarte;
+                $pantalon->color_pretina = $request->otroColorOjaleraEncuarte;
             } else {
                 $pantalon->color_ojalera = $request->colorOjaleraEncuarte;
+                $pantalon->color_pretina = $request->colorOjaleraEncuarte;
             }
             //color medio forro piernas            
             $pantalon->medio_forro_piernas_al_tono = $request->medioForroPiernasAlTono ? true : false;            
 
             //Dobladillo
             $pantalon->dobladillo = $request->dobladillo;
-            //Pretina
-            $pantalon->pretina = $request->pretina;
-            if ($request->otroColorBiesPretina) {
-                $pantalon->color_pretina = $request->otroColorBiesPretina;
-            }else{
-                $pantalon->color_pretina = $request->colorOjaleraEncuarte;
-            }
+            
 
             // Guardar Datos de Pantalón
             $pantalon->save();
@@ -394,40 +393,46 @@ class OrderController extends Controller
             // Medidas Corporales
             $saco->fit_id = $request->fitSaco;
             $saco->talla = $request->tallaSaco;
-            $saco->corte = $request->corteSaco;
+            $saco->largo_espalda_deseado = $request->largoEspaldaSaco;
 
             $saco->order_id = $orden->id;
-
-            // Datos de Saco Externo
-            $saco->tipo_solapa = $request->tipoSolapa;
+            $saco->tipo_solapa = $request->tipoSolapa; //Solapa 
+            // Todo lo referente a Mangas 
+            $saco->botones_mangas = $request->botonesMangas; // Número de botones en mangas
+            $saco->tipo_ojal_manga = $request->tipoOjalManga; //Al tono o en contraste
+            
             // Color Ojal de Solapa
-            $saco->tipo_ojal_solapa = $request->tipoOjalSolapa;
-            if ($request->otroColorOjalSolapa) {
-                $saco->color_ojal_solapa = $request->otroColorOjalSolapa;
+            $saco->tipo_ojal_solapa = $request->tipoOjalSolapa; //Al tono o en contraste
+            // Color del ojal en solapa
+            if ($request->otroColorOjalSolapa || $request->otroColorOjalMangas) {
+                $saco->color_ojal_solapa = $request->otroColorOjalSolapa; 
+                $saco->color_ojal_manga = $request->otroColorOjalSolapa;
             } else {
                 $saco->color_ojal_solapa = $request->colorOjalSolapa;
+                $saco->color_ojal_manga = $request->colorOjalSolapa;
             }
-          
+            //ojal activo en solapa
             $saco->ojal_activo_solapa = $request->ojalActivoSolapa ? true : false;
-            
+            //Posición de los ojales en contraste para solapa
+            $saco->posicion_ojal_solapa = $request->posicionOjalesSolapa;
             //Botones
             $saco->botones_frente = $request->botonesFrente;
+            //Aberturas
             $saco->aberturas_detras = $request->aberturasDetras;
-            $saco->botones_mangas = $request->botonesMangas;
-            $saco->tipo_ojal_manga = $request->tipoOjalManga;
+            
 
             // Color del Ojal en Mangas
-            if ($request->otroColorOjalMangas) {
+            /*if ($request->otroColorOjalMangas) {
                 $saco->color_ojal_manga = $request->otroColorOjalMangas;
             } else {
                 $saco->color_ojal_manga = $request->colorOjalMangas;
-            }
+            }*/
 
             $saco->posicion_ojal_manga = $request->posicionOjalesManga;
             $saco->ojales_activos_manga = $request->ojalesActivosManga ? true : false;
-            if ($saco->ojales_activos_manga) {
+            /*if ($saco->ojales_activos_manga) {
                 $saco->posicion_ojales_activos_manga = $request->posicionOjalesActivosManga;
-            }
+            }*/
 
             // Bolsas Exteriores
             $saco->tipo_bolsas_ext = $request->bolsasExt;
@@ -444,43 +449,41 @@ class OrderController extends Controller
                 $saco->forro_interno_mangas = "Balsam a Rayas";
             }
 
-            
-            // Color de la Puntada
-            if ($request->otroColorPuntada) {
-                $saco->color_puntada = $request->otroColorPuntada;
-            } else {
-                $saco->color_puntada = $request->colorPuntada;
-            }
+                        
 
-            // Pin Point
-            $saco->pin_point_interno = $request->pinPointInterno ? true : false;
-            if ($saco->pin_point_interno) {
-                // Color de Pin Point
+            //Bies y pinpoint
+            $saco->tipo_accesorio = $request->tipoAccesorio;
+            if ($saco->tipo_accesorio === 0) {
+                // Color Pinpoint
                 if ($request->otroColorPuntada) {
-                    $saco->pin_point_interno_color = $request->otroColorPuntada;
+                    $saco->accesorio_color = $request->otroColorPuntada;
                 } else {
-                    $saco->pin_point_interno_color = $request->colorPuntada;
+                    $saco->accesorio_color = $request->colorPuntada;
                 }
 
-                // Código de Pin Point
-                $saco->pin_point_interno_codigo = $request->pinPointInternoCodigo;
-            }
-
-            // Bies
-            $saco->bies = $request->biesInterno ? true : false;
-            if ($saco->bies) {
-                // Color de Bies
+                // Código de Pinpoint
+                $saco->accesorio_codigo = $request->pinPointInternoCodigo;
+                
+            }elseif ($saco->tipo_accesorio === 1) {
+                //Color de Bies
                 if ($request->otroColorPuntada) {
-                    $saco->bies_color = $request->otroColorPuntada;
+                    $saco->accesorio_color = $request->otroColorPuntada;
                 } else {
-                    $saco->bies_color = $request->colorPuntada;
+                    $saco->accesorio_color = $request->colorPuntada;
                 }
 
                 // Código Bies
-                $saco->bies_codigo = $request->biesInternoCodigo;
-                
-            }
+                $saco->accesorio_codigo = $request->biesInternoCodigo;
+            }else{
+                if ($request->otroColorPuntada) {
+                    $saco->accesorio_color = $request->otroColorPuntada;
+                } else {
+                    $saco->accesorio_color = $request->colorPuntada;
+                }
 
+                // Código Bies y pinpoint
+                $saco->accesorio_codigo = $request->pinpointbiesInternoCodigo;
+            }
             
 
             // Tipo de Bolsas Internas
@@ -579,16 +582,29 @@ class OrderController extends Controller
      * @param $id
      * @return PDF file for stream
      */
+    public function pdfForVendedorHTML($id){
+        
+    }
     public function pdfForVendedor($id)
     {
+        $dompdf = new Dompdf();
         $orden = Order::find($id);
         
         if (!$orden || $orden->vendedor_id != Auth::id()) {
             return redirect('/vendedor/ordenes');
         }
         PDF::setOptions(['dpi' => 50]);
-
-        return PDF::loadview('pdf.order',compact('orden'))->setPaper('a4', 'landscape')->stream('PRIV-OC'.$id.$orden->client->name.'.pdf');
+        if ($orden->has_coat) {
+            $saco = $orden->Coat;
+        }
+        if ($orden->has_pants) {
+            $pantalon = $orden->Pants;
+        }
+        if ($orden->has_vest) {
+            $chaleco = $orden->Vest;
+        }
+        //  return $saco;
+        return PDF::loadview('pdf.order',compact('orden','saco','pantalon','chaleco'))->setPaper('a4', 'landscape')->stream('PRIV-OC'.$id.$orden->client->name.'.pdf');
     }
 
     /**

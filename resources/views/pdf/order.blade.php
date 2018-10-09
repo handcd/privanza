@@ -5,181 +5,1107 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel Multi Auth Guard') }} - Detalles de Pedido #{{ $orden->id }}</title>
+    <title>Privanza | Detalles de Pedido #{{ $orden->id }}</title>
 
     <!-- Styles -->
-    {{-- <style>
+     <style>
         /* Estilos custom para PDF */
         body {
             background: none !important;
         }
-        h1, h2, h3, h4, h5, h6 {
+        h1, h2, h3, h4, h5, h6, p {
             font-family: "Helvetica";
         }
+        td {
+            font-family: "Helvetica";
+            font-size: 6;
+        }
+        .page-break {
+            page-break-after: always;
+        }
         tbody:before, tbody:after { display: none; }
-    </style> --}}
+    </style> 
 </head>
 <body>
     <div class="row">
-        <div class="col-md-10">
-            <h3>Privanza</h3>
-            <h4>Detalle de Orden #{{ $orden->id }}</h4>
-            <p>Datos Generales:</p>
-            <ul>
-                <li>Vendedor: {{ $orden->vendedor->name }}</li>
-                <li>Fecha de Registro: {{ $orden->created_at }}</li>
-            </ul>
-        </div>
-        <div class="col-md-2">
-            Fecha de Generación: {{ Carbon\Carbon::now() }}
+        <div class="col-md-10 text-center">
+            <h3>Privanza | Detalle de Orden #{{ $orden->id }} </h3>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <h4>Estado General</h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-2">
-            <p>
-                Aprobado: {{ $orden->approved ? 'Sí':'No' }}
-            @if ($orden->approved)
+    {{-- Detalles Generales de la orden --}}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+              <td scope="col">Fecha de elaboración: {{ Carbon\Carbon::now() }}</td>
+              <td scope="col">Vendedor: {{ $orden->vendedor->name }}</td>
+              <td scope="col">Cliente: {{ $orden->client->name}} {{$orden->client->lastname }}</td>
+              <td> Teléfono del cliente: {{ $orden->client->phone}}</td>
+              <td>Correo eléctronico del cliente: {{ $orden->client->email}}</td>
+            </tr>
+        </thead>
+    </table> 
+    <h4>Medidas Corporales:</h4>
+    <table class="table table-bordered"> 
+        <tr>
+            <th colspan="4" class="text-center">
+                Generales
+            </th>
+            <th colspan="6" class="text-center">
+                Medidas corporales
+            </th>
+        </tr>
+        <tr>
+            <td>
+                Altura:
                 <br>
-                Fecha: {{ $orden->date_approved }}
-            @endif
-            </p>    
-        </div>
-        <div class="col-xs-2">
-            <p>
-                Aprobado: {{ $orden->approved ? 'Sí':'No' }}
-            @if ($orden->approved)
+                @if($orden->client->altura)                
+                    {{ $orden->client->altura  }} Cm.
+                @else
+                    Desconocido
+                @endif 
+            </td>
+            <td>
+                Peso:
                 <br>
-                Fecha: {{ $orden->date_approved }}
-            @endif
-            </p>    
-        </div>
-        <div class="col-xs-2">
-            <p>
-                Aprobado: {{ $orden->approved ? 'Sí':'No' }}
-            @if ($orden->approved)
+                @if($orden->client->peso)
+                    {{ $orden->client->peso  }} Kg.
+                @else
+                    Desconocido
+                @endif
+            </td>
+            <td colspan="2">
+                Edad:
                 <br>
-                Fecha: {{ $orden->date_approved }}
-            @endif
-            </p>    
-        </div>
-        <div class="col-xs-2">
-            <p>
-                Aprobado: {{ $orden->approved ? 'Sí':'No' }}
-            @if ($orden->approved)
+                @if($orden->client->edad)
+                    {{ $orden->client->edad  }} años
+                @else
+                    Desconocido
+                @endif
+            </td>
+            <td>
+                Contorno de cuello:
                 <br>
-                Fecha: {{ $orden->date_approved }}
-            @endif
-            </p>    
-        </div>
-        <div class="col-xs-2">
-            <p>
-                Aprobado: {{ $orden->approved ? 'Sí':'No' }}
-            @if ($orden->approved)
+                @if($orden->client->contornoCuello)
+                    {{ $orden->client->contornoCuello  }} pulgadas
+                @else
+                    Desconocido
+                @endif
+            </td>
+            <td>
+                Contorno de biceps:
                 <br>
-                Fecha: {{ $orden->date_approved }}
-            @endif
-            </p>    
-        </div>
-        <div class="col-xs-2">
-            <p>
-                Aprobado: {{ $orden->approved ? 'Sí':'No' }}
-            @if ($orden->approved)
+                @if($orden->client->contornoBiceps)
+                    {{ $orden->client->contornoBiceps  }} pulgadas 
+                @else
+                    Desconocido
+                @endif
+            </td>
+            <td>
+                Largo brazo derecho:
                 <br>
-                Fecha: {{ $orden->date_approved }}
-            @endif
-            </p>    
-        </div>
-    </div>
-    {{-- Estado de Producción --}}
-    <div class="row">
-        <div class="col-xs-12">
-            <h4>Estado de Producción</h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-3">
-            <p>
-                Aprobado: {{ $orden->approved ? 'Sí':'No' }}
-            @if ($orden->approved)
+                @if($orden->client->brazoDerecho)
+                    {{ $orden->client->brazoDerecho  }} pulgadas
+                @else
+                    Desconocido
+                @endif
+            </td>
+            <td>
+                Largo brazo izquierdo:
                 <br>
-                Fecha: {{ $orden->date_approved }}
-            @endif
-            </p>    
-        </div>
-        <div class="col-xs-3">
-            <p>
-                Aprobado: {{ $orden->approved ? 'Sí':'No' }}
-            @if ($orden->approved)
+                @if($orden->client->brazoIzquierdo)
+                    {{ $orden->client->brazoIzquierdo  }} pulgadas
+                @else
+                    Desconocido
+                @endif
+            </td>
+            <td>
+                Largo hombro derecho:
                 <br>
-                Fecha: {{ $orden->date_approved }}
-            @endif
-            </p>    
-        </div>
-        <div class="col-xs-3">
-            <p>
-                Aprobado: {{ $orden->approved ? 'Sí':'No' }}
-            @if ($orden->approved)
+                @if($orden->client->hombroDerecho)
+                    {{ $orden->client->hombroDerecho  }} pulgadas
+                @else
+                    Desconocido
+                @endif
+            </td>
+            <td>
+                Largo hombro izquierdo:
                 <br>
-                Fecha: {{ $orden->date_approved }}
-            @endif
-            </p>    
-        </div>
-        <div class="col-xs-3">
-            <p>
-                Aprobado: {{ $orden->approved ? 'Sí':'No' }}
-            @if ($orden->approved)
+                @if($orden->client->hombroIzquierdo)
+                    {{ $orden->client->hombroIzquierdo  }} pulgadas
+                @else
+                    Desconocido
+                @endif
+            </td>
+        </tr>
+        <tr>
+            <th colspan="4" class="text-center">
+                Perfil: constitución del cliente
+            </th>
+            <td>
+                Medida de hombros:
                 <br>
-                Fecha: {{ $orden->date_approved }}
+                @if($orden->client->medidaHombros)
+                    {{ $orden->client->medidaHombros  }} pulgadas
+                @else
+                    Desconocido
+                @endif
+            </td>
+            <td>
+                Ancho espalda:
+                <br>
+                @if($orden->client->anchoEspalda)
+                    {{ $orden->client->anchoEspalda  }} pulgadas
+                @else
+                    Desconocido
+                @endif
+            </td>
+            <td>
+                Contorno de puño:
+                <br>
+                @if($orden->client->punio)
+                    {{ $orden->client->punio }} pulgadas
+                @else
+                    Desconocido
+                @endif
+            </td>
+            <td>
+                Largo de torso:
+                <br>
+                @if($orden->client->largoTorso)
+                    {{ $orden->client->largoTorso }} pulgadas
+                @else
+                    Desconocido
+                @endif
+            </td>
+            <td>
+                Contorno de pecho:
+                <br>
+                @if($orden->client->contornoPecho)
+                    {{ $orden->client->contornoPecho }} pulgadas
+                @else
+                    Desconocido
+                @endif
+            </td>
+            <td>
+                Contorno de abdomen:
+                <br>
+                @if($orden->client->contornoAbdomen)
+                    {{ $orden->client->contornoAbdomen }} pulgadas
+                @else
+                    Desconocido
+                @endif
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Abdomen:
+                <br>
+                @if($orden->client->abdomen)
+                     @switch( $orden->client->abdomen )
+                        @case(0)
+                              <p>Delgado</p>
+                              @break
+                        @case(1)
+                              <p>Normal</p>
+                              @break
+                        @case(2)
+                              <p>Voluminoso</p>
+                              @break
+                        @default
+                              <p>Entrada inválida</p>
+                    @endswitch
+                @else
+                    Desconocido
+                @endif
+            </td>
+            <td>
+                Pecho:
+                <br>
+                @if($orden->client->pecho)
+                    @switch( $orden->client->pecho )
+                        @case(0)
+                                <p>Musculoso</p>
+                                @break
+                        @case(1)
+                                <p>Normal</p>
+                                @break
+                        @case(2)
+                                <p>Curpulento</p>
+                                @break
+                        @default
+                                <p>Entrada inválida</p>
+                    @endswitch 
+                @else
+                    Desconocido
+                @endif
+            </td>
+            <td>
+                Espalda:
+                <br>
+                @if($orden->client->espalda)
+                    @switch( $orden->client->esplada )
+                        @case(0)
+                            <p>Recta</p>
+                            @break
+                        @case(1)
+                            <p>Normal</p>
+                            @break
+                        @case(2)
+                            <p>Encorvada</p>
+                            @break
+                        @default
+                            <p>Entrada inválida</p>
+                    @endswitch
+                @else
+                    Desconocido
+                @endif
+            </td>
+            <td>
+                Tipo de hombros:
+                <br>
+                @if($orden->client->hombros === 0 )
+                    Rectos
+                @else
+                    Normales
+                @endif
+            </td>
+            <td>
+                Contorno de cintura:
+                <br>
+                @if($orden->client->contornoCintura)
+                    {{ $orden->client->contornoCintura }} pulgadas
+                @else
+                    Desconocido
+                @endif
+            </td>
+            <td>
+                Contorno de cadera:
+                <br>
+                @if($orden->client->contornoCadera)
+                    {{ $orden->client->contornoCadera  }} pulgadas
+                @else
+                    Desconocido
+                @endif
+            </td>
+            <td>
+                Largo externo de pantalón:
+                <br>
+                @if($orden->client->largoExternoPantalon )
+                    {{ $orden->client->largoExternoPantalon }} pulgadas
+                @else
+                    Desconocido
+                @endif
+            </td>
+            <td>
+                Largo interno de pantalón:
+                <br>
+            @if($orden->client->largoInternoPantalon)
+                {{ $orden->client->largoInternoPantalon }} pulgadas
+            @else
+                Desconocido
             @endif
-            </p>    
+            </td>
+            <td>
+                Largo de tiro:
+                <br>
+                @if($orden->client->largoTiro)
+                    {{ $orden->client->largoTiro }} pulgadas
+                @else
+                    Desconocido
+                @endif
+            </td>
+            <td>
+                Contorno de muslo:
+                <br>
+                @if( $orden->client->contornoMuslo)
+                    {{ $orden->client->contornoMuslo }} pulgadas
+                @else
+                    Desconocido
+                @endif
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                
+            </td>
+            <td>
+                Contorno de Rodilla:
+                <br>
+                @if( $orden->client->contornoRodilla )
+                    {{ $orden->client->contornoRodilla }} pulgadas
+                @else
+                    Desconocido
+                @endif
+            </td>
+            <td colspan="5">
+                
+            </td>
+        </tr>
+
+    </table>
+    {{--Detalles generales del pedido--}}
+    <h4>Datos básicos de orden</h4>
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                Tela
+            </th>
+            @if( $orden->tela_isco === 1 )
+            <td>
+                Tipo de tela: 
+                ISCO
+            </td>
+            @else
+                <td>
+                Tipo de tela: 
+                Del cliente
+            </td>
+            @endif
+            <td>
+                Código: 
+                {{ $orden->codigo_tela }}
+            </td>
+            <td>
+                Nombre: 
+                {{ $orden->nombre_tela }}
+            </td>
+            <td>
+                Color:
+                {{ $orden->codigo_color_tela }} {{ $orden->color_tela }}
+            </td>
+            @if( $orden->tela_isco === 0 )
+                <td>
+                    Metros: {{ $orden->mts_tela_cliente }}
+                </td>
+            @endif
+        </tr>
+        <tr>
+            <th> 
+                Forro
+            </th>
+            @if( $orden->forro_isco === 1 )
+                <td>
+                    Tipo de forro: 
+                    ISCO
+                </td>
+            @else
+                <td>
+                    Tipo de forro: 
+                    Del cliente
+                </td>
+            @endif
+            <td>
+                Código: 
+                {{ $orden->codigo_forro }}
+            </td>
+            <td>
+                Nombre: 
+                {{ $orden->nombre_forro }}
+            </td>
+            <td>
+                Color:
+                {{ $orden->codigo_color_forro }} {{ $orden->color_forro }}
+            </td>
+            @if( $orden->forro_isco === 0 )
+                <td>
+                    Metros: {{ $orden->mts_forro_cliente }}
+                </td>
+            @endif
+        </tr>
+        <tr>
+            <th> 
+                Botones
+            </th>
+            @if( $orden->tipo_botones === 1)
+                <td>
+                    Tipo de Botones: 
+                    Del cliente
+                </td>
+            @else
+                <td>
+                    Tipo de botones: 
+                    ISCO
+                </td>
+            @endif
+            <td>
+                Código: 
+                {{ $orden->codigo_botones }}
+            </td>
+            <td>
+                Color:
+                {{ $orden->codigo_color_botones }} {{ $orden->color_botones }}
+            </td>
+            @if( $orden->tipo_botones === 1 )
+                <td>
+                    Cantidad: {{ $orden->cantidad_botones }}
+                </td>
+            @else
+                <td>
+                    
+                </td>
+            @endif
+            @if( $orden->forro_isco === 0)
+                <td>
+                    
+                </td>
+            @endif
+        </tr>
+        <tr>
+            @if( $orden->etiquetas_tela || $orden->etiquetas_marca)
+                <td>
+                    <b>Etiquetas:</b> <br>
+                    Etiquetas de tela:  
+                    @if( $orden->etiquetas_tela === 1 )
+                        Sí
+                    @else
+                        No
+                    @endif
+                    <br>
+                    Etiquetas de marca: 
+                    @if( $orden->etiquetas_marca === 1)
+                        Sí. {{ $orden->marca_en_etiqueta }}
+                    @else
+                        No
+                    @endif
+                </td>
+            @else
+                <td>
+                    <b>Etiquetas: </b><br>
+                    Desconocido
+                </td>
+            @endif
+            @if( $orden->gancho)
+                <td>
+                    <b>Gancho: </b>
+                    <br>
+                    @if( $orden->gancho === 0 )
+                        Normal
+                    @elseif( $orden->gancho === 1)
+                        Personalizado privanza. 
+                    @else
+                        {{ $saco->gancho_personalizacion }}.
+                    @endif
+                </td>
+            @else
+                <td>
+                    <b>Gancho: </b><br>
+                    Desconocido
+                </td>
+            @endif
+            @if( $orden->portatrajes )
+                <td>                    
+                    <br>
+                    @if( $orden->portatrajes === 0 )
+                        <b>Portatrajes: </b><br>
+                        Normal
+                    @elseif( $orden->portatrajes === 1)
+                        <b>Portatrajes: </b><br>
+                        Personalizado privanza. 
+                    @else
+                        {{ $saco->portatrajes_personalizacion }}.
+                    @endif
+                </td>
+            @else
+                <td>
+                    <b>Portatrajes:</b> <br>
+                    Desconocido
+                </td>
+            @endif
+            @if( $orden->bordado )
+                
+                <td>
+                    <b>Bordado</b>
+                    Nombre: {{ $orden->bordado }} <br>
+                    Letra: {{ $orden->letra }} <br>
+                    Color: {{ $orden->bordadoColor }}
+                </td>
+            @else
+                <td>
+                    <b>Bordado: </b><br>
+                    Desconocido
+                </td>
+            @endif
+            
+            @if( $orden->forro_isco === 0 || $orden->tela_isco === 0)
+                @if( $orden->notasBordado )
+                <td colspan="2">
+                    Notas: {{ $orden->notas_bordado}}
+                </td>
+            @else
+                <td colspan="2">
+                    
+                </td>
+            @endif
+            @else
+                @if( $orden->notasBordado )
+                    <td>
+                        Notas: {{ $orden->notas_bordado}}
+                    </td>
+                @else
+                    <td>
+                    
+                    </td>
+            @endif
+            @endif
+        </tr>
+    </table>
+    <br><br>
+    {{-- Especificaciones --}}         
+    <h4>Especificaciones:</h4>
+
+    
+    {{-- Saco --}}
+    @if($orden->has_coat)
+        <div class="row">
+            <div class="col-xs-12">
+                <b>Saco</b>
+            </div>
         </div>
-    </div>
-    <div class="row">
+        <table class="table table-bordered">    
+            <tr>
+                <th colspan="3" class="text-center">Generales</th>
+                <th colspan="5" class="text-center">Cuerpo</th>
+            </tr>
+            <tr>
+                <td>
+                    Fit Deseado:
+                    <br>
+                    @if($saco->fit_id)
+                        {{ $saco->fit->name}}
+                    @else
+                        Desconocido
+                    @endif    
+                </td>
+                <td>
+                    Largo de Manga deseado:
+                    <br>
+                    @if($saco->talla) 
+                        {{ $saco->talla }} pulgadas
+                    @else
+                        Desconocido
+                    @endif
+                </td>
+                <td>
+                    Largo de espalda deseado:
+                    <br>
+                    @if($saco->largo_espalda_deseado) 
+                        {{ $saco->largo_espalda_deseado }} pulgadas
+                    @else
+                        Desconocido
+                    @endif
+                </td>
+                <td>
+                    Número de botones:
+                    <br>
+                    @switch( $saco->botones_frente)
+                        @case(1)
+                                1 botón
+                            @break
+                        @case(2)
+                                2 botones
+                            @break
+                        @case(3)
+                                3 botones
+                            @break
+                        @case(6)
+                                6 botones
+                            @break
+                        @default
+                            Desconocido
+                    @endswitch
+                </td>
+                <td>
+                    Número de aberturas traseras:
+                    <br>
+                     @switch( $saco->aberturas_detras)
+                        @case(0)
+                                Sin aberturas
+                            @break
+                        @case(1)
+                                Una abertura
+                            @break
+                        @case(2)
+                                Dos aberturas
+                            @break
+                        @default
+                            Desconocido
+                    @endswitch
+                </td>
+                <td>
+                    Bolsas externas:
+                    <br>
+                    @switch($saco->tipo_bolsas_ext)
+                        @case(0)
+                            Parche
+                            @break
+                        @case(1)
+                            Cartera
+                            @break
+                        @case(2)
+                            Cartera en diagonal
+                            @break
+                        @case(3)
+                            Vivo (sin cartera)
+                            @break
+                        @case(4)
+                            Vivo Diagonal
+                            @break
+                        @case(5)
+                            Cartera continental
+                            @break
+                        @case(6)
+                            Cartera diagonal
+                            @break
+                        @case(7)
+                            Sin bolsas
+                            @break
+                        @default
+                            Desconocido
+                    @endswitch
+                </td>
+                <td>
+                    Pick stitch:
+                    <br>
+                    @if( $saco->pickstitch === 1 )
+                        Sí
+                    @else
+                        No
+                    @endif
+                </td>
+                <td>
+                    Aletillas:
+                    <br>
+                    @if( $saco->sin_aletilla === 1 )
+                        Sin aletillas
+                    @else
+                        Con aletillas
+                    @endif
+                </td>
+            </tr>
+            <tr>
+                <th colspan="3" class="text-center">Solapa</th>
+                <th colspan="5" class="text-center">Mangas</th>
+            </tr>
+            <tr>
+                <td>
+                    Tipo de solapa: 
+                    <br>
+                    @switch( $saco->tipo_solapa)
+                        @case(0)
+                                En pico normal
+                            @break
+                        @case(1)
+                                En pico ancha
+                            @break
+                        @case(2)
+                                En escuadra normal
+                            @break
+                        @case(3)
+                                En escuadra ancha
+                            @break
+                        @default
+                            Desconocido
+                    @endswitch
+                </td>
+                <td>
+                    Color de ojal en solapa:
+                    <br>
+                    @if( $saco->tipo_ojal_solapa === 2) 
+                        En Contraste. Color {{ $saco->color_ojal_solapa}}.
+                    @else
+                        Al tono
+                    @endif
+                </td>
+                <td>
+                    Ojal Activo en solapa:
+                    <br>
+                     @if( $saco->ojal_activo_solapa === 1) 
+                        Sí
+                    @else
+                        No
+                    @endif
+                </td>
+                <td>
+                    Color de ojal en manga: 
+                    @if( $saco->tipo_ojal_manga === 2) 
+                        En Contraste. Color {{ $saco->color_ojal_manga}}.
+                    @else
+                        Al tono
+                    @endif
+                </td>
+                <td colspan="2">
+                    Ojal Activo en manga:
+                    <br>
+                     @if( $saco->ojal_activo_manga === 1) 
+                        Sí. Posición de ojales: {{ $saco->posicion_ojales_activos_manga}} 
+                    @else
+                        No
+                    @endif
+                </td>
+                <td>
+                    No. de botones en mangas:
+                    <br>
+                    @switch( $saco->botones_mangas)
+                        @case(1)
+                                Un botón
+                            @break
+                        @case(2)
+                                Dos botones
+                            @break
+                        @case(3)
+                                Tres botones
+                            @break
+                        @case(4)
+                                Cuatro botones
+                            @break    
+                        @default
+                            Desconocido
+                    @endswitch
+                </td>
+                <td>
+                    Posición de botones en mangas:
+                    <br>
+                    @switch($saco->posicion_ojal_manga)
+                        @case(0)
+                            Botones en cascada
+                            @break
+                        @case(1)
+                            Botones en línea
+                            @break
+                        @default
+                            Desconocido
+                    @endswitch
+                </td>
+            </tr>
+            <tr>
+                <th colspan="8" class="text-center">Interior</th>
+            </tr>
+            <tr>
+                <td>
+                    Tipo de vista interna:
+                    <br>
+                    @if( $saco->tipo_vista === 0 )
+                        Normal
+                    @elseif( $saco->tipo_vista === 1 )
+                        Chapeta Francesa
+                    @else
+                        Desconocido
+                    @endif
+                </td>
+                <td>
+                    Forro interno de mangas:
+                    <br>
+                    @if( $saco->balsam_rayas === 1 )
+                        Balsam a Rayas
+                    @else
+                        {{ $saco->forro_interno_mangas}}
+                    @endif
+                </td>
+                <td colspan="2">
+                    Accesorios: 
+                    @if( $saco->tipoAccesorio == 0)
+                        PinPoint. Color {{ $saco->accesorio_color }}
+                    @elseif( $saco->tipoAccesorio == 1)
+                        Bies. Color {{ $saco->accesorio_color}}
+                    @else
+                        Pinpoint y bies {{ $saco->accesorio_color}}
+                    @endif
+
+                </td>                   
+                @if( $saco->bolsas_int )
+                    <td colspan="2">
+                    Bolsas internas:
+                    <br>
+                    @switch( $saco->bolsas_int)
+                        @case(1) 2 bolsas en pecho, 1 p/pluma, 1 p/cigarrera 
+                            @break
+                        @case(2) 2 bolsas en pecho, 1 p/pluma
+                            @break
+                        @case(3) 2 bolsas en pecho, 1 p/cigarrera
+                            @break 
+                        @case(4) 2 bolsas en pecho
+                            @break
+                        @default Desconocido
+                    @endswitch
+                    </td>
+                @else
+                    <td colspan="2">
+                        
+                    </td>
+                @endif
+                @if( $saco->vivos_bolsas_internas_cuerpo)
+                    <td colspan="2">
+                        Vivos en bolsas internas:
+                        <br>
+                        Del mismo forro en cuerpo
+                    </td>
+                @elseif( $saco->otro_vivos_bolsas_internas)
+                    <td colspan="2">
+                        Vivos en bolsas internas:
+                        <br>
+                        {{ $saco->otro_vivos_bolsas_internas }}
+                    </td>
+                @endif
+            </tr>
+            <tr>
+                @if( $saco->notas_int &&  $saco->notas_ext)
+                    <td colspan="4">
+                        Notas de saco externo:
+                        <br>
+                            {{ $saco->notas_ext }}
+                    </td>
+                    <td colspan="4">
+                        Notas de saco interno:
+                        <br>
+                            {{ $saco->notas_int }}
+                    </td>
+                @elseif( $saco->notas_ext)
+                    <td colspan="8">
+                        Notas de saco externo:
+                        <br>
+                            {{ $saco->notas_ext }}
+                    </td>
+                @elseif( $saco->notas_int )
+                    <td colspan="8">
+                        Notas de saco interno:
+                        <br>
+                            {{ $saco->notas_int }}
+                    </td>
+                @endif
+            </tr>
+        </table> 
         <table class="table table-bordered">
-            <thead>
-                <th>l1</th>
-                <th>l2</th>
-                <th>l3</th>
-                <th>lala</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>asodfjasoidf</td>
-                    <td>asodfjasoidf</td>
-                    <td>asodfjasoidf</td>
-                </tr>
-                <tr>
-                    <td>asodfjasoidf</td>
-                    <td>asodfjasoidf</td>
-                    <td>asodfjasoidf</td>
-                </tr>
-                <tr>
-                    <td>asodfjasoidf</td>
-                    <td>asodfjasoidf</td>
-                    <td>asodfjasoidf</td>
-                </tr>
-                <tr>
-                    <td>asodfjasoidf</td>
-                    <td>asodfjasoidf</td>
-                    <td>asodfjasoidf</td>
-                </tr>
-                <tr>
-                    <td>asodfjasoidf</td>
-                    <td>asodfjasoidf</td>
-                    <td>asodfjasoidf</td>
-                </tr>
-            </tbody>
+             <tr>
+               
+                
+            </tr>
+        </table>   
+    @endif
+    {{--Fin Saco --}}
+    {{-- Chaleco --}}
+    @if($orden->has_vest)
+        <div class="row">
+            <div class="col-xs-12">
+                <b>Chaleco</b>
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <tr>
+                <td>
+                    Fit Deseado:
+                    <br>
+                    @if($chaleco->fit_id)
+                        {{ $chaleco->fit->name}}
+                    @else
+                        Desconocido
+                    @endif    
+                </td>
+                <td>
+                    Largo de espalda deseado:
+                    <br>
+                    @if($chaleco->talla) 
+                        {{ $chaleco->talla }} pulgadas
+                    @else
+                        Desconocido
+                    @endif
+                </td>
+                <td>
+                    Tipo de cuello:
+                    <br>
+                    @if( $chaleco->tipo_cuello === 1 )
+                        Cuello en 'V'
+                    @elseif( $chaleco->tipo_cuello === 2 )
+                        Con solapa
+                    @else
+                        Desconocido
+                    @endif
+                </td>
+                <td>
+                    Bolsas delanteras:
+                    <br>
+                    @if( $chaleco->tipo_bolsas === 0 )
+                        Vivo
+                    @elseif( $chaleco->tipo_bolsas === 1 )
+                        Con aletillas
+                    @else
+                        Desconocido
+                    @endif
+                </td>
+                <td>
+                    Forro o tela:
+                    <br>
+                    @if( $chaleco->tipo_espalda === 2 )
+                        Tela
+                    @elseif( $chaleco->tipo_espalda === 1 )
+                        Forro. {{ $chaleco->tipo_forro}}
+                    @else
+                        Desconocido
+                    @endif
+                </td>
+                @if( $chaleco->notas )
+                    <td>
+                        Notas: {{ $chaleco->notas}}
+                    </td>
+                @endif
+            </tr>
         </table>
-    </div>
+    @endif
+    {{-- Fin Chaleco --}}
+    {{-- Pantalón --}}
+    @if($orden->has_pants)
+        <div class="row">
+            <div class="col-xs-12">
+                <b>Pantalón</b>
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <tr>
+                <th colspan="2" class="text-center">
+                    Generales
+                </th>
+                <th colspan="5"></th>
+            </tr>
+            <tr>
+                <td>
+                    Fit Deseado:
+                    <br>
+                    @if($pantalon->fit_id)
+                        {{ $pantalon->fit->name }}
+                    @else
+                        Desconocido
+                    @endif    
+                </td>
+                <td>
+                    Talla de referencia de pantalón:
+                    <br>
+                    @if($pantalon->talla) 
+                        {{ $pantalon->talla }} pulgadas
+                    @else
+                        Desconocido
+                    @endif
+                </td>
+                <td>
+                    Tipo de pase:
+                    <br>
+                    Con pase
+                </td>
+                <td>
+                    Número de pliegues:
+                    <br>
+                    @if( $pantalon->pliegues === 0 )
+                        Sin pliegues
+                    @elseif( $pantalon->pliegues === 1 )
+                        Un pliegue
+                    @elseif( $pantalon->pliegues === 2)
+                        Dos pliegues
+                    @else
+                        Desconocido
+                    @endif
+                </td>
+                <td>
+                    Bolsas traseras:
+                    <br>
+                    Dos bolsas traseras, vivo sencillo con ojal.                    
+                </td>
+                <td>
+                    Color de bies, ojalera, encuarte y pretina:
+                    <br>
+                    {{ $pantalon->color_ojalera }}
+                </td>
+                <td>
+                    Medio forro interior:
+                    <br>
+                    @if( $pantalon->medio_forro_piernas_al_tono )
+                        Al tono
+                    @else
+                        {{ $pantalon->codigo_otro_color_medio_forro }} {{ $pantalon->otro_color_medio_forro}}
+                    @endif
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Dobladillo:
+                    <br>
+                    @switch( $pantalon->dobladillo)
+                        @case(1)
+                            Normal
+                            @break
+                        @case(2)
+                            Valenciana
+                            @break
+                        @default
+                            Desconocido
+                    @endswitch
+                </td>
+                <td colspan="6">
+                    Notas:
+                    <br>
+                    {{ $pantalon->notas }}
+                </td>
+            </tr>
+        </table>
+        
+    @endif
+    {{--Fin Pantalón --}}
+    {{-- Cuadros --}}
+    <table class="table table-bordered">
+        <tr>
+            <td style="height: 50">
+                <br><br><br><br><br>
+                Testigo de tela:
+            </td>
+            <td>
+                <br><br><br><br><br>
+                Testigo de forro en cuerpo:
+            </td>
+            <td>
+                <br><br><br><br><br>
+                Testigo de forro en mangas:
+            </td>
+            <td>
+                <br><br><br><br><br>
+                Testigo de forro en vivos de bolsas internas:
+            </td>
+        </tr>
+    </table>
+    <table class="table table-bordered">
+        <tr>
+            <td style="height: 30">
+                <br><br><br>
+                Elaboro (original)
+            </td>
+            <td>
+                <br><br><br>
+                Producción
+            </td>
+            <td>
+                <br><br><br>
+                Almacen de telas
+            </td>
+            <td>
+                <br><br><br>
+                Almacén de Habios
+            </td>
+            <td>
+                <br><br><br>
+                Control de calidad
+            </td>
+            <td>
+                <br><br><br>
+                Sala de corte
+            </td>
+            <td>
+                <br><br><br>
+                Almacen producto terminado
+            </td>
+        </tr>
+    </table>
+    
 </body>
 </html>
