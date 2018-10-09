@@ -22,6 +22,7 @@ use PDF;
 use Session;
 use Notification; 
 use Carbon\Carbon;
+use Dompdf\Dompdf;
 
 // Notifications 
 use App\Notifications\NewOrder;
@@ -395,37 +396,43 @@ class OrderController extends Controller
             $saco->largo_espalda_deseado = $request->largoEspaldaSaco;
 
             $saco->order_id = $orden->id;
-
-            // Datos de Saco Externo
-            $saco->tipo_solapa = $request->tipoSolapa;
+            $saco->tipo_solapa = $request->tipoSolapa; //Solapa 
+            // Todo lo referente a Mangas 
+            $saco->botones_mangas = $request->botonesMangas; // Número de botones en mangas
+            $saco->tipo_ojal_manga = $request->tipoOjalManga; //Al tono o en contraste
+            
             // Color Ojal de Solapa
-            $saco->tipo_ojal_solapa = $request->tipoOjalSolapa;
-            if ($request->otroColorOjalSolapa) {
-                $saco->color_ojal_solapa = $request->otroColorOjalSolapa;
+            $saco->tipo_ojal_solapa = $request->tipoOjalSolapa; //Al tono o en contraste
+            // Color del ojal en solapa
+            if ($request->otroColorOjalSolapa || $request->otroColorOjalMangas) {
+                $saco->color_ojal_solapa = $request->otroColorOjalSolapa; 
+                $saco->color_ojal_manga = $request->otroColorOjalSolapa;
             } else {
                 $saco->color_ojal_solapa = $request->colorOjalSolapa;
+                $saco->color_ojal_manga = $request->colorOjalSolapa;
             }
-          
+            //ojal activo en solapa
             $saco->ojal_activo_solapa = $request->ojalActivoSolapa ? true : false;
-            
+            //Posición de los ojales en contraste para solapa
+            $saco->posicion_ojal_solapa = $request->posicionOjalesSolapa;
             //Botones
             $saco->botones_frente = $request->botonesFrente;
+            //Aberturas
             $saco->aberturas_detras = $request->aberturasDetras;
-            $saco->botones_mangas = $request->botonesMangas;
-            $saco->tipo_ojal_manga = $request->tipoOjalManga;
+            
 
             // Color del Ojal en Mangas
-            if ($request->otroColorOjalMangas) {
+            /*if ($request->otroColorOjalMangas) {
                 $saco->color_ojal_manga = $request->otroColorOjalMangas;
             } else {
                 $saco->color_ojal_manga = $request->colorOjalMangas;
-            }
+            }*/
 
             $saco->posicion_ojal_manga = $request->posicionOjalesManga;
             $saco->ojales_activos_manga = $request->ojalesActivosManga ? true : false;
-            if ($saco->ojales_activos_manga) {
+            /*if ($saco->ojales_activos_manga) {
                 $saco->posicion_ojales_activos_manga = $request->posicionOjalesActivosManga;
-            }
+            }*/
 
             // Bolsas Exteriores
             $saco->tipo_bolsas_ext = $request->bolsasExt;
@@ -575,8 +582,12 @@ class OrderController extends Controller
      * @param $id
      * @return PDF file for stream
      */
+    public function pdfForVendedorHTML($id){
+        
+    }
     public function pdfForVendedor($id)
     {
+        $dompdf = new Dompdf();
         $orden = Order::find($id);
         
         if (!$orden || $orden->vendedor_id != Auth::id()) {

@@ -26,6 +26,9 @@
             font-family: "Helvetica";
             font-size: 6;
         }
+        .page-break {
+            page-break-after: always;
+        }
         tbody:before, tbody:after { display: none; }
     </style> 
 </head>

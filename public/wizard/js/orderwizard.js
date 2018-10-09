@@ -114,6 +114,7 @@ var divPerGancho = document.getElementById('personalizacionGancho');
 var divPerPortatraje = document.getElementById('personalizacionPortatrajes');
 var divForroChaleco = document.getElementById('otroForroChaleco');
 var divOjalesActivosManga = document.getElementById('divOjalesActivosManga');
+var divOjalesActivosSolapa = document.getElementById('divOjalesActivosSolapa');
 var divCantidadDeBotones = document.getElementById('cantidadBotones');
 
 // Elementos que contienen la lógica de hide/show
@@ -123,6 +124,7 @@ var selectTipoPortatrajes = document.getElementById('tipoPortatrajes');
 var checkForroChaleco = document.getElementById('tipoForroChaleco');
 var checkOjalesActivosManga = document.getElementById('ojalesActivosManga');
 var checkBotonesDeCliente = document.getElementById('botonesCliente');
+//var tipoOjalEnSolapa = document.getElementById('ojalEnSolapa');
 
 //Funcion para oocultar componentes
 function iniciarComponentes() {
@@ -137,6 +139,7 @@ function iniciarComponentes() {
     $(divPerGancho).hide();
     $(divPerPortatraje).hide();
     $(divOjalesActivosManga).hide();
+    $(divOjalesActivosSolapa).hide();
 }
 
 /**
@@ -165,11 +168,17 @@ function mostrarOcultarOtroForroChaleco() {
 
 // Mostrar el campo para ojales activos en manga
 function mostrarOcultarOjalesActivosManga() {
-    //$(divOjalesActivosManga).toggle();
     if (checkOjalesActivosManga.checked) {
         $(divOjalesActivosManga).show();
     }else{
         $(divOjalesActivosManga).hide();
+    }
+}
+function mostrarOcultarOjalesActivosSolapa() {
+    if (solapaEnContraste.value == 2) {
+        $(divOjalesActivosSolapa).show();
+    }else{
+        $(divOjalesActivosSolapa).hide();
     }
 }
 
@@ -177,24 +186,27 @@ function mostrarOcultarOjalesActivosManga() {
 function coloresSolapaEnContraste() {
     if (solapaEnContraste.value == 2) {
         $(coloresDeSolapaEnContraste).show();
+    }else if(ojalDeMangaEnContraste.value == 1){
+        $(coloresDeSolapaEnContraste).show();
+    }else if (solapaEnContraste.value == 2 || ojalDeMangaEnContraste.value == 1) {
+        $(coloresDeSolapaEnContraste).show();
     } else {
         $(coloresDeSolapaEnContraste).hide();
     }
 }
 
 //Mostrar y ocultar paleta de colores para ojal en contraste de manga
-function coloresOjalEnManga() {
+/*function coloresOjalEnManga() {
     if (ojalDeMangaEnContraste.value == 1) {
-        $(colorDeMangaEnContraste).show();
+        $(coloresDeSolapaEnContraste).show();
     } else {
-        $(colorDeMangaEnContraste).hide();
+        $(coloresDeSolapaEnContraste).hide();
     }
-}
+}*/
 
 //Lógica para Bies & pinpoint
 function coloresBies() {
     if (tipoAccesorio1.checked) {
-        console.log("tu mama");
         $(colorDeBiesPinpoint).show();
     } else {
         $(colorDeBiesPinpoint).hide();
@@ -214,13 +226,6 @@ function coloresBiesPinpoint() {
         $(colorDeBiesPinpoint).hide();
     }
 }
-/*function coloresPinPoint() {
-    if (pinPointInterno.checked) {
-        $(colorPalettePinPoint).show();
-    } else {
-        $(colorPalettePinPoint).hide();
-    }
-}*/
 // Mostrar y ocultar personalización de gancho
 function mostrarOcultarPersonalizacionGancho() {
     if (selectTipoGancho.value == "2") {
@@ -262,8 +267,12 @@ function agregarEventos() {
         coloresSolapaEnContraste();
     });
     ojalDeMangaEnContraste.addEventListener('click', function () {
-        coloresOjalEnManga();
+        coloresSolapaEnContraste();
     });
+    solapaEnContraste.addEventListener('click',function(){
+        mostrarOcultarOjalesActivosSolapa();
+    });
+
 
     checkEtiquetaMarca.addEventListener('click', function () {
         mostrarOcultarOtraMarca();
@@ -288,7 +297,7 @@ function agregarEventos() {
         mostrarOcultarCantidadBotones();
     });
 
-    console.log('Finalización de Declaración de Eventos en función.');
+    console.log('Finalización de Declaración de Eventos en función:)');
 }
 
 //Agregar eventos y ocultar componentes al cargar la página

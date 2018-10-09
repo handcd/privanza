@@ -836,7 +836,7 @@
 									<h5 class="text-center">Solapa</h5>
 									<div class="form-group label-floating">
 										<label class="control-label">Color de ojal en Solapa</label>
-										<select name="tipoOjalSolapa" class="form-control" ue" id="ojalEnSolapa">
+										<select name="tipoOjalSolapa" class="form-control" id="ojalEnSolapa">
 											<option disabled="" selected=""></option>
 											<option value="1">Al tono</option>
 											<option value="2">En contraste</option>
@@ -848,6 +848,22 @@
 											Selecciona para que el ojal sea activo
 										</label>
 									</div>
+									<div class="form-group label-floating" id="divOjalesActivosSolapa">
+	                                	<label class="control-label">Posición de Ojales Activos</label>
+                                		<select class="form-control" name="posicionOjalesSolapa">
+		                                    <option disabled="" 
+		                                    @hasSection('editCliente')
+		                                    {{-- Ya hay un cliente seleccionado --}}
+		                                    @else
+		                                      selected="" 
+		                                    @endif></option>
+		                                    <option value="0"> 1</option>
+		                                    <option value="1"> 1 y 2</option>
+		                                    <option value="2"> 1, 2, 3 </option>
+		                                    <option value="3"> Todos</option>
+		                                    <option value="4"> 4</option>
+		                                </select>	                                		
+	                            	</div>
 								</div>					
 							</div>
 						</div>
