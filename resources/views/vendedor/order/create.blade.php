@@ -8,6 +8,22 @@
 <script src="{{ asset('wizard/js/jquery.bootstrap.js') }}" type="text/javascript"></script>
 <script src="{{ asset('wizard/js/material-bootstrap-wizard.js') }}"></script>
 <script src="{{ asset('wizard/js/jquery.validate.min.js') }}"></script>
+<script type="text/javascript">
+	var checkSinAletilla = document.getElementById('sinAletilla');
+	var imagen = document.getElementById('pickstitch');
+	function cambiarImagenPickstitch(){
+	    if ( checkSinAletilla.checked) {
+	        $("#imagen").attr("src","{{ asset('img/suit_options/saco/pick-stitch-saletilla.png') }}");
+	        console.log('Sin Aletilla');
+	    }else{
+	        $("#imagen").attr("src","{{ asset('img/suit_options/saco/pick-stitch.png') }}");
+	        console.log('Con Aletilla');
+	    }
+	 }
+	checkSinAletilla.addEventListener('click',function(){
+        cambiarImagenPickstitch();
+    });
+</script>
 
 <style>
 	/*
@@ -1594,5 +1610,6 @@
     </div>
 </div> <!-- row -->
 <script src="{{ asset('wizard/js/orderwizard.js') }}"></script>
+
 
 @endsection

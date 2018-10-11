@@ -96,7 +96,7 @@ var tipoAccesorio2 = document.getElementById('tipoAccesorio2');
 var tipoAccesorio3 = document.getElementById('tipoAccesorio3');
 var solapaEnContraste = document.getElementById('ojalEnSolapa');
 var ojalDeMangaEnContraste = document.getElementById('tipoDeOjalEnManga');
-var checkSinAletilla = document.getElementById('sinAletilla');
+//var checkSinAletilla = document.getElementById('sinAletilla');
 
 
 //Variables para obtener paletas de colores y ocultar componentes
@@ -120,7 +120,7 @@ var selectTipoPortatrajes = document.getElementById('tipoPortatrajes');
 var checkForroChaleco = document.getElementById('tipoForroChaleco');
 var checkOjalesActivosManga = document.getElementById('ojalesActivosManga');
 var checkBotonesDeCliente = document.getElementById('botonesCliente');
-var imgPickStitch = document.getElementById('pickstitch');
+//var imgPickStitch = document.getElementById('pickstitch');
 
 //Funcion para oocultar componentes
 function iniciarComponentes() {
@@ -140,7 +140,7 @@ function iniciarComponentes() {
  * a lo que se defina en el Business Logic.
  */
  //Mostrar u ocultar imagen con o sin pickstitch
- function cambiarImagenPickstitch(){
+ /*function cambiarImagenPickstitch(){
     if ( checkSinAletilla.checked) {
         $("#imgPickStitch").attr("src","{{ asset('img/suit_options/saco/pick-stitch-saletilla.png') }}");
         console.log('Sin Aletilla');
@@ -148,7 +148,7 @@ function iniciarComponentes() {
         $("#imgPickStitch").attr("src","{{ asset('img/suit_options/saco/pick-stitch.png') }}");
         console.log('Con Aletilla');
     }
- }
+ }*/
 //Mostrar el campo para ingresar el número de botones, sólo si los entrega el cliente
 function mostrarOcultarCantidadBotones(){
     if (checkBotonesDeCliente.checked) {
@@ -262,9 +262,9 @@ function agregarEventos() {
     solapaEnContraste.addEventListener('click',function(){
         mostrarOcultarOjalesActivosSolapa();
     });
-    checkSinAletilla.addEventListener('click',function(){
+    /*checkSinAletilla.addEventListener('click',function(){
         cambiarImagenPickstitch();
-    });
+    });*/
 
     checkEtiquetaMarca.addEventListener('click', function () {
         mostrarOcultarOtraMarca();
