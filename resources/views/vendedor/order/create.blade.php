@@ -1051,7 +1051,7 @@
 									<div class="col-md-6 text-center">
 										<label>
 										  <input type="checkbox" name="pickstitch" />
-										  <img src="{{ asset('img/suit_options/saco/pick-stitch.png') }}">
+										  <img src="{{ asset('img/suit_options/saco/pick-stitch.png') }}"  id="pickstitch">
 										  <p class="text-center">Pick Stitch para Saco (Se incluye en filos, aletilla y cartera)</p>
 										</label>
 									</div>
@@ -1062,7 +1062,7 @@
 										</p>
 										<div class="checkbox">
 											<label>
-												<input type="checkbox" name="sinaletilla">
+												<input type="checkbox" name="sinaletilla" id="sinAletilla">
 												Sin Aletilla
 											</label>
 										</div>
