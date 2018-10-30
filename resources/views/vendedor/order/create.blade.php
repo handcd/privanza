@@ -573,6 +573,7 @@
 													<option disabled="" selected=""></option>
 													<option value="0">Rectos</option>
 													<option value="1">Normales</option>
+													<option value="2">Caídos</option>
 												</select>
 											</div>
 										</div>

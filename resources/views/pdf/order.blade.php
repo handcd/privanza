@@ -11,7 +11,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Privanza | Detalles de Pedido #{{ $orden->id }}</title>
+    <title>Privanza | Detalles de pedido #{{ $orden->id }}</title>
 
     <!-- Styles -->
      <style>
@@ -350,7 +350,7 @@
 
     </table>
     {{--Detalles generales del pedido--}}
-    <h4>Datos básicos de orden</h4>
+    <h4>Datos básicos del pedido</h4>
     <table class="table table-bordered">
         <tr>
             <th>
