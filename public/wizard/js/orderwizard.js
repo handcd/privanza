@@ -91,21 +91,17 @@ module.exports = __webpack_require__(10);
  */
 
 //Variables para obtener elementos input
-//var biesInterno = document.getElementById('BiesInterno');
-//var pinPointInterno = document.getElementById('PinPointInterno');
-//var biesPinPointInterno = document.getElementById('biesPinPointInterno');
 var tipoAccesorio1 = document.getElementById('tipoAccesorio1');
 var tipoAccesorio2 = document.getElementById('tipoAccesorio2');
 var tipoAccesorio3 = document.getElementById('tipoAccesorio3');
 var solapaEnContraste = document.getElementById('ojalEnSolapa');
 var ojalDeMangaEnContraste = document.getElementById('tipoDeOjalEnManga');
+//var checkSinAletilla = document.getElementById('sinAletilla');
 
 
 //Variables para obtener paletas de colores y ocultar componentes
 var coloresDeSolapaEnContraste = document.getElementById('solapaContraste');
 var colorDeMangaEnContraste = document.getElementById('colorDeOjalEnMangas');
-//var colorDeBies = document.getElementById('colorPaletteBies');
-//var colorDePinpoint = document.getElementById('colorPalettePinpoint');
 var colorDeBiesPinpoint = document.getElementById('colorPaletteBiesPinpoint');
 
 // Elementos Ocultos
@@ -124,16 +120,13 @@ var selectTipoPortatrajes = document.getElementById('tipoPortatrajes');
 var checkForroChaleco = document.getElementById('tipoForroChaleco');
 var checkOjalesActivosManga = document.getElementById('ojalesActivosManga');
 var checkBotonesDeCliente = document.getElementById('botonesCliente');
-//var tipoOjalEnSolapa = document.getElementById('ojalEnSolapa');
+//var imgPickStitch = document.getElementById('pickstitch');
 
 //Funcion para oocultar componentes
 function iniciarComponentes() {
     $(colorDeMangaEnContraste).hide();
     $(coloresDeSolapaEnContraste).hide();
-
     $(colorDeBiesPinpoint).hide();
-    //$(colorDeBies).hide();
-    //$(colorDePinpoint).hide();
     $(divCantidadDeBotones).hide();
     $(divMarcaEtiqueta).hide();
     $(divPerGancho).hide();
@@ -146,6 +139,16 @@ function iniciarComponentes() {
  * Funciones para lógica de control de elementos, cada una es específica
  * a lo que se defina en el Business Logic.
  */
+ //Mostrar u ocultar imagen con o sin pickstitch
+ /*function cambiarImagenPickstitch(){
+    if ( checkSinAletilla.checked) {
+        $("#imgPickStitch").attr("src","{{ asset('img/suit_options/saco/pick-stitch-saletilla.png') }}");
+        console.log('Sin Aletilla');
+    }else{
+        $("#imgPickStitch").attr("src","{{ asset('img/suit_options/saco/pick-stitch.png') }}");
+        console.log('Con Aletilla');
+    }
+ }*/
 //Mostrar el campo para ingresar el número de botones, sólo si los entrega el cliente
 function mostrarOcultarCantidadBotones(){
     if (checkBotonesDeCliente.checked) {
@@ -153,7 +156,6 @@ function mostrarOcultarCantidadBotones(){
     }else{
         $(divCantidadDeBotones).hide();
     }
-
 }
 // Mostrar el campo para otra marca sólamente si se reciben etiquetas de marca.
 function mostrarOcultarOtraMarca() {
@@ -194,15 +196,6 @@ function coloresSolapaEnContraste() {
         $(coloresDeSolapaEnContraste).hide();
     }
 }
-
-//Mostrar y ocultar paleta de colores para ojal en contraste de manga
-/*function coloresOjalEnManga() {
-    if (ojalDeMangaEnContraste.value == 1) {
-        $(coloresDeSolapaEnContraste).show();
-    } else {
-        $(coloresDeSolapaEnContraste).hide();
-    }
-}*/
 
 //Lógica para Bies & pinpoint
 function coloresBies() {
@@ -260,9 +253,6 @@ function agregarEventos() {
     tipoAccesorio3.addEventListener('click', function () {
         coloresBiesPinpoint();
     });
-    /*pinPointInterno.addEventListener('click', function () {
-        coloresBiesPinpoint();
-    });*/
     solapaEnContraste.addEventListener('click', function () {
         coloresSolapaEnContraste();
     });
@@ -272,7 +262,9 @@ function agregarEventos() {
     solapaEnContraste.addEventListener('click',function(){
         mostrarOcultarOjalesActivosSolapa();
     });
-
+    /*checkSinAletilla.addEventListener('click',function(){
+        cambiarImagenPickstitch();
+    });*/
 
     checkEtiquetaMarca.addEventListener('click', function () {
         mostrarOcultarOtraMarca();
