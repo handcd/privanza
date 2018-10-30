@@ -67,7 +67,7 @@
                 @if($orden->client->altura)                
                     {{ $orden->client->altura  }} Cm.
                 @else
-                    Desconocido
+                     
                 @endif 
             </td>
             <td>
@@ -76,7 +76,7 @@
                 @if($orden->client->peso)
                     {{ $orden->client->peso  }} Kg.
                 @else
-                    Desconocido
+                     
                 @endif
             </td>
             <td colspan="2">
@@ -85,7 +85,7 @@
                 @if($orden->client->edad)
                     {{ $orden->client->edad  }} años
                 @else
-                    Desconocido
+                     
                 @endif
             </td>
             <td>
@@ -94,7 +94,7 @@
                 @if($orden->client->contornoCuello)
                     {{ $orden->client->contornoCuello  }} pulgadas
                 @else
-                    Desconocido
+                     
                 @endif
             </td>
             <td>
@@ -103,7 +103,7 @@
                 @if($orden->client->contornoBiceps)
                     {{ $orden->client->contornoBiceps  }} pulgadas 
                 @else
-                    Desconocido
+                     
                 @endif
             </td>
             <td>
@@ -112,7 +112,7 @@
                 @if($orden->client->brazoDerecho)
                     {{ $orden->client->brazoDerecho  }} pulgadas
                 @else
-                    Desconocido
+                     
                 @endif
             </td>
             <td>
@@ -121,7 +121,7 @@
                 @if($orden->client->brazoIzquierdo)
                     {{ $orden->client->brazoIzquierdo  }} pulgadas
                 @else
-                    Desconocido
+                     
                 @endif
             </td>
             <td>
@@ -130,7 +130,7 @@
                 @if($orden->client->hombroDerecho)
                     {{ $orden->client->hombroDerecho  }} pulgadas
                 @else
-                    Desconocido
+                     
                 @endif
             </td>
             <td>
@@ -139,7 +139,7 @@
                 @if($orden->client->hombroIzquierdo)
                     {{ $orden->client->hombroIzquierdo  }} pulgadas
                 @else
-                    Desconocido
+                     
                 @endif
             </td>
         </tr>
@@ -153,7 +153,7 @@
                 @if($orden->client->medidaHombros)
                     {{ $orden->client->medidaHombros  }} pulgadas
                 @else
-                    Desconocido
+                     
                 @endif
             </td>
             <td>
@@ -162,7 +162,7 @@
                 @if($orden->client->anchoEspalda)
                     {{ $orden->client->anchoEspalda  }} pulgadas
                 @else
-                    Desconocido
+                     
                 @endif
             </td>
             <td>
@@ -171,7 +171,7 @@
                 @if($orden->client->punio)
                     {{ $orden->client->punio }} pulgadas
                 @else
-                    Desconocido
+                     
                 @endif
             </td>
             <td>
@@ -180,7 +180,7 @@
                 @if($orden->client->largoTorso)
                     {{ $orden->client->largoTorso }} pulgadas
                 @else
-                    Desconocido
+                     
                 @endif
             </td>
             <td>
@@ -189,7 +189,7 @@
                 @if($orden->client->contornoPecho)
                     {{ $orden->client->contornoPecho }} pulgadas
                 @else
-                    Desconocido
+                     
                 @endif
             </td>
             <td>
@@ -198,7 +198,7 @@
                 @if($orden->client->contornoAbdomen)
                     {{ $orden->client->contornoAbdomen }} pulgadas
                 @else
-                    Desconocido
+                     
                 @endif
             </td>
         </tr>
@@ -221,7 +221,7 @@
                               <p>Entrada inválida</p>
                     @endswitch
                 @else
-                    Desconocido
+                     
                 @endif
             </td>
             <td>
@@ -242,7 +242,7 @@
                                 <p>Entrada inválida</p>
                     @endswitch 
                 @else
-                    Desconocido
+                     
                 @endif
             </td>
             <td>
@@ -263,7 +263,7 @@
                             <p>Entrada inválida</p>
                     @endswitch
                 @else
-                    Desconocido
+                     
                 @endif
             </td>
             <td>
@@ -281,7 +281,7 @@
                 @if($orden->client->contornoCintura)
                     {{ $orden->client->contornoCintura }} pulgadas
                 @else
-                    Desconocido
+                     
                 @endif
             </td>
             <td>
@@ -290,7 +290,7 @@
                 @if($orden->client->contornoCadera)
                     {{ $orden->client->contornoCadera  }} pulgadas
                 @else
-                    Desconocido
+                     
                 @endif
             </td>
             <td>
@@ -299,7 +299,7 @@
                 @if($orden->client->largoExternoPantalon )
                     {{ $orden->client->largoExternoPantalon }} pulgadas
                 @else
-                    Desconocido
+                     
                 @endif
             </td>
             <td>
@@ -308,7 +308,7 @@
             @if($orden->client->largoInternoPantalon)
                 {{ $orden->client->largoInternoPantalon }} pulgadas
             @else
-                Desconocido
+                 
             @endif
             </td>
             <td>
@@ -317,7 +317,7 @@
                 @if($orden->client->largoTiro)
                     {{ $orden->client->largoTiro }} pulgadas
                 @else
-                    Desconocido
+                     
                 @endif
             </td>
             <td>
@@ -326,7 +326,7 @@
                 @if( $orden->client->contornoMuslo)
                     {{ $orden->client->contornoMuslo }} pulgadas
                 @else
-                    Desconocido
+                     
                 @endif
             </td>
         </tr>
@@ -340,7 +340,7 @@
                 @if( $orden->client->contornoRodilla )
                     {{ $orden->client->contornoRodilla }} pulgadas
                 @else
-                    Desconocido
+                     
                 @endif
             </td>
             <td colspan="5">
@@ -361,28 +361,46 @@
                 Tipo de tela: 
                 ISCO
             </td>
-            @else
+            @elseif($orden->tela_isco === 0)
                 <td>
                 Tipo de tela: 
                 Del cliente
             </td>
+            @else
+                <td>
+                    
+                </td>
             @endif
             <td>
                 Código: 
-                {{ $orden->codigo_tela }}
+                @if( $orden->codigo_tela )
+                    {{ $orden->codigo_tela }}
+                @else
+
+                @endif
             </td>
             <td>
                 Nombre: 
+                @if($orden->nombre_tela)
                 {{ $orden->nombre_tela }}
+                @else
+
+                @endif
             </td>
             <td>
                 Color:
+                @if($orden->codigo_color_tela && $orden->color_tela)
                 {{ $orden->codigo_color_tela }} {{ $orden->color_tela }}
+                @else
+
+                @endif
             </td>
             @if( $orden->tela_isco === 0 )
                 <td>
                     Metros: {{ $orden->mts_tela_cliente }}
                 </td>
+            @else
+                Metros:
             @endif
         </tr>
         <tr>
@@ -402,19 +420,35 @@
             @endif
             <td>
                 Código: 
-                {{ $orden->codigo_forro }}
+                @if($orden->codigo_forro)
+                    {{ $orden->codigo_forro }}
+                @else
+
+                @endif
             </td>
             <td>
                 Nombre: 
+                @if($orden->nombre_forro)
                 {{ $orden->nombre_forro }}
+                @else
+
+                @endif
             </td>
             <td>
                 Color:
+                @if($orden->codigo_color_forro && $orden->color_forro)
                 {{ $orden->codigo_color_forro }} {{ $orden->color_forro }}
+                @else
+
+                @endif
             </td>
             @if( $orden->forro_isco === 0 )
                 <td>
-                    Metros: {{ $orden->mts_forro_cliente }}
+                    Metros entregados: {{ $orden->mts_forro_cliente }}
+                </td>
+            @else
+                <td>
+                    Metros entregados:
                 </td>
             @endif
         </tr>
@@ -427,19 +461,31 @@
                     Tipo de Botones: 
                     Del cliente
                 </td>
-            @else
+            @elseif($orden->tipo_botones === 0)
                 <td>
                     Tipo de botones: 
                     ISCO
                 </td>
+            @else 
+                <td>
+                    Tipo de botones:
+                </td>
             @endif
             <td>
                 Código: 
+                @if($orden->codigo_botones)
                 {{ $orden->codigo_botones }}
+                @else
+
+                @endif
             </td>
             <td>
                 Color:
+                @if($orden->codigo_color_botones && $orden->color_botones )
                 {{ $orden->codigo_color_botones }} {{ $orden->color_botones }}
+                @else
+                    
+                @endif
             </td>
             @if( $orden->tipo_botones === 1 )
                 <td>
@@ -477,7 +523,7 @@
             @else
                 <td>
                     <b>Etiquetas: </b><br>
-                    Desconocido
+                     
                 </td>
             @endif
             @if( $orden->gancho)
@@ -495,7 +541,7 @@
             @else
                 <td>
                     <b>Gancho: </b><br>
-                    Desconocido
+                     
                 </td>
             @endif
             @if( $orden->portatrajes )
@@ -514,7 +560,7 @@
             @else
                 <td>
                     <b>Portatrajes:</b> <br>
-                    Desconocido
+                     
                 </td>
             @endif
             @if( $orden->bordado )
@@ -528,7 +574,7 @@
             @else
                 <td>
                     <b>Bordado: </b><br>
-                    Desconocido
+                     
                 </td>
             @endif
             
@@ -579,7 +625,7 @@
                     @if($saco->fit_id)
                         {{ $saco->fit->name}}
                     @else
-                        Desconocido
+                         
                     @endif    
                 </td>
                 <td>
@@ -588,7 +634,7 @@
                     @if($saco->talla) 
                         {{ $saco->talla }} pulgadas
                     @else
-                        Desconocido
+                         
                     @endif
                 </td>
                 <td>
@@ -597,7 +643,7 @@
                     @if($saco->largo_espalda_deseado) 
                         {{ $saco->largo_espalda_deseado }} pulgadas
                     @else
-                        Desconocido
+                         
                     @endif
                 </td>
                 <td>
@@ -617,7 +663,7 @@
                                 6 botones
                             @break
                         @default
-                            Desconocido
+                             
                     @endswitch
                 </td>
                 <td>
@@ -634,7 +680,7 @@
                                 Dos aberturas
                             @break
                         @default
-                            Desconocido
+                             
                     @endswitch
                 </td>
                 <td>
@@ -666,7 +712,7 @@
                             Sin bolsas
                             @break
                         @default
-                            Desconocido
+                             
                     @endswitch
                 </td>
                 <td>
@@ -710,7 +756,7 @@
                                 En escuadra ancha
                             @break
                         @default
-                            Desconocido
+                             
                     @endswitch
                 </td>
                 <td>
@@ -718,25 +764,31 @@
                     <br>
                     @if( $saco->tipo_ojal_solapa === 2) 
                         En Contraste. Color {{ $saco->color_ojal_solapa}}.
-                    @else
+                    @elseif($saco->tipo_ojal_solapa === 1)
                         Al tono
+                    @else
+
                     @endif
                 </td>
                 <td>
                     Ojal Activo en solapa:
                     <br>
-                     @if( $saco->ojal_activo_solapa === 1) 
+                    @if( $saco->ojal_activo_solapa === 1) 
                         Sí
-                    @else
+                    @elseif($saco->ojal_activo_solapa === 0)
                         No
+                    @else
+
                     @endif
                 </td>
                 <td>
                     Color de ojal en manga: 
                     @if( $saco->tipo_ojal_manga === 2) 
                         En Contraste. Color {{ $saco->color_ojal_manga}}.
-                    @else
+                    @elseif( $saco->tipo_ojal_manga === 1)
                         Al tono
+                    @else
+
                     @endif
                 </td>
                 <td colspan="2">
@@ -765,7 +817,7 @@
                                 Cuatro botones
                             @break    
                         @default
-                            Desconocido
+                             
                     @endswitch
                 </td>
                 <td>
@@ -779,7 +831,7 @@
                             Botones en línea
                             @break
                         @default
-                            Desconocido
+                             
                     @endswitch
                 </td>
             </tr>
@@ -795,7 +847,7 @@
                     @elseif( $saco->tipo_vista === 1 )
                         Chapeta Francesa
                     @else
-                        Desconocido
+                         
                     @endif
                 </td>
                 <td>
@@ -831,12 +883,13 @@
                             @break 
                         @case(4) 2 bolsas en pecho
                             @break
-                        @default Desconocido
+                        @default
+                            Tipo de bolsas internas
                     @endswitch
                     </td>
                 @else
                     <td colspan="2">
-                        
+                        Tipo de bolsas internas
                     </td>
                 @endif
                 @if( $saco->vivos_bolsas_internas_cuerpo)
@@ -850,6 +903,10 @@
                         Vivos en bolsas internas:
                         <br>
                         {{ $saco->otro_vivos_bolsas_internas }}
+                    </td>
+                @else
+                    <td colspan="2">
+                        Vivos en bolsas internas:
                     </td>
                 @endif
             </tr>
@@ -877,15 +934,14 @@
                         <br>
                             {{ $saco->notas_int }}
                     </td>
+                @else
+                    <td colspan="8">    
+
+                    </td>
                 @endif
             </tr>
         </table> 
-        <table class="table table-bordered">
-             <tr>
-               
-                
-            </tr>
-        </table>   
+          
     @endif
     {{--Fin Saco --}}
     {{-- Chaleco --}}
@@ -903,7 +959,7 @@
                     @if($chaleco->fit_id)
                         {{ $chaleco->fit->name}}
                     @else
-                        Desconocido
+                         
                     @endif    
                 </td>
                 <td>
@@ -912,7 +968,7 @@
                     @if($chaleco->talla) 
                         {{ $chaleco->talla }} pulgadas
                     @else
-                        Desconocido
+                         
                     @endif
                 </td>
                 <td>
@@ -923,7 +979,7 @@
                     @elseif( $chaleco->tipo_cuello === 2 )
                         Con solapa
                     @else
-                        Desconocido
+                         
                     @endif
                 </td>
                 <td>
@@ -934,7 +990,7 @@
                     @elseif( $chaleco->tipo_bolsas === 1 )
                         Con aletillas
                     @else
-                        Desconocido
+                         
                     @endif
                 </td>
                 <td>
@@ -945,12 +1001,16 @@
                     @elseif( $chaleco->tipo_espalda === 1 )
                         Forro. {{ $chaleco->tipo_forro}}
                     @else
-                        Desconocido
+                         
                     @endif
                 </td>
                 @if( $chaleco->notas )
                     <td>
+                        @if($chaleco->notas)
                         Notas: {{ $chaleco->notas}}
+                        @else
+
+                        @endif
                     </td>
                 @endif
             </tr>
@@ -978,7 +1038,7 @@
                     @if($pantalon->fit_id)
                         {{ $pantalon->fit->name }}
                     @else
-                        Desconocido
+                         
                     @endif    
                 </td>
                 <td>
@@ -987,7 +1047,7 @@
                     @if($pantalon->talla) 
                         {{ $pantalon->talla }} pulgadas
                     @else
-                        Desconocido
+                         
                     @endif
                 </td>
                 <td>
@@ -1005,7 +1065,7 @@
                     @elseif( $pantalon->pliegues === 2)
                         Dos pliegues
                     @else
-                        Desconocido
+                         
                     @endif
                 </td>
                 <td>
@@ -1040,13 +1100,17 @@
                             Valenciana
                             @break
                         @default
-                            Desconocido
+                             
                     @endswitch
                 </td>
                 <td colspan="6">
                     Notas:
                     <br>
+                    @if($pantalon->notas)
                     {{ $pantalon->notas }}
+                    @else
+
+                    @endif
                 </td>
             </tr>
         </table>
