@@ -269,10 +269,14 @@
             <td>
                 Tipo de hombros:
                 <br>
-                @if($orden->client->hombros === 0 )
+                @if( $orden->client->hombros === 0 )
                     Rectos
-                @else
+                @elseif( $orden->client->hombros === 1 )
                     Normales
+                @elseif( $orden->client->hombros === 2 )
+                    Caídos
+                @else 
+                    Desconocido
                 @endif
             </td>
             <td>
@@ -734,7 +738,19 @@
                 <td>
                     Color de ojal en manga: 
                     @if( $saco->tipo_ojal_manga === 2) 
-                        En Contraste. Color {{ $saco->color_ojal_manga}}.
+                        En Contraste. Color {{ $saco->color_ojal_manga}}. 
+                        @switch($orden->coat->posicion_ojales_contraste)
+                            @case(0)
+                                    Ojal 1
+                                    @break
+                            @case(1)
+                                    Ojal 4
+                                    @break
+                            @case(2)
+                                    Todos los ojales
+                                    @break
+                            @default
+                        @endswitch
                     @else
                         Al tono
                     @endif
