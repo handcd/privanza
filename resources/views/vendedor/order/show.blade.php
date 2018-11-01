@@ -236,15 +236,16 @@
                               <label class="text-primary">Tipo de hombros</label>
                               @switch( $orden->client->hombros )
                                     @case(0)
-                                          Rectos
+                                         <p>Rectos</p>
                                           @break
                                     @case(1)
-                                          Normales
+                                          <p>Normales</p>
                                           @break
                                     @case(2)
-                                          Caídos
+                                          <p>Caídos</p>
                                           @break
                                     @default
+                                          <p>Entrada inválida</p>
                               @endswitch
                         </div>
                   </div>
@@ -437,6 +438,7 @@
                         <h3>Saco</h3>
                         <h4>Medidas de Cliente</h4>
                         <div class="row">
+
                               @if( $orden->coat->fit)
                               <div class="col-md-3">
                                     <label class="text-primary">Fit deseado</label>
@@ -720,11 +722,12 @@
                         <h3>Chaleco</h3>
                         <h4>Medidas de Cliente</h4>
                         <div class="row">
+                              @if($orden->vest->fit->description)
                               <div class="col-md-3">
                                     <label class="text-primary">Fit</label>
                                     <p>{{ $orden->vest->fit->name }} <br><small>{{ $orden->vest->fit->description }}</small></p>
                               </div>
-                              
+                              @endif
                               <div class="col-md-3">
                                     <label class="text-primary">Largo Espalda</label>
                                     <p>{{ $orden->vest->largo_espalda }}</p>
@@ -779,10 +782,12 @@
                         <h3>Pantalón</h3>
                         <h4>Medidas de Cliente</h4>
                         <div class="row">
+                              @if($orden->pants->fit->description)
                               <div class="col-md-3">
                                     <label class="text-primary">Fit</label>
                                     <p>{{ $orden->pants->fit->name }} <br><small>{{ $orden->pants->fit->description}}</small></p>
                               </div>
+                              @endif
                               <div class="col-md-3">
                                     <label class="text-primary">Talla</label>
                                     <p>{{ $orden->pants->talla }}</p>

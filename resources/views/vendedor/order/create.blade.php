@@ -506,11 +506,89 @@
 		                            	<input type="text" name="bordadoColor" class="form-control">
 		                            </div>	
 		                            <div class="row">
-										<center><h4>Notas del Bordado</h4></center>
-										<div class="form-group label-floating">
-			                                <label class="control-label">Notas que puedan ayudar a tener una mejor idea de lo que quiere el cliente...</label>
-			                                <textarea name="notasBordado"  rows="2" class="form-control"></textarea>
-			                            </div>
+									<center><h4>Notas del Bordado</h4></center>
+									<div class="form-group label-floating">
+		                                <label class="control-label">Notas que puedan ayudar a tener una mejor idea de lo que quiere el cliente...</label>
+		                                <textarea name="notasBordado"  rows="2" class="form-control"></textarea>
+		                            </div>
+								</div>
+								</div>
+								
+							</div>
+						</div>
+
+						{{-- Medidas del cliente --}}
+						
+						<div class="tab-pane" id="medidas">
+							<h4 class="info-text">Medidas Generales del cliente</h4>
+							<div class="row">
+								<div class="col-md-10 col-md-offset-1">
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group label-floating">
+												<label class="control-label">Altura <small>(En centímetros)</small>:</label>
+												<input type="number" min="10" step="1" name="altura" id="altura" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group label-floating">
+												<label class="control-label">Peso <small>(En kilogramos)</small>:</label>
+												<input type="number" min="10" step=".1" name="peso" id="peso" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group label-floating">
+												<label class="control-label">Edad <small>(En años)</small>:</label>
+												<input type="number" min="10" step="1" name="edad" id="edad" class="form-control">
+											</div>
+										</div>										
+									</div>	
+									<h4 class="info-text">Perfil</h4>
+									<div class="row">
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label for="hombros" class="control-label">Hombros:</label>
+												<select name="hombros" id="hombros" class="form-control">
+													<option disabled="" selected=""></option>
+													<option value="0">Rectos</option>
+													<option value="1">Normales</option>
+													<option value="2">Caídos</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label for="abdomen" class="control-label">Abdomen:</label>
+												<select name="abdomen" id="abdomen" class="form-control">
+													<option disabled="" selected=""></option>
+													<option value="0">Delgado</option>
+													<option value="1">Normal</option>
+													<option value="2">Voluminoso</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label for="pecho" class="control-label">Pecho:</label>
+												<select name="pecho" id="pecho" class="form-control">
+													<option disabled="" selected=""></option>
+													<option value="0">Musculoso</option>
+													<option value="1">Normal</option>
+													<option value="2">Curpulento</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group label-floating">
+												<label for="espalda" class="control-label">Espalda:</label>
+												<select name="espalda" id="espalda" class="form-control">
+													<option disabled="" selected=""></option>
+													<option value="0">Recta</option>
+													<option value="1">Normal</option>
+													<option value="2">Encorvada</option>
+												</select>
+											</div>
+										</div>		
 									</div>
 								</div>
 							</div>

@@ -80,8 +80,8 @@ class DatabaseSeeder extends Seeder
         /*factory(App\Vendedor::class, 10)->create();
         factory(App\Client::class, 10)->create([
             'vendedor_id' => 1,
-        ]);
-        factory(App\Client::class, App\Vendedor::all()->count()*15)->create();
+        ]);*/
+        /*factory(App\Client::class, App\Vendedor::all()->count()*15)->create();
         factory(App\Event::class, 10)->create();
         factory(App\Validador::class, 10)->create();*/
 
@@ -128,9 +128,9 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
 
-        }
+        }*/
 
-        factory(App\AdjustmentOrder::class,10)->create();
+        /*factory(App\AdjustmentOrder::class,10)->create();
         factory(App\Adjustment::class,10)->create();*/
     }
 }
