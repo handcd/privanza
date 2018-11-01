@@ -8,23 +8,6 @@
 <script src="{{ asset('wizard/js/jquery.bootstrap.js') }}" type="text/javascript"></script>
 <script src="{{ asset('wizard/js/material-bootstrap-wizard.js') }}"></script>
 <script src="{{ asset('wizard/js/jquery.validate.min.js') }}"></script>
-<script type="text/javascript">
-	var checkSinAletilla = document.getElementById('sinAletilla');
-	var imagen = document.getElementById('pickstitch');
-	function cambiarImagenPickstitch(){
-	    if ( checkSinAletilla.checked) {
-	        $("#imagen").attr("src","{{ asset('img/suit_options/saco/pick-stitch-saletilla.png') }}");
-	        console.log('Sin Aletilla');
-	    }else{
-	        $("#imagen").attr("src","{{ asset('img/suit_options/saco/pick-stitch.png') }}");
-	        console.log('Con Aletilla');
-	    }
-	 }
-	checkSinAletilla.addEventListener('click',function(){
-        cambiarImagenPickstitch();
-    });
-</script>
-
 <style>
 	/*
 	Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
@@ -885,7 +868,7 @@
 						</div>
 						<div class="col-md-10 col-sm-offset-1">
 							<div class="col-md-6">
-								<img src="{{ asset('img/suit_options/saco/Manga_Normal.jpg') }}" alt="Imágen de Indicador de Botones">
+								<img src="{{ asset('img/suit_options/saco/manga_normal.jpg') }}" alt="Imágen de Indicador de Botones">
 							</div>		
 							<div class="col-sm-6" id="solapaContraste">
 								{{--<div class="row">--}}
@@ -1286,7 +1269,7 @@
 										<div class="col-xs-6">
 											<label>
 											  <input type="radio" name="cuelloChaleco" value="1" />
-											  <img src="{{ asset('img/suit_options/chaleco/Chaleco_Solapa.jpg') }}">
+											  <img src="{{ asset('img/suit_options/chaleco/chaleco_solapa.jpg') }}">
 											  <p class="text-center">Con Solapa</p>
 											</label>
 										</div>
@@ -1610,6 +1593,18 @@
     </div>
 </div> <!-- row -->
 <script src="{{ asset('wizard/js/orderwizard.js') }}"></script>
-
-
+{{-- Script para el cambio de imagen cuando es con/sin pickstitch--}}
+<script type="text/javascript">
+    var checkSinAletilla = document.getElementById('sinAletilla');
+    function cambiarImagenPickstitch(){
+        if ( checkSinAletilla.checked ) {
+            document.getElementById('pickstitch').src = "{{ asset('img/suit_options/saco/pick-stitch-saletilla.png') }}";
+        }else{
+            document.getElementById('pickstitch').src = "{{ asset('img/suit_options/saco/pick-stitch.png') }}";
+        }
+    }
+    checkSinAletilla.addEventListener('click',function(){
+        cambiarImagenPickstitch();
+    });
+</script>
 @endsection

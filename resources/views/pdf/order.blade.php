@@ -35,7 +35,7 @@
 <body>
     <div class="row">
         <div class="col-md-10 text-center">
-            <h3>Privanza | Detalle de Orden #{{ $orden->id }} </h3>
+            <h3>Privanza | Detalle de pedido #{{ $orden->id }} | Órden producción  </h3>
         </div>
     </div>
     {{-- Detalles Generales de la orden --}}
@@ -350,7 +350,7 @@
 
     </table>
     {{--Detalles generales del pedido--}}
-    <h4>Datos básicos de orden</h4>
+    <h4>Materiales</h4>
     <table class="table table-bordered">
         <tr>
             <th>
