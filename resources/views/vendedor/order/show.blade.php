@@ -234,11 +234,19 @@
                         </div>
                         <div class="col-md-3">
                               <label class="text-primary">Tipo de hombros</label>
-                              @if( $orden->client->hombros === 0 )
-                                    <p>Rectos</p>
-                              @else
-                                    <p>Normales</p>
-                              @endif
+                              @switch( $orden->client->hombros )
+                                    @case(0)
+                                          <p>Rectos</p>
+                                          @break
+                                    @case(1)
+                                          <p>Normales</p>
+                                          @break
+                                    @case(2)
+                                          <p>Caídos</p>
+                                          @break
+                                    @default
+                                          <p>Entrada inválida</p>
+                              @endswitch
                         </div>
                   </div>
                   <div class="row">
