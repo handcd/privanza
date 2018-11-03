@@ -766,13 +766,13 @@
 									<div class="row">
 										<div class="col-md-4">
 											<div class="form-group label-floating">
-												<label class="control-label">Largo de manga deseado:</label>
+												<label class="control-label">Largo de manga deseado <small>(small)</small>:</label>
 												<input type="number" min="10" step="1" name="tallaSaco" id="tallaSaco" class="form-control">
 											</div>
 										</div>
 										<div class="col-md-3">
 											<div class="form-group label-floating">
-												<label class="control-label">Largo de espalda deseado:</label>
+												<label class="control-label">Largo de espalda deseado<small>(small)</small>:</label>
 												<input type="number" min="10" step="1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control">
 											</div>
 										</div>
@@ -890,7 +890,7 @@
 							</div>		
 							<div class="col-sm-6" id="solapaContraste">
 								{{--<div class="row">--}}
-										<p>Selecciona el color del ojal en solapa:</p>
+										<p>Selecciona el color de los ojales en contraste:</p>
 									
 									@include('partials.color-palette', ['varName' => 'OjalSolapa'])
 								{{--</div>--}}										
@@ -1050,14 +1050,14 @@
 										<label>
 										  <input type="radio" name="bolsasExt" value="5"/>
 										  <img src="{{ asset('img/suit_options/saco/CarteraContinental.png') }}">
-										  <p class="text-center">Cartera Continental</p>
+										  <p class="text-center">Cartera Continental <small>Sólo lado derecho</small></p>
 										</label>
 									</div>
 									<div class="col-md-3 col-xs-6">
 										<label>
 										  <input type="radio" name="bolsasExt" value="6"/>
 										  <img src="{{ asset('img/suit_options/saco/CarteraContinentalDiagonal.png') }}">
-										  <p class="text-center">Cartera Continental Diagonal</p>
+										  <p class="text-center">Cartera Continental Diagonal <small>Sólo lado derecho</small></p>
 										</label>
 									</div>									
 								</div>
@@ -1265,7 +1265,7 @@
                     					</div>
                     					<div class="col-md-6">
                     						<div class="form-group label-floating">
-                    							<label class="control-label">Largo de espalda deseado:</label>
+                    							<label class="control-label">Largo de espalda deseado <small>(pulgadas)</small>:</label>
                     							<input type="number" min="10" step="1" name="tallaChaleco" id="tallaChaleco" class="form-control">
                     						</div>
                     					</div>
@@ -1383,7 +1383,7 @@
                     					</div>
 										<div class="col-md-6">
 											<div class="form-group label-floating">
-												<label class="control-label">Talla del Pantalón:</label>
+												<label class="control-label">Talla comercial de Pantalón:</label>
 												<input type="number" min="10" step="1" name="tallaPantalon" id="tallaPantalon" class="form-control">
 											</div>
 										</div>
