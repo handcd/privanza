@@ -60,7 +60,7 @@ class DatabaseSeeder extends Seeder
 
         // Database
         DB::table('configurations')->insert([
-            'horas_aviso_no_aprobada' => 22
+            'horas_aviso_no_aprobada' => 4
         ]);
 
         // Fits

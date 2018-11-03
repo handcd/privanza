@@ -112,6 +112,7 @@ var divForroChaleco = document.getElementById('otroForroChaleco');
 var divOjalesActivosManga = document.getElementById('divOjalesActivosManga');
 var divOjalesActivosSolapa = document.getElementById('divOjalesActivosSolapa');
 var divCantidadDeBotones = document.getElementById('cantidadBotones');
+var divPosicionOjalesManga = document.getElementById('divPosicionOjalesManga');
 
 // Elementos que contienen la lógica de hide/show
 var checkEtiquetaMarca = document.getElementById('checkEtiquetaMarca');
@@ -133,6 +134,7 @@ function iniciarComponentes() {
     $(divPerPortatraje).hide();
     $(divOjalesActivosManga).hide();
     $(divOjalesActivosSolapa).hide();
+    $(divPosicionOjalesManga).hide();
 }
 
 /**
@@ -194,6 +196,14 @@ function coloresSolapaEnContraste() {
         $(coloresDeSolapaEnContraste).show();
     } else {
         $(coloresDeSolapaEnContraste).hide();
+    }
+}
+//Mostrar y ocultar campo para posición del ojal que va en contraste
+function posicionOjalEnContraste(){
+    if (ojalDeMangaEnContraste.value == 1) {
+        $(divPosicionOjalesManga).show();
+    }else{
+        $(divPosicionOjalesManga).hide();   
     }
 }
 
@@ -262,9 +272,9 @@ function agregarEventos() {
     solapaEnContraste.addEventListener('click',function(){
         mostrarOcultarOjalesActivosSolapa();
     });
-    /*checkSinAletilla.addEventListener('click',function(){
-        cambiarImagenPickstitch();
-    });*/
+    ojalDeMangaEnContraste.addEventListener('click',function(){
+        posicionOjalEnContraste();
+    });
 
     checkEtiquetaMarca.addEventListener('click', function () {
         mostrarOcultarOtraMarca();

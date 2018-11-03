@@ -400,6 +400,9 @@ class OrderController extends Controller
             // Todo lo referente a Mangas 
             $saco->botones_mangas = $request->botonesMangas; // Número de botones en mangas
             $saco->tipo_ojal_manga = $request->tipoOjalManga; //Al tono o en contraste
+            if ($request->tipoOjalManga == 1) {
+                $saco->posicion_ojales_contraste = $request->posicionOjalesContrasteMangas;
+            }
             
             // Color Ojal de Solapa
             $saco->tipo_ojal_solapa = $request->tipoOjalSolapa; //Al tono o en contraste
@@ -511,15 +514,15 @@ class OrderController extends Controller
         $request->session()->flash('success', '¡Se ha registrado correctamente la orden #'.$orden->id.'!');
 
         // Send Emails about new Order
-        if ($configuracion->notificar_vendedor_nueva_orden) {
+        if ($this->configuracion->notificar_vendedor_nueva_orden) {
             Notification::send($orden->vendedor, new NewOrder($orden->vendedor,$orden));
         }
-        if ($configuracion->notificar_validador_nueva_orden) {
+        if ($this->configuracion->notificar_validador_nueva_orden) {
             foreach (Validador::all() as $validador) {
                 Notification::send($validador, new NewOrder($validador,$orden));
             }
         }
-        if ($configuracion->notificar_admin_nueva_orden) {
+        if ($this->configuracion->notificar_admin_nueva_orden) {
             foreach (Admin::all() as $admin) {
                 Notification::send($admin, new NewOrder($admin,$orden));
             }
@@ -542,7 +545,6 @@ class OrderController extends Controller
             Session::flash('danger','La orden que deseas ver no puede ser mostrada porque no tienes autorización para verla o no existe.');
             return redirect('/vendedor/ordenes');
         }
-
         return view('vendedor.order.show',compact('orden'));
     }
 
@@ -573,7 +575,289 @@ class OrderController extends Controller
      */
     public function updateForVendedor(Request $request, $id)
     {
-        return $request;
+        //return $request;
+        $orden = Order::find($id);
+        $clientes = Vendedor::find(Auth::id())->clients;
+
+        if (!$orden || $orden->vendedor_id != Auth::id() || $orden->approved) {
+            Session::flash('danger','La orden que deseas editar no puede ser mostrada porque no tienes autorización para verla o no existe.');
+            return redirect('/vendedor/ordenes');
+        }
+
+        // Tela
+        if ($request->tipoTela === 'cliente') {
+            $orden->tela_isco = false;
+            $orden->codigo_tela = $request->codigoTelaCliente;
+            $orden->nombre_tela = $request->nombreTelaCliente;
+            $orden->codigo_color_tela = $request->codigoColorTelaCliente;
+            $orden->color_tela = $request->colorTelaCliente;
+            $orden->mts_tela_cliente = $request->mtsTelaCliente;
+        } else {
+            $orden->tela_isco = true;
+            $orden->codigo_tela = $request->codigoTelaIsco;
+            $orden->nombre_tela = $request->nombreTelaIsco;
+            $orden->codigo_color_tela = $request->codigoColorTelaIsco;
+            $orden->color_tela = $request->colorTelaIsco;
+        }
+
+        // Forro
+        if ($request->tipoForro === 'cliente') {
+            $orden->forro_isco = false;
+            $orden->codigo_forro = $request->codigoForroCliente;
+            $orden->nombre_forro = $request->nombreForroCliente;            
+            $orden->codigo_color_forro = $request->codigoColorForroCliente;
+            $orden->color_forro = $request->colorForroCliente;
+            $orden->mts_forro_cliente = $request->mtsForroCliente;
+        } else {
+            $orden->forro_isco = true;
+            $orden->codigo_forro = $request->codigoForroIsco;
+            $orden->nombre_forro = $request->nombreForroIsco;
+            $orden->codigo_color_forro = $request->codigoColorForroIsco;
+            $orden->color_forro = $request->colorForroIsco;  
+
+        }
+
+        // Botones
+        $orden->tipo_botones = $request->botonesCliente ? true : false;
+        $orden->codigo_botones = $request->codigoBotones; 
+        $orden->codigo_color_botones = $request->codigoColorBotones;
+        $orden->color_botones = $request->colorBotones;
+        $orden->cantidad_botones = $request->cantidadBotones;
+
+        // Etiquetas
+        $orden->etiquetas_tela = $request->etiquetaTela ? true : false;
+        $orden->etiquetas_marca = $request->etiquetaMarca ? true : false;
+
+        // Marca de la Etiqueta
+        if ($request->etiquetaMarca) {
+            $orden->marca_en_etiqueta = $request->marcaEtiqueta;
+        }
+
+        // Gancho
+        $orden->gancho = $request->tipoGancho;
+        if ($orden->gancho == 2) {
+            $orden->gancho_personalizacion = $request->perGancho;
+        }
+
+        // Portatrajes
+        $orden->portatrajes = $request->tipoPortatrajes;
+        if ($orden->portatrajes == 2) {
+            $orden->portatrajes_personalizacion = $request->perPortatrajes;
+        }
+        //Bordado
+        $orden->bordado = $request->bordadoNombre;
+        $orden->letra = $request->letra;
+
+        if ($request->bordadoColor) {
+            $orden->bordadoColor = $request->bordadoColor;
+        }else{
+            $orden->bordadoColor = 'Gris Plata';
+        }
+
+        $orden->notasBordado = $request->notasBordado;
+
+        // Componentes del Traje
+        $orden->has_vest = $request->chaleco ? true : false;
+        $orden->has_coat = $request->saco ? true : false;
+        $orden->has_pants = $request->pantalon ? true : false;
+
+
+        // Guardar la Orden;
+        $orden->save();
+
+        // Chaleco
+        if ($orden->has_vest) {
+            
+
+            // Medidas Corporales
+            $chaleco->fit_id = $request->fitChaleco;
+            $chaleco->talla = $request->tallaChaleco;
+
+            // Datos de Chaleco
+            $chaleco->order_id = $orden->id;
+            $chaleco->tipo_cuello = $request->cuelloChaleco;
+            $chaleco->tipo_bolsas = $request->bolsasChaleco;
+
+            $chaleco->tipo_espalda = $request->forroTela;
+            if ($request->tipoForroChaleco) {
+                $chaleco->tipo_forro = $request->tipoForroChaleco;
+            } else {
+                $chaleco->tipo_forro = $request->codigoOtroForroChaleco;
+            }
+
+            $chaleco->notas = $request->notasChaleco;
+
+            // Guardar Datos de Chaleco
+            $chaleco->save();
+        }
+
+        // Pantalón
+        if ($orden->has_pants) {
+           
+
+            // Medidas Corporales
+            $pantalon->fit_id = $request->fitPantalon;
+            $pantalon->talla = $request->tallaPantalon;
+            $pantalon->notas = $request->notasPantalon;
+
+            // Datos del Pantalón
+            $pantalon->order_id = $orden->id;
+            $pantalon->pase = $request->tipoPase;
+            $pantalon->pliegues = $request->numPliegues;
+            $pantalon->bolsas_traseras = $request->bolsasTraseras;
+            $pantalon->tipo_vivo = $request->tipoVivo;
+            // Color Ojalera, Encuarte y Pretina
+            if ($request->otroColorOjaleraEncuarte) {
+                $pantalon->color_ojalera = $request->otroColorOjaleraEncuarte;
+                $pantalon->color_pretina = $request->otroColorOjaleraEncuarte;
+            } else {
+                $pantalon->color_ojalera = $request->colorOjaleraEncuarte;
+                $pantalon->color_pretina = $request->colorOjaleraEncuarte;
+            }
+            //color medio forro piernas            
+            $pantalon->medio_forro_piernas_al_tono = $request->medioForroPiernasAlTono ? true : false;            
+
+            //Dobladillo
+            $pantalon->dobladillo = $request->dobladillo;
+            
+
+            // Guardar Datos de Pantalón
+            $pantalon->save();
+        }
+
+        // Saco
+        if ($orden->has_coat) {
+           
+
+            // Medidas Corporales
+            $saco->fit_id = $request->fitSaco;
+            $saco->talla = $request->tallaSaco;
+            $saco->largo_espalda_deseado = $request->largoEspaldaSaco;
+
+            $saco->order_id = $orden->id;
+            $saco->tipo_solapa = $request->tipoSolapa; //Solapa 
+            // Todo lo referente a Mangas 
+            $saco->botones_mangas = $request->botonesMangas; // Número de botones en mangas
+            $saco->tipo_ojal_manga = $request->tipoOjalManga; //Al tono o en contraste
+            if ($request->tipoOjalManga == 1) {
+                $saco->posicion_ojales_contraste = $request->posicionOjalesContrasteMangas;
+            }
+            
+            // Color Ojal de Solapa
+            $saco->tipo_ojal_solapa = $request->tipoOjalSolapa; //Al tono o en contraste
+            // Color del ojal en solapa
+            if ($request->otroColorOjalSolapa || $request->otroColorOjalMangas) {
+                $saco->color_ojal_solapa = $request->otroColorOjalSolapa; 
+                $saco->color_ojal_manga = $request->otroColorOjalSolapa;
+            } else {
+                $saco->color_ojal_solapa = $request->colorOjalSolapa;
+                $saco->color_ojal_manga = $request->colorOjalSolapa;
+            }
+            //ojal activo en solapa
+            $saco->ojal_activo_solapa = $request->ojalActivoSolapa ? true : false;
+            //Posición de los ojales en contraste para solapa
+            $saco->posicion_ojal_solapa = $request->posicionOjalesSolapa;
+            //Botones
+            $saco->botones_frente = $request->botonesFrente;
+            //Aberturas
+            $saco->aberturas_detras = $request->aberturasDetras;
+            
+            $saco->posicion_ojal_manga = $request->posicionOjalesManga;
+            $saco->ojales_activos_manga = $request->ojalesActivosManga ? true : false;
+          
+
+            // Bolsas Exteriores
+            $saco->tipo_bolsas_ext = $request->bolsasExt;
+            $saco->pickstitch = $request->pickstitch ? true : false;
+            $saco->sin_aletilla = $request->sinaletilla ? true : false;
+            
+
+            // Datos de Saco Interno
+            $saco->tipo_vista = $request->tipoVista;
+            $saco->balsam_rayas = $request->balsamRayasForroMangas ? true : false;
+            if ($request->otroForroInternoMangas) {
+                $saco->forro_interno_mangas = $request->otroForroInternoMangas;
+            } else {
+                $saco->forro_interno_mangas = "Balsam a Rayas";
+            }
+
+                        
+
+            //Bies y pinpoint
+            $saco->tipo_accesorio = $request->tipoAccesorio;
+            if ($saco->tipo_accesorio === 0) {
+                // Color Pinpoint
+                if ($request->otroColorPuntada) {
+                    $saco->accesorio_color = $request->otroColorPuntada;
+                } else {
+                    $saco->accesorio_color = $request->colorPuntada;
+                }
+
+                // Código de Pinpoint
+                $saco->accesorio_codigo = $request->pinPointInternoCodigo;
+                
+            }elseif ($saco->tipo_accesorio === 1) {
+                //Color de Bies
+                if ($request->otroColorPuntada) {
+                    $saco->accesorio_color = $request->otroColorPuntada;
+                } else {
+                    $saco->accesorio_color = $request->colorPuntada;
+                }
+
+                // Código Bies
+                $saco->accesorio_codigo = $request->biesInternoCodigo;
+            }else{
+                if ($request->otroColorPuntada) {
+                    $saco->accesorio_color = $request->otroColorPuntada;
+                } else {
+                    $saco->accesorio_color = $request->colorPuntada;
+                }
+
+                // Código Bies y pinpoint
+                $saco->accesorio_codigo = $request->pinpointbiesInternoCodigo;
+            }
+            
+
+            // Tipo de Bolsas Internas
+            $saco->bolsas_int = $request->bolsasInt;
+
+            // Vivos iguales a los vivos del Cuerpo
+            $saco->vivos_bolsas_internas_cuerpo = $request->vivosBolsasInternasCuerpo ? true : false;
+            if (!$saco->vivos_bolsas_internas_cuerpo) {
+                $saco->otro_vivos_bolsas_internas = $request->otroVivosBolsasInternas;
+            }
+            
+            // Puntadas
+            $saco->puntada_filos = $request->pickstitch ? true : false;
+            $saco->puntada_aletillas = $request->pickstitch ? true : false;
+            $saco->puntada_carteras = $request->pickstitch ? true : false;
+            // Notas del Saco
+            $saco->notas_ext = $request->notasSacoExt;
+            $saco->notas_int = $request->notasSacoInt;
+
+            // Guardar los datos del Saco
+            $saco->save();
+        }
+
+        // Notify the user about the new order
+        $request->session()->flash('success', '¡Se ha editado correctamente la orden #'.$orden->id.'!');
+
+        // Send Emails about new Order
+        if ($this->configuracion->notificar_vendedor_nueva_orden) {
+            Notification::send($orden->vendedor, new NewOrder($orden->vendedor,$orden));
+        }
+        if ($this->configuracion->notificar_validador_nueva_orden) {
+            foreach (Validador::all() as $validador) {
+                Notification::send($validador, new NewOrder($validador,$orden));
+            }
+        }
+        if ($this->configuracion->notificar_admin_nueva_orden) {
+            foreach (Admin::all() as $admin) {
+                Notification::send($admin, new NewOrder($admin,$orden));
+            }
+        }
+        // Redirect to Orders:Home
+        return redirect('/vendedor/ordenes');
     }
 
     /**

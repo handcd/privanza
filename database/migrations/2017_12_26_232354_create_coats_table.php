@@ -30,7 +30,7 @@ class CreateCoatsTable extends Migration
             $table->boolean('ojales_activos_manga')->nullable();
             $table->integer('posicion_ojales_activos_manga')->nullable(); /* 0-> Cuarto | 1-> Tercero y cuarto | 2-> Segundo, tercero y cuarto | 3-> Todos*/
             $table->integer('posicion_ojal_solapa')->nullable(); /* 0-> Primero | 1-> Uno y dos | 2-> uno, dos y tres | 3-> Todos | 4-> cuatro */
-            
+            $table->integer('posicion_ojales_contraste')->nullable();
             /*
                 0) Parche
                 1) Cartera

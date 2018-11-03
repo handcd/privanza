@@ -234,11 +234,19 @@
                         </div>
                         <div class="col-md-3">
                               <label class="text-primary">Tipo de hombros</label>
-                              @if( $orden->client->hombros === 0 )
-                                    <p>Rectos</p>
-                              @else
-                                    <p>Normales</p>
-                              @endif
+                              @switch( $orden->client->hombros )
+                                    @case(0)
+                                         <p>Rectos</p>
+                                          @break
+                                    @case(1)
+                                          <p>Normales</p>
+                                          @break
+                                    @case(2)
+                                          <p>Caídos</p>
+                                          @break
+                                    @default
+                                          <p>Entrada inválida</p>
+                              @endswitch
                         </div>
                   </div>
                   <div class="row">
@@ -517,7 +525,19 @@
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Ojal en Manga</label>
                                     @if ($orden->coat->tipo_ojal_manga === 0)
-                                          <p>Al tono</p>
+                                          <p>Al tono</p>.
+                                          @switch($orden->coat->posicion_ojales_contraste)
+                                                @case(0)
+                                                      Ojal 1
+                                                      @break
+                                                @case(1)
+                                                      Ojal 4
+                                                      @break
+                                                @case(2)
+                                                      Todos los ojales
+                                                      @break
+                                                @default
+                                          @endswitch
                                     @else
                                           <p>En contraste</p>
                                     @endif
