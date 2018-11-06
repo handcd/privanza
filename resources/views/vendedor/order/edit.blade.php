@@ -6,6 +6,8 @@
 @section('editVest',$orden->has_vest)
 @section('editPants',$orden->has_pants)
 @section('tipoTelaIsco',$orden->tela_isco)
+@section('editLargoManga',$saco->talla )
+@section('editLargoEspalda',$saco->largo_espalda_deseado)
 
 
 {{--

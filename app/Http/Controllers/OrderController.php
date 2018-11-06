@@ -558,12 +558,13 @@ class OrderController extends Controller
     {
         $orden = Order::find($id);
         $clientes = Vendedor::find(Auth::id())->clients;
-
+        $saco = Coat::find($id);
         if (!$orden || $orden->vendedor_id != Auth::id() || $orden->approved) {
             Session::flash('danger','La orden que deseas editar no puede ser mostrada porque no tienes autorización para verla o no existe.');
             return redirect('/vendedor/ordenes');
         }
-        return view('vendedor.order.edit',compact('orden','clientes'));
+        //return $saco;
+        return view('vendedor.order.edit',compact('orden','clientes','saco'));
     }
 
     /**
