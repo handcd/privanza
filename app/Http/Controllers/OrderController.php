@@ -322,7 +322,8 @@ class OrderController extends Controller
         $orden->has_coat = $request->saco ? true : false;
         $orden->has_pants = $request->pantalon ? true : false;
 
-
+        $orden->consecutivo_op = $request->consecutivoOperacion;
+        $orden->precio = $request->precio;
         // Guardar la Orden;
         $orden->save();
 

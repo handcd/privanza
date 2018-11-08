@@ -26,16 +26,13 @@
             font-family: "Helvetica";
             font-size: 6;
         }
-        .page-break {
-            page-break-after: always;
-        }
         tbody:before, tbody:after { display: none; }
     </style> 
 </head>
 <body>
     <div class="row">
         <div class="col-md-10 text-center">
-            <h3>Privanza | Detalle de pedido #{{ $orden->id }} | Órden producción  </h3>
+            <h3>Privanza | Detalle de pedido #{{ $orden->id }} | Órden producción {{ $orden->consecutivo_op }} </h3>
         </div>
     </div>
     {{-- Detalles Generales de la orden --}}
@@ -357,12 +354,8 @@
         </tr>
 
     </table>
-    {{--Detalles generales del pedido--}}
-<<<<<<< HEAD
+    {{-- Materiales para la elaboración del pedido --}}
     <h4>Materiales</h4>
-=======
-    <h4>Datos básicos del pedido</h4>
->>>>>>> 5d81f0b079ab69f12dcc1a0290c3bd2cf056fa28
     <table class="table table-bordered">
         <tr>
             <th>
@@ -627,8 +620,10 @@
         </div>
         <table class="table table-bordered">    
             <tr>
-                <th colspan="3" class="text-center">Generales</th>
-                <th colspan="5" class="text-center">Cuerpo</th>
+                <th colspan="3" class="text-center" style="font-family: 'Helvetica';
+            font-size: 6;">Generales</th>
+                <th colspan="5" class="text-center" style="font-family: 'Helvetica';
+            font-size: 6;">Cuerpo</th>
             </tr>
             <tr>
                 <td>
@@ -796,7 +791,6 @@
                 <td>
                     Color de ojal en manga: 
                     @if( $saco->tipo_ojal_manga === 2) 
-<<<<<<< HEAD
                         En Contraste. Color {{ $saco->color_ojal_manga}}. 
                         @switch($orden->coat->posicion_ojales_contraste)
                             @case(0)
@@ -810,11 +804,7 @@
                                     @break
                             @default
                         @endswitch
-                    @else
-=======
-                        En Contraste. Color {{ $saco->color_ojal_manga}}.
                     @elseif( $saco->tipo_ojal_manga === 1)
->>>>>>> 5d81f0b079ab69f12dcc1a0290c3bd2cf056fa28
                         Al tono
                     @else
 
