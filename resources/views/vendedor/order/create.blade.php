@@ -1292,14 +1292,14 @@
 						</div>
 						{{-- Tab Finalizar--}}
 						<div class="tab-pane" id="finalizar">
-							<div class="col-md-6 col-md-offset-3">
+							<!--<div class="col-md-6 col-md-offset-3">
 								<h4 class="info-text">
 									Estamos a punto de terminar ¡Hurra! Para finalizar, por favor ingresa los datos que se te piden a continuación, si los desconoces, no te preocupes, más tarde puedes volver para llenarlos, así como todos los que hayas dejado en blanco.
 								</h4>								
-							</div>
-							<br><br><br><br><br>
-							<h4>Fin de Orden</h4>                		
+							</div>-->
+							                		
 	                		<div class="row">
+	                			<center><h4>Fin de Orden</h4></center>
 	                			<div class="col-md-8 col-md-offset-2">
 	                				<p>Al hacer click en <em>Finalizar</em> aceptas haber ingresado los datos correctamente. Recuerda que el pedido una vez aprobado <strong>NO</strong> podrá ser editado por parte del vendedor. Si consideras que existe algún error, o quisieras dejar algún comentario puedes escribir al correo: <a href="mailto:soporte@privanza.com">soporte@privanza.com</a></p>
 	                				<p>Se te informará vía alertas de correo electrónico del status de tus órdenes por lo que te recomendamos estar al pendiente del mismo. Si no encuentras las alertas, porfavor revisa tu carpeta de Spam y si el problema persiste, ponte en contacto al correo antes mencionado.</p>
