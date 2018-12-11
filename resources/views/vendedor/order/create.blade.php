@@ -1052,7 +1052,7 @@
                     					<div class="col-md-6">
                     						<div class="form-group label-floating">
                     							<label class="control-label">Largo de espalda deseado <small>(pulgadas)</small>:</label>
-                    							<input type="number" min="10" step="1" name="tallaChaleco" id="tallaChaleco" class="form-control">
+                    							<input type="number" min="10" step=".1" name="tallaChaleco" id="tallaChaleco" class="form-control">
                     						</div>
                     					</div>
                     				</div>

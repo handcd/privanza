@@ -67,8 +67,8 @@ class CreateCoatsTable extends Migration
 
             // Datos Saco
             $table->integer('fit_id')->nullable();
-            $table->integer('talla')->nullable();
-            $table->integer('largo_espalda_deseado')->nullable();
+            $table->double('talla')->nullable();
+            $table->double('largo_espalda_deseado')->nullable();
 
             $table->string('notas_int',1000)->nullable();
             $table->string('notas_ext',1000)->nullable();
