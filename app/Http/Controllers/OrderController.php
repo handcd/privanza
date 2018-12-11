@@ -565,6 +565,7 @@ class OrderController extends Controller
             return redirect('/vendedor/ordenes');
         }
         //return $saco;
+        //return $orden;
         return view('vendedor.order.edit',compact('orden','clientes','saco'));
     }
 
@@ -726,10 +727,10 @@ class OrderController extends Controller
             // Guardar Datos de Pantalón
             $pantalon->save();
         }
-
+       
         // Saco
         if ($orden->has_coat) {
-           
+            $saco = Coat::find($id);
 
             // Medidas Corporales
             $saco->fit_id = $request->fitSaco;
@@ -836,10 +837,15 @@ class OrderController extends Controller
             // Notas del Saco
             $saco->notas_ext = $request->notasSacoExt;
             $saco->notas_int = $request->notasSacoInt;
-
             // Guardar los datos del Saco
             $saco->save();
+            
+        }elseif ($orden->has_coat && !isset($saco)) {
+            $saco = new Coat;
+            return $saco;
         }
+
+        
 
         // Notify the user about the new order
         $request->session()->flash('success', '¡Se ha editado correctamente la orden #'.$orden->id.'!');

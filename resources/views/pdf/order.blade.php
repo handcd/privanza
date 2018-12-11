@@ -392,20 +392,33 @@
 
                 @endif
             </td>
-            <td>
-                Color:
-                @if($orden->codigo_color_tela && $orden->color_tela)
-                {{ $orden->codigo_color_tela }} {{ $orden->color_tela }}
-                @else
+            @if($orden->tela_isco === 1)
+                <td colspan="2">
+                    Color:
+                    @if($orden->codigo_color_tela && $orden->color_tela)
+                    {{ $orden->codigo_color_tela }} {{ $orden->color_tela }}
+                    @else
 
-                @endif
-            </td>
-            @if( $orden->tela_isco === 0 )
-                <td>
-                    Metros: {{ $orden->mts_tela_cliente }}
+                    @endif
                 </td>
             @else
-                Metros:
+                <td>
+                    Color:
+                    @if($orden->codigo_color_tela && $orden->color_tela)
+                    {{ $orden->codigo_color_tela }} {{ $orden->color_tela }}
+                    @else
+
+                    @endif
+                </td>
+            @endif
+            @if( $orden->tela_isco === 0 )
+                <td>
+                    Metros entregados: {{ $orden->mts_tela_cliente }}
+                </td>
+            @else
+                <td>
+                    Metros entregados:
+                </td>
             @endif
         </tr>
         <tr>
@@ -590,7 +603,7 @@
                 </td>
             @else
                 <td colspan="2">
-                    
+                    Notas:
                 </td>
             @endif
             @else
@@ -600,7 +613,7 @@
                     </td>
                 @else
                     <td>
-                    
+                        Notas:
                     </td>
             @endif
             @endif
@@ -698,22 +711,22 @@
                             Parche
                             @break
                         @case(1)
-                            Cartera
+                            Vivos con carteras
                             @break
                         @case(2)
-                            Cartera en diagonal
+                            Carteras en diagonal
                             @break
                         @case(3)
-                            Vivo (sin cartera)
+                            Vivos (sin cartera)
                             @break
                         @case(4)
-                            Vivo Diagonal
+                            Vivos en Diagonal
                             @break
                         @case(5)
-                            Cartera continental
+                            Cartera continental (Sólo lado derecho)
                             @break
                         @case(6)
-                            Cartera diagonal
+                            Cartera continental en diagonal
                             @break
                         @case(7)
                             Sin bolsas
@@ -735,9 +748,9 @@
                     Aletillas:
                     <br>
                     @if( $saco->sin_aletilla === 1 )
-                        Sin aletillas
+                        Sin aletilla de pecho
                     @else
-                        Con aletillas
+                        Con aletilla de pecho
                     @endif
                 </td>
             </tr>
@@ -781,7 +794,7 @@
                     Ojal Activo en solapa:
                     <br>
                     @if( $saco->ojal_activo_solapa === 1) 
-                        Sí
+                        Sí.
                     @elseif($saco->ojal_activo_solapa === 0)
                         No
                     @else
@@ -954,8 +967,13 @@
                             {{ $saco->notas_int }}
                     </td>
                 @else
-                    <td colspan="8">    
-
+                    <td colspan="4">    
+                        Notas de saco externo:
+                        <br>
+                    </td>
+                    <td colspan="4">    
+                        Notas de saco interno:
+                        <br>
                     </td>
                 @endif
             </tr>
@@ -1023,15 +1041,16 @@
                          
                     @endif
                 </td>
-                @if( $chaleco->notas )
-                    <td>
-                        @if($chaleco->notas)
-                        Notas: {{ $chaleco->notas}}
-                        @else
-
-                        @endif
-                    </td>
-                @endif
+            </tr>
+            <tr>
+                <td colspan="8">
+                    @if($chaleco->notas)
+                    Notas: {{ $chaleco->notas}}
+                    @else
+                    Notas:
+                    <br>
+                    @endif
+                </td>
             </tr>
         </table>
     @endif
@@ -1061,7 +1080,7 @@
                     @endif    
                 </td>
                 <td>
-                    Talla de referencia de pantalón:
+                    Ancho de bajos deseado:
                     <br>
                     @if($pantalon->talla) 
                         {{ $pantalon->talla }} pulgadas
@@ -1072,7 +1091,7 @@
                 <td>
                     Tipo de pase:
                     <br>
-                    Con pase
+                    Con pase, botón y ojal
                 </td>
                 <td>
                     Número de pliegues:
@@ -1090,7 +1109,7 @@
                 <td>
                     Bolsas traseras:
                     <br>
-                    Dos bolsas traseras, vivo sencillo con ojal.                    
+                    Dos bolsas traseras de doble vivo con ojal y botón en cada una.                    
                 </td>
                 <td>
                     Color de bies, ojalera, encuarte y pretina:

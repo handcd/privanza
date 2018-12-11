@@ -174,7 +174,8 @@ $(document).ready(function(){
         } else if($(this).attr('id') === 'telaIsco') {
             $('#telaClienteDatos').fadeOut();
             $('#telaIscoDatos').fadeIn();
-        } else if($(this).attr('id') === 'forroCliente') {
+        }
+        if($(this).attr('id') === 'forroCliente') {
             $('#forroIscoDatos').fadeOut();
             $('#forroClienteDatos').fadeIn();
         } else if($(this).attr('id') === 'forroIsco') {
@@ -182,7 +183,7 @@ $(document).ready(function(){
             $('#forroIscoDatos').fadeIn();
         }
     });
-
+    
     // Disable initial options
     if (!debug) {
         $('.wizard-card').bootstrapWizard('disable',1);

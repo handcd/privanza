@@ -8,6 +8,7 @@
 <script src="{{ asset('wizard/js/jquery.bootstrap.js') }}" type="text/javascript"></script>
 <script src="{{ asset('wizard/js/material-bootstrap-wizard.js') }}"></script>
 <script src="{{ asset('wizard/js/jquery.validate.min.js') }}"></script>
+
 <style>
 	/*
 	Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
@@ -41,7 +42,7 @@
         <!--      Wizard container        -->
         <div class="wizard-container">
             <div class="card wizard-card" data-color="blue" id="wizard">
-                <form action="{{ url('/vendedor/ordenes') }}/@yield('editCliente')" method="post" onsubmit="return confirm('¿La información que deseas registrar es correcta?');">
+                <form action="{{ url('/vendedor/ordenes') }}/@yield('editOrden')" method="post" onsubmit="return confirm('¿La información que deseas registrar es correcta?');">
                 	{{ csrf_field() }}
                 	@section('editMethod')
                     	@show
@@ -184,7 +185,7 @@
 											</span>
 	                                    	<div class="form-group label-floating">
 	                                          	<label class="control-label">Código de Tela del Cliente:</label>
-	                                          	<input name="codigoTelaCliente" type="text" class="form-control">
+	                                          	<input name="codigoTelaCliente" type="text" class="form-control" value="@yield('editCodigoTela')">
 	                                        </div>
 	                                    </div>
 	                                    <div class="input-group">
@@ -193,7 +194,7 @@
 											</span>
 	                                    	<div class="form-group label-floating">
 	                                          	<label class="control-label">Nombre de la tela:</label>
-	                                          	<input name="nombreTela" type="text" class="form-control">
+	                                          	<input name="nombreTelaCliente" type="text" class="form-control" value="@yield('editNombreTela')">
 	                                        </div>
 	                                    </div>
 	                                    <div class="input-group">
@@ -202,7 +203,7 @@
 											</span>
 	                                        <div class="form-group label-floating">
 	                                          	<label class="control-label">Código de Color de Tela:</label>
-	                                          	<input name="codigoColorTelaCliente" type="text" class="form-control">
+	                                          	<input name="codigoColorTelaCliente" type="text" class="form-control" value="@yield('editCodigoColorTela')">
 	                                        </div>
 	                                    </div>
 	                                    <div class="input-group">
@@ -211,7 +212,7 @@
 											</span>
 	                                        <div class="form-group label-floating">
 	                                          	<label class="control-label">Color de Tela:</label>
-	                                          	<input name="colorTelaCliente" type="text" class="form-control">
+	                                          	<input name="colorTelaCliente" type="text" class="form-control" value="@yield('editColorTela')">
 	                                        </div>
 	                                    </div>
 	                                    <div class="input-group">
@@ -220,7 +221,7 @@
 											</span>
 	                                        <div class="form-group label-floating">
 	                                          	<label class="control-label">Metros entregados:</label>
-	                                          	<input name="mtsTelaCliente" type="number" step="0.1" class="form-control" min="0">
+	                                          	<input name="mtsTelaCliente" type="number" step="0.1" class="form-control" min="0" value="@yield('editMetrosTela')">
 	                                        </div>
 	                                    </div>
                                     </div>
@@ -231,7 +232,7 @@
 											</span>
 	                                    	<div class="form-group label-floating">
 	                                          	<label class="control-label">Código de Tela ISCO:</label>
-	                                          	<input name="codigoTelaIsco" type="text" class="form-control">
+	                                          	<input name="codigoTelaIsco" type="text" class="form-control" value="@yield('editCodigoTelaIsco')">
 	                                        </div>
 	                                    </div>
 	                                    <div class="input-group">
@@ -240,7 +241,7 @@
 											</span>
 	                                    	<div class="form-group label-floating">
 	                                          	<label class="control-label">Nombre de la tela:</label>
-	                                          	<input name="nombreTelaIsco" type="text" class="form-control">
+	                                          	<input name="nombreTelaIsco" type="text" class="form-control" value="@yield('editNombreTelaIsco')">
 	                                        </div>
 	                                    </div>
 	                                    <div class="input-group">
@@ -249,7 +250,7 @@
 											</span>
 	                                        <div class="form-group label-floating">
 	                                          	<label class="control-label">Código de Color de Tela:</label>
-	                                          	<input name="codigoColorTelaIsco" type="text" class="form-control">
+	                                          	<input name="codigoColorTelaIsco" type="text" class="form-control" value="@yield('editCodigoColorTelaIsco')">
 	                                        </div>
 	                                    </div>
 	                                    <div class="input-group">
@@ -258,7 +259,7 @@
 											</span>
 	                                        <div class="form-group label-floating">
 	                                          	<label class="control-label">Color de Tela:</label>
-	                                          	<input name="colorTelaIsco" type="text" class="form-control">
+	                                          	<input name="colorTelaIsco" type="text" class="form-control" value="@yield('editColorTelaIsco')">
 	                                        </div>
 	                                    </div>
                                     </div>
@@ -292,7 +293,7 @@
 											</span>
 	                                    	<div class="form-group label-floating">
 	                                          	<label class="control-label">Código de Forro del Cliente:</label>
-	                                          	<input name="codigoForroCliente" type="text" class="form-control">
+	                                          	<input name="codigoForroCliente" type="text" class="form-control" value="@yield('editCodigoForro')">
 	                                        </div>
 	                                    </div>
 	                                    <div class="input-group">
@@ -301,7 +302,7 @@
 											</span>
 	                                    	<div class="form-group label-floating">
 	                                          	<label class="control-label">Nombre del Forro:</label>
-	                                          	<input name="nombreForroCliente" type="text" class="form-control">
+	                                          	<input name="nombreForroCliente" type="text" class="form-control" value="@yield('editNombreForro')">
 	                                        </div>
 	                                    </div>
 	                                    <div class="input-group">
@@ -310,7 +311,7 @@
 											</span>
 	                                        <div class="form-group label-floating">
 	                                          	<label class="control-label">Código de Color de Forro:</label>
-	                                          	<input name="codigoColorForroCliente" type="text" class="form-control">
+	                                          	<input name="codigoColorForroCliente" type="text" class="form-control" value="@yield('editCodigoColorForro')">
 	                                        </div>
 	                                    </div>
 	                                    <div class="input-group">
@@ -319,7 +320,7 @@
 											</span>
 	                                    	<div class="form-group label-floating">
 	                                          	<label class="control-label">Color del Forro:</label>
-	                                          	<input name="colorForroCliente" type="text" class="form-control">
+	                                          	<input name="colorForroCliente" type="text" class="form-control" value="@yield('editColorForro')">
 	                                        </div>
 	                                    </div>
 	                                    <div class="input-group">
@@ -328,7 +329,7 @@
 											</span>
 	                                        <div class="form-group label-floating">
 	                                          	<label class="control-label">Metros entregados:</label>
-	                                          	<input name="mtsForroCliente" type="number" step="0.1" class="form-control">
+	                                          	<input name="mtsForroCliente" type="number" step="0.1" class="form-control" value="@yield('editMetrosForro')">
 	                                        </div>
 	                                    </div>
                                     </div>
@@ -339,7 +340,7 @@
 											</span>
 	                                    	<div class="form-group label-floating">
 	                                          	<label class="control-label">Código de Forro ISCO:</label>
-	                                          	<input name="codigoForroIsco" type="text" class="form-control">
+	                                          	<input name="codigoForroIsco" type="text" class="form-control" value="@yield('editCodigoForroIsco')">
 	                                        </div>
 	                                    </div>
 	                                    <div class="input-group">
@@ -348,7 +349,7 @@
 											</span>
 	                                    	<div class="form-group label-floating">
 	                                          	<label class="control-label">Nombre del Forro:</label>
-	                                          	<input name="nombreForroIsco" type="text" class="form-control">
+	                                          	<input name="nombreForroIsco" type="text" class="form-control" value="@yield('editNombreForroIsco')">
 	                                        </div>
 	                                    </div>
 	                                    <div class="input-group">
@@ -357,7 +358,7 @@
 											</span>
 	                                        <div class="form-group label-floating">
 	                                          	<label class="control-label">Código de Color de Forro:</label>
-	                                          	<input name="codigoColorForroIsco" type="text" class="form-control">
+	                                          	<input name="codigoColorForroIsco" type="text" class="form-control" value="@yield('editCodigoColorForroIsco')">
 	                                        </div>
 	                                    </div>
 	                                    <div class="input-group">
@@ -366,7 +367,7 @@
 											</span>
 	                                    	<div class="form-group label-floating">
 	                                          	<label class="control-label">Color del Forro:</label>
-	                                          	<input name="colorForroIsco" type="text" class="form-control">
+	                                          	<input name="colorForroIsco" type="text" class="form-control" value="@yield('editColorForroIsco')">
 	                                        </div>
 	                                    </div>
                                     </div>
@@ -379,32 +380,38 @@
 									<h4 class="text-center">Datos de Botones</h4>
 									<div class="checkbox text-center">
 										<label>
-											<input type="checkbox" name="botonesCliente" id="botonesCliente">
+											<input type="checkbox" name="botonesCliente" id="botonesCliente"
+											@hasSection('editTipoBotones')
+												@if ($orden->tipo_botones)
+												 	checked="1"
+												 @endif 
+											@endif
+											>
 										</label>
 										Botones de cliente
 									</div>
 									<div class="col-md-6">
 										<div class="form-group label-floating">
 											<label for="" class="control-label">Código de Botones</label>
-											<input type="text" name="codigoBotones" class="form-control">
+											<input type="text" name="codigoBotones" class="form-control" value="@yield('editCodigoBotones')">
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group label-floating">
 											<label for="" class="control-label">Código de color de Botones</label>
-											<input type="text" name="codigoColorBotones" class="form-control">
+											<input type="text" name="codigoColorBotones" class="form-control" value="@yield('editCodigoColorBotones')">
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group label-floating">
 											<label for="" class="control-label">Color de Botones</label>
-											<input type="text" class="form-control" name="colorBotones">
+											<input type="text" class="form-control" name="colorBotones" value="@yield('editColorBotones')">
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group label-floating" id="cantidadBotones">
 											<label for="" class="control-label">Cantidad de botones</label>
-											<input type="number" class="form-control" name="cantidadBotones">
+											<input type="number" class="form-control" name="cantidadBotones" value="@yield('editCantidadBotones')">
 										</div>
 									</div>
 								</div>
@@ -416,19 +423,29 @@
 									<div class="col-md-10 col-md-offset-1">
 										<div class="checkbox">
 											<label>
-												<input type="checkbox" name="etiquetaTela">
+												<input type="checkbox" name="etiquetaTela" 
+												@hasSection('editEtiquetaTela')
+													@if ($orden->etiquetas_tela)
+														checked="1" 
+													@endif
+												@endif
+												>
 											</label>
 											Se Reciben Etiquetas de Tela
 										</div>
 										<div class="checkbox">
 											<label>
-												<input type="checkbox" name="etiquetaMarca" id="checkEtiquetaMarca">
+												<input type="checkbox" name="etiquetaMarca" id="checkEtiquetaMarca"      @hasSection('editEtiquetaMarca')
+													@if ($orden->etiquetas_marca)
+														checked="1" 
+													@endif
+												@endif>
 											</label>
 											Se Reciben Etiquetas de Marca
 										</div>										
 										<div class="form-group label-floating" id="marcaEtiqueta">
 											<label class="control-label"><small>Ingrese la marca:</small></label>
-											<input type="text" class="form-control" name="marcaEtiqueta">
+											<input type="text" class="form-control" name="marcaEtiqueta" value="@yield('editMarcaEtiqueta')">
 										</div>
 									</div>
 								</div>
@@ -437,20 +454,15 @@
 									<div class="form-group label-floating">
 		                                <label class="control-label">Tipo de gancho...</label>
 		                                <select class="form-control" id="tipoGancho" name="tipoGancho">
-		                                    <option disabled="" 
-		                                    @hasSection('editCliente')
-		                                    {{-- No hay tipo de evento --}}
-		                                    @else
-		                                      selected="" 
-		                                    @endif></option>
-		                                        <option value="0">Normal</option>
-		                                        <option value="1">Personalizado Privanza</option>
-		                                        <option value="2">Otro</option>
+		                                    	<option disabled="" selected="" ></option>
+		                                        <option value="0" {{(isset($orden->gancho) && $orden->gancho === 0) ? 'selected' : ''}}>Normal</option>
+		                                        <option value="1" {{(isset($orden->gancho) && $orden->gancho === 1) ? 'selected' : ''}}>Personalizado Privanza</option>
+		                                        <option value="2" {{(isset($orden->gancho) && $orden->gancho === 2) ? 'selected' : ''}}>Otro</option>
 		                                </select>
 		                            </div>
 		                            <div class="form-group label-floating" id="personalizacionGancho">
 		                            	<label class="control-label">Personalización Gancho: <small>(opcional)</small></label>
-		                            	<input type="text" name="perGancho" class="form-control">
+		                            	<input type="text" name="perGancho" class="form-control" value="@yield('editPerGancho')">
 		                            </div>
 								</div>
 								<div class="col-md-4">
@@ -458,20 +470,15 @@
 									<div class="form-group label-floating">
 		                                <label class="control-label">Tipo de portatrajes...</label>
 		                                <select class="form-control" id="tipoPortatrajes" name="tipoPortatrajes">
-		                                    <option disabled="" 
-		                                    @hasSection('editCliente')
-		                                    {{-- No hay tipo de evento --}}
-		                                    @else
-		                                      selected="" 
-		                                    @endif></option>
-		                                        <option value="0">Cubrepolvos</option>
-		                                        <option value="1">Personalizado Privanza</option>
-		                                        <option value="2">Otro</option>
+		                                    <option disabled="" selected=""></option>
+		                                    <option value="0" {{(isset($orden->portatrajes) && $orden->portatrajes === 0) ? 'selected' : ''}} >Cubrepolvos</option>
+		                                    <option value="1" {{(isset($orden->portatrajes) && $orden->portatrajes === 1) ? 'selected' : ''}}>Personalizado Privanza</option>
+		                                    <option value="2" {{(isset($orden->portatrajes) && $orden->portatrajes === 2) ? 'selected' : ''}}>Otro</option>
 		                                </select>
 		                            </div>
 		                            <div class="form-group label-floating" id="personalizacionPortatrajes">
 		                            	<label class="control-label">Personalización Portatrajes: <small>(opcional)</small></label>
-		                            	<input type="text" name="perPortatrajes" class="form-control">
+		                            	<input type="text" name="perPortatrajes" class="form-control" value="@yield('editPerPortatrajes')">
 		                            </div>
 								</div>								
 							</div>
@@ -481,19 +488,19 @@
 								<div class="col-md-4 col-md-offset-4">											
 									<div class="form-group label-floating">
 										<label class="control-label">Nombre <small>(Máximo 10 caracteres, los puntos también cuentan):</small></label>
-		                            	<input type="text" name="bordadoNombre" class="form-control" maxlength="10">
+		                            	<input type="text" name="bordadoNombre" class="form-control" maxlength="10" value="@yield('editNombreBordado')">
 		                            </div>
 									<div class="row text-center">
 										<div class="col-xs-3 col-xs-offset-3">
 											<label>
-			  									<input type="radio" name="letra" value="Molde" />
+			  									<input type="radio" name="letra" value="Molde" id="letraMolde" />
 			  									<img src="{{ asset('img/suit_options/letras/bordado_molde.png') }}">
 			  									<p>Letra de molde</p>
 											</label>									
 										</div>
 										<div class="col-xs-3">
 											<label>
-			  									<input type="radio" name="letra" value="Cursiva" />
+			  									<input type="radio" name="letra" value="Cursiva" id="letraCursiva" />
 			  									<img src="{{ asset('img/suit_options/letras/bordado_cursiva.png') }}">
 			  									<p>Letra cursiva</p>
 											</label>
@@ -502,13 +509,13 @@
 										<p>El color por defecto para el bordado es gris plata, si desea un color distinto, colóquelo abajo</p>									
 									<div class="form-group label-floating">
 										<label class="control-label">Otro Color <small>(opcional)</small>:</label>
-		                            	<input type="text" name="bordadoColor" class="form-control">
+		                            	<input type="text" name="bordadoColor" class="form-control" value="@yield('editColorBordado')">
 		                            </div>	
 		                            <div class="row">
 										<center><h4>Notas del Bordado</h4></center>
 										<div class="form-group label-floating">
 		                                	<label class="control-label">Notas que puedan ayudar a tener una mejor idea de lo que quiere el cliente...</label>
-		                                	<textarea name="notasBordado"  rows="2" class="form-control"></textarea>
+		                                	<textarea name="notasBordado"  rows="2" class="form-control">@if(isset($orden->notasBordado)){{ ucfirst($orden->notasBordado) }} @endif</textarea>
 		                            	</div>
 									</div>
 								</div>
@@ -526,14 +533,9 @@
 											<div class="form-group label-floating">
 												<label class="control-label">Fit deseado</label>
 												<select name="fitSaco" id="fitSaco" class="form-control">
-													<option disabled="" 
-		                                    		@hasSection('editCoat')
-		                                   			 {{-- No hay tipo de evento --}}
-		                                    		@else
-		                                      			selected="" 
-		                                    		@endif></option>
+													<option disabled="" selected="" ></option>
 													@foreach (\App\Fit::all() as $fit)
-														<option value="{{ $fit->id }}">{{ $fit->name }}</option>
+														<option value="{{ $fit->id }}" {{(isset($orden->gancho) && $orden->gancho === 0) ? 'selected' : ''}}>{{ $fit->name }}</option>
 													@endforeach
 												</select>
 											</div>
@@ -541,13 +543,13 @@
 										<div class="col-md-4">
 											<div class="form-group label-floating">
 												<label class="control-label">Largo de manga deseado<small>(pulgadas)</small>:</label>
-												<input type="number" min="10" step="1" name="tallaSaco" id="talla" class="form-control" value="@yield('editLargoManga')">
+												<input type="number" min="10" step=".1" name="tallaSaco" id="talla" class="form-control" value="@yield('editLargoManga')">
 											</div>
 										</div>
 										<div class="col-md-4">
 											<div class="form-group label-floating">
 												<label class="control-label">Largo de espalda deseado<small>(pulgadas)</small>:</label>
-												<input type="number" min="10" step="1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" value="@yield('editLargoEspalda')">
+												<input type="number" min="10" step=".1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" value="@yield('editLargoEspalda')">
 											</div>
 										</div>																			
 									</div>									
@@ -656,12 +658,12 @@
 													Selecciona para que el ojal sea activo
 												</label>
 											</div>
-											<div class="form-group label-floating" id="divOjalesActivosSolapa">
+											{{--<div class="form-group label-floating" id="divOjalesActivosSolapa">
 		                                		<label class="control-label">Posición de Ojales Activos</label>
 	                                			<select class="form-control" name="posicionOjalesSolapa">
 				                                    <option disabled="" 
 				                                    @hasSection('editCoat')
-				                                    {{-- Ya hay un cliente seleccionado --}}
+				                                    Ya hay un cliente seleccionado 
 				                                    @else
 				                                      selected="" 
 				                                    @endif></option>
@@ -671,7 +673,7 @@
 				                                    <option value="3"> Todos</option>
 				                                    <option value="4"> 4</option>
 			                                	</select>	                                		
-	                            			</div>
+	                            			</div>--}}
 										</div>					
 									</div>
 									
@@ -1167,8 +1169,8 @@
                     					</div>
 										<div class="col-md-6">
 											<div class="form-group label-floating">
-												<label class="control-label">Talla comercial de Pantalón:</label>
-												<input type="number" min="10" step="1" name="tallaPantalon" id="tallaPantalon" class="form-control">
+												<label class="control-label">Ancho de bajos deseado:</label>
+												<input type="number" min="1" step=".1" name="tallaPantalon" id="tallaPantalon" class="form-control">
 											</div>
 										</div>
 									</div>									
@@ -1220,7 +1222,7 @@
 								<div class="col-md-6 col-md-offset-3">
 									<label>
 									  <input type="radio" name="bolsasTraseras" value="2" checked="" />
-									  <img src="{{ asset('img/suit_options/numero_bolsas/PantalonDosBolsas.png') }}">
+									  <img src="{{ asset('img/suit_options/pantalon/VivoDoble.png') }}">
 									  <p class="text-center">Dos bolsas</p>
 									</label>
 								</div>
@@ -1337,5 +1339,94 @@
     checkSinAletilla.addEventListener('click',function(){
         cambiarImagenPickstitch();
     });
+    //Código para activar tarjetas cuando la orden contiene pantalón, saco o chaleco
+    $(document).ready(function(){
+    	@if (isset($orden->id))
+	    	//Condicional para verificar que la orden contiene pantalón y activar esa sección
+			@if ($orden->has_pants)
+				$('.wizard-card').bootstrapWizard('enable',3);
+			@endif
+			//Condicional para verificar que la orden contiene chaleco y activar esa sección
+			@if ($orden->has_coat) 
+				$('.wizard-card').bootstrapWizard('enable',1);
+			@endif
+			//Condicional para verificar que la orden contiene saco y activar esa sección
+			@if ($orden->has_vest) 
+				$('.wizard-card').bootstrapWizard('enable',2);
+			@endif
+		@endif
+	});
+	//Código para activar radio buttons en orden dependiendo si la tela es de ISCO o del cliente
+	$(document).ready(function(){
+		@if(isset($orden->id)) 
+			@if($orden->tela_isco === 0)
+				var tela = document.getElementById('telaCliente');
+        		$('#telaIscoDatos').fadeOut();            		
+        		$('#telaClienteDatos').fadeIn();
+        		$(tela).addClass('active');
+		    @endif
+		    @if($orden->tela_isco === 1)
+		    	var tela = document.getElementById('telaIsco');
+		    	$('#telaClienteDatos').fadeOut();
+        		$('#telaIscoDatos').fadeIn();        		
+        		$(tela).addClass('active');
+        	@endif
+
+        @endif
+    });
+	//Código para activar radio buttons en orden dependiendo si el forro es de ISCO o del cliente
+	$(document).ready(function(){
+		var forro = document.getElementById('forroIsco');
+		@if(isset($orden->id)) 
+			@if($orden->forro_isco === 0)
+        		$('#forroIscoDatos').fadeOut();            		
+        		$('#forroClienteDatos').fadeIn();
+        		$(forro).addClass('active');
+		    @endif
+		    @if($orden->forro_isco === 1)
+		    	$('#forroClienteDatos').fadeOut();
+        		$('#forroIscoDatos').fadeIn();        		
+        		$(forro).addClass('active');
+        	@endif
+
+        @endif
+    });
+    $(document).ready(function(){
+    	//Cantidad de botones
+    	var divCantidadDeBotones = document.getElementById('cantidadBotones');
+    	//Etiquetas
+    	var divMarcaEtiqueta = document.getElementById('marcaEtiqueta');
+    	var checkMarca = document.getElementById('checkEtiquetaMarca');
+    	//Gancho y portatrajes
+    	var divPersonalizacionGancho = document.getElementById('personalizacionGancho');
+    	var divPersonalizacionPortatrajes = document.getElementById('personalizacionPortatrajes');
+    	//Letra
+    	var checkLetraMolde = document.getElementById('letraMolde');
+    	var checkLetraCursiva = document.getElementById('letraCursiva');
+
+     	@if (isset($orden->id)) 
+    		@if($orden->tipo_botones)
+    			$(divCantidadDeBotones).show();
+    		@endif    	
+
+    		if (checkMarca.checked){ 
+    			$(divMarcaEtiqueta).show();
+    		}
+    		@if ($orden->gancho === 2)
+    			$(divPersonalizacionGancho).show();
+    		@endif
+    		@if ($orden->portatrajes === 2)
+    			$(divPersonalizacionPortatrajes).show();
+    		@endif
+
+    		@if($orden->letra === "Molde")
+    			$(checkLetraMolde).attr('checked','checked');
+    		@endif 
+    		@if($orden->letra === "Cursiva")
+    			$(checkLetraCursiva).attr('checked','checked');
+    		@endif
+    	@endif
+    });
 </script>
+	
 @endsection
