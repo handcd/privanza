@@ -188,11 +188,11 @@ function mostrarOcultarOjalesActivosSolapa() {
 
 //Mostrar y ocultar paleta de colores para ojal de solapa en contraste
 function coloresSolapaEnContraste() {
-    if (solapaEnContraste.value == 2) {
+    if (solapaEnContraste.value == 1) {
         $(coloresDeSolapaEnContraste).show();
     }else if(ojalDeMangaEnContraste.value == 1){
         $(coloresDeSolapaEnContraste).show();
-    }else if (solapaEnContraste.value == 2 || ojalDeMangaEnContraste.value == 1) {
+    }else if (solapaEnContraste.value == 1 || ojalDeMangaEnContraste.value == 1) {
         $(coloresDeSolapaEnContraste).show();
     } else {
         $(coloresDeSolapaEnContraste).hide();

@@ -6,7 +6,7 @@
 @section('editVest',$orden->has_vest)
 @section('editPants',$orden->has_pants)
 {{-- Tipo de tela --}}
-@if($orden->tela_isco === 1)
+@if($orden->tela_isco === 1 )
 	@section('tipoTelaIsco',$orden->tela_isco)
 	@section('editCodigoTelaIsco',$orden->codigo_tela)
 	@section('editNombreTelaIsco',$orden->nombre_tela)
@@ -65,6 +65,17 @@
 @if($orden->has_coat && isset($saco))
 	@section("editLargoManga", $saco->talla)
 	@section("editLargoEspalda", $saco->largo_espalda_deseado)
+	@section("editForroInternoMangas", $saco->forro_interno_mangas)
+	@section("editForroEnCuerpo", $saco->otro_vivos_bolsas_internas)
+@endif
+@if($orden->has_vest && isset($chaleco))
+	@section("editLargoEspaldaChaleco", $chaleco->talla)
+	@section("editForroChaleco",$chaleco->tipo_forro)
+@endif
+@if($orden->has_pants && isset($pantalon))
+	@section("editAnchoDeBajos", $pantalon->talla)
+	@section("editCodigoOtroColorPantalon",$pantalon->codigo_otro_color_medio_forro)
+	@section("editOtroColorPantalon",$pantalon->otro_color_medio_forro)
 @endif
 
 
