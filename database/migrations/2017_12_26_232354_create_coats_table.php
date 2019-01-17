@@ -48,7 +48,6 @@ class CreateCoatsTable extends Migration
             // Saco - Interno
             $table->integer('tipo_vista')->nullable(); // 0 normal / 1 chapeta francesa
             $table->boolean('balsam_rayas')->nullable();
-            $table->string('forro_interno_mangas')->nullable();
 
             //Accesorios  
             $table->integer('tipo_accesorio')->nullable();
@@ -59,15 +58,15 @@ class CreateCoatsTable extends Migration
             $table->string('color_puntada')->nullable();
 
             $table->integer('bolsas_int')->nullable(); // 0 ,1,2,3
-            $table->boolean('vivos_bolsas_internas_cuerpo')->nullable();
-            $table->string('otro_vivos_bolsas_internas')->nullable();
             $table->boolean('puntada_filos')->nullable();
             $table->boolean('puntada_aletillas')->nullable();
             $table->boolean('puntada_carteras')->nullable();
 
             // Datos Saco
             $table->integer('fit_id')->nullable();
-            $table->double('talla')->nullable();
+            $table->double('personalizacion_holgura_saco')->nullable();
+            $table->double('largo_manga_derecha_saco')->nullable();
+            $table->double('largo_manga_izquierda_saco')->nullable();
             $table->double('largo_espalda_deseado')->nullable();
 
             $table->string('notas_int',1000)->nullable();

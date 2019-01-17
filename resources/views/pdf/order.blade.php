@@ -490,17 +490,12 @@
                 </td>
             @endif
             <td>
-                Código: 
-                @if($orden->codigo_botones)
-                {{ $orden->codigo_botones }}
-                @else
 
-                @endif
             </td>
             <td>
                 Color:
-                @if($orden->codigo_color_botones && $orden->color_botones )
-                {{ $orden->codigo_color_botones }} {{ $orden->color_botones }}
+                @if($orden->color_botones )
+                    {{ $orden->color_botones }}
                 @else
                     
                 @endif
@@ -526,7 +521,7 @@
                     <b>Etiquetas:</b> <br>
                     Etiquetas de tela:  
                     @if( $orden->etiquetas_tela === 1 )
-                        Sí
+                        Sí.  {{ $orden->marca_en_tela }}
                     @else
                         No
                     @endif
@@ -643,16 +638,36 @@
                     Fit Deseado:
                     <br>
                     @if($saco->fit_id)
-                        {{ $saco->fit->name}}
+                        @switch($saco->fit_id)
+                            @case(1)
+                                Especial. {{ $saco->personalizacion_holgura_saco}} pulgadas de holgura.
+                                @break
+                            @case(2)
+                                Clásico.
+                                @break
+                            @case(3)
+                                Privanza.
+                                @break
+                            @default
+                        @endswitch
                     @else
                          
                     @endif    
                 </td>
                 <td>
-                    Largo de Manga deseado:
+                    Largo de Manga Derecha:
                     <br>
-                    @if($saco->talla) 
-                        {{ $saco->talla }} pulgadas
+                    @if($saco->largo_manga_derecha_saco) 
+                        {{ $saco->largo_manga_derecha_saco }} pulgadas
+                    @else
+                         
+                    @endif
+                </td>
+                <td>
+                    Largo de Manga Izquierda:
+                    <br>
+                    @if($saco->largo_manga_izquierda_saco) 
+                        {{ $saco->largo_manga_izquierda_saco }} pulgadas
                     @else
                          
                     @endif
@@ -885,11 +900,7 @@
                 <td>
                     Forro interno de mangas:
                     <br>
-                    @if( $saco->balsam_rayas === 1 )
-                        Balsam a Rayas
-                    @else
-                        {{ $saco->forro_interno_mangas}}
-                    @endif
+                    Balsam a rayas
                 </td>
                 <td colspan="2">
                     Accesorios: 
@@ -924,23 +935,7 @@
                         Tipo de bolsas internas
                     </td>
                 @endif
-                @if( $saco->vivos_bolsas_internas_cuerpo)
-                    <td colspan="2">
-                        Vivos en bolsas internas:
-                        <br>
-                        Del mismo forro en cuerpo
-                    </td>
-                @elseif( $saco->otro_vivos_bolsas_internas)
-                    <td colspan="2">
-                        Vivos en bolsas internas:
-                        <br>
-                        {{ $saco->otro_vivos_bolsas_internas }}
-                    </td>
-                @else
-                    <td colspan="2">
-                        Vivos en bolsas internas:
-                    </td>
-                @endif
+                
             </tr>
             <tr>
                 @if( $saco->notas_int &&  $saco->notas_ext)
@@ -1080,15 +1075,6 @@
                     @endif    
                 </td>
                 <td>
-                    Ancho de bajos deseado:
-                    <br>
-                    @if($pantalon->talla) 
-                        {{ $pantalon->talla }} pulgadas
-                    @else
-                         
-                    @endif
-                </td>
-                <td>
                     Tipo de pase:
                     <br>
                     Con pase, botón y ojal
@@ -1116,15 +1102,7 @@
                     <br>
                     {{ $pantalon->color_ojalera }}
                 </td>
-                <td>
-                    Medio forro interior:
-                    <br>
-                    @if( $pantalon->medio_forro_piernas_al_tono )
-                        Al tono
-                    @else
-                        {{ $pantalon->codigo_otro_color_medio_forro }} {{ $pantalon->otro_color_medio_forro}}
-                    @endif
-                </td>
+                
             </tr>
             <tr>
                 <td>

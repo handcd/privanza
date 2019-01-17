@@ -224,7 +224,6 @@ class OrderController extends Controller
 
             // Datos Pantalón
             'fitPantalon' => 'nullable|numeric',
-            'tallaPantalon' => 'nullable|numeric',
             'largoPantalonExt' => 'nullable|numeric',
             'largoPantalonInt' => 'nullable|numeric',
             // 'tipoPase' => 'required', // "0",
@@ -280,8 +279,7 @@ class OrderController extends Controller
 
         // Botones
         $orden->tipo_botones = $request->botonesCliente ? true : false;
-        $orden->codigo_botones = $request->codigoBotones; 
-        $orden->codigo_color_botones = $request->codigoColorBotones;
+        $orden->codigo_botones = $request->codigoBotones;
         $orden->color_botones = $request->colorBotones;
         $orden->cantidad_botones = $request->cantidadBotones;
 
@@ -292,6 +290,10 @@ class OrderController extends Controller
         // Marca de la Etiqueta
         if ($request->etiquetaMarca) {
             $orden->marca_en_etiqueta = $request->marcaEtiqueta;
+        }
+        // Marca de la Tela
+        if ($request->etiquetaTela) {
+            $orden->marca_en_tela = $request->marcaTela;
         }
 
         // Gancho
@@ -359,7 +361,6 @@ class OrderController extends Controller
 
             // Medidas Corporales
             $pantalon->fit_id = $request->fitPantalon;
-            $pantalon->talla = $request->tallaPantalon;
             $pantalon->notas = $request->notasPantalon;
 
             // Datos del Pantalón
@@ -376,8 +377,7 @@ class OrderController extends Controller
                 $pantalon->color_ojalera = $request->colorOjaleraEncuarte;
                 $pantalon->color_pretina = $request->colorOjaleraEncuarte;
             }
-            //color medio forro piernas            
-            $pantalon->medio_forro_piernas_al_tono = $request->medioForroPiernasAlTono ? true : false;            
+              
 
             //Dobladillo
             $pantalon->dobladillo = $request->dobladillo;
@@ -390,10 +390,11 @@ class OrderController extends Controller
         // Saco
         if ($orden->has_coat) {
             $saco = new Coat;
-
             // Medidas Corporales
             $saco->fit_id = $request->fitSaco;
-            $saco->talla = $request->tallaSaco;
+            $saco->personalizacion_holgura_saco = $request->personalizacionHolguraSaco;
+            $saco->largo_manga_izquierda_saco = $request->largoMangaIzquierdaSaco;
+            $saco->largo_manga_derecha_saco = $request->largoMangaDerechaSaco;
             $saco->largo_espalda_deseado = $request->largoEspaldaSaco;
 
             $saco->order_id = $orden->id;
@@ -441,12 +442,12 @@ class OrderController extends Controller
 
             // Datos de Saco Interno
             $saco->tipo_vista = $request->tipoVista;
-            $saco->balsam_rayas = $request->balsamRayasForroMangas ? true : false;
+            /*$saco->balsam_rayas = $request->balsamRayasForroMangas ? true : false;
             if ($request->otroForroInternoMangas) {
                 $saco->forro_interno_mangas = $request->otroForroInternoMangas;
             } else {
                 $saco->forro_interno_mangas = "Balsam a Rayas";
-            }
+            }*/
 
                         
 
@@ -489,10 +490,10 @@ class OrderController extends Controller
             $saco->bolsas_int = $request->bolsasInt;
 
             // Vivos iguales a los vivos del Cuerpo
-            $saco->vivos_bolsas_internas_cuerpo = $request->vivosBolsasInternasCuerpo ? true : false;
+            /*$saco->vivos_bolsas_internas_cuerpo = $request->vivosBolsasInternasCuerpo ? true : false;
             if (!$saco->vivos_bolsas_internas_cuerpo) {
                 $saco->otro_vivos_bolsas_internas = $request->otroVivosBolsasInternas;
-            }
+            }*/
             
             // Puntadas
             $saco->puntada_filos = $request->pickstitch ? true : false;
@@ -623,7 +624,6 @@ class OrderController extends Controller
         // Botones
         $orden->tipo_botones = $request->botonesCliente ? true : false;
         $orden->codigo_botones = $request->codigoBotones; 
-        $orden->codigo_color_botones = $request->codigoColorBotones;
         $orden->color_botones = $request->colorBotones;
         $orden->cantidad_botones = $request->cantidadBotones;
 
@@ -634,6 +634,9 @@ class OrderController extends Controller
         // Marca de la Etiqueta
         if ($request->etiquetaMarca) {
             $orden->marca_en_etiqueta = $request->marcaEtiqueta;
+        }
+         if ($request->etiquetaTela) {
+            $orden->marca_en_tela = $request->marcaTela;
         }
 
         // Gancho
@@ -720,7 +723,6 @@ class OrderController extends Controller
 
             // Medidas Corporales
             $pantalon->fit_id = $request->fitPantalon;
-            $pantalon->talla = $request->tallaPantalon;
             $pantalon->notas = $request->notasPantalon;
 
             // Datos del Pantalón
@@ -737,16 +739,7 @@ class OrderController extends Controller
                 $pantalon->color_ojalera = $request->colorOjaleraEncuarte;
                 $pantalon->color_pretina = $request->colorOjaleraEncuarte;
             }
-            //color medio forro piernas            ;  
-              
-            $pantalon->medio_forro_piernas_al_tono = $request->medioForroPiernasAlTono;
-            if ($request->medioForroPiernasAlTono === "1") {
-                $pantalon->otro_color_medio_forro = "Al tono";
-                $pantalon->codigo_otro_color_medio_forro = "Al tono";
-            }else if ($request->medioForroPiernasAlTono === "0") {
-                $pantalon->otro_color_medio_forro = $request->otroColorMedioForro;
-                $pantalon->codigo_otro_color_medio_forro = $request->codigoOtroColorMedioForro;
-            }    
+            
             //Dobladillo
             $pantalon->dobladillo = $request->dobladillo;
             
@@ -758,7 +751,6 @@ class OrderController extends Controller
             $pantalon = new Pants;
             // Medidas Corporales
             $pantalon->fit_id = $request->fitPantalon;
-            $pantalon->talla = $request->tallaPantalon;
             $pantalon->notas = $request->notasPantalon;
 
             // Datos del Pantalón
@@ -775,15 +767,7 @@ class OrderController extends Controller
                 $pantalon->color_ojalera = $request->colorOjaleraEncuarte;
                 $pantalon->color_pretina = $request->colorOjaleraEncuarte;
             }
-            //color medio forro piernas            ;
-            $pantalon->medio_forro_piernas_al_tono = $request->medioForroPiernasAlTono;
-            if ($request->medioForroPiernasAlTono === "1") {
-                $pantalon->otro_color_medio_forro = "Al tono";
-                $pantalon->codigo_otro_color_medio_forro = "Al tono";
-            }else if ($request->medioForroPiernasAlTono === "0") {
-                $pantalon->otro_color_medio_forro = $request->otroColorMedioForro;
-                $pantalon->codigo_otro_color_medio_forro = $request->codigoOtroColorMedioForro;
-            }    
+            
             //Dobladillo
             $pantalon->dobladillo = $request->dobladillo;
             
@@ -797,7 +781,9 @@ class OrderController extends Controller
 
             // Medidas Corporales
             $saco->fit_id = $request->fitSaco;
-            $saco->talla = $request->tallaSaco;
+            $saco->personalizacion_holgura_saco = $request->personalizacionHolguraSaco;
+            $saco->largo_manga_izquierda_saco = $request->largoMangaIzquierdaSaco;
+            $saco->largo_manga_derecha_saco = $request->largoMangaDerechaSaco;
             $saco->largo_espalda_deseado = $request->largoEspaldaSaco;
 
             $saco->order_id = $orden->id;
@@ -840,12 +826,12 @@ class OrderController extends Controller
 
             // Datos de Saco Interno
             $saco->tipo_vista = $request->tipoVista;
-            $saco->balsam_rayas = $request->balsamRayasForroMangas ? true : false;
+            /*$saco->balsam_rayas = $request->balsamRayasForroMangas ? true : false;
             if ($request->otroForroInternoMangas) {
                 $saco->forro_interno_mangas = $request->otroForroInternoMangas;
             } else {
                 $saco->forro_interno_mangas = "Balsam a Rayas";
-            }
+            }*/
 
                         
 
@@ -888,10 +874,10 @@ class OrderController extends Controller
             $saco->bolsas_int = $request->bolsasInt;
 
             // Vivos iguales a los vivos del Cuerpo
-            $saco->vivos_bolsas_internas_cuerpo = $request->vivosBolsasInternasCuerpo ? true : false;
+            /*$saco->vivos_bolsas_internas_cuerpo = $request->vivosBolsasInternasCuerpo ? true : false;
             if (!$saco->vivos_bolsas_internas_cuerpo) {
                 $saco->otro_vivos_bolsas_internas = $request->otroVivosBolsasInternas;
-            }
+            }*/
             
             // Puntadas
             $saco->puntada_filos = $request->pickstitch ? true : false;
@@ -907,7 +893,9 @@ class OrderController extends Controller
 
             // Medidas Corporales
             $saco->fit_id = $request->fitSaco;
-            $saco->talla = $request->tallaSaco;
+            $saco->personalizacion_holgura_saco = $request->personalizacionHolguraSaco;
+            $saco->largo_manga_izquierda_saco = $request->largoMangaIzquierdaSaco;
+            $saco->largo_manga_derecha_saco = $request->largoMangaDerechaSaco;
             $saco->largo_espalda_deseado = $request->largoEspaldaSaco;
 
             $saco->order_id = $orden->id;
@@ -949,12 +937,12 @@ class OrderController extends Controller
 
             // Datos de Saco Interno
             $saco->tipo_vista = $request->tipoVista;
-            $saco->balsam_rayas = $request->balsamRayasForroMangas ? true : false;
+            /*$saco->balsam_rayas = $request->balsamRayasForroMangas ? true : false;
             if ($request->otroForroInternoMangas) {
                 $saco->forro_interno_mangas = $request->otroForroInternoMangas;
             } else {
                 $saco->forro_interno_mangas = "Balsam a Rayas";
-            }
+            }*/
 
                         
 
@@ -997,10 +985,10 @@ class OrderController extends Controller
             $saco->bolsas_int = $request->bolsasInt;
 
             // Vivos iguales a los vivos del Cuerpo
-            $saco->vivos_bolsas_internas_cuerpo = $request->vivosBolsasInternasCuerpo ? true : false;
+            /*$saco->vivos_bolsas_internas_cuerpo = $request->vivosBolsasInternasCuerpo ? true : false;
             if (!$saco->vivos_bolsas_internas_cuerpo) {
                 $saco->otro_vivos_bolsas_internas = $request->otroVivosBolsasInternas;
-            }
+            }*/
             
             // Puntadas
             $saco->puntada_filos = $request->pickstitch ? true : false;

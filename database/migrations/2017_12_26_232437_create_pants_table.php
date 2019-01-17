@@ -22,9 +22,6 @@ class CreatePantsTable extends Migration
             $table->integer('bolsas_traseras')->nullable();
             $table->integer('tipo_vivo')->nullable(); // 1 Vivo Doble con Ojal, 2 Vivo Sencillo con Ojal
             $table->string('color_ojalera')->nullable();
-            $table->boolean('medio_forro_piernas_al_tono')->nullable();
-            $table->string('codigo_otro_color_medio_forro')->nullable();
-            $table->string('otro_color_medio_forro')->nullable();
 
             $table->integer('dobladillo')->nullable(); // 1 normal, 2 valenciana
            // $table->integer('pretina')->nullable();

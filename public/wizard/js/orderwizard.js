@@ -106,8 +106,10 @@ var colorDeBiesPinpoint = document.getElementById('colorPaletteBiesPinpoint');
 
 // Elementos Ocultos
 var divMarcaEtiqueta = document.getElementById('marcaEtiqueta');
+var divMarcaTela = document.getElementById('marcaTela');
 var divPerGancho = document.getElementById('personalizacionGancho');
 var divPerPortatraje = document.getElementById('personalizacionPortatrajes');
+var divPerSaco = document.getElementById('personalizacionHolguraSaco');
 var divForroChaleco = document.getElementById('otroForroChaleco');
 var divOjalesActivosManga = document.getElementById('divOjalesActivosManga');
 var divOjalesActivosSolapa = document.getElementById('divOjalesActivosSolapa');
@@ -116,8 +118,10 @@ var divPosicionOjalesManga = document.getElementById('divPosicionOjalesManga');
 
 // Elementos que contienen la lógica de hide/show
 var checkEtiquetaMarca = document.getElementById('checkEtiquetaMarca');
+var checkEtiquetaTela = document.getElementById('checkEtiquetaTela');
 var selectTipoGancho = document.getElementById('tipoGancho');
 var selectTipoPortatrajes = document.getElementById('tipoPortatrajes');
+var selectTipoHolguraSaco = document.getElementById('tipoHolguraSaco');
 var checkForroChaleco = document.getElementById('tipoForroChaleco');
 var checkOjalesActivosManga = document.getElementById('ojalesActivosManga');
 var checkBotonesDeCliente = document.getElementById('botonesCliente');
@@ -130,8 +134,10 @@ function iniciarComponentes() {
     $(colorDeBiesPinpoint).hide();
     $(divCantidadDeBotones).hide();
     $(divMarcaEtiqueta).hide();
+    $(divMarcaTela).hide();
     $(divPerGancho).hide();
     $(divPerPortatraje).hide();
+    $(divPerSaco).hide();
     $(divOjalesActivosManga).hide();
     $(divOjalesActivosSolapa).hide();
     $(divPosicionOjalesManga).hide();
@@ -159,9 +165,13 @@ function mostrarOcultarCantidadBotones(){
         $(divCantidadDeBotones).hide();
     }
 }
-// Mostrar el campo para otra marca sólamente si se reciben etiquetas de marca.
+// Mostrar el campo para otra marca sólamente si se reciben etiquetas de marca de etiqueta.
 function mostrarOcultarOtraMarca() {
     $(divMarcaEtiqueta).toggle();
+}
+// Mostrar el campo para otra marca sólamente si se reciben etiquetas de marca de tela.
+function mostrarOcultarOtraMarcaTela() {
+    $(divMarcaTela).toggle();
 }
 
 // Mostrar el campo para seleccionar otro forro de chaleco únicamente si no
@@ -246,7 +256,13 @@ function mostrarOcultarPersonalizacionPortatraje() {
         $(divPerPortatraje).hide();
     }
 }
-
+function mostrarOcultarPersonalizacionSaco() {
+    if (selectTipoHolguraSaco.value == "1") {
+        $(divPerSaco).show();
+    } else {
+        $(divPerSaco).hide();
+    }
+}
 /**
  * Helper Functions para cotización de productos.
  */
@@ -280,12 +296,19 @@ function agregarEventos() {
         mostrarOcultarOtraMarca();
     });
 
+    checkEtiquetaTela.addEventListener('click', function () {
+        mostrarOcultarOtraMarcaTela();
+    });
+
     selectTipoGancho.addEventListener('change', function () {
         mostrarOcultarPersonalizacionGancho();
     });
 
     selectTipoPortatrajes.addEventListener('change', function () {
         mostrarOcultarPersonalizacionPortatraje();
+    });
+    selectTipoHolguraSaco.addEventListener('change', function () {
+        mostrarOcultarPersonalizacionSaco();
     });
 
     checkForroChaleco.addEventListener('click', function () {

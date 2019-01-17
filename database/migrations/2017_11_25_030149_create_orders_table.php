@@ -63,12 +63,12 @@ class CreateOrdersTable extends Migration
             //Botones
             $table->string('tipo_botones')->nullable();
             $table->string('codigo_botones')->nullable();
-            $table->string('codigo_color_botones')->nullable();
             $table->string('color_botones')->nullable();
             $table->integer('cantidad_botones')->nullable();
             //Etiquetas
             $table->boolean('etiquetas_tela')->nullable(); // Si/No
             $table->boolean('etiquetas_marca')->nullable(); // Si/No
+            $table->string('marca_en_tela')->nullable();
             $table->string('marca_en_etiqueta')->nullable();
             //Gancho
             $table->integer('gancho')->nullable(); // Normal/Personalizado

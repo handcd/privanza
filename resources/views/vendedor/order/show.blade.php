@@ -385,7 +385,7 @@
                         <div class="col-md-3">
                               <label class="text-primary">Etiqueta de tela</label>
                               @if ($orden->etiquetas_tela === 1)
-                                    <p> Sí </p>
+                                    <p> Sí. {{ $orden->marca_en_tela }} </p>
                               @else
                                     <p> Privanza </p>
                               @endif
@@ -393,7 +393,7 @@
                         <div class="col-md-3">
                               <label class="text-primary">Etiqueta de marca</label>
                               @if ($orden->etiquetas_marca === 1)
-                                    <p> Sí </p>
+                                    <p> Sí. {{ $orden->marca_en_etiqueta }}</p>
                               @else
                                     <p> Privanza </p>
                               @endif
@@ -442,19 +442,30 @@
                               @if( $orden->coat->fit)
                               <div class="col-md-3">
                                     <label class="text-primary">Fit deseado</label>
-                                    <p>{{ $orden->coat->fit->name }}<br><small>{{$orden->coat->fit->description}}</small></p>
+                                    <p>
+                                    @switch($saco->fit_id)
+                                          @case(1)
+                                                Especial. {{ $orden->coat->personalizacion_holgura_saco}} pulgadas de holgura.
+                                                @break
+                                          @case(2)
+                                                Clásico.
+                                                @break
+                                          @case(3)
+                                                Privanza.
+                                                @break
+                                          @default
+                                    @endswitch
+                                    </p>
                               </div>
                               @endif
                               <div class="col-md-3">
-                                    <label class="text-primary">Largo de manga deseado en Saco</label>
-                                    <p>{{ $orden->coat->talla }}</p>
+                                    <label class="text-primary">Largo de Manga Derecha</label>
+                                    <p>{{ $orden->coat->largo_manga_derecha_saco }} <small>pulgadas</small></p>
                               </div>
                               <div class="col-md-3">
-                                    <label class="text-primary">Largo de Manga</label>
-                                    <p>{{ $orden->coat->largo_manga }} <small>pulgadas</small></p>
+                                    <label class="text-primary">Largo de Manga Izquierda</label>
+                                    <p>{{ $orden->coat->largo_manga_izquierda_saco }} <small>pulgadas</small></p>
                               </div>
-                        </div>
-                        <div class="row">
                               <div class="col-md-3">
                                     <label class="text-primary">Largo de Espalda</label>
                                     <p>{{ $orden->coat->largo_espalda }} <small>pulgadas</small></p>
@@ -639,11 +650,7 @@
                               <div class="col-md-3">
                                     <label class="text-primary">Forro Interno Mangas</label>
                                     <p>
-                                          @if ($orden->coat->balsam_rayas)
-                                                Balsam a Rayas
-                                          @else
-                                                {{ $orden->coat->forro_interno_mangas }}
-                                          @endif
+                                          Balsam a rayas
                                     </p>
                               </div>
                               <div class="col-md-3">
@@ -699,16 +706,7 @@
                                                 @break
                                     @endswitch
                               </div>
-                              <div class="col-md-3">
-                                    <label class="text-primary">Vivos de Bolsas Internas</label>
-                                    <p>
-                                          @if ($orden->coat->vivos_bolsas_internas_cuerpo)
-                                                Vivos igual a los seleccionados en el cuerpo
-                                          @else
-                                                {{ $orden->coat->otro_vivos_bolsas_internas }}
-                                          @endif
-                                    </p>
-                              </div>
+                              
                         </div>
                         <div class="row">
                               <div class="col-md-6">
@@ -829,10 +827,7 @@
                                     <label class="text-primary">Color de Ojalera</label>
                                     <p>{{ $orden->pants->color_ojalera }}</p>
                               </div>
-                              <div class="col-md-3">
-                                    <label class="text-primary">Color de Medio Forro</label>
-                                    <p>{{ $orden->pants->medio_forro_piernas_al_tono ? 'Sí' : 'No'}}</p>
-                              </div>
+                              
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Dobladillo</label>
                                     @if ( $orden->pants->dobladillo === 0)

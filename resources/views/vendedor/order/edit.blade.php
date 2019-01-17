@@ -35,7 +35,6 @@
 {{-- Botones --}}
 @section("editTipoBotones",$orden->tipo_botones)
 @section("editCodigoBotones",$orden->codigo_botones)
-@section("editCodigoColorBotones",$orden->codigo_color_botones)
 @section("editColorBotones",$orden->color_botones)
 @if($orden->tipo_botones == 1)
 	@section("editCantidadBotones",$orden->cantidad_botones)
@@ -43,6 +42,9 @@
 {{-- Etiquetas --}}
 @section("editEtiquetaTela",$orden->etiquetas_tela)
 @section("editEtiquetaMarca", $orden->etiquetas_marca)
+@if($orden->etiquetas_tela)
+	@section("editMarcaTela",$orden->marca_en_tela)
+@endif
 @if($orden->etiquetas_marca)
 	@section("editMarcaEtiqueta",$orden->marca_en_etiqueta)
 @endif
@@ -63,19 +65,16 @@
 
 {{-- Segunda Sección --}}
 @if($orden->has_coat && isset($saco))
-	@section("editLargoManga", $saco->talla)
+	@if($saco->fit_id === 2)
+		@section("editPerSaco",$orden->personalizacion_holgura_saco)
+	@endif
+	@section("editLargoMangaDerecha", $saco->largo_manga_derecha_saco)
+	@section("editLargoMangaIzquierda", $saco->largo_manga_izquierda_saco)
 	@section("editLargoEspalda", $saco->largo_espalda_deseado)
-	@section("editForroInternoMangas", $saco->forro_interno_mangas)
-	@section("editForroEnCuerpo", $saco->otro_vivos_bolsas_internas)
 @endif
 @if($orden->has_vest && isset($chaleco))
 	@section("editLargoEspaldaChaleco", $chaleco->talla)
 	@section("editForroChaleco",$chaleco->tipo_forro)
-@endif
-@if($orden->has_pants && isset($pantalon))
-	@section("editAnchoDeBajos", $pantalon->talla)
-	@section("editCodigoOtroColorPantalon",$pantalon->codigo_otro_color_medio_forro)
-	@section("editOtroColorPantalon",$pantalon->otro_color_medio_forro)
 @endif
 
 

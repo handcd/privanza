@@ -398,12 +398,6 @@
 									</div>
 									<div class="col-md-6">
 										<div class="form-group label-floating">
-											<label for="" class="control-label">Código de color de Botones</label>
-											<input type="text" name="codigoColorBotones" class="form-control" value="@yield('editCodigoColorBotones')">
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group label-floating">
 											<label for="" class="control-label">Color de Botones</label>
 											<input type="text" class="form-control" name="colorBotones" value="@yield('editColorBotones')">
 										</div>
@@ -423,7 +417,7 @@
 									<div class="col-md-10 col-md-offset-1">
 										<div class="checkbox">
 											<label>
-												<input type="checkbox" name="etiquetaTela" 
+												<input type="checkbox" name="etiquetaTela" id="checkEtiquetaTela"
 												@hasSection('editEtiquetaTela')
 													@if ($orden->etiquetas_tela)
 														checked="1" 
@@ -432,6 +426,10 @@
 												>
 											</label>
 											Se Reciben Etiquetas de Tela
+										</div>
+										<div class="form-group label-floating" id="marcaTela">
+											<label class="control-label"><small>Ingrese la marca:</small></label>
+											<input type="text" class="form-control" name="marcaTela" value="@yield('editMarcaTela')">
 										</div>
 										<div class="checkbox">
 											<label>
@@ -532,26 +530,40 @@
 										<div class="col-md-4 ">									
 											<div class="form-group label-floating">
 												<label class="control-label">Fit deseado</label>
-												<select name="fitSaco" id="fitSaco" class="form-control">
-													<option disabled="" selected="" ></option>
-													<option value="1" {{(isset($orden->coat) && $saco->fit_id === 1) ? 'selected' : ''}}>Tallas Extra</option>
-													<option value="2" {{(isset($orden->coat) && $saco->fit_id === 2) ? 'selected' : ''}}>Clásico</option>
-													<option value="3" {{(isset($orden->coat) && $saco->fit_id === 3) ? 'selected' : ''}}>Privanza</option>
+												<select name="fitSaco" id="tipoHolguraSaco" class="form-control">
+													<option disabled="" selected="" ></option>				
+													<option value="2" {{(isset($orden->coat) && $saco->fit_id === 2) ? 'selected' : ''}}>Clásico (4" 3")</option>
+													<option value="3" {{(isset($orden->coat) && $saco->fit_id === 3) ? 'selected' : ''}}>Privanza (3" 2")</option>
+													<option value="1" {{(isset($orden->coat) && $saco->fit_id === 1) ? 'selected' : ''}}>Especial</option>
 												</select>
 											</div>
 										</div>
 										<div class="col-md-4">
 											<div class="form-group label-floating">
-												<label class="control-label">Largo de manga deseado<small>(pulgadas)</small>:</label>
-												<input type="number" min="10" step=".1" name="tallaSaco" id="talla" class="form-control" value="@yield('editLargoManga')">
+												<label class="control-label">Largo de manga derecha<small> (pulgadas)</small>:</label>
+												<input type="number" min="10" step=".1" name="largoMangaDerechaSaco" id="talla" class="form-control" value="@yield('editLargoMangaDerecha')">
 											</div>
 										</div>
 										<div class="col-md-4">
 											<div class="form-group label-floating">
-												<label class="control-label">Largo de espalda deseado<small>(pulgadas)</small>:</label>
+												<label class="control-label">Largo de espalda deseado<small> (pulgadas)</small>:</label>
 												<input type="number" min="10" step=".1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" value="@yield('editLargoEspalda')">
 											</div>
 										</div>																			
+									</div>
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group label-floating" id="personalizacionHolguraSaco">
+	                            				<label class="control-label">Ingrese las pulgadas de holgura: </label>
+	                            				<input type="text" name="personalizacionHolguraSaco" class="form-control" value="@yield('editPerSaco')">
+											</div>
+	                            		</div>
+	                            		<div class="col-md-4">
+	                            			<div class="form-group label-floating">
+												<label class="control-label">Largo de manga izquierda<small> (pulgadas)</small>:</label>
+												<input type="number" min="10" step=".1" name="largoMangaDerechaSaco" id="talla" class="form-control" value="@yield('editLargoMangaIzquierda')">
+											</div>
+	                            		</div>
 									</div>									
 								</div>
 							</div>
@@ -826,7 +838,7 @@
 										<label>
 										  <input type="checkbox" name="pickstitch" id="checkPickstitch" />
 										  <img src="{{ asset('img/suit_options/saco/pick-stitch.png') }}"  id="pickstitch">
-										  <p class="text-center">Pick Stitch para Saco (Se incluye en filos, aletilla y cartera)</p>
+										  <p class="text-center">Seleccione si desea PickStitch</p>
 										</label>
 									</div>
 									<div class="col-md-6">
@@ -859,6 +871,7 @@
 										  <input type="radio" name="tipoVista" value="0" id="vistaNormal" />
 										  <img src="{{ asset('img/suit_options/saco/Chapeta_Normal.png') }}">
 										  <p class="text-center">Normal</p>
+										  <p class="text-center">Los vivos de las bolsas internas van al tono de pinpoint y/o bies</p>
 										</label>
 									</div>
 									<div class="col-md-6 col-xs-6">
@@ -866,25 +879,17 @@
 										  <input type="radio" name="tipoVista" value="1" id="chapetaFrancesa" />
 										  <img src="{{ asset('img/suit_options/saco/Chapeta_Francesa.png') }}">
 										  <p class="text-center">Chapeta Francesa</p>
+										  <p class="text-center">Los vivos de las bolsas internas van del mismo tono del cuerpo</p>
 										</label>
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<h4 class="text-center">Forro Interno en Mangas</h4>
-								<div class="col-md-6 col-md-offset-3">
-									<div class="checkbox">
-										<label>
-											<input type="checkbox" name="balsamRayasForroMangas" >
+								<div class="col-md-6 col-md-offset-3 text-center">
+										<strong>
 											Balsam a Rayas
-										</label>
-									</div>
-								</div>
-								<div class="col-md-6 col-md-offset-3">
-									<div class="form-group label-floating">
-										<label for="" class="control-label">Código de Otro Forro <small>(opcional)</small></label>
-										<input type="text" name="otroForroInternoMangas" class="form-control" value="@yield('editForroInternoMangas')">
-									</div>
+										</strong>
 								</div>
 							</div>
 							<div class="row">
@@ -973,23 +978,6 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-xs-3 col-xs-offset-5">
-									<div class="row">
-										<h5 class="text-center">Vivos en Bolsas Internas</h5>
-									</div>
-									<div class="checkbox">
-										<label>
-											<input type="checkbox" name="vivosBolsasInternasCuerpo" id="checkVivosBolsasInternasCuerpo">
-											Del mismo forro en cuerpo	
-										</label>
-									</div>
-									<div class="form-group label-floating">
-										<label class="control-label">En contraste a otro tono <small>(opcional)</small></label>
-										<input type="text" class="form-control" name="otroVivosBolsasInternas" value="@yield('editForroEnCuerpo')">
-									</div>
-								</div>								
-							</div>
-							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
 									<h4>Notas del Saco Interno</h4>
 									<div class="form-group label-floating">
@@ -1011,7 +999,7 @@
 												<label class="control-label">Fit deseado</label>
 												<select name="fitChaleco" id="fitChaleco" class="form-control">
 													<option disabled="" selected="" ></option>
-													<option value="1" {{(isset($chaleco) && $chaleco->fit_id === 1) ? 'selected' : ''}}>Tallas Extra</option>
+													<option value="1" {{(isset($chaleco) && $chaleco->fit_id === 1) ? 'selected' : ''}}>Especial <small></small></option>
 													<option value="2" {{(isset($chaleco) && $chaleco->fit_id === 2) ? 'selected' : ''}}>Clásico</option>
 													<option value="3" {{(isset($chaleco) && $chaleco->fit_id === 3) ? 'selected' : ''}}>Privanza</option>
 												</select>
@@ -1069,7 +1057,7 @@
 									</div>
 								</div>
                     		</div>
-                    		<h4 class="info-text">Forro o Tela</h4>
+                    		<h4 class="info-text">Espalda Forro o Tela con hebilla para ajuste</h4>
                     		<div class="row">
                     			<div class="col-md-8 col-md-offset-2 text-center">
                     				<div class="row">
@@ -1121,10 +1109,10 @@
 						<div class="tab-pane" id="pantalon">
 							<h4 class="info-text">Datos del Pantalón</h4>
 							<div class="row">
-								<div class="col-md-10 col-md-offset-1">
+								<div class="col-md-4 col-md-offset-4">
 									<p>Observaciones generales del cliente:</p>
 									<div class="row">
-										<div class="col-md-6">
+										<div class="col-md-12">
                     						<div class="form-group label-floating">
 												<label class="control-label">Fit para Pantalón</label>
 												<select name="fitPantalon" id="fitPantalon" class="form-control">
@@ -1134,13 +1122,7 @@
 													<option value="3" {{(isset($pantalon) && $pantalon->fit_id === 3) ? 'selected' : ''}}>Privanza</option>
 												</select>
 											</div>
-                    					</div>
-										<div class="col-md-6">
-											<div class="form-group label-floating">
-												<label class="control-label">Ancho de bajos deseado:</label>
-												<input type="number" min="1" step=".1" name="tallaPantalon" id="tallaPantalon" class="form-control" value="@yield('editAnchoDeBajos')">
-											</div>
-										</div>
+                    					</div>										
 									</div>									
 								</div>
 							</div>
@@ -1201,30 +1183,14 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-10 col-md-offset-1">
-									<div class="col-md-6">
+								<div class="col-md-4 col-md-offset-4">
+									<div class="col-md-12">
 										<div class="row">
 											<p class="text-center">Color de Bies en Ojalera, Encuarte y Pretina</p>
 										</div>
 										@include('partials.color-palette', ['varName' => 'OjaleraEncuarte'])
 									</div>
-									<div class="col-md-6">
-										<div class="form-group label-floating">
-		                                	<div class="form-group label-floating">
-												<div class="checkbox">
-													<label><input type="checkbox" name="medioForroPiernasAlTono" value="1">Medio Forro interior al tono</label>
-												</div>								
-											</div>											
-										</div>
-										<div class="form-group label-floating">									
-												<label for="" class="control-label">Código de otro color<small></small></label>
-												<input type="text" name="codigoOtroColorMedioForro" class="form-control" value="@yield('editCodigoOtroColorPantalon')">		
-										</div>
-										<div class="form-group label-floating">									
-												<label for="" class="control-label">Color<small></small></label>
-												<input type="text" name="otroColorMedioForro" class="form-control" value="@yield('editOtroColorPantalon')">		
-										</div>										
-									</div>
+									
 								</div>
 							</div>
 							
@@ -1352,9 +1318,13 @@
 	    	//Etiquetas
 	    	var divMarcaEtiqueta = document.getElementById('marcaEtiqueta');
 	    	var checkMarca = document.getElementById('checkEtiquetaMarca');
+
+	    	var divMarcaTela = document.getElementById('marcaTela');
+	    	var checkMarcaTela = document.getElementById('checkEtiquetaTela');
 	    	//Gancho y portatrajes
 	    	var divPersonalizacionGancho = document.getElementById('personalizacionGancho');
 	    	var divPersonalizacionPortatrajes = document.getElementById('personalizacionPortatrajes');
+	    	var divPersonalizacionSaco = document.getElementById('personalizacionHolguraSaco');
 	    	//Letra
 	    	var checkLetraMolde = document.getElementById('letraMolde');
 	    	var checkLetraCursiva = document.getElementById('letraCursiva');
@@ -1367,11 +1337,17 @@
 	    		if (checkMarca.checked){ 
 	    			$(divMarcaEtiqueta).show();
 	    		}
+	    		if (checkMarcaTela.checked){ 
+	    			$(divMarcaTela).show();
+	    		}
 	    		@if ($orden->gancho === 2)
 	    			$(divPersonalizacionGancho).show();
 	    		@endif
 	    		@if ($orden->portatrajes === 2)
 	    			$(divPersonalizacionPortatrajes).show();
+	    		@endif
+	    		@if ($orden->fit_id === 2)
+	    			$(divPersonalizacionSaco).show();
 	    		@endif
 
 	    		@if($orden->letra === "Molde")
