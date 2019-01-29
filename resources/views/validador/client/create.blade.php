@@ -163,7 +163,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-success pull-right">Confirmar</button>
-                    <a href="{{ url('/vendedor/clientes') }}" class="btn btn-default">Cancelar</a>
+                    <a href="{{ url('/validador/clientes') }}" class="btn btn-default">Cancelar</a>
                     <div class="clearfix"></div>
                 </form>
             </div>

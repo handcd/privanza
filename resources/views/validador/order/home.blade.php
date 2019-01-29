@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-md-12" style="float: right;">
-        <button class="btn btn-success btn-large"><i class="material-icons">add</i>Añadir nueva orden</button>
+        <a href="{{ url('/validador/ordenes/agregar') }}" class="btn btn-success btn-large"><i class="material-icons">add</i>Añadir nueva orden</a>
     </div>
 </div>
 <div class="row">
