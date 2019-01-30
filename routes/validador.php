@@ -10,6 +10,8 @@ Route::get('/dashboard', function () {
     return view('validador.dashboard');
 })->name('dashboard');
 
+Route::get('/dashboard','DashboardController@validadorDash')->name('dashboard');
+
 // Clientes functionality
 Route::get('/clientes','ClientController@indexForValidador');
 Route::get('/clientes/agregar', 'ClientController@createForValidador');
@@ -25,8 +27,20 @@ Route::post('/ordenes','OrderController@store');
 Route::get('/ordenes/{order}','OrderController@show');
 Route::get('/ordenes/{order}/editar','OrderController@edit');
 Route::put('/ordenes/{order}','OrderController@update');
-Route::get('/ordenes/{order}/aprobar');
-
+//Estado general de la orden
+Route::get('/ordenes/{order}/aprobar','OrderController@approveOrder'); //Aprobar
+Route::get('/ordenes/{order}/produccion','OrderController@productionOrder'); //Producción
+Route::get('/ordenes/{order}/recoleccion','OrderController@pickupOrder'); //Recolección
+Route::get('/ordenes/{order}/entrega','OrderController@deliveredOrder'); //Entregado
+Route::get('/ordenes/{order}/factura','OrderController@invoicedOrder');//Facturado
+Route::get('/ordenes/{order}/cobro','OrderController@chargedOrder');//Cobrado
+//Estado de produccion
+Route::get('/ordenes/{order}/corte','OrderController@productionCorteOrder'); //Corte
+Route::get('/ordenes/{order}/ensamble','OrderController@productionEnsambleOrder'); //Ensamble
+Route::get('/ordenes/{order}/plancha','OrderController@productionPlanchaOrder'); //Plancha
+Route::get('/ordenes/{order}/revision','OrderController@productionRevisionOrder'); //Revision
+//Editar precio
+//Route::put('/ordenes/{order}','OrderController@updatePrecioOP');
 // Ajustes
 Route::get('/ajustes','AdjustmentController@indexForValidador');
 Route::get('/ajustes/agregar', 'AdjustmentController@createForValidador');

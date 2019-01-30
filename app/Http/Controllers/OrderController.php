@@ -2346,7 +2346,24 @@ class OrderController extends Controller
             }
         }
         // Redirect to Orders:Home
-        return redirect('/vendedor/ordenes');
+        return redirect('/validador/ordenes');
     }
 
+    public function updatePrecioOP(Request $request, $id)
+    {
+        //return $request;
+        $orden = Order::find($id);
+        
+        if (!$orden) {
+            Session::flash('danger','La orden que deseas editar no puede ser mostrada porque no tienes autorización para verla o no existe.');
+            return redirect('/validador/ordenes');
+        }
+
+        $orden->precio = $request->precio;
+        $orden->consecutivo_op = $request->consecutivo_op;
+        
+        $orden->save();
+        // Redirect to Orders:Home
+        return redirect('/validador/ordenes/'.$id);
+    }
 }
