@@ -561,7 +561,7 @@
 	                            		<div class="col-md-4">
 	                            			<div class="form-group label-floating">
 												<label class="control-label">Largo de manga izquierda<small> (pulgadas)</small>:</label>
-												<input type="number" min="10" step=".1" name="largoMangaDerechaSaco" id="talla" class="form-control" value="@yield('editLargoMangaIzquierda')">
+												<input type="number" min="10" step=".1" name="largoMangaIzquierdaSaco" id="talla" class="form-control" value="@yield('editLargoMangaIzquierda')">
 											</div>
 	                            		</div>
 									</div>									
@@ -1386,7 +1386,7 @@
 						var otroColor = document.getElementById('otroColorOjalSolapa');
 						$(checkColor).attr('checked','checked');
 
-					@endif
+					@endif				
 				@endif
 				//Ojales Activos 
 				@if (isset($saco->ojales_activos_manga) && $saco->ojales_activos_manga )
@@ -1429,6 +1429,9 @@
 								$(checkseisBotones).attr('checked','checked');
 							@break
 					@endswitch
+				@endif
+				@if(isset($saco->fit_id) && $saco->fit_id === 1)
+					$(divPersonalizacionSaco).show();
 				@endif
 				@if(isset($saco->aberturas_detras))
 					@switch($saco->aberturas_detras)

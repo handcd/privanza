@@ -474,24 +474,21 @@
             <th> 
                 Botones
             </th>
-            @if( $orden->tipo_botones === 1)
-                <td>
+            @if( $orden->tipo_botones == 1)
+                <td colspan="2">
                     Tipo de Botones: 
                     Del cliente
                 </td>
-            @elseif($orden->tipo_botones === 0)
-                <td>
+            @elseif($orden->tipo_botones == 0)
+                <td colspan="2">
                     Tipo de botones: 
                     ISCO
                 </td>
             @else 
-                <td>
+                <td colspan="2">
                     Tipo de botones:
                 </td>
             @endif
-            <td>
-
-            </td>
             <td>
                 Color:
                 @if($orden->color_botones )
@@ -500,7 +497,7 @@
                     
                 @endif
             </td>
-            @if( $orden->tipo_botones === 1 )
+            @if( $orden->tipo_botones == 1 )
                 <td>
                     Cantidad: {{ $orden->cantidad_botones }}
                 </td>
@@ -543,11 +540,11 @@
                 <td>
                     <b>Gancho: </b>
                     <br>
-                    @if( $orden->gancho === 0 )
+                    @if( $orden->gancho == 0 )
                         Normal
-                    @elseif( $orden->gancho === 1)
+                    @elseif( $orden->gancho == 1)
                         Personalizado privanza. 
-                    @else
+                    @elseif($orden->gancho == 2)
                         {{ $saco->gancho_personalizacion }}.
                     @endif
                 </td>
@@ -560,10 +557,10 @@
             @if( $orden->portatrajes )
                 <td>                    
                     <br>
-                    @if( $orden->portatrajes === 0 )
+                    @if( $orden->portatrajes == 0 )
                         <b>Portatrajes: </b><br>
-                        Normal
-                    @elseif( $orden->portatrajes === 1)
+                        Cubrepolvos
+                    @elseif( $orden->portatrajes == 1)
                         <b>Portatrajes: </b><br>
                         Personalizado privanza. 
                     @else
@@ -592,17 +589,17 @@
             @endif
             
             @if( $orden->forro_isco === 0 || $orden->tela_isco === 0)
-                @if( $orden->notasBordado )
-                <td colspan="2">
-                    Notas: {{ $orden->notas_bordado}}
-                </td>
+                @if( $orden->notasBordado != NULL)
+                    <td colspan="2">
+                        Notas: {{ $orden->notas_bordado}}
+                    </td>
+                @else
+                    <td colspan="2">
+                        Notas:
+                    </td>
+                @endif
             @else
-                <td colspan="2">
-                    Notas:
-                </td>
-            @endif
-            @else
-                @if( $orden->notasBordado )
+                @if( $orden->notasBordado != NULL )
                     <td>
                         Notas: {{ $orden->notas_bordado}}
                     </td>
@@ -610,7 +607,7 @@
                     <td>
                         Notas:
                     </td>
-            @endif
+                @endif
             @endif
         </tr>
     </table>
@@ -867,7 +864,7 @@
                              
                     @endswitch
                 </td>
-                <td>
+                <td colspan="2">
                     Posición de botones en mangas:
                     <br>
                     @switch($saco->posicion_ojal_manga)
@@ -1097,7 +1094,7 @@
                     <br>
                     Dos bolsas traseras de doble vivo con ojal y botón en cada una.                    
                 </td>
-                <td>
+                <td colspan="2">
                     Color de bies, ojalera, encuarte y pretina:
                     <br>
                     {{ $pantalon->color_ojalera }}

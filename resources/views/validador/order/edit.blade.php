@@ -65,8 +65,8 @@
 
 {{-- Segunda Sección --}}
 @if($orden->has_coat && isset($saco))
-	@if($saco->fit_id === 2)
-		@section("editPerSaco",$orden->personalizacion_holgura_saco)
+	@if($saco->fit_id === 1)
+		@section("editPerSaco",$saco->personalizacion_holgura_saco)
 	@endif
 	@section("editLargoMangaDerecha", $saco->largo_manga_derecha_saco)
 	@section("editLargoMangaIzquierda", $saco->largo_manga_izquierda_saco)

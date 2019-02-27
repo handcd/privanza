@@ -1,4 +1,4 @@
-@extends('validador.layout.main')
+@extends('vendedor.layout.main')
 
 @section('content')
 <div class="row">
@@ -9,7 +9,7 @@
             </div>
             <div class="card-content">
                 <p class="category">Total vendido del mes</p>
-                <h4 class="title">$0</h4>
+                <h4 class="title">${{ $totalVendido }}</h4>
             </div>
         </div>
     </div>

@@ -84,12 +84,12 @@
                             <p>Validadores</p>
                         </a>
                     </li>
-                    <li {{ Request::path() == 'admin/ajustes' ? ' class=active' : '' }}>
+                    {{--<li {{ Request::path() == 'admin/ajustes' ? ' class=active' : '' }}>
                         <a href="{{ url('admin/ajustes') }}">
                             <i class="material-icons">tune</i>
                             <p>Ajustes</p>
                         </a>
-                    </li>
+                    </li>--}}
                      <li {{ Request::path() == 'admin/citas' ? ' class=active' : '' }}>
                         <a href="{{ url('admin/citas') }}">
                             <i class="material-icons">date_range</i>

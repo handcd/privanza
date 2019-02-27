@@ -56,12 +56,13 @@ $factory->define(App\Order::class, function (Faker $faker) {
         //botones
         'tipo_botones' => rand(0,1),
         'codigo_botones' => $faker->word,        
-        'codigo_color_botones' => $faker->hexcolor,
         'color_botones' => $faker->colorName,
+        'cantidad_botones' => rand(0,100),
         //etiquetas
         'etiquetas_tela' => rand(0,1),
         'etiquetas_marca' => rand(0,1),
         'marca_en_etiqueta' => $faker->sentence(),
+        'marca_en_tela' => $faker->sentence(),
         //gancho
         'gancho' => rand(0,1),
         'gancho_personalizacion' => $faker->sentence(),

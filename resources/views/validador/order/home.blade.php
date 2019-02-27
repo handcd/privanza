@@ -70,9 +70,6 @@
                                 <a href="{{ url('/validador/ordenes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden" class="btn btn-success btn-simple btn-xs">
                                     <i class="material-icons">remove_red_eye</i>
                                 </a>
-                                <a href="{{ url('/validador/ordenes/'.$orden->id.'/editar') }}" type="button" rel="tooltip" title="Editar Orden" class="btn btn-primary btn-simple btn-xs">
-                                    <i class="material-icons">edit</i>
-                                </a>
                             </td>
                         </tr>
                         @endforeach
@@ -108,10 +105,12 @@
                             <td class="td-actions text-right">
                                 <a href="{{ url('/validador/ordenes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden" class="btn btn-success btn-simple btn-xs">
                                     <i class="material-icons">remove_red_eye</i>
-                                </a>
-                                 <a href="{{ url('/validador/ordenes/'.$orden->id.'/editar') }}" type="button" rel="tooltip" title="Editar Orden" class="btn btn-primary btn-simple btn-xs">
-                                    <i class="material-icons">edit</i>
-                                </a>
+                                </a>                                
+                                @if( !$orden->approved )
+                                    <a href="{{ url('/validador/ordenes/'.$orden->id.'/editar') }}" type="button" rel="tooltip" title="Editar Orden" class="btn btn-primary btn-simple btn-xs">
+                                        <i class="material-icons">edit</i>
+                                    </a>
+                                @endif
                             </td>
                         </tr>
                         @endforeach

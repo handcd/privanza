@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-md-12" style="float: right;">
-        <a class="btn btn-success btn-large" href="{{ url('/admin/clientes/agregar') }}"><i class="material-icons">add</i>Añadir nuevo Cliente</a>
+        <a class="btn btn-success btn-large" href="{{ url('/admin/clientes/agregar') }}"><i class="material-icons">add</i>Añadir nuevo cliente</a>
     </div>
 </div>
 <div class="row">
@@ -22,7 +22,6 @@
                         <th>#</th>
                         <th>Nombre(s)</th>
                         <th>Apellido(s)</th>
-                        <th>Vendedor Asignado</th>
                         <th>Correo Electrónico</th>
                         <th>Acciones</th>
                     </thead>
@@ -32,7 +31,6 @@
                             <td>{{ $cliente->id }}</td>
                             <td>{{ $cliente->name }}</td>
                             <td>{{ $cliente->lastname }}</td>
-                            <td><a href="{{ url('/admin/vendedores/'.$cliente->vendedor->id) }}">{{ $cliente->vendedor->name }}</a></td>
                             <td><a href="mailto:{{$cliente->email}}">{{ $cliente->email }}</a></td>
                             <td class="td-actions text-right">
                                 <a href="{{ url('/admin/clientes/'.$cliente->id) }}" type="button" rel="tooltip" title="Ver Cliente" class="btn btn-success btn-simple btn-xs">
@@ -45,7 +43,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td class="text-center" colspan="5">No hay ningún cliente registrado en el sistema.</td>
+                            <td class="text-center" colspan="5">No tienes clientes registrados :(</td>
                         </tr>
                         @endforelse
                     </tbody>

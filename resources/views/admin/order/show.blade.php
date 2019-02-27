@@ -1,4 +1,4 @@
-@extends('validador.layout.main')
+@extends('admin.layout.main')
 
 @section('content')
 <div class="row">
@@ -29,7 +29,7 @@
                               <p>#{{ $orden->vendedor->id.' - '.$orden->vendedor->name.' '.$orden->vendedor->lastname }}</p>
                         </div>
                   </div>
-                  {{--<form action="{{ url('/validador/ordenes/'.$orden->id) }}"  onsubmit=" return confirm('¿La información que deseas registrar es correcta?');">
+                  {{--<form action="{{ url('/admin/ordenes/'.$orden->id) }}"  onsubmit=" return confirm('¿La información que deseas registrar es correcta?');">
                         {{method_field('PUT')}}
                         {{ csrf_field() }}
                         <div class="row">
@@ -69,7 +69,7 @@
                               @else
                                     <i class="fa fa-times-circle fa-lg text-danger" aria-hidden="true"></i>
                                     <label class="text-primary">Aprobado</label>
-                                    <a href="{{ url('/validador/ordenes/'.$orden->id.'/aprobar') }}" class="btn btn-success">Aprobar</a>
+                                    <a href="{{ url('/admin/ordenes/'.$orden->id.'/aprobar') }}" class="btn btn-success">Aprobar</a>
                               @endif
                         </div>
                         <div class="col-md-2">
@@ -83,7 +83,7 @@
                                     <label class="text-primary">Producción</label>
                               @endif
                               @if ( $orden->approved && !$orden->production)
-                                    <a href="{{ url('/validador/ordenes/'.$orden->id.'/produccion') }}" class="btn btn-success">En producción</a>
+                                    <a href="{{ url('/admin/ordenes/'.$orden->id.'/produccion') }}" class="btn btn-success">En producción</a>
                               @endif
                         </div>
                         <div class="col-md-2">
@@ -97,7 +97,7 @@
                                     <label class="text-primary">Recolección</label>
                               @endif
                               @if( $orden->revision && !$orden->pickup)
-                                    <a href="{{ url('/validador/ordenes/'.$orden->id.'/recoleccion') }}" class="btn btn-success">En recolección</a>
+                                    <a href="{{ url('/admin/ordenes/'.$orden->id.'/recoleccion') }}" class="btn btn-success">En recolección</a>
                               @endif
                         </div>
                         <div class="col-md-2">
@@ -111,7 +111,7 @@
                                     <label class="text-primary">Entregado</label>
                               @endif
                               @if( $orden->pickup && !$orden->delivered)
-                                    <a href="{{ url('/validador/ordenes/'.$orden->id.'/entrega') }}" class="btn btn-success">Entregado</a>
+                                    <a href="{{ url('/admin/ordenes/'.$orden->id.'/entrega') }}" class="btn btn-success">Entregado</a>
                               @endif
                         </div>
                         <div class="col-md-2">
@@ -125,7 +125,7 @@
                                     <label class="text-primary">Facturado</label>
                               @endif
                               @if( $orden->delivered && !$orden->facturado)
-                                    <a href="{{ url('/validador/ordenes/'.$orden->id.'/factura') }}" class="btn btn-success">Facturado</a>
+                                    <a href="{{ url('/admin/ordenes/'.$orden->id.'/factura') }}" class="btn btn-success">Facturado</a>
                               @endif
                         </div>
                         <div class="col-md-2">
@@ -139,7 +139,7 @@
                                     <label class="text-primary">Cobrado</label>
                               @endif
                               @if( $orden->facturado && !$orden->cobrado)
-                                    <a href="{{ url('/validador/ordenes/'.$orden->id.'/cobro') }}" class="btn btn-success">Cobrado</a>
+                                    <a href="{{ url('/admin/ordenes/'.$orden->id.'/cobro') }}" class="btn btn-success">Cobrado</a>
                               @endif
                         </div>
                   </div>
@@ -156,7 +156,7 @@
                                           <i class="fa fa-times-circle fa-lg text-danger" aria-hidden="true"></i>
                                           <label class="text-primary">Corte</label>
                                           <br>
-                                          <a href="{{ url('/validador/ordenes/'.$orden->id.'/corte') }}" class="btn btn-success">Corte</a>
+                                          <a href="{{ url('/admin/ordenes/'.$orden->id.'/corte') }}" class="btn btn-success">Corte</a>
                                     @endif
                                                                       
                               </div>
@@ -172,7 +172,7 @@
                                     @endif
                                     <br>
                                     @if( $orden->corte && !$orden->ensamble)
-                                          <a href="{{ url('/validador/ordenes/'.$orden->id.'/ensamble') }}" class="btn btn-success">Ensamble</a>
+                                          <a href="{{ url('/admin/ordenes/'.$orden->id.'/ensamble') }}" class="btn btn-success">Ensamble</a>
                                     @endif
                               </div>
                               <div class="col-md-3">
@@ -187,7 +187,7 @@
                                     @endif
                                     <br>
                                     @if( $orden->ensamble && !$orden->plancha)
-                                          <a href="{{ url('/validador/ordenes/'.$orden->id.'/plancha') }}" class="btn btn-success">Plancha</a>
+                                          <a href="{{ url('/admin/ordenes/'.$orden->id.'/plancha') }}" class="btn btn-success">Plancha</a>
                                     @endif
                               </div>
                               <div class="col-md-3">
@@ -202,7 +202,7 @@
                                     @endif
                                     <br>
                                     @if( $orden->ensamble && !$orden->revision)
-                                          <a href="{{ url('/validador/ordenes/'.$orden->id.'/revision') }}" class="btn btn-success">Revisión</a>
+                                          <a href="{{ url('/admin/ordenes/'.$orden->id.'/revision') }}" class="btn btn-success">Revisión</a>
                                     @endif
                               </div>
                         </div>
@@ -929,8 +929,8 @@
 </div>
 <div class="row">
 	<div class="col-md-12">
-		<a href="{{ url('/validador/ordenes') }}" class="btn btn-info">Regresar</a>
-            <a href="{{ url('/validador/ordenes/'.$orden->id.'/pdf') }}" class="btn btn-warning">Exportar a PDF</a>
+		<a href="{{ url('/admin/ordenes') }}" class="btn btn-info">Regresar</a>
+            <a href="{{ url('/admin/ordenes/'.$orden->id.'/pdf') }}" class="btn btn-warning">Exportar a PDF</a>
 	</div>
 </div>
 @endsection

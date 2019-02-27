@@ -1,4 +1,4 @@
-@extends('vendedor.order.create')
+@extends('admin.order.create')
 {{-- Primer Sección --}}
 @section('editOrden',$orden->id)
 @section('editCliente',$orden->client)

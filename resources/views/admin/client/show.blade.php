@@ -71,20 +71,7 @@
                         <p>{{ $client->concept }}</p>
                     </div>
                 </div>
-                <h4>Vendedor Asignado</h4>
-                <div class="row">
-                    <div class="col-md-1">
-                        <label class="text-primary">ID</label>
-                        <p>{{ $client->vendedor->id }}</p>
-                    </div>
-                    <div class="col-md-3">
-                        <label class="text-primary">Nombre</label>
-                        <p>{{ $client->vendedor->name.' '.$client->vendedor->lastname }}</p>
-                    </div>
-                    <div class="col-md-3">
-                        <a href="{{ url('/admin/vendedores/'.$client->vendedor->id) }}" class="btn btn-info">Ver Vendedor</a>
-                    </div>
-                </div>
+
                 <div class="row">
                     <div class="col-md-12">
                         <h4>Referencia</h4>

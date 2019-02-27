@@ -1,4 +1,4 @@
-@extends('validador.layout.main')
+@extends('admin.layout.main')
 
 @section('content')
 {{-- CSS --}}
@@ -42,7 +42,7 @@
         <!--      Wizard container        -->
         <div class="wizard-container">
             <div class="card wizard-card" data-color="blue" id="wizard">
-                <form action="{{ url('/validador/ordenes') }}/@yield('editOrden')" method="post" onsubmit="return confirm('¿La información que deseas registrar es correcta?');">
+                <form action="{{ url('/admin/ordenes') }}/@yield('editOrden')" method="post" onsubmit="return confirm('¿La información que deseas registrar es correcta?');">
                 	{{ csrf_field() }}
                 	@section('editMethod')
                     	@show

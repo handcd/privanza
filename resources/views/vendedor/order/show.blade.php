@@ -443,7 +443,7 @@
                               <div class="col-md-3">
                                     <label class="text-primary">Fit deseado</label>
                                     <p>
-                                    @switch($saco->fit_id)
+                                    @switch($orden->coat->fit_id)
                                           @case(1)
                                                 Especial. {{ $orden->coat->personalizacion_holgura_saco}} pulgadas de holgura.
                                                 @break
@@ -468,7 +468,7 @@
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Largo de Espalda</label>
-                                    <p>{{ $orden->coat->largo_espalda }} <small>pulgadas</small></p>
+                                    <p>{{ $orden->coat->largo_espalda_deseado }} <small>pulgadas</small></p>
                               </div>
                         </div>
                         <h4>Saco Externo</h4>
