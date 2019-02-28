@@ -18,16 +18,18 @@ Route::post('/ordenes','OrderController@storeForAdmin');
 Route::get('/ordenes/{order}','OrderController@showForAdmin');
 Route::get('/ordenes/{order}/editar','OrderController@editForAdmin');
 Route::put('/ordenes/{order}','OrderController@updateForAdmin');
-Route::get('/ordenes/{order}/approved','OrderController@approveOrder');
-Route::get('/ordenes/{order}/produccion','OrderController@productionOrder');
-Route::get('/ordenes/{order}/produccionCorte','OrderController@productionCorteOrder');
-Route::get('/ordenes/{order}/produccionEnsamble','OrderController@productionEnsambleOrder');
-Route::get('/ordenes/{order}/produccionPlancha','OrderController@productionPlanchaOrder');
-Route::get('/ordenes/{order}/produccionRevision','OrderController@productionRevisionOrder');
-Route::get('/ordenes/{order}/pickup','OrderController@pickupOrder');
-Route::get('/ordenes/{order}/delivered','OrderController@deliveredOrder');
-Route::get('/ordenes/{order}/charged','OrderController@chargedOrder');
-Route::get('/ordenes/{order}/invoiced','OrderController@invoicedOrder');
+//Estado general de la orden
+Route::get('/ordenes/{order}/aprobar','OrderController@approveOrder'); //Aprobar
+Route::get('/ordenes/{order}/produccion','OrderController@productionOrder'); //Producción
+Route::get('/ordenes/{order}/recoleccion','OrderController@pickupOrder'); //Recolección
+Route::get('/ordenes/{order}/entrega','OrderController@deliveredOrder'); //Entregado
+Route::get('/ordenes/{order}/factura','OrderController@invoicedOrder');//Facturado
+Route::get('/ordenes/{order}/cobro','OrderController@chargedOrder');//Cobrado
+//Estado de produccion
+Route::get('/ordenes/{order}/corte','OrderController@productionCorteOrder'); //Corte
+Route::get('/ordenes/{order}/ensamble','OrderController@productionEnsambleOrder'); //Ensamble
+Route::get('/ordenes/{order}/plancha','OrderController@productionPlanchaOrder'); //Plancha
+Route::get('/ordenes/{order}/revision','OrderController@productionRevisionOrder'); //Revision
 
 // Ajustes
 Route::get('/ajustes','AdjustmentController@indexForAdmin');
