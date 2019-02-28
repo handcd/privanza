@@ -3190,6 +3190,18 @@ class OrderController extends Controller
         return redirect('/admin/ordenes');
     }
 
+    public function editPrecioOP($id){
+        $orden = Order::find($id);
+        $clientes = Client::all();
+        $saco = Coat::find($id);        
+        $chaleco = Vest::find($id);
+        $pantalon = Pants::find($id);
+        if (!$orden ) {
+            Session::flash('danger','La orden que deseas editar no puede ser mostrada porque no tienes autorización para verla o no existe.');
+            return redirect('/admin/ordenes');
+        }
+        return view('admin.order.editPrecioOP', compact('orden', 'clientes', 'saco', 'chaleco', 'pantalon'));
+    }
     public function updatePrecioOP(Request $request, $id)
     {
         //return $request;
@@ -3197,14 +3209,46 @@ class OrderController extends Controller
         
         if (!$orden) {
             Session::flash('danger','La orden que deseas editar no puede ser mostrada porque no tienes autorización para verla o no existe.');
-            return redirect('/validador/ordenes');
+            return redirect('/admin/ordenes');
         }
 
         $orden->precio = $request->precio;
         $orden->consecutivo_op = $request->consecutivo_op;
         
+
         $orden->save();
+
         // Redirect to Orders:Home
-        return redirect('/validador/ordenes/'.$id);
+        return redirect('/admin/ordenes/'.$id);
+    }
+    public function editPrecioOPForVendedor($id){
+        $orden = Order::find($id);
+        $clientes = Client::all();
+        $saco = Coat::find($id);        
+        $chaleco = Vest::find($id);
+        $pantalon = Pants::find($id);
+        if (!$orden ) {
+            Session::flash('danger','La orden que deseas editar no puede ser mostrada porque no tienes autorización para verla o no existe.');
+            return redirect('/vendedor/ordenes');
+        }
+        return view('vendedor.order.editPrecioOP', compact('orden', 'clientes', 'saco', 'chaleco', 'pantalon'));
+    }
+    public function updatePrecioOPForVendedor(Request $request, $id)
+    {
+        $orden = Order::find($id);
+        
+        if (!$orden) {
+            Session::flash('danger','La orden que deseas editar no puede ser mostrada porque no tienes autorización para verla o no existe.');
+            return redirect('/vendedor/ordenes');
+        }
+
+        $orden->precio = $request->precio;
+        $orden->consecutivo_op = $request->consecutivo_op;
+        
+
+        $orden->save();
+
+        // Redirect to Orders:Home
+        return redirect('/vendedor/ordenes/'.$id);
     }
 }

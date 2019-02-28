@@ -40,7 +40,9 @@ Route::get('/ordenes/{order}/ensamble','OrderController@productionEnsambleOrder'
 Route::get('/ordenes/{order}/plancha','OrderController@productionPlanchaOrder'); //Plancha
 Route::get('/ordenes/{order}/revision','OrderController@productionRevisionOrder'); //Revision
 //Editar precio
-//Route::put('/ordenes/{order}','OrderController@updatePrecioOP');
+Route::get('/ordenes/{order}/editarPrecioOP','OrderController@editPrecioOPForValidador');
+Route::put('/ordenes/{order}','OrderController@updatePrecioOPForValidador');
+
 // Ajustes
 Route::get('/ajustes','AdjustmentController@indexForValidador');
 Route::get('/ajustes/agregar', 'AdjustmentController@createForValidador');

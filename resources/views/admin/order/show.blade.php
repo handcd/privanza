@@ -29,35 +29,6 @@
                               <p>#{{ $orden->vendedor->id.' - '.$orden->vendedor->name.' '.$orden->vendedor->lastname }}</p>
                         </div>
                   </div>
-                  {{--<form action="{{ url('/admin/ordenes/'.$orden->id) }}"  onsubmit=" return confirm('¿La información que deseas registrar es correcta?');">
-                        {{method_field('PUT')}}
-                        {{ csrf_field() }}
-                        <div class="row">
-                              <div class="col-md-3 col-md-offset-2">
-                                    @if(!$orden->precio)
-                                          <div class="input-group">
-                                                <div class="form-group label-floating">
-                                                      <label class="control-label">Precio</label>
-                                                      <input name="precio" type="text" class="form-control">
-                                                </div>
-                                          </div>
-                                    @endif
-                              </div>
-                              <div class="col-md-3">                                   
-                                    @if(!$orden->consecutivo_op)
-                                          <div class="input-group">
-                                                <div class="form-group label-floating">
-                                                      <label class="control-label">Consecutivo de operación</label>
-                                                      <input name="consecutivo_op" type="text" class="form-control">
-                                                </div>
-                                          </div>
-                                    @endif
-                              </div>
-                              <div class="col-md-3">
-                                    <input type='submit' class='btn btn-finish btn-fill btn-success'/>
-                              </div>
-                        </div>
-                  </form>--}}
                   <h3>Estado General</h3>
                   <div class="row">
                         <div class="col-md-2">

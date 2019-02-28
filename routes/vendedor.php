@@ -20,6 +20,10 @@ Route::get('/ordenes/{order}/editar','OrderController@editForVendedor');
 Route::put('/ordenes/{order}','OrderController@updateForVendedor');
 Route::get('/ordenes/{order}/pdf','OrderController@pdfForVendedor');
 
+
+Route::get('/ordenes/{order}/editarPrecioOP','OrderController@editPrecioOPForVendedor');
+Route::put('/ordenes/{order}','OrderController@updatePrecioOPForVendedor');
+
 // Events
 Route::get('/citas','EventController@indexForVendedor');
 Route::get('/citas/agregar','EventController@createForVendedor');

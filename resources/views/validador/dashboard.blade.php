@@ -1,4 +1,4 @@
-@extends('vendedor.layout.main')
+@extends('validador.layout.main')
 
 @section('content')
 <div class="row">

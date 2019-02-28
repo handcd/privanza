@@ -75,7 +75,7 @@
                         @forelse ($aprobadas as $orden)
                         <tr>
                             <td>{{ $orden->id }}</td>
-                            <td><a href="{{ url('/vendedor/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</a></td>
+                            <td><a href="{{ url('/vendedor/clientes/'.$orden->client->id) }}">{{ $orden->client->name }} {{ $orden->client->lastname}}</a></td>
                             <td class="text-primary">${{ $orden->precio }}</td>
                             <td>{{ $orden->created_at }}</td>
                             <td class="td-actions text-right">
@@ -319,6 +319,8 @@
                         <th>ID</th>
                         <th>Cliente</th>
                         <th>Precio</th>
+                        <th>C-OP</th>
+                        <th></th>
                         <th>Fecha</th>
                         <th>Acciones</th>
                     </thead>
@@ -327,7 +329,36 @@
                         <tr>
                             <td>{{ $orden->id }}</td>
                             <td><a href="{{ url('/vendedor/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</td>
-                            <td class="text-primary">${{ $orden->precio }}</td>
+                            @if( $orden->precio && $orden->consecutivo_op || $orden->precio && !$orden->consecutivo_op || !$orden->precio && $orden->consecutivo_op)
+                                @if( $orden->approved)
+                                    <td class="text-primary">                                 
+                                        {{ $orden->precio }}
+                                    </td>
+                                    <td colspan="2">
+                                        {{ $orden->consecutivo_op }}                                
+                                    </td>
+                                @else
+                                    <td class="text-primary">                                 
+                                        {{ $orden->precio }}
+                                    </td>
+                                    <td>
+                                        {{ $orden->consecutivo_op }}                                
+                                    </td>
+                                    <td>
+                                        <div class="col-sm-12" style="float: right;">
+                                            <a href="{{ url('/vendedor/ordenes/'.$orden->id.'/editarPrecioOP') }}" class="btn btn-success btn-large"><i class="material-icons">add</i>Editar Precio/C-OP</a>
+                                        </div>
+                                    </td>
+                                @endif
+                            @elseif( !$orden->precio && !$orden->consecutivo_op )
+
+                                <td colspan="2">
+                                    <div class="col-sm-12" style="float: right;">
+                                        <a href="{{ url('/vendedor/ordenes/'.$orden->id.'/editarPrecioOP') }}" class="btn btn-success btn-large"><i class="material-icons">add</i>Agregar Precio y consecutivo de operación</a>
+                                    </div>
+                                </td>
+                                <td></td>
+                            @endif
                             <td>{{ $orden->created_at }}</td>
                             <td class="td-actions text-right">
                                 <a href="{{ url('/vendedor/ordenes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden" class="btn btn-success btn-simple btn-xs">

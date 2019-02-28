@@ -92,6 +92,8 @@
                         <th>ID</th>
                         <th>Cliente</th>
                         <th>Precio</th>
+                        <th>C-OP</th>
+                        <th></th>
                         <th>Fecha</th>
                         <th>Acciones</th>
                     </thead>
@@ -99,8 +101,28 @@
                         @foreach ($ordenes as $orden)
                         <tr>
                             <td>{{ $orden->id }}</td>
-                            <td><a href="{{ url('/validador/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</td>
-                            <td class="text-primary">$2,380</td>
+                            <td><a href="{{ url('/validador/clientes/'.$orden->client->id) }}">{{ $orden->client->name }} {{ $orden->client->lastname}}</td>
+                            @if( $orden->precio && $orden->consecutivo_op || $orden->precio && !$orden->consecutivo_op || !$orden->precio && $orden->consecutivo_op)
+                                <td class="text-primary">                                 
+                                    {{ $orden->precio }}
+                                </td>
+                                <td>
+                                    {{ $orden->consecutivo_op }}                                
+                                </td>
+                                <td>
+                                    <div class="col-sm-12" style="float: right;">
+                                        <a href="{{ url('/validador/ordenes/'.$orden->id.'/editarPrecioOP') }}" class="btn btn-success btn-large"><i class="material-icons">add</i>Editar Precio/C-OP</a>
+                                    </div>
+                                </td>
+                            @elseif( !$orden->precio && !$orden->consecutivo_op )
+
+                                <td colspan="2">
+                                    <div class="col-sm-12" style="float: right;">
+                                        <a href="{{ url('/validador/ordenes/'.$orden->id.'/editarPrecioOP') }}" class="btn btn-success btn-large"><i class="material-icons">add</i>Agregar Precio y consecutivo de operación</a>
+                                    </div>
+                                </td>
+                                <td></td>
+                            @endif
                             <td>{{ $orden->created_at }}</td>
                             <td class="td-actions text-right">
                                 <a href="{{ url('/validador/ordenes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden" class="btn btn-success btn-simple btn-xs">

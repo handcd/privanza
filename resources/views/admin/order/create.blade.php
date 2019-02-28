@@ -1117,7 +1117,7 @@
 												<label class="control-label">Fit para Pantalón</label>
 												<select name="fitPantalon" id="fitPantalon" class="form-control">
 													<option disabled="" selected=""></option>
-													<option value="1" {{(isset($pantalon) && $pantalon->fit_id === 1) ? 'selected' : ''}}>Tallas Extra</option>
+													<option value="1" {{(isset($pantalon) && $pantalon->fit_id === 1) ? 'selected' : ''}}>Especial</option>
 													<option value="2" {{(isset($pantalon) && $pantalon->fit_id === 2) ? 'selected' : ''}}>Clásico</option>
 													<option value="3" {{(isset($pantalon) && $pantalon->fit_id === 3) ? 'selected' : ''}}>Privanza</option>
 												</select>
