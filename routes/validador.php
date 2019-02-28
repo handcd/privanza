@@ -70,3 +70,5 @@ Route::put('/vendedores/{vendedor}','VendedorController@update');
 // Profile
 Route::get('/perfil','ProfileController@perfilValidador');
 Route::get('/perfil/solicitarCambio', 'ProfileController@dataChangeValidador');
+
+Route::get('/ordenes/{order}/pdf','OrderController@pdfForVendedor');

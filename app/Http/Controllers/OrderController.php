@@ -976,16 +976,57 @@ class OrderController extends Controller
      * @param \App\Order $id
      * @return PDF file for stream
      */
-    public function pdfForAdminValidador($id)
+    /*public function pdfForAdminValidador($id)
     {
         $orden = Order::find($id);
         
-        if (!$orden || $orden->vendedor_id != Auth::id()) {
-            return redirect('/vendedor/ordenes');
+        if (!$orden) {
+            return redirect('/validador/ordenes');
         }
         PDF::setOptions(['dpi' => 50]);
 
         return PDF::loadview('pdf.order',compact('orden'))->setPaper('a4', 'landscape')->stream('PRIV-OC'.$id.$orden->client->name.'.pdf');
+    }*/
+
+    public function pdfForValidador($id)
+    {
+        $orden = Order::find($id);
+        
+        if (!$orden) {
+            return redirect('/validador/ordenes');
+        }
+        PDF::setOptions(['dpi' => 50]);
+        if ($orden->has_coat) {
+            $saco = $orden->Coat;
+        }
+        if ($orden->has_pants) {
+            $pantalon = $orden->Pants;
+        }
+        if ($orden->has_vest) {
+            $chaleco = $orden->Vest;
+        }
+        return PDF::loadview('pdf.order',compact('orden','saco','pantalon','chaleco'))->setPaper('a4', 'landscape')->stream('PRIV-OC'.$id.$orden->client->name.'.pdf');
+    }
+
+    public function pdfForAdmin($id)
+    {
+        $orden = Order::find($id);
+        PDF::setOptions(['dpi' => 50]);
+        if ($orden->has_coat) {
+            $saco = $orden->Coat;
+        }
+        if ($orden->has_pants) {
+            $pantalon = $orden->Pants;
+        }
+        if ($orden->has_vest) {
+            $chaleco = $orden->Vest;
+        }
+        
+        if (!$orden) {
+            return redirect('/validador/ordenes');
+        }
+
+        return PDF::loadview('pdf.order',compact('orden','saco','pantalon','chaleco'))->setPaper('a4', 'landscape')->stream('PRIV-OC'.$id.$orden->client->name.'.pdf');
     }
 
     /**
@@ -3250,5 +3291,35 @@ class OrderController extends Controller
 
         // Redirect to Orders:Home
         return redirect('/vendedor/ordenes/'.$id);
+    }
+    public function editPrecioOPForValidador($id){
+        $orden = Order::find($id);
+        $clientes = Client::all();
+        $saco = Coat::find($id);        
+        $chaleco = Vest::find($id);
+        $pantalon = Pants::find($id);
+        if (!$orden ) {
+            Session::flash('danger','La orden que deseas editar no puede ser mostrada porque no tienes autorización para verla o no existe.');
+            return redirect('/vendedor/ordenes');
+        }
+        return view('validador.order.editPrecioOP', compact('orden', 'clientes', 'saco', 'chaleco', 'pantalon'));
+    }
+    public function updatePrecioOPForValidador(Request $request, $id)
+    {
+        $orden = Order::find($id);
+        
+        if (!$orden) {
+            Session::flash('danger','La orden que deseas editar no puede ser mostrada porque no tienes autorización para verla o no existe.');
+            return redirect('/vendedor/ordenes');
+        }
+
+        $orden->precio = $request->precio;
+        $orden->consecutivo_op = $request->consecutivo_op;
+        
+
+        $orden->save();
+
+        // Redirect to Orders:Home
+        return redirect('/validador/ordenes/'.$id);
     }
 }

@@ -1,4 +1,4 @@
-@extends('admin.layout.main')
+@extends('validador.layout.main')
 
 @section('content')
 
@@ -38,7 +38,7 @@
             <p class="category">Completa la información</p>
         </div>
         <div class="card-content">
-            <form action="{{ url('/admin/ordenes/'.$orden->id) }}" method="POST">
+            <form action="{{ url('/validador/ordenes/'.$orden->id) }}" method="POST">
                 {{ csrf_field() }}
                     <br><br><br>
                 {{ method_field('PUT') }}
@@ -60,7 +60,7 @@
                 </div>               
                 
                 <button type="submit" class="btn btn-success pull-right">Guardar</button>
-                <a href="{{ url('/admin/ordenes') }}" class="btn btn-default">Cancelar</a>
+                <a href="{{ url('/validador/ordenes') }}" class="btn btn-default">Cancelar</a>
                 <div class="clearfix"></div>
             </form>
         </div>

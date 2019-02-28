@@ -76,3 +76,5 @@ Route::get('/perfil/editar', 'ProfileController@editarPerfilAdmin');
 // Configuration
 Route::put('/configuracion','ConfigurationController@update');
 Route::get('/configuracion','ConfigurationController@index');
+
+Route::get('/ordenes/{order}/pdf','OrderController@pdfForVendedor');
