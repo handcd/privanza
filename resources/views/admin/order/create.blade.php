@@ -517,7 +517,20 @@
 		                            	</div>
 									</div>
 								</div>
-								
+								<div class="row">
+	                    			<div class="col-md-3 col-md-offset-3">
+	                        			<div class="form-group label-floating">
+	                            			<label class="control-label">Precio</label>
+	                            			<input name="precio" type="number" class="form-control" value="@yield('editPrecio')">
+	                        			</div>
+	                    			</div>
+	                    			<div class="col-md-3">
+	                        			<div class="form-group label-floating">
+	                            			<label class="control-label">Consecutivo de operación</label>
+	                            			<input type="text" name="consecutivo_op" class="form-control" value="@yield('editCOP')">
+	                        			</div>
+	                    			</div>
+	                			</div>								
 							</div>
 						</div>
 						{{-- Tab Saco --}}

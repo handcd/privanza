@@ -1,23 +1,6 @@
 @extends('validador.layout.main')
 
 @section('content')
-
-{{--	<form action="{{ url('/admin/ordenes/'.$orden->id.'/editar') }}">
-    	Precio
-        <div class="input-group">
-            <input name="precio" type="text" class="form-control" value="{{$orden->precio}}">        
-        </div>
-        <div class="col-md-3">
-        	<input type='submit' class='btn btn-finish btn-fill btn-success'/>
-        </div>
-
-        <div class="input-group">
-            <input name="consecutivo_op" type="text" class="form-control">        
-        </div>
-
-        <br><br><br>
-	</form> 
-	@section('content')--}}
 <!-- DateTimePicker CSS -->
 <link rel="stylesheet" href="{{ asset('css/datepicker.css') }}">
 <!-- DateTimePicker JS -->

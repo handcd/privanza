@@ -29,35 +29,6 @@
                               <p>#{{ $orden->vendedor->id.' - '.$orden->vendedor->name.' '.$orden->vendedor->lastname }}</p>
                         </div>
                   </div>
-                  {{--<form action="{{ url('/validador/ordenes/'.$orden->id) }}"  onsubmit=" return confirm('¿La información que deseas registrar es correcta?');">
-                        {{method_field('PUT')}}
-                        {{ csrf_field() }}
-                        <div class="row">
-                              <div class="col-md-3 col-md-offset-2">
-                                    @if(!$orden->precio)
-                                          <div class="input-group">
-                                                <div class="form-group label-floating">
-                                                      <label class="control-label">Precio</label>
-                                                      <input name="precio" type="text" class="form-control">
-                                                </div>
-                                          </div>
-                                    @endif
-                              </div>
-                              <div class="col-md-3">                                   
-                                    @if(!$orden->consecutivo_op)
-                                          <div class="input-group">
-                                                <div class="form-group label-floating">
-                                                      <label class="control-label">Consecutivo de operación</label>
-                                                      <input name="consecutivo_op" type="text" class="form-control">
-                                                </div>
-                                          </div>
-                                    @endif
-                              </div>
-                              <div class="col-md-3">
-                                    <input type='submit' class='btn btn-finish btn-fill btn-success'/>
-                              </div>
-                        </div>
-                  </form>--}}
                   <h3>Estado General</h3>
                   <div class="row">
                         <div class="col-md-2">
@@ -460,21 +431,21 @@
                         </div>
                         <div class="col-md-3">
                               <label class="text-primary">Gancho</label>
-                              @if ($orden->gancho === 0)
+                              @if ($orden->gancho == 0 )
                                     <p> Normal</p>
-                              @elseif( $orden->gancho === 1)
+                              @elseif( $orden->gancho == 1 )
                                     <p> Personalizado privanza </p>
-                              @else
+                              @elseif( $orden->gancho == 2 )
                                     <p>{{ $orden->gancho_personalizacion }}</p>                                    
                               @endif
                         </div>
                         <div class="col-md-3">
                               <label class="text-primary">Portatrajes</label>
-                              @if ($orden->portatrajes === 0)
+                              @if ($orden->portatrajes == 0)
                                     <p> Cubrepolvos </p>
-                              @elseif( $orden->portatrajes === 1)
+                              @elseif( $orden->portatrajes == 1)
                                     <p> Personalizado privanza </p>
-                              @else
+                              @elseif($orden->portatrajes == 2)
                                     <p>{{ $orden->portatrajes_personalizacion }}</p>                                    
                               @endif
                         </div>
@@ -503,9 +474,9 @@
                               <div class="col-md-3">
                                     <label class="text-primary">Fit deseado</label>
                                     <p>
-                                    @switch($orden->coat->fit_id)
+                                    @switch($saco->fit_id)
                                           @case(1)
-                                                Especial. {{ $orden->coat->personalizacion_holgura_saco}} pulgadas de holgura.
+                                                Especial. {{ $saco->personalizacion_holgura_saco}} pulgadas de holgura.
                                                 @break
                                           @case(2)
                                                 Clásico.
@@ -520,15 +491,15 @@
                               @endif
                               <div class="col-md-3">
                                     <label class="text-primary">Largo de Manga Derecha</label>
-                                    <p>{{ $orden->coat->largo_manga_derecha_saco }} <small>pulgadas</small></p>
+                                    <p>{{ $saco->largo_manga_derecha_saco }} <small>pulgadas</small></p>
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Largo de Manga Izquierda</label>
-                                    <p>{{ $orden->coat->largo_manga_izquierda_saco }} <small>pulgadas</small></p>
+                                    <p>{{ $saco->largo_manga_izquierda_saco }} <small>pulgadas</small></p>
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Largo de Espalda</label>
-                                    <p>{{ $orden->coat->largo_espalda_deseado }} <small>pulgadas</small></p>
+                                    <p>{{ $saco->largo_espalda_deseado }} <small>pulgadas</small></p>
                               </div>
                         </div>
                         <h4>Saco Externo</h4>
@@ -536,7 +507,7 @@
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Solapa</label>
                                     
-                                    @switch($orden->coat->tipo_solapa)
+                                    @switch($saco->tipo_solapa)
                                           @case(0)
                                                 <p>Solapa en pico normal</p>
                                                 @break
@@ -553,51 +524,38 @@
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Ojal en Solapa</label>
-                                     @switch($orden->coat->tipo_ojal_solapa)
+                                    @switch($saco->tipo_ojal_solapa)
                                           @case(0)
-                                                <p>Sin ojal en solapa</p>
-                                                @break
-                                          @case(1)
                                                 <p>Al tono</p>
                                                 @break
-                                          @case(2)
-                                                <p>En contraste</p>
-                                                @break
-                                          
+                                          @case(1)
+                                                <p>En contraste. {{ $saco->color_ojal_solapa }}</p>
+                                                @break                                          
                                     @endswitch
                               </div>
                               <div class="col-md-3">
-                                    <label class="text-primary">Color en Ojal Solapa</label>
-                                    
-                                    <p>{{ $orden->coat->tipo_ojal_solapa ? 'Al tono' :  $orden->coat->color_ojal_solapa }}</p>
-
-
-                              </div>
-                              <div class="col-md-3">
                                     <label class="text-primary">Número de botones de Frente</label>
-                                    <p>{{ $orden->coat->botones_frente }}</p>
+                                    <p>{{ $saco->botones_frente }}</p>
                               </div>
-                        </div>
-                        <div class="row">
                               <div class="col-md-3">
                                     <label class="text-primary">Ojal Activo en Solapa</label>
-                                    <p>{{ $orden->coat->ojal_activo_solapa ? 'Ojal Activo.' : 'Ojal Inactivo' }}</p>
+                                    <p>{{ $saco->ojal_activo_solapa ? 'Ojal Activo.' : 'Ojal Inactivo' }}</p>
                               </div>
                         </div>
                         <div class="row">
                               <div class="col-md-3">
                                     <label class="text-primary">Aberturas Detrás</label>
-                                    <p>{{ $orden->coat->aberturas_detras }}</p>
+                                    <p>{{ $saco->aberturas_detras }}</p>
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Botones Mangas</label>
-                                    <p>{{ $orden->coat->botones_mangas }}</p>
+                                    <p>{{ $saco->botones_mangas }}</p>
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Ojal en Manga</label>
-                                    @if ($orden->coat->tipo_ojal_manga === 0)
-                                          <p>Al tono</p>.
-                                          @switch($orden->coat->posicion_ojales_contraste)
+                                    @if ($saco->tipo_ojal_manga === 0)
+                                          <p>Al tono</p>
+                                          @switch($saco->posicion_ojales_contraste)
                                                 @case(0)
                                                       Ojal 1
                                                       @break
@@ -615,17 +573,17 @@
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Color de Ojal en Manga</label>
-                                    @if ( $orden->coat->tipo_ojal_manga === 0)
+                                    @if ( $saco->tipo_ojal_manga === 0)
                                           <p>Al tono</p>
                                     @else
-                                          <p>{{ $orden->coat->color_ojal_manga }}</p>
+                                          <p>{{ $saco->color_ojal_manga }}</p>
                                     @endif
                               </div>
                         </div>
                         <div class="row">
                               <div class="col-md-3">
                                     <label class="text-primary">Posición Ojal en Manga</label>
-                                    @if ($orden->coat->posicion_ojal_manga === 0 )
+                                    @if ($saco->posicion_ojal_manga === 0 )
                                           <p>Botones en cascada</p>
                                     @else
                                           <p>Botones en línea</p>
@@ -633,13 +591,13 @@
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Ojales Activos en Manga</label>
-                                    <p>{{ $orden->coat->ojales_activos_manga ? 'Si' : 'No' }}</p>
+                                    <p>{{ $saco->ojales_activos_manga ? 'Si' : 'No' }}</p>
                               </div>
-                              @if ($orden->coat->ojales_activos_manga)
+                              @if ($saco->ojales_activos_manga)
                                     <div class="col-md-3">
                                           <label class="text-primary">Posición de los Ojales Activos en Manga</label>
                                           <p>
-                                                @switch($orden->coat->posicion_ojales_activos_manga)
+                                                @switch($saco->posicion_ojales_activos_manga)
                                                       @case(0)
                                                             Cuarto
                                                             @break
@@ -657,7 +615,7 @@
                               @endif
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Bolsas Exteriores</label>
-                                    @switch($orden->coat->tipo_bolsas_ext)
+                                    @switch($saco->tipo_bolsas_ext)
                                           @case(0)
                                                 <p>Parche</p>
                                                 @break
@@ -686,22 +644,22 @@
                         <div class="row">
                               <div class="col-md-3">
                                     <label class="text-primary">PickStitch</label>
-                                    <p>{{ $orden->coat->pickstitch ? 'Si' : 'No' }}</p>
+                                    <p>{{ $saco->pickstitch ? 'Si' : 'No' }}</p>
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Aletilla</label>
-                                    <p>{{ $orden->coat->sin_aletilla ? 'Sin Aletilla' : 'Aletilla normal' }}</p>
+                                    <p>{{ $saco->sin_aletilla ? 'Sin Aletilla' : 'Aletilla normal' }}</p>
                               </div>
                               <div class="col-md-6">
                                     <label class="text-primary">Notas de Saco Externo</label>
-                                    <p>{{ $orden->coat->notas_ext }}</p>
+                                    <p>{{ $saco->notas_ext }}</p>
                               </div>
                         </div>
                         <h4>Saco Interno</h4>
                         <div class="row">
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Vista</label>
-                                    @if ( $orden->coat->tipo_vista === 0)
+                                    @if ( $saco->tipo_vista === 0)
                                           <p>Normal</p>
                                     @else
                                           <p>Chapeta Francesa</p>
@@ -715,43 +673,43 @@
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Pin Point Interno</label>
-                                    <p>{{ $orden->coat->pin_point_interno ? 'Si' : 'No' }}</p>
+                                    <p>{{ $saco->pin_point_interno ? 'Si' : 'No' }}</p>
                               </div>
-                              @if ($orden->coat->pin_point_interno)                        
+                              @if ($saco->pin_point_interno)                        
                                     <div class="col-md-3">
                                           <label class="text-primary">Color de Pin Point</label>
-                                          <p>{{ $orden->coat->pin_point_interno_color }}</p>
+                                          <p>{{ $saco->pin_point_interno_color }}</p>
                                     </div>
                                     <div class="col-md-3">
                                           <label class="text-primary">Código de Pin Point</label>
-                                          <p>{{ $orden->coat->pin_point_interno_codigo }}</p>
+                                          <p>{{ $saco->pin_point_interno_codigo }}</p>
                                     </div>
                               @endif
                         </div>
                         <div class="row">
                               <div class="col-md-3">
                                     <label class="text-primary">Bies</label>
-                                    <p>{{ $orden->coat->bies ? 'Si' : 'No' }}</p>
+                                    <p>{{ $saco->bies ? 'Si' : 'No' }}</p>
                               </div>
-                              @if ($orden->coat->bies)
+                              @if ($saco->bies)
                                     <div class="col-md-3">
                                           <label class="text-primary">Color de Bies</label>
-                                          <p>{{ $orden->coat->bies_color }}</p>
+                                          <p>{{ $saco->bies_color }}</p>
                                     </div>
                                     <div class="col-md-3">
                                           <label class="text-primary">Código de Bies</label>
-                                          <p>{{ $orden->coat->bies_codigo }}</p>
+                                          <p>{{ $saco->bies_codigo }}</p>
                                     </div>
                               @endif
                               <div class="col-md-3">
                                     <label class="text-primary">Color de Puntada al tono</label>
-                                    <p>{{ $orden->coat->color_puntada ? 'Sí' : 'No' }}</p>
+                                    <p>{{ $saco->color_puntada ? 'Sí' : 'No' }}</p>
                               </div>
                         </div>
                         <div class="row">
                               <div class="col-md-3">
                                     <label class="text-primary">Bolsas Internas</label>
-                                    @switch($orden->coat->bolsas_int)
+                                    @switch($saco->bolsas_int)
                                           @case(0)
                                                 <p>2 bolsas de pecho, 1 bolsa para pluma, 1 bolsa cigarrera</p>
                                                 @break
@@ -771,7 +729,7 @@
                         <div class="row">
                               <div class="col-md-6">
                                     <label class="text-primary">Notas de Saco Interno</label>
-                                    <p>{{ $orden->coat->notas_int }}</p>
+                                    <p>{{ $saco->notas_int }}</p>
                               </div>
                         </div>
                   @endif
@@ -780,22 +738,20 @@
                         <h3>Chaleco</h3>
                         <h4>Medidas de Cliente</h4>
                         <div class="row">
-                              @if($orden->vest->fit->description)
                               <div class="col-md-3">
                                     <label class="text-primary">Fit</label>
-                                    <p>{{ $orden->vest->fit->name }} <br><small>{{ $orden->vest->fit->description }}</small></p>
+                                    <p>{{ $chaleco->fit_id }} </small></p>
                               </div>
-                              @endif
                               <div class="col-md-3">
                                     <label class="text-primary">Largo Espalda</label>
-                                    <p>{{ $orden->vest->largo_espalda }}</p>
+                                    <p>{{ $chaleco->largo_espalda }}</p>
                               </div>
                         </div>
                         <h4>Especificaciones del Chaleco</h4>
                         <div class="row">
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Cuello</label>
-                                    @if ( $orden->vest->tipo_cuello === 0)
+                                    @if ( $chaleco->tipo_cuello === 0)
                                           <p>En "V"</p>
                                     @else
                                           <p>Con solapa</p>
@@ -803,7 +759,7 @@
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Bolsas</label>
-                                    @if ( $orden->vest->tipo_bolsas === 0)
+                                    @if ( $chaleco->tipo_bolsas === 0)
                                           <p>Vivos</p>
                                     @else
                                           <p>Aletillas</p>
@@ -811,27 +767,27 @@
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Espalda</label>
-                                    @if ( $orden->vest->tipo_espalda === 0)
+                                    @if ( $chaleco->tipo_espalda === 0)
                                           <p>Forro</p>
                                     @else
                                           <p>Tela</p>
                                     @endif
                               </div>
-                              @if ($orden->vest->tipo_espalda == 1)
+                              @if ($chaleco->tipo_espalda == 1)
                                    <div class="col-md-3">
                                           <label class="text-primary">Tipo de Forro para Espalda</label>
-                                          <p>{{ $orden->vest->tipo_forro }}</p>
+                                          <p>{{ $chaleco->tipo_forro }}</p>
                                     </div> 
                               @endif
                         </div>
                         <div class="row">
                               <div class="col-md-3">
                                     <label class="text-primary">Ajustador en la Espalda</label>
-                                    <p>{{ $orden->vest->ajustador_espalda ? 'Si' : 'No' }}</p>
+                                    <p>{{ $chaleco->ajustador_espalda ? 'Si' : 'No' }}</p>
                               </div>
                               <div class="col-md-6">
                                     <label class="text-primary">Notas de Chaleco</label>
-                                    <p>{{ $orden->vest->notas }}</p>
+                                    <p>{{ $chaleco->notas }}</p>
                               </div>
                         </div>
                   @endif
@@ -840,42 +796,40 @@
                         <h3>Pantalón</h3>
                         <h4>Medidas de Cliente</h4>
                         <div class="row">
-                              @if($orden->pants->fit->description)
                               <div class="col-md-3">
                                     <label class="text-primary">Fit</label>
-                                    <p>{{ $orden->pants->fit->name }} <br><small>{{ $orden->pants->fit->description}}</small></p>
+                                    <p>{{ $pantalon->fit_id }}/p>
                               </div>
-                              @endif
                               <div class="col-md-3">
                                     <label class="text-primary">Talla</label>
-                                    <p>{{ $orden->pants->talla }}</p>
+                                    <p>{{ $pantalon->talla }}</p>
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Largo Exterior Terminado</label>
-                                    <p>{{ $orden->pants->largo_ext }}</p>
+                                    <p>{{ $pantalon->largo_ext }}</p>
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Largo Interior Terminado</label>
-                                    <p>{{ $orden->pants->largo_int }}</p>
+                                    <p>{{ $pantalon->largo_int }}</p>
                               </div>
                         </div>
                         <h4>Especificaciones del Pedido</h4>
                         <div class="row">
                               <div class="col-md-3">
                                     <label class="text-primary">Con Pase</label>
-                                    <p>{{ $orden->pants->pase ? 'Con Pase' : 'Sin Pase' }}</p>
+                                    <p>{{ $pantalon->pase ? 'Con Pase' : 'Sin Pase' }}</p>
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Número de Pliegues</label>
-                                    <p>{{ $orden->pants->pliegues }}</p>
+                                    <p>{{ $pantalon->pliegues }}</p>
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Bolsas Traseras</label>
-                                    <p>{{ $orden->pants->bolsas_traseras }}</p>
+                                    <p>{{ $pantalon->bolsas_traseras }}</p>
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Vivo</label>
-                                    @if ( $orden->pants->tipo_vivo === 0)
+                                    @if ( $pantalon->tipo_vivo === 0)
                                           <p>Vivo doble con ojal</p>
                                     @else
                                           <p>Vivo sencillo con ojal</p>
@@ -885,12 +839,12 @@
                         <div class="row">
                               <div class="col-md-3">
                                     <label class="text-primary">Color de Ojalera</label>
-                                    <p>{{ $orden->pants->color_ojalera }}</p>
+                                    <p>{{ $pantalon->color_ojalera }}</p>
                               </div>
                               
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Dobladillo</label>
-                                    @if ( $orden->pants->dobladillo === 0)
+                                    @if ( $pantalon->dobladillo === 0)
                                           <p>Dobladillo normal</p>
                                     @else
                                           <p>Valenciana Española</p>
@@ -898,7 +852,7 @@
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Pretina</label>
-                                    @switch($orden->pants->pretina)
+                                    @switch($pantalon->pretina)
                                           @case(0)
                                                 <p>Flexon</p>
                                                 @break
@@ -915,11 +869,11 @@
                         <div class="row">
                               <div class="col-md-3">
                                     <label class="text-primary">Color de Pretina</label>
-                                    <p>{{ $orden->pants->color_pretina }}</p>
+                                    <p>{{ $pantalon->color_pretina }}</p>
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Notas de Pantalón</label>
-                                    <p>{{ $orden->pants->notas }}</p>
+                                    <p>{{ $pantalon->notas }}</p>
                               </div>
                         </div>
                   @endif

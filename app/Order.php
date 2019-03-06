@@ -78,10 +78,10 @@ class Order extends Model
     */
     public function currentStatus()
     {
-    	if ($this->facturado) {
-    		return 'facturado';
-    	} elseif ($this->cobrado) {
+    	if ($this->cobrado) {
     		return 'cobrado';
+    	} elseif ($this->facturado) {
+    		return 'facturado';
     	} elseif ($this->delivered) {
     		return 'delivered';
     	} elseif ($this->pickup) {

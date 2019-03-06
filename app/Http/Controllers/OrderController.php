@@ -469,11 +469,14 @@ class OrderController extends Controller
     public function showForVendedor($id)
     {
         $orden = Order::find($id);
+        $saco = Coat::find($id);
+        $chaleco = Vest::find($id);
+        $pantalon = Pants::find($id);
         if (!$orden || $orden->vendedor_id != Auth::id()) {
             Session::flash('danger','La orden que deseas ver no puede ser mostrada porque no tienes autorización para verla o no existe.');
             return redirect('/vendedor/ordenes');
         }
-        return view('vendedor.order.show',compact('orden'));
+        return view('vendedor.order.show',compact('orden','saco','chaleco','pantalon'));
     }
 
     /**
@@ -597,7 +600,8 @@ class OrderController extends Controller
         $orden->has_vest = $request->chaleco ? true : false;
         $orden->has_coat = $request->saco ? true : false;
         $orden->has_pants = $request->pantalon ? true : false;
-
+        $orden->precio = $request->precio;
+        $orden->consecutivo_op = $request->consecutivo_op;
 
         // Guardar la Orden;
         $orden->save();
@@ -1731,6 +1735,8 @@ class OrderController extends Controller
 
         $orden->notasBordado = $request->notasBordado;
 
+        $orden->precio = $request->precio;
+        $orden->consecutivo_op = $request->consecutivo_op;
         // Componentes del Traje
         $orden->has_vest = $request->chaleco ? true : false;
         $orden->has_coat = $request->saco ? true : false;
@@ -1928,11 +1934,14 @@ class OrderController extends Controller
     public function show($id)
     {
         $orden = Order::find($id);
+        $saco = Coat::find($id);
+        $chaleco = Vest::find($id);
+        $pantalon = Pants::find($id);
         if (!$orden) {
             Session::flash('danger','La orden que deseas ver no puede ser mostrada porque no existe.');
             return redirect('/validador/ordenes');
         }
-        return view('validador.order.show',compact('orden'));
+        return view('validador.order.show',compact('orden','saco','chaleco','pantalon'));
     }
 
     /**
@@ -1976,7 +1985,6 @@ class OrderController extends Controller
             Session::flash('danger','La orden que deseas editar no puede ser mostrada porque no tienes autorización para verla o no existe.');
             return redirect('/validador/ordenes');
         }
-
         // Tela
         if ($request->tipoTela === 'cliente') {
             $orden->tela_isco = false;
@@ -2014,7 +2022,7 @@ class OrderController extends Controller
         // Botones
         $orden->tipo_botones = $request->botonesCliente ? true : false;
         $orden->codigo_botones = $request->codigoBotones; 
-        $orden->color_botones = $request->colorBotones;
+        $orden->color_botones =  $request->colorBotones;
         $orden->cantidad_botones = $request->cantidadBotones;
 
         // Etiquetas
@@ -2051,13 +2059,15 @@ class OrderController extends Controller
         }
 
         $orden->notasBordado = $request->notasBordado;
-
+        $orden->precio = $request->precio;
+        $orden->consecutivo_op = $request->consecutivo_op;
         // Componentes del Traje
         $orden->has_vest = $request->chaleco ? true : false;
         $orden->has_coat = $request->saco ? true : false;
         $orden->has_pants = $request->pantalon ? true : false;
 
-
+        $orden->consecutivo_op = $request->consecutivoOperacion;
+        $orden->precio = $request->precio;
         // Guardar la Orden;
         $orden->save();
 
@@ -2769,11 +2779,14 @@ class OrderController extends Controller
     public function showForAdmin($id)
     {
         $orden = Order::find($id);
+        $saco = Coat::find($id);
+        $chaleco = Vest::find($id);
+        $pantalon = Pants::find($id);
         if (!$orden) {
             Session::flash('danger','La orden que deseas editar no existe.');
             return redirect('/admin/ordenes');
         }
-        return view('admin.order.show',compact('orden'));
+        return view('admin.order.show',compact('orden','saco','chaleco','pantalon'));
     }
 
     /**
@@ -2897,7 +2910,8 @@ class OrderController extends Controller
         $orden->has_vest = $request->chaleco ? true : false;
         $orden->has_coat = $request->saco ? true : false;
         $orden->has_pants = $request->pantalon ? true : false;
-
+        $orden->consecutivo_op = $request->consecutivoOperacion;
+        $orden->precio = $request->precio;
 
         // Guardar la Orden;
         $orden->save();
@@ -3230,96 +3244,5 @@ class OrderController extends Controller
         // Redirect to Orders:Home
         return redirect('/admin/ordenes');
     }
-
-    public function editPrecioOP($id){
-        $orden = Order::find($id);
-        $clientes = Client::all();
-        $saco = Coat::find($id);        
-        $chaleco = Vest::find($id);
-        $pantalon = Pants::find($id);
-        if (!$orden ) {
-            Session::flash('danger','La orden que deseas editar no puede ser mostrada porque no tienes autorización para verla o no existe.');
-            return redirect('/admin/ordenes');
-        }
-        return view('admin.order.editPrecioOP', compact('orden', 'clientes', 'saco', 'chaleco', 'pantalon'));
-    }
-    public function updatePrecioOP(Request $request, $id)
-    {
-        //return $request;
-        $orden = Order::find($id);
-        
-        if (!$orden) {
-            Session::flash('danger','La orden que deseas editar no puede ser mostrada porque no tienes autorización para verla o no existe.');
-            return redirect('/admin/ordenes');
-        }
-
-        $orden->precio = $request->precio;
-        $orden->consecutivo_op = $request->consecutivo_op;
-        
-
-        $orden->save();
-
-        // Redirect to Orders:Home
-        return redirect('/admin/ordenes/'.$id);
-    }
-    public function editPrecioOPForVendedor($id){
-        $orden = Order::find($id);
-        $clientes = Client::all();
-        $saco = Coat::find($id);        
-        $chaleco = Vest::find($id);
-        $pantalon = Pants::find($id);
-        if (!$orden ) {
-            Session::flash('danger','La orden que deseas editar no puede ser mostrada porque no tienes autorización para verla o no existe.');
-            return redirect('/vendedor/ordenes');
-        }
-        return view('vendedor.order.editPrecioOP', compact('orden', 'clientes', 'saco', 'chaleco', 'pantalon'));
-    }
-    public function updatePrecioOPForVendedor(Request $request, $id)
-    {
-        $orden = Order::find($id);
-        
-        if (!$orden) {
-            Session::flash('danger','La orden que deseas editar no puede ser mostrada porque no tienes autorización para verla o no existe.');
-            return redirect('/vendedor/ordenes');
-        }
-
-        $orden->precio = $request->precio;
-        $orden->consecutivo_op = $request->consecutivo_op;
-        
-
-        $orden->save();
-
-        // Redirect to Orders:Home
-        return redirect('/vendedor/ordenes/'.$id);
-    }
-    public function editPrecioOPForValidador($id){
-        $orden = Order::find($id);
-        $clientes = Client::all();
-        $saco = Coat::find($id);        
-        $chaleco = Vest::find($id);
-        $pantalon = Pants::find($id);
-        if (!$orden ) {
-            Session::flash('danger','La orden que deseas editar no puede ser mostrada porque no tienes autorización para verla o no existe.');
-            return redirect('/vendedor/ordenes');
-        }
-        return view('validador.order.editPrecioOP', compact('orden', 'clientes', 'saco', 'chaleco', 'pantalon'));
-    }
-    public function updatePrecioOPForValidador(Request $request, $id)
-    {
-        $orden = Order::find($id);
-        
-        if (!$orden) {
-            Session::flash('danger','La orden que deseas editar no puede ser mostrada porque no tienes autorización para verla o no existe.');
-            return redirect('/vendedor/ordenes');
-        }
-
-        $orden->precio = $request->precio;
-        $orden->consecutivo_op = $request->consecutivo_op;
-        
-
-        $orden->save();
-
-        // Redirect to Orders:Home
-        return redirect('/validador/ordenes/'.$id);
-    }
+    
 }

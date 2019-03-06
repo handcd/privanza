@@ -516,9 +516,22 @@
 		                                	<textarea name="notasBordado"  rows="2" class="form-control">@if(isset($orden->notasBordado)){{ ucfirst($orden->notasBordado) }} @endif</textarea>
 		                            	</div>
 									</div>
-								</div>
-								
+								</div>								
 							</div>
+							<div class="row">
+                    			<div class="col-md-3 col-md-offset-3">
+                        			<div class="form-group label-floating">
+                            			<label class="control-label">Precio</label>
+                            			<input name="precio" type="number" class="form-control" value="@yield('editPrecio')">
+                        			</div>
+                    			</div>
+                    			<div class="col-md-3">
+                        			<div class="form-group label-floating">
+                            			<label class="control-label">Consecutivo de operación</label>
+                            			<input type="text" name="consecutivo_op" class="form-control" value="@yield('editCOP')">
+                        			</div>
+                    			</div>
+                			</div>
 						</div>
 						{{-- Tab Saco --}}
 						<div class="tab-pane" id="saco">
@@ -532,9 +545,9 @@
 												<label class="control-label">Fit deseado</label>
 												<select name="fitSaco" id="tipoHolguraSaco" class="form-control">
 													<option disabled="" selected="" ></option>				
-													<option value="2" {{(isset($orden->coat) && $saco->fit_id === 2) ? 'selected' : ''}}>Clásico (4" 3")</option>
-													<option value="3" {{(isset($orden->coat) && $saco->fit_id === 3) ? 'selected' : ''}}>Privanza (3" 2")</option>
-													<option value="1" {{(isset($orden->coat) && $saco->fit_id === 1) ? 'selected' : ''}}>Especial</option>
+													<option value="2" {{(isset($orden->coat) && $orden->coat->fit_id == 2) ? 'selected' : ''}}>Clásico (4" 3")</option>
+													<option value="3" {{(isset($orden->coat) && $orden->coat->fit_id == 3) ? 'selected' : ''}}>Privanza (3" 2")</option>
+													<option value="1" {{(isset($orden->coat) && $orden->coat->fit_id == 1) ? 'selected' : ''}}>Especial</option>
 												</select>
 											</div>
 										</div>
@@ -561,7 +574,7 @@
 	                            		<div class="col-md-4">
 	                            			<div class="form-group label-floating">
 												<label class="control-label">Largo de manga izquierda<small> (pulgadas)</small>:</label>
-												<input type="number" min="10" step=".1" name="largoMangaDerechaSaco" id="talla" class="form-control" value="@yield('editLargoMangaIzquierda')">
+												<input type="number" min="10" step=".1" name="largoMangaIzquierdaSaco" id="talla" class="form-control" value="@yield('editLargoMangaIzquierda')">
 											</div>
 	                            		</div>
 									</div>									

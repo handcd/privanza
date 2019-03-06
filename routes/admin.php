@@ -19,8 +19,6 @@ Route::get('/ordenes/{order}','OrderController@showForAdmin');
 Route::get('/ordenes/{order}/editar','OrderController@editForAdmin');
 Route::put('/ordenes/{order}','OrderController@updateForAdmin');
 
-Route::get('/ordenes/{order}/editarPrecioOP','OrderController@editPrecioOP');
-Route::put('/ordenes/{order}','OrderController@updatePrecioOP');
 //Estado general de la orden
 Route::get('/ordenes/{order}/aprobar','OrderController@approveOrder'); //Aprobar
 Route::get('/ordenes/{order}/produccion','OrderController@productionOrder'); //Producción

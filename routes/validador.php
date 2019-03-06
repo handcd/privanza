@@ -39,9 +39,6 @@ Route::get('/ordenes/{order}/corte','OrderController@productionCorteOrder'); //C
 Route::get('/ordenes/{order}/ensamble','OrderController@productionEnsambleOrder'); //Ensamble
 Route::get('/ordenes/{order}/plancha','OrderController@productionPlanchaOrder'); //Plancha
 Route::get('/ordenes/{order}/revision','OrderController@productionRevisionOrder'); //Revision
-//Editar precio
-Route::get('/ordenes/{order}/editarPrecioOP','OrderController@editPrecioOPForValidador');
-Route::put('/ordenes/{order}','OrderController@updatePrecioOPForValidador');
 
 // Ajustes
 Route::get('/ajustes','AdjustmentController@indexForValidador');

@@ -1,6 +1,7 @@
 @extends('validador.order.create')
 {{-- Primer Sección --}}
 @section('editOrden',$orden->id)
+
 @section('editCliente',$orden->client)
 @section('editCoat',$orden->has_coat)
 @section('editVest',$orden->has_vest)
@@ -62,7 +63,13 @@
 	@section("editColorBordado", $orden->bordadoColor)
 @endif
 
+@if(isset($orden->precio))
+	@section("editPrecio", $orden->precio)
+@endif
 
+@if(isset($orden->consecutivo_op))
+	@section("editCOP", $orden->consecutivo_op)
+@endif
 {{-- Segunda Sección --}}
 @if($orden->has_coat && isset($saco))
 	@if($saco->fit_id === 1)

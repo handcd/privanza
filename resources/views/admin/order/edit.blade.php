@@ -61,7 +61,13 @@
 @if($orden->bordadoColor !== 'Gris Plata')
 	@section("editColorBordado", $orden->bordadoColor)
 @endif
+@if(isset($orden->precio))
+	@section("editPrecio", $orden->precio)
+@endif
 
+@if(isset($orden->consecutivo_op))
+	@section("editCOP", $orden->consecutivo_op)
+@endif
 
 {{-- Segunda Sección --}}
 @if($orden->has_coat && isset($saco))

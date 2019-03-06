@@ -346,7 +346,7 @@
                                     </td>
                                     <td>
                                         <div class="col-sm-12" style="float: right;">
-                                            <a href="{{ url('/vendedor/ordenes/'.$orden->id.'/editarPrecioOP') }}" class="btn btn-success btn-large"><i class="material-icons">add</i>Editar Precio/C-OP</a>
+                                            <a href="{{ url('/vendedor/ordenes/'.$orden->id.'/editar') }}" class="btn btn-success btn-large"><i class="material-icons">add</i>Editar Precio/C-OP</a>
                                         </div>
                                     </td>
                                 @endif
@@ -354,7 +354,7 @@
 
                                 <td colspan="2">
                                     <div class="col-sm-12" style="float: right;">
-                                        <a href="{{ url('/vendedor/ordenes/'.$orden->id.'/editarPrecioOP') }}" class="btn btn-success btn-large"><i class="material-icons">add</i>Agregar Precio y consecutivo de operación</a>
+                                        <a href="{{ url('/vendedor/ordenes/'.$orden->id.'/editar') }}" class="btn btn-success btn-large"><i class="material-icons">add</i>Agregar Precio/C-OP</a>
                                     </div>
                                 </td>
                                 <td></td>
@@ -390,11 +390,6 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-4">
-        <a href="#" class="btn btn-success">Exportar a Excel</a>
     </div>
 </div>
 <script type="text/javascript">
