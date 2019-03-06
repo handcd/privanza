@@ -844,25 +844,11 @@
                               
                               <div class="col-md-3">
                                     <label class="text-primary">Tipo de Dobladillo</label>
-                                    @if ( $pantalon->dobladillo === 0)
+                                    @if ( $pantalon->dobladillo == 1)
                                           <p>Dobladillo normal</p>
-                                    @else
+                                    @elseif($pantalon->dobladillo == 2)
                                           <p>Valenciana Española</p>
                                     @endif
-                              </div>
-                              <div class="col-md-3">
-                                    <label class="text-primary">Tipo de Pretina</label>
-                                    @switch($pantalon->pretina)
-                                          @case(0)
-                                                <p>Flexon</p>
-                                                @break
-                                          @case(1)
-                                                <p>Snutex</p>
-                                                @break
-                                          @case(2)
-                                                <p>Bies</p>
-                                                @break                                          
-                                    @endswitch
                               </div>
 
                         </div>
