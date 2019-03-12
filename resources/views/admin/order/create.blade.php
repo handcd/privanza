@@ -485,8 +485,8 @@
 								<h4 class="text-center">Bordado de iniciales (opcional)</h4>
 								<div class="col-md-4 col-md-offset-4">											
 									<div class="form-group label-floating">
-										<label class="control-label">Nombre <small>(Máximo 10 caracteres, los puntos también cuentan):</small></label>
-		                            	<input type="text" name="bordadoNombre" class="form-control" maxlength="10" value="@yield('editNombreBordado')">
+										<label class="control-label">Nombre:</label>
+		                            	<input type="text" name="bordadoNombre" class="form-control" value="@yield('editNombreBordado')">
 		                            </div>
 									<div class="row text-center">
 										<div class="col-xs-3 col-xs-offset-3">
@@ -1258,7 +1258,7 @@
 	                	</div>
 						<div class="wizard-footer">
 	                    	<div class="pull-right">
-	                            <input type='button' class='btn btn-next btn-fill btn-info btn-wd' name='next' value='Siguiente' />
+	                            <input type='button' class='btn btn-next btn-fill btn-info btn-wd' name='next' value='Siguiente'  id="next"/>
 	                            <input type='submit' class='btn btn-finish btn-fill btn-success btn-wd' name='finish' value='Finalizar' />
 	                        </div>
 	                        <div class="pull-left">
@@ -1275,6 +1275,13 @@
 <script src="{{ asset('wizard/js/orderwizard.js') }}"></script>
 {{-- Script para el cambio de imagen cuando es con/sin pickstitch--}}
 <script type="text/javascript">
+	//var botonSiguiente = document.getElementById('next');
+
+	$("#next").on("click", function() {
+    	$("html").scrollTop(0);
+    });
+
+
     var checkSinAletilla = document.getElementById('sinAletilla');
     function cambiarImagenPickstitch(){
         if ( checkSinAletilla.checked ) {
