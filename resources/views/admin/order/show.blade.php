@@ -30,6 +30,7 @@
                         </div>
                   </div>
                   <h3>Estado General</h3>
+                  @if($orden->vendedor->type == 0)
                   <div class="row">
                         <div class="col-md-2">
                               @if ($orden->approved)
@@ -109,11 +110,95 @@
                                     <i class="fa fa-times-circle fa-lg text-danger" aria-hidden="true"></i>
                                     <label class="text-primary">Cobrado</label>
                               @endif
-                              @if( $orden->facturado && !$orden->cobrado)
                                     <a href="{{ url('/admin/ordenes/'.$orden->id.'/cobro') }}" class="btn btn-success">Cobrado</a>
+                        </div>
+                  </div>
+                  @else
+                        <div class="row">
+                        <div class="col-md-2">
+                              @if ($orden->approved)
+                                    <i class="fa fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <label class="text-primary">Aprobado</label>
+                                    <br>
+                                    {{ $orden->date_approved }}
+                              @else
+                                    <i class="fa fa-times-circle fa-lg text-danger" aria-hidden="true"></i>
+                                    <label class="text-primary">Aprobado</label>
+                                    <a href="{{ url('/admin/ordenes/'.$orden->id.'/aprobar') }}" class="btn btn-success">Aprobar</a>
+                              @endif
+                        </div>
+                        <div class="col-md-2">
+                              @if ($orden->production)
+                                    <i class="fa fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <label class="text-primary">Producción</label>
+                                    <br>
+                                    {{ $orden->date_production }}
+                              @else
+                                    <i class="fa fa-times-circle fa-lg text-danger" aria-hidden="true"></i>
+                                    <label class="text-primary">Producción</label>
+                              @endif
+                              @if ( $orden->approved && !$orden->production)
+                                    <a href="{{ url('/admin/ordenes/'.$orden->id.'/produccion') }}" class="btn btn-success">En producción</a>
+                              @endif
+                        </div>
+                        <div class="col-md-2">
+                              @if ($orden->pickup)
+                                    <i class="fa fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <label class="text-primary">Recolección</label>
+                                    <br>
+                                    {{ $orden->date_pickup }}
+                              @else
+                                    <i class="fa fa-times-circle fa-lg text-danger" aria-hidden="true"></i>
+                                    <label class="text-primary">Recolección</label>
+                              @endif
+                              @if( $orden->revision && !$orden->pickup)
+                                    <a href="{{ url('/admin/ordenes/'.$orden->id.'/recoleccion') }}" class="btn btn-success">En recolección</a>
+                              @endif
+                        </div>
+                        
+                        <div class="col-md-2">
+                              @if ($orden->facturado)
+                                    <i class="fa fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <label class="text-primary">Facturado</label>
+                                    <br>
+                                    {{ $orden->date_facturado }}
+                              @else
+                                    <i class="fa fa-times-circle fa-lg text-danger" aria-hidden="true"></i>
+                                    <label class="text-primary">Facturado</label>
+                              @endif
+                              @if( $orden->delivered && !$orden->facturado)
+                                    <a href="{{ url('/admin/ordenes/'.$orden->id.'/factura') }}" class="btn btn-success">Facturado</a>
+                              @endif
+                        </div>
+                        <div class="col-md-2">
+                              @if ($orden->cobrado)
+                                    <i class="fa fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <label class="text-primary">Cobrado</label>
+                                    <br>
+                                    {{ $orden->date_cobrado }}
+                              @else
+                                    <i class="fa fa-times-circle fa-lg text-danger" aria-hidden="true"></i>
+                                    <label class="text-primary">Cobrado</label>
+                              @endif
+                                    <a href="{{ url('/admin/ordenes/'.$orden->id.'/cobro') }}" class="btn btn-success">Cobrado</a>
+                        </div>
+                        <div class="col-md-2">
+                              @if ($orden->cobrado)
+                                    <i class="fa fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <label class="text-primary">Entregado</label>
+                                    <br>
+                                    {{ $orden->date_delivered }}
+                              @else
+                                    <i class="fa fa-times-circle fa-lg text-danger" aria-hidden="true"></i>
+                                    <label class="text-primary">Entregado</label>
+                              @endif
+                              @if( $orden->cobrado && !$orden->delivered)
+                                    <a href="{{ url('/admin/ordenes/'.$orden->id.'/entrega') }}" class="btn btn-success">Entregado</a>
                               @endif
                         </div>
                   </div>
+
+                  @endif
                   @if ($orden->production)
                         <h3>Estado de Producción</h3>
                         <div class="row">
@@ -172,7 +257,7 @@
                                           <label class="text-primary">Revisión</label>
                                     @endif
                                     <br>
-                                    @if( $orden->ensamble && !$orden->revision)
+                                    @if( $orden->plancha && !$orden->revision)
                                           <a href="{{ url('/admin/ordenes/'.$orden->id.'/revision') }}" class="btn btn-success">Revisión</a>
                                     @endif
                               </div>

@@ -40,7 +40,7 @@
                               @else
                                     <i class="fa fa-times-circle fa-lg text-danger" aria-hidden="true"></i>
                                     <label class="text-primary">Aprobado</label>
-                                    <a href="{{ url('/vendedor/ordenes/'.$orden->id.'/aprobar') }}" class="btn btn-success">Aprobar</a>
+
                               @endif
                         </div>
                         <div class="col-md-2">
@@ -53,9 +53,6 @@
                                     <i class="fa fa-times-circle fa-lg text-danger" aria-hidden="true"></i>
                                     <label class="text-primary">Producción</label>
                               @endif
-                              @if ( $orden->approved && !$orden->production)
-                                    <a href="{{ url('/vendedor/ordenes/'.$orden->id.'/produccion') }}" class="btn btn-success">En producción</a>
-                              @endif
                         </div>
                         <div class="col-md-2">
                               @if ($orden->pickup)
@@ -66,9 +63,6 @@
                               @else
                                     <i class="fa fa-times-circle fa-lg text-danger" aria-hidden="true"></i>
                                     <label class="text-primary">Recolección</label>
-                              @endif
-                              @if( $orden->revision && !$orden->pickup)
-                                    <a href="{{ url('/vendedor/ordenes/'.$orden->id.'/recoleccion') }}" class="btn btn-success">En recolección</a>
                               @endif
                         </div>
                         <div class="col-md-2">
@@ -81,9 +75,6 @@
                                     <i class="fa fa-times-circle fa-lg text-danger" aria-hidden="true"></i>
                                     <label class="text-primary">Entregado</label>
                               @endif
-                              @if( $orden->pickup && !$orden->delivered)
-                                    <a href="{{ url('/vendedor/ordenes/'.$orden->id.'/entrega') }}" class="btn btn-success">Entregado</a>
-                              @endif
                         </div>
                         <div class="col-md-2">
                               @if ($orden->facturado)
@@ -95,9 +86,6 @@
                                     <i class="fa fa-times-circle fa-lg text-danger" aria-hidden="true"></i>
                                     <label class="text-primary">Facturado</label>
                               @endif
-                              @if( $orden->delivered && !$orden->facturado)
-                                    <a href="{{ url('/vendedor/ordenes/'.$orden->id.'/factura') }}" class="btn btn-success">Facturado</a>
-                              @endif
                         </div>
                         <div class="col-md-2">
                               @if ($orden->cobrado)
@@ -108,9 +96,6 @@
                               @else
                                     <i class="fa fa-times-circle fa-lg text-danger" aria-hidden="true"></i>
                                     <label class="text-primary">Cobrado</label>
-                              @endif
-                              @if( $orden->facturado && !$orden->cobrado)
-                                    <a href="{{ url('/vendedor/ordenes/'.$orden->id.'/cobro') }}" class="btn btn-success">Cobrado</a>
                               @endif
                         </div>
                   </div>
@@ -127,7 +112,6 @@
                                           <i class="fa fa-times-circle fa-lg text-danger" aria-hidden="true"></i>
                                           <label class="text-primary">Corte</label>
                                           <br>
-                                          <a href="{{ url('/vendedor/ordenes/'.$orden->id.'/corte') }}" class="btn btn-success">Corte</a>
                                     @endif
                                                                       
                               </div>
@@ -142,9 +126,6 @@
                                           <label class="text-primary">Ensamble</label>
                                     @endif
                                     <br>
-                                    @if( $orden->corte && !$orden->ensamble)
-                                          <a href="{{ url('/vendedor/ordenes/'.$orden->id.'/ensamble') }}" class="btn btn-success">Ensamble</a>
-                                    @endif
                               </div>
                               <div class="col-md-3">
                                     @if ($orden->plancha)
@@ -157,9 +138,6 @@
                                           <label class="text-primary">Plancha</label>
                                     @endif
                                     <br>
-                                    @if( $orden->ensamble && !$orden->plancha)
-                                          <a href="{{ url('/vendedor/ordenes/'.$orden->id.'/plancha') }}" class="btn btn-success">Plancha</a>
-                                    @endif
                               </div>
                               <div class="col-md-3">
                                     @if ($orden->revision)
@@ -172,9 +150,6 @@
                                           <label class="text-primary">Revisión</label>
                                     @endif
                                     <br>
-                                    @if( $orden->ensamble && !$orden->revision)
-                                          <a href="{{ url('/vendedor/ordenes/'.$orden->id.'/revision') }}" class="btn btn-success">Revisión</a>
-                                    @endif
                               </div>
                         </div>
                   @endif

@@ -95,9 +95,7 @@
                                     <i class="fa fa-times-circle fa-lg text-danger" aria-hidden="true"></i>
                                     <label class="text-primary">Facturado</label>
                               @endif
-                              @if( $orden->delivered && !$orden->facturado)
                                     <a href="{{ url('/validador/ordenes/'.$orden->id.'/factura') }}" class="btn btn-success">Facturado</a>
-                              @endif
                         </div>
                         <div class="col-md-2">
                               @if ($orden->cobrado)
@@ -172,7 +170,7 @@
                                           <label class="text-primary">Revisión</label>
                                     @endif
                                     <br>
-                                    @if( $orden->ensamble && !$orden->revision)
+                                    @if( $orden->plancha && !$orden->revision)
                                           <a href="{{ url('/validador/ordenes/'.$orden->id.'/revision') }}" class="btn btn-success">Revisión</a>
                                     @endif
                               </div>
