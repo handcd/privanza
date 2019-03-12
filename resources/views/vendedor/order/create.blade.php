@@ -560,7 +560,7 @@
 										<div class="col-md-4">
 											<div class="form-group label-floating">
 												<label class="control-label">Largo de espalda deseado<small> (pulgadas)</small>:</label>
-												<input type="number" min="10" step=".1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" value="@yield('editLargoEspalda')">
+												<input type="text" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" value="@yield('editLargoEspalda')">
 											</div>
 										</div>																			
 									</div>
@@ -1276,6 +1276,7 @@
 {{-- Script para el cambio de imagen cuando es con/sin pickstitch--}}
 <script type="text/javascript">
 	//console.log(.test("0000/8"));
+
 	$("#next").on("click", function() {
     	$("html").scrollTop(0);
     });
