@@ -1144,7 +1144,7 @@
 								<div class="col-md-8 col-md-offset-2 text-center">
 									<div class="col-md-6 col-md-offset-3">
 										<label>
-										  <input type="radio" name="tipoPase" value="0" checked="" />
+										  <input type="radio" name="tipoPase" value="0" />
 										  <img src="{{ asset('img/suit_options/pantalon/P.Con.Pase.png') }}">
 										  <p class="text-center">Con Pase</p>
 										</label>
@@ -1184,7 +1184,7 @@
 								<h4 class="text-center">Bolsas Traseras</h4>								
 								<div class="col-md-6 col-md-offset-3">
 									<label>
-									  <input type="radio" name="bolsasTraseras" value="2" checked="" />
+									  <input type="radio" name="bolsasTraseras" value="2" />
 									  <img src="{{ asset('img/suit_options/pantalon/VivoDoble.png') }}">
 									  <p class="text-center">Dos bolsas</p>
 									</label>
