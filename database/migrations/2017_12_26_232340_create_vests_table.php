@@ -20,7 +20,7 @@ class CreateVestsTable extends Migration
 
             // Datos Chaleco
             $table->integer('fit_id')->nullable();
-            $table->double('talla')->nullable();
+            $table->string('talla')->nullable();
 
             $table->string('notas',1000)->nullable();
 

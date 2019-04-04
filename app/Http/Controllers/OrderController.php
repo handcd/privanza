@@ -159,10 +159,10 @@ class OrderController extends Controller
 
             // Datos de Saco Externo
             'fitSaco' => 'nullable|numeric',
-            'tallaSaco' => 'nullable|numeric',
-            'corteSaco' => 'nullable|numeric',
-            'largoMangaSaco' => 'nullable|numeric',
-            'largoEspaldaSaco' => 'nullable|numeric',
+            'tallaSaco' => 'nullable',
+            'corteSaco' => 'nullable',
+            'largoMangaSaco' => 'nullable',
+            'largoEspaldaSaco' => 'nullable',
             'notasSacoExt' => 'nullable',
 
             // Datos de Saco Interno
@@ -170,9 +170,9 @@ class OrderController extends Controller
 
             // Datos de Chaleco
             'fitChaleco' => 'nullable|numeric',
-            'tallaChaleco' => 'nullable|numeric',
+            'tallaChaleco' => 'nullable',
             'corteChaleco' => 'nullable|numeric',
-            'espaldaChaleco' => 'nullable|numeric',
+            'espaldaChaleco' => 'nullable',
             'notasChaleco' => 'nullable',
 
             // Datos Pantalón
@@ -1631,10 +1631,10 @@ class OrderController extends Controller
 
             // Datos de Saco Externo
             'fitSaco' => 'nullable|numeric',
-            'tallaSaco' => 'nullable|numeric',
+            'tallaSaco' => 'nullable',
             'corteSaco' => 'nullable|numeric',
-            'largoMangaSaco' => 'nullable|numeric',
-            'largoEspaldaSaco' => 'nullable|numeric',
+            'largoMangaSaco' => 'nullable',
+            'largoEspaldaSaco' => 'nullable',
             'notasSacoExt' => 'nullable',
 
             // Datos de Saco Interno
@@ -1642,9 +1642,9 @@ class OrderController extends Controller
 
             // Datos de Chaleco
             'fitChaleco' => 'nullable|numeric',
-            'tallaChaleco' => 'nullable|numeric',
+            'tallaChaleco' => 'nullable',
             'corteChaleco' => 'nullable|numeric',
-            'espaldaChaleco' => 'nullable|numeric',
+            'espaldaChaleco' => 'nullable',
             'notasChaleco' => 'nullable',
 
             // Datos Pantalón
@@ -2478,10 +2478,10 @@ class OrderController extends Controller
 
             // Datos de Saco Externo
             'fitSaco' => 'nullable|numeric',
-            'tallaSaco' => 'nullable|numeric',
+            'tallaSaco' => 'nullable',
             'corteSaco' => 'nullable|numeric',
-            'largoMangaSaco' => 'nullable|numeric',
-            'largoEspaldaSaco' => 'nullable|numeric',
+            'largoMangaSaco' => 'nullable',
+            'largoEspaldaSaco' => 'nullable',
             'notasSacoExt' => 'nullable',
 
             // Datos de Saco Interno
@@ -2489,9 +2489,9 @@ class OrderController extends Controller
 
             // Datos de Chaleco
             'fitChaleco' => 'nullable|numeric',
-            'tallaChaleco' => 'nullable|numeric',
+            'tallaChaleco' => 'nullable',
             'corteChaleco' => 'nullable|numeric',
-            'espaldaChaleco' => 'nullable|numeric',
+            'espaldaChaleco' => 'nullable',
             'notasChaleco' => 'nullable',
 
             // Datos Pantalón

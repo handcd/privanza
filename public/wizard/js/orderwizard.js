@@ -90,6 +90,13 @@ module.exports = __webpack_require__(10);
  * en el formulario general de Privanza.
  */
 
+var largoBrazoIzquierdo = document.getElementById("tallaIzquierda");
+var largoBrazoDerecho = document.getElementById("tallaDerecha");
+var largoChaleco = document.getElementById("tallaChaleco");
+var largoEspaldaSaco = document.getElementById('largoEspaldaSaco');
+var expresionRegularFracciones = /[1-9]+\/[1-9]+$/;
+    
+
 //Variables para obtener elementos input
 var tipoAccesorio1 = document.getElementById('tipoAccesorio1');
 var tipoAccesorio2 = document.getElementById('tipoAccesorio2');
@@ -263,6 +270,26 @@ function mostrarOcultarPersonalizacionSaco() {
         $(divPerSaco).hide();
     }
 }
+function fraccionBrazoIzquierdo(){
+    if( expresionRegularFracciones.test(largoBrazoIzquierdo.value) == false){
+        alert("Debe insertar una fracción"); 
+    }
+}
+function fraccionBrazoDerecho(){    
+    if( expresionRegularFracciones.test(largoBrazoDerecho.value) == false){
+        alert("Debe insertar una fracción"); 
+    }
+}
+function fraccionChaleco(){    
+    if( expresionRegularFracciones.test(largoChaleco.value) == false){
+        alert("Debe insertar una fracción"); 
+    }
+}
+function fraccionEspaldaSaco(){    
+    if( expresionRegularFracciones.test(largoEspaldaSaco.value) == false){
+        alert("Debe insertar una fracción"); 
+    }
+}
 /**
  * Helper Functions para cotización de productos.
  */
@@ -270,6 +297,19 @@ function mostrarOcultarPersonalizacionSaco() {
 //Función para agregar eventos 
 function agregarEventos() {
     console.log('Declarando eventos dentro de la funcion');
+
+    largoBrazoIzquierdo.addEventListener('change', function () {
+        fraccionBrazoIzquierdo();
+    });
+    largoBrazoDerecho.addEventListener('change', function () {
+        fraccionBrazoDerecho();
+    });
+    largoChaleco.addEventListener('change', function () {
+        fraccionChaleco();
+    });
+    largoEspaldaSaco.addEventListener('change', function () {
+        fraccionEspaldaSaco();
+    });
     tipoAccesorio1.addEventListener('click', function () {
         coloresBies();
     });

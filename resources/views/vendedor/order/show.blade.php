@@ -719,7 +719,7 @@
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Largo Espalda</label>
-                                    <p>{{ $chaleco->largo_espalda }}</p>
+                                    <p>{{ $chaleco->talla }}</p>
                               </div>
                         </div>
                         <h4>Especificaciones del Chaleco</h4>

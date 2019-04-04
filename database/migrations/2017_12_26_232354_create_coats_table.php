@@ -65,9 +65,9 @@ class CreateCoatsTable extends Migration
             // Datos Saco
             $table->integer('fit_id')->nullable();
             $table->double('personalizacion_holgura_saco')->nullable();
-            $table->double('largo_manga_derecha_saco')->nullable();
-            $table->double('largo_manga_izquierda_saco')->nullable();
-            $table->double('largo_espalda_deseado')->nullable();
+            $table->string('largo_manga_derecha_saco')->nullable();
+            $table->string('largo_manga_izquierda_saco')->nullable();
+            $table->string('largo_espalda_deseado')->nullable();
 
             $table->string('notas_int',1000)->nullable();
             $table->string('notas_ext',1000)->nullable();

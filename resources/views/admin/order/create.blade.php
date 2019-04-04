@@ -8,7 +8,6 @@
 <script src="{{ asset('wizard/js/jquery.bootstrap.js') }}" type="text/javascript"></script>
 <script src="{{ asset('wizard/js/material-bootstrap-wizard.js') }}"></script>
 <script src="{{ asset('wizard/js/jquery.validate.min.js') }}"></script>
-
 <style>
 	/*
 	Estilos para ajustar discrepancias entre Material Dashboard y Material Wizard
@@ -554,13 +553,13 @@
 										<div class="col-md-4">
 											<div class="form-group label-floating">
 												<label class="control-label">Largo de manga derecha<small> (pulgadas)</small>:</label>
-												<input type="number" min="10" step=".1" name="largoMangaDerechaSaco" id="talla" class="form-control" value="@yield('editLargoMangaDerecha')">
+												<input type="text" pattern="/[1-9]+\/[1-9]+$/" name="largoMangaDerechaSaco" id="tallaDerecha" class="form-control" value="@yield('editLargoMangaDerecha')">
 											</div>
 										</div>
 										<div class="col-md-4">
 											<div class="form-group label-floating">
 												<label class="control-label">Largo de espalda deseado<small> (pulgadas)</small>:</label>
-												<input type="number" min="10" step=".1" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" value="@yield('editLargoEspalda')">
+												<input type="text" pattern="/[1-9]+\/[1-9]+$/" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" value="@yield('editLargoEspalda')">
 											</div>
 										</div>																			
 									</div>
@@ -574,7 +573,7 @@
 	                            		<div class="col-md-4">
 	                            			<div class="form-group label-floating">
 												<label class="control-label">Largo de manga izquierda<small> (pulgadas)</small>:</label>
-												<input type="number" min="10" step=".1" name="largoMangaDerechaSaco" id="talla" class="form-control" value="@yield('editLargoMangaIzquierda')">
+												<input type="text" pattern="/[1-9]+\/[1-9]+$/" name="largoMangaIzquierdaSaco" id="tallaIzquierda" class="form-control" value="@yield('editLargoMangaIzquierda')">
 											</div>
 	                            		</div>
 									</div>									
@@ -1021,7 +1020,7 @@
                     					<div class="col-md-6">
                     						<div class="form-group label-floating">
                     							<label class="control-label">Largo de espalda deseado <small>(pulgadas)</small>:</label>
-                    							<input type="number" min="10" step=".1" name="tallaChaleco" id="tallaChaleco" class="form-control" value="@yield('editLargoEspaldaChaleco')">
+                    							<input type="text" pattern="/[1-9]+\/[1-9]+$/" name="tallaChaleco" id="tallaChaleco" class="form-control" value="@yield('editLargoEspaldaChaleco')">
                     						</div>
                     					</div>
                     				</div>
@@ -1277,6 +1276,7 @@
 <script type="text/javascript">
 	//var botonSiguiente = document.getElementById('next');
 
+	/* Scroll */
 	$("#next").on("click", function() {
     	$("html").scrollTop(0);
     });
