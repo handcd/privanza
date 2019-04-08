@@ -231,34 +231,36 @@
 											</span>
 	                                    	<div class="form-group label-floating">
 	                                          	<label class="control-label">Código de Tela ISCO:</label>
-	                                          	<input name="codigoTelaIsco" type="text" class="form-control" value="@yield('editCodigoTelaIsco')">
-	                                        </div>
-	                                    </div>
-	                                    <div class="input-group">
-											<span class="input-group-addon">
-												<i class="fa fa-pencil" aria-hidden="true"></i>
-											</span>
-	                                    	<div class="form-group label-floating">
-	                                          	<label class="control-label">Nombre de la tela:</label>
-	                                          	<input name="nombreTelaIsco" type="text" class="form-control" value="@yield('editNombreTelaIsco')">
-	                                        </div>
-	                                    </div>
-	                                    <div class="input-group">
-											<span class="input-group-addon">
-												<i class="fa fa-barcode" aria-hidden="true"></i>
-											</span>
-	                                        <div class="form-group label-floating">
-	                                          	<label class="control-label">Código de Color de Tela:</label>
-	                                          	<input name="codigoColorTelaIsco" type="text" class="form-control" value="@yield('editCodigoColorTelaIsco')">
-	                                        </div>
-	                                    </div>
-	                                    <div class="input-group">
-											<span class="input-group-addon">
-												<i class="fa fa-pencil" aria-hidden="true"></i>
-											</span>
-	                                        <div class="form-group label-floating">
-	                                          	<label class="control-label">Color de Tela:</label>
-	                                          	<input name="colorTelaIsco" type="text" class="form-control" value="@yield('editColorTelaIsco')">
+	                                          	<select class="form-control" name="codigoTelaIsco">
+				                                    <option disabled="" selected=""></option>
+				                                    @foreach ($telas as $tela)
+					                                    @if (isset($orden) && $orden->tela_id != $tela->id)
+					                                    	@if(strtolower($tela->estado) == 'agotado')
+						                                        <option value="{{ $tela->id }}" disabled="">
+						                                          {{ $tela->codigo_tela }} - {{ $tela->color_tela }} - {{ $tela->estado}}
+						                                        </option>
+					                                        @else
+					                                        	<option value="{{ $tela->id }}">
+					                                          		{{ $tela->codigo_tela }} - {{ $tela->color_tela }} - {{ $tela->estado === Null  ? 'Disponible' : $tela->estado}}
+					                                        	</option>
+					                                      	@endif
+					                                    @elseif(isset($orden))
+					                                    	<option value="{{ $tela->id }}" selected=""> 
+					                                          {{ $tela->codigo_tela }} - {{ $tela->color_tela }} - 
+					                                          {{ $tela->estado == Null ? 'Disponible' : $tela->estado}}
+					                                        </option>
+					                                    @else
+					                                    	<option value="{{ $tela->id }}"> 
+					                                          {{ $tela->codigo_tela }} - {{ $tela->color_tela }} - 
+					                                          @if( $tela->estado == Null)
+					                                          	Disponible
+					                                          @else
+					                                          	{{ $tela->estado}}
+					                                          @endif
+					                                        </option>
+					                                    @endif
+				                                    @endforeach
+				                                </select>
 	                                        </div>
 	                                    </div>
                                     </div>
@@ -339,34 +341,36 @@
 											</span>
 	                                    	<div class="form-group label-floating">
 	                                          	<label class="control-label">Código de Forro ISCO:</label>
-	                                          	<input name="codigoForroIsco" type="text" class="form-control" value="@yield('editCodigoForroIsco')">
-	                                        </div>
-	                                    </div>
-	                                    <div class="input-group">
-											<span class="input-group-addon">
-												<i class="fa fa-pencil" aria-hidden="true"></i>
-											</span>
-	                                    	<div class="form-group label-floating">
-	                                          	<label class="control-label">Nombre del Forro:</label>
-	                                          	<input name="nombreForroIsco" type="text" class="form-control" value="@yield('editNombreForroIsco')">
-	                                        </div>
-	                                    </div>
-	                                    <div class="input-group">
-											<span class="input-group-addon">
-												<i class="fa fa-barcode" aria-hidden="true"></i>
-											</span>
-	                                        <div class="form-group label-floating">
-	                                          	<label class="control-label">Código de Color de Forro:</label>
-	                                          	<input name="codigoColorForroIsco" type="text" class="form-control" value="@yield('editCodigoColorForroIsco')">
-	                                        </div>
-	                                    </div>
-	                                    <div class="input-group">
-											<span class="input-group-addon">
-												<i class="fa fa-pencil" aria-hidden="true"></i>
-											</span>
-	                                    	<div class="form-group label-floating">
-	                                          	<label class="control-label">Color del Forro:</label>
-	                                          	<input name="colorForroIsco" type="text" class="form-control" value="@yield('editColorForroIsco')">
+	                                          	<select class="form-control" name="codigoForroIsco">
+				                                    <option disabled="" selected=""></option>
+				                                    @foreach ($forros as $forro)
+					                                    @if (isset($orden) && $orden->forro_id != $forro->id)
+					                                    	@if(strtolower($forro->estado) == 'agotado')
+						                                        <option value="{{ $tela->id }}" disabled="">
+						                                          {{ $forro->codigo_forro }} - {{ $tela->color_forro }} - {{ $forro->estado}}
+						                                        </option>
+					                                        @else
+					                                        	<option value="{{ $forro->id }}">
+					                                          		{{ $forro->codigo_forro }} - {{ $forro->color_forro }} - {{ $forro->estado === Null  ? 'Disponible' : $forro->estado}}
+					                                        	</option>
+					                                      	@endif
+					                                    @elseif(isset($orden))
+					                                    	<option value="{{ $forro->id }}" selected=""> 
+					                                          {{ $forro->codigo_forro }} - {{ $forro->color_forro }} - {{ $forro->estado == Null ? 'Disponible' : $forro->estado}}
+					                                        </option>
+					                                    @else
+					                                    	<option value="{{ $forro->id }}"> 
+					                                          {{ $forro->codigo_forro }} - {{ $forro->color_forro }} - 
+					                                          @if( $forro->estado == Null)
+					                                          	Disponible
+					                                          @else
+					                                          	{{ $forro->estado}}
+					                                          @endif
+					                                        </option>
+					                                    @endif
+				                                    @endforeach
+				                                </select>
+	                                        	
 	                                        </div>
 	                                    </div>
                                     </div>

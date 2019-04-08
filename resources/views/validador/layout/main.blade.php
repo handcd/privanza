@@ -78,12 +78,18 @@
                             <p>Vendedores</p>
                         </a>
                     </li>
-                    {{--<li {{ Request::path() == 'validador/ajustes' ? ' class=active' : '' }}>
-                        <a href="{{ url('validador/ajustes') }}">
+                    <li {{ Request::path() == 'validador/telas' ? ' class=active' : '' }}>
+                        <a href="{{ url('validador/telas') }}">
                             <i class="material-icons">tune</i>
-                            <p>Ajustes</p>
+                            <p>Telas</p>
                         </a>
-                    </li>--}}
+                    </li>
+                    <li {{ Request::path() == 'validador/forros' ? ' class=active' : '' }}>
+                        <a href="{{ url('validador/forros') }}">
+                            <i class="material-icons">tune</i>
+                            <p>Forros</p>
+                        </a>
+                    </li>
                      <li {{ Request::path() == 'validador/citas' ? ' class=active' : '' }}>
                         <a href="{{ url('validador/citas') }}">
                             <i class="material-icons">date_range</i>

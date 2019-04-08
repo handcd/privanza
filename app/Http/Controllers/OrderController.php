@@ -13,9 +13,11 @@ use App\Order;
 use App\Vest;
 use App\Coat;
 use App\Pants;
+use App\Telas;
 use App\Fit;
 use App\Configuration;
 use App\Client;
+use App\Forro;
 
 // Facades
 use Auth;
@@ -122,7 +124,9 @@ class OrderController extends Controller
     public function createForVendedor()
     {
         $clientes = Vendedor::find(Auth::id())->clients;
-        return view('vendedor.order.create',compact('clientes'));
+        $telas = Telas::all();
+        $forros = Forro::all();
+        return view('vendedor.order.create',compact('clientes','telas','forros'));
     }
 
     /**
@@ -188,7 +192,7 @@ class OrderController extends Controller
         $orden->client_id = $request->cliente;
         $orden->vendedor_id = Auth::id();
 
-        // Tela
+         // Tela
         if ($request->tipoTela === 'cliente') {
             $orden->tela_isco = false;
             $orden->codigo_tela = $request->codigoTelaCliente;
@@ -198,10 +202,12 @@ class OrderController extends Controller
             $orden->mts_tela_cliente = $request->mtsTelaCliente; 
         } else if($request->tipoTela === 'isco'){
             $orden->tela_isco = true;
-            $orden->codigo_tela = $request->codigoTelaIsco;
-            $orden->nombre_tela = $request->nombreTelaIsco;
-            $orden->codigo_color_tela = $request->codigoColorTelaIsco;
-            $orden->color_tela = $request->colorTelaIsco;     
+            $orden->codigo_tela = null;
+            $orden->nombre_tela = null;
+            $orden->codigo_color_tela = null;
+            $orden->color_tela = null;
+            $orden->mts_tela_cliente = null; 
+            $orden->tela_id = $request->codigoTelaIsco;     
         }
 
         // Forro
@@ -212,13 +218,14 @@ class OrderController extends Controller
             $orden->codigo_color_forro = $request->codigoColorForroCliente;
             $orden->color_forro = $request->colorForroCliente;
             $orden->mts_forro_cliente = $request->mtsForroCliente;
+            $orden->forro_id = null;
         } else if($request->tipoForro === 'isco'){
             $orden->forro_isco = true;
-            $orden->codigo_forro = $request->codigoForroIsco;
-            $orden->nombre_forro = $request->nombreForroIsco;
-            $orden->codigo_color_forro = $request->codigoColorForroIsco;
-            $orden->color_forro = $request->colorForroIsco;  
-
+            $orden->codigo_forro = null;
+            $orden->nombre_forro = null;
+            $orden->codigo_color_forro = null;
+            $orden->color_forro = null;  
+            $orden->forro_id = $request->codigoForroIsco;
         }
 
         // Botones
@@ -472,11 +479,13 @@ class OrderController extends Controller
         $saco = Coat::find($id);
         $chaleco = Vest::find($id);
         $pantalon = Pants::find($id);
+        $tela = Telas::find($orden->tela_id);
+        $forro = Forro::find($orden->forro_id);
         if (!$orden || $orden->vendedor_id != Auth::id()) {
             Session::flash('danger','La orden que deseas ver no puede ser mostrada porque no tienes autorización para verla o no existe.');
             return redirect('/vendedor/ordenes');
         }
-        return view('vendedor.order.show',compact('orden','saco','chaleco','pantalon'));
+        return view('vendedor.order.show',compact('orden','saco','chaleco','pantalon','tela','forro'));
     }
 
     /**
@@ -529,12 +538,16 @@ class OrderController extends Controller
             $orden->codigo_color_tela = $request->codigoColorTelaCliente;
             $orden->color_tela = $request->colorTelaCliente;
             $orden->mts_tela_cliente = $request->mtsTelaCliente; 
-        } else if($request->tipoForro === 'isco'){
+            $orden->tela_id = null;
+        } else if($request->tipoTela === 'isco' || $orden->tela_isco == true){
             $orden->tela_isco = true;
-            $orden->codigo_tela = $request->codigoTelaIsco;
-            $orden->nombre_tela = $request->nombreTelaIsco;
-            $orden->codigo_color_tela = $request->codigoColorTelaIsco;
-            $orden->color_tela = $request->colorTelaIsco;
+            $orden->codigo_tela = null;
+            $orden->nombre_tela = null;
+            $orden->codigo_color_tela = null;
+            $orden->color_tela = null;
+            $orden->mts_tela_cliente = null; 
+            $orden->tela_id = $request->codigoTelaIsco;
+            //return $orden;
         }
 
 
@@ -546,13 +559,14 @@ class OrderController extends Controller
             $orden->codigo_color_forro = $request->codigoColorForroCliente;
             $orden->color_forro = $request->colorForroCliente;
             $orden->mts_forro_cliente = $request->mtsForroCliente;
+            $orden->forro_id = null;
         } else if($request->tipoForro === 'isco'){
             $orden->forro_isco = true;
-            $orden->codigo_forro = $request->codigoForroIsco;
-            $orden->nombre_forro = $request->nombreForroIsco;
-            $orden->codigo_color_forro = $request->codigoColorForroIsco;
-            $orden->color_forro = $request->colorForroIsco;  
-
+            $orden->codigo_forro = null;
+            $orden->nombre_forro = null;
+            $orden->codigo_color_forro = null;
+            $orden->color_forro = null;  
+            $orden->forro_id = $request->codigoForroIsco;
         }
 
         // Botones
@@ -1594,7 +1608,9 @@ class OrderController extends Controller
     public function create()
     {
         $clientes = Client::all();
-        return view('validador.order.create',compact('clientes'));
+        $telas = Telas::all();
+        $forros = Forro::all();
+        return view('validador.order.create',compact('clientes', 'telas','forros'));
     }
 
     /**
@@ -1660,6 +1676,7 @@ class OrderController extends Controller
         $orden->client_id = $request->cliente;
         $orden->vendedor_id = Auth::id();
 
+
         // Tela
         if ($request->tipoTela === 'cliente') {
             $orden->tela_isco = false;
@@ -1670,10 +1687,12 @@ class OrderController extends Controller
             $orden->mts_tela_cliente = $request->mtsTelaCliente; 
         } else if($request->tipoTela === 'isco'){
             $orden->tela_isco = true;
-            $orden->codigo_tela = $request->codigoTelaIsco;
-            $orden->nombre_tela = $request->nombreTelaIsco;
-            $orden->codigo_color_tela = $request->codigoColorTelaIsco;
-            $orden->color_tela = $request->colorTelaIsco;     
+            $orden->codigo_tela = null;
+            $orden->nombre_tela = null;
+            $orden->codigo_color_tela = null;
+            $orden->color_tela = null;
+            $orden->mts_tela_cliente = null; 
+            $orden->tela_id = $request->codigoTelaIsco;     
         }
 
         // Forro
@@ -1684,13 +1703,14 @@ class OrderController extends Controller
             $orden->codigo_color_forro = $request->codigoColorForroCliente;
             $orden->color_forro = $request->colorForroCliente;
             $orden->mts_forro_cliente = $request->mtsForroCliente;
+            $orden->forro_id = null;
         } else if($request->tipoForro === 'isco'){
             $orden->forro_isco = true;
-            $orden->codigo_forro = $request->codigoForroIsco;
-            $orden->nombre_forro = $request->nombreForroIsco;
-            $orden->codigo_color_forro = $request->codigoColorForroIsco;
-            $orden->color_forro = $request->colorForroIsco;  
-
+            $orden->codigo_forro = null;
+            $orden->nombre_forro = null;
+            $orden->codigo_color_forro = null;
+            $orden->color_forro = null;  
+            $orden->forro_id = $request->codigoForroIsco;
         }
 
         // Botones
@@ -1937,11 +1957,13 @@ class OrderController extends Controller
         $saco = Coat::find($id);
         $chaleco = Vest::find($id);
         $pantalon = Pants::find($id);
+        $tela = Telas::find($orden->tela_id);
+        $forro = Forro::find($orden->forro_id);
         if (!$orden) {
             Session::flash('danger','La orden que deseas ver no puede ser mostrada porque no existe.');
             return redirect('/validador/ordenes');
         }
-        return view('validador.order.show',compact('orden','saco','chaleco','pantalon'));
+        return view('validador.order.show',compact('orden','saco','chaleco','pantalon','tela','forro'));
     }
 
     /**
@@ -1957,13 +1979,15 @@ class OrderController extends Controller
         $saco = Coat::find($id);        
         $chaleco = Vest::find($id);
         $pantalon = Pants::find($id);
+        $telas = Telas::all();
+        $forros = Forro::all();
         if (!$orden) {
             Session::flash('danger','La orden que deseas editar no existe.');
             return redirect('/validador/ordenes');
         }
         //return $saco;
         //return $orden;
-        return view('validador.order.edit',compact('orden','clientes','saco','chaleco','pantalon'));
+        return view('validador.order.edit',compact('orden','clientes','saco','chaleco','pantalon','telas','forros'));
     }
 
     /**
@@ -1993,12 +2017,16 @@ class OrderController extends Controller
             $orden->codigo_color_tela = $request->codigoColorTelaCliente;
             $orden->color_tela = $request->colorTelaCliente;
             $orden->mts_tela_cliente = $request->mtsTelaCliente; 
-        } else if($request->tipoForro === 'isco'){
+            $orden->tela_id = null;
+        } else if($request->tipoTela === 'isco' || $orden->tela_isco == true){
             $orden->tela_isco = true;
-            $orden->codigo_tela = $request->codigoTelaIsco;
-            $orden->nombre_tela = $request->nombreTelaIsco;
-            $orden->codigo_color_tela = $request->codigoColorTelaIsco;
-            $orden->color_tela = $request->colorTelaIsco;
+            $orden->codigo_tela = null;
+            $orden->nombre_tela = null;
+            $orden->codigo_color_tela = null;
+            $orden->color_tela = null;
+            $orden->mts_tela_cliente = null; 
+            $orden->tela_id = $request->codigoTelaIsco;
+            //return $orden;
         }
 
 
@@ -2010,13 +2038,14 @@ class OrderController extends Controller
             $orden->codigo_color_forro = $request->codigoColorForroCliente;
             $orden->color_forro = $request->colorForroCliente;
             $orden->mts_forro_cliente = $request->mtsForroCliente;
+            $orden->forro_id = null;
         } else if($request->tipoForro === 'isco'){
             $orden->forro_isco = true;
-            $orden->codigo_forro = $request->codigoForroIsco;
-            $orden->nombre_forro = $request->nombreForroIsco;
-            $orden->codigo_color_forro = $request->codigoColorForroIsco;
-            $orden->color_forro = $request->colorForroIsco;  
-
+            $orden->codigo_forro = null;
+            $orden->nombre_forro = null;
+            $orden->codigo_color_forro = null;
+            $orden->color_forro = null;  
+            $orden->forro_id = $request->codigoForroIsco;
         }
 
         // Botones
@@ -2069,6 +2098,7 @@ class OrderController extends Controller
         $orden->consecutivo_op = $request->consecutivoOperacion;
         $orden->precio = $request->precio;
         // Guardar la Orden;
+        //return $orden;
         $orden->save();
 
         // Chaleco
@@ -2448,7 +2478,9 @@ class OrderController extends Controller
     public function createForAdmin()
     {
         $clientes = Client::all();
-        return view('admin.order.create',compact('clientes'));
+        $telas = Telas::all();
+        $forros = Forro::all();
+        return view('admin.order.create',compact('clientes','telas','forros'));
     }
     public function storeForAdmin(Request $request)
     {
@@ -2507,7 +2539,7 @@ class OrderController extends Controller
         $orden->client_id = $request->cliente;
         $orden->vendedor_id = Auth::id();
 
-        // Tela
+         // Tela
         if ($request->tipoTela === 'cliente') {
             $orden->tela_isco = false;
             $orden->codigo_tela = $request->codigoTelaCliente;
@@ -2517,10 +2549,12 @@ class OrderController extends Controller
             $orden->mts_tela_cliente = $request->mtsTelaCliente; 
         } else if($request->tipoTela === 'isco'){
             $orden->tela_isco = true;
-            $orden->codigo_tela = $request->codigoTelaIsco;
-            $orden->nombre_tela = $request->nombreTelaIsco;
-            $orden->codigo_color_tela = $request->codigoColorTelaIsco;
-            $orden->color_tela = $request->colorTelaIsco;     
+            $orden->codigo_tela = null;
+            $orden->nombre_tela = null;
+            $orden->codigo_color_tela = null;
+            $orden->color_tela = null;
+            $orden->mts_tela_cliente = null; 
+            $orden->tela_id = $request->codigoTelaIsco;     
         }
 
         // Forro
@@ -2531,13 +2565,14 @@ class OrderController extends Controller
             $orden->codigo_color_forro = $request->codigoColorForroCliente;
             $orden->color_forro = $request->colorForroCliente;
             $orden->mts_forro_cliente = $request->mtsForroCliente;
+            $orden->forro_id = null;
         } else if($request->tipoForro === 'isco'){
             $orden->forro_isco = true;
-            $orden->codigo_forro = $request->codigoForroIsco;
-            $orden->nombre_forro = $request->nombreForroIsco;
-            $orden->codigo_color_forro = $request->codigoColorForroIsco;
-            $orden->color_forro = $request->colorForroIsco;  
-
+            $orden->codigo_forro = null;
+            $orden->nombre_forro = null;
+            $orden->codigo_color_forro = null;
+            $orden->color_forro = null;  
+            $orden->forro_id = $request->codigoForroIsco;
         }
 
         // Botones
@@ -2782,11 +2817,14 @@ class OrderController extends Controller
         $saco = Coat::find($id);
         $chaleco = Vest::find($id);
         $pantalon = Pants::find($id);
+        $tela = Telas::find($orden->tela_id);
+        $forro = Forro::find($orden->forro_id);
         if (!$orden) {
             Session::flash('danger','La orden que deseas editar no existe.');
             return redirect('/admin/ordenes');
         }
-        return view('admin.order.show',compact('orden','saco','chaleco','pantalon'));
+       // return $tela;
+        return view('admin.order.show',compact('orden','saco','chaleco','pantalon','tela','forro'));
     }
 
     /**
@@ -2839,12 +2877,16 @@ class OrderController extends Controller
             $orden->codigo_color_tela = $request->codigoColorTelaCliente;
             $orden->color_tela = $request->colorTelaCliente;
             $orden->mts_tela_cliente = $request->mtsTelaCliente; 
-        } else if($request->tipoForro === 'isco'){
+            $orden->tela_id = null;
+        } else if($request->tipoTela === 'isco' || $orden->tela_isco == true){
             $orden->tela_isco = true;
-            $orden->codigo_tela = $request->codigoTelaIsco;
-            $orden->nombre_tela = $request->nombreTelaIsco;
-            $orden->codigo_color_tela = $request->codigoColorTelaIsco;
-            $orden->color_tela = $request->colorTelaIsco;
+            $orden->codigo_tela = null;
+            $orden->nombre_tela = null;
+            $orden->codigo_color_tela = null;
+            $orden->color_tela = null;
+            $orden->mts_tela_cliente = null; 
+            $orden->tela_id = $request->codigoTelaIsco;
+            //return $orden;
         }
 
 
@@ -2856,13 +2898,14 @@ class OrderController extends Controller
             $orden->codigo_color_forro = $request->codigoColorForroCliente;
             $orden->color_forro = $request->colorForroCliente;
             $orden->mts_forro_cliente = $request->mtsForroCliente;
+            $orden->forro_id = null;
         } else if($request->tipoForro === 'isco'){
             $orden->forro_isco = true;
-            $orden->codigo_forro = $request->codigoForroIsco;
-            $orden->nombre_forro = $request->nombreForroIsco;
-            $orden->codigo_color_forro = $request->codigoColorForroIsco;
-            $orden->color_forro = $request->colorForroIsco;  
-
+            $orden->codigo_forro = null;
+            $orden->nombre_forro = null;
+            $orden->codigo_color_forro = null;
+            $orden->color_forro = null;  
+            $orden->forro_id = $request->codigoForroIsco;
         }
 
         // Botones

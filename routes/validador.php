@@ -41,12 +41,25 @@ Route::get('/ordenes/{order}/plancha','OrderController@productionPlanchaOrder');
 Route::get('/ordenes/{order}/revision','OrderController@productionRevisionOrder'); //Revision
 
 // Ajustes
-Route::get('/ajustes','AdjustmentController@indexForValidador');
+/*Route::get('/ajustes','AdjustmentController@indexForValidador');
 Route::get('/ajustes/agregar', 'AdjustmentController@createForValidador');
 Route::post('/ajustes','AdjustmentController@storeForValidador');
 Route::get('/ajustes/{ajuste}','AdjustmentController@showForValidador');
 Route::get('/ajustes/{ajuste}/editar','AdjustmentController@editForValidador');
-Route::put('/ajustes/{ajuste}','AdjustmentController@updateForValidador');
+Route::put('/ajustes/{ajuste}','AdjustmentController@updateForValidador');*/
+
+//Telas
+Route::get('/telas','TelasController@indexForValidador');
+Route::get('/telas/agregar', 'TelasController@createForValidador');
+Route::post('/telas','TelasController@storeForValidador');
+Route::get('/telas/{tela}/editar','TelasController@editForValidador');
+Route::put('/telas/{tela}','TelasController@updateForValidador');
+//Forros
+Route::get('/forros','ForroController@indexForValidador');
+Route::get('/forros/agregar', 'ForroController@createForValidador');
+Route::post('forros','ForroController@storeForValidador');
+Route::get('/forros/{forro}/editar','ForroController@editForValidador');
+Route::put('/forros/{forro}','ForroController@updateForValidador');
 
 // Events
 Route::get('/citas','EventController@indexForValidador');

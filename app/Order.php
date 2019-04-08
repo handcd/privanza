@@ -52,6 +52,14 @@ class Order extends Model
 	{
 		return $this->hasOne(Pants::class);
 	}
+    public function telas()
+    {
+        return $this->hasOne(Telas::class);
+    }
+     public function forro()
+    {
+        return $this->hasOne(Forro::class);
+    }
 
 	/**
      * Fits de Saco, Pantalón y Chaleco

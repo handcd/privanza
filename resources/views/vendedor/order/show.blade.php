@@ -365,28 +365,71 @@
                         </div>
                   </div>
                   <h3>Datos de pedido</h3>
+                  @if($tela)
+                        <div class="row">
+                              <div class="col-md-3">
+                                    <label class="text-primary">Código de tela</label>
+                                    <p> {{ $tela->codigo_tela }} </p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Color de tela</label>
+                                    <p> {{ $tela->color_tela }} </p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Nombre de tela</label>
+                                    <p> {{ $tela->nombre_tela }} </p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Composición de tela</label>
+                                    <p> {{ $tela->composicion }} </p>
+                              </div>
+                        </div>
+                  @endif
                   <div class="row">
-                        <div class="col-md-2">
-                              <label class="text-primary">Código de tela</label>
-                              <p> {{ $orden->codigo_tela }} </p>
-                        </div>
-                        <div class="col-md-2">
-                              <label class="text-primary">Código de Forro</label>
-                              <p> {{$orden->codigo_forro }}</p>
-                        </div>
-                        <div class="col-md-2">
+                        @if($forro)
+                              <div class="col-md-3">
+                                    <label class="text-primary">Código de forro</label>
+                                    <p> {{ $forro->codigo_forro }} </p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Color de forro</label>
+                                    <p> {{ $forro->color_forro }} </p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Nombre de forro</label>
+                                    <p> {{ $forro->nombre_forro }} </p>
+                              </div>
+                              <div class="col-md-3">
+                                    <label class="text-primary">Composición de forro</label>
+                                    <p> {{ $forro->composicion }} </p>
+                              </div>
+                        @elseif( !$forro && !$tela)
+                              <div class="col-md-6">
+                                    <label class="text-primary">Código de tela</label>
+                                    <p> {{ $orden->codigo_tela }} </p>
+                              </div>
+                              <div class="col-md-6">
+                                    <label class="text-primary">Código de Forro</label>
+                                    <p> {{$orden->codigo_forro }}</p>
+                              </div>
+
+                        @endif
+                  </div>
+                  <div class="row">                       
+                        
+                        <div class="col-md-4">
                               <label class="text-primary">Código de botones</label>
                               <p> {{$orden->codigo_botones }} </p>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-4">
                               <label class="text-primary">Color de botones</label>
                               <p> {{ $orden->color_botones }} </p>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-4">
                               <label class="text-primary">Cantidad de botones</label>
                               <p> {{ $orden->cantidad_botones }} </p>
                         </div>
-                  </div>
+                  </div>                  
                   <div class="row">
                         <div class="col-md-3">
                               <label class="text-primary">Etiqueta de tela</label>

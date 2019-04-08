@@ -24,33 +24,33 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header" data-background-color="blue">
-                <h4 class="title">Añadir Tela</h4>
-                <p class="category">Formulario para registrar una nueva tela en el sistema</p>
+                <h4 class="title">Añadir Forro</h4>
+                <p class="category">Formulario para registrar un nuevo forro en el sistema</p>
             </div>
             <div class="card-content">
                 
-                <form action="{{ url('/validador/ajustes') }}/@yield('editId')" method="post" onsubmit="return confirm('¿La información que deseas registrar es correcta?');">
+                <form action="{{ url('/validador/ajustes/') }}/@yield('editId')" method="post" onsubmit="return confirm('¿La información que deseas registrar es correcta?');">
                     {{ csrf_field() }}
                     @section('editMethod')
                         @show
-                    <h4>Datos de la tela</h4>
+                    <h4>Datos del forro</h4>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group label-floating">
                                 <label class="control-label">Código</label>
-                                <input type="text" name="codigo_tela" id="codigoTela" value="@yield('editCodigoTela')" class="form-control" required="true">
+                                <input type="text" name="codigo_forro" id="codigoForro" value="@yield('editCodigoForro')" class="form-control" required="true">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group label-floating">
                                 <label class="control-label">Color</label>
-                                <input type="text" name="color_tela" id="colorTela" value="@yield('editColorTela')" class="form-control">
+                                <input type="text" name="color_forro" id="colorForro" value="@yield('editColorForro')" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group label-floating">
                                 <label class="control-label">Nombre</label>
-                                <input type="text" name="nombre_tela" id="nombreTela" value="@yield('editNombreTela')" class="form-control">
+                                <input type="text" name="nombre_forro" id="nombreForro" value="@yield('editNombreForro')" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">

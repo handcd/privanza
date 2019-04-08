@@ -1,4 +1,4 @@
-@extends('validador.adjustment.create')
+@extends('validador.telas.create')
 
 {{-- Info General --}}
 @section('editId',$tela->id)

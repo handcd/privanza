@@ -29,7 +29,7 @@
             </div>
             <div class="card-content">
                 
-                <form action="{{ url('/validador/ajustes') }}/@yield('editId')" method="post" onsubmit="return confirm('¿La información que deseas registrar es correcta?');">
+                <form action="{{ url('/validador/telas') }}/@yield('editId')" method="post" onsubmit="return confirm('¿La información que deseas registrar es correcta?');">
                     {{ csrf_field() }}
                     @section('editMethod')
                         @show
@@ -71,7 +71,7 @@
                     <div id="ajustes-container"></div>
 
                     <button type="submit" class="btn btn-success pull-right">Confirmar</button>
-                    <a href="{{ url('/validador/ajustes') }}" class="btn btn-default">Cancelar</a>
+                    <a href="{{ url('/validador/telas') }}" class="btn btn-default">Cancelar</a>
                     <div class="clearfix"></div>
                 </form>
             </div>

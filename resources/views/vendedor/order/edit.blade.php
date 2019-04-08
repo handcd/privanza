@@ -6,12 +6,9 @@
 @section('editVest',$orden->has_vest)
 @section('editPants',$orden->has_pants)
 {{-- Tipo de tela --}}
+
 @if($orden->tela_isco === 1 )
-	@section('tipoTelaIsco',$orden->tela_isco)
-	@section('editCodigoTelaIsco',$orden->codigo_tela)
-	@section('editNombreTelaIsco',$orden->nombre_tela)
-	@section('editColorTelaIsco',$orden->color_tela)
-	@section('editCodigoColorTelaIsco',$orden->codigo_color_tela)
+	@section('editCodigoTela',$orden->tela)
 @elseif($orden->tela_isco === 0)
 	@section('editCodigoTela',$orden->codigo_tela)
 	@section('editNombreTela',$orden->nombre_tela)
