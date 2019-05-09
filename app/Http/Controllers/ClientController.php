@@ -167,6 +167,10 @@ class ClientController extends Controller
         $cliente->largoExternoPantalon = $request->largoExternoPantalon;
         $cliente->contornoMuslo = $request->contornoMuslo;
         $cliente->contornoRodilla = $request->contornoRodilla;
+
+        $cliente->hombroCaido = $request->hombroCaido;
+        $cliente->conformacionPompas = $request->conformacionPompas;
+        $cliente->usoPantalon = $request->usoPantalon;
         //Guardar
         $cliente->save();
 
@@ -246,6 +250,12 @@ class ClientController extends Controller
         $cliente->largoExternoPantalon = $request->largoExternoPantalon;
         $cliente->contornoMuslo = $request->contornoMuslo;
         $cliente->contornoRodilla = $request->contornoRodilla;
+
+
+
+        $cliente->hombroCaido = $request->hombroCaido;
+        $cliente->conformacionPompas = $request->conformacionPompas;
+        $cliente->usoPantalon = $request->usoPantalon;
         //Guardar
         $cliente->save();
 
@@ -325,6 +335,12 @@ class ClientController extends Controller
         $cliente->largoExternoPantalon = $request->largoExternoPantalon;
         $cliente->contornoMuslo = $request->contornoMuslo;
         $cliente->contornoRodilla = $request->contornoRodilla;
+
+
+
+        $cliente->hombroCaido = $request->hombroCaido;
+        $cliente->conformacionPompas = $request->conformacionPompas;
+        $cliente->usoPantalon = $request->usoPantalon;
         //Guardar
         $cliente->save();
 
@@ -522,6 +538,12 @@ class ClientController extends Controller
         $cliente->contornoMuslo = $request->contornoMuslo;
         $cliente->contornoRodilla = $request->contornoRodilla;
 
+
+
+        $cliente->hombroCaido = $request->hombroCaido;
+        $cliente->conformacionPompas = $request->conformacionPompas;
+        $cliente->usoPantalon = $request->usoPantalon;
+
         $cliente->save();
 
         // Notifications
@@ -608,6 +630,12 @@ class ClientController extends Controller
         $cliente->largoExternoPantalon = $request->largoExternoPantalon;
         $cliente->contornoMuslo = $request->contornoMuslo;
         $cliente->contornoRodilla = $request->contornoRodilla;
+
+
+
+        $cliente->hombroCaido = $request->hombroCaido;
+        $cliente->conformacionPompas = $request->conformacionPompas;
+        $cliente->usoPantalon = $request->usoPantalon;
         $cliente->save();
 
         // Notifications
@@ -691,6 +719,12 @@ class ClientController extends Controller
         $cliente->largoExternoPantalon = $request->largoExternoPantalon;
         $cliente->contornoMuslo = $request->contornoMuslo;
         $cliente->contornoRodilla = $request->contornoRodilla;
+
+        
+
+        $cliente->hombroCaido = $request->hombroCaido;
+        $cliente->conformacionPompas = $request->conformacionPompas;
+        $cliente->usoPantalon = $request->usoPantalon;
         $cliente->save();
 
         // Notifications

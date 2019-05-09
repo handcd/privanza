@@ -60,6 +60,10 @@ class CreateClientsTable extends Migration
             $table->float('largoExternoPantalon')->nullable();
             $table->float('contornoMuslo')->nullable();
             $table->float('contornoRodilla')->nullable();
+            //Updates 
+            $table->integer('hombroCaido')->nullable();
+            $table->integer('conformacionPompas')->nullable();
+            $table->integer('usoPantalon')->nullable();
             //Fecha de creación y modificación
             $table->timestamps();
 

@@ -253,7 +253,7 @@
                                         <div class="col-md-4 col-md-offset-2">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Brazo derecho:</label>
-                                                <input type="number" min="1" step="0.1" name="brazoDerecho" id=brazoDerecho" value="@yield('editBrazoDerecho')" class="form-control">
+                                                <input type="number" min="1" step="0.1" name="brazoDerecho" id="brazoDerecho" value="@yield('editBrazoDerecho')" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-4 col-md-offset-1">
@@ -268,7 +268,7 @@
                                         <div class="col-md-4 col-md-offset-2">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Hombro izquierdo:</label>
-                                                <input type="number" min="1" step="0.1" name="hombroDerecho" id=hombroDerecho" class="form-control" value="@yield('editHombroDerecho')">
+                                                <input type="number" min="1" step="0.1" name="hombroDerecho" id="hombroDerecho" class="form-control" value="@yield('editHombroDerecho')">
                                             </div>
                                         </div>
                                         <div class="col-md-4 col-md-offset-1">
@@ -356,7 +356,40 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">¿El cliente presenta hombros disparejos?</label>
+                                                <select class="form-control" id="hombroCaido" name="hombroCaido">
+                                                    <option disabled="" selected="" ></option>
+                                                    <option value="0" {{(isset($orden->hombroCaido) && $orden->hombroCaido === 0) ? 'selected' : ''}}>Hombro derecho caído</option>
+                                                    <option value="1" {{(isset($orden->hombroCaido) && $orden->hombroCaido === 1) ? 'selected' : ''}}>Hombro izquierdo caído</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">¿El cliente presenta una conformación de pompas?</label>
+                                                <select class="form-control" id="conformacionPompas" name="conformacionPompas">
+                                                    <option disabled="" selected="" ></option>
+                                                    <option value="0" {{(isset($orden->conformacionPompas) && $orden->conformacionPompas === 0) ? 'selected' : ''}}>Escasas</option>
+                                                    <option value="1" {{(isset($orden->conformacionPompas) && $orden->conformacionPompas === 1) ? 'selected' : ''}}>Normales</option>
+                                                    <option value="2" {{(isset($orden->conformacionPompas) && $orden->conformacionPompas === 2) ? 'selected' : ''}}>Prominentes</option>
+                                                </select>
+                                            </div>
+                                        </div>    
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">El cliente usa el pantalón...</label>
+                                                <select class="form-control" id="usoPantalon" name="usoPantalon">
+                                                    <option disabled="" selected="" ></option>
+                                                    <option value="0" {{(isset($orden->usoPantalon) && $orden->usoPantalon === 0) ? 'selected' : ''}}>Arriba de la cintura, tiro largo</option>
+                                                    <option value="1" {{(isset($orden->usoPantalon) && $orden->usoPantalon === 1) ? 'selected' : ''}}>En la cintura, tiro normal</option>
+                                                    <option value="2" {{(isset($orden->usoPantalon) && $orden->usoPantalon === 2) ? 'selected' : ''}}>Abajo de la cintura y/o panza, tiro corto</option>
+                                                </select>
+                                            </div>
+                                        </div>                                                 
+                                    </div>
                     <button type="submit" class="btn btn-success pull-right">Confirmar</button>
                     <a href="{{ url('/validador/clientes') }}" class="btn btn-default">Cancelar</a>
                     <div class="clearfix"></div>
