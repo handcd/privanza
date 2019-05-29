@@ -22,7 +22,7 @@
 @section('editBrazoIzquierdo', $cliente->brazoIzquierdo)
 @section('editHombroIzquierdo', $cliente->hombroIzquierdo )
 @section('editHombroDerecho', $cliente->hombroDerecho )
-@section('editAnchoEspalda', $cliente->anchoEspalda )
+{{--@section('editAnchoEspalda', $cliente->anchoEspalda )--}}
 @section('editLargoTorso', $cliente->largoTorso )
 @section('editContornoPecho', $cliente->contornoPecho )
 @section('editPunio', $cliente->punio)

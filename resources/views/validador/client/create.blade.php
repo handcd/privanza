@@ -145,13 +145,13 @@
                                         <div class="col-md-4">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Altura <small>(En centímetros)</small>:</label>
-                                                <input type="number" min="10" step="1" name="altura" id="altura" value="@yield('editAltura')" class="form-control">
+                                                <input type="number" min="10" step=".01" name="altura" id="altura" value="@yield('editAltura')" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Peso <small>(En kilogramos)</small>:</label>
-                                                <input type="number" min="10" step=".1" name="peso" id="peso" value="@yield('editPeso')" class="form-control">
+                                                <input type="number" min="10" step=".01" name="peso" id="peso" value="@yield('editPeso')" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -232,19 +232,19 @@
                                         <div class="col-md-4">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Contorno de cuello <small>(En pulgadas)</small>:</label>
-                                                <input type="number" min="1" step="0.1" name="contornoCuello" id="contornoCuello" value="@yield('editCuello')" class="form-control">
+                                                <input type="number" min="1" step="0.01" name="contornoCuello" id="contornoCuello" value="@yield('editCuello')" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Contorno de Biceps <small>(En pulgadas)</small>:</label>
-                                                <input type="number" min="1" step="0.1" name="contornoBiceps" id="contornoBiceps" value="@yield('editBiceps')" class="form-control">
+                                                <input type="number" min="1" step="0.01" name="contornoBiceps" id="contornoBiceps" value="@yield('editBiceps')" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group label-floating">
-                                                <label class="control-label">Medida de hombros <small>(En pulgadas)</small>:</label>
-                                                <input type="number" min="1" step="0.1" name="medidaHombros" id="medidaHombros" value="@yield('editContornoHombros')" class="form-control">
+                                                <label class="control-label">Ancho de hombros <small>(En pulgadas)</small>:</label>
+                                                <input type="number" min="1" step="0.01" name="medidaHombros" id="medidaHombros" value="@yield('editContornoHombros')" class="form-control">
                                             </div>
                                         </div>      
                                     </div>      
@@ -253,13 +253,13 @@
                                         <div class="col-md-4 col-md-offset-2">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Brazo derecho:</label>
-                                                <input type="number" min="1" step="0.1" name="brazoDerecho" id="brazoDerecho" value="@yield('editBrazoDerecho')" class="form-control">
+                                                <input type="number" min="1" step="0.01" name="brazoDerecho" id="brazoDerecho" value="@yield('editBrazoDerecho')" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-4 col-md-offset-1">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Brazo izquierdo:</label>
-                                                <input type="number" min="1" step="0.1" name="brazoIzquierdo" id="brazoIzquierdo" value="@yield('editBrazoIzquierdo')" class="form-control">
+                                                <input type="number" min="1" step="0.01" name="brazoIzquierdo" id="brazoIzquierdo" value="@yield('editBrazoIzquierdo')" class="form-control">
                                             </div>
                                         </div>                                          
                                     </div>  
@@ -268,39 +268,39 @@
                                         <div class="col-md-4 col-md-offset-2">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Hombro izquierdo:</label>
-                                                <input type="number" min="1" step="0.1" name="hombroDerecho" id="hombroDerecho" class="form-control" value="@yield('editHombroDerecho')">
+                                                <input type="number" min="1" step="0.01" name="hombroDerecho" id="hombroDerecho" class="form-control" value="@yield('editHombroDerecho')">
                                             </div>
                                         </div>
                                         <div class="col-md-4 col-md-offset-1">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Hombro derecho:</label>
-                                                <input type="number" min="1" step="0.1" name="hombroIzquierdo" id="hombroIzquierdo" class="form-control" value="@yield('editHombroIzquierdo')">
+                                                <input type="number" min="1" step="0.01" name="hombroIzquierdo" id="hombroIzquierdo" class="form-control" value="@yield('editHombroIzquierdo')">
                                             </div>
                                         </div>                                          
                                     </div>  
                                     <div class="row">
-                                        <div class="col-md-3">
+                                        {{--<div class="col-md-3">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Ancho espalda:</label>
-                                                <input type="number" min="1" step="0.1" name="anchoEspalda" id="anchoEspalda" class="form-control" value="@yield('editAnchoEspalda')">
+                                                <input type="number" min="1" step="0.01" name="anchoEspalda" id="anchoEspalda" class="form-control" value="@yield('editAnchoEspalda')">
                                             </div>
-                                        </div>
-                                        <div class="col-md-3">
+                                        </div>--}}
+                                        <div class="col-md-4">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Largo Torso:</label>
-                                                <input type="number" min="1" step="0.1" name="largoTorso" id="largoTorso" class="form-control" value="@yield('editLargoTorso')">
+                                                <input type="number" min="1" step="0.01" name="largoTorso" id="largoTorso" class="form-control" value="@yield('editLargoTorso')">
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Contorno pecho:</label>
-                                                <input type="number" min="1" step="0.1" name="contornoPecho" id="contornoPecho" class="form-control" value="@yield('editContornoPecho')">
+                                                <input type="number" min="1" step="0.01" name="contornoPecho" id="contornoPecho" class="form-control" value="@yield('editContornoPecho')">
                                             </div>
                                         </div>  
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Puño:</label>
-                                                <input type="number" min="1" step="0.1" name="punio" id="punio" class="form-control" value="@yield('editPunio')">
+                                                <input type="number" min="1" step="0.01" name="punio" id="punio" class="form-control" value="@yield('editPunio')">
                                             </div>
                                         </div>      
                                     </div>  
@@ -308,25 +308,25 @@
                                         <div class="col-md-3">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Contorno abdomen:</label>
-                                                <input type="number" min="1" step="0.1" name="contornoAbdomen" id="contornoAbdomen" class="form-control" value="@yield('editContornoAbdomen')">
+                                                <input type="number" min="1" step="0.01" name="contornoAbdomen" id="contornoAbdomen" class="form-control" value="@yield('editContornoAbdomen')">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Cintura:</label>
-                                                <input type="number" min="1" step="0.1" name="contornoCintura" id="contornoCintura" class="form-control" value="@yield('editCintura')">
+                                                <input type="number" min="1" step="0.01" name="contornoCintura" id="contornoCintura" class="form-control" value="@yield('editCintura')">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Cadera:</label>
-                                                <input type="number" min="1" step="0.1" name="contornoCadera" id="contornoCadera" class="form-control" value="@yield('editCadera')">
+                                                <input type="number" min="1" step="0.01" name="contornoCadera" id="contornoCadera" class="form-control" value="@yield('editCadera')">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Largo tiro:</label>
-                                                <input type="number" min="1" step="0.1" name="largoTiro" id="largoTiro" class="form-control" value="@yield('editLargoTiro')">
+                                                <input type="number" min="1" step="0.01" name="largoTiro" id="largoTiro" class="form-control" value="@yield('editLargoTiro')">
                                             </div>
                                         </div>
                                     </div>      
@@ -334,25 +334,25 @@
                                         <div class="col-md-3">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Largo externo pantalón:</label>
-                                                <input type="number" min="1" step="0.1" name="largoExternoPantalon" id="largoExternoPantalon" class="form-control" value="@yield('editLargoExterno')">
+                                                <input type="number" min="1" step="0.01" name="largoExternoPantalon" id="largoExternoPantalon" class="form-control" value="@yield('editLargoExterno')">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Largo interno pantalón:</label>
-                                                <input type="number" min="1" step="0.1" name="largoInternoPantalon" id="largoInternoPantalon" class="form-control" value="@yield('editLargoInterno')">
+                                                <input type="number" min="1" step="0.01" name="largoInternoPantalon" id="largoInternoPantalon" class="form-control" value="@yield('editLargoInterno')">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Muslo:</label>
-                                                <input type="number" min="1" step="0.1" name="contornoMuslo" id="contornoMuslo" class="form-control" value="@yield('editMuslo')">
+                                                <input type="number" min="1" step="0.01" name="contornoMuslo" id="contornoMuslo" class="form-control" value="@yield('editMuslo')">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Rodilla:</label>
-                                                <input type="number" min="1" step="0.1" name="contornoRodilla" id="contornoRodilla" class="form-control" value="@yield('editRodilla')">
+                                                <input type="number" min="1" step="0.01" name="contornoRodilla" id="contornoRodilla" class="form-control" value="@yield('editRodilla')">
                                             </div>
                                         </div>
                                     </div>

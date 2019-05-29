@@ -15,7 +15,7 @@
                         <p>{{ $validador->name }}</p>
                     </div>
                     <div class="col-md-6">
-                        <label class="text-primary">Posición en ISCO</label>
+                        <label class="text-primary">Posición en TAILORED</label>
                         <p>{{ $validador->job_position }}</p>
                     </div>
                 </div>

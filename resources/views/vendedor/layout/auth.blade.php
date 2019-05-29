@@ -37,7 +37,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name','Privanza') }} - Vendedor
+                    {{ config('app.name','TAILORED') }} - Vendedor
                 </a>
             </div>
 

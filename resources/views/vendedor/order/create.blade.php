@@ -552,8 +552,8 @@
 												<label class="control-label">Fit deseado</label>
 												<select name="fitSaco" id="tipoHolguraSaco" class="form-control">
 													<option disabled="" selected="" ></option>				
-													<option value="2" {{(isset($orden->coat) && $saco->fit_id === 2) ? 'selected' : ''}}>Clásico (4" 3")</option>
-													<option value="3" {{(isset($orden->coat) && $saco->fit_id === 3) ? 'selected' : ''}}>Privanza (3" 2")</option>
+													<option value="2" {{(isset($orden->coat) && $saco->fit_id === 2) ? 'selected' : ''}}>Clásico (4" de holgura)</option>
+													<option value="3" {{(isset($orden->coat) && $saco->fit_id === 3) ? 'selected' : ''}}>Privanza (3" de holgura)</option>
 													<option value="1" {{(isset($orden->coat) && $saco->fit_id === 1) ? 'selected' : ''}}>Especial</option>
 												</select>
 											</div>
@@ -574,7 +574,7 @@
 									<div class="row">
 										<div class="col-md-4">
 											<div class="form-group label-floating" id="personalizacionHolguraSaco">
-	                            				<label class="control-label">Ingrese las pulgadas de holgura: </label>
+	                            				<label class="control-label">Capture la holgura deseada por el cliente: </label>
 	                            				<input type="text" name="personalizacionHolguraSaco" class="form-control" value="@yield('editPerSaco')">
 											</div>
 	                            		</div>
@@ -651,10 +651,10 @@
 			                                	<label class="control-label">Posición de Ojales Activos</label>
 			                                	<select class="form-control" name="posicionOjalesActivosManga">
 				                                    <option disabled="" selected=""></option>
-				                                    <option value="0" {{(isset($saco->posicion_ojales_activos_manga) && $saco->posicion_ojales_activos_manga === 0) ? 'selected' : ''}}> 4</option>
-				                                    <option value="1" {{(isset($saco->posicion_ojales_activos_manga) && $saco->posicion_ojales_activos_manga === 1) ? 'selected' : ''}}> 2, 3, 4 </option>
 				                                    <option value="2" {{(isset($saco->posicion_ojales_activos_manga) && $saco->posicion_ojales_activos_manga === 2) ? 'selected' : ''}}> Todos</option>
-				                                     <option value="3" {{(isset($saco->posicion_ojales_activos_manga) && $saco->posicion_ojales_activos_manga === 3) ? 'selected' : ''}}> 3 y 4</option>
+				                                    <option value="1" {{(isset($saco->posicion_ojales_activos_manga) && $saco->posicion_ojales_activos_manga === 1) ? 'selected' : ''}}> 2, 3, 4 </option>
+				                                    <option value="3" {{(isset($saco->posicion_ojales_activos_manga) && $saco->posicion_ojales_activos_manga === 3) ? 'selected' : ''}}> 3 y 4</option>
+				                                    <option value="0" {{(isset($saco->posicion_ojales_activos_manga) && $saco->posicion_ojales_activos_manga === 0) ? 'selected' : ''}}> 4</option>
 				                                </select>	                                		
 			                            	</div>			                            	
 										</div>		
@@ -891,7 +891,6 @@
 										  <input type="radio" name="tipoVista" value="0" id="vistaNormal" />
 										  <img src="{{ asset('img/suit_options/saco/Chapeta_Normal.png') }}">
 										  <p class="text-center">Normal</p>
-										  <p class="text-center">Los vivos de las bolsas internas van al tono de pinpoint y/o bies</p>
 										</label>
 									</div>
 									<div class="col-md-6 col-xs-6">
@@ -899,9 +898,9 @@
 										  <input type="radio" name="tipoVista" value="1" id="chapetaFrancesa" />
 										  <img src="{{ asset('img/suit_options/saco/Chapeta_Francesa.png') }}">
 										  <p class="text-center">Chapeta Francesa</p>
-										  <p class="text-center">Los vivos de las bolsas internas van del mismo tono del cuerpo</p>
 										</label>
-									</div>
+									</div>								
+									<p class="text-center">Los vivos de las bolsas internas van del mismo tono del forro del cuerpo del saco.</p>
 								</div>
 							</div>
 							<div class="row">
@@ -1137,9 +1136,9 @@
 												<label class="control-label">Fit para Pantalón</label>
 												<select name="fitPantalon" id="fitPantalon" class="form-control">
 													<option disabled="" selected=""></option>
-													<option value="1" {{(isset($pantalon) && $pantalon->fit_id === 1) ? 'selected' : ''}}>Especial</option>
-													<option value="2" {{(isset($pantalon) && $pantalon->fit_id === 2) ? 'selected' : ''}}>Clásico</option>
-													<option value="3" {{(isset($pantalon) && $pantalon->fit_id === 3) ? 'selected' : ''}}>Privanza</option>
+													<option value="2" {{(isset($pantalon) && $pantalon->fit_id === 2) ? 'selected' : ''}}>Clásico (18" en el contorno de bajos)</option>	
+													<option value="3" {{(isset($pantalon) && $pantalon->fit_id === 3) ? 'selected' : ''}}>Tailored (14" en el contorno de bajos)</option>
+													<option value="1" {{(isset($pantalon) && $pantalon->fit_id === 1) ? 'selected' : ''}}>Especial</option>	
 												</select>
 											</div>
                     					</div>										

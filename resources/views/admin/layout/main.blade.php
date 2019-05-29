@@ -6,7 +6,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="{{ url('img/privanzaN.png') }}" />
     <link rel="icon" type="image/png" href="{{ url('img/privanzaN.png') }}" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Privanza | Administrador</title>
+    <title>TAILORED | Administrador</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -49,7 +49,7 @@
     -->
             <div class="logo">
                 <a href="{{ url('/admin') }}" class="simple-text">
-                    Privanza
+                    TAILORED
                 </a>
             </div>
             <div class="sidebar-wrapper">
@@ -90,12 +90,12 @@
                             <p>Ajustes</p>
                         </a>
                     </li>--}}
-                     <li {{ Request::path() == 'admin/citas' ? ' class=active' : '' }}>
+                    {{--<li {{ Request::path() == 'admin/citas' ? ' class=active' : '' }}>
                         <a href="{{ url('admin/citas') }}">
                             <i class="material-icons">date_range</i>
                             <p>Citas</p>
                         </a>
-                    </li>
+                    </li>--}}
                     <li {{ Request::path() == 'admin/perfil' ? ' class=active' : '' }}>
                         <a href="{{ url('admin/perfil') }}">
                             <i class="material-icons">person</i>

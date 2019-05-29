@@ -6,7 +6,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="{{ url('img/privanzaN.png') }}" />
     <link rel="icon" type="image/png" href="{{ url('img/privanzaN.png') }}" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Privanza | Validador</title>
+    <title>TAILORED | Validador</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -49,7 +49,7 @@
     -->
             <div class="logo">
                 <a href="{{ url('/validador') }}" class="simple-text">
-                    Privanza
+                    TAILORED
                 </a>
             </div>
             <div class="sidebar-wrapper">
@@ -72,12 +72,12 @@
                             <p>Clientes</p>
                         </a>
                     </li>
-                    <li {{ Request::path() == 'validador/vendedores' ? ' class=active' : '' }}>
+                    {{--<li {{ Request::path() == 'validador/vendedores' ? ' class=active' : '' }}>
                         <a href="{{ url('validador/vendedores') }}">
                             <i class="fa fa-users" aria-hidden="true"></i>
                             <p>Vendedores</p>
                         </a>
-                    </li>
+                    </li>--}}
                     <li {{ Request::path() == 'validador/telas' ? ' class=active' : '' }}>
                         <a href="{{ url('validador/telas') }}">
                             <i class="material-icons">tune</i>
@@ -90,12 +90,12 @@
                             <p>Forros</p>
                         </a>
                     </li>
-                     <li {{ Request::path() == 'validador/citas' ? ' class=active' : '' }}>
+                    {{--<li {{ Request::path() == 'validador/citas' ? ' class=active' : '' }}>
                         <a href="{{ url('validador/citas') }}">
                             <i class="material-icons">date_range</i>
                             <p>Citas</p>
                         </a>
-                    </li>
+                    </li>--}}
                     <li {{ Request::path() == 'validador/perfil' ? ' class=active' : '' }}>
                         <a href="{{ url('validador/perfil') }}">
                             <i class="material-icons">person</i>
