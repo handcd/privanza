@@ -75,8 +75,16 @@
 	@section("editLargoEspalda", $saco->largo_espalda_deseado)
 @endif
 @if($orden->has_vest && isset($chaleco))
+	@if($chaleco->fit_id === 1)
+		@section("editPerChaleco",$chaleco->personalizacion_holgura_chaleco)
+	@endif
 	@section("editLargoEspaldaChaleco", $chaleco->talla)
 	@section("editForroChaleco",$chaleco->tipo_forro)
+@endif
+@if($orden->has_pants && isset($pants))
+	@if($pantalon->fit_id === 1)
+		@section("editPerPants",$pantalon->personalizacion_holgura_pantalon)
+	@endif
 @endif
 
 

@@ -29,6 +29,7 @@ class CreatePantsTable extends Migration
 
             // Datos Pantalón
             $table->integer('fit_id')->nullable();
+            $table->double('personalizacion_holgura_pantalon')->nullable();
             $table->double('talla')->nullable();
 
             $table->string('notas',1000)->nullable();

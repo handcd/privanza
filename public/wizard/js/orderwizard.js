@@ -94,7 +94,7 @@ var largoBrazoIzquierdo = document.getElementById("tallaIzquierda");
 var largoBrazoDerecho = document.getElementById("tallaDerecha");
 var largoChaleco = document.getElementById("tallaChaleco");
 var largoEspaldaSaco = document.getElementById('largoEspaldaSaco');
-var expresionRegularFracciones = /[1-9]+\/[1-9]+$/;
+//var expresionRegularFracciones = /[1-9]+\/[1-9]+$/;
     
 
 //Variables para obtener elementos input
@@ -117,6 +117,8 @@ var divMarcaTela = document.getElementById('marcaTela');
 var divPerGancho = document.getElementById('personalizacionGancho');
 var divPerPortatraje = document.getElementById('personalizacionPortatrajes');
 var divPerSaco = document.getElementById('personalizacionHolguraSaco');
+var divPerChaleco = document.getElementById('personalizacionHolguraChaleco');
+var divPerPantalon = document.getElementById('personalizacionHolguraPantalon');
 var divForroChaleco = document.getElementById('otroForroChaleco');
 var divOjalesActivosManga = document.getElementById('divOjalesActivosManga');
 var divOjalesActivosSolapa = document.getElementById('divOjalesActivosSolapa');
@@ -129,6 +131,8 @@ var checkEtiquetaTela = document.getElementById('checkEtiquetaTela');
 var selectTipoGancho = document.getElementById('tipoGancho');
 var selectTipoPortatrajes = document.getElementById('tipoPortatrajes');
 var selectTipoHolguraSaco = document.getElementById('tipoHolguraSaco');
+var selectTipoHolguraPantalon = document.getElementById('tipoHolguraPantalon');
+var selectTipoHolguraChaleco = document.getElementById('tipoHolguraChaleco');
 var checkForroChaleco = document.getElementById('tipoForroChaleco');
 var checkOjalesActivosManga = document.getElementById('ojalesActivosManga');
 var checkBotonesDeCliente = document.getElementById('botonesCliente');
@@ -145,6 +149,8 @@ function iniciarComponentes() {
     $(divPerGancho).hide();
     $(divPerPortatraje).hide();
     $(divPerSaco).hide();
+    $(divPerPantalon).hide();
+    $(divPerChaleco).hide();
     $(divOjalesActivosManga).hide();
     $(divOjalesActivosSolapa).hide();
     $(divPosicionOjalesManga).hide();
@@ -270,7 +276,21 @@ function mostrarOcultarPersonalizacionSaco() {
         $(divPerSaco).hide();
     }
 }
-function fraccionBrazoIzquierdo(){
+function mostrarOcultarPersonalizacionPantalon() {
+    if (selectTipoHolguraPantalon.value == "1") {
+        $(divPerPantalon).show();
+    } else {
+        $(divPerPantalon).hide();
+    }
+}
+function mostrarOcultarPersonalizacionChaleco() {
+    if (selectTipoHolguraChaleco.value == "1") {
+        $(divPerChaleco).show();
+    } else {
+        $(divPerChaleco).hide();
+    }
+}
+/*function fraccionBrazoIzquierdo(){
     if( expresionRegularFracciones.test(largoBrazoIzquierdo.value) == false){
         alert("Debe insertar una fracción"); 
     }
@@ -289,7 +309,7 @@ function fraccionEspaldaSaco(){
     if( expresionRegularFracciones.test(largoEspaldaSaco.value) == false){
         alert("Debe insertar una fracción"); 
     }
-}
+}*/
 /**
  * Helper Functions para cotización de productos.
  */
@@ -298,7 +318,7 @@ function fraccionEspaldaSaco(){
 function agregarEventos() {
     console.log('Declarando eventos dentro de la funcion');
 
-    largoBrazoIzquierdo.addEventListener('change', function () {
+    /*largoBrazoIzquierdo.addEventListener('change', function () {
         fraccionBrazoIzquierdo();
     });
     largoBrazoDerecho.addEventListener('change', function () {
@@ -309,7 +329,7 @@ function agregarEventos() {
     });
     largoEspaldaSaco.addEventListener('change', function () {
         fraccionEspaldaSaco();
-    });
+    });*/
     tipoAccesorio1.addEventListener('click', function () {
         coloresBies();
     });
@@ -349,6 +369,12 @@ function agregarEventos() {
     });
     selectTipoHolguraSaco.addEventListener('change', function () {
         mostrarOcultarPersonalizacionSaco();
+    });
+    selectTipoHolguraPantalon.addEventListener('change', function () {
+        mostrarOcultarPersonalizacionPantalon();
+    });
+    selectTipoHolguraChaleco.addEventListener('change', function () {
+        mostrarOcultarPersonalizacionChaleco();
     });
 
     checkForroChaleco.addEventListener('click', function () {

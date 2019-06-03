@@ -286,6 +286,7 @@ class OrderController extends Controller
 
             // Medidas Corporales
             $chaleco->fit_id = $request->fitChaleco;
+            $chaleco->personalizacion_holgura_chaleco = $request->personalizacion_holgura_chaleco;
             $chaleco->talla = $request->tallaChaleco;
 
             // Datos de Chaleco
@@ -312,6 +313,7 @@ class OrderController extends Controller
 
             // Medidas Corporales
             $pantalon->fit_id = $request->fitPantalon;
+            $pantalon->personalizacion_holgura_pantalon = $request->personalizacion_holgura_pantalon;
             $pantalon->notas = $request->notasPantalon;
 
             // Datos del Pantalón
@@ -626,6 +628,7 @@ class OrderController extends Controller
 
             // Medidas Corporales
             $chaleco->fit_id = $request->fitChaleco;
+            $chaleco->personalizacion_holgura_chaleco = $request->personalizacion_holgura_chaleco;
             $chaleco->talla = $request->tallaChaleco;
             $chaleco->order_id = $orden->id;
             $chaleco->tipo_cuello = $request->cuelloChaleco;
@@ -649,6 +652,7 @@ class OrderController extends Controller
 
             $chaleco->order_id = $orden->id;
             $chaleco->fit_id = $request->fitChaleco;
+            $chaleco->personalizacion_holgura_chaleco = $request->personalizacion_holgura_chaleco;
             $chaleco->talla = $request->tallaChaleco;
             $chaleco->tipo_cuello = $request->cuelloChaleco;
             $chaleco->tipo_bolsas = $request->bolsasChaleco;
@@ -672,6 +676,7 @@ class OrderController extends Controller
 
             // Medidas Corporales
             $pantalon->fit_id = $request->fitPantalon;
+            $pantalon->personalizacion_holgura_pantalon = $request->personalizacion_holgura_pantalon;
             $pantalon->notas = $request->notasPantalon;
 
             // Datos del Pantalón
@@ -700,6 +705,7 @@ class OrderController extends Controller
             $pantalon = new Pants;
             // Medidas Corporales
             $pantalon->fit_id = $request->fitPantalon;
+            $pantalon->personalizacion_holgura_pantalon = $request->personalizacion_holgura_pantalon;
             $pantalon->notas = $request->notasPantalon;
 
             // Datos del Pantalón
@@ -1773,6 +1779,7 @@ class OrderController extends Controller
 
             // Medidas Corporales
             $chaleco->fit_id = $request->fitChaleco;
+            $chaleco->personalizacion_holgura_chaleco = $request->personalizacion_holgura_chaleco;
             $chaleco->talla = $request->tallaChaleco;
 
             // Datos de Chaleco
@@ -1799,6 +1806,7 @@ class OrderController extends Controller
 
             // Medidas Corporales
             $pantalon->fit_id = $request->fitPantalon;
+            $pantalon->personalizacion_holgura_pantalon = $request->personalizacion_holgura_pantalon;
             $pantalon->notas = $request->notasPantalon;
 
             // Datos del Pantalón
@@ -2107,6 +2115,7 @@ class OrderController extends Controller
 
             // Medidas Corporales
             $chaleco->fit_id = $request->fitChaleco;
+            $chaleco->personalizacion_holgura_chaleco = $request->personalizacion_holgura_chaleco;
             $chaleco->talla = $request->tallaChaleco;
             $chaleco->order_id = $orden->id;
             $chaleco->tipo_cuello = $request->cuelloChaleco;
@@ -2130,6 +2139,7 @@ class OrderController extends Controller
 
             $chaleco->order_id = $orden->id;
             $chaleco->fit_id = $request->fitChaleco;
+            $chaleco->personalizacion_holgura_chaleco = $request->personalizacion_holgura_chaleco;
             $chaleco->talla = $request->tallaChaleco;
             $chaleco->tipo_cuello = $request->cuelloChaleco;
             $chaleco->tipo_bolsas = $request->bolsasChaleco;
@@ -2153,6 +2163,7 @@ class OrderController extends Controller
 
             // Medidas Corporales
             $pantalon->fit_id = $request->fitPantalon;
+            $pantalon->personalizacion_holgura_pantalon = $request->personalizacion_holgura_pantalon;
             $pantalon->notas = $request->notasPantalon;
 
             // Datos del Pantalón
@@ -2181,6 +2192,7 @@ class OrderController extends Controller
             $pantalon = new Pants;
             // Medidas Corporales
             $pantalon->fit_id = $request->fitPantalon;
+            $pantalon->personalizacion_holgura_pantalon = $request->personalizacion_holgura_pantalon;
             $pantalon->notas = $request->notasPantalon;
 
             // Datos del Pantalón
@@ -2633,6 +2645,7 @@ class OrderController extends Controller
 
             // Medidas Corporales
             $chaleco->fit_id = $request->fitChaleco;
+            $chaleco->personalizacion_holgura_chaleco = $request->personalizacion_holgura_chaleco;
             $chaleco->talla = $request->tallaChaleco;
 
             // Datos de Chaleco
@@ -2659,6 +2672,7 @@ class OrderController extends Controller
 
             // Medidas Corporales
             $pantalon->fit_id = $request->fitPantalon;
+            $pantalon->personalizacion_holgura_pantalon = $request->personalizacion_holgura_pantalon;
             $pantalon->notas = $request->notasPantalon;
 
             // Datos del Pantalón
@@ -2965,6 +2979,7 @@ class OrderController extends Controller
 
             // Medidas Corporales
             $chaleco->fit_id = $request->fitChaleco;
+            $chaleco->personalizacion_holgura_chaleco = $request->personalizacion_holgura_chaleco;
             $chaleco->talla = $request->tallaChaleco;
             $chaleco->order_id = $orden->id;
             $chaleco->tipo_cuello = $request->cuelloChaleco;
@@ -2988,6 +3003,7 @@ class OrderController extends Controller
 
             $chaleco->order_id = $orden->id;
             $chaleco->fit_id = $request->fitChaleco;
+            $chaleco->personalizacion_holgura_chaleco = $request->personalizacion_holgura_chaleco;
             $chaleco->talla = $request->tallaChaleco;
             $chaleco->tipo_cuello = $request->cuelloChaleco;
             $chaleco->tipo_bolsas = $request->bolsasChaleco;
@@ -3011,6 +3027,7 @@ class OrderController extends Controller
 
             // Medidas Corporales
             $pantalon->fit_id = $request->fitPantalon;
+            $pantalon->personalizacion_holgura_pantalon = $request->personalizacion_holgura_pantalon;
             $pantalon->notas = $request->notasPantalon;
 
             // Datos del Pantalón
@@ -3039,6 +3056,7 @@ class OrderController extends Controller
             $pantalon = new Pants;
             // Medidas Corporales
             $pantalon->fit_id = $request->fitPantalon;
+            $pantalon->personalizacion_holgura_pantalon = $request->personalizacion_holgura_pantalon;
             $pantalon->notas = $request->notasPantalon;
 
             // Datos del Pantalón

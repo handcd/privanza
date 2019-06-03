@@ -175,7 +175,7 @@
                                             <div class="icon">
                                                 <i class="fa fa-industry" aria-hidden="true"></i>
                                             </div>
-                                            <h6>ISCO/Privanza</h6>
+                                            <h6>TAILORED</h6>
                                         </div>
                                     </div>
                                     <div id="telaClienteDatos" style="display: none;" class="col-xs-8 col-xs-offset-2">
@@ -313,7 +313,7 @@
                                             <div class="icon">
                                                 <i class="fa fa-industry" aria-hidden="true"></i>
                                             </div>
-                                            <h6>ISCO/Privanza</h6>
+                                            <h6>TAILORED</h6>
                                         </div>
                                     </div>
                                     <div id="forroClienteDatos" style="display: none;" class="col-xs-8 col-xs-offset-2">
@@ -487,7 +487,7 @@
 		                                <select class="form-control" id="tipoGancho" name="tipoGancho">
 		                                    	<option disabled="" selected="" ></option>
 		                                        <option value="0" {{(isset($orden->gancho) && $orden->gancho === 0) ? 'selected' : ''}}>Normal</option>
-		                                        <option value="1" {{(isset($orden->gancho) && $orden->gancho === 1) ? 'selected' : ''}}>Personalizado Privanza</option>
+		                                        <option value="1" {{(isset($orden->gancho) && $orden->gancho === 1) ? 'selected' : ''}}>Personalizado TAILORED</option>
 		                                        <option value="2" {{(isset($orden->gancho) && $orden->gancho === 2) ? 'selected' : ''}}>Otro</option>
 		                                </select>
 		                            </div>
@@ -503,7 +503,7 @@
 		                                <select class="form-control" id="tipoPortatrajes" name="tipoPortatrajes">
 		                                    <option disabled="" selected=""></option>
 		                                    <option value="0" {{(isset($orden->portatrajes) && $orden->portatrajes === 0) ? 'selected' : ''}} >Cubrepolvos</option>
-		                                    <option value="1" {{(isset($orden->portatrajes) && $orden->portatrajes === 1) ? 'selected' : ''}}>Personalizado Privanza</option>
+		                                    <option value="1" {{(isset($orden->portatrajes) && $orden->portatrajes === 1) ? 'selected' : ''}}>Personalizado TAILORED</option>
 		                                    <option value="2" {{(isset($orden->portatrajes) && $orden->portatrajes === 2) ? 'selected' : ''}}>Otro</option>
 		                                </select>
 		                            </div>
@@ -579,21 +579,21 @@
 												<select name="fitSaco" id="tipoHolguraSaco" class="form-control">
 													<option disabled="" selected="" ></option>				
 													<option value="2" {{(isset($orden->coat) && $orden->coat->fit_id == 2) ? 'selected' : ''}}>Clásico (4" de holgura)</option>
-													<option value="3" {{(isset($orden->coat) && $orden->coat->fit_id == 3) ? 'selected' : ''}}>Privanza (3" de holgura)</option>
-													<option value="1" {{(isset($orden->coat) && $orden->coat->fit_id == 1) ? 'selected' : ''}}>Especial</option>
+													<option value="3" {{(isset($orden->coat) && $orden->coat->fit_id == 3) ? 'selected' : ''}}>TAILORED (3" de holgura)</option>
+													<option value="1" {{(isset($orden->coat) && $orden->coat->fit_id == 1) ? 'selected' : ''}}>Especial (Definir holgura)</option>
 												</select>
 											</div>
 										</div>
 										<div class="col-md-4">
 											<div class="form-group label-floating">
 												<label class="control-label">Largo de manga derecha<small> (pulgadas)</small>:</label>
-												<input type="text" pattern="/[1-9]+\/[1-9]+$/" name="largoMangaDerechaSaco" id="tallaDerecha" class="form-control" value="@yield('editLargoMangaDerecha')">
+												<input type="number" step="0.01" name="largoMangaDerechaSaco" id="tallaDerecha" class="form-control" value="@yield('editLargoMangaDerecha')">
 											</div>
 										</div>
 										<div class="col-md-4">
 											<div class="form-group label-floating">
 												<label class="control-label">Largo de espalda deseado<small> (pulgadas)</small>:</label>
-												<input type="text" pattern="/[1-9]+\/[1-9]+$/" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" value="@yield('editLargoEspalda')">
+												<input type="number" step="0.01" name="largoEspaldaSaco" id="largoEspaldaSaco" class="form-control" value="@yield('editLargoEspalda')">
 											</div>
 										</div>																			
 									</div>
@@ -607,7 +607,7 @@
 	                            		<div class="col-md-4">
 	                            			<div class="form-group label-floating">
 												<label class="control-label">Largo de manga izquierda<small> (pulgadas)</small>:</label>
-												<input type="text" pattern="/[1-9]+\/[1-9]+$/" name="largoMangaIzquierdaSaco" id="tallaIzquierda" class="form-control" value="@yield('editLargoMangaIzquierda')">
+												<input type="number" step="0.01" name="largoMangaIzquierdaSaco" id="tallaIzquierda" class="form-control" value="@yield('editLargoMangaIzquierda')">
 											</div>
 	                            		</div>
 									</div>									
@@ -1041,23 +1041,29 @@
                     			<div class="col-md-10 col-md-offset-1">
                     				<p>Observaciones generales del cliente:</p>
                     				<div class="row">
-                    					<div class="col-md-6">
+                    					<div class="col-md-4">
                     						<div class="form-group label-floating">
 												<label class="control-label">Fit deseado</label>
-												<select name="fitChaleco" id="fitChaleco" class="form-control">
+												<select name="fitChaleco" id="tipoHolguraChaleco" class="form-control">
 													<option disabled="" selected="" ></option>
 													<option value="1" {{(isset($chaleco) && $chaleco->fit_id === 1) ? 'selected' : ''}}>Especial <small></small></option>
 													<option value="2" {{(isset($chaleco) && $chaleco->fit_id === 2) ? 'selected' : ''}}>Clásico</option>
-													<option value="3" {{(isset($chaleco) && $chaleco->fit_id === 3) ? 'selected' : ''}}>Privanza</option>
+													<option value="3" {{(isset($chaleco) && $chaleco->fit_id === 3) ? 'selected' : ''}}>TAILORED</option>
 												</select>
 											</div>
-                    					</div>
-                    					<div class="col-md-6">
+                    					</div>                  					
+	                            		<div class="col-md-4">
+	                            			<div class="form-group label-floating" id="personalizacionHolguraChaleco">
+	                            				<label class="control-label">Capture la holgura deseada por el cliente: </label>
+	                            				<input type="text" name="personalizacionHolguraChaleco" class="form-control" value="@yield('editPerChaleco')">
+											</div>
+										</div>
+                    					<div class="col-md-4">
                     						<div class="form-group label-floating">
                     							<label class="control-label">Largo de espalda deseado <small>(pulgadas)</small>:</label>
-                    							<input type="text" pattern="/[1-9]+\/[1-9]+$/" name="tallaChaleco" id="tallaChaleco" class="form-control" value="@yield('editLargoEspaldaChaleco')">
+                    							<input type="number" step="0.01" name="tallaChaleco" id="tallaChaleco" class="form-control" value="@yield('editLargoEspaldaChaleco')">
                     						</div>
-                    					</div>
+                    					</div>  
                     				</div>
                     				
                     			</div>
@@ -1156,20 +1162,26 @@
 						<div class="tab-pane" id="pantalon">
 							<h4 class="info-text">Datos del Pantalón</h4>
 							<div class="row">
-								<div class="col-md-4 col-md-offset-4">
+								<div class="col-md-8 col-md-offset-2">
 									<p>Observaciones generales del cliente:</p>
 									<div class="row">
-										<div class="col-md-12">
+										<div class="col-md-6">
                     						<div class="form-group label-floating">
 												<label class="control-label">Fit para Pantalón</label>
-												<select name="fitPantalon" id="fitPantalon" class="form-control">
+												<select name="fitPantalon" id="tipoHolguraPantalon" class="form-control">
 													<option disabled="" selected=""></option>
-													<option value="1" {{(isset($pantalon) && $pantalon->fit_id === 1) ? 'selected' : ''}}>Especial</option>
-													<option value="2" {{(isset($pantalon) && $pantalon->fit_id === 2) ? 'selected' : ''}}>Clásico</option>
-													<option value="3" {{(isset($pantalon) && $pantalon->fit_id === 3) ? 'selected' : ''}}>Privanza</option>
+													<option value="2" {{(isset($pantalon) && $pantalon->fit_id === 2) ? 'selected' : ''}}>Clásico (18" en el contorno de bajos)</option>
+													<option value="3" {{(isset($pantalon) && $pantalon->fit_id === 3) ? 'selected' : ''}}>Tailored (14" en el contorno de bajos)</option>
+													<option value="1" {{(isset($pantalon) && $pantalon->fit_id === 1) ? 'selected' : ''}}>Especial (Captura el contorno de bajos deseado)</option>
 												</select>
 											</div>
-                    					</div>										
+                    					</div>	
+                    					<div class="col-md-6">
+											<div class="form-group label-floating" id="personalizacionHolguraPantalon">
+	                            				<label class="control-label">Capture la holgura deseada por el cliente: </label>
+	                            				<input type="text" name="personalizacionHolguraPantalon" class="form-control" value="@yield('editPerPantalon')">
+											</div>
+	                            		</div>													
 									</div>									
 								</div>
 							</div>

@@ -29,6 +29,7 @@ class CreateVestsTable extends Migration
             $table->integer('tipo_bolsas')->nullable(); // 0 Vivo/1 Aletilla
             $table->integer('tipo_espalda')->nullable(); // 1 Forro/ 2 Tela
             $table->string('tipo_forro')->nullable(); 
+            $table->double('personalizacion_holgura_chaleco')->nullable();
             $table->timestamps();
         });
     }
