@@ -436,7 +436,7 @@
                               @if ($orden->etiquetas_tela === 1)
                                     <p> Sí. {{ $orden->marca_en_tela }} </p>
                               @else
-                                    <p> Privanza </p>
+                                    <p> TAILORED </p>
                               @endif
                         </div>
                         <div class="col-md-3">
@@ -444,7 +444,7 @@
                               @if ($orden->etiquetas_marca === 1)
                                     <p> Sí. {{ $orden->marca_en_etiqueta }}</p>
                               @else
-                                    <p> Privanza </p>
+                                    <p> TAILORED </p>
                               @endif
                         </div>
                         <div class="col-md-3">
@@ -452,7 +452,7 @@
                               @if ($orden->gancho == 0 )
                                     <p> Normal</p>
                               @elseif( $orden->gancho == 1 )
-                                    <p> Personalizado privanza </p>
+                                    <p> Personalizado TAILORED </p>
                               @elseif( $orden->gancho == 2 )
                                     <p>{{ $orden->gancho_personalizacion }}</p>                                    
                               @endif
@@ -462,7 +462,7 @@
                               @if ($orden->portatrajes == 0)
                                     <p> Cubrepolvos </p>
                               @elseif( $orden->portatrajes == 1)
-                                    <p> Personalizado privanza </p>
+                                    <p> Personalizado TAILORED </p>
                               @elseif($orden->portatrajes == 2)
                                     <p>{{ $orden->portatrajes_personalizacion }}</p>                                    
                               @endif
@@ -492,18 +492,20 @@
                               <div class="col-md-3">
                                     <label class="text-primary">Fit deseado</label>
                                     <p>
-                                    @switch($saco->fit_id)
-                                          @case(1)
-                                                Especial. {{ $saco->personalizacion_holgura_saco}} pulgadas de holgura.
-                                                @break
-                                          @case(2)
-                                                Clásico.
-                                                @break
-                                          @case(3)
-                                                Privanza.
-                                                @break
-                                          @default
-                                    @endswitch
+                                    @if(isset($saco->fit_id))
+                                          @switch($saco->fit_id)
+                                                @case(1)
+                                                      Especial. {{ $saco->personalizacion_holgura_saco}} pulgadas de holgura.
+                                                      @break
+                                                @case(2)
+                                                      Clásico.
+                                                      @break
+                                                @case(3)
+                                                      TAILORED.
+                                                      @break
+                                                @default
+                                          @endswitch
+                                    @endif
                                     </p>
                               </div>
                               @endif
