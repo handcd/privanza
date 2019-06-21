@@ -511,15 +511,15 @@
                               @endif
                               <div class="col-md-3">
                                     <label class="text-primary">Largo de Manga Derecha</label>
-                                    <p>{{ $saco->largo_manga_derecha_saco }} <small>pulgadas</small></p>
+                                    <p>@if(isset($saco->largo_manga_derecha_saco)) {{ $saco->largo_manga_derecha_saco }} @endif <small>pulgadas</small></p>
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Largo de Manga Izquierda</label>
-                                    <p>{{ $saco->largo_manga_izquierda_saco }} <small>pulgadas</small></p>
+                                    <p>@if(isset($saco->largo_manga_izquierda_saco)) {{ $saco->largo_manga_izquierda_saco }} @endif <small>pulgadas</small></p>
                               </div>
                               <div class="col-md-3">
                                     <label class="text-primary">Largo de Espalda</label>
-                                    <p>{{ $saco->largo_espalda_deseado }} <small>pulgadas</small></p>
+                                    <p>@if(isset($saco->largo_espalda_deseado)) {{ $saco->largo_espalda_deseado }} @endif <small>pulgadas</small></p>
                               </div>
                         </div>
                         <h4>Saco Externo</h4>
