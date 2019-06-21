@@ -2036,13 +2036,14 @@ class OrderController extends Controller
         $pantalon = Pants::find($id);
         $telas = Telas::orderBy('codigo_tela', 'ASC')->get();
         $forros = Forro::orderBy('codigo_forro', 'ASC')->get();;
+        $vendedores = Vendedor::All();
         if (!$orden) {
             Session::flash('danger','La orden que deseas editar no existe.');
             return redirect('/validador/ordenes');
         }
         //return $saco;
         //return $orden;
-        return view('validador.order.edit',compact('orden','clientes','saco','chaleco','pantalon','telas','forros'));
+        return view('validador.order.edit',compact('orden','clientes','saco','chaleco','pantalon','telas','forros','vendedores'));
     }
 
     /**
@@ -2907,13 +2908,14 @@ class OrderController extends Controller
         $telas = Telas::orderBy('codigo_tela', 'ASC')->get();
         $forros = Forro::orderBy('codigo_forro', 'ASC')->get();;
         $pantalon = Pants::find($id);
+        $vendedores = Vendedor::All();
         if (!$orden) {
             Session::flash('danger','La orden que deseas editar no existe.');
             return redirect('/admin/ordenes');
         }
         //return $saco;
         //return $orden;
-        return view('admin.order.edit',compact('orden','clientes','saco','chaleco','pantalon', 'telas','forros'));
+        return view('admin.order.edit',compact('orden','clientes','saco','chaleco','pantalon', 'telas','forros','vendedores'));
     }
 
     /**
