@@ -15,7 +15,7 @@
             </div>
             <div class="card-content table-responsive">
                 <div class="col-md-6">
-                    <input id="filter" class="form-control" type="text" placeholder="Buscar Vendedor...">
+                    <input id="filter" class="form-control" type="text" placeholder="Buscar Validador...">
                 </div>
                 <table class="table table-hover">
                     <thead>

@@ -84,18 +84,18 @@
                             <p>Validadores</p>
                         </a>
                     </li>
-                    {{--<li {{ Request::path() == 'admin/ajustes' ? ' class=active' : '' }}>
-                        <a href="{{ url('admin/ajustes') }}">
+                    <li {{ Request::path() == 'admin/telas' ? ' class=active' : '' }}>
+                        <a href="{{ url('admin/telas') }}">
                             <i class="material-icons">tune</i>
-                            <p>Ajustes</p>
+                            <p>Telas</p>
                         </a>
-                    </li>--}}
-                    {{--<li {{ Request::path() == 'admin/citas' ? ' class=active' : '' }}>
-                        <a href="{{ url('admin/citas') }}">
-                            <i class="material-icons">date_range</i>
-                            <p>Citas</p>
+                    </li>
+                    <li {{ Request::path() == 'admin/forros' ? ' class=active' : '' }}>
+                        <a href="{{ url('admin/forros') }}">
+                            <i class="material-icons">tune</i>
+                            <p>Forros</p>
                         </a>
-                    </li>--}}
+                    </li>
                     <li {{ Request::path() == 'admin/perfil' ? ' class=active' : '' }}>
                         <a href="{{ url('admin/perfil') }}">
                             <i class="material-icons">person</i>

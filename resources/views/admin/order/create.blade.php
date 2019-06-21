@@ -102,6 +102,38 @@
 								</div>
 							</div>
 							<div class="row">
+								<div class="col-sm-10 col-sm-offset-1">
+									<div class="col-md-6">
+										<div class="input-group">
+											<span class="input-group-addon">
+												<i class="material-icons">person</i>
+											</span>
+											<div class="form-group label-floating">
+				                                <label class="control-label">Vendedor</label>
+				                                <select class="form-control" name="vendedor">
+				                                    <option disabled="" 
+				                                    @hasSection('editVendedor')
+				                                    {{-- Ya hay un cliente seleccionado --}}
+				                                    @else
+				                                      selected="" 
+				                                    @endif></option>
+				                                    @foreach ($vendedores as $vendedor)
+				                                        <option value="{{ $vendedor->id }}"
+				                                          @hasSection('editCliente')
+				                                            @if ($orden->vendedor->id == $vendedor->id)
+				                                              selected="" 
+				                                            @endif
+				                                          @endif>
+				                                            {{ $vendedor->name.' '.$vendedor->lastname.' ('.$vendedor->email.')' }}
+				                                        </option>
+				                                    @endforeach
+				                                </select>
+				                            </div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
 								<div class="col-md-12">
 									<h5 class="text-center">Selecciona las piezas a trabajar:</h5>
 								</div>
@@ -346,8 +378,8 @@
 				                                    @foreach ($forros as $forro)
 					                                    @if (isset($orden) && $orden->forro_id != $forro->id)
 					                                    	@if(strtolower($forro->estado) == 'agotado')
-						                                        <option value="{{ $tela->id }}" disabled="">
-						                                          {{ $forro->codigo_forro }} - {{ $tela->color_forro }} - {{ $forro->estado}}
+						                                        <option value="{{ $forro->id }}" disabled="">
+						                                          {{ $forro->codigo_forro }} - {{ $forro->color_forro }} - {{ $forro->estado}}
 						                                        </option>
 					                                        @else
 					                                        	<option value="{{ $forro->id }}">

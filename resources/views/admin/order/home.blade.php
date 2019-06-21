@@ -103,6 +103,55 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-header" data-background-color="red">
+                <h4 class="title">Pedidos en Producción</h4>
+                <p class="category">Pedidos que están en algún estado de producción</p>
+            </div>
+            <div class="card-content table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Precio</th>
+                        <th>Fecha</th>
+                        <th>Acciones</th>
+                    </thead>
+                    <tbody>
+                        @forelse ($produccion as $orden)
+                        <tr>
+                            <td>{{ $orden->id }}</td>
+                            <td><a href="{{ url('/admin/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</a></td>
+                            <td class="text-primary">${{ $orden->precio }}</td>
+                            <td>{{ $orden->created_at }}</td>
+                            <td class="td-actions text-right">
+                                <a href="{{ url('/admin/ordenes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden" class="btn btn-success btn-simple btn-xs">
+                                    <i class="material-icons">remove_red_eye</i>
+                                </a>
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="5" class="text-center">No tienes órdenes listas para recoger :(</td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+                <div class="row text-center">
+                    {{ $listosEntrega->appends([
+                            'aprobadas' => $aprobadas->currentPage(),
+                            'noAprobadas' => $noAprobadas->currentPage(),
+                            'produccion' => $produccion->currentPage(),
+                            'entregados' => $entregados->currentPage(),
+                            'facturados' => $facturados->currentPage(),
+                            'cobrados' => $cobrados->currentPage(),
+                            'general' => $ordenes->currentPage()
+                        ])->links() }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header" data-background-color="red">
                 <h4 class="title">Pedidos por Recoger</h4>
                 <p class="category">Pedidos listos para ser recogidos para su entrega</p>
             </div>
@@ -119,11 +168,11 @@
                         @forelse ($listosEntrega as $orden)
                         <tr>
                             <td>{{ $orden->id }}</td>
-                            <td><a href="{{ url('/vendedor/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</a></td>
+                            <td><a href="{{ url('/admin/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</a></td>
                             <td class="text-primary">${{ $orden->precio }}</td>
                             <td>{{ $orden->created_at }}</td>
                             <td class="td-actions text-right">
-                                <a href="{{ url('/vendedor/ordenes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden" class="btn btn-success btn-simple btn-xs">
+                                <a href="{{ url('/admin/ordenes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden" class="btn btn-success btn-simple btn-xs">
                                     <i class="material-icons">remove_red_eye</i>
                                 </a>
                             </td>
@@ -167,11 +216,11 @@
                         @forelse ($entregados as $orden)
                         <tr>
                             <td>{{ $orden->id }}</td>
-                            <td><a href="{{ url('/vendedor/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</a></td>
+                            <td><a href="{{ url('/admin/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</a></td>
                             <td class="text-primary">${{ $orden->precio }}</td>
                             <td>{{ $orden->created_at }}</td>
                             <td class="td-actions text-right">
-                                <a href="{{ url('/vendedor/ordenes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden" class="btn btn-success btn-simple btn-xs">
+                                <a href="{{ url('/admin/ordenes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden" class="btn btn-success btn-simple btn-xs">
                                     <i class="material-icons">remove_red_eye</i>
                                 </a>
                             </td>
@@ -218,11 +267,11 @@
                             @forelse ($cobrados as $orden)
                             <tr>
                                 <td>{{ $orden->id }}</td>
-                                <td><a href="{{ url('/vendedor/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</a></td>
+                                <td><a href="{{ url('/admin/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</a></td>
                                 <td class="text-primary">${{ $orden->precio }}</td>
                                 <td>{{ $orden->created_at }}</td>
                                 <td class="td-actions text-right">
-                                    <a href="{{ url('/vendedor/ordenes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden" class="btn btn-success btn-simple btn-xs">
+                                    <a href="{{ url('/admin/ordenes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden" class="btn btn-success btn-simple btn-xs">
                                         <i class="material-icons">remove_red_eye</i>
                                     </a>
                                 </td>
@@ -266,11 +315,11 @@
                             @forelse ($facturados as $orden)
                             <tr>
                                 <td>{{ $orden->id }}</td>
-                                <td><a href="{{ url('/vendedor/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</a></td>
+                                <td><a href="{{ url('/admin/clientes/'.$orden->client->id) }}">{{ $orden->client->name }}</a></td>
                                 <td class="text-primary">${{ $orden->precio }}</td>
                                 <td>{{ $orden->created_at }}</td>
                                 <td class="td-actions text-right">
-                                    <a href="{{ url('/vendedor/ordenes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden" class="btn btn-success btn-simple btn-xs">
+                                    <a href="{{ url('/admin/ordenes/'.$orden->id) }}" type="button" rel="tooltip" title="Ver Orden" class="btn btn-success btn-simple btn-xs">
                                         <i class="material-icons">remove_red_eye</i>
                                     </a>
                                 </td>

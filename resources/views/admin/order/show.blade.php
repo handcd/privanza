@@ -30,6 +30,9 @@
                         </div>
                   </div>
                   <h3>Estado General</h3>
+                  <label class="text-primary">Reiniciar estatus del pedido</label><br>
+                  <a href="{{ url('/admin/ordenes/'.$orden->id.'/reiniciar') }}" class="btn btn-success">Reiniciar</a>
+
                   @if($orden->vendedor->type == 0)
                   <div class="row">
                         <div class="col-md-2">

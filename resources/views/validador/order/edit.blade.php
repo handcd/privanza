@@ -2,6 +2,7 @@
 {{-- Primer Sección --}}
 @section('editOrden',$orden->id)
 @section('editCliente',$orden->client)
+@section('editVendedor',$orden->vendedor)
 @section('editCoat',$orden->has_coat)
 @section('editVest',$orden->has_vest)
 @section('editPants',$orden->has_pants)

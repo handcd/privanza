@@ -26,6 +26,7 @@ Route::get('/ordenes/{order}/recoleccion','OrderController@pickupOrder'); //Reco
 Route::get('/ordenes/{order}/entrega','OrderController@deliveredOrder'); //Entregado
 Route::get('/ordenes/{order}/factura','OrderController@invoicedOrder');//Facturado
 Route::get('/ordenes/{order}/cobro','OrderController@chargedOrder');//Cobrado
+Route::get('/ordenes/{order}/reiniciar', 'OrderController@resetOrder'); //Reiniciar
 //Estado de produccion
 Route::get('/ordenes/{order}/corte','OrderController@productionCorteOrder'); //Corte
 Route::get('/ordenes/{order}/ensamble','OrderController@productionEnsambleOrder'); //Ensamble
@@ -76,3 +77,20 @@ Route::put('/configuracion','ConfigurationController@update');
 Route::get('/configuracion','ConfigurationController@index');
 
 Route::get('/ordenes/{order}/pdf','OrderController@pdfForVendedor');
+
+
+//Telas
+Route::get('/telas','TelasController@indexForAdmin');
+Route::get('/telas/agregar', 'TelasController@createForAdmin');
+Route::post('/telas','TelasController@storeForAdmin');
+Route::get('/telas/{tela}/editar','TelasController@editForAdmin');
+Route::put('/telas/{tela}','TelasController@updateForAdmin');
+Route::delete('/telas/{tela}/eliminar', 'TelasController@destroyForAdmin');
+//Forros
+Route::get('/forros','ForroController@indexForAdmin');
+Route::get('/forros/agregar', 'ForroController@createForAdmin');
+Route::post('forros','ForroController@storeForAdmin');
+Route::get('/forros/{forro}/editar','ForroController@editForAdmin');
+Route::put('/forros/{forro}','ForroController@updateForAdmin');
+Route::delete('/forros/{forro}/eliminar', 'ForroController@destroyForAdmin');
+

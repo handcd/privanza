@@ -1,9 +1,9 @@
-@extends('validador.layout.main')
+@extends('admin.layout.main')
 
 @section('content')
 <div class="row">
     <div class="col-md-12" style="float: right;">
-        <a class="btn btn-success btn-large" href="{{ url('/validador/forros/agregar') }}"><i class="material-icons">add</i>Registrar un nuevo forro</a>
+        <a class="btn btn-success btn-large" href="{{ url('/admin/forros/agregar') }}"><i class="material-icons">add</i>Registrar un nuevo forro</a>
     </div>
 </div>
 <div class="row">
@@ -39,8 +39,8 @@
                                 @endif
                             </td>
                             <td class="td-actions text-right">                           
-                                <a href="{{ url('/validador/forros/'.$forro->id.'/editar') }}" type="button" rel="tooltip" title="Editar Orden" class="btn btn-primary btn-simple btn-xs"> <i class="material-icons">edit</i></a>  
-                                <form action="{{'/validador/forros/'.$forro->id.'/eliminar'}}" method="post">
+                                <a href="{{ url('/admin/forros/'.$forro->id.'/editar') }}" type="button" rel="tooltip" title="Editar Orden" class="btn btn-primary btn-simple btn-xs"> <i class="material-icons">edit</i></a>  
+                                <form action="{{'/admin/forros/'.$forro->id.'/eliminar'}}" method="post">
                                   {{csrf_field()}}
                                     {{ method_field('DELETE') }}
                                       <button type="submit" style="background-color: transparent !important; border: none; color: red;">

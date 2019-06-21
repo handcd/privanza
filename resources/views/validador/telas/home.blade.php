@@ -40,6 +40,13 @@
                             </td>
                             <td class="td-actions text-right">                           
                                 <a href="{{ url('/validador/telas/'.$tela->id.'/editar') }}" type="button" rel="tooltip" title="Editar Orden" class="btn btn-primary btn-simple btn-xs"> <i class="material-icons">edit</i></a>     
+                                <form action="{{'/validador/telas/'.$tela->id.'/eliminar'}}" method="post">
+                                  {{csrf_field()}}
+                                    {{ method_field('DELETE') }}
+                                      <button type="submit" style="background-color: transparent !important; border: none; color: red;">
+                                        <i class="material-icons">delete</i> 
+                                      </button> 
+                                </form>    
                             </td>
                         </tr>
                         @endforeach

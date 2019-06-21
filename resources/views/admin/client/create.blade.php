@@ -287,6 +287,12 @@
                                         </div>--}}
                                         <div class="col-md-4">
                                             <div class="form-group label-floating">
+                                                <label class="control-label">Puño:</label>
+                                                <input type="number" min="1" step="0.01" name="punio" id="punio" class="form-control" value="@yield('editPunio')">
+                                            </div>
+                                        </div>      
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
                                                 <label class="control-label">Largo Torso:</label>
                                                 <input type="number" min="1" step="0.01" name="largoTorso" id="largoTorso" class="form-control" value="@yield('editLargoTorso')">
                                             </div>
@@ -297,12 +303,6 @@
                                                 <input type="number" min="1" step="0.01" name="contornoPecho" id="contornoPecho" class="form-control" value="@yield('editContornoPecho')">
                                             </div>
                                         </div>  
-                                        <div class="col-md-4">
-                                            <div class="form-group label-floating">
-                                                <label class="control-label">Puño:</label>
-                                                <input type="number" min="1" step="0.01" name="punio" id="punio" class="form-control" value="@yield('editPunio')">
-                                            </div>
-                                        </div>      
                                     </div>  
                                     <div class="row">
                                         <div class="col-md-3">

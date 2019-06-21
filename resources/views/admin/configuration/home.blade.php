@@ -22,7 +22,7 @@
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
                     
-                    <h4>Tiempos de Envío de Notificaciones sobre estado de órdenes:</h4>
+                    {{--<h4>Tiempos de Envío de Notificaciones sobre estado de órdenes:</h4>
                     <p>Estos tiempos se miden en <strong>horas</strong> y son el tiempo que debe pasar cuando una orden se encuentra en un determinado estado para que el sistema envíe un correo de recordatorio. Puedes colocar un 0 si deseas que <strong>no se notifique ante dicha acción.</strong></p>
                     <div class="row">
                     	<div class="col-md-4 col-md-offset-1">
@@ -61,7 +61,7 @@
                     			<input type="number" name="horas_aviso_pickup" min="0" step="1" value="{{ $configuration->horas_aviso_pickup }}" class="form-control">
                     		</div>
                     	</div>
-                    </div>
+                    </div> --}}
 
                 	<h4>Notificaciones</h4>
                 	<p>Estas son todas las notificaciones (correos electrónicos) disponibles para enviar desde el sistema cada que se ejecuta alguna acción. Puedes activar/desactivar según sea conveniente</p>

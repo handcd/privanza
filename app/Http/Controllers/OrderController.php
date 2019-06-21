@@ -94,6 +94,12 @@ class OrderController extends Controller
                             ->where('delivered','0')
                             ->paginate(5,['*'],'recoger');
 
+        $produccion = Auth::user()
+                        ->orders()
+                        ->where('production', '1')
+                        ->where('pickup','0')
+                        ->paginate(5,['*'],'produccion');
+
         // Órdenes ya entregadas
         $entregados = Auth::user()
                             ->orders()
@@ -113,7 +119,7 @@ class OrderController extends Controller
         // Todas las ordenes paginadas en grupos de 15.
         $ordenes = Auth::user()->orders()->paginate(15,['*'],'general');
 
-        return view('vendedor.order.home',compact('ordenes','aprobadas','noAprobadas','listosEntrega','entregados','facturados','cobrados'));
+        return view('vendedor.order.home',compact('ordenes','aprobadas','noAprobadas','listosEntrega','entregados','facturados','cobrados','produccion'));
     }
 
     /**
@@ -124,8 +130,8 @@ class OrderController extends Controller
     public function createForVendedor()
     {
         $clientes = Vendedor::find(Auth::id())->clients;
-        $telas = Telas::all();
-        $forros = Forro::all();
+        $telas = Telas::orderBy('codigo_tela', 'ASC')->get();
+        $forros = Forro::orderBy('codigo_forro', 'ASC')->get();
         return view('vendedor.order.create',compact('clientes','telas','forros'));
     }
 
@@ -503,13 +509,15 @@ class OrderController extends Controller
         $saco = Coat::find($id);        
         $chaleco = Vest::find($id);
         $pantalon = Pants::find($id);
+        $telas = Telas::orderBy('codigo_tela', 'ASC')->get();
+        $forros = Forro::orderBy('codigo_forro', 'ASC')->get();;
         if (!$orden || $orden->vendedor_id != Auth::id() || $orden->approved) {
             Session::flash('danger','La orden que deseas editar no puede ser mostrada porque no tienes autorización para verla o no existe.');
             return redirect('/vendedor/ordenes');
         }
         //return $saco;
         //return $orden;
-        return view('vendedor.order.edit',compact('orden','clientes','saco','chaleco','pantalon'));
+        return view('vendedor.order.edit',compact('orden','clientes','saco','chaleco','pantalon','telas','forros'));
     }
 
     /**
@@ -1052,7 +1060,41 @@ class OrderController extends Controller
 
         return PDF::loadview('pdf.order',compact('orden','saco','pantalon','chaleco'))->setPaper('a4', 'landscape')->stream('PRIV-OC'.$id.$orden->client->name.'.pdf');
     }
-
+    /**
+     * Approve Order
+     * Admin or Validador only, duh
+     *
+     * @param \App\Order $id
+     * @return \Illuminate\Http\Response
+     */
+    public function resetOrder($id){
+        // Validate user is Admin or Validador
+        if (!(Auth::user()->isAdmin() || Auth::user()->isVendedor())) {
+            if (Auth::user()->isValidador()) {
+                return redirect('/validador/ordenes/'.$id);
+            }else{
+                return redirect('/vendedor/ordenes/'.$id);
+            }
+        }
+        // Get the order
+        $orden = Order::find($id);
+        // Validate order existence
+        if (!$orden) {
+            return redirect('/admin/ordenes/'.$id);
+        }
+        $orden->approved = false;
+        $orden->production = false;
+        $orden->corte = false;
+        $orden->ensamble = false;
+        $orden->plancha = false;
+        $orden->revision = false;
+        $orden->pickup = false;
+        $orden->delivered = false;
+        $orden->facturado = false;
+        $orden->cobrado = false;
+        $orden->save();
+        return redirect('/admin/ordenes/'.$id);
+    }
     /**
      * Approve Order
      * Admin or Validador only, duh
@@ -1070,7 +1112,7 @@ class OrderController extends Controller
         $orden = Order::find($id);
         // Validate order existence
         if (!$orden) {
-            return redirect('/'.(Auth::user()->isAdmin() ? 'admin' : 'validador').'/ordenes'.$id);
+            return redirect('/'.(Auth::user()->isAdmin() ? 'admin' : 'validador').'/ordenes/'.$id);
         }
         // Validate order previously approved for Admin
         if ($orden->approved && Auth::user()->isAdmin()) {
@@ -1589,6 +1631,10 @@ class OrderController extends Controller
                         ->where('production','0')
                         ->paginate(5,['*'],'aprobadas');
 
+        $produccion = Order::where('production', '1')
+                        ->where('pickup','0')
+                        ->paginate(5,['*'],'produccion');
+
         // Órdenes listas para recolección (pero no entregadas)
         $listosEntrega = Order::where('pickup','1')
                             ->where('delivered','0')
@@ -1609,14 +1655,15 @@ class OrderController extends Controller
         // Todas las ordenes paginadas en grupos de 15.
         $ordenes = Order::paginate(15,['*'],'general');
 
-        return view('validador.order.home',compact('ordenes','aprobadas','noAprobadas','listosEntrega','entregados','facturados','cobrados'));
+        return view('validador.order.home',compact('ordenes','aprobadas','noAprobadas','produccion','listosEntrega','entregados','facturados','cobrados'));
     }
     public function create()
     {
         $clientes = Client::all();
-        $telas = Telas::all();
-        $forros = Forro::all();
-        return view('validador.order.create',compact('clientes', 'telas','forros'));
+        $telas = Telas::orderBy('codigo_tela', 'ASC')->get();
+        $forros = Forro::orderBy('codigo_forro', 'ASC')->get();
+        $vendedores = Vendedor::All();
+        return view('validador.order.create',compact('clientes', 'telas','forros','vendedores'));
     }
 
     /**
@@ -1680,7 +1727,7 @@ class OrderController extends Controller
         $orden = new Order;
 
         $orden->client_id = $request->cliente;
-        $orden->vendedor_id = Auth::id();
+        $orden->vendedor_id = $request->vendedor;
 
 
         // Tela
@@ -1987,8 +2034,8 @@ class OrderController extends Controller
         $saco = Coat::find($id);        
         $chaleco = Vest::find($id);
         $pantalon = Pants::find($id);
-        $telas = Telas::all();
-        $forros = Forro::all();
+        $telas = Telas::orderBy('codigo_tela', 'ASC')->get();
+        $forros = Forro::orderBy('codigo_forro', 'ASC')->get();;
         if (!$orden) {
             Session::flash('danger','La orden que deseas editar no existe.');
             return redirect('/validador/ordenes');
@@ -2017,6 +2064,7 @@ class OrderController extends Controller
             Session::flash('danger','La orden que deseas editar no puede ser mostrada porque no tienes autorización para verla o no existe.');
             return redirect('/validador/ordenes');
         }
+        $orden->vendedor_id = $request->vendedor;
         // Tela
         if ($request->tipoTela === 'cliente') {
             $orden->tela_isco = false;
@@ -2463,6 +2511,9 @@ class OrderController extends Controller
         $aprobadas = Order::where('approved','1')
                         ->where('production','0')
                         ->paginate(5,['*'],'aprobadas');
+        $produccion = Order::where('production', '1')
+                        ->where('pickup','0')
+                        ->paginate(5,['*'],'produccion');
 
         // Órdenes listas para recolección (pero no entregadas)
         $listosEntrega = Order::where('pickup','1')
@@ -2484,15 +2535,16 @@ class OrderController extends Controller
         // Todas las ordenes paginadas en grupos de 15.
         $ordenes = Order::paginate(15,['*'],'general');
 
-        return view('admin.order.home',compact('ordenes','aprobadas','noAprobadas','listosEntrega','entregados','facturados','cobrados'));
+        return view('admin.order.home',compact('ordenes','aprobadas','produccion','noAprobadas','listosEntrega','entregados','facturados','cobrados'));
     }
 
     public function createForAdmin()
     {
         $clientes = Client::all();
-        $telas = Telas::all();
-        $forros = Forro::all();
-        return view('admin.order.create',compact('clientes','telas','forros'));
+        $telas = Telas::orderBy('codigo_tela', 'ASC')->get();
+        $forros = Forro::orderBy('codigo_forro', 'ASC')->get();        
+        $vendedores = Vendedor::All();
+        return view('admin.order.create',compact('clientes','telas','forros','vendedores'));
     }
     public function storeForAdmin(Request $request)
     {
@@ -2549,7 +2601,7 @@ class OrderController extends Controller
         $orden = new Order;
 
         $orden->client_id = $request->cliente;
-        $orden->vendedor_id = Auth::id();
+        $orden->vendedor_id = $request->vendedor;
 
          // Tela
         if ($request->tipoTela === 'cliente') {
@@ -2821,7 +2873,6 @@ class OrderController extends Controller
                 Notification::send($admin, new NewOrder($admin,$orden));
             }
         }
-
         // Redirect to Orders:Home
         return redirect('/admin/ordenes');
     }
@@ -2853,6 +2904,8 @@ class OrderController extends Controller
         $clientes = Client::all();
         $saco = Coat::find($id);        
         $chaleco = Vest::find($id);
+        $telas = Telas::orderBy('codigo_tela', 'ASC')->get();
+        $forros = Forro::orderBy('codigo_forro', 'ASC')->get();;
         $pantalon = Pants::find($id);
         if (!$orden) {
             Session::flash('danger','La orden que deseas editar no existe.');
@@ -2860,7 +2913,7 @@ class OrderController extends Controller
         }
         //return $saco;
         //return $orden;
-        return view('admin.order.edit',compact('orden','clientes','saco','chaleco','pantalon'));
+        return view('admin.order.edit',compact('orden','clientes','saco','chaleco','pantalon', 'telas','forros'));
     }
 
     /**
@@ -2882,7 +2935,7 @@ class OrderController extends Controller
             Session::flash('danger','La orden que deseas editar no puede ser mostrada porque no existe.');
             return redirect('/admin/ordenes');
         }
-
+        $orden->vendedor_id = $request->vendedor;
         // Tela
         if ($request->tipoTela === 'cliente') {
             $orden->tela_isco = false;

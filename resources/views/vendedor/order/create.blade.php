@@ -350,8 +350,8 @@
 				                                    @foreach ($forros as $forro)
 					                                    @if (isset($orden) && $orden->forro_id != $forro->id)
 					                                    	@if(strtolower($forro->estado) == 'agotado')
-						                                        <option value="{{ $tela->id }}" disabled="">
-						                                          {{ $forro->codigo_forro }} - {{ $tela->color_forro }} - {{ $forro->estado}}
+						                                        <option value="{{ $forro->id }}" disabled="">
+						                                          {{ $forro->codigo_forro }} - {{ $forro->color_forro }} - {{ $forro->estado}}
 						                                        </option>
 					                                        @else
 					                                        	<option value="{{ $forro->id }}">

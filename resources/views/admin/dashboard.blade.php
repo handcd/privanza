@@ -191,7 +191,7 @@
                                     <td>{{ $cliente->name.' '.$cliente->lastname }}</td>
                                     <td>{{ $cliente->birthday }}</td>
                                     <td class="td-actions text-right">
-                                        <a href="{{ url('/vendedor/clientes/'.$cliente->id) }}" type="button" rel="tooltip" title="Ver Cliente" class="btn btn-primary btn-simple btn-xs">
+                                        <a href="{{ url('/admin/clientes/'.$cliente->id) }}" type="button" rel="tooltip" title="Ver Cliente" class="btn btn-primary btn-simple btn-xs">
                                             <i class="material-icons">remove_red_eye</i>
                                         </a>
                                     </td>
@@ -221,7 +221,7 @@
                                     <td>{{ $cliente->name.' '.$cliente->lastname }}</td>
                                     <td>{{ $cliente->birthday }}</td>
                                     <td class="td-actions text-right">
-                                        <a href="{{ url('/vendedor/clientes/'.$cliente->id) }}" type="button" rel="tooltip" title="Ver Cliente" class="btn btn-primary btn-simple btn-xs">
+                                        <a href="{{ url('/admin/clientes/'.$cliente->id) }}" type="button" rel="tooltip" title="Ver Cliente" class="btn btn-primary btn-simple btn-xs">
                                             <i class="material-icons">remove_red_eye</i>
                                         </a>
                                     </td>
@@ -251,7 +251,7 @@
                                     <td>{{ $cliente->name.' '.$cliente->lastname }}</td>
                                     <td>{{ $cliente->birthday }}</td>
                                     <td class="td-actions text-right">
-                                        <a href="{{ url('/vendedor/clientes/'.$cliente->id) }}" type="button" rel="tooltip" title="Ver Cliente" class="btn btn-primary btn-simple btn-xs">
+                                        <a href="{{ url('/admin/clientes/'.$cliente->id) }}" type="button" rel="tooltip" title="Ver Cliente" class="btn btn-primary btn-simple btn-xs">
                                             <i class="material-icons">remove_red_eye</i>
                                         </a>
                                     </td>
@@ -307,14 +307,14 @@
                                 @forelse ($eventosHoy as $evento)
                                 <tr>
                                     <td>{{ $evento->id }}</td>
-                                    <td><a href="{{ url('/vendedor/clientes/'.$evento->client->id) }}">{{ $evento->client->name.' '.$evento->client->lastname }}</a></td>
+                                    <td><a href="{{ url('/admin/clientes/'.$evento->client->id) }}">{{ $evento->client->name.' '.$evento->client->lastname }}</a></td>
                                     <td>{{ $evento->fechahora }}</td>
                                     <td class="td-actions text-right">
-                                        <a href="{{ url('/vendedor/citas/'.$evento->id) }}" type="button" rel="tooltip" title="Ver Cita" class="btn btn-success btn-simple btn-xs">
+                                        <a href="{{ url('/admin/citas/'.$evento->id) }}" type="button" rel="tooltip" title="Ver Cita" class="btn btn-success btn-simple btn-xs">
                                             <i class="material-icons">remove_red_eye</i>
                                         </a>
                                         @if (!Carbon\Carbon::parse($evento->fechahora)->isPast())
-                                             <a href="{{ url('/vendedor/citas/'.$evento->id.'/editar') }}" type="button" rel="tooltip" title="Editar Cita" class="btn btn-primary btn-simple btn-xs">
+                                             <a href="{{ url('/admin/citas/'.$evento->id.'/editar') }}" type="button" rel="tooltip" title="Editar Cita" class="btn btn-primary btn-simple btn-xs">
                                                 <i class="material-icons">edit</i>
                                             </a>
                                         @endif
@@ -342,14 +342,14 @@
                                 @forelse ($eventosSemana as $evento)
                                 <tr>
                                     <td>{{ $evento->id }}</td>
-                                    <td><a href="{{ url('/vendedor/clientes/'.$evento->client->id) }}">{{ $evento->client->name.' '.$evento->client->lastname }}</a></td>
+                                    <td><a href="{{ url('/admin/clientes/'.$evento->client->id) }}">{{ $evento->client->name.' '.$evento->client->lastname }}</a></td>
                                     <td>{{ $evento->fechahora }}</td>
                                     <td class="td-actions text-right">
-                                        <a href="{{ url('/vendedor/citas/'.$evento->id) }}" type="button" rel="tooltip" title="Ver Cita" class="btn btn-success btn-simple btn-xs">
+                                        <a href="{{ url('/admin/citas/'.$evento->id) }}" type="button" rel="tooltip" title="Ver Cita" class="btn btn-success btn-simple btn-xs">
                                             <i class="material-icons">remove_red_eye</i>
                                         </a>
                                         @if (!Carbon\Carbon::parse($evento->fechahora)->isPast())
-                                             <a href="{{ url('/vendedor/citas/'.$evento->id.'/editar') }}" type="button" rel="tooltip" title="Editar Cita" class="btn btn-primary btn-simple btn-xs">
+                                             <a href="{{ url('/admin/citas/'.$evento->id.'/editar') }}" type="button" rel="tooltip" title="Editar Cita" class="btn btn-primary btn-simple btn-xs">
                                                 <i class="material-icons">edit</i>
                                             </a>
                                         @endif

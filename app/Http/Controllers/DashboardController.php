@@ -159,7 +159,7 @@ class DashboardController extends Controller
 
 	    // Warning if there are Orders ready for pickup.
 	    if ($recoleccion > 0) {
-	    	$request->session()->flash('warning', 'Tienes pedidos listos para ser recogidos.');
+	    	session()->flash('warning', 'Tienes pedidos listos para ser recogidos.');
 	    }
 
 	    return view('vendedor.dashboard',compact('birthdaysMonth','birthdaysWeek','birthdaysToday','montoVentas','prendasVendidas','ventasPorSemana','totalVendido','sinAprobar','aprobadas','produccion','recoleccion','entregadas','facturadas','cobradas','eventosHoy','eventosSemana'));
@@ -297,7 +297,7 @@ class DashboardController extends Controller
 
 	    // Warning if there are Orders ready for pickup.
 	    if ($recoleccion > 0) {
-	    	$request->session()->flash('warning', 'Tienes pedidos listos para ser recogidos.');
+	    	session()->flash('warning', 'Tienes pedidos listos para ser recogidos.');
 	    }
 
 	    return view('validador.dashboard',compact('birthdaysMonth','birthdaysWeek','birthdaysToday','montoVentas','prendasVendidas','ventasPorSemana','totalVendido','sinAprobar','aprobadas','produccion','recoleccion','entregadas','facturadas','cobradas','eventosHoy','eventosSemana'));
@@ -435,7 +435,7 @@ class DashboardController extends Controller
 
 	    // Warning if there are Orders ready for pickup.
 	    if ($recoleccion > 0) {
-	    	$request->session()->flash('warning', 'Tienes pedidos listos para ser recogidos.');
+	    	session()->flash('warning', 'Tienes pedidos listos para ser recogidos.');
 	    }
 
 	    return view('admin.dashboard',compact('birthdaysMonth','birthdaysWeek','birthdaysToday','montoVentas','prendasVendidas','ventasPorSemana','totalVendido','sinAprobar','aprobadas','produccion','recoleccion','entregadas','facturadas','cobradas','eventosHoy','eventosSemana'));

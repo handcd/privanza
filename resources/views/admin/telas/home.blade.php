@@ -1,17 +1,17 @@
-@extends('validador.layout.main')
+@extends('admin.layout.main')
 
 @section('content')
 <div class="row">
     <div class="col-md-12" style="float: right;">
-        <a class="btn btn-success btn-large" href="{{ url('/validador/forros/agregar') }}"><i class="material-icons">add</i>Registrar un nuevo forro</a>
+        <a class="btn btn-success btn-large" href="{{ url('/admin/telas/agregar') }}"><i class="material-icons">add</i>Registrar una nueva tela</a>
     </div>
 </div>
 <div class="row">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header" data-background-color="blue">
-                <h4 class="title">Todas las forros</h4>
-                <p class="category">Listado de forros</p>
+                <h4 class="title">Todas las telas</h4>
+                <p class="category">Listado de telas</p>
             </div>
             <div class="card-content table-responsive">
                 <table class="table table-hover">
@@ -25,34 +25,34 @@
                         <th>Acciones</th>
                     </thead>
                     <tbody>
-                        @foreach ($forros as $forro)
+                        @foreach ($telas as $tela)
                         <tr>
-                            <td> {{ $forro->id }} </td>
-                            <td> {{ $forro->codigo_forro}} </td>
-                            <td> {{ $forro->color_forro }} </td>
-                            <td> {{ $forro->nombre_forro }} </td>
-                            <td> {{ $forro->composicion }} </td>
-                            <td> @if($forro->estado != Null)
-                                    {{ $forro->estado }} 
+                            <td> {{ $tela->id }} </td>
+                            <td> {{ $tela->codigo_tela}} </td>
+                            <td> {{ $tela->color_tela }} </td>
+                            <td> {{ $tela->nombre_tela }} </td>
+                            <td> {{ $tela->composicion }} </td>
+                            <td> @if($tela->estado != Null)
+                                    {{ $tela->estado }} 
                                 @else 
                                     Disponible
                                 @endif
                             </td>
                             <td class="td-actions text-right">                           
-                                <a href="{{ url('/validador/forros/'.$forro->id.'/editar') }}" type="button" rel="tooltip" title="Editar Orden" class="btn btn-primary btn-simple btn-xs"> <i class="material-icons">edit</i></a>  
-                                <form action="{{'/validador/forros/'.$forro->id.'/eliminar'}}" method="post">
+                                <a href="{{ url('/admin/telas/'.$tela->id.'/editar') }}" type="button" rel="tooltip" title="Editar Orden" class="btn btn-primary btn-simple btn-xs"> <i class="material-icons">edit</i></a> 
+                                <form action="{{'/admin/telas/'.$tela->id.'/eliminar'}}" method="post">
                                   {{csrf_field()}}
                                     {{ method_field('DELETE') }}
                                       <button type="submit" style="background-color: transparent !important; border: none; color: red;">
                                         <i class="material-icons">delete</i> 
                                       </button> 
-                                </form>       
+                                </form>    
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-               <center> {{ $forros->links() }} </center>
+               <center> {{ $telas->links() }} </center>
             </div>
         </div>
     </div>

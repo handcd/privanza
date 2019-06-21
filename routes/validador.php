@@ -54,12 +54,14 @@ Route::get('/telas/agregar', 'TelasController@createForValidador');
 Route::post('/telas','TelasController@storeForValidador');
 Route::get('/telas/{tela}/editar','TelasController@editForValidador');
 Route::put('/telas/{tela}','TelasController@updateForValidador');
+Route::delete('/telas/{tela}/eliminar', 'TelasController@destroyForValidador');
 //Forros
 Route::get('/forros','ForroController@indexForValidador');
 Route::get('/forros/agregar', 'ForroController@createForValidador');
 Route::post('forros','ForroController@storeForValidador');
 Route::get('/forros/{forro}/editar','ForroController@editForValidador');
 Route::put('/forros/{forro}','ForroController@updateForValidador');
+Route::delete('/forros/{forro}/eliminar', 'ForroController@destroyForValidador');
 
 // Events
 Route::get('/citas','EventController@indexForValidador');
